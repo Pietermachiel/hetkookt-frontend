@@ -1,0 +1,389 @@
+.kalender-index {
+  position: absolute;
+  top: -29px;
+  right: 5px;
+  padding: 5px;
+  font-size: 16px;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  color: black;
+  font-weight: 300 !important;
+}
+
+.weekmenu-vandaag {
+  background-color: #fbfbfb;
+  &:nth-child(2) {
+    background-color: #fff0dd;
+    border-bottom: 0;
+  }
+}
+
+.actions {
+  display: flex;
+}
+
+.add {
+  position: relative;
+}
+
+.action-panel {
+  background-color: #fff;
+  border: 1px solid #b3b3b3;
+  color: #3a3a3a;
+  display: none;
+  // left: 4px;
+  margin-top: 14px;
+  position: absolute;
+  top: -25px;
+  left: 0;
+  height: 300px;
+  width: 265px;
+  // display: inline-block;
+  h6 {
+    padding-top: 30px;
+    padding-bottom: 0;
+    margin: auto;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 300;
+  }
+  p {
+    padding: 11px 19px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    height: 46px;
+  }
+  .maandjaar {
+    padding: 0;
+    margin-top: -20px;
+    font-size: 18px;
+    height: 46px;
+    text-align: center;
+  }
+  p:hover {
+    background: #dbdbdb;
+  }
+}
+
+.action-panel__open {
+  display: inline-block;
+}
+
+.action-panel::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  /* margin: 107px auto; */
+  position: absolute;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 18px solid white;
+  top: -18px;
+  right: 55px;
+}
+
+.action-panel::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  /* margin: 107px auto; */
+  position: absolute;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 18px solid #757575;
+  top: -19px;
+  right: 55px;
+}
+
+// weekmenu
+.grid-box__day {
+  position: relative;
+  p {
+    padding: 10px;
+    font-size: 16px;
+  }
+  span {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 42%;
+    font-size: 48px;
+    font-family: courier;
+  }
+}
+
+svg.recipe-corner {
+  position: absolute;
+  top: -30px;
+  right: -1px;
+  width: 40px;
+  z-index: 50;
+  stroke: red;
+  stroke-width: 16px;
+}
+
+.recipe-footer__favorites {
+  position: relative;
+  height: 64px;
+  overflow: hidden;
+  padding-top: 20px;
+}
+.recipe-footer__box-delete {
+  height: 100%;
+  // padding: 15px;
+  position: absolute;
+  right: 0;
+  margin-right: -100px;
+  transition: margin-right 0.2s ease-out;
+}
+
+// .recipe-footer__box-add {
+//   height: 100%;
+//   // padding: 15px;
+//   position: absolute;
+//   right: 0;
+//   margin-right: -100px;
+//   transition: margin-right 0.2s ease-out;
+// }
+.day-flag {
+  position: absolute;
+  top: -18px;
+  left: 15px;
+}
+span.btn-like {
+  position: absolute;
+  top: 30px;
+  right: 15px;
+  svg {
+    height: 20px;
+    width: 20px;
+    position: relative;
+    fill: black;
+  }
+}
+button.btn-like {
+  padding: 0;
+  margin-top: 0;
+  border: 0;
+  background: transparent;
+  height: 100%;
+  width: 44px;
+  position: relative;
+  svg {
+    height: 20px;
+    width: 20px;
+    // stroke: black;
+    // stroke-width: 7px;
+    position: absolute;
+    bottom: -4px;
+    left: 12px;
+    fill: black;
+  }
+}
+button.btn-add {
+  padding: 0;
+  margin-top: 0;
+  border: 0;
+  background: transparent;
+  height: 100%;
+  // width: 44px;
+  position: relative;
+  svg {
+    height: 20px;
+    width: 20px;
+    // stroke: black;
+    // stroke-width: 7px;
+    position: absolute;
+    bottom: -4px;
+    left: 12px;
+  }
+}
+button.btn-delete {
+  padding: 0;
+  margin-top: 0;
+  border: 0;
+  background: transparent;
+  height: 100%;
+  width: 44px;
+  position: relative;
+  svg {
+    height: 20px;
+    width: 20px;
+    stroke: black;
+    stroke-width: 0;
+    position: absolute;
+    bottom: -3px;
+    left: 11px;
+    fill: red;
+  }
+}
+button.btn-weg {
+  font-size: 16px;
+  font-weight: 500;
+  height: 100%;
+  width: 100px;
+  padding: 13px;
+  margin-top: 0;
+  border: 0;
+  background: red;
+  color: white;
+}
+.zetophetweekmenu-box {
+  position: relative;
+  display: flex;
+}
+button.btn-menu {
+  padding: 0;
+  margin-top: 0;
+  border: 0;
+  background: transparent;
+  height: 100%;
+  width: 44px;
+  position: absolute;
+  right: 12px;
+  svg {
+    height: 30px;
+    width: 30px;
+    stroke: black;
+    stroke-width: 2px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+  }
+}
+
+.box-delete__open {
+  margin-right: 0;
+}
+
+// recepten
+
+.recepten {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  // max-width: 1024px;
+  margin: auto;
+}
+
+.recepten-box {
+  margin: auto;
+  margin-top: 0;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 100%;
+  .title {
+    width: 100%;
+  }
+  .title-tags {
+    padding: 10px 0;
+    a {
+      color: red;
+    }
+  }
+  h3 {
+    margin-top: 30px;
+    padding-right: 20%;
+    margin-bottom: 0;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.1em;
+    @media (min-width: $on-palm) {
+      font-size: 42px;
+    }
+  }
+  .actions {
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+  @media (min-width: $on-tablet) {
+    // width: 70%;
+  }
+}
+
+// .recepten-aside {
+//   width: calc(30%);
+//   background-color: mistyrose;
+//   margin-top: 15px;
+// }
+
+.ingredienten {
+  margin-bottom: 18px;
+  width: 100%;
+  p {
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-bottom: 24px;
+    letter-spacing: 0.15em;
+  }
+  li {
+    display: flex;
+    // padding-bottom: 12px;
+    line-height: 1.5em;
+    .items-quantity {
+      font-size: 17px;
+      font-weight: 500;
+      vertical-align: center;
+      width: 80px;
+      text-align: right;
+      // font-variant-numeric: oldstyle-nums;
+    }
+    .items-product {
+      width: 70%;
+      padding-left: 7px;
+      font-size: 15px;
+      font-weight: 500;
+      display: inline-flex;
+      a {
+        display: inline;
+      }
+      span {
+        font-weight: 300;
+      }
+    }
+  }
+  @media (min-width: $on-palm) {
+    width: 30%;
+    margin-bottom: 0;
+  }
+}
+.ingredienten-box {
+  margin-bottom: 24px;
+  a {
+    display: block;
+  }
+  li {
+    margin-bottom: 0;
+  }
+}
+
+.directions {
+  ol {
+    padding: 0;
+    margin-bottom: 18px;
+    li {
+      counter-increment: step-counter;
+      list-style-type: none;
+      position: relative;
+      margin-left: 20px;
+      padding-bottom: 0;
+      margin-bottom: 0;
+      &:before {
+        content: counter(step-counter);
+        margin-right: 0px;
+        font-weight: 500;
+        position: absolute;
+        left: -20px;
+        top: -2px;
+        width: 25px;
+        font-size: 21px;
+        // font-variant-numeric: oldstyle-nums;
+      }
+    }
+  }
+}

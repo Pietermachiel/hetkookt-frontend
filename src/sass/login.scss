@@ -1,0 +1,211 @@
+/*------------------------------------*\
+  #BASICS-LOGIN
+\*------------------------------------*/
+.login-box {
+  display: flex;
+  flex-flow: column;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  list-style: none;
+  transition: all 0.2s ease-in-out;
+  will-change: top;
+  opacity: 1;
+  z-index: 10;
+}
+
+.login-box__inner {
+  width: 100%;
+  max-width: 550px;
+  margin: auto;
+  background-color: #f4f8fb;
+  // padding: 1em;
+  h2 {
+    text-align: center;
+    color: silver;
+  }
+  form.login-form {
+    .alert {
+      margin-bottom: 1rem;
+      margin-top: 0.5rem;
+      color: orange;
+    }
+    .email {
+      position: relative;
+      &::before {
+        content: "";
+        display: block;
+        width: 4rem;
+        height: 100%;
+        position: absolute;
+        left: -10px;
+        top: 12px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background: url(/img/feather/mail.svg) center no-repeat;
+        background-size: 20px;
+        opacity: 0.5;
+      }
+    }
+    .password {
+      position: relative;
+      &::before {
+        content: "";
+        display: block;
+        width: 4rem;
+        height: 100%;
+        position: absolute;
+        left: -10px;
+        top: 12px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background: url(/img/feather/lock.svg) center no-repeat;
+        background-size: 20px;
+        opacity: 0.5;
+      }
+    }
+    .name {
+      position: relative;
+      &::before {
+        content: "";
+        display: block;
+        width: 4rem;
+        height: 100%;
+        position: absolute;
+        left: -10px;
+        top: 12px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background: url(/img/icons/person.svg) center no-repeat;
+        background-size: 23px;
+        opacity: 0.5;
+      }
+    }
+    .postcode {
+      position: relative;
+      &::before {
+        content: "";
+        display: block;
+        width: 4rem;
+        height: 100%;
+        position: absolute;
+        left: -15px;
+        top: 18px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background: url(/public/img/icons/postcode.jpg) center no-repeat;
+        background-size: 20px;
+        opacity: 0.5;
+      }
+      button {
+        position: absolute;
+        display: inline;
+        top: 37px;
+        right: 0;
+        width: 150px;
+        padding: 9px;
+        border-radius: 0;
+        margin-top: 0;
+      }
+    }
+
+    .form-name {
+      display: flex;
+      justify-content: flex-start;
+      align-items: stretch;
+      border: 0;
+      padding: 0;
+    }
+    .form-adress {
+      display: flex;
+      justify-content: flex-start;
+      align-items: stretch;
+      border: 0;
+      padding: 0;
+      .first {
+        width: 50%;
+      }
+    }
+    .form-input {
+      position: relative;
+      border: 0;
+      margin-bottom: 1em;
+      width: 100%;
+    }
+    .input-field {
+      border: 1px solid #e0e0e0;
+      border-radius: 0;
+      color: #303030;
+      padding-left: 54px;
+      height: 48px;
+      width: 100%;
+      font-weight: 200;
+      font-size: 18px;
+      color: gray;
+    }
+    .input-field__postcode {
+      width: 70%;
+    }
+    .input-border {
+      background-color: #ea3d3d;
+      width: 100%;
+      display: block;
+      height: 2px;
+      width: 0;
+      transition-property: width, background-color;
+      transition-duration: 0.2s;
+      transition-timing-function: ease-out;
+      position: relative;
+      top: -2px;
+      background-color: #3b9fe2;
+    }
+    .input-valid {
+      background-color: #69bd86;
+      width: 100%;
+    }
+    .input-label {
+      font-size: 16px;
+      color: gray;
+    }
+    .button-login {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: 36px;
+      text-transform: uppercase;
+      font-size: 18px;
+      letter-spacing: 0.1em;
+      background: $blauw;
+      width: 150px;
+      /* margin: auto; */
+      // margin-top: 1em;
+      padding: 10px;
+      border-radius: 5px;
+      color: white;
+    }
+    .button-login__postcode {
+      width: 30;
+    }
+  }
+  p.link-inschrijven {
+    a {
+      color: $blauw;
+      text-decoration: none;
+    }
+    span:hover {
+      line-height: 1em;
+      border-bottom: 1px solid black;
+      text-decoration: none;
+    }
+  }
+}

@@ -1,0 +1,51 @@
+.bladgroenten,
+.bollen,
+.knollen,
+.koolsoorten,
+.peulvruchten,
+.slasoorten,
+.stengelgewassen,
+.vruchtgewassen,
+.wortels {
+  color: $groen;
+}
+.kruiden {
+  color: #808000;
+}
+.specerijen {
+  color: red;
+}
+.paddenstoelen {
+  color: #3d4447;
+}
+.noten {
+  color: $bruin;
+}
+.granen {
+  color: darkgray;
+}
+.fruit {
+  color: #37da19;
+}
+.citrusvruchten {
+  color: #d0c032;
+}
+.zuivel {
+  color: #f3be31;
+}
+.import {
+  color: #ff9a01;
+}
+.exoten {
+  color: #e64b97;
+}
+.vlees {
+  color: #c91669;
+}
+.vis {
+  color: #00ceff;
+}
+
+.bg-red {
+  background-color: red !important;
+}

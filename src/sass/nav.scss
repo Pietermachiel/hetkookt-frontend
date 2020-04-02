@@ -1,0 +1,314 @@
+/*------------------------------------*\
+  #NAVIGATION-NAV
+\*------------------------------------*/
+.navbox {
+  background: white;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.logo {
+  color: $brand;
+  // font-size: 42px;
+  font-weight: 700;
+  // padding-top: 36px;
+  // padding-left: 2px;
+  position: relative;
+  z-index: 100;
+  @media (min-width: $on-tablet) {
+    float: left;
+    position: relative;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+.navbox-logo {
+  color: red;
+  font-weight: 700;
+  font-size: 36px;
+  padding-top: 15px;
+  // padding-bottom: 15px;
+  z-index: 100;
+  position: relative;
+  span.het {
+    font-size: 1em * 0.9;
+    letter-spacing: 0.03em;
+    font-weight: 500;
+  }
+  span.spatie {
+    letter-spacing: -0.3em;
+  }
+}
+
+.navbox-panel[aria-expanded="true"] {
+  // opacity: 1;
+  // visibility: visible;
+  margin-right: 0;
+}
+
+.navbox-panel {
+  padding-top: 15px;
+  @media (max-width: 1023px) {
+    position: fixed;
+    display: flex;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: 0;
+    width: 100%;
+    // margin-right: -375px;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    background-image: url(/public/img/artisjok-soft40.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #eae9e9;
+    list-style: none;
+    transition: all 0.2s ease-in-out;
+    will-change: top;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 10;
+  }
+  @media (min-width: 1024px) {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+}
+
+.navbar {
+  float: none;
+  width: 100%;
+  padding-top: 2em;
+  @media (min-width: $on-tablet) {
+    padding-top: 0;
+    // display: flex;
+  }
+}
+
+.nav-link.active,
+.nav-link:hover {
+  border-bottom: 1px solid;
+  border-bottom-color: #e74c3c;
+  color: #e74c3c;
+  text-decoration: none;
+  transition: 0.1s;
+  // padding-bottom: 3px;
+}
+
+.nav-item {
+  padding-left: 20px;
+  margin-top: 1em;
+  font-size: 24px;
+  border-bottom: 1px solid;
+  padding-bottom: 10px;
+  @media screen and (min-width: $on-tablet) {
+    float: left;
+    margin-top: 0;
+    padding-left: 21px;
+    padding-top: 16px;
+    font-size: 19px;
+    text-align: left;
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+.nav-user {
+  color: silver;
+}
+.nav-kookschrift {
+  margin-top: 10px;
+  font-size: 24px;
+  border-bottom: 1px solid;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  @media screen and (min-width: $on-tablet) {
+    padding-left: 0;
+    padding-top: 10px;
+    margin-top: 0;
+    font-size: 19px;
+    // text-align: none;
+    float: right;
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+.nav-me {
+  margin-top: 10px;
+  font-size: 24px;
+  padding-left: 20px;
+  border-bottom: 1px solid;
+  padding-bottom: 10px;
+  @media screen and (min-width: $on-tablet) {
+    margin-top: 0;
+    font-size: 19px;
+    float: right;
+    padding-top: 16px;
+    padding-left: 16px;
+    padding-right: 30px;
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+.nav-name {
+  position: relative;
+  margin-left: 6px;
+  &::before {
+    content: "";
+    display: block;
+    width: 4rem;
+    height: 100%;
+    position: absolute;
+    left: -27px;
+    top: 1px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background: url(/img/icons/person.svg) center no-repeat;
+    background-size: 30px;
+    opacity: 0.5;
+    @media screen and (min-width: $on-tablet) {
+      // left: -10px;
+      background-size: 28px;
+    }
+  }
+}
+
+// .menu-open {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   @media (min-width: $on-tablet) {
+//     position: relative;
+//   }
+// }
+
+.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hamburger {
+  padding: 9.5px 12px;
+  display: block;
+  float: right;
+  position: absolute;
+  top: 32px;
+  right: 15px;
+  background-color: transparent;
+  // width: 23px;
+  // height: 16px;
+  margin: 0; // 20px 0 20px 36px
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  z-index: 10000;
+  @media (min-width: $on-tablet) {
+    display: none;
+  }
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: $brand;
+  -webkit-transition: all 0.25s 0.1s;
+  transition: all 0.25s 0.1s;
+}
+
+// first child
+
+.hamburger.navbox--menu-open span:first-child {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.hamburger.navbox--menu-open span:first-child,
+.navbox--menu-open .hamburger span:nth-child(3) {
+  top: 9px;
+}
+
+.hamburger span:first-child {
+  top: 0;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-transform-origin: center center;
+  transform-origin: center center;
+}
+.hamburger.navbox--menu-open span {
+  background-color: $brand;
+}
+.navbox--inverted .hamburger span {
+  background-color: $brand;
+}
+
+// second child
+
+.hamburger span:nth-child(2) {
+  bottom: 1px;
+}
+
+.hamburger.navbox--menu-open span:nth-child(2) {
+  width: 0;
+  opacity: 0;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+
+.hamburger span:nth-child(2) {
+  bottom: 1px;
+}
+
+// third child
+
+.hamburger.navbox--menu-open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.hamburger.navbox--menu-open span:first-child,
+.hamburger.navbox--menu-open span:nth-child(3) {
+  top: 8px;
+}
+.hamburger span:nth-child(3) {
+  top: 8px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-transform-origin: center center;
+  transform-origin: center center;
+}
+
+.kookschrift-counter {
+  position: relative;
+  right: -8px;
+  top: 4px;
+  height: 25px;
+  width: 25px;
+  color: #fff;
+  background: #303030;
+  display: inline-block;
+  font-size: 12px;
+  border-radius: 100%;
+  transform: scale(1);
+  @media screen and (min-width: $on-tablet) {
+    top: 6px;
+    height: 24px;
+    width: 24px;
+  }
+}
+
+.kookschrift-counter__count {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}

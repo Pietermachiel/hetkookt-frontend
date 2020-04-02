@@ -1,0 +1,46 @@
+@charset "utf-8";
+
+$mono: "Fira Mono";
+$on-palm: 768px;
+$on-tablet: 1024px;
+$on-laptop: 1200px;
+
+$text-color: #111;
+$brand-color: rgb(64, 212, 57);
+$brand: red; // rgb(85, 26, 139)
+$appel: rgb(83, 227, 56);
+$bruin: rgb(146, 94, 71);
+$rood: rgb(255, 33, 0);
+$groen: rgb(40, 137, 44);
+$oranje: rgb(255, 153, 0);
+$geel: rgb(255, 230, 0);
+$blauw: rgb(67, 125, 192);
+
+html {
+  font-family: "MuseoSans", Arial, Helvetica, sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  color: $text-color;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $text-color;
+  word-spacing: -0.05em;
+  letter-spacing: 0.025em;
+  font-feature-settings: "kern" 1;
+  font-variant-ligatures: none;
+  text-rendering: optimizeLegibility;
+  // @media (min-width: $on-palm) {
+  //   font-size: $fontsize * 1.2;
+  // }
+}
+
+@import "./sass/color", "./sass/form", "./sass/grid", "./sass/login",
+  "./sass/pages", "./sass/products", "./sass/recepten", "./sass/nav",
+  "./sass/typo";
+
+// body {
+//   // background: red;
+// }
