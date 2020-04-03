@@ -75,7 +75,7 @@ const Nav = ({ sorts, ...props }) => {
             aria-expanded={expanded}
           >
             <ul className="navbar">
-              <li className="nav-item font-light flex">
+              <li className="nav-item font-light lg:flex">
                 {/* <Link
                   className={
                     "favorites" === props.location.pathname
@@ -107,7 +107,7 @@ const Nav = ({ sorts, ...props }) => {
                       }
                       to={"/weekmenu"}
                     >
-                      <div className="flex items-center mr-10">weekmenu</div>
+                      <div className="items-center mr-10">weekmenu</div>
                     </Link>
                     <div className="flex pt-4">
                       {kalender.map(k => {
@@ -134,7 +134,7 @@ const Nav = ({ sorts, ...props }) => {
                       april <span className="text-14">2020</span>
                     </p>
                     {/* kookschrift */}
-                    <div className="font-light flex ml-18">
+                    <div className="font-light flex lg:ml-18 md:border-solid lg:border-none md:border-4 md:pb-10">
                       {props.user && (
                         <>
                           <Link

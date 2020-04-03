@@ -109,9 +109,9 @@ const App = () => {
     putAxios(me._id, thebody);
     // recipe = newrecipe || recipe;
     recipe.date = recipe.date || [];
-    console.log("recipe.date");
-    console.log(recipe.date);
-    console.log(dedate);
+    // console.log("recipe.date");
+    // console.log(recipe.date);
+    // console.log(dedate);
     recipe.date.push(dedate);
     setMe({
       _id: me._id,
@@ -160,9 +160,17 @@ const App = () => {
   function handleDeleteFavorite(id) {
     console.log("handleDeleteFavorite");
     var allMeRecipes = me.recipes.map(r => r);
+    console.log("allMeRecipes1");
+    console.log(allMeRecipes);
     var myRecipe = allMeRecipes.find(item => item._id === id);
     myRecipe.favorite = !myRecipe.favorite;
-    myRecipe.isOpen = !myRecipe.isOpen;
+    // myRecipe.isOpen = !myRecipe.isOpen;
+    allMeRecipes =
+      myRecipe.date === null
+        ? allMeRecipes.filter(item => item._id !== id)
+        : [];
+    console.log("allMeRecipes2");
+    console.log(allMeRecipes);
     setMe({
       _id: me._id,
       name: me.name,
@@ -176,17 +184,28 @@ const App = () => {
   function handleDelete(id, year) {
     var allMeRecipes = me.recipes.map(r => r);
     var myRecipe = allMeRecipes.filter(item => item._id === id);
-    // console.log("myRecipe.date");
-    // console.log(myRecipe[0].date, year);
-    // myRecipe[0].date.filter(d => d !== year);
-    myRecipe[0].date.splice(myRecipe[0].date.indexOf(year), 1);
-    // console.log("myRecipe.date2");
-    // console.log(myRecipe[0].date, year);
+    console.log("myRecipe.date");
+    console.log(myRecipe[0].date, year);
+    console.log("filter");
+    myRecipe[0].date = myRecipe[0].date.filter(d => d !== year);
+    // myRecipe[0] = myRecipe[0].date.splice(myRecipe[0].date.indexOf(year), 1);
+    console.log("myRecipe.date2");
+    console.log(myRecipe[0], year);
     // allMeRecipes = allMeRecipes.filter(item => item._id !== id);
     // console.log("allMeRecipes");
     // console.log(allMeRecipes, year);
 
     // myRecipe[0].isOpen = !myRecipe[0].isOpen;
+    console.log("allMeRecipes");
+    console.log(allMeRecipes);
+
+    allMeRecipes =
+      myRecipe[0].date.length === 0 && myRecipe[0].favorite === false
+        ? allMeRecipes.filter(item => item._id !== id)
+        : allMeRecipes;
+
+    console.log("allMeRecipes2");
+    console.log(allMeRecipes);
 
     setMe({
       _id: me._id,

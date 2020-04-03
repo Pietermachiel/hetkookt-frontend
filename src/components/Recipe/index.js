@@ -48,7 +48,8 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
 
   const newrecipe = thecart.find(c => c._id === therecipe._id);
   therecipe = newrecipe || therecipe;
-  // console.log(therecipe);
+
+  console.log(therecipe);
 
   return (
     <div className="container-x">
@@ -230,10 +231,16 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
               </ol>
             </div>
             <div className="text-21">{therecipe.citaat}</div>
-            <div className="flex">
-              <img className="w-25" src="/img/feather/book.svg" alt="" />
-              &nbsp;<span className="pl-5">{therecipe.author}</span>
-            </div>
+            <a
+              href={`${therecipe.source_url}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="flex">
+                <img className="w-25" src="/img/feather/book.svg" alt="" />
+                &nbsp;<span className="pl-5">{therecipe.author}</span>
+              </div>
+            </a>
           </div>
         </div>
       </div>

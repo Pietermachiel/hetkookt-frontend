@@ -23,7 +23,7 @@ const Home = ({
 
   // console.log(today);
   // console.log(recipes);
-  // console.log(dishes);
+  console.log(dishes);
   // console.log(kalender);
   return (
     <div className="container-x">
@@ -107,7 +107,7 @@ const Home = ({
                         className={`uppercase tracking-widest text-14 pl-15 mb-0`}
                       >
                         {recipe.meal === "true" ? (
-                          <span className="text-red font-500">menu</span>
+                          <span className="text-red-500 font-500">menu</span>
                         ) : null}
                         {recipe.meal === "true" ? <span> / </span> : null}
                         {recipe.dish}
@@ -124,7 +124,9 @@ const Home = ({
                             <div
                               key={w.index}
                               className={`relative mr-6 p-10 w-24 h-24 text-center ${
-                                cart.length !== 0 ? "bg-orange" : "bg-gray-500"
+                                cart.length !== 0
+                                  ? "bg-orange-400"
+                                  : "bg-gray-500"
                               } text-black rounded-50`}
                             >
                               <span className={`absolute text-12 -m-7 pl-3`}>

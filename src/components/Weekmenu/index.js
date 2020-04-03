@@ -15,6 +15,7 @@ const Weekmenu = ({ thecart, handleDelete, handleUpdate }) => {
 
   return (
     <div className="container-x">
+      <h1>weekmenu</h1>
       {/* <h1 className="mb-10 flex item-center">
         week {theweek()}
         <span className="pt-6 ml-10">

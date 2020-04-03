@@ -9,8 +9,8 @@ const Favorites = ({
   thecart
 }) => {
   if (thecart === undefined) thecart = [];
-  console.log("thecart");
-  console.log(thecart);
+  // console.log("thecart");
+  // console.log(thecart);
 
   return (
     <Fragment>
@@ -159,7 +159,8 @@ const Favorites = ({
                       <div className="recipe-footer__box-buttons">
                         <button
                           className="btn-delete"
-                          onClick={() => handleUpdate(m._id)}
+                          // onClick={() => handleUpdate(m._id)}
+                          onClick={() => handleDeleteFavorite(m._id)}
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
