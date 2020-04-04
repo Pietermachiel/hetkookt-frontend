@@ -23,7 +23,7 @@ const Home = ({
 
   // console.log(today);
   // console.log(recipes);
-  console.log(dishes);
+  // console.log(dishes);
   // console.log(kalender);
   return (
     <div className="container-x">
