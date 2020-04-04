@@ -238,7 +238,7 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
             >
               <div className="flex">
                 <img className="w-25" src="/img/feather/book.svg" alt="" />
-                &nbsp;<span className="pl-5">{therecipe.author}</span>
+                &nbsp;<span className="pl-5">{therecipe.source}</span>
               </div>
             </a>
           </div>
