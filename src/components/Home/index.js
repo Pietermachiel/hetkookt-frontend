@@ -30,7 +30,7 @@ const Home = ({
       {/* <h1 className="text-4xl font-black">Tailwind</h1> */}
 
       {dishes.map((d, xid) => {
-        const therecipes = recipes.filter(recipe => recipe.dish === d);
+        const therecipes = recipes.filter((recipe) => recipe.dish === d);
         if (therecipes === undefined) return [];
         return (
           <Fragment key={xid}>
@@ -44,7 +44,7 @@ const Home = ({
             </h1>
             <div className="-ml-15 mb-10 flex flex-row flex-wrap">
               {therecipes.slice(0, 4).map((recipe, index) => {
-                let cart = thecart.find(c => c._id === recipe._id);
+                let cart = thecart.find((c) => c._id === recipe._id);
                 // console.log(cart);
                 if (cart === undefined) cart = [];
                 const thelength = recipe.tags.length - 1;
@@ -107,7 +107,7 @@ const Home = ({
                         className={`uppercase tracking-widest text-14 pl-15 mb-0`}
                       >
                         {recipe.meal === "true" ? (
-                          <span className="text-red-500 font-500">menu</span>
+                          <span className="text-red-500 font-600">meal</span>
                         ) : null}
                         {recipe.meal === "true" ? <span> / </span> : null}
                         {recipe.dish}
