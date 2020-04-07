@@ -5,7 +5,7 @@ import {
   hetjaar,
   slugify,
   kalender,
-  theweek
+  theweek,
 } from "../common/common.js";
 
 const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
@@ -20,7 +20,7 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
     setIsOpen(!isOpen);
   };
 
-  const handleIsFavorite = therecipe => {
+  const handleIsFavorite = (therecipe) => {
     console.log("isFavorite");
     // setIsFavorite(!isFavorite);
     doFavorite(therecipe);
@@ -32,7 +32,7 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
       // const res = await fetch(
       //   `https://pietermachiel.github.io/hetkookt-api/api${API}.json`
       // );
-      res.json().then(res => setTheRecipe(res));
+      res.json().then((res) => setTheRecipe(res));
     }
     getData();
   }, [API]);
@@ -46,10 +46,19 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
   if (therecipe.tags === undefined) return [];
   // const thelength = props.tags.length - 1;
 
-  const newrecipe = thecart.find(c => c._id === therecipe._id);
+  const newrecipe = thecart.find((c) => c._id === therecipe._id);
   therecipe = newrecipe || therecipe;
 
+  console.log("therecipe");
   console.log(therecipe);
+
+  const menu = kalender.filter((k) => {
+    const cart = thecart.find((c) => (c.date ? c.date.includes(k.year) : null));
+    return cart;
+  });
+
+  console.log("menu");
+  console.log(menu);
 
   return (
     <div className="container-x">
@@ -69,26 +78,20 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
                 onClick={() => handleIsOpen()}
               >
                 weekmenu
-                {therecipe.date === [] ? (
+                {menu.length === 0 || therecipe.date === null ? (
                   <img
                     className="w-25 ml-5"
                     src="/img/feather/list-orange.svg"
                     alt=""
                   />
-                ) : (
-                  <img
-                    className="w-25 ml-5"
-                    src="/img/feather/list.svg"
-                    alt=""
-                  />
-                )}
+                ) : null}
               </button>
               <div className="flex">
-                {kalender.map(k => {
-                  var cart = thecart.filter(c =>
+                {kalender.map((k) => {
+                  var cart = thecart.filter((c) =>
                     c.date ? c.date.includes(k.year) : null
                   );
-                  return cart.map(c =>
+                  return cart.map((c) =>
                     c._id === therecipe._id ? (
                       <div
                         key={c._id}
@@ -149,7 +152,7 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
 
                 <div className="mt-10 grid grid-cols-4 gap-10 p-24">
                   {kalender.map((k, xid) => {
-                    var cart = thecart.filter(c =>
+                    var cart = thecart.filter((c) =>
                       c.date ? c.date.includes(k.year) : null
                     );
                     return (
@@ -180,7 +183,7 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
             <p>vers</p>
             <div className="ingredienten-box">
               {therecipe.fresh.map((f, xid) => {
-                const category = categories.find(s => s.title === f.item);
+                const category = categories.find((s) => s.title === f.item);
                 if (category === undefined) return [];
                 const catcolor = category.category;
                 return (
