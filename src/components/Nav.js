@@ -15,11 +15,11 @@ const Nav = ({ sorts, ...props }) => {
   // console.log("props");
   // console.log(props);
 
-  const favorites = props.thecart.filter(c => c.favorite === true);
+  const favorites = props.thecart.filter((c) => c.favorite === true);
   // console.log("favorites.length");
   // console.log(favorites.length);
 
-  const handleMouseDown = e => {
+  const handleMouseDown = (e) => {
     toggleMenu();
     toggleSwitch();
     e.stopPropagation();
@@ -109,23 +109,32 @@ const Nav = ({ sorts, ...props }) => {
                     >
                       <div className="items-center mr-10">weekmenu</div>
                     </Link>
-                    <div className="flex pt-4">
-                      {kalender.map(k => {
-                        var cart = props.thecart.filter(c =>
+                    <div className="flex">
+                      {kalender.map((k) => {
+                        var cart = props.thecart.filter((c) =>
                           c.date ? c.date.includes(k.year) : null
                         );
                         return (
-                          <div
-                            key={k.index}
-                            className={`relative mr-6 p-10 w-24 h-24 text-center ${
-                              cart.length !== 0
-                                ? "bg-orange-400"
-                                : "bg-gray-400"
-                            } text-black rounded-50`}
-                          >
-                            <span className={`absolute text-12 -m-7 pl-3`}>
-                              {k.index}
-                            </span>
+                          <div key={k.index} className={`relative mr-4`}>
+                            {cart.length === 0 ? (
+                              <img
+                                className="w-30 h-30"
+                                src="/img/feather/circle-gray.svg"
+                                alt=""
+                              />
+                            ) : (
+                              <img
+                                className="w-30 h-30"
+                                src="/img/feather/circle-orange.svg"
+                                alt=""
+                              />
+                            )}
+
+                            <div className={`absolute inset-0 text-12`}>
+                              <span className="flex justify-center pt-6">
+                                {k.index}
+                              </span>
+                            </div>
                           </div>
                         );
                       })}
