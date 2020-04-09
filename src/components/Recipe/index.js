@@ -80,7 +80,7 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
                 weekmenu
                 {menu.length === 0 || therecipe.date === null ? (
                   <img
-                    className="w-25 ml-5"
+                    className="w-25 h-25 ml-5"
                     src="/img/feather/list-orange.svg"
                     alt=""
                   />
@@ -93,18 +93,20 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
                   );
                   return cart.map((c) =>
                     c._id === therecipe._id ? (
-                      <div
-                        key={c._id}
-                        className={`relative mr-6 p-10 w-24 h-24 text-center ${
-                          cart.length !== 0 ? "bg-orange-400" : "display-none"
-                        } text-black rounded-50`}
-                      >
-                        <span
-                          key={k.index}
-                          className={`absolute text-12 -m-7 pl-3`}
-                        >
-                          {k.index}
-                        </span>
+                      <div key={c._id} className={`relative`}>
+                        <img
+                          className="w-30 h-30"
+                          src="/img/feather/circle-orange.svg"
+                          alt=""
+                        />
+                        <div className="absolute inset-0">
+                          <span
+                            key={k.index}
+                            className={`flex justify-center pt-6 text-12`}
+                          >
+                            {k.index}
+                          </span>
+                        </div>
                       </div>
                     ) : null
                   );
@@ -141,7 +143,7 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
                 }`}
               >
                 <div className="zetophetweekmenu-box">
-                  <h6>week {theweek()}</h6>
+                  <h6 className="pt-24 pb-5 mx-auto">week {theweek()}</h6>
                   <button className="btn-menu" onClick={() => handleIsOpen()}>
                     <svg width="100" height="100" viewBox="0 0 50 50">
                       <path d="M14.691,13.382l21.101,21.101" />
@@ -156,21 +158,27 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
                       c.date ? c.date.includes(k.year) : null
                     );
                     return (
-                      <p
+                      <div
                         key={k.index}
                         onClick={() => handleSave(therecipe, hetjaar(xid))}
                         className={`relative ${
                           cart.length !== 0
                             ? "bg-orange-400 hover:bg-orange-300"
                             : "bg-gray-400 hover:bg-gray-300"
-                        } text-black rounded-50`}
+                        } text-black rounded-50 h-48 w-48 mb-20`}
                       >
-                        {k.index}
-                        <span className="kalender-index">
-                          {/* {k.day !== "vandaag" ? k.index : null} */}
-                          {k.day.slice(0, 2)}
-                        </span>
-                      </p>
+                        <div className="absolute inset-0">
+                          <span className="flex justify-center pt-12">
+                            {k.index}
+                          </span>
+                        </div>
+                        <div className="absolute inset-0">
+                          <span className="flex justify-center kalender-index">
+                            {/* {k.day !== "vandaag" ? k.index : null} */}
+                            {k.day.slice(0, 2)}
+                          </span>
+                        </div>
+                      </div>
                     );
                   })}
                 </div>
@@ -222,7 +230,7 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
               ))}
             </div>
           </div>
-          <div className="w-70">
+          <div className="w-werkwijze">
             {/* tracking-015 > type.scss */}
             <p className="uppercase tracking-015 text-14 mb-24">werkwijze</p>
             {/* directions > recepten.scss */}

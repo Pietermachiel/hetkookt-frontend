@@ -39,21 +39,6 @@
   left: 0;
   height: 300px;
   width: 265px;
-  // display: inline-block;
-  h6 {
-    padding-top: 30px;
-    padding-bottom: 0;
-    margin: auto;
-    margin-bottom: 5px;
-    font-size: 18px;
-    font-weight: 300;
-  }
-  p {
-    padding: 11px 19px;
-    margin-bottom: 20px;
-    font-size: 16px;
-    height: 46px;
-  }
   .maandjaar {
     padding: 0;
     margin-top: -20px;
@@ -61,9 +46,14 @@
     height: 46px;
     text-align: center;
   }
-  p:hover {
-    background: #dbdbdb;
-  }
+}
+
+svg.feather-circle {
+  fill: #f6ad55;
+}
+
+svg.feather-circle:hover {
+  fill: #fbd38d;
 }
 
 .action-panel__open {
