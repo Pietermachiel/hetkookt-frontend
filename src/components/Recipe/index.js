@@ -66,15 +66,18 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
         <div className="recepten-box">
           <div className="title">
             <h1 className="pt-15">{therecipe.title}</h1>
-            <div className="flex mb-36 mt-12">
-              <Link to={`/collections/${therecipe.dish}`}>
-                <div className="font-700 text-30 leading-4 pr-10">
-                  {therecipe.dish}
+            <div className="flex items-center weight-300 mb-36 mt-6">
+              <Link
+                className="hover:text-red-500"
+                to={`/collections/${therecipe.dish}`}
+              >
+                <div className="font-300 text-24 leading-4">
+                  > {therecipe.dish}
                 </div>
               </Link>
               {/* weekmenu */}
               <button
-                className="btn-add mr-10 ml-24 flex item-center"
+                className="btn-add mr-10 ml-30 text-19 hover:text-red-500 flex item-center"
                 onClick={() => handleIsOpen()}
               >
                 weekmenu
@@ -118,7 +121,9 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
                   className="like flex"
                   onClick={() => handleIsFavorite(therecipe)}
                 >
-                  <span className="pr-5 text-19">kookschrift</span>
+                  <span className="pr-5 text-19 hover:text-red-500">
+                    kookschrift
+                  </span>
                   {therecipe.favorite === true ? (
                     <img
                       className="w-25"

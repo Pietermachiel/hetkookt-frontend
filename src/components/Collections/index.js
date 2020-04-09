@@ -26,7 +26,7 @@ const Collections = ({ thecart, sorts, recipes, ...props }) => {
   console.log(recipes);
 
   const therecipes = recipes.filter(
-    recipe => recipe.dish === props.match.params.id
+    (recipe) => recipe.dish === props.match.params.id
   );
 
   const width = useCurrentWidth();
@@ -45,23 +45,23 @@ const Collections = ({ thecart, sorts, recipes, ...props }) => {
 
   return (
     <>
-      <div className="container-productenfilter">
+      {/* <div className="container-productenfilter">
         <Productenfilter sorts={sorts} />
-      </div>
+      </div> */}
       <div className="container-x">
-        <h1 className={`text-48 pb-18`}>
-          {props.match.params.id}{" "}
+        <h1 className={`pt-15 text-42 pb-18`}>
+          {props.match.params.id}
           <Link to="/">
-            <span className="text-19 font-300">> home</span>
+            <span className="ml-18 text-24 font-300">> home</span>
           </Link>
         </h1>
         <div className="-ml-15 flex flex-row flex-wrap">
           {therecipes.map((recipe, index) => {
-            let cart = thecart.find(c => c._id === recipe._id);
+            let cart = thecart.find((c) => c._id === recipe._id);
             if (cart === undefined) cart = [];
             const thelength = recipe.tags.length - 1;
             if (recipe.basics === undefined) return (recipe.basics = []);
-            const red = kalender.find(w => w.year === cart.date);
+            const red = kalender.find((w) => w.year === cart.date);
             // let recipeSort = recipe.fresh.filter(f => f.item);
             // let recipeItem = recipeSort.map(f => f.item);
             // console.log(props.match.params.id);
@@ -115,7 +115,7 @@ const Collections = ({ thecart, sorts, recipes, ...props }) => {
                   <p className={`uppercase tracking-widest text-14 pl-15 `}>
                     {recipe.dish}
                   </p>
-                  {kalender.map(w =>
+                  {kalender.map((w) =>
                     w.year === cart.date ? (
                       <p
                         key={w.index}

@@ -19,11 +19,11 @@ const Sorts = ({ thecart, recipes, sorts, categories, ...props }) => {
   console.log(categories);
   console.log(sorts);
 
-  const category = categories.find(s => s.title === props.match.params.id);
+  const category = categories.find((s) => s.title === props.match.params.id);
   if (category === undefined) return [];
   const catcolor = category.category;
 
-  const recipeItem = recipes.filter(element => {
+  const recipeItem = recipes.filter((element) => {
     let fresh = element.fresh.some(
       ({ item }) => item === props.match.params.id
     );
@@ -34,18 +34,23 @@ const Sorts = ({ thecart, recipes, sorts, categories, ...props }) => {
 
   return (
     <>
-      <div className="container-productenfilter">
+      {/* <div className="container-productenfilter">
         <Productenfilter sorts={sorts} />
-      </div>
+      </div> */}
       <div className="container-x">
-        <h1 className={`text-48 pb-18 ${catcolor}`}>{props.match.params.id}</h1>
+        <h1 className={`pt-15 text-42 pb-18 ${catcolor}`}>
+          {props.match.params.id}
+          <Link to="/">
+            <span className="ml-18 text-24 font-300">> home</span>
+          </Link>
+        </h1>
         <div className="-ml-15 mb-10 flex flex-row flex-wrap">
           {recipeItem.map((recipe, index) => {
-            let cart = thecart.find(c => c._id === recipe._id);
+            let cart = thecart.find((c) => c._id === recipe._id);
             if (cart === undefined) cart = [];
             const thelength = recipe.tags.length - 1;
             if (recipe.basics === undefined) return (recipe.basics = []);
-            const red = kalender.find(w => w.year === cart.date);
+            const red = kalender.find((w) => w.year === cart.date);
             return (
               <div
                 key={recipe._id}
@@ -92,7 +97,7 @@ const Sorts = ({ thecart, recipes, sorts, categories, ...props }) => {
                   <p className={`uppercase tracking-widest text-14 pl-15 `}>
                     {recipe.dish}
                   </p>
-                  {kalender.map(w =>
+                  {kalender.map((w) =>
                     w.year === cart.date ? (
                       <p
                         key={w.index}

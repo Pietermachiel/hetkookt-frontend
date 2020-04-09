@@ -48,7 +48,7 @@ const Nav = ({ sorts, ...props }) => {
   return (
     <>
       <div className="navbox bg-white pb-10 mb-15">
-        <div className="container-nav pl-15 pr-15">
+        <div className="container-nav pl-15 pr-15 md:pl-20">
           <button
             onClick={handleMouseDown}
             className={isOn ? "hamburger navbox--menu-open" : "hamburger"}
@@ -75,7 +75,7 @@ const Nav = ({ sorts, ...props }) => {
             aria-expanded={expanded}
           >
             <ul className="navbar">
-              <li className="nav-item font-light lg:flex">
+              <li className="nav-item font-light lg:flex lg:items-center">
                 {/* <Link
                   className={
                     "favorites" === props.location.pathname
@@ -100,16 +100,18 @@ const Nav = ({ sorts, ...props }) => {
                   <>
                     {/* weekmenu */}
                     <Link
-                      className={
-                        "favorites" === props.location.pathname
-                          ? `nav-link ml-15 active`
-                          : `nav-link ml-15`
-                      }
+                      className={`nav-link
+                        ${
+                          props.location.pathname === "favorites"
+                            ? `active`
+                            : ``
+                        }
+                      `}
                       to={"/weekmenu"}
                     >
-                      <div className="items-center mr-10">weekmenu</div>
+                      <div className="items-center">weekmenu</div>
                     </Link>
-                    <div className="flex">
+                    <div className="flex ml-10 pt-3">
                       {kalender.map((k) => {
                         var cart = props.thecart.filter((c) =>
                           c.date ? c.date.includes(k.year) : null
@@ -139,11 +141,11 @@ const Nav = ({ sorts, ...props }) => {
                         );
                       })}
                     </div>
-                    <p className="text-16 pl-3 leading-7 text-gray-500">
+                    <p className="text-16 pl-3 mb-0 leading-7 text-gray-500 pt-3">
                       april <span className="text-14">2020</span>
                     </p>
                     {/* kookschrift */}
-                    <div className="font-light flex lg:ml-18 md:border-solid lg:border-none md:border-4 md:pb-10">
+                    <div className="font-light flex lg:ml-18 md:border-solid lg:border-none md:border-4">
                       {props.user && (
                         <>
                           <Link

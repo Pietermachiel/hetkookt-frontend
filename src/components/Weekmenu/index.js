@@ -15,7 +15,7 @@ const Weekmenu = ({ thecart, handleDelete, handleUpdate }) => {
 
   return (
     <div className="container-x">
-      <h1>weekmenu</h1>
+      {/* <h1>weekmenu</h1> */}
       {/* <h1 className="mb-10 flex item-center">
         week {theweek()}
         <span className="pt-6 ml-10">
@@ -49,8 +49,8 @@ const Weekmenu = ({ thecart, handleDelete, handleUpdate }) => {
       </div> */}
 
       <div className="mb-10">
-        {kalender.map(k => {
-          var cart = thecart.filter(c =>
+        {kalender.map((k) => {
+          var cart = thecart.filter((c) =>
             c.date ? c.date.includes(k.year) : null
           );
           // console.log("cart");
@@ -65,7 +65,7 @@ const Weekmenu = ({ thecart, handleDelete, handleUpdate }) => {
               ) : null}
 
               {cart
-                ? cart.map(c => (
+                ? cart.map((c) => (
                     <Fragment key={c._id}>
                       <div
                         key={c._id}
