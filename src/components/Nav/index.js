@@ -84,9 +84,9 @@ const Nav = ({ user, thecart, sorts, ...props }) => {
               )}
               {user && (
                 // <NavLink className="" to="/user">
-                <button onClick={() => handleIsOpen()}>
+                <button onMouseEnter={() => handleIsOpen()}>
                   <div className={`flex items-center mr-24 text-19 font-300`}>
-                    <span className="pr-5">kookschrift</span>
+                    <span className="pr-5">{user.name}</span>
                     <img className="w-25" src="/img/feather/user.svg" alt="" />
                   </div>
                 </button>
@@ -94,7 +94,13 @@ const Nav = ({ user, thecart, sorts, ...props }) => {
                 // </NavLink>
               )}
             </div>
-            <NavAdd isOpen={isOpen} user={user} thecart={thecart} />
+            <NavAdd
+              handleIsOpen={handleIsOpen}
+              isOpen={isOpen}
+              user={user}
+              thecart={thecart}
+              favorites={favorites}
+            />
           </div>
           <div className="relative">
             <button

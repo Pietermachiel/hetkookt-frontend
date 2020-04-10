@@ -5,13 +5,15 @@
   background-color: #fff;
   border: 1px solid #b3b3b3;
   color: #3a3a3a;
-  display: none;
+  // display: none;
+  visibility: hidden;
+  opacity: 0;
   // left: 4px;
   margin-top: 14px;
   position: absolute;
   top: 9px;
   right: 0;
-  height: 300px;
+  height: 355px;
   width: 265px;
   z-index: 10;
   .maandjaar {
@@ -24,7 +26,9 @@
 }
 
 .add-panel__open {
-  display: inline-block;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.25s 0.1s;
 }
 
 .add-panel::after {

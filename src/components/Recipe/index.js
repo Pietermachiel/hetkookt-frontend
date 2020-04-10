@@ -258,7 +258,7 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
                   />
                 )}
                 <span className="pl-10 text-18 text-blue-500 hover:text-red-500">
-                  zet in het kookschrift
+                  zet in favorieten
                 </span>{" "}
               </button>
             </div>

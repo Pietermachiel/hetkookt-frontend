@@ -6,7 +6,7 @@ const Favorites = ({
   handleDeleteFavorite,
   handleDelete,
   handleUpdate,
-  thecart
+  thecart,
 }) => {
   if (thecart === undefined) thecart = [];
   // console.log("thecart");
@@ -110,7 +110,7 @@ const Favorites = ({
       <div className="container-x">
         <h1 className="mb-10 pt-15">kookschrift</h1>
         <div className="-ml-15 mb-10 flex flex-row flex-wrap">
-          {thecart.map(m => {
+          {thecart.map((m) => {
             if (m.favorite === true)
               return (
                 <div
