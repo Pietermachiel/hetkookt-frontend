@@ -1,6 +1,60 @@
 /*------------------------------------*\
   #NAVIGATION-NAV
 \*------------------------------------*/
+.add-panel {
+  background-color: #fff;
+  border: 1px solid #b3b3b3;
+  color: #3a3a3a;
+  display: none;
+  // left: 4px;
+  margin-top: 14px;
+  position: absolute;
+  top: 9px;
+  right: 0;
+  height: 300px;
+  width: 265px;
+  z-index: 10;
+  .maandjaar {
+    padding: 0;
+    margin-top: -20px;
+    font-size: 18px;
+    height: 46px;
+    text-align: center;
+  }
+}
+
+.add-panel__open {
+  display: inline-block;
+}
+
+.add-panel::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  /* margin: 107px auto; */
+  position: absolute;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 18px solid white;
+  top: -18px;
+  right: 55px;
+}
+
+.add-panel::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  /* margin: 107px auto; */
+  position: absolute;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 18px solid #757575;
+  top: -19px;
+  right: 55px;
+}
+
 .navbox {
   background: white;
   padding-bottom: 10px;

@@ -40,9 +40,9 @@ const Search = ({ recipes, isOn, ...props }) => {
           value={searchTerm}
           onChange={handleChange}
         />{" "}
-        <div class="pointer-events-none absolute inset-y-0 left-0 pl-14 flex items-center">
+        <div className="pointer-events-none absolute inset-y-0 left-0 pl-14 flex items-center">
           <svg
-            class="fill-current pointer-events-none text-gray-600 w-16 h-16"
+            className="fill-current pointer-events-none text-gray-600 w-16 h-16"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
           >

@@ -38,7 +38,7 @@ const App = () => {
   useEffect(() => {
     async function getData() {
       const res = await fetch(`https://hetkookt.roozen.nl/api/recipes.json`);
-      res.json().then(res => setRecipes(res));
+      res.json().then((res) => setRecipes(res));
     }
     getData();
   }, []);
@@ -46,7 +46,7 @@ const App = () => {
   useEffect(() => {
     async function getData() {
       const res = await fetch(`https://hetkookt.roozen.nl/api/sorts.json`);
-      res.json().then(res => setSorts(res));
+      res.json().then((res) => setSorts(res));
     }
     getData();
   }, []);
@@ -54,7 +54,7 @@ const App = () => {
   useEffect(() => {
     async function getData() {
       const res = await fetch(`https://hetkookt.roozen.nl/api/categories.json`);
-      res.json().then(res => setCategories(res));
+      res.json().then((res) => setCategories(res));
     }
     getData();
   }, []);
@@ -62,7 +62,7 @@ const App = () => {
   useEffect(() => {
     async function getData() {
       const res = await fetch(`https://hetkookt.roozen.nl/api/dishes.json`);
-      res.json().then(res => setDishes(res));
+      res.json().then((res) => setDishes(res));
     }
     getData();
   }, []);
@@ -97,13 +97,13 @@ const App = () => {
     console.log("recipe");
     console.log(recipe);
     // if (recipe.date.includes(dedate)) return;
-    const newrecipe = me.recipes.find(r => r._id === recipe._id);
-    me.recipes = me.recipes.filter(r => r._id !== recipe._id);
+    const newrecipe = me.recipes.find((r) => r._id === recipe._id);
+    me.recipes = me.recipes.filter((r) => r._id !== recipe._id);
     setMe({
       _id: me._id,
       name: me.name,
       email: me.email,
-      recipes: [...me.recipes]
+      recipes: [...me.recipes],
     });
     const thebody = { recipes: me.recipes };
     putAxios(me._id, thebody);
@@ -117,7 +117,7 @@ const App = () => {
       _id: me._id,
       name: me.name,
       email: me.email,
-      recipes: [...me.recipes, recipe]
+      recipes: [...me.recipes, recipe],
     });
     // console.log("me.recipes1");
     // console.log(me.recipes);
@@ -133,13 +133,13 @@ const App = () => {
   }
 
   function doFavorite(recipe) {
-    const newrecipe = me.recipes.find(r => r._id === recipe._id);
-    me.recipes = me.recipes.filter(r => r._id !== recipe._id);
+    const newrecipe = me.recipes.find((r) => r._id === recipe._id);
+    me.recipes = me.recipes.filter((r) => r._id !== recipe._id);
     setMe({
       _id: me._id,
       name: me.name,
       email: me.email,
-      recipes: [...me.recipes]
+      recipes: [...me.recipes],
     });
     const thebody = { recipes: me.recipes };
     putAxios(me._id, thebody);
@@ -150,7 +150,7 @@ const App = () => {
       _id: me._id,
       name: me.name,
       email: me.email,
-      recipes: [...me.recipes, recipe]
+      recipes: [...me.recipes, recipe],
     });
     me.recipes.push(recipe);
     const body = { recipes: me.recipes };
@@ -159,15 +159,15 @@ const App = () => {
 
   function handleDeleteFavorite(id) {
     console.log("handleDeleteFavorite");
-    var allMeRecipes = me.recipes.map(r => r);
+    var allMeRecipes = me.recipes.map((r) => r);
     console.log("allMeRecipes1");
     console.log(allMeRecipes);
-    var myRecipe = allMeRecipes.find(item => item._id === id);
+    var myRecipe = allMeRecipes.find((item) => item._id === id);
     myRecipe.favorite = !myRecipe.favorite;
     // myRecipe.isOpen = !myRecipe.isOpen;
     allMeRecipes =
       myRecipe.date === null
-        ? allMeRecipes.filter(item => item._id !== id)
+        ? allMeRecipes.filter((item) => item._id !== id)
         : [];
     console.log("allMeRecipes2");
     console.log(allMeRecipes);
@@ -175,19 +175,19 @@ const App = () => {
       _id: me._id,
       name: me.name,
       email: me.email,
-      recipes: allMeRecipes
+      recipes: allMeRecipes,
     });
     const body = { recipes: allMeRecipes };
     return axios.put(`${API}/users/favminus/${me._id}`, body);
   }
 
   function handleDelete(id, year) {
-    var allMeRecipes = me.recipes.map(r => r);
-    var myRecipe = allMeRecipes.filter(item => item._id === id);
+    var allMeRecipes = me.recipes.map((r) => r);
+    var myRecipe = allMeRecipes.filter((item) => item._id === id);
     console.log("myRecipe.date");
     console.log(myRecipe[0].date, year);
     console.log("filter");
-    myRecipe[0].date = myRecipe[0].date.filter(d => d !== year);
+    myRecipe[0].date = myRecipe[0].date.filter((d) => d !== year);
     // myRecipe[0] = myRecipe[0].date.splice(myRecipe[0].date.indexOf(year), 1);
     console.log("myRecipe.date2");
     console.log(myRecipe[0], year);
@@ -201,7 +201,7 @@ const App = () => {
 
     allMeRecipes =
       myRecipe[0].date.length === 0 && myRecipe[0].favorite === false
-        ? allMeRecipes.filter(item => item._id !== id)
+        ? allMeRecipes.filter((item) => item._id !== id)
         : allMeRecipes;
 
     console.log("allMeRecipes2");
@@ -211,14 +211,14 @@ const App = () => {
       _id: me._id,
       name: me.name,
       email: me.email,
-      recipes: allMeRecipes
+      recipes: allMeRecipes,
     });
     const body = { recipes: allMeRecipes };
     updateAxios(me._id, body);
     // console.log("myRecipe[0].favorite");
     // console.log(myRecipe[0].favorite);
     if (myRecipe[0].favorite === true) return;
-    const allMeRecipes2 = allMeRecipes.filter(a => a._id !== id);
+    const allMeRecipes2 = allMeRecipes.filter((a) => a._id !== id);
     const body2 = { recipes: allMeRecipes2 };
     // console.log("allMeRecipes2");
     // console.log(allMeRecipes2);
@@ -230,11 +230,11 @@ const App = () => {
   }
 
   function handleUpdate(id, year) {
-    var allMeRecipes = me.recipes.map(r => r);
-    var myRecipe = allMeRecipes.filter(item => item._id === id);
+    var allMeRecipes = me.recipes.map((r) => r);
+    var myRecipe = allMeRecipes.filter((item) => item._id === id);
     console.log("myRecipe");
     console.log(myRecipe[0].date);
-    const find = myRecipe[0].date.find(d => d === year);
+    const find = myRecipe[0].date.find((d) => d === year);
     console.log("find");
     console.log(find);
     myRecipe[0].isOpen = !myRecipe[0].isOpen;
@@ -242,7 +242,7 @@ const App = () => {
       _id: me._id,
       name: me.name,
       email: me.email,
-      recipes: allMeRecipes
+      recipes: allMeRecipes,
     });
   }
 
@@ -263,7 +263,7 @@ const App = () => {
         <Route
           exact
           path="/"
-          render={props => (
+          render={(props) => (
             <Home
               {...props}
               recipes={recipes}
@@ -278,13 +278,13 @@ const App = () => {
         />
         <Route
           path="/recipetable"
-          render={props => (
+          render={(props) => (
             <RecipesApi {...props} recipes={recipes} user={user} />
           )}
         />
         <Route
           path="/recipe/:id"
-          render={props => {
+          render={(props) => {
             // const recipe = recipes.find(
             //   r => slugify(r.title) === props.match.params.id
             // );
@@ -314,19 +314,25 @@ const App = () => {
         <Route path="/logout" component={logout} />
         <Route
           path="/test"
-          render={props => (
+          render={(props) => (
             <Test {...props} dishes={dishes} recipes={recipes} />
           )}
         />
         <ProtectedRoute
           path="/user"
-          render={props => (
-            <User {...props} me={me} handleDelete={handleDelete} />
+          render={(props) => (
+            <User
+              {...props}
+              user={user}
+              thecart={thecart}
+              me={me}
+              handleDelete={handleDelete}
+            />
           )}
         />
         <ProtectedRoute
           path="/favorites"
-          render={props => (
+          render={(props) => (
             <Favorites
               {...props}
               handleDeleteFavorite={handleDeleteFavorite}
@@ -339,9 +345,10 @@ const App = () => {
         />
         <Route
           path="/weekmenu"
-          render={props => (
+          render={(props) => (
             <Weekmenu
               {...props}
+              user={user}
               thecart={thecart} //  [ _id, _id, ... ]
               recipes={recipes}
               handleDelete={handleDelete}
@@ -351,7 +358,7 @@ const App = () => {
         />
         <Route
           path="/sorts/:id"
-          render={props => {
+          render={(props) => {
             return (
               <Sorts
                 thecart={thecart}
@@ -365,7 +372,7 @@ const App = () => {
         />
         <Route
           path="/categories/:id"
-          render={props => {
+          render={(props) => {
             return (
               <Categories
                 thecart={thecart}
@@ -378,7 +385,7 @@ const App = () => {
         />
         <Route
           path="/collections/:id"
-          render={props => {
+          render={(props) => {
             return (
               <Collections
                 thecart={thecart}

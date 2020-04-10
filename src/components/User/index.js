@@ -1,11 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import auth from "../../services/authService";
 
-const User = ({ me }) => {
+const User = ({ me, user, thecart, ...props }) => {
   function handleLogout() {
     auth.logout();
     window.location = "/";
   }
+
+  const favorites = thecart.filter((c) => c.favorite === true);
+
+  console.log(props);
 
   return (
     <div className="container-x">
@@ -19,6 +24,33 @@ const User = ({ me }) => {
       >
         Logout
       </button>
+
+      <div className="font-light flex lg:ml-18 md:border-solid lg:border-none md:border-4">
+        {user && (
+          <>
+            <Link
+              className={
+                "favorites" === props.location.pathname
+                  ? `nav-link flex active`
+                  : `nav-link flex`
+              }
+              to={"/favorites"}
+            >
+              <span className="pr-5">kookschrift</span>
+            </Link>
+            <span className="text-red-500">{favorites.length}</span>
+
+            <Link
+              className={`nav-link
+            ${props.location.pathname === "favorites" ? `active` : ``}
+            `}
+              to={"/weekmenu"}
+            >
+              <div className="items-center">weekmenu</div>
+            </Link>
+          </>
+        )}
+      </div>
     </div>
   );
 };

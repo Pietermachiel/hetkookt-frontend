@@ -65,21 +65,29 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
       <div className="recepten">
         <div className="recepten-box">
           <div className="title">
-            <h1 className="pt-15">{therecipe.title}</h1>
-            <div className="flex items-center weight-300 mb-36 mt-6">
+            <h1 className="font-600 pt-15">
+              {therecipe.title}
+              <Link
+                className="hover:text-red-500 ml-18"
+                to={`/collections/${therecipe.dish}`}
+              >
+                <span className="font-300 text-24 leading-4">
+                  > {therecipe.dish}
+                </span>
+              </Link>
+            </h1>
+            <div className="flex items-center mb-36 mt-6">
               {/* weekmenu */}
               <button
-                className="btn-add mr-10 text-19 hover:text-red-500 flex item-center"
+                className="btn-add mr-10 text-18 text-blue-500 hover:text-red-500 flex item-center"
                 onClick={() => handleIsOpen()}
               >
-                weekmenu
-                {menu.length === 0 || therecipe.date === null ? (
-                  <img
-                    className="w-25 h-25 ml-5"
-                    src="/img/feather/list-orange.svg"
-                    alt=""
-                  />
-                ) : null}
+                <img
+                  className="w-25 h-25 mr-10"
+                  src="/img/feather/list-orange.svg"
+                  alt=""
+                />
+                zet op het weekmenu
               </button>
               <div className="flex">
                 {kalender.map((k) => {
@@ -107,38 +115,6 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
                   );
                 })}
               </div>
-              {/* kookschrift */}
-              <div className="mr-15 ml-24">
-                <button
-                  className="like flex"
-                  onClick={() => handleIsFavorite(therecipe)}
-                >
-                  <span className="pr-5 text-19 hover:text-red-500">
-                    kookschrift
-                  </span>
-                  {therecipe.favorite === true ? (
-                    <img
-                      className="w-25"
-                      src="/img/feather/bookmark-red.svg"
-                      alt=""
-                    />
-                  ) : (
-                    <img
-                      className="w-25"
-                      src="/img/feather/bookmark.svg"
-                      alt=""
-                    />
-                  )}
-                </button>
-              </div>
-              <Link
-                className="hover:text-red-500 ml-18"
-                to={`/collections/${therecipe.dish}`}
-              >
-                <div className="font-300 text-24 leading-4">
-                  > {therecipe.dish}
-                </div>
-              </Link>
             </div>
             {/* add panel */}
             <div className="add">
@@ -168,8 +144,8 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
                         onClick={() => handleSave(therecipe, hetjaar(xid))}
                         className={`relative ${
                           cart.length !== 0
-                            ? "bg-orange-400 hover:bg-orange-300"
-                            : "bg-gray-400 hover:bg-gray-300"
+                            ? "bg-orange-300 hover:bg-orange-400"
+                            : "bg-gray-300 hover:bg-gray-400"
                         } text-black rounded-50 h-48 w-48 mb-20`}
                       >
                         <div className="absolute inset-0">
@@ -257,6 +233,35 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
                 &nbsp;<span className="pl-5">{therecipe.source}</span>
               </div>
             </a>
+            <input
+              className="mt-18 border border-gray-300 transition-colors duration-100 ease-in-out bg-white shadow-md focus:outline-0 border border-transparent placeholder-gray-600 rounded-lg py-8 pr-16 pl-16 block w-full appearance-none leading-normal ds-input text-16"
+              placeholder="Maak hier een notitie..."
+              type="text"
+            />
+            {/* kookschrift */}
+            <div className="mr-15 mt-18">
+              <button
+                className="like flex"
+                onClick={() => handleIsFavorite(therecipe)}
+              >
+                {therecipe.favorite === true ? (
+                  <img
+                    className="w-25"
+                    src="/img/feather/bookmark-red.svg"
+                    alt=""
+                  />
+                ) : (
+                  <img
+                    className="w-25"
+                    src="/img/feather/bookmark.svg"
+                    alt=""
+                  />
+                )}
+                <span className="pl-10 text-18 text-blue-500 hover:text-red-500">
+                  zet in het kookschrift
+                </span>{" "}
+              </button>
+            </div>
           </div>
         </div>
       </div>

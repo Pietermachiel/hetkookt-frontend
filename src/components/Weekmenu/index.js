@@ -2,8 +2,9 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 // import today from "../common/today";
 import { vandaag, kalender, slugify, theweek } from "../common/common";
+import NavWeekmenu from "./NavWeekmenu";
 
-const Weekmenu = ({ thecart, handleDelete, handleUpdate }) => {
+const Weekmenu = ({ user, thecart, handleDelete, handleUpdate, ...props }) => {
   // console.log("props collecties");
   // console.log(props);
   // console.log(vandaag(0));
@@ -19,41 +20,9 @@ const Weekmenu = ({ thecart, handleDelete, handleUpdate }) => {
 
   return (
     <div className="container-x">
+      <NavWeekmenu props={props} thecart={thecart} user={user} />
       {thedates.length === 0 ? <h1>weekmenu</h1> : null}
-      {/* <h1>weekmenu</h1> */}
-      {/* <h1 className="mb-10 flex item-center">
-        week {theweek()}
-        <span className="pt-6 ml-10">
-          <img className="w-30" src="/img/feather/list.svg" alt="" />
-        </span>
-      </h1> */}
-      {/* -ml-15  */}
-
-      {/* <div className="mt-18 flex">
-        <span className="text-19 pt-11 pr-15">week {theweek()}</span>
-
-        {kalender.map(k => {
-          var cart = thecart.filter(c =>
-            c.date ? c.date.includes(k.year) : null
-          );
-          return (
-            <p
-              key={k.index}
-              className={`relative mr-10 p-10 w-48 h-48 text-center ${
-                cart.length !== 0 ? "bg-red" : "bg-gray-500"
-              } text-white rounded-50`}
-            >
-              {k.day.slice(0, 2)}
-              <span className="kalender-index">
-                {k.index}
-              </span>
-            </p>
-          );
-        })}
-        <span className="text-19 pt-11 pl-5">april 2020</span>
-      </div> */}
-
-      <div className="mb-10">
+      <div className="mb-10 mt-18">
         {kalender.map((k) => {
           var cart = thecart.filter((c) =>
             c.date ? c.date.includes(k.year) : null
@@ -65,7 +34,7 @@ const Weekmenu = ({ thecart, handleDelete, handleUpdate }) => {
               {cart.length !== 0 ? (
                 <h1 className="text-orange border-b-4 border-gray-400 pt-15 first:pt-0 pb-15 ">
                   {/* {k.day} {k.day !== "vandaag" ? k.index : null} */}
-                  {k.day} {k.index}
+                  {k.day === vandaag(0) ? "vandaag" : k.day} {k.index}
                 </h1>
               ) : null}
 
