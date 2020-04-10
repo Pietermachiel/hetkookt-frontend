@@ -8,9 +8,9 @@
 }
 
 .logo {
-  color: $brand;
+  // color: $brand;
   // font-size: 42px;
-  font-weight: 700;
+  font-weight: 400;
   // padding-top: 36px;
   // padding-left: 2px;
   position: relative;
@@ -23,8 +23,8 @@
   }
 }
 .navbox-logo {
-  color: red;
-  font-weight: 700;
+  // color: red;
+  font-weight: 400;
   font-size: 36px;
   padding-top: 15px;
   // padding-bottom: 15px;
@@ -47,7 +47,7 @@
 }
 
 .navbox-panel {
-  padding-top: 15px;
+  padding-top: 72px;
   @media (max-width: 1023px) {
     position: fixed;
     display: flex;
@@ -55,27 +55,27 @@
     right: 0;
     top: 0;
     bottom: 0;
-    margin: 0;
-    width: 100%;
-    // margin-right: -375px;
-    height: 100%;
-    max-width: 100%;
-    max-height: 100%;
-    background-image: url(/public/img/artisjok-soft40.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color: #eae9e9;
+    // margin: 0;
+    // width: 100%;
+    // height: 100%;
+    // max-width: 100%;
+    // max-height: 100%;
+    // background-image: url(/public/img/artisjok-soft40.jpg);
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    // background-color: #f7fafc;
     list-style: none;
     transition: all 0.2s ease-in-out;
-    will-change: top;
+    // will-change: top;
     visibility: hidden;
     opacity: 0;
     z-index: 10;
   }
   @media (min-width: 1024px) {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+    // display: flex;
+    // flex-flow: row wrap;
+    // justify-content: space-between;
+    padding-top: 0;
   }
 }
 
@@ -83,8 +83,10 @@
   float: none;
   width: 100%;
   padding-top: 2em;
+  background-color: #f7fafc;
   @media (min-width: $on-tablet) {
     padding-top: 0;
+    background-color: white;
     // display: flex;
   }
 }
@@ -195,12 +197,12 @@
 }
 
 .hamburger {
-  padding: 9.5px 12px;
+  padding: 9px 10px;
   display: block;
   float: right;
   position: absolute;
-  top: 32px;
-  right: 15px;
+  top: -8px; // 32px;
+  right: 0; // 15px;
   background-color: transparent;
   // width: 23px;
   // height: 16px;

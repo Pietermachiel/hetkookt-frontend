@@ -8,7 +8,7 @@ const Search = ({ recipes, isOn, ...props }) => {
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    const results = recipes.filter(recipe => {
+    const results = recipes.filter((recipe) => {
       return (
         recipe.title.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1
       );
@@ -16,11 +16,11 @@ const Search = ({ recipes, isOn, ...props }) => {
     setSearchResults(results);
   }, [searchTerm]);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setSearchTerm(e.target.value);
   };
 
-  const handleClick = e => {
+  const handleClick = (e) => {
     console.log("handleClick");
     console.log(e);
     setSearchTerm(e);
@@ -28,23 +28,33 @@ const Search = ({ recipes, isOn, ...props }) => {
   };
 
   return (
-    <div className="container-x">
-      <form className="form-zoekrecept">
+    <div className="w-full pr-48 pl-28 lg:pr-72 lg:pl-72">
+      <form className="relative">
         {/* {isOn ? "form-zoekrecept hidden" : "form-zoekrecept"} */}
         <input
-          className="form-zoekrecept__input"
+          className="border border-gray-300 transition-colors duration-100 ease-in-out bg-white shadow-md focus:outline-0 border border-transparent placeholder-gray-600 rounded-lg py-8 pr-16 pl-36 block w-full appearance-none leading-normal ds-input text-16"
           type="text"
-          placeholder="Zoek recept met bv 'tomaten'..."
+          placeholder="Zoek recept..."
           label="Search Country"
           icon="search"
           value={searchTerm}
           onChange={handleChange}
         />{" "}
+        <div class="pointer-events-none absolute inset-y-0 left-0 pl-14 flex items-center">
+          <svg
+            class="fill-current pointer-events-none text-gray-600 w-16 h-16"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+          >
+            <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path>
+          </svg>
+        </div>
       </form>
+
       <ul className="search-box__results">
         {searchResults.length === recipes.length
           ? null
-          : searchResults.map(recipe => {
+          : searchResults.map((recipe) => {
               function findString(str, find) {
                 var searchPattern = new RegExp("(" + find + ")", "ig");
                 return str.replace(searchPattern, "<b>$1</b>");

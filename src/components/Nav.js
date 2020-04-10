@@ -47,58 +47,58 @@ const Nav = ({ sorts, ...props }) => {
 
   return (
     <>
-      <div className="navbox bg-white pb-10 mb-15">
-        <div className="container-nav pl-15 pr-15 md:pl-20">
-          <button
-            onClick={handleMouseDown}
-            className={isOn ? "hamburger navbox--menu-open" : "hamburger"}
-            aria-label="Open Menu"
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-          <Link className="logo" to="/">
+      <div className="w-full bg-white px-20 py-15 mb-15">
+        <div className="flex items-center">
+          <Link className="" to="/">
             <div
-              className="navbox-logo"
+              className="flex items-center"
               onClick={isOn ? handleMouseDown : null}
             >
-              <span className="het">het</span>
-              <span className="spatie">&nbsp;</span>kookt
+              {/* <svg
+                width="35px"
+                height="35px"
+                viewBox="0 0 50 50"
+                style={{
+                  fillRule: "evenodd",
+                  clipRule: "evenodd",
+                  strokeLinejoin: "round",
+                  strokeMiterlimit: "2",
+                }}
+              >
+                <path
+                  d="M13.258,3.742c5.832,0 10.568,4.519 10.568,10.084c0,5.566 -4.736,10.084 -10.568,10.084c-5.833,0 -10.568,-4.518 -10.568,-10.084c0,-5.565 4.735,-10.084 10.568,-10.084Zm0,4.261c3.11,0 5.636,2.617 5.636,5.84c0,3.223 -2.526,5.839 -5.636,5.839c-3.111,0 -5.636,-2.616 -5.636,-5.839c0,-3.223 2.525,-5.84 5.636,-5.84Z"
+                  style={{ fill: "#f00" }}
+                />
+                <path
+                  d="M36.742,3.742c5.833,0 10.568,4.519 10.568,10.084c0,5.566 -4.735,10.084 -10.568,10.084c-5.832,0 -10.568,-4.518 -10.568,-10.084c0,-5.565 4.736,-10.084 10.568,-10.084Zm0,4.261c3.111,0 5.636,2.617 5.636,5.84c0,3.223 -2.525,5.839 -5.636,5.839c-3.11,0 -5.636,-2.616 -5.636,-5.839c0,-3.223 2.526,-5.84 5.636,-5.84Z"
+                  style={{ fill: "#f00" }}
+                />
+                <path
+                  d="M13.258,26.09c5.832,0 10.568,4.518 10.568,10.084c0,5.565 -4.736,10.084 -10.568,10.084c-5.833,0 -10.568,-4.519 -10.568,-10.084c0,-5.566 4.735,-10.084 10.568,-10.084Zm0,4.261c3.11,0 5.636,2.616 5.636,5.839c0,3.223 -2.526,5.84 -5.636,5.84c-3.111,0 -5.636,-2.617 -5.636,-5.84c0,-3.223 2.525,-5.839 5.636,-5.839Z"
+                  style={{ fill: "#f00" }}
+                />
+                <path
+                  d="M36.742,26.09c5.833,0 10.568,4.518 10.568,10.084c0,5.565 -4.735,10.084 -10.568,10.084c-5.832,0 -10.568,-4.519 -10.568,-10.084c0,-5.566 4.736,-10.084 10.568,-10.084Zm0,4.261c3.111,0 5.636,2.616 5.636,5.839c0,3.223 -2.525,5.84 -5.636,5.84c-3.11,0 -5.636,-2.617 -5.636,-5.84c0,-3.223 2.526,-5.839 5.636,-5.839Z"
+                  style={{ fill: "#f00" }}
+                />
+              </svg> */}
+              <img src="/img/icons/hetkookt.svg" alt="" />
+              <span className="hidden lg:block font-400 tracking-normal text-30 pl-10">
+                <span className="font-400 text-28">het</span>kookt
+              </span>
             </div>
           </Link>
-
+          <Search recipes={recipes} />
           <div
-            className={isOn ? `navbox-panel ${visibility}` : `navbox-panel`}
+            className={`navbox-panel ${isOn ? visibility : null}`}
             id="navPanel"
             onClick={isMobile ? handleMouseDown : null}
             aria-expanded={expanded}
           >
-            <ul className="navbar">
-              <li className="nav-item font-light lg:flex lg:items-center">
-                {/* <Link
-                  className={
-                    "favorites" === props.location.pathname
-                      ? `nav-link ml-15 active`
-                      : `nav-link ml-15`
-                  }
-                  to={"/test"}
-                >
-                  test
-                </Link>
-                <Link
-                  className={
-                    "favorites" === props.location.pathname
-                      ? `nav-link ml-15 active`
-                      : `nav-link ml-15`
-                  }
-                  to={"/collections"}
-                >
-                  collections
-                </Link> */}
+            <div className="navbar">
+              {/* <li className="nav-item font-light lg:flex lg:items-center">
                 {props.user && (
                   <>
-                    {/* weekmenu */}
                     <Link
                       className={`nav-link
                         ${
@@ -144,7 +144,6 @@ const Nav = ({ sorts, ...props }) => {
                     <p className="text-16 pl-3 mb-0 leading-7 text-gray-500 pt-3">
                       april <span className="text-14">2020</span>
                     </p>
-                    {/* kookschrift */}
                     <div className="font-light flex lg:ml-18 md:border-solid lg:border-none md:border-4">
                       {props.user && (
                         <>
@@ -166,40 +165,36 @@ const Nav = ({ sorts, ...props }) => {
                     </div>{" "}
                   </>
                 )}
-              </li>
-              {/* <li className="nav-item">
-                <Link
-                  className={
-                    "favorites" === props.location.pathname
-                      ? `nav-link active`
-                      : `nav-link`
-                  }
-                  to={"/recipetable"}
-                >
-                  recipe-table
-                </Link>
               </li> */}
-
               {!props.user && (
-                <li className="nav-me">
-                  <NavLink className="nav-user nav-link" to="/login">
-                    login
-                  </NavLink>
-                </li>
+                <NavLink className="" to="/login">
+                  <div className="">login</div>
+                </NavLink>
               )}
               {props.user && (
-                <NavLink className="nav-user nav-link" to="/user">
-                  <div className="nav-me pt-16 flex items-center">
+                <NavLink className="" to="/user">
+                  <div className="flex items-center mr-20">
                     <span className="pr-5">{props.user.name}</span>
                     <img className="w-25" src="/img/feather/user.svg" alt="" />
                   </div>
                 </NavLink>
               )}
-            </ul>
+            </div>
+          </div>
+          <div className="relative">
+            <button
+              onClick={handleMouseDown}
+              className={isOn ? "hamburger navbox--menu-open" : "hamburger"}
+              aria-label="Open Menu"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
           </div>
         </div>
       </div>
-      <Search recipes={recipes} />
+
       <div className="container-x">
         {location === "/" ? <Productenfilter sorts={sorts} /> : null}
       </div>

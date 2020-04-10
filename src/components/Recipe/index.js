@@ -67,17 +67,9 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
           <div className="title">
             <h1 className="pt-15">{therecipe.title}</h1>
             <div className="flex items-center weight-300 mb-36 mt-6">
-              <Link
-                className="hover:text-red-500"
-                to={`/collections/${therecipe.dish}`}
-              >
-                <div className="font-300 text-24 leading-4">
-                  > {therecipe.dish}
-                </div>
-              </Link>
               {/* weekmenu */}
               <button
-                className="btn-add mr-10 ml-30 text-19 hover:text-red-500 flex item-center"
+                className="btn-add mr-10 text-19 hover:text-red-500 flex item-center"
                 onClick={() => handleIsOpen()}
               >
                 weekmenu
@@ -139,6 +131,14 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
                   )}
                 </button>
               </div>
+              <Link
+                className="hover:text-red-500 ml-18"
+                to={`/collections/${therecipe.dish}`}
+              >
+                <div className="font-300 text-24 leading-4">
+                  > {therecipe.dish}
+                </div>
+              </Link>
             </div>
             {/* add panel */}
             <div className="add">

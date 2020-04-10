@@ -12,9 +12,14 @@ const Weekmenu = ({ thecart, handleDelete, handleUpdate }) => {
   // console.log(kalender);
 
   // kalender = [{index: "30", year: "maandag 30 maart 2020", day: "maandag"}, ...]
+  const thedates = kalender.filter((k) => {
+    const item = thecart.find((c) => (c.date ? c.date.includes(k.year) : null));
+    return item;
+  });
 
   return (
     <div className="container-x">
+      {thedates.length === 0 ? <h1>weekmenu</h1> : null}
       {/* <h1>weekmenu</h1> */}
       {/* <h1 className="mb-10 flex item-center">
         week {theweek()}
