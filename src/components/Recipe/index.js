@@ -7,6 +7,7 @@ import {
   kalender,
   theweek,
 } from "../common/common.js";
+import AddpanelWeekmenu from "./AddpanelWeekmenu.js";
 
 const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
   var [therecipe, setTheRecipe] = useState([]);
@@ -37,11 +38,11 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
     getData();
   }, [API]);
 
-  const handleSave = (therecipe, hetjaar) => {
-    doSave(therecipe, hetjaar);
-    // props.history.push(props.location.pathname);
-    setIsOpen(!isOpen);
-  };
+  // const handleSave = (therecipe, hetjaar) => {
+  //   doSave(therecipe, hetjaar);
+  //   // props.history.push(props.location.pathname);
+  //   setIsOpen(!isOpen);
+  // };
 
   if (therecipe.tags === undefined) return [];
   // const thelength = props.tags.length - 1;
@@ -79,15 +80,15 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
             <div className="flex items-center mb-36 mt-6">
               {/* weekmenu */}
               <button
-                className="btn-add mr-10 text-18 text-blue-500 hover:text-red-500 flex item-center"
-                onClick={() => handleIsOpen()}
+                className="btn-add mr-10 text-18 text-blue-500 flex item-center"
+                onMouseEnter={() => handleIsOpen()}
               >
                 <img
                   className="w-25 h-25 mr-10"
-                  src="/img/feather/list-orange.svg"
+                  src="/img/feather/list.svg"
                   alt=""
                 />
-                zet op het weekmenu
+                zet op het weekmenu >
               </button>
               <div className="flex">
                 {kalender.map((k) => {
@@ -117,55 +118,14 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
               </div>
             </div>
             {/* add panel */}
-            <div className="add">
-              <div
-                className={`action-panel ${
-                  isOpen ? "action-panel__open" : null
-                }`}
-              >
-                <div className="zetophetweekmenu-box">
-                  <h6 className="pt-24 pb-5 mx-auto">week {theweek()}</h6>
-                  <button className="btn-menu" onClick={() => handleIsOpen()}>
-                    <svg width="100" height="100" viewBox="0 0 50 50">
-                      <path d="M14.691,13.382l21.101,21.101" />
-                      <path d="M35.792,13.382l-21.102,21.101" />
-                    </svg>
-                  </button>
-                </div>
-
-                <div className="mt-10 grid grid-cols-4 gap-10 p-24">
-                  {kalender.map((k, xid) => {
-                    var cart = thecart.filter((c) =>
-                      c.date ? c.date.includes(k.year) : null
-                    );
-                    return (
-                      <div
-                        key={k.index}
-                        onClick={() => handleSave(therecipe, hetjaar(xid))}
-                        className={`relative ${
-                          cart.length !== 0
-                            ? "bg-orange-300 hover:bg-orange-400"
-                            : "bg-gray-300 hover:bg-gray-400"
-                        } text-black rounded-50 h-48 w-48 mb-20`}
-                      >
-                        <div className="absolute inset-0">
-                          <span className="flex justify-center pt-12">
-                            {k.index}
-                          </span>
-                        </div>
-                        <div className="absolute inset-0">
-                          <span className="flex justify-center kalender-index">
-                            {/* {k.day !== "vandaag" ? k.index : null} */}
-                            {k.day.slice(0, 2)}
-                          </span>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-                <p className="maandjaar">april 2020</p>
-              </div>
-            </div>
+            <AddpanelWeekmenu
+              isOpen={isOpen}
+              setIsOpen={setIsOpen}
+              handleIsOpen={handleIsOpen}
+              therecipe={therecipe}
+              thecart={thecart}
+              doSave={doSave}
+            />
           </div>
           {/* ingredienten */}
           <div className="ingredienten">
@@ -230,14 +190,16 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
             >
               <div className="flex">
                 <img className="w-25" src="/img/feather/book.svg" alt="" />
-                &nbsp;<span className="pl-5">{therecipe.source}</span>
+                &nbsp;<span className="pl-5">Zie ook: {therecipe.source}</span>
               </div>
             </a>
+
             <input
               className="mt-18 border border-gray-300 transition-colors duration-100 ease-in-out bg-white shadow-md focus:outline-0 border border-transparent placeholder-gray-600 rounded-lg py-8 pr-16 pl-16 block w-full appearance-none leading-normal ds-input text-16"
               placeholder="Maak hier een notitie..."
               type="text"
             />
+
             {/* kookschrift */}
             <div className="mr-15 mt-18">
               <button
@@ -257,8 +219,8 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
                     alt=""
                   />
                 )}
-                <span className="pl-10 text-18 text-blue-500 hover:text-red-500">
-                  zet in favorieten
+                <span className="pl-10 text-18 text-blue-500 text-600 hover:text-red-500">
+                  zet in favorieten >
                 </span>{" "}
               </button>
             </div>

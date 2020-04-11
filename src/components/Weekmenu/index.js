@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 // import today from "../common/today";
 import { vandaag, kalender, slugify, theweek } from "../common/common";
-import NavWeekmenu from "./NavWeekmenu";
+import KalenderWeekmenu from "./KalenderWeekmenu";
 
 const Weekmenu = ({ user, thecart, handleDelete, handleUpdate, ...props }) => {
   // console.log("props collecties");
@@ -20,7 +20,7 @@ const Weekmenu = ({ user, thecart, handleDelete, handleUpdate, ...props }) => {
 
   return (
     <div className="container-x">
-      <NavWeekmenu props={props} thecart={thecart} user={user} />
+      <KalenderWeekmenu props={props} thecart={thecart} user={user} />
       {thedates.length === 0 ? <h1>weekmenu</h1> : null}
       <div className="mb-10 mt-18">
         {kalender.map((k) => {
