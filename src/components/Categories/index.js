@@ -24,7 +24,7 @@ const Categories = ({ thecart, sorts, recipes, ...props }) => {
         <h1 className={`text-48 mb-18 ${props.match.params.id}`}>
           {props.match.params.id}
           <Link to="/">
-            <span className="ml-18 text-24 font-300">> home</span>
+            <span className="ml-18 text-19 text-black font-300">> home</span>
           </Link>
         </h1>
         <div className="-ml-15 flex flex-row flex-wrap">

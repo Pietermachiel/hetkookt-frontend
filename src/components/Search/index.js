@@ -29,7 +29,7 @@ const Search = ({ recipes, isOn, ...props }) => {
 
   return (
     <div className="w-full pr-48 pl-28 lg:pr-72 lg:pl-72">
-      <form className="relative">
+      <form className="relative w-full">
         {/* {isOn ? "form-zoekrecept hidden" : "form-zoekrecept"} */}
         <input
           className="border border-gray-300 transition-colors duration-100 ease-in-out bg-white shadow-md focus:outline-0 border border-transparent placeholder-gray-600 rounded-lg py-8 pr-16 pl-36 block w-full appearance-none leading-normal ds-input text-16"
@@ -49,32 +49,34 @@ const Search = ({ recipes, isOn, ...props }) => {
             <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path>
           </svg>
         </div>
-      </form>
-
-      <ul className="search-box__results">
-        {searchResults.length === recipes.length
-          ? null
-          : searchResults.map((recipe) => {
-              function findString(str, find) {
-                var searchPattern = new RegExp("(" + find + ")", "ig");
-                return str.replace(searchPattern, "<b>$1</b>");
-              }
-              var result = parseHtml(findString(recipe.title, searchTerm));
-              return (
-                <li key={recipe._id}>
-                  <Link
-                    to={`/recipe/${slugify(recipe.title)}`}
-                    value="Zoek recept met bv 'tomaten'..."
-                    onClick={() =>
-                      handleClick("Zoek recept met bv 'tomaten'...")
-                    }
+        <ul className="mt-18 absolute w-full bg-white z-10 shadow-md rounded-b-lg">
+          {searchResults.length === recipes.length
+            ? null
+            : searchResults.map((recipe) => {
+                function findString(str, find) {
+                  var searchPattern = new RegExp("(" + find + ")", "ig");
+                  return str.replace(searchPattern, "<b>$1</b>");
+                }
+                var result = parseHtml(findString(recipe.title, searchTerm));
+                return (
+                  <li
+                    className="mb-0 border-b py-10 pl-20 text-21"
+                    key={recipe._id}
                   >
-                    {result}/<b>{recipe.dish}</b>
-                  </Link>
-                </li>
-              );
-            })}
-      </ul>
+                    <Link
+                      to={`/recipe/${slugify(recipe.title)}`}
+                      value="Zoek recept met bv 'tomaten'..."
+                      onClick={() =>
+                        handleClick("Zoek recept met bv 'tomaten'...")
+                      }
+                    >
+                      {result}/<b>{recipe.dish}</b>
+                    </Link>
+                  </li>
+                );
+              })}
+        </ul>
+      </form>
     </div>
   );
 };

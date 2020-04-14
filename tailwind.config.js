@@ -4,7 +4,7 @@ module.exports = {
     extend: {
       minHeight: {
         "250": "250px",
-        full70: "calc(100% - 70px)"
+        full70: "calc(100% - 70px)",
       },
       colors: {
         badge: "#e6e6e6",
@@ -19,7 +19,7 @@ module.exports = {
           600: "#e53e3e",
           700: "#c53030",
           800: "#9b2c2c",
-          900: "#742a2a"
+          900: "#742a2a",
         },
         orange: {
           100: "#fffaf0",
@@ -30,11 +30,11 @@ module.exports = {
           600: "#dd6b20",
           700: "#c05621",
           800: "#9c4221",
-          900: "#7b341e"
-        }
+          900: "#7b341e",
+        },
       },
       borderRadius: {
-        "50": "50%"
+        "50": "50%",
       },
       spacing: {
         "0": "0",
@@ -61,13 +61,22 @@ module.exports = {
         "28": "28px",
         "30": "30px",
         "36": "36px",
+        "40": "40px",
         "48": "48px",
+        "50": "50px",
         "60": "60px",
-        "72": "72px"
+        "70": "70px",
+        "72": "72px",
+        "80": "80px",
+        "90": "90px",
+        "100": "100px",
+        "150": "150px",
+        "200": "200px",
+        "250": "250px",
       },
       fontFamily: {
         sans: ["MuseoSans"],
-        mono: ["Fira Mono"]
+        mono: ["Fira Mono"],
       },
       fontSize: {
         "12": "12px",
@@ -85,7 +94,7 @@ module.exports = {
         "48": "48px",
         "54": "54px",
         "60": "60px",
-        "72": "72px"
+        "72": "72px",
       },
       fontWeight: {
         "100": "100",
@@ -96,17 +105,17 @@ module.exports = {
         "600": "600",
         "700": "700",
         "800": "800",
-        "900": "900"
+        "900": "900",
       },
-      width: theme => ({
+      width: (theme) => ({
         ...theme("spacing"),
         "1/2/10": "calc(50% - 10px)",
         "1/2/15": "calc(50% - 15px)",
         "1/3/15": "calc(33.333333% - 15px)",
-        "1/4/15": "calc(25% - 15px)"
-      })
-    }
+        "1/4/15": "calc(25% - 15px)",
+      }),
+    },
   },
   variants: {},
-  plugins: []
+  plugins: [],
 };

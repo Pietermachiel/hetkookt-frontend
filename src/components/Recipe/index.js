@@ -72,8 +72,8 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
                 className="hover:text-red-500 ml-18"
                 to={`/collections/${therecipe.dish}`}
               >
-                <span className="font-300 text-24 leading-4">
-                  > {therecipe.dish}
+                <span className="font-300 text-19 leading-4">
+                  > meer {therecipe.dish}
                 </span>
               </Link>
             </h1>
@@ -81,7 +81,7 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
               {/* weekmenu */}
               <button
                 className="btn-add mr-10 text-18 text-blue-500 flex item-center"
-                onMouseEnter={() => handleIsOpen()}
+                onClick={() => handleIsOpen()}
               >
                 <img
                   className="w-25 h-25 mr-10"
@@ -194,11 +194,10 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
               </div>
             </a>
 
-            <input
-              className="mt-18 border border-gray-300 transition-colors duration-100 ease-in-out bg-white shadow-md focus:outline-0 border border-transparent placeholder-gray-600 rounded-lg py-8 pr-16 pl-16 block w-full appearance-none leading-normal ds-input text-16"
+            <textarea
+              className="h-150 mt-18 border border-gray-300 transition-colors duration-100 ease-in-out bg-white shadow-md focus:outline-0 border border-transparent placeholder-gray-600 rounded-lg py-8 pr-16 pl-16 block w-full appearance-none leading-normal ds-input text-16"
               placeholder="Maak hier een notitie..."
-              type="text"
-            />
+            ></textarea>
 
             {/* kookschrift */}
             <div className="mr-15 mt-18">

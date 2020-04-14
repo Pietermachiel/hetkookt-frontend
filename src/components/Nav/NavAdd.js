@@ -27,7 +27,7 @@ const NavAdd = ({
   return (
     <div className="add">
       <div
-        onMouseLeave={handleIsOpen}
+        onClick={handleIsOpen}
         className={`px-30 p-36 add-panel ${isOpen ? "add-panel__open" : null}`}
       >
         <NavWeekmenu props={props} thecart={thecart} user={user} />

@@ -38,7 +38,7 @@ const Home = ({
               {d}
               <Link to={`/collections/${d}`}>
                 {therecipes.length > 4 ? (
-                  <span className="text-24 font-300">&nbsp; > meer {d}</span>
+                  <span className="text-19 font-300">&nbsp; > meer {d}</span>
                 ) : null}
               </Link>
             </h1>

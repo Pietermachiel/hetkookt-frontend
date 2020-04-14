@@ -1,6 +1,7 @@
 import http from "./httpService";
+import { apiUrl } from "../config.json";
 
-const apiUrl = "http://localhost:5000/api";
+// const apiUrl = "http://localhost:3900/api";
 
 const apiEndpoint = apiUrl + "/recipes";
 // const apiEndpoint = "/recipes";

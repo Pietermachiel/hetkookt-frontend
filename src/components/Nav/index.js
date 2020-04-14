@@ -84,7 +84,7 @@ const Nav = ({ user, thecart, sorts, ...props }) => {
               )}
               {user && (
                 // <NavLink className="" to="/user">
-                <button onMouseEnter={() => handleIsOpen()}>
+                <button onClick={() => handleIsOpen()}>
                   <div className={`flex items-center mr-24 text-19 font-300`}>
                     <span className="pr-5">
                       <span className="text-red-500 pr-10">

@@ -52,7 +52,7 @@ const Collections = ({ thecart, sorts, recipes, ...props }) => {
         <h1 className={`pt-15 text-42 pb-18`}>
           {props.match.params.id}
           <Link to="/">
-            <span className="ml-18 text-24 font-300">> home</span>
+            <span className="ml-18 text-19 font-300">> home</span>
           </Link>
         </h1>
         <div className="-ml-15 flex flex-row flex-wrap">

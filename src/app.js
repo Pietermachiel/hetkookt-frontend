@@ -16,14 +16,18 @@ import Favorites from "./components/Favorites";
 import Weekmenu from "./components/Weekmenu";
 import User from "./components/User";
 import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 import auth from "./services/authService";
 import ProtectedRoute from "./components/common/protectedRoute";
 import axios from "axios";
 import { slugify } from "./components/common/common";
 import _ from "lodash";
+import { apiUrl } from "./config.json";
+
 // http://maisano.github.io/react-router-transition/
 
-const API = "http://localhost:5000/api";
+// const API = "http://localhost:3900/api";
+// const API = "http://localhost:5000/api";
 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
@@ -77,7 +81,7 @@ const App = () => {
   useEffect(() => {
     if (!auth.getCurrentUser()) return;
     async function getData() {
-      const res = await axios.get(`${API}/users/me`);
+      const res = await axios.get(`${apiUrl}/users/me`);
       const me = await res.data;
       setMe(me);
     }
@@ -129,7 +133,7 @@ const App = () => {
   }
 
   function putAxios(id, body) {
-    return axios.put(`${API}/users/favorites/${id}`, body);
+    return axios.put(`${apiUrl}/users/favorites/${id}`, body);
   }
 
   function doFavorite(recipe) {
@@ -178,7 +182,7 @@ const App = () => {
       recipes: allMeRecipes,
     });
     const body = { recipes: allMeRecipes };
-    return axios.put(`${API}/users/favminus/${me._id}`, body);
+    return axios.put(`${apiUrl}/users/favminus/${me._id}`, body);
   }
 
   function handleDelete(id, year) {
@@ -226,7 +230,7 @@ const App = () => {
   }
 
   function updateAxios(id, body) {
-    return axios.put(`${API}/users/favminus/${id}`, body);
+    return axios.put(`${apiUrl}/users/favminus/${id}`, body);
   }
 
   function handleUpdate(id, year) {
@@ -248,59 +252,60 @@ const App = () => {
 
   return (
     <>
-      <header>
-        <Nav sorts={sorts} thecart={thecart} user={user} recipes={recipes} />
-      </header>
-      {/* <Search recipes={recipes} /> */}
-      {/* <div className="container-switch"> */}
-      {/* <AnimatedSwitch
+      <div className="content">
+        <header>
+          <Nav sorts={sorts} thecart={thecart} user={user} recipes={recipes} />
+        </header>
+        {/* <Search recipes={recipes} /> */}
+        {/* <div className="container-switch"> */}
+        {/* <AnimatedSwitch
         atEnter={{ opacity: 0 }}
         atLeave={{ opacity: 0 }}
         atActive={{ opacity: 1 }}
         className="switch-wrapper"
       > */}
-      <Switch>
-        <Route
-          exact
-          path="/"
-          render={(props) => (
-            <Home
-              {...props}
-              recipes={recipes}
-              dishes={dishes}
-              doSave={doSave}
-              handleDelete={handleDelete}
-              handleUpdate={handleUpdate}
-              // handleOpen={handleOpen}
-              thecart={thecart}
-            />
-          )}
-        />
-        <Route
-          path="/recipetable"
-          render={(props) => (
-            <RecipesApi {...props} recipes={recipes} user={user} />
-          )}
-        />
-        <Route
-          path="/recipe/:id"
-          render={(props) => {
-            // const recipe = recipes.find(
-            //   r => slugify(r.title) === props.match.params.id
-            // );
-            return (
-              <Recipe
-                categories={categories}
-                thecart={thecart}
-                // {...recipe}
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={(props) => (
+              <Home
                 {...props}
+                recipes={recipes}
+                dishes={dishes}
                 doSave={doSave}
-                doFavorite={doFavorite}
+                handleDelete={handleDelete}
+                handleUpdate={handleUpdate}
+                // handleOpen={handleOpen}
+                thecart={thecart}
               />
-            );
-          }}
-        />
-        {/* <Route
+            )}
+          />
+          <Route
+            path="/recipetable"
+            render={(props) => (
+              <RecipesApi {...props} recipes={recipes} user={user} />
+            )}
+          />
+          <Route
+            path="/recipe/:id"
+            render={(props) => {
+              // const recipe = recipes.find(
+              //   r => slugify(r.title) === props.match.params.id
+              // );
+              return (
+                <Recipe
+                  categories={categories}
+                  thecart={thecart}
+                  // {...recipe}
+                  {...props}
+                  doSave={doSave}
+                  doFavorite={doFavorite}
+                />
+              );
+            }}
+          />
+          {/* <Route
             path="/recipeform/:id"
             render={props => {
               const recipe = recipes.find(
@@ -309,94 +314,98 @@ const App = () => {
               return <RecipeForm {...recipe} {...props} recipes={recipes} />;
             }}
           /> */}
-        <Route path="/login" component={LoginForm} />
-        <Route path="/register" component={RegisterForm} />
-        <Route path="/logout" component={logout} />
-        <Route
-          path="/test"
-          render={(props) => (
-            <Test {...props} dishes={dishes} recipes={recipes} />
-          )}
-        />
-        <ProtectedRoute
-          path="/user"
-          render={(props) => (
-            <User
-              {...props}
-              user={user}
-              thecart={thecart}
-              me={me}
-              handleDelete={handleDelete}
-            />
-          )}
-        />
-        <ProtectedRoute
-          path="/favorites"
-          render={(props) => (
-            <Favorites
-              {...props}
-              handleDeleteFavorite={handleDeleteFavorite}
-              handleDelete={handleDelete}
-              handleUpdate={handleUpdate}
-              thecart={thecart}
-              recipes={recipes}
-            />
-          )}
-        />
-        <Route
-          path="/weekmenu"
-          render={(props) => (
-            <Weekmenu
-              {...props}
-              user={user}
-              thecart={thecart} //  [ _id, _id, ... ]
-              recipes={recipes}
-              handleDelete={handleDelete}
-              handleUpdate={handleUpdate}
-            />
-          )}
-        />
-        <Route
-          path="/sorts/:id"
-          render={(props) => {
-            return (
-              <Sorts
+          <Route path="/login" component={LoginForm} />
+          <Route path="/register" component={RegisterForm} />
+          <Route path="/logout" component={logout} />
+          <Route
+            path="/test"
+            render={(props) => (
+              <Test {...props} dishes={dishes} recipes={recipes} />
+            )}
+          />
+          <ProtectedRoute
+            path="/user"
+            render={(props) => (
+              <User
+                {...props}
+                user={user}
+                thecart={thecart}
+                me={me}
+                handleDelete={handleDelete}
+              />
+            )}
+          />
+          <ProtectedRoute
+            path="/favorites"
+            render={(props) => (
+              <Favorites
+                {...props}
+                handleDeleteFavorite={handleDeleteFavorite}
+                handleDelete={handleDelete}
+                handleUpdate={handleUpdate}
                 thecart={thecart}
                 recipes={recipes}
-                sorts={sorts}
-                categories={categories}
-                {...props}
               />
-            );
-          }}
-        />
-        <Route
-          path="/categories/:id"
-          render={(props) => {
-            return (
-              <Categories
-                thecart={thecart}
+            )}
+          />
+          <Route
+            path="/weekmenu"
+            render={(props) => (
+              <Weekmenu
+                {...props}
+                user={user}
+                thecart={thecart} //  [ _id, _id, ... ]
                 recipes={recipes}
-                {...props}
-                sorts={sorts}
+                handleDelete={handleDelete}
+                handleUpdate={handleUpdate}
               />
-            );
-          }}
-        />
-        <Route
-          path="/collections/:id"
-          render={(props) => {
-            return (
-              <Collections
-                thecart={thecart}
-                dishes={dishes}
-                recipes={recipes}
-                {...props}
-              />
-            );
-          }}
-        />
-      </Switch>
+            )}
+          />
+          <Route
+            path="/sorts/:id"
+            render={(props) => {
+              return (
+                <Sorts
+                  thecart={thecart}
+                  recipes={recipes}
+                  sorts={sorts}
+                  categories={categories}
+                  {...props}
+                />
+              );
+            }}
+          />
+          <Route
+            path="/categories/:id"
+            render={(props) => {
+              return (
+                <Categories
+                  thecart={thecart}
+                  recipes={recipes}
+                  {...props}
+                  sorts={sorts}
+                />
+              );
+            }}
+          />
+          <Route
+            path="/collections/:id"
+            render={(props) => {
+              return (
+                <Collections
+                  thecart={thecart}
+                  dishes={dishes}
+                  recipes={recipes}
+                  {...props}
+                />
+              );
+            }}
+          />
+        </Switch>
+      </div>
+      <footer className="">
+        <Footer />
+      </footer>
       {/* </AnimatedSwitch> */}
       {/* </div> */}
     </>

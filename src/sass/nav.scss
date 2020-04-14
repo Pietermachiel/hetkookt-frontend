@@ -1,24 +1,37 @@
 /*------------------------------------*\
   #NAVIGATION-NAV
 \*------------------------------------*/
+.content {
+  min-height: calc(100vh - 250px);
+}
+
 .add-panel {
-  background-color: #fff;
-  border: 1px solid #b3b3b3;
-  color: #3a3a3a;
-  visibility: hidden;
-  opacity: 0;
-  margin-top: 14px;
   position: absolute;
+  visibility: visible;
+  opacity: 1;
   top: 9px;
-  right: 0;
-  width: 265px;
+  left: 0;
   z-index: 10;
-  .maandjaar {
-    padding: 0;
-    margin-top: -20px;
-    font-size: 18px;
-    height: 46px;
-    text-align: center;
+
+  @media (min-width: $on-tablet) {
+    background-color: #fff;
+    border: 1px solid #b3b3b3;
+    color: #3a3a3a;
+    visibility: hidden;
+    opacity: 0;
+    margin-top: 14px;
+    position: absolute;
+    top: 9px;
+    left: initial;
+    right: 0;
+    width: 265px;
+    .maandjaar {
+      padding: 0;
+      margin-top: -20px;
+      font-size: 18px;
+      height: 46px;
+      text-align: center;
+    }
   }
 }
 

@@ -32,6 +32,9 @@ const Sorts = ({ thecart, recipes, sorts, categories, ...props }) => {
   console.log("recipeItem");
   console.log(recipeItem);
 
+  console.log("category");
+  console.log(category);
+
   return (
     <>
       {/* <div className="container-productenfilter">
@@ -40,8 +43,10 @@ const Sorts = ({ thecart, recipes, sorts, categories, ...props }) => {
       <div className="container-x">
         <h1 className={`pt-15 text-42 pb-18 ${catcolor}`}>
           {props.match.params.id}
-          <Link to="/">
-            <span className="ml-18 text-24 font-300">> home</span>
+          <Link to={`/categories/${category.category}`}>
+            <span className="ml-18 text-19 text-black font-300">
+              > meer {category.category}
+            </span>
           </Link>
         </h1>
         <div className="-ml-15 mb-10 flex flex-row flex-wrap">
