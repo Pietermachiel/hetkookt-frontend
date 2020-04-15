@@ -37,6 +37,19 @@ const App = () => {
   const [user, setUser] = useState([]);
   const [me, setMe] = useState([]);
 
+  console.log("recipes");
+  console.log(recipes);
+  console.log("sorts");
+  console.log(sorts);
+  console.log("categories");
+  console.log(categories);
+  console.log("dishes");
+  console.log(dishes);
+  console.log("user");
+  console.log(user);
+  console.log("me");
+  console.log(me);
+
   // const [inProp, setInProp] = useState(true);
 
   useEffect(() => {

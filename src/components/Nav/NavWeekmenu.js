@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { kalender } from "../common/common";
 
 const KalenderWeekmenu = ({ thecart, ...props }) => {
-  console.log("KalenderWeekmenu");
-  console.log(props);
-  console.log(kalender);
-  console.log(thecart);
+  // console.log("KalenderWeekmenu");
+  // console.log(props);
+  // console.log(kalender);
+  // console.log(thecart);
   return (
     <div className="pb-18 font-light lg:flex lg:items-center">
       {props.user && (

@@ -19,10 +19,10 @@ const Nav = ({ user, thecart, sorts, ...props }) => {
     setIsOpen(!isOpen);
     console.log(isOpen);
   };
-  console.log("props");
-  console.log(props);
-  console.log("user");
-  console.log(user);
+  // console.log("props");
+  // console.log(props);
+  // console.log("user");
+  // console.log(user);
 
   const favorites = thecart.filter((c) => c.favorite === true);
   // console.log("favorites.length");
