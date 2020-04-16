@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {
   dedag,
   hetjaar,
@@ -9,7 +9,14 @@ import {
 } from "../common/common.js";
 import AddpanelWeekmenu from "./AddpanelWeekmenu.js";
 
-const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
+const Recipe = ({
+  user,
+  thecart,
+  doFavorite,
+  doSave,
+  categories,
+  ...props
+}) => {
   var [therecipe, setTheRecipe] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   // const [isFavorite, setIsFavorite] = useState(false);
@@ -79,17 +86,35 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
             </h1>
             <div className="flex items-center mb-36 mt-6">
               {/* weekmenu */}
-              <button
-                className="btn-add mr-10 text-18 text-blue-500 flex item-center"
-                onClick={() => handleIsOpen()}
-              >
-                <img
-                  className="w-25 h-25 mr-10"
-                  src="/img/feather/list.svg"
-                  alt=""
-                />
-                zet op het weekmenu >
-              </button>
+              {!user && (
+                <NavLink className="" to="/login">
+                  <button
+                    className="btn-add mr-10 text-18 text-blue-500 flex item-center"
+                    onClick={() => handleIsOpen()}
+                  >
+                    <img
+                      className="w-25 h-25 mr-10"
+                      src="/img/feather/list.svg"
+                      alt=""
+                    />
+                    zet op het weekmenu >
+                  </button>{" "}
+                </NavLink>
+              )}
+              {user && (
+                <button
+                  className="btn-add mr-10 text-18 text-blue-500 flex item-center"
+                  onClick={() => handleIsOpen()}
+                >
+                  <img
+                    className="w-25 h-25 mr-10"
+                    src="/img/feather/list.svg"
+                    alt=""
+                  />
+                  zet op het weekmenu >
+                </button>
+              )}
+
               <div className="flex">
                 {kalender.map((k) => {
                   var cart = thecart.filter((c) =>
@@ -200,29 +225,58 @@ const Recipe = ({ thecart, doFavorite, doSave, categories, ...props }) => {
             ></textarea>
 
             {/* kookschrift */}
-            <div className="mr-15 mt-18">
-              <button
-                className="like flex"
-                onClick={() => handleIsFavorite(therecipe)}
-              >
-                {therecipe.favorite === true ? (
-                  <img
-                    className="w-25"
-                    src="/img/feather/bookmark-red.svg"
-                    alt=""
-                  />
-                ) : (
-                  <img
-                    className="w-25"
-                    src="/img/feather/bookmark.svg"
-                    alt=""
-                  />
-                )}
-                <span className="pl-10 text-18 text-blue-500 text-600 hover:text-red-500">
-                  zet in favorieten >
-                </span>{" "}
-              </button>
-            </div>
+            {!user && (
+              <NavLink to="/login">
+                <div className="mr-15 mt-18">
+                  <button
+                    className="like flex"
+                    // onClick={() => handleIsFavorite(therecipe)}
+                  >
+                    {therecipe.favorite === true ? (
+                      <img
+                        className="w-25"
+                        src="/img/feather/bookmark-red.svg"
+                        alt=""
+                      />
+                    ) : (
+                      <img
+                        className="w-25"
+                        src="/img/feather/bookmark.svg"
+                        alt=""
+                      />
+                    )}
+                    <span className="pl-10 text-18 text-blue-500 text-600 hover:text-red-500">
+                      zet in favorieten >
+                    </span>
+                  </button>
+                </div>
+              </NavLink>
+            )}
+            {user && (
+              <div className="mr-15 mt-18">
+                <button
+                  className="like flex"
+                  onClick={() => handleIsFavorite(therecipe)}
+                >
+                  {therecipe.favorite === true ? (
+                    <img
+                      className="w-25"
+                      src="/img/feather/bookmark-red.svg"
+                      alt=""
+                    />
+                  ) : (
+                    <img
+                      className="w-25"
+                      src="/img/feather/bookmark.svg"
+                      alt=""
+                    />
+                  )}
+                  <span className="pl-10 text-18 text-blue-500 text-600 hover:text-red-500">
+                    zet in favorieten >
+                  </span>
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -43,7 +43,7 @@ const NavAdd = ({
         </NavLink>
         <NavLink className="" to="/favorites">
           <div onClick={handleIsOpen} className="flex items-center mb-18">
-            <img className="w-25" src="/img/feather/bookmark.svg" alt="" />
+            <img className="w-25" src="/img/feather/bookmark-red.svg" alt="" />
             <span className="pl-12 text-gray-500 hover:text-black">
               kookschrift{" "}
               <span className="text-red-500">{favorites.length}</span>

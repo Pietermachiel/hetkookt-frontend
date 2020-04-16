@@ -308,6 +308,7 @@ const App = () => {
               // );
               return (
                 <Recipe
+                  user={user}
                   categories={categories}
                   thecart={thecart}
                   // {...recipe}

@@ -106,10 +106,10 @@ const Home = ({
                       <p
                         className={`uppercase tracking-widest text-14 pl-15 mb-0`}
                       >
-                        {recipe.meal === "true" ? (
-                          <span className="text-red-500 font-600">meal</span>
+                        {/* {recipe.meal === "true" ? (
+                          <span className="text-red-500 font-600">m</span>
                         ) : null}
-                        {recipe.meal === "true" ? <span> / </span> : null}
+                        {recipe.meal === "true" ? <span> – </span> : null} */}
                         {recipe.dish}
                       </p>
                       <div className="pt-5 mr-10 flex items-center justify-end">
@@ -129,8 +129,10 @@ const Home = ({
                                   : "bg-gray-500"
                               } text-black rounded-50`}
                             >
-                              <span className={`absolute text-12 -m-7 pl-3`}>
-                                {w.index}
+                              <span className={`absolute text-12 inset-0`}>
+                                <span className="flex justify-center pt-3">
+                                  {w.index}
+                                </span>
                               </span>
                             </div>
                           ) : null
