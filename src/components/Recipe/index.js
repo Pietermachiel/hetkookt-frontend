@@ -60,6 +60,9 @@ const Recipe = ({
   console.log("therecipe");
   console.log(therecipe);
 
+  console.log("categories");
+  console.log(categories);
+
   const menu = kalender.filter((k) => {
     const cart = thecart.find((c) => (c.date ? c.date.includes(k.year) : null));
     return cart;
