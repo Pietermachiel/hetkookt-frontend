@@ -103,7 +103,7 @@ const Recipe = ({
                       alt=""
                     />
                     zet op het weekmenu >
-                  </button>{" "}
+                  </button>
                 </NavLink>
               )}
               {user && (
@@ -127,21 +127,23 @@ const Recipe = ({
                   );
                   return cart.map((c) =>
                     c._id === therecipe._id ? (
-                      <div key={c._id} className={`relative`}>
-                        <img
-                          className="w-30 h-30"
-                          src="/img/feather/circle-orange.svg"
-                          alt=""
-                        />
-                        <div className="absolute inset-0">
-                          <span
-                            key={k.index}
-                            className={`flex justify-center pt-6 text-12`}
-                          >
-                            {k.index}
-                          </span>
+                      <NavLink to="/weekmenu">
+                        <div key={c._id} className={`relative`}>
+                          <img
+                            className="w-30 h-30"
+                            src="/img/feather/circle-orange.svg"
+                            alt=""
+                          />
+                          <div className="absolute inset-0">
+                            <span
+                              key={k.index}
+                              className={`flex justify-center pt-6 text-12`}
+                            >
+                              {k.index}
+                            </span>
+                          </div>
                         </div>
-                      </div>
+                      </NavLink>
                     ) : null
                   );
                 })}
@@ -259,27 +261,34 @@ const Recipe = ({
             )}
             {user && (
               <div className="mr-15 mt-18">
-                <button
-                  className="like flex"
-                  onClick={() => handleIsFavorite(therecipe)}
-                >
-                  {therecipe.favorite === true ? (
-                    <img
-                      className="w-25"
-                      src="/img/feather/bookmark-red.svg"
-                      alt=""
-                    />
-                  ) : (
+                {therecipe.favorite === true ? (
+                  <NavLink to="/favorites">
+                    <button className="like flex">
+                      <img
+                        className="w-25"
+                        src="/img/feather/bookmark-red.svg"
+                        alt=""
+                      />
+                      <span className="pl-10 text-18 text-blue-500 text-600 hover:text-red-500">
+                        zet in favorieten >
+                      </span>
+                    </button>
+                  </NavLink>
+                ) : (
+                  <button
+                    className="like flex"
+                    onClick={() => handleIsFavorite(therecipe)}
+                  >
                     <img
                       className="w-25"
                       src="/img/feather/bookmark.svg"
                       alt=""
                     />
-                  )}
-                  <span className="pl-10 text-18 text-blue-500 text-600 hover:text-red-500">
-                    zet in favorieten >
-                  </span>
-                </button>
+                    <span className="pl-10 text-18 text-blue-500 text-600 hover:text-red-500">
+                      zet in favorieten >
+                    </span>
+                  </button>
+                )}
               </div>
             )}
           </div>

@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useCurrentWidth from "../common/use-current-width";
 import useCurrentHeight from "../common/use-current-height";
 import useCurrentScroll from "../common/use-current-scroll";
@@ -121,28 +121,32 @@ const Home = ({
                             // >
                             //   {w.day}
                             // </span>
-                            <div
-                              key={w.index}
-                              className={`relative mr-6 p-10 w-24 h-24 text-center ${
-                                cart.length !== 0
-                                  ? "bg-orange-400"
-                                  : "bg-gray-500"
-                              } text-black rounded-50`}
-                            >
-                              <span className={`absolute text-12 inset-0`}>
-                                <span className="flex justify-center pt-3">
-                                  {w.index}
+                            <NavLink to="/weekmenu">
+                              <div
+                                key={w.index}
+                                className={`relative mr-6 p-10 w-24 h-24 text-center ${
+                                  cart.length !== 0
+                                    ? "bg-orange-400"
+                                    : "bg-gray-500"
+                                } text-black rounded-50`}
+                              >
+                                <span className={`absolute text-12 inset-0`}>
+                                  <span className="flex justify-center pt-3">
+                                    {w.index}
+                                  </span>
                                 </span>
-                              </span>
-                            </div>
+                              </div>
+                            </NavLink>
                           ) : null
                         )}
                         {cart.favorite === true ? (
-                          <img
-                            className="w-25"
-                            src="/img/feather/bookmark-red.svg"
-                            alt=""
-                          />
+                          <NavLink to="/favorites">
+                            <img
+                              className="w-25"
+                              src="/img/feather/bookmark-red.svg"
+                              alt=""
+                            />
+                          </NavLink>
                         ) : null}
                       </div>
                     </div>
