@@ -22,6 +22,8 @@ const Recipe = ({
   // const [isFavorite, setIsFavorite] = useState(false);
 
   const API = props.match.url;
+  console.log("props.match.url");
+  console.log(props.match.url);
 
   const handleIsOpen = () => {
     console.log("isopen?");

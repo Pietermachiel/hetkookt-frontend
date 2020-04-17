@@ -7,22 +7,14 @@ import auth from "../services/authService";
 class RegisterForm extends Form {
   state = {
     data: { email: "", password: "", name: "", recipes: [] },
-    errors: {}
+    errors: {},
   };
 
   schema = {
-    email: Joi.string()
-      .required()
-      .email()
-      .label("Email"),
-    password: Joi.string()
-      .required()
-      .min(5)
-      .label("Password"),
-    name: Joi.string()
-      .required()
-      .label("Name"),
-    recipes: Joi.array()
+    email: Joi.string().required().email().label("Email"),
+    password: Joi.string().required().min(5).label("Password"),
+    name: Joi.string().required().label("Name"),
+    recipes: Joi.array(),
   };
 
   doSubmit = async () => {
@@ -46,7 +38,7 @@ class RegisterForm extends Form {
         <div className="login-box__inner">
           {" "}
           {/* <h2>inschrijven</h2> */}
-          <h4>Nieuw bij MijnRecepten?</h4>
+          <h4>Nieuw bij hetKookt?</h4>
           <p>
             Stuur ons eerst je e-mailadres. <br />
             We sturen direct een email terug, zodat we zeker weten dat jij de

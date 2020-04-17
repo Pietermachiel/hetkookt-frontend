@@ -7,16 +7,12 @@ import auth from "../services/authService";
 class LoginForm extends Form {
   state = {
     data: { email: "", password: "" },
-    errors: {}
+    errors: {},
   };
 
   schema = {
-    email: Joi.string()
-      .required()
-      .label("Email"),
-    password: Joi.string()
-      .required()
-      .label("Password")
+    email: Joi.string().required().label("Email"),
+    password: Joi.string().required().label("Password"),
   };
 
   doSubmit = async () => {
@@ -44,7 +40,7 @@ class LoginForm extends Form {
     return (
       <div id="checkoutBox" className="login-box mt-24">
         <div className="login-box__inner">
-          <h5>Login bij MijnRecepten</h5>
+          <h5>Login bij hetKookt</h5>
           <p>Vul je gegevens in.</p>
           <form className="login-form" onSubmit={this.handleSubmit}>
             {this.renderInput("email", "Email")}
