@@ -41,7 +41,7 @@
   // left: 4px;
   margin-top: 14px;
   position: absolute;
-  top: -25px;
+  bottom: 71px;
   left: 0;
   height: 300px;
   width: 265px;
@@ -75,8 +75,8 @@ svg.feather-circle:hover {
   position: absolute;
   border-left: 14px solid transparent;
   border-right: 14px solid transparent;
-  border-bottom: 18px solid white;
-  top: -18px;
+  border-top: 18px solid white;
+  bottom: -18px;
   right: 55px;
 }
 
@@ -89,8 +89,8 @@ svg.feather-circle:hover {
   position: absolute;
   border-left: 14px solid transparent;
   border-right: 14px solid transparent;
-  border-bottom: 18px solid #757575;
-  top: -19px;
+  border-top: 18px solid #757575;
+  bottom: -19px;
   right: 55px;
 }
 

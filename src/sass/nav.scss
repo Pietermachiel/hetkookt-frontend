@@ -1,37 +1,54 @@
 /*------------------------------------*\
   #NAVIGATION-NAV
 \*------------------------------------*/
+.menu-open {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 .content {
   min-height: calc(100vh - 250px);
 }
 
-.add-panel {
-  position: absolute;
-  visibility: visible;
-  opacity: 1;
-  top: 9px;
-  left: 0;
-  z-index: 10;
+// .add-panel {
+//   position: absolute;
+//   visibility: visible;
+//   opacity: 1;
+//   top: 9px;
+//   left: 0;
+//   z-index: 10;
 
-  @media (min-width: $on-tablet) {
-    background-color: #fff;
-    border: 1px solid #b3b3b3;
-    color: #3a3a3a;
-    visibility: hidden;
-    opacity: 0;
-    margin-top: 14px;
-    position: absolute;
-    top: 9px;
-    left: initial;
-    right: 0;
-    width: 265px;
-    .maandjaar {
-      padding: 0;
-      margin-top: -20px;
-      font-size: 18px;
-      height: 46px;
-      text-align: center;
-    }
+//   @media (min-width: $on-tablet) {
+//     background-color: #fff;
+//     border: 1px solid #b3b3b3;
+//     color: #3a3a3a;
+//     visibility: hidden;
+//     opacity: 0;
+//     margin-top: 14px;
+//     position: absolute;
+//     top: 9px;
+//     left: initial;
+//     right: 0;
+//     width: 265px;
+//     .maandjaar {
+//       padding: 0;
+//       margin-top: -20px;
+//       font-size: 18px;
+//       height: 46px;
+//       text-align: center;
+//     }
+//   }
+// }
+
+.nav-add {
+  position: absolute;
+  top: 36px;
+  width: 100vw;
+  @media (min-width: $on-palm) {
+    width: 400px;
   }
 }
 
@@ -41,33 +58,33 @@
   transition: all 0.25s 0.1s;
 }
 
-.add-panel::after {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  /* margin: 107px auto; */
-  position: absolute;
-  border-left: 14px solid transparent;
-  border-right: 14px solid transparent;
-  border-bottom: 18px solid white;
-  top: -18px;
-  right: 55px;
-}
+// .add-panel::after {
+//   content: "";
+//   display: block;
+//   width: 0;
+//   height: 0;
+//   /* margin: 107px auto; */
+//   position: absolute;
+//   border-left: 14px solid transparent;
+//   border-right: 14px solid transparent;
+//   border-bottom: 18px solid white;
+//   top: -18px;
+//   right: 55px;
+// }
 
-.add-panel::before {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  /* margin: 107px auto; */
-  position: absolute;
-  border-left: 14px solid transparent;
-  border-right: 14px solid transparent;
-  border-bottom: 18px solid #757575;
-  top: -19px;
-  right: 55px;
-}
+// .add-panel::before {
+//   content: "";
+//   display: block;
+//   width: 0;
+//   height: 0;
+//   /* margin: 107px auto; */
+//   position: absolute;
+//   border-left: 14px solid transparent;
+//   border-right: 14px solid transparent;
+//   border-bottom: 18px solid #757575;
+//   top: -19px;
+//   right: 55px;
+// }
 
 .navbox {
   background: white;
@@ -108,43 +125,43 @@
   }
 }
 
-.navbox-panel[aria-expanded="true"] {
-  // opacity: 1;
-  // visibility: visible;
-  margin-right: 0;
-}
+// .navbox-panel[aria-expanded="true"] {
+//   // opacity: 1;
+//   // visibility: visible;
+//   margin-right: 0;
+// }
 
 .navbox-panel {
-  padding-top: 72px;
-  @media (max-width: 1023px) {
-    position: fixed;
-    display: flex;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    // margin: 0;
-    // width: 100%;
-    // height: 100%;
-    // max-width: 100%;
-    // max-height: 100%;
-    // background-image: url(/public/img/artisjok-soft40.jpg);
-    // background-repeat: no-repeat;
-    // background-size: cover;
-    // background-color: #f7fafc;
-    list-style: none;
-    transition: all 0.2s ease-in-out;
-    // will-change: top;
-    visibility: hidden;
-    opacity: 0;
-    z-index: 10;
-  }
-  @media (min-width: 1024px) {
-    // display: flex;
-    // flex-flow: row wrap;
-    // justify-content: space-between;
-    padding-top: 0;
-  }
+  padding-top: 0;
+  // @media (max-width: 1023px) {
+  position: fixed;
+  display: flex;
+  justify-content: flex-end;
+  left: 0;
+  top: 0;
+  background-color: #fb263b;
+  // margin: 0;
+  width: 100%;
+  height: 100%;
+  // max-width: 100%;
+  // max-height: 100%;
+  // background-image: url(/public/img/artisjok-soft40.jpg);
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // background-color: #f7fafc;
+  list-style: none;
+  transition: all 0.2s ease-in-out;
+  // will-change: top;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 10;
+  // }
+  // @media (min-width: 1024px) {
+  //   // display: flex;
+  //   // flex-flow: row wrap;
+  //   // justify-content: space-between;
+  //   padding-top: 0;
+  // }
 }
 
 .navbar {
@@ -159,11 +176,11 @@
   }
 }
 
-.nav-link.active,
+// .nav-link.active,
 .nav-link:hover {
   border-bottom: 1px solid;
   border-bottom-color: #e74c3c;
-  color: #e74c3c;
+  color: black;
   text-decoration: none;
   transition: 0.1s;
   // padding-bottom: 3px;
@@ -279,9 +296,9 @@
   outline: none;
   cursor: pointer;
   z-index: 10000;
-  @media (min-width: $on-tablet) {
-    display: none;
-  }
+  // @media (min-width: $on-tablet) {
+  //   display: none;
+  // }
 }
 
 .hamburger span {
@@ -314,10 +331,10 @@
   transform-origin: center center;
 }
 .hamburger.navbox--menu-open span {
-  background-color: $brand;
+  background-color: white;
 }
 .navbox--inverted .hamburger span {
-  background-color: $brand;
+  background-color: white;
 }
 
 // second child

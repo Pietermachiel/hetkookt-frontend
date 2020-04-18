@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 import { Link, NavLink, withRouter } from "react-router-dom";
 import Search from "../Search";
 import Productenfilter from "../Productenfilter";
@@ -17,6 +18,7 @@ const Nav = ({ user, thecart, sorts, ...props }) => {
   const handleIsOpen = () => {
     console.log("isopen?");
     setIsOpen(!isOpen);
+    toggleSwitch();
     console.log(isOpen);
   };
   // console.log("props");
@@ -31,6 +33,7 @@ const Nav = ({ user, thecart, sorts, ...props }) => {
   const handleMouseDown = (e) => {
     toggleMenu();
     toggleSwitch();
+    setIsOpen(!isOpen);
     e.stopPropagation();
   };
 
@@ -40,22 +43,26 @@ const Nav = ({ user, thecart, sorts, ...props }) => {
 
   const toggleSwitch = () => {
     setIsOn(!isOn);
+    console.log(isOn);
   };
 
   // function toggle() {
   //   isOn ? setIsOn(false) : setIsOn(true);
   // }
 
-  const isMobile = width <= 992;
-  var visibility = "hide";
-  var expanded = "false";
-  if (visible) {
-    visibility = "show";
-    expanded = "true";
-  }
+  // const isMobile = width <= 992;
+  // var visibility = "hide";
+  // var expanded = "false";
+  // if (visible) {
+  //   visibility = "show";
+  //   expanded = "true";
+  // }
 
   return (
     <>
+      <Helmet>
+        <html className={isOpen ? "menu-open" : null} />
+      </Helmet>
       <div className="w-full bg-white px-20 py-15 mb-15">
         <div className="flex items-center">
           <Link className="" to="/">
@@ -71,12 +78,12 @@ const Nav = ({ user, thecart, sorts, ...props }) => {
           </Link>
           <Search recipes={recipes} />
           <div
-            className={`navbox-panel ${isOn ? visibility : null}`}
+            className={`navbox-panel ${isOpen ? "show " : null}`}
             id="navPanel"
-            onClick={isMobile ? handleMouseDown : null}
-            aria-expanded={expanded}
+            // onClick={isMobile ? handleMouseDown : null}
+            // aria-expanded={expanded}
           >
-            <div className="navbar">
+            {/* <div className="navbar">
               {!user && (
                 <NavLink className="" to="/login">
                   <div className="">login</div>
@@ -98,7 +105,7 @@ const Nav = ({ user, thecart, sorts, ...props }) => {
 
                 // </NavLink>
               )}
-            </div>
+            </div> */}
             <NavAdd
               handleIsOpen={handleIsOpen}
               isOpen={isOpen}

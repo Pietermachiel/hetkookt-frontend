@@ -78,86 +78,15 @@ const Recipe = ({
       <div className="recepten">
         <div className="recepten-box">
           <div className="title">
-            <h1 className="font-600 pt-15">
-              {therecipe.title}
-              <Link
-                className="hover:text-red-500 ml-18"
-                to={`/collections/${therecipe.dish}`}
-              >
-                <span className="font-300 text-19 leading-4">
-                  > meer {therecipe.dish}
-                </span>
-              </Link>
-            </h1>
-            <div className="flex items-center mb-36 mt-6">
-              {/* weekmenu */}
-              {!user && (
-                <NavLink className="" to="/login">
-                  <button
-                    className="btn-add mr-10 text-18 text-blue-500 flex item-center"
-                    onClick={() => handleIsOpen()}
-                  >
-                    <img
-                      className="w-25 h-25 mr-10"
-                      src="/img/feather/list.svg"
-                      alt=""
-                    />
-                    zet op het weekmenu >
-                  </button>
-                </NavLink>
-              )}
-              {user && (
-                <button
-                  className="btn-add mr-10 text-18 text-blue-500 flex item-center"
-                  onClick={() => handleIsOpen()}
-                >
-                  <img
-                    className="w-25 h-25 mr-10"
-                    src="/img/feather/list.svg"
-                    alt=""
-                  />
-                  zet op het weekmenu >
-                </button>
-              )}
-
-              <div className="flex">
-                {kalender.map((k) => {
-                  var cart = thecart.filter((c) =>
-                    c.date ? c.date.includes(k.year) : null
-                  );
-                  return cart.map((c) =>
-                    c._id === therecipe._id ? (
-                      <NavLink to="/weekmenu">
-                        <div key={c._id} className={`relative`}>
-                          <img
-                            className="w-30 h-30"
-                            src="/img/feather/circle-orange.svg"
-                            alt=""
-                          />
-                          <div className="absolute inset-0">
-                            <span
-                              key={k.index}
-                              className={`flex justify-center pt-6 text-12`}
-                            >
-                              {k.index}
-                            </span>
-                          </div>
-                        </div>
-                      </NavLink>
-                    ) : null
-                  );
-                })}
-              </div>
-            </div>
-            {/* add panel */}
-            <AddpanelWeekmenu
-              isOpen={isOpen}
-              setIsOpen={setIsOpen}
-              handleIsOpen={handleIsOpen}
-              therecipe={therecipe}
-              thecart={thecart}
-              doSave={doSave}
-            />
+            <h1 className="font-600 mt-15 mb-10">{therecipe.title}</h1>
+            <Link
+              className="hover:text-red-500"
+              to={`/collections/${therecipe.dish}`}
+            >
+              <p className="font-300 text-19 leading-4 mb-36">
+                meer {therecipe.dish} &nbsp;>
+              </p>
+            </Link>
           </div>
           {/* ingredienten */}
           <div className="ingredienten">
@@ -230,6 +159,76 @@ const Recipe = ({
               className="h-150 mt-18 border border-gray-300 transition-colors duration-100 ease-in-out bg-white shadow-md focus:outline-0 border border-transparent placeholder-gray-600 rounded-lg py-8 pr-16 pl-16 block w-full appearance-none leading-normal ds-input text-16"
               placeholder="Maak hier een notitie..."
             ></textarea>
+
+            <div className="flex items-center mb-18 mt-24">
+              {/* weekmenu */}
+              {!user && (
+                <NavLink className="" to="/login">
+                  <button
+                    className="btn-add mr-10 text-18 text-blue-500 flex item-center"
+                    onClick={() => handleIsOpen()}
+                  >
+                    <img
+                      className="w-25 h-25 mr-10"
+                      src="/img/feather/list.svg"
+                      alt=""
+                    />
+                    zet op het weekmenu >
+                  </button>
+                </NavLink>
+              )}
+              {user && (
+                <button
+                  className="btn-add mr-10 text-18 text-blue-500 flex item-center"
+                  onClick={() => handleIsOpen()}
+                >
+                  <img
+                    className="w-25 h-25 mr-10"
+                    src="/img/feather/list.svg"
+                    alt=""
+                  />
+                  zet op het weekmenu >
+                </button>
+              )}
+
+              <div className="flex">
+                {kalender.map((k) => {
+                  var cart = thecart.filter((c) =>
+                    c.date ? c.date.includes(k.year) : null
+                  );
+                  return cart.map((c) =>
+                    c._id === therecipe._id ? (
+                      <NavLink to="/weekmenu">
+                        <div key={c._id} className={`relative`}>
+                          <img
+                            className="w-30 h-30"
+                            src="/img/feather/circle-orange.svg"
+                            alt=""
+                          />
+                          <div className="absolute inset-0">
+                            <span
+                              key={k.index}
+                              className={`flex justify-center pt-6 text-12`}
+                            >
+                              {k.index}
+                            </span>
+                          </div>
+                        </div>
+                      </NavLink>
+                    ) : null
+                  );
+                })}
+              </div>
+            </div>
+            {/* add panel */}
+            <AddpanelWeekmenu
+              isOpen={isOpen}
+              setIsOpen={setIsOpen}
+              handleIsOpen={handleIsOpen}
+              therecipe={therecipe}
+              thecart={thecart}
+              doSave={doSave}
+            />
 
             {/* kookschrift */}
             {!user && (
