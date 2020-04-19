@@ -7,6 +7,9 @@ const Search = ({ recipes, isOn, ...props }) => {
   const [searchTerm, setSearchTerm] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
 
+  console.log("recipes");
+  console.log(recipes);
+
   useEffect(() => {
     const results = recipes.filter((recipe) => {
       return (

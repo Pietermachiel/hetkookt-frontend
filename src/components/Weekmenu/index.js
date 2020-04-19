@@ -20,8 +20,9 @@ const Weekmenu = ({ user, thecart, handleDelete, handleUpdate, ...props }) => {
 
   return (
     <div className="container-x">
+      <h1>weekmenu</h1>
       <KalenderWeekmenu props={props} thecart={thecart} user={user} />
-      {thedates.length === 0 ? <h1>weekmenu</h1> : null}
+      {/* {thedates.length === 0 ? <h1>weekmenu</h1> : null} */}
       <div className="mb-10 mt-18">
         {kalender.map((k) => {
           var cart = thecart.filter((c) =>

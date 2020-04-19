@@ -165,7 +165,7 @@ const Recipe = ({
               {!user && (
                 <NavLink className="" to="/login">
                   <button
-                    className="btn-add mr-10 text-18 text-blue-500 flex item-center"
+                    className="btn-add mr-10 text-18 text-indigo-700 flex item-center"
                     onClick={() => handleIsOpen()}
                   >
                     <img
@@ -179,7 +179,7 @@ const Recipe = ({
               )}
               {user && (
                 <button
-                  className="btn-add mr-10 text-18 text-blue-500 flex item-center"
+                  className="btn-add mr-10 text-19 font-600 text-indigo-700 flex item-center"
                   onClick={() => handleIsOpen()}
                 >
                   <img
@@ -251,7 +251,7 @@ const Recipe = ({
                         alt=""
                       />
                     )}
-                    <span className="pl-10 text-18 text-blue-500 text-600 hover:text-red-500">
+                    <span className="pl-10 text-19 text-indigo-700 font-600 hover:text-red-500">
                       zet in favorieten >
                     </span>
                   </button>
@@ -268,7 +268,7 @@ const Recipe = ({
                         src="/img/feather/bookmark-red.svg"
                         alt=""
                       />
-                      <span className="pl-10 text-18 text-blue-500 text-600 hover:text-red-500">
+                      <span className="pl-10 text-19 text-indigo-700 font-600 hover:text-red-500">
                         zet in favorieten >
                       </span>
                     </button>
@@ -283,7 +283,7 @@ const Recipe = ({
                       src="/img/feather/bookmark.svg"
                       alt=""
                     />
-                    <span className="pl-10 text-18 text-blue-500 text-600 hover:text-red-500">
+                    <span className="pl-10 text-19 text-indigo-700 font-600 hover:text-red-500">
                       zet in favorieten >
                     </span>
                   </button>
