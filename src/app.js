@@ -362,7 +362,7 @@ const App = () => {
               />
             )}
           />
-          <Route
+          <ProtectedRoute
             path="/weekmenu"
             render={(props) => (
               <Weekmenu

@@ -106,6 +106,7 @@ const Nav = ({ user, thecart, sorts, ...props }) => {
                 // </NavLink>
               )}
             </div> */}
+            <img src="/img/icons/hetkookt-wit.svg" alt="" />
             <NavAdd
               handleIsOpen={handleIsOpen}
               isOpen={isOpen}

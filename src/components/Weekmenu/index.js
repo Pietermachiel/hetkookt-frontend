@@ -32,10 +32,13 @@ const Weekmenu = ({ user, thecart, handleDelete, handleUpdate, ...props }) => {
           return (
             <Fragment key={k.index}>
               {cart.length !== 0 ? (
-                <h1 className="text-orange border-b-4 border-gray-400 pt-15 first:pt-0 pb-15 ">
-                  {/* {k.day} {k.day !== "vandaag" ? k.index : null} */}
-                  {k.day === vandaag(0) ? "vandaag" : k.day} {k.index}
-                </h1>
+                <Fragment>
+                  <h1 className="text-orange border-b-4 border-gray-400 pt-15 first:pt-0 pb-15 ">
+                    {/* {k.day} {k.day !== "vandaag" ? k.index : null} */}
+                    {k.day === vandaag(0) ? "vandaag" : k.day} {k.index}
+                  </h1>
+                  <p></p>
+                </Fragment>
               ) : null}
 
               {cart

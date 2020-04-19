@@ -10461,6 +10461,14 @@ video {
   font-size: 21px !important;
 }
 
+.text-22 {
+  font-size: 22px !important;
+}
+
+.text-23 {
+  font-size: 23px !important;
+}
+
 .text-24 {
   font-size: 24px !important;
 }
@@ -24676,6 +24684,14 @@ video {
 
   .sm\:text-21 {
     font-size: 21px !important;
+  }
+
+  .sm\:text-22 {
+    font-size: 22px !important;
+  }
+
+  .sm\:text-23 {
+    font-size: 23px !important;
   }
 
   .sm\:text-24 {
@@ -38896,6 +38912,14 @@ video {
     font-size: 21px !important;
   }
 
+  .md\:text-22 {
+    font-size: 22px !important;
+  }
+
+  .md\:text-23 {
+    font-size: 23px !important;
+  }
+
   .md\:text-24 {
     font-size: 24px !important;
   }
@@ -53114,6 +53138,14 @@ video {
     font-size: 21px !important;
   }
 
+  .lg\:text-22 {
+    font-size: 22px !important;
+  }
+
+  .lg\:text-23 {
+    font-size: 23px !important;
+  }
+
   .lg\:text-24 {
     font-size: 24px !important;
   }
@@ -67330,6 +67362,14 @@ video {
 
   .xl\:text-21 {
     font-size: 21px !important;
+  }
+
+  .xl\:text-22 {
+    font-size: 22px !important;
+  }
+
+  .xl\:text-23 {
+    font-size: 23px !important;
   }
 
   .xl\:text-24 {
