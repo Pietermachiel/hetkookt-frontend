@@ -165,7 +165,7 @@ const Recipe = ({
               {!user && (
                 <NavLink className="" to="/login">
                   <button
-                    className="btn-add mr-10 text-18 text-indigo-700 flex item-center"
+                    className="btn-add mr-10 text-19 font-600 text-indigo-700 flex item-center"
                     onClick={() => handleIsOpen()}
                   >
                     <img

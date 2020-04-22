@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 // import today from "../common/today";
-import { vandaag, kalender, slugify, theweek } from "../common/common";
+import { vandaag, dedatum, kalender, slugify, theweek } from "../common/common";
 import KalenderWeekmenu from "./KalenderWeekmenu";
 
 const Weekmenu = ({ user, thecart, handleDelete, handleUpdate, ...props }) => {
@@ -23,6 +23,16 @@ const Weekmenu = ({ user, thecart, handleDelete, handleUpdate, ...props }) => {
       <h1>weekmenu</h1>
       <KalenderWeekmenu props={props} thecart={thecart} user={user} />
       {/* {thedates.length === 0 ? <h1>weekmenu</h1> : null} */}
+      <p className="font-600">Er staat nog niets op het menu.</p>
+
+      <p className="w-full md:w-50">
+        Stel je eigen menu samen voor vandaag&nbsp;
+        <span className="font-600 text-gray-600">
+          {vandaag(0)} {dedatum(0)} april
+        </span>{" "}
+        en de zeven daaropvolgende dagen. Zoek een recept en zet op het
+        weekmenu.
+      </p>
       <div className="mb-10 mt-18">
         {kalender.map((k) => {
           var cart = thecart.filter((c) =>

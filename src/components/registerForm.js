@@ -34,23 +34,33 @@ class RegisterForm extends Form {
 
   render() {
     return (
-      <div id="checkoutBox" className="login-box">
-        <div className="login-box__inner">
-          {" "}
-          {/* <h2>inschrijven</h2> */}
-          <h4>Nieuw bij hetKookt?</h4>
-          <p>
-            Stuur ons eerst je e-mailadres. <br />
-            We sturen direct een email terug, zodat we zeker weten dat jij de
-            eigenaar bent... <br />
-            Als je dat bevestigt kan je de inschrijving voltooien.
-          </p>
-          <form className="login-form" onSubmit={this.handleSubmit}>
-            {this.renderInput("name", "Name")}
-            {this.renderInput("email", "Email")}
-            {this.renderInput("password", "Password", "password")}
-            {this.renderButton("Inschrijven")}
-          </form>
+      <div className="container-x">
+        <div id="checkoutBox" className="login-box">
+          <div className="login-box__inner">
+            <p className="font-600">Inschrijven</p>
+            <p className="text-24">
+              Maak een account aan voor een weekmenu en een kookschrift met
+              persoonlijke notities.
+            </p>
+            {/* <h2>inschrijven</h2> */}
+            <h4 className="font-600">Nieuw bij hetKookt?</h4>
+            <p>
+              Stuur ons eerst je e-mailadres. <br />
+              We sturen direct een email terug, zodat we zeker weten dat jij de
+              eigenaar bent... <br />
+              Als je dat bevestigt kan je de inschrijving voltooien.
+            </p>
+            <p className="text-indigo-700 font-600">disclaimer</p>
+            <form
+              className="login-form px-10 sm:px-0"
+              onSubmit={this.handleSubmit}
+            >
+              {this.renderInput("name", "Name")}
+              {this.renderInput("email", "Email")}
+              {this.renderInput("password", "Password", "password")}
+              {this.renderButton("Inschrijven")}
+            </form>
+          </div>
         </div>
       </div>
     );

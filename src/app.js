@@ -284,6 +284,7 @@ const App = () => {
             render={(props) => (
               <Home
                 {...props}
+                user={user}
                 recipes={recipes}
                 dishes={dishes}
                 doSave={doSave}

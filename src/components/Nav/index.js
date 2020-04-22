@@ -63,27 +63,32 @@ const Nav = ({ user, thecart, sorts, ...props }) => {
       <Helmet>
         <html className={isOpen ? "menu-open" : null} />
       </Helmet>
-      <div className="w-full bg-white px-20 py-15 mb-15">
-        <div className="flex items-center">
+      <div className="w-full bg-white md:px-20 pt-20 sm:py-15 mb-15">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
           <Link className="" to="/">
             <div
-              className="flex items-center"
+              className="flex items-center pl-15 md:pl-0"
               onClick={isOn ? handleMouseDown : null}
             >
-              <img src="/img/icons/hetkookt.svg" alt="" />
-              <span className="hidden lg:block font-400 tracking-normal text-30 pl-10">
+              <img
+                className="w-54 h-54"
+                src="/img/icons/hetkookt_circlex.svg"
+                alt=""
+              />
+              <span className="block font-400 tracking-normal text-30 pl-5">
                 <span className="font-400 text-28">het</span>kookt
               </span>
             </div>
           </Link>
           <Search recipes={recipes} />
-          <div
-            className={`navbox-panel ${isOpen ? "show " : null}`}
-            id="navPanel"
-            // onClick={isMobile ? handleMouseDown : null}
-            // aria-expanded={expanded}
-          >
-            {/* <div className="navbar">
+        </div>
+        <div
+          className={`navbox-panel ${isOpen ? "show " : null}`}
+          id="navPanel"
+          // onClick={isMobile ? handleMouseDown : null}
+          // aria-expanded={expanded}
+        >
+          {/* <div className="navbar">
               {!user && (
                 <NavLink className="" to="/login">
                   <div className="">login</div>
@@ -106,32 +111,31 @@ const Nav = ({ user, thecart, sorts, ...props }) => {
                 // </NavLink>
               )}
             </div> */}
-            <img src="/img/icons/hetkookt-wit.svg" alt="" />
-            <NavAdd
-              handleIsOpen={handleIsOpen}
-              isOpen={isOpen}
-              user={user}
-              thecart={thecart}
-              favorites={favorites}
-            />
-          </div>
-          <div className="relative">
-            <button
-              onClick={handleMouseDown}
-              className={isOn ? "hamburger navbox--menu-open" : "hamburger"}
-              aria-label="Open Menu"
-            >
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
-          </div>
+          <img src="/img/icons/hetkookt-wit.svg" alt="" />
+          <NavAdd
+            handleIsOpen={handleIsOpen}
+            isOpen={isOpen}
+            user={user}
+            thecart={thecart}
+            favorites={favorites}
+          />
+        </div>
+        <div className="hamburger-box">
+          <button
+            onClick={handleMouseDown}
+            className={isOn ? "hamburger navbox--menu-open" : "hamburger"}
+            aria-label="Open Menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
       </div>
 
-      <div className="container-x">
+      {/* <div className="container-x">
         {location === "/" ? <Productenfilter sorts={sorts} /> : null}
-      </div>
+      </div> */}
     </>
   );
   // }

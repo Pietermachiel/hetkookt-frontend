@@ -4,11 +4,15 @@ import useCurrentWidth from "../common/use-current-width";
 import useCurrentHeight from "../common/use-current-height";
 import useCurrentScroll from "../common/use-current-scroll";
 import { slugify, kalender } from "../common/common";
+import Search from "../Search";
+import Productenfilter from "../Productenfilter";
 // import dishes from "../../data/dishes.json";
 
 const Home = ({
+  user,
   dishes,
   recipes,
+  sorts,
   handleSave,
   handleDelete,
   thecart,
@@ -27,14 +31,23 @@ const Home = ({
   // console.log(kalender);
   return (
     <div className="container-x">
-      {/* <h1 className="text-4xl font-black">Tailwind</h1> */}
-
+      <Productenfilter sorts={sorts} />
+      <h1 className="text-center md:text-left text-4xl font-bold">watkookt?</h1>
+      {!user ? (
+        <p className="text-center md:text-left">
+          <NavLink to="/register">
+            <span className="text-indigo-700 font-600">Inschrijven &gt;</span>
+          </NavLink>
+        </p>
+      ) : (
+        <br />
+      )}
       {dishes.map((d, xid) => {
         const therecipes = recipes.filter((recipe) => recipe.dish === d);
         if (therecipes === undefined) return [];
         return (
           <Fragment key={xid}>
-            <h1 className="mb-10">
+            <h1 className="mb-10 sm:ml-10 md:ml-0">
               {d}
               <Link to={`/collections/${d}`}>
                 {therecipes.length > 4 ? (
@@ -42,7 +55,7 @@ const Home = ({
                 ) : null}
               </Link>
             </h1>
-            <div className="-ml-15 mb-10 flex flex-row flex-wrap">
+            <div className="-ml-10 sm:ml-0 md:-ml-15 mb-10 flex flex-row flex-wrap">
               {therecipes.slice(0, 4).map((recipe, index) => {
                 let cart = thecart.find((c) => c._id === recipe._id);
                 // console.log(cart);

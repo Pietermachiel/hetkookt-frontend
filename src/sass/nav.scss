@@ -140,6 +140,7 @@
   left: 0;
   top: 0;
   background-color: #fb263b;
+  background-image: linear-gradient(#f14300, #fb263b);
   // margin: 0;
   width: 100%;
   height: 100%;
@@ -276,9 +277,32 @@
 //   }
 // }
 
+.hide__input {
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+}
+
+.show__input {
+  opacity: 1;
+  visibility: visible;
+  display: block;
+}
+
+.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
 .show {
   opacity: 1;
   visibility: visible;
+}
+
+.hamburger-box {
+  position: absolute;
+  right: 20px;
+  top: 46px;
 }
 
 .hamburger {

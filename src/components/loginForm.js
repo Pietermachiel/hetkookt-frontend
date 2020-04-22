@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import Joi from "joi-browser";
 import Form from "./common/form";
 import auth from "../services/authService";
@@ -38,22 +38,24 @@ class LoginForm extends Form {
     if (auth.getCurrentUser()) return <Redirect to="/" />;
 
     return (
-      <div id="checkoutBox" className="login-box mt-24">
-        <div className="login-box__inner">
-          <h5>Login bij hetKookt</h5>
-          <p>Vul je gegevens in.</p>
-          <form className="login-form" onSubmit={this.handleSubmit}>
-            {this.renderInput("email", "Email")}
-            {this.renderInput("password", "Password", "password")}
-            {this.renderButton("Login")}
-          </form>
-          <br />
-          <p className="link-inschrijven">
-            Nieuw bij <strong>hetKookt</strong>? &nbsp;
-            <a href="/register">
-              <span>Inschrijven &gt;</span>
-            </a>
-          </p>
+      <div className="container-x">
+        <div id="checkoutBox" className="login-box mt-24">
+          <div className="login-box__inner">
+            <p className="font-600">Login bij hetKookt</p>
+            <p>Vul je gegevens in.</p>
+            <form className="login-form" onSubmit={this.handleSubmit}>
+              {this.renderInput("email", "Email")}
+              {this.renderInput("password", "Password", "password")}
+              {this.renderButton("Login")}
+            </form>
+            <br />
+            <p className="link-inschrijven">
+              Nieuw bij <strong>hetKookt</strong>? &nbsp;
+              <NavLink to="/register">
+                <span>Inschrijven &gt;</span>
+              </NavLink>
+            </p>
+          </div>
         </div>
       </div>
     );
