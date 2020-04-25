@@ -16,10 +16,10 @@ const Nav = ({ user, thecart, sorts, ...props }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleIsOpen = () => {
-    console.log("isopen?");
+    // console.log("isopen?");
     setIsOpen(!isOpen);
     toggleSwitch();
-    console.log(isOpen);
+    // console.log(isOpen);
   };
   // console.log("props");
   // console.log(props);
@@ -43,7 +43,7 @@ const Nav = ({ user, thecart, sorts, ...props }) => {
 
   const toggleSwitch = () => {
     setIsOn(!isOn);
-    console.log(isOn);
+    // console.log(isOn);
   };
 
   // function toggle() {

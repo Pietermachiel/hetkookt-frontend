@@ -16,5 +16,5 @@ config.json
 
 config.json
 {
-"apiUrl": "https://localhost:3900/api"
+"apiUrl": "http://localhost:3900/api"
 }

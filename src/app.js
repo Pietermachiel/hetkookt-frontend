@@ -3,6 +3,8 @@ import { Switch, Route } from "react-router-dom";
 // import { AnimatedSwitch } from "react-router-transition";
 import LoginForm from "./components/loginForm";
 import RegisterForm from "./components/registerForm";
+import inschrijven from "./components/inschrijven";
+import Verify from "./components/verify";
 import logout from "./components/logout";
 import Test from "./components/Test";
 import Home from "./components/Home";
@@ -312,7 +314,6 @@ const App = () => {
                   user={user}
                   categories={categories}
                   thecart={thecart}
-                  // {...recipe}
                   {...props}
                   doSave={doSave}
                   doFavorite={doFavorite}
@@ -331,6 +332,8 @@ const App = () => {
           /> */}
           <Route path="/login" component={LoginForm} />
           <Route path="/register" component={RegisterForm} />
+          <Route path="/inschrijven" component={inschrijven} />
+          <Route path="/verify/:id" component={Verify} />
           <Route path="/logout" component={logout} />
           <Route
             path="/test"

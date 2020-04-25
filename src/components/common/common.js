@@ -23,7 +23,7 @@ export function vandaag(e) {
   };
 
   const vandaag = theday.toLocaleDateString("nl-NL", options);
-  return vandaag;
+  return vandaag; // vandaag(0) = woensdag
 }
 
 export function dedatum(e) {
@@ -57,7 +57,7 @@ export function dedag(e) {
   };
 
   const dedag = theday.toLocaleDateString("nl-NL", options);
-  return dedag;
+  return dedag; // dedag(0) = woensdag 22 april
 }
 
 export function hetjaar(e) {

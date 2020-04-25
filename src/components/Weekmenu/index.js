@@ -18,21 +18,28 @@ const Weekmenu = ({ user, thecart, handleDelete, handleUpdate, ...props }) => {
     return item;
   });
 
+  // console.log("thedates");
+  // console.log(thedates.length);
+
   return (
     <div className="container-x">
-      <h1>weekmenu</h1>
+      <h1 className="text-gray-500">weekmenu</h1>
       <KalenderWeekmenu props={props} thecart={thecart} user={user} />
-      {/* {thedates.length === 0 ? <h1>weekmenu</h1> : null} */}
-      <p className="font-600">Er staat nog niets op het menu.</p>
+      {thedates.length === 0 ? (
+        <>
+          <p className="font-600 mt-21">Er staat nog niets op het menu.</p>
+          <p className="w-full md:w-50">
+            Stel je eigen menu samen voor vandaag&nbsp;
+            <span className="font-600 text-gray-600">
+              {vandaag(0)} {dedatum(0)} april
+            </span>
+            en de zeven daaropvolgende dagen. <br />
+            <br />
+            Zoek een recept en zet op het weekmenu.
+          </p>
+        </>
+      ) : null}
 
-      <p className="w-full md:w-50">
-        Stel je eigen menu samen voor vandaag&nbsp;
-        <span className="font-600 text-gray-600">
-          {vandaag(0)} {dedatum(0)} april
-        </span>{" "}
-        en de zeven daaropvolgende dagen. Zoek een recept en zet op het
-        weekmenu.
-      </p>
       <div className="mb-10 mt-18">
         {kalender.map((k) => {
           var cart = thecart.filter((c) =>
@@ -44,10 +51,10 @@ const Weekmenu = ({ user, thecart, handleDelete, handleUpdate, ...props }) => {
             <Fragment key={k.index}>
               {cart.length !== 0 ? (
                 <Fragment>
-                  <h1 className="text-orange border-b-4 border-gray-400 pt-15 first:pt-0 pb-15 ">
+                  <h2 className="text-orange border-b-4 border-gray-400 pt-15 first:pt-0 pb-15 ">
                     {/* {k.day} {k.day !== "vandaag" ? k.index : null} */}
                     {k.day === vandaag(0) ? "vandaag" : k.day} {k.index}
-                  </h1>
+                  </h2>
                   <p></p>
                 </Fragment>
               ) : null}
@@ -58,7 +65,7 @@ const Weekmenu = ({ user, thecart, handleDelete, handleUpdate, ...props }) => {
                       <div
                         key={c._id}
                         // style={style}
-                        className="wborder-b-2 border-gray-400  pt-10 unvisable slide work-grid-item grid-box__gray weekmenu-vandaag"
+                        className="shadow-md wborder-b-2 border-gray-400  pt-10 unvisable slide work-grid-item grid-box__gray weekmenu-vandaag"
                       >
                         {/* <div className="day-flag">
                     <span className="px-15 py-6 bg-red text-white rounded">

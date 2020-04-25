@@ -9,8 +9,8 @@ const Favorites = ({
   thecart,
 }) => {
   if (thecart === undefined) thecart = [];
-  // console.log("thecart");
-  // console.log(thecart);
+  console.log("thecart");
+  console.log(thecart.length);
 
   return (
     <Fragment>
@@ -109,10 +109,15 @@ const Favorites = ({
       </div> */}
       <div className="container-x">
         <h1 className="mb-10 pt-15">kookschrift</h1>
-        <p className="font-600">Er staat nog niets in het kookschrift.</p>
-        <p className="w-full md:w-50">
-          Zoek je favorite recepten en voeg er persoonlijke notities aan toe.
-        </p>
+        {thecart.length === 0 ? (
+          <div className="">
+            <p className="font-600">Er staat nog niets in het kookschrift.</p>
+            <p className="w-full md:w-50">
+              Zoek je favorite recepten en voeg er persoonlijke notities aan
+              toe.
+            </p>
+          </div>
+        ) : null}
         <div className="-ml-15 mb-10 flex flex-row flex-wrap">
           {thecart.map((m) => {
             if (m.favorite === true)

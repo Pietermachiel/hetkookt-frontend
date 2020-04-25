@@ -9,6 +9,10 @@ function userUrl(id) {
   return `${apiEndpoint}/${id}`;
 }
 
+function userTokenUrl(token) {
+  return `${apiEndpoint}/verify/${token}`;
+}
+
 export function register(user) {
   return http.post(apiEndpoint, {
     email: user.email,
@@ -33,4 +37,10 @@ export function deleteUser(userId) {
   console.log("userId");
   console.log(userId);
   return http.delete(userUrl(userId));
+}
+
+export function verifyUser(token) {
+  console.log("token");
+  console.log(token);
+  return http.put(userTokenUrl(token));
 }

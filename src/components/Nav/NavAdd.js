@@ -17,12 +17,10 @@ const NavAdd = ({
   thecart,
   ...props
 }) => {
-  // const [isOpen, setIsOpen] = useState(false);
-
-  // const handleIsOpen = () => {
-  //   console.log("isopen?");
-  //   setIsOpen(!isOpen);
-  // };
+  const thedates = kalender.filter((k) => {
+    const item = thecart.find((c) => (c.date ? c.date.includes(k.year) : null));
+    return item;
+  });
 
   return (
     <div className="nav-add">
@@ -44,7 +42,10 @@ const NavAdd = ({
         <NavLink className="" to="/weekmenu">
           <div onClick={handleIsOpen} className="flex items-center mb-18 mt-0">
             <img className="w-25" src="/img/feather/list.svg" alt="" />
-            <span className="pl-12 hover:text-black">weekmenu</span>
+            <span className="pl-12 hover:text-black">
+              weekmenu
+              <span className="text-red-300">&nbsp;{thedates.length}</span>
+            </span>
             {/* <span className="pr-5">{props.user.name}</span> */}
           </div>
         </NavLink>

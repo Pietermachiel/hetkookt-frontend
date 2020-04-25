@@ -22,16 +22,16 @@ const Recipe = ({
   // const [isFavorite, setIsFavorite] = useState(false);
 
   const API = props.match.url;
-  console.log("props.match.url");
-  console.log(props.match.url);
+  // console.log("props.match.url");
+  // console.log(props.match.url);
 
   const handleIsOpen = () => {
-    console.log("isopen?");
+    // console.log("isopen?");
     setIsOpen(!isOpen);
   };
 
   const handleIsFavorite = (therecipe) => {
-    console.log("isFavorite");
+    // console.log("isFavorite");
     // setIsFavorite(!isFavorite);
     doFavorite(therecipe);
   };
@@ -59,19 +59,19 @@ const Recipe = ({
   const newrecipe = thecart.find((c) => c._id === therecipe._id);
   therecipe = newrecipe || therecipe;
 
-  console.log("therecipe");
-  console.log(therecipe);
+  // console.log("therecipe");
+  // console.log(therecipe);
 
-  console.log("categories");
-  console.log(categories);
+  // console.log("categories");
+  // console.log(categories);
 
   const menu = kalender.filter((k) => {
     const cart = thecart.find((c) => (c.date ? c.date.includes(k.year) : null));
     return cart;
   });
 
-  console.log("menu");
-  console.log(menu);
+  // console.log("menu");
+  // console.log(menu);
 
   return (
     <div className="container-x">
@@ -144,19 +144,9 @@ const Recipe = ({
               </ol>
             </div>
             <div className="text-21">{therecipe.citaat}</div>
-            <a
-              href={`${therecipe.source_url}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className="flex">
-                <img className="w-25" src="/img/feather/book.svg" alt="" />
-                &nbsp;<span className="pl-5">Zie ook: {therecipe.source}</span>
-              </div>
-            </a>
 
             <textarea
-              className="h-90 mt-18 border border-gray-300 transition-colors duration-100 ease-in-out bg-white shadow-md focus:outline-0 border border-transparent placeholder-gray-600 rounded-lg py-8 pr-16 pl-16 block w-full appearance-none leading-normal ds-input text-16"
+              className="border border-gray-300 bg-white shadow-md focus:outline-0 border border-transparent placeholder-gray-600 rounded-lg py-8 pr-16 pl-16 block w-full text-16"
               placeholder="Maak hier een notitie..."
             ></textarea>
 
@@ -198,8 +188,8 @@ const Recipe = ({
                   );
                   return cart.map((c) =>
                     c._id === therecipe._id ? (
-                      <NavLink to="/weekmenu">
-                        <div key={c._id} className={`relative`}>
+                      <NavLink key={c._id} to="/weekmenu">
+                        <div className={`relative`}>
                           <img
                             className="w-30 h-30"
                             src="/img/feather/circle-orange.svg"
@@ -233,7 +223,7 @@ const Recipe = ({
             {/* kookschrift */}
             {!user && (
               <NavLink to="/login">
-                <div className="mr-15 mt-18">
+                <div className="mr-15 my-18">
                   <button
                     className="like flex"
                     // onClick={() => handleIsFavorite(therecipe)}
@@ -259,7 +249,7 @@ const Recipe = ({
               </NavLink>
             )}
             {user && (
-              <div className="mr-15 mt-18">
+              <div className="mr-15 my-18">
                 {therecipe.favorite === true ? (
                   <NavLink to="/favorites">
                     <button className="like flex">
@@ -290,6 +280,16 @@ const Recipe = ({
                 )}
               </div>
             )}
+            <a
+              href={`${therecipe.source_url}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="flex mt-72">
+                <img className="w-25" src="/img/feather/book.svg" alt="" />
+                &nbsp;<span className="pl-5">Bron: {therecipe.source}</span>
+              </div>
+            </a>
           </div>
         </div>
       </div>

@@ -36,7 +36,6 @@ const KalenderWeekmenu = ({ thecart, ...props }) => {
                     <span className="flex justify-center pt-6">{k.index}</span>
                   </div>
                   <div className="absolute inset-0">
-                    {" "}
                     <span className="flex justify-center text-gray-500 -mt-15 text-14">
                       {k.day.slice(0, 1)}
                     </span>
