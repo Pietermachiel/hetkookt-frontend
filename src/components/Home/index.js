@@ -25,22 +25,43 @@ const Home = ({
   const box = 265;
   const boxheight = height + scroll;
 
+  if (recipes.length === 0)
+    return (
+      <div className="container-x">
+        <p>Loading...</p>
+      </div>
+    );
+
   // console.log(today);
-  // console.log(recipes);
+  console.log(recipes);
   // console.log(dishes);
   // console.log(kalender);
   return (
     <div className="container-x">
       <Productenfilter sorts={sorts} />
-      <h1 className="text-center md:text-left text-4xl font-bold">watkookt?</h1>
+      <h1 className="text-center md:text-left text-4xl font-bold">
+        watkookt<span className="text-36 pl-2">?</span>
+        {/* <img
+          className="inline w-45 h-45 pb-10 -ml-12"
+          src="/img/icons/watkookt.svg"
+          alt=""
+        /> */}
+      </h1>
       {!user ? (
         <p className="text-center md:text-left">
           <NavLink to="/register">
-            <span className="text-indigo-700 font-600">Inschrijven &gt;</span>
+            <span className="text-indigo-700 font-500">
+              Schrijf je in bij <span className="font-700">hetkookt~</span> en
+              maak een eigen kookschrift &gt;
+            </span>
           </NavLink>
         </p>
       ) : (
-        <br />
+        <p className="text-center md:text-left">
+          <NavLink to="/user">
+            <span className="text-indigo-700 font-600">{user.name}</span>
+          </NavLink>
+        </p>
       )}
       {dishes.map((d, xid) => {
         const therecipes = recipes.filter((recipe) => recipe.dish === d);
@@ -88,7 +109,7 @@ const Home = ({
                   >
                     <div className={`min-h-full70 p-15`}>
                       <Link to={`/recipe/${slugify(recipe.title)}`}>
-                        <h3 className={`break-words mb-15`}>{recipe.title}</h3>
+                        <h4 className={`break-words mb-15`}>{recipe.title}</h4>
                       </Link>
                       <ul className="mb-12">
                         {recipe.basics.map((b, id) => (
@@ -134,9 +155,8 @@ const Home = ({
                             // >
                             //   {w.day}
                             // </span>
-                            <NavLink to="/weekmenu">
+                            <NavLink key={w.index} to="/weekmenu">
                               <div
-                                key={w.index}
                                 className={`relative mr-6 p-10 w-24 h-24 text-center ${
                                   cart.length !== 0
                                     ? "bg-orange-400"

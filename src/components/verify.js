@@ -18,10 +18,14 @@ const Verify = (props) => {
 
   return (
     <div className="constainer-x">
-      <div className="login-box__inner">
-        <p className="font-700">De inschrijving is voltooid.</p>
+      <div className="login-box__inner mt-24">
+        <h3 className="">De inschrijving is voltooid.</h3>
+        <br />
         <p>
-          Je kunt nu inloggen. <NavLink to="/login">Login</NavLink>
+          Je kunt nu inloggen.
+          <a href="/">
+            <button className="button-blue">Login</button>
+          </a>
         </p>
       </div>
     </div>

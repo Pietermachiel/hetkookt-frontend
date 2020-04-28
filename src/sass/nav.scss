@@ -302,7 +302,10 @@
 .hamburger-box {
   position: absolute;
   right: 20px;
-  top: 46px;
+  top: 38px;
+  @media (min-width: 768px) {
+    top: 42px;
+  }
 }
 
 .hamburger {

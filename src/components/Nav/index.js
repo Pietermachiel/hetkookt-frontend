@@ -63,24 +63,32 @@ const Nav = ({ user, thecart, sorts, ...props }) => {
       <Helmet>
         <html className={isOpen ? "menu-open" : null} />
       </Helmet>
-      <div className="w-full bg-white md:px-20 pt-20 sm:py-15 mb-15">
+      <div className="w-full bg-white md:px-20 pt-10 mb-15">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
           <Link className="" to="/">
             <div
               className="flex items-center pl-15 md:pl-0"
               onClick={isOn ? handleMouseDown : null}
             >
-              <img
-                className="w-54 h-54"
-                src="/img/icons/hetkookt_circlex.svg"
+              {/* <img
+                className="w-45 h-45 pr-5 mr-5"
+                src="/img/icons/koksmuts.png"
                 alt=""
-              />
-              <span className="block font-400 tracking-normal text-30 pl-5">
-                <span className="font-400 text-28">het</span>kookt
-              </span>
+              /> */}
+              <div className="block font-700 text-rood tracking-wide text-36 pl-5">
+                <span className="font-500 text-32 pr-1">het</span>
+                kookt~
+              </div>
             </div>
           </Link>
           <Search recipes={recipes} />
+          {!user && (
+            <div className="absolute right-0 md:relative md:mr-36">
+              <NavLink to="/login">
+                <p className="mt-15 mr-60 md:mt-18 md:mr-0 font-400">login</p>
+              </NavLink>
+            </div>
+          )}
         </div>
         <div
           className={`navbox-panel ${isOpen ? "show " : null}`}
@@ -111,7 +119,7 @@ const Nav = ({ user, thecart, sorts, ...props }) => {
                 // </NavLink>
               )}
             </div> */}
-          <img src="/img/icons/hetkookt-wit.svg" alt="" />
+          <img src="/img/icons/hetkookt-oowit.svg" alt="" />
           <NavAdd
             handleIsOpen={handleIsOpen}
             isOpen={isOpen}

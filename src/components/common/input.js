@@ -2,11 +2,16 @@ import React from "react";
 
 const Input = ({ name, label, error, ...rest }) => {
   return (
-    <div className={name}>
+    <div className={`formgroup ${name}`}>
       <label className="input-label" htmlFor={name}>
         {label}
       </label>
-      <input className="input-field" {...rest} name={name} id={name} />
+      <input
+        {...rest}
+        name={name}
+        id={name}
+        className="form-control input-field"
+      />
       {error && <div className="alert alert-danger">{error}</div>}
     </div>
   );

@@ -36,7 +36,7 @@ const Search = ({ recipes, isOn, ...props }) => {
 
   return (
     <>
-      <div className="relative sm:mx-0 sm:mx-0 px-20 mt-10 sm:mt-0 pt-10 sm:pt-0 bg-gray-100 sm:bg-white sm:w-full sm:pr-48 sm:pl-28 sm:mr-72 sm:ml-72">
+      <div className="relative sm:mx-0 sm:mx-0 px-20 mt-10 sm:mt-0 pt-10 sm:pt-0 bg-gray-100 sm:bg-white sm:w-full sm:pr-72 md:pr-0 sm:pl-28 sm:mr-72 sm:ml-72">
         <form className="relative w-full">
           {/* {isOn ? "form-zoekrecept hidden" : "form-zoekrecept"} */}
           <input

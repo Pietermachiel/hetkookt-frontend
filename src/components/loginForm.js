@@ -19,6 +19,7 @@ class LoginForm extends Form {
     console.log("dosubmit");
     try {
       const { data } = this.state;
+      console.log("data");
       console.log(data);
       await auth.login(data.email, data.password);
 
@@ -34,14 +35,21 @@ class LoginForm extends Form {
   };
 
   render() {
-    console.log(this.props.location);
+    // console.log("this.props.location");
+    // console.log(this.props.location);
     if (auth.getCurrentUser()) return <Redirect to="/" />;
 
     return (
       <div className="container-x">
         <div id="checkoutBox" className="login-box mt-24">
           <div className="login-box__inner">
-            <p className="font-600">Login bij hetKookt</p>
+            <h3 className="">
+              Login bij
+              <span className="font-500">
+                &nbsp;het<span className="font-700">kookt</span>.
+              </span>
+            </h3>
+            <br />
             <p>Vul je gegevens in.</p>
             <form className="login-form" onSubmit={this.handleSubmit}>
               {this.renderInput("email", "Email")}
@@ -50,7 +58,7 @@ class LoginForm extends Form {
             </form>
             <br />
             <p className="link-inschrijven">
-              Nieuw bij <strong>hetKookt</strong>? &nbsp;
+              Nieuw bij <span className="font-700">hetkookt</span>? &nbsp;
               <NavLink to="/register">
                 <span>Inschrijven &gt;</span>
               </NavLink>

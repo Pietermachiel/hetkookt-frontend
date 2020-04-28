@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import auth from "../../services/authService";
+import { deleteUser } from "../../services/userService";
+import { kalender } from "../common/common.js";
 
 const User = ({ me, user, thecart, ...props }) => {
   function handleLogout() {
@@ -8,9 +10,21 @@ const User = ({ me, user, thecart, ...props }) => {
     window.location = "/";
   }
 
-  const favorites = thecart.filter((c) => c.favorite === true);
+  function handleDelete(userId) {
+    deleteUser(userId);
+    auth.logout();
+    window.location = "/";
+  }
 
+  const favorites = thecart.filter((c) => c.favorite === true);
+  const thedates = kalender.filter((k) => {
+    const item = thecart.find((c) => (c.date ? c.date.includes(k.year) : null));
+    return item;
+  });
+  console.log("props");
   console.log(props);
+  console.log("user");
+  console.log(user);
 
   return (
     <div className="container-x">
@@ -18,14 +32,22 @@ const User = ({ me, user, thecart, ...props }) => {
       <p>Name: {me.name}</p>
       <p>Email: {me.email}</p>
       <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-10 px-15 rounded"
+        className="button-blue bg-indigo-500 hover:bg-indigo-700"
         onClick={() => handleLogout()}
         // style={{ fontFamily: "Fira Mono" }}
       >
         Logout
       </button>
 
-      <div className="font-light flex lg:ml-18 md:border-solid lg:border-none md:border-4">
+      <button
+        className="button-blue bg-red hover:bg-red-700"
+        onClick={() => handleDelete(user._id)}
+        // style={{ fontFamily: "Fira Mono" }}
+      >
+        Delete account
+      </button>
+
+      {/* <div className="mt-18">
         {user && (
           <>
             <Link
@@ -36,9 +58,22 @@ const User = ({ me, user, thecart, ...props }) => {
               }
               to={"/favorites"}
             >
-              <span className="pr-5">kookschrift</span>
+              <p className="pr-5">
+                kookschrift{" "}
+                <span className="text-red-500">{favorites.length}</span>
+              </p>
             </Link>
-            <span className="text-red-500">{favorites.length}</span>
+
+            <div className="">
+              {thecart.map((m) => {
+                if (m.favorite === true)
+                  return (
+                    <div className="" key={m._id}>
+                      <h3 className={`break-words mb-15`}>{m.title}</h3>
+                    </div>
+                  );
+              })}
+            </div>
 
             <Link
               className={`nav-link
@@ -46,11 +81,13 @@ const User = ({ me, user, thecart, ...props }) => {
             `}
               to={"/weekmenu"}
             >
-              <div className="items-center">weekmenu</div>
+              <div className="items-center">
+                weekmenu <span className="text-red-500">{thedates.length}</span>
+              </div>
             </Link>
           </>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };

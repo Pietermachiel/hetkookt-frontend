@@ -97,6 +97,13 @@ a {
 //   background-color: #f7f6f6;
 // }
 
+p,
+b,
+strong,
+a {
+  line-height: 1.6;
+}
+
 .h1,
 .h2,
 .h3,
@@ -129,6 +136,14 @@ h2 {
 }
 
 h3 {
+  font-size: 20px;
+  font-weight: 300;
+  @media screen and (min-width: 768px) {
+    font-size: 36px;
+  }
+}
+
+h4 {
   font-size: 20px;
   font-weight: 700;
   @media screen and (min-width: 768px) {

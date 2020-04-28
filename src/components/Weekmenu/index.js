@@ -33,7 +33,7 @@ const Weekmenu = ({ user, thecart, handleDelete, handleUpdate, ...props }) => {
             <span className="font-600 text-gray-600">
               {vandaag(0)} {dedatum(0)} april
             </span>
-            en de zeven daaropvolgende dagen. <br />
+            &nbsp; en de zeven daaropvolgende dagen. <br />
             <br />
             Zoek een recept en zet op het weekmenu.
           </p>

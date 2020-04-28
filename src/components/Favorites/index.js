@@ -130,7 +130,7 @@ const Favorites = ({
                 >
                   <div className={`min-h-full70 p-15`}>
                     <Link to={`/recipe/${slugify(m.title)}`}>
-                      <h3 className={`break-words mb-15`}>{m.title}</h3>
+                      <h4 className={`break-words mb-15`}>{m.title}</h4>
                     </Link>{" "}
                     <ul className="mb-12">
                       {m.basics.map((b, id) => (

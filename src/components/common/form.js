@@ -7,7 +7,7 @@ import Select from "./select";
 class Form extends Component {
   state = {
     data: {},
-    errors: {}
+    errors: {},
   };
 
   validate = () => {
@@ -27,7 +27,7 @@ class Form extends Component {
     return error ? error.details[0].message : null;
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
 
     const errors = this.validate();
@@ -49,17 +49,17 @@ class Form extends Component {
     this.setState({ data: newdata });
   };
 
-  handleTagsChange = tid => ({ currentTarget: input }) => {
-    // const errors = { ...this.state.errors };
-    // const errorMessage = this.validateProperty(input);
-    // if (errorMessage) errors[input.name] = errorMessage;
-    // else delete errors[input.name];
+  // handleTagsChange = (tid) => ({ currentTarget: input }) => {
+  //   const errors = { ...this.state.errors };
+  //   const errorMessage = this.validateProperty(input);
+  //   if (errorMessage) errors[input.name] = errorMessage;
+  //   else delete errors[input.name];
 
-    const data = { ...this.state.data };
-    const tag = data.tags.find(t => t._id === tid);
-    tag[input.name] = input.value;
-    this.setState(prevState => ({ ...prevState, data: data }));
-  };
+  //   const data = { ...this.state.data };
+  //   const tag = data.tags.find((t) => t._id === tid);
+  //   tag[input.name] = input.value;
+  //   this.setState((prevState) => ({ ...prevState, data: data }));
+  // };
 
   renderButton(label) {
     return (
@@ -101,19 +101,19 @@ class Form extends Component {
     );
   }
 
-  renderNumber(name, label, type = "text") {
-    const { data, errors } = this.state;
-    return (
-      <InputNumber
-        type={type}
-        name={name}
-        value={data[name]}
-        label={label}
-        onChange={this.handleChange}
-        error={errors[name]}
-      />
-    );
-  }
+  // renderNumber(name, label, type = "text") {
+  //   const { data, errors } = this.state;
+  //   return (
+  //     <InputNumber
+  //       type={type}
+  //       name={name}
+  //       value={data[name]}
+  //       label={label}
+  //       onChange={this.handleChange}
+  //       error={errors[name]}
+  //     />
+  //   );
+  // }
 }
 
 export default Form;

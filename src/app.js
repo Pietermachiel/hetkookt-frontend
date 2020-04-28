@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
-// import { AnimatedSwitch } from "react-router-transition";
 import LoginForm from "./components/loginForm";
 import RegisterForm from "./components/registerForm";
 import inschrijven from "./components/inschrijven";
@@ -9,7 +8,6 @@ import logout from "./components/logout";
 import Test from "./components/Test";
 import Home from "./components/Home";
 import RecipesApi from "./components/RecipesApi";
-// import RecipeForm from "./components/RecipesApi/recipeForm_hooks";
 import Recipe from "./components/Recipe";
 import Sorts from "./components/Sorts";
 import Categories from "./components/Categories";
@@ -22,14 +20,8 @@ import Footer from "./components/Footer";
 import auth from "./services/authService";
 import ProtectedRoute from "./components/common/protectedRoute";
 import axios from "axios";
-import { slugify } from "./components/common/common";
 import _ from "lodash";
 import { apiUrl } from "./config.json";
-
-// http://maisano.github.io/react-router-transition/
-
-// const API = "http://localhost:3900/api";
-// const API = "http://localhost:5000/api";
 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
@@ -38,6 +30,7 @@ const App = () => {
   const [dishes, setDishes] = useState([]);
   const [user, setUser] = useState([]);
   const [me, setMe] = useState([]);
+  // const [placeholder, setPlaceholder] = useState([]);
 
   // console.log("recipes");
   // console.log(recipes);
@@ -61,6 +54,27 @@ const App = () => {
     }
     getData();
   }, []);
+
+  // useEffect(() => {
+  //   async function getData() {
+  //     const res = await axios.get(`https://jsonplaceholder.typicode.com/users`);
+  //     const placeholder = await res.data;
+  //     setPlaceholder(placeholder);
+  //   }
+  //   getData();
+  // }, []);
+
+  // console.log("placeholder");
+  // console.log(placeholder);
+
+  // useEffect(() => {
+  //   async function getData() {
+  //     const res = await axios.get(`/recipes.json`);
+  //     const recipes = await res.data;
+  //     setRecipes(recipes);
+  //   }
+  //   getData();
+  // }, []);
 
   useEffect(() => {
     async function getData() {

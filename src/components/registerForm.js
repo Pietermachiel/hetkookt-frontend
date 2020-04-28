@@ -35,29 +35,32 @@ class RegisterForm extends Form {
   render() {
     return (
       <div className="container-x">
-        <div id="checkoutBox" className="login-box">
+        <div id="checkoutBox" className="login-box mt-24">
           <div className="login-box__inner">
-            <p className="font-600">Inschrijven</p>
-            <p className="text-24 mb-18">
+            <h3 className="">
+              Schrijf je in bij
+              <span className="font-500">
+                &nbsp;het<span className="font-700">kookt</span>.
+              </span>
+            </h3>
+            <br />
+            <p className="text-24 mb-18 leading-snug">
               Maak een account aan voor een weekmenu en een kookschrift met
               persoonlijke notities.
             </p>
             <p className="link-inschrijven">
-              Heb je al een account, log dan gewoon in.&nbsp;
+              Heb je al een account?&nbsp;
               <NavLink to="/login">
-                <span>Inloggen &gt;</span>
+                <span>login &gt;</span>
               </NavLink>
             </p>
             {/* <h2>inschrijven</h2> */}
-            <h4 className="font-600">Nieuw bij hetKookt?</h4>
+            <h4 className="font-600">Nieuw bij hetkookt?</h4>
             <p>
-              Vul eerst onderstaande gegevens in en klik op 'verzend' <br />
-              We sturen je dan direct een email terug, zodat we zeker weten dat
-              jij de eigenaar bent... <br />
-              Als je de inschrijving bevestigt, kan je daarna inloggen op je
-              account.
+              Na verzending van je gegevens sturen we je een email ter
+              verificatie. Je kunt je inschrijving te allen tijde intrekken.
             </p>
-            <p className="text-indigo-700 font-600">disclaimer</p>
+            {/* <p className="text-indigo-700 font-600">disclaimer</p> */}
             <form
               className="login-form px-10 sm:px-0"
               onSubmit={this.handleSubmit}

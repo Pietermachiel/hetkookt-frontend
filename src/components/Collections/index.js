@@ -92,7 +92,7 @@ const Collections = ({ thecart, sorts, recipes, ...props }) => {
               >
                 <div className={`min-h-full70 p-15`}>
                   <Link to={`/recipe/${slugify(recipe.title)}`}>
-                    <h3 className={`break-words mb-15`}>{recipe.title}</h3>
+                    <h4 className={`break-words mb-15`}>{recipe.title}</h4>
                   </Link>
                   <ul className="mb-12">
                     {recipe.basics.map((b, id) => (
