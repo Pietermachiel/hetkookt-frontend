@@ -1,8 +1,6 @@
 import http from "./httpService";
 import { apiUrl } from "../config.json";
 
-// const apiUrl = "http://localhost:3900/api";
-
 const apiEndpoint = apiUrl + "/users";
 
 function userUrl(id) {
