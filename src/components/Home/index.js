@@ -33,7 +33,7 @@ const Home = ({
     );
 
   // console.log(today);
-  console.log(recipes);
+  // console.log(recipes);
   // console.log(dishes);
   // console.log(kalender);
   return (

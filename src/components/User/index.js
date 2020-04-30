@@ -21,10 +21,10 @@ const User = ({ me, user, thecart, ...props }) => {
     const item = thecart.find((c) => (c.date ? c.date.includes(k.year) : null));
     return item;
   });
-  console.log("props");
-  console.log(props);
-  console.log("user");
-  console.log(user);
+  // console.log("props");
+  // console.log(props);
+  // console.log("user");
+  // console.log(user);
 
   return (
     <div className="container-x">

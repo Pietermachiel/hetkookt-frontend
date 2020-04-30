@@ -127,8 +127,8 @@ const App = () => {
 
   function doSave(recipe, dedate) {
     // if (me.recipes.find(r => r._id === recipe._id)) return;
-    console.log("recipe");
-    console.log(recipe);
+    // console.log("recipe");
+    // console.log(recipe);
     // if (recipe.date.includes(dedate)) return;
     const newrecipe = me.recipes.find((r) => r._id === recipe._id);
     me.recipes = me.recipes.filter((r) => r._id !== recipe._id);
@@ -191,10 +191,10 @@ const App = () => {
   }
 
   function handleDeleteFavorite(id) {
-    console.log("handleDeleteFavorite");
+    // console.log("handleDeleteFavorite");
     var allMeRecipes = me.recipes.map((r) => r);
-    console.log("allMeRecipes1");
-    console.log(allMeRecipes);
+    // console.log("allMeRecipes1");
+    // console.log(allMeRecipes);
     var myRecipe = allMeRecipes.find((item) => item._id === id);
     myRecipe.favorite = !myRecipe.favorite;
     // myRecipe.isOpen = !myRecipe.isOpen;
@@ -202,8 +202,8 @@ const App = () => {
       myRecipe.date === null
         ? allMeRecipes.filter((item) => item._id !== id)
         : [];
-    console.log("allMeRecipes2");
-    console.log(allMeRecipes);
+    // console.log("allMeRecipes2");
+    // console.log(allMeRecipes);
     setMe({
       _id: me._id,
       name: me.name,
@@ -217,28 +217,28 @@ const App = () => {
   function handleDelete(id, year) {
     var allMeRecipes = me.recipes.map((r) => r);
     var myRecipe = allMeRecipes.filter((item) => item._id === id);
-    console.log("myRecipe.date");
-    console.log(myRecipe[0].date, year);
-    console.log("filter");
+    // console.log("myRecipe.date");
+    // console.log(myRecipe[0].date, year);
+    // console.log("filter");
     myRecipe[0].date = myRecipe[0].date.filter((d) => d !== year);
     // myRecipe[0] = myRecipe[0].date.splice(myRecipe[0].date.indexOf(year), 1);
-    console.log("myRecipe.date2");
-    console.log(myRecipe[0], year);
+    // console.log("myRecipe.date2");
+    // console.log(myRecipe[0], year);
     // allMeRecipes = allMeRecipes.filter(item => item._id !== id);
     // console.log("allMeRecipes");
     // console.log(allMeRecipes, year);
 
     // myRecipe[0].isOpen = !myRecipe[0].isOpen;
-    console.log("allMeRecipes");
-    console.log(allMeRecipes);
+    // console.log("allMeRecipes");
+    // console.log(allMeRecipes);
 
     allMeRecipes =
       myRecipe[0].date.length === 0 && myRecipe[0].favorite === false
         ? allMeRecipes.filter((item) => item._id !== id)
         : allMeRecipes;
 
-    console.log("allMeRecipes2");
-    console.log(allMeRecipes);
+    // console.log("allMeRecipes2");
+    // console.log(allMeRecipes);
 
     setMe({
       _id: me._id,
@@ -265,11 +265,11 @@ const App = () => {
   function handleUpdate(id, year) {
     var allMeRecipes = me.recipes.map((r) => r);
     var myRecipe = allMeRecipes.filter((item) => item._id === id);
-    console.log("myRecipe");
-    console.log(myRecipe[0].date);
+    // console.log("myRecipe");
+    // console.log(myRecipe[0].date);
     const find = myRecipe[0].date.find((d) => d === year);
-    console.log("find");
-    console.log(find);
+    // console.log("find");
+    // console.log(find);
     myRecipe[0].isOpen = !myRecipe[0].isOpen;
     setMe({
       _id: me._id,

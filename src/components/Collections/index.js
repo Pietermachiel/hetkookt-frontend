@@ -20,10 +20,10 @@ const Collections = ({ thecart, sorts, recipes, ...props }) => {
   //   getData();
   // }, [API]);
 
-  console.log(props);
-  console.log(dishes);
-  console.log("recipes");
-  console.log(recipes);
+  // console.log(props);
+  // console.log(dishes);
+  // console.log("recipes");
+  // console.log(recipes);
 
   const therecipes = recipes.filter(
     (recipe) => recipe.dish === props.match.params.id

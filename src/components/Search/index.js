@@ -22,14 +22,14 @@ const Search = ({ recipes, isOn, ...props }) => {
   };
 
   const handleIsOpen = () => {
-    console.log(isOpen);
+    // console.log(isOpen);
     setIsOpen(!isOpen);
-    console.log(isOpen);
+    // console.log(isOpen);
   };
 
   const handleClick = (e) => {
-    console.log("handleClick");
-    console.log(e);
+    // console.log("handleClick");
+    // console.log(e);
     setSearchTerm(e);
     // setSearchResults([]);
   };
