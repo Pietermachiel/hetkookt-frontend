@@ -181,3 +181,9 @@ input {
 .tracking-015 {
   letter-spacing: 0.15em;
 }
+
+.hetkookt_logo {
+  background: linear-gradient(to right, #b30104 0%, red 50%, #ff6a00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

@@ -75,9 +75,9 @@ const Nav = ({ user, thecart, sorts, ...props }) => {
                 src="/img/icons/koksmuts.png"
                 alt=""
               /> */}
-              <div className="block font-700 text-rood tracking-wide text-36 pl-5">
+              <div className="hetkookt_logo block font-700 text-rood tracking-wide text-36 pl-5">
                 <span className="font-500 text-32 pr-1">het</span>
-                kookt~
+                kookt
               </div>
             </div>
           </Link>
