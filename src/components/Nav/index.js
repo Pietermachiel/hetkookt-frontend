@@ -65,7 +65,7 @@ const Nav = ({ user, thecart, sorts, ...props }) => {
       </Helmet>
       <div className="w-full bg-white md:px-20 pt-10 mb-15">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-          <Link className="" to="/">
+          <Link aria-label="logo hetkookt" className="" to="/">
             <div
               className="flex items-center pl-15 md:pl-0"
               onClick={isOn ? handleMouseDown : null}
@@ -84,7 +84,7 @@ const Nav = ({ user, thecart, sorts, ...props }) => {
           <Search recipes={recipes} />
           {!user && (
             <div className="absolute right-0 md:relative md:mr-36">
-              <NavLink to="/login">
+              <NavLink aria-label="login" to="/login">
                 <p className="mt-15 mr-60 md:mt-18 md:mr-0 font-400">login</p>
               </NavLink>
             </div>
@@ -130,6 +130,7 @@ const Nav = ({ user, thecart, sorts, ...props }) => {
         </div>
         <div className="hamburger-box">
           <button
+            aria-label="hamburger menu"
             onClick={handleMouseDown}
             className={isOn ? "hamburger navbox--menu-open" : "hamburger"}
             aria-label="Open Menu"

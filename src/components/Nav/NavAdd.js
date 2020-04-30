@@ -32,14 +32,14 @@ const NavAdd = ({
       >
         {/* <NavWeekmenu props={props} thecart={thecart} user={user} /> */}
         {/* <p className="maandjaar">loguit</p> */}
-        <NavLink className="text-white " to="/">
+        <NavLink aria-label="to home" className="text-white " to="/">
           <div onClick={handleIsOpen} className="flex items-center mb-18">
             <img className="w-25" src="/img/feather/home.svg" alt="" />
             <span className="pl-12 hover:text-black">home</span>
             {/* <span className="pr-5">{props.user.name}</span> */}
           </div>
         </NavLink>
-        <NavLink className="" to="/weekmenu">
+        <NavLink aria-label="to weekmenu" className="" to="/weekmenu">
           <div onClick={handleIsOpen} className="flex items-center mb-18 mt-0">
             <img className="w-25" src="/img/feather/list.svg" alt="" />
             <span className="pl-12 hover:text-black">
@@ -49,7 +49,7 @@ const NavAdd = ({
             {/* <span className="pr-5">{props.user.name}</span> */}
           </div>
         </NavLink>
-        <NavLink className="" to="/favorites">
+        <NavLink aria-label="to favorites" className="" to="/favorites">
           <div onClick={handleIsOpen} className="flex items-center mb-18">
             <img className="w-25" src="/img/feather/bookmark.svg" alt="" />
             <span className="pl-12 hover:text-black">
@@ -58,7 +58,7 @@ const NavAdd = ({
             </span>
           </div>
         </NavLink>
-        <NavLink className="" to="/books">
+        <NavLink aria-label="to books" className="" to="/books">
           <div onClick={handleIsOpen} className="flex items-center mb-18">
             <img className="w-25" src="/img/feather/book.svg" alt="" />
             <span className="pl-12 hover:text-black">
@@ -67,7 +67,7 @@ const NavAdd = ({
           </div>
         </NavLink>
         {user && (
-          <NavLink className="" to="/user">
+          <NavLink aria-label="to user" className="" to="/user">
             <div onClick={handleIsOpen} className="flex items-center mb-18">
               <img className="w-25" src="/img/feather/user.svg" alt="" />
               <span className="pl-12 hover:text-black">{user.name}</span>
@@ -75,7 +75,7 @@ const NavAdd = ({
           </NavLink>
         )}
         {!user && (
-          <NavLink className="" to="/user">
+          <NavLink aria-label="to user" className="" to="/user">
             <div onClick={handleIsOpen} className="flex items-center mb-18">
               <img className="w-25" src="/img/feather/user.svg" alt="" />
               <span className="pl-12 hover:text-black">gebruikersprofiel</span>
@@ -83,7 +83,7 @@ const NavAdd = ({
           </NavLink>
         )}
         {user && (
-          <NavLink className="" to="/logout">
+          <NavLink aria-label="to logout" className="" to="/logout">
             <div onClick={handleIsOpen} className="flex items-center">
               <img className="w-25" src="/img/feather/logout.svg" alt="" />
               <span className="pl-12 text-indigo-700 font-500 hover:text-black">
@@ -93,7 +93,7 @@ const NavAdd = ({
           </NavLink>
         )}
         {!user && (
-          <NavLink className="" to="/login">
+          <NavLink aria-label="to logout" className="" to="/login">
             <div onClick={handleIsOpen} className="flex items-center">
               <img className="w-25" src="/img/feather/logout.svg" alt="" />
               <span className="pl-12 text-indigo-700 font-500 hover:text-black">

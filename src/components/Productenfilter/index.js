@@ -9,7 +9,7 @@ const Productenfilter = () => {
         // console.log(p);
         return (
           <div key={xid}>
-            <Link to={`/categories/${p}`}>
+            <Link aria-label={`categories/${p}`} to={`/categories/${p}`}>
               <p className={" " + p}>{p}</p>
             </Link>
           </div>

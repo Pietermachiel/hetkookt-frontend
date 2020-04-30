@@ -53,13 +53,13 @@ const Home = ({
             Schrijf je in bij <span className="font-700">hetkookt</span> en maak
             een eigen kookschrift.
           </p>
-          <NavLink to="/register">
+          <NavLink aria-label="register" to="/register">
             <p className="text-indigo-700 font-500 mb-36">inschrijven ></p>
           </NavLink>
         </div>
       ) : (
         <p className="text-center md:text-left">
-          <NavLink to="/user">
+          <NavLink aria-label="user" to="/user">
             <span className="text-indigo-700 font-600">{user.name}</span>
           </NavLink>
         </p>
@@ -71,7 +71,7 @@ const Home = ({
           <Fragment key={xid}>
             <h1 className="mb-10 sm:ml-10 md:ml-0">
               {d}
-              <Link to={`/collections/${d}`}>
+              <Link aria-label={`collections/${d}`} to={`/collections/${d}`}>
                 {therecipes.length > 4 ? (
                   <span className="text-19 font-300">&nbsp; > meer {d}</span>
                 ) : null}

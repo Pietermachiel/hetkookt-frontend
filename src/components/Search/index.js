@@ -43,7 +43,7 @@ const Search = ({ recipes, isOn, ...props }) => {
             className={`border border-gray-300 transition-colors duration-100 ease-in-out bg-white sm:shadow-md focus:outline-0 border border-transparent placeholder-gray-600 rounded-lg py-8 pr-16 pl-36 w-full appearance-none leading-normal ds-input text-16`}
             type="text"
             placeholder="Zoek recept..."
-            label="Search Country"
+            label="Search recipe"
             icon="search"
             value={searchTerm}
             onChange={handleChange}
