@@ -21,7 +21,7 @@ import auth from "./services/authService";
 import ProtectedRoute from "./components/common/protectedRoute";
 import axios from "axios";
 import _ from "lodash";
-import { apiUrl } from "./config.json";
+import { apiUrl, recipeUrl } from "./config.json";
 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
@@ -49,7 +49,7 @@ const App = () => {
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch(`https://hetkookt.roozen.nl/api/recipes.json`);
+      const res = await fetch(`${recipeUrl}/recipes.json`);
       res.json().then((res) => setRecipes(res));
     }
     getData();
@@ -78,7 +78,7 @@ const App = () => {
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch(`https://hetkookt.roozen.nl/api/sorts.json`);
+      const res = await fetch(`${recipeUrl}/sorts.json`);
       res.json().then((res) => setSorts(res));
     }
     getData();
@@ -86,7 +86,7 @@ const App = () => {
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch(`https://hetkookt.roozen.nl/api/categories.json`);
+      const res = await fetch(`${recipeUrl}/categories.json`);
       res.json().then((res) => setCategories(res));
     }
     getData();
@@ -94,7 +94,7 @@ const App = () => {
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch(`https://hetkookt.roozen.nl/api/dishes.json`);
+      const res = await fetch(`${recipeUrl}/dishes.json`);
       res.json().then((res) => setDishes(res));
     }
     getData();

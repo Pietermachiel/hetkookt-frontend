@@ -1,3 +1,4 @@
 {
-  "apiUrl": "https://hetkookt.herokuapp.com/api"
+  "apiUrl": "https://hetkookt.herokuapp.com/api",
+  "recipeUrl": "https://hetkooktapi.netlify.app/api"
 }

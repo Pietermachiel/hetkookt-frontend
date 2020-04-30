@@ -48,14 +48,15 @@ const Home = ({
         /> */}
       </h1>
       {!user ? (
-        <p className="text-center md:text-left">
+        <div className="">
+          <p className="text-center md:text-left mb-0">
+            Schrijf je in bij <span className="font-700">hetkookt</span> en maak
+            een eigen kookschrift.
+          </p>
           <NavLink to="/register">
-            <span className="text-indigo-700 font-500">
-              Schrijf je in bij <span className="font-700">hetkookt~</span> en
-              maak een eigen kookschrift &gt;
-            </span>
+            <p className="text-indigo-700 font-500 mb-36">inschrijven ></p>
           </NavLink>
-        </p>
+        </div>
       ) : (
         <p className="text-center md:text-left">
           <NavLink to="/user">
