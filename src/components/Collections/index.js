@@ -4,7 +4,7 @@ import useCurrentWidth from "../common/use-current-width";
 import useCurrentHeight from "../common/use-current-height";
 import useCurrentScroll from "../common/use-current-scroll";
 import { slugify, kalender } from "../common/common";
-import Productenfilter from "../Productenfilter/index";
+import CategoriesFilter from "../CategoriesFilter/index";
 import dishes from "../../data/dishes.json";
 
 const Collections = ({ thecart, sorts, recipes, ...props }) => {
@@ -45,8 +45,8 @@ const Collections = ({ thecart, sorts, recipes, ...props }) => {
 
   return (
     <>
-      {/* <div className="container-productenfilter">
-        <Productenfilter sorts={sorts} />
+      {/* <div className="container-categoriesFilter">
+        <CategoriesFilter sorts={sorts} />
       </div> */}
       <div className="container-x">
         <h1 className={`pt-15 text-42 pb-18`}>
