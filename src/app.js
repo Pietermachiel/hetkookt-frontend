@@ -327,6 +327,7 @@ const App = () => {
                 <Recipe
                   user={user}
                   categories={categories}
+                  sorts={sorts}
                   thecart={thecart}
                   {...props}
                   doSave={doSave}

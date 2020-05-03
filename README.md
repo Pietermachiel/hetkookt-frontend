@@ -9,12 +9,14 @@ Material is a design system – backed by open-source code – that helps teams 
 
 config.json
 {
-"apiUrl": "https://hetkookt.herokuapp.com/api"
+"apiUrl": "https://hetkookt.herokuapp.com/api",
+"recipeUrl": "https://hetkooktapi.netlify.app/api"
 }
 
 ## local
 
 config.json
 {
-"apiUrl": "http://localhost:3900/api"
+"apiUrl": "http://localhost:3900/api",
+"recipeUrl": "http://localhost:3000/api"
 }

@@ -4,7 +4,7 @@ import useCurrentWidth from "../common/use-current-width";
 import useCurrentHeight from "../common/use-current-height";
 import useCurrentScroll from "../common/use-current-scroll";
 import { slugify, kalender } from "../common/common";
-import Productenfilter from "../Productenfilter/index";
+import Productenfilter from "../CategoriesFilter/index";
 
 const Categories = ({ thecart, sorts, recipes, ...props }) => {
   // console.log(sorts);

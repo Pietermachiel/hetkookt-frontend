@@ -5,7 +5,7 @@ import useCurrentHeight from "../common/use-current-height";
 import useCurrentScroll from "../common/use-current-scroll";
 import { slugify, kalender } from "../common/common";
 import Search from "../Search";
-import Productenfilter from "../Productenfilter";
+import CategoriesFilter from "../CategoriesFilter";
 // import dishes from "../../data/dishes.json";
 
 const Home = ({
@@ -38,7 +38,7 @@ const Home = ({
   // console.log(kalender);
   return (
     <div className="container-x">
-      <Productenfilter sorts={sorts} />
+      <CategoriesFilter sorts={sorts} />
       <h1 className="text-center md:text-left text-4xl font-bold">
         watkookt<span className="text-36 pl-2">?</span>
         {/* <img

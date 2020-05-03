@@ -1,16 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import products from "../../data/products.json";
+import categories from "../../data/categories.json";
 
-const Productenfilter = () => {
+const CategoriesFilter = () => {
   return (
-    <div className="producten-filter">
-      {products.map((p, xid) => {
+    <div className="categories-filter">
+      {categories.map((p, xid) => {
         // console.log(p);
         return (
           <div key={xid}>
             <Link aria-label={`categories/${p}`} to={`/categories/${p}`}>
-              <p className={" " + p}>{p}</p>
+              <p className={p}>{p}</p>
             </Link>
           </div>
         );
@@ -19,4 +19,4 @@ const Productenfilter = () => {
   );
 };
 
-export default Productenfilter;
+export default CategoriesFilter;
