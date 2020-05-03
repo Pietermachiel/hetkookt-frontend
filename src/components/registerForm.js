@@ -44,10 +44,10 @@ class RegisterForm extends Form {
               </span>
             </h3>
             <br />
-            <p className="text-24 mb-18 leading-snug">
+            {/* <p className="text-24 mb-18 leading-snug">
               Maak een account aan voor een weekmenu en een kookschrift met
               persoonlijke notities.
-            </p>
+            </p> */}
             <p className="link-inschrijven">
               Heb je al een account?&nbsp;
               <NavLink to="/login">

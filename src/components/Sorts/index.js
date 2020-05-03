@@ -4,7 +4,7 @@ import useCurrentWidth from "../common/use-current-width";
 import useCurrentHeight from "../common/use-current-height";
 import useCurrentScroll from "../common/use-current-scroll";
 import { slugify, kalender } from "../common/common";
-import Productenfilter from "../Productenfilter/index";
+import Productenfilter from "../CategoriesFilter/index";
 
 const Sorts = ({ thecart, recipes, sorts, categories, ...props }) => {
   // console.log(props);
@@ -45,7 +45,7 @@ const Sorts = ({ thecart, recipes, sorts, categories, ...props }) => {
           {props.match.params.id}
           <Link to={`/categories/${category.category}`}>
             <span className="ml-18 text-19 text-black font-300">
-              > meer {category.category}
+              > {category.category}
             </span>
           </Link>
         </h1>

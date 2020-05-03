@@ -9,8 +9,8 @@ const Favorites = ({
   thecart,
 }) => {
   if (thecart === undefined) thecart = [];
-  console.log("thecart");
-  console.log(thecart.length);
+  // console.log("thecart");
+  // console.log(thecart.length);
 
   return (
     <Fragment>
