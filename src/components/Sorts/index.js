@@ -16,24 +16,27 @@ const Sorts = ({ thecart, recipes, sorts, categories, ...props }) => {
   const box = 272;
   const boxheight = height + scroll;
 
-  // console.log(categories);
-  // console.log(sorts);
+  console.log(categories);
+  // console.log(recipes);
+  console.log(props.match.params.id);
 
-  const category = categories.find((s) => s.title === props.match.params.id);
+  const category = categories.find(
+    (s) => s.title.replace(" ", "-") === props.match.params.id
+  );
   if (category === undefined) return [];
   const catcolor = category.category;
 
   const recipeItem = recipes.filter((element) => {
     let fresh = element.fresh.some(
-      ({ item }) => item === props.match.params.id
+      ({ item }) => item.replace(" ", "-") === props.match.params.id
     );
     return fresh;
   });
-  // console.log("recipeItem");
-  // console.log(recipeItem);
+  console.log("recipeItem");
+  console.log(recipeItem);
 
-  // console.log("category");
-  // console.log(category);
+  console.log("category");
+  console.log(category);
 
   return (
     <>
@@ -42,7 +45,7 @@ const Sorts = ({ thecart, recipes, sorts, categories, ...props }) => {
       </div> */}
       <div className="container-x">
         <h1 className={`pt-15 text-42 pb-18 ${catcolor}`}>
-          {props.match.params.id}
+          {category.title}
           <Link to={`/categories/${category.category}`}>
             <span className="ml-18 text-19 text-black font-300">
               > {category.category}
