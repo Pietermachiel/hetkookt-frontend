@@ -7,7 +7,7 @@ import { slugify, kalender } from "../common/common";
 import Productenfilter from "../CategoriesFilter/index";
 
 const Categories = ({ thecart, sorts, recipes, ...props }) => {
-  // console.log(sorts);
+  console.log(sorts);
 
   const width = useCurrentWidth();
   const height = useCurrentHeight();
