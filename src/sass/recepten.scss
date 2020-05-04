@@ -1,7 +1,5 @@
 .therecipe-dish__hover:hover {
   color: red;
-  // border-bottom: 1px solid red;
-  // padding-bottom: 3px;
 }
 
 .kalender-index {
@@ -138,15 +136,6 @@ svg.recipe-corner {
   margin-right: -100px;
   transition: margin-right 0.2s ease-out;
 }
-
-// .recipe-footer__box-add {
-//   height: 100%;
-//   // padding: 15px;
-//   position: absolute;
-//   right: 0;
-//   margin-right: -100px;
-//   transition: margin-right 0.2s ease-out;
-// }
 .day-flag {
   position: absolute;
   top: -18px;
@@ -303,12 +292,6 @@ button.btn-menu {
     // width: 70%;
   }
 }
-
-// .recepten-aside {
-//   width: calc(30%);
-//   background-color: mistyrose;
-//   margin-top: 15px;
-// }
 
 .ingredienten {
   margin-bottom: 18px;
