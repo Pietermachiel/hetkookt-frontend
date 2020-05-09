@@ -1,22 +1,8 @@
-import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import NavWeekmenu from "./NavWeekmenu";
-import {
-  dedag,
-  hetjaar,
-  slugify,
-  kalender,
-  theweek,
-} from "../common/common.js";
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { kalender } from "../common/common.js";
 
-const NavAdd = ({
-  user,
-  favorites,
-  handleIsOpen,
-  isOpen,
-  thecart,
-  ...props
-}) => {
+const NavAdd = ({ user, favorites, handleIsOpen, isOpen, thecart }) => {
   const thedates = kalender.filter((k) => {
     const item = thecart.find((c) => (c.date ? c.date.includes(k.year) : null));
     return item;

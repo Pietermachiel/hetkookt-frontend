@@ -7,7 +7,6 @@ import Verify from "./components/verify";
 import logout from "./components/logout";
 import Test from "./components/Test";
 import Home from "./components/Home";
-import RecipesApi from "./components/RecipesApi";
 import Recipe from "./components/Recipe";
 import Sorts from "./components/Sorts";
 import Categories from "./components/Categories";
@@ -20,7 +19,7 @@ import Footer from "./components/Footer";
 import auth from "./services/authService";
 import ProtectedRoute from "./components/common/protectedRoute";
 import axios from "axios";
-import _ from "lodash";
+// import _ from "lodash";
 import { apiUrl, recipeUrl } from "./config.json";
 
 const App = () => {
@@ -130,7 +129,7 @@ const App = () => {
     // console.log("recipe");
     // console.log(recipe);
     // if (recipe.date.includes(dedate)) return;
-    const newrecipe = me.recipes.find((r) => r._id === recipe._id);
+    // const newrecipe = me.recipes.find((r) => r._id === recipe._id);
     me.recipes = me.recipes.filter((r) => r._id !== recipe._id);
     setMe({
       _id: me._id,
@@ -267,7 +266,7 @@ const App = () => {
     var myRecipe = allMeRecipes.filter((item) => item._id === id);
     // console.log("myRecipe");
     // console.log(myRecipe[0].date);
-    const find = myRecipe[0].date.find((d) => d === year);
+    // const find = myRecipe[0].date.find((d) => d === year);
     // console.log("find");
     // console.log(find);
     myRecipe[0].isOpen = !myRecipe[0].isOpen;
@@ -285,14 +284,6 @@ const App = () => {
         <header>
           <Nav sorts={sorts} thecart={thecart} user={user} recipes={recipes} />
         </header>
-        {/* <Search recipes={recipes} /> */}
-        {/* <div className="container-switch"> */}
-        {/* <AnimatedSwitch
-        atEnter={{ opacity: 0 }}
-        atLeave={{ opacity: 0 }}
-        atActive={{ opacity: 1 }}
-        className="switch-wrapper"
-      > */}
         <Switch>
           <Route
             exact
@@ -309,12 +300,6 @@ const App = () => {
                 // handleOpen={handleOpen}
                 thecart={thecart}
               />
-            )}
-          />
-          <Route
-            path="/recipetable"
-            render={(props) => (
-              <RecipesApi {...props} recipes={recipes} user={user} />
             )}
           />
           <Route
@@ -336,15 +321,6 @@ const App = () => {
               );
             }}
           />
-          {/* <Route
-            path="/recipeform/:id"
-            render={props => {
-              const recipe = recipes.find(
-                r => slugify(r.title) === props.match.params.id
-              );
-              return <RecipeForm {...recipe} {...props} recipes={recipes} />;
-            }}
-          /> */}
           <Route path="/login" component={LoginForm} />
           <Route path="/register" component={RegisterForm} />
           <Route path="/inschrijven" component={inschrijven} />

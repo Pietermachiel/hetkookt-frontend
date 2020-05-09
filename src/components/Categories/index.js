@@ -1,20 +1,10 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import useCurrentWidth from "../common/use-current-width";
-import useCurrentHeight from "../common/use-current-height";
-import useCurrentScroll from "../common/use-current-scroll";
-import { slugify, kalender } from "../common/common";
-import Productenfilter from "../CategoriesFilter/index";
+import { slugify } from "../common/common";
 
 const Categories = ({ thecart, sorts, recipes, ...props }) => {
-  console.log(sorts);
+  // console.log(sorts);
 
-  const width = useCurrentWidth();
-  const height = useCurrentHeight();
-  const scroll = useCurrentScroll();
-  const offset = 167;
-  const box = 272;
-  const boxheight = height + scroll;
   return (
     <>
       {/* <div className="">

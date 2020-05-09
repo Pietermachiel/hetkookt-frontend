@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link, NavLink, withRouter } from "react-router-dom";
 import Search from "../Search";
-import CategoriesFilter from "../CategoriesFilter";
-import useCurrentWidth from "../common/use-current-width";
-import { kalender } from "../common/common";
+// import CategoriesFilter from "../CategoriesFilter";
+// import useCurrentWidth from "../common/use-current-width";
+// import { kalender } from "../common/common";
 import NavAdd from "./NavAdd";
 
 const Nav = ({ user, thecart, sorts, ...props }) => {
   const [isOn, setIsOn] = useState(false);
   const [visible, setVisible] = useState(false);
-  const width = useCurrentWidth();
+  // const width = useCurrentWidth();
   const recipes = props.recipes;
-  const location = props.location.pathname;
+  // const location = props.location.pathname;
   const [isOpen, setIsOpen] = useState(false);
 
   const handleIsOpen = () => {

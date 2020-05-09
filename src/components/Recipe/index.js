@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import {
-  dedag,
-  hetjaar,
-  slugify,
-  kalender,
-  theweek,
-} from "../common/common.js";
+import { slugify, kalender } from "../common/common.js";
 import AddpanelWeekmenu from "./AddpanelWeekmenu.js";
 
 const Recipe = ({
@@ -59,16 +53,16 @@ const Recipe = ({
   const newrecipe = thecart.find((c) => c._id === therecipe._id);
   therecipe = newrecipe || therecipe;
 
-  // console.log("therecipe");
-  // console.log(therecipe);
+  console.log("therecipe");
+  console.log(therecipe);
 
   // console.log("categories");
   // console.log(categories);
 
-  const menu = kalender.filter((k) => {
-    const cart = thecart.find((c) => (c.date ? c.date.includes(k.year) : null));
-    return cart;
-  });
+  // const menu = kalender.filter((k) => {
+  //   const cart = thecart.find((c) => (c.date ? c.date.includes(k.year) : null));
+  //   return cart;
+  // });
 
   // console.log("menu");
   // console.log(menu);

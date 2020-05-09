@@ -6,7 +6,6 @@ import { slugify } from "../common/common";
 const Search = ({ recipes, isOn, ...props }) => {
   const [searchTerm, setSearchTerm] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const results = recipes.filter((recipe) => {
@@ -19,12 +18,6 @@ const Search = ({ recipes, isOn, ...props }) => {
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
-  };
-
-  const handleIsOpen = () => {
-    // console.log(isOpen);
-    setIsOpen(!isOpen);
-    // console.log(isOpen);
   };
 
   const handleClick = (e) => {

@@ -1,7 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import { apiUrl } from "../config.json";
-import axios from "axios";
+import React, { useEffect } from "react";
 import { verifyUser } from "../services/userService";
 
 const Verify = (props) => {

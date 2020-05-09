@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-// import today from "../common/today";
-import { vandaag, dedatum, kalender, slugify, theweek } from "../common/common";
+import { vandaag, dedatum, kalender, slugify } from "../common/common";
 import KalenderWeekmenu from "./KalenderWeekmenu";
 
 const Weekmenu = ({ user, thecart, handleDelete, handleUpdate, ...props }) => {

@@ -1,13 +1,8 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import { vandaag, kalender, slugify, theweek } from "../common/common";
+import { slugify } from "../common/common";
 
-const Favorites = ({
-  handleDeleteFavorite,
-  handleDelete,
-  handleUpdate,
-  thecart,
-}) => {
+const Favorites = ({ handleDeleteFavorite, thecart }) => {
   if (thecart === undefined) thecart = [];
   // console.log("thecart");
   // console.log(thecart.length);

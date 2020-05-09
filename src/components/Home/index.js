@@ -4,9 +4,7 @@ import useCurrentWidth from "../common/use-current-width";
 import useCurrentHeight from "../common/use-current-height";
 import useCurrentScroll from "../common/use-current-scroll";
 import { slugify, kalender } from "../common/common";
-import Search from "../Search";
 import CategoriesFilter from "../CategoriesFilter";
-// import dishes from "../../data/dishes.json";
 
 const Home = ({
   user,

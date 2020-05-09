@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import Joi from "joi-browser";
 import Form from "./common/form";
 import * as userService from "../services/userService";
-import auth from "../services/authService";
+// import auth from "../services/authService";
 
 class RegisterForm extends Form {
   state = {

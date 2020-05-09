@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { kalender, dedag, vandaag } from "../common/common";
+import { kalender, vandaag } from "../common/common";
 
 const KalenderWeekmenu = ({ thecart, ...props }) => {
   // console.log("KalenderWeekmenu");

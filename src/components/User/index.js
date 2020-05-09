@@ -1,8 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import auth from "../../services/authService";
 import { deleteUser } from "../../services/userService";
-import { kalender } from "../common/common.js";
 
 const User = ({ me, user, thecart, ...props }) => {
   function handleLogout() {
@@ -16,11 +14,6 @@ const User = ({ me, user, thecart, ...props }) => {
     window.location = "/";
   }
 
-  const favorites = thecart.filter((c) => c.favorite === true);
-  const thedates = kalender.filter((k) => {
-    const item = thecart.find((c) => (c.date ? c.date.includes(k.year) : null));
-    return item;
-  });
   // console.log("props");
   // console.log(props);
   // console.log("user");

@@ -1,11 +1,8 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import useCurrentWidth from "../common/use-current-width";
 import useCurrentHeight from "../common/use-current-height";
-import useCurrentScroll from "../common/use-current-scroll";
 import { slugify, kalender } from "../common/common";
-import CategoriesFilter from "../CategoriesFilter/index";
-import dishes from "../../data/dishes.json";
 
 const Collections = ({ thecart, sorts, recipes, ...props }) => {
   // const [collection, setCollection] = useState([]);

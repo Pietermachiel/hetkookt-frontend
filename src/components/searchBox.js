@@ -8,7 +8,7 @@ const SearchBox = ({ value, onChange }) => {
       className="form-zoekrecept__input"
       placeholder="Search..."
       value={value}
-      onChange={e => onChange(e.currentTarget.value)}
+      onChange={(e) => onChange(e.currentTarget.value)}
     />
   );
 };
