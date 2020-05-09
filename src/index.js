@@ -21,4 +21,4 @@ const app = (
 
 ReactDOM.render(app, document.getElementById("app"));
 
-ServiceWorker.register();
+ServiceWorker.unregister();

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { slugify, kalender } from "../common/common.js";
 import AddpanelWeekmenu from "./AddpanelWeekmenu.js";
+import { recipeUrl } from "../../config.json";
 
 const Recipe = ({
   user,
@@ -16,8 +17,10 @@ const Recipe = ({
   // const [isFavorite, setIsFavorite] = useState(false);
 
   const API = props.match.url;
-  // console.log("props.match.url");
-  // console.log(props.match.url);
+  console.log("props.match.url");
+  console.log(props.match.url);
+  console.log("therecipe");
+  console.log(therecipe);
 
   const handleIsOpen = () => {
     // console.log("isopen?");
@@ -32,7 +35,8 @@ const Recipe = ({
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch(`https://hetkookt.roozen.nl/api${API}.json`);
+      // const res = await fetch(`${API}.json`);
+      const res = await fetch(`${recipeUrl}${API}.json`);
       // const res = await fetch(
       //   `https://pietermachiel.github.io/hetkookt-api/api${API}.json`
       // );
