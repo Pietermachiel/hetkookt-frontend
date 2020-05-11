@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import useCurrentWidth from "../common/use-current-width";
 import useCurrentHeight from "../common/use-current-height";
+import useCurrentScroll from "../common/use-current-scroll";
 import { slugify, kalender } from "../common/common";
 
 const Collections = ({ thecart, sorts, recipes, ...props }) => {
@@ -28,8 +29,8 @@ const Collections = ({ thecart, sorts, recipes, ...props }) => {
 
   const width = useCurrentWidth();
   const height = useCurrentHeight();
-  const scroll = 0;
-  const offset = 172;
+  const scroll = useCurrentScroll();
+  const offset = -272;
   const box = 272;
   const boxheight = height + scroll;
 
