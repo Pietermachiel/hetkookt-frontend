@@ -14,6 +14,7 @@ const Recipe = ({
 }) => {
   var [therecipe, setTheRecipe] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [notitie, setNotitie] = useState(false);
   // const [isFavorite, setIsFavorite] = useState(false);
 
   const API = props.match.url;
@@ -25,6 +26,10 @@ const Recipe = ({
   const handleIsOpen = () => {
     // console.log("isopen?");
     setIsOpen(!isOpen);
+  };
+
+  const handleNotitie = () => {
+    setNotitie(!notitie);
   };
 
   const handleIsFavorite = (therecipe) => {
@@ -142,11 +147,17 @@ const Recipe = ({
               </ol>
             </div>
             <div className="text-21">{therecipe.citaat}</div>
-
-            <textarea
-              className="border border-gray-300 bg-white shadow-md focus:outline-0 border border-transparent placeholder-gray-600 rounded-lg py-8 pr-16 pl-16 block w-full text-16"
-              placeholder="Maak hier een notitie..."
-            ></textarea>
+            {!user && (
+              <div className="">
+                <p onClick={() => handleNotitie()}>+ maak een notitie</p>
+                <textarea
+                  className={`ishidden ${
+                    notitie ? "isshowing" : null
+                  } border border-gray-300 bg-white shadow-md focus:outline-0 border border-transparent placeholder-gray-600 rounded-lg py-8 pr-16 pl-16 w-full text-16`}
+                  placeholder="Maak hier een notitie..."
+                ></textarea>
+              </div>
+            )}
 
             <div className="flex items-center mb-18 mt-24">
               {/* weekmenu */}
