@@ -9,7 +9,11 @@ import * as ServiceWorker from "./serviceWorker";
 
 import App from "./app";
 
-document.title = "MyRecipes";
+if (process.env.NODE_ENV === "production") {
+  document.title = "hetKookt";
+} else {
+  document.title = "hetKookt-frontend";
+}
 
 const app = (
   <BrowserRouter>
