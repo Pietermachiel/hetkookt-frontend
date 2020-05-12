@@ -146,20 +146,9 @@ const Recipe = ({
                 ))}
               </ol>
             </div>
-            <div className="text-21">{therecipe.citaat}</div>
-            {!user && (
-              <div className="">
-                <p onClick={() => handleNotitie()}>+ maak een notitie</p>
-                <textarea
-                  className={`ishidden ${
-                    notitie ? "isshowing" : null
-                  } border border-gray-300 bg-white shadow-md focus:outline-0 border border-transparent placeholder-gray-600 rounded-lg py-8 pr-16 pl-16 w-full text-16`}
-                  placeholder="Maak hier een notitie..."
-                ></textarea>
-              </div>
-            )}
+            <div className="text-21">{therecipe.info}</div>
 
-            <div className="flex items-center mb-18 mt-24">
+            <div className="flex items-center mb-18 mt-0">
               {/* weekmenu */}
               {!user && (
                 <NavLink className="" to="/login">
@@ -287,6 +276,20 @@ const Recipe = ({
                     </span>
                   </button>
                 )}
+              </div>
+            )}
+            {user && (
+              <div className="">
+                <div className="flex mb-0" onClick={() => handleNotitie()}>
+                  <img className="w-20" src="/img/feather/edit-2.svg" alt="" />
+                  <span className="pl-15">maak een notitie</span>
+                </div>
+                <textarea
+                  className={`ishidden ${
+                    notitie ? "isshowing py-8 my-18" : null
+                  } border border-gray-300 bg-white shadow-md focus:outline-0 border border-transparent placeholder-gray-600 rounded-lg pr-16 pl-16 w-full text-16`}
+                  placeholder="Maak hier een notitie..."
+                ></textarea>
               </div>
             )}
             <a

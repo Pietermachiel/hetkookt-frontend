@@ -46,11 +46,14 @@
 }
 
 .ishidden {
-  display: none;
+  transition: all 0.2s ease-in-out;
+  visibility: hidden;
+  opacity: 0;
 }
 
 .isshowing {
-  display: block;
+  visibility: visible;
+  opacity: 1;
 }
 
 ul.search-box__results {
