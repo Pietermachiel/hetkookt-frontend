@@ -15,8 +15,10 @@ const Sorts = ({ thecart, recipes, sorts, categories, ...props }) => {
   const box = 272;
   const boxheight = height + scroll;
 
+  console.log("categoriesX");
   console.log(categories);
   // console.log(recipes);
+  console.log("props.match.params.id");
   console.log(props.match.params.id);
 
   const category = categories.find(
@@ -31,11 +33,11 @@ const Sorts = ({ thecart, recipes, sorts, categories, ...props }) => {
     );
     return fresh;
   });
-  console.log("recipeItem");
-  console.log(recipeItem);
+  // console.log("recipeItem");
+  // console.log(recipeItem);
 
-  console.log("category");
-  console.log(category);
+  // console.log("category");
+  // console.log(category);
 
   return (
     <>

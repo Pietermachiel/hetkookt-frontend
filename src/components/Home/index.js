@@ -5,6 +5,7 @@ import useCurrentHeight from "../common/use-current-height";
 import useCurrentScroll from "../common/use-current-scroll";
 import { slugify, kalender } from "../common/common";
 import CategoriesFilter from "../CategoriesFilter";
+import CollectionsFilter from "../CollectionsFilter";
 
 const Home = ({
   user,
@@ -39,6 +40,7 @@ const Home = ({
   return (
     <div className="container-x">
       <CategoriesFilter sorts={sorts} />
+      <CollectionsFilter dishes={dishes} />
       <h1 className="text-center md:text-left text-4xl font-bold">
         watkookt<span className="text-36 pl-2">?</span>
         {/* <img
