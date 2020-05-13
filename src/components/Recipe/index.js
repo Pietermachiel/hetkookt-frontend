@@ -146,7 +146,11 @@ const Recipe = ({
                 ))}
               </ol>
             </div>
-            <div className="text-21">{therecipe.info}</div>
+            <div className="text-18 mt-24">
+              <p className="uppercase tracking-015 text-14 mb-24">Nota bene</p>
+
+              <p className="font-700">{therecipe.info}</p>
+            </div>
 
             <div className="flex items-center mb-18 mt-0">
               {/* weekmenu */}
@@ -280,7 +284,7 @@ const Recipe = ({
             )}
             {user && (
               <div className="">
-                <div className="flex mb-0" onClick={() => handleNotitie()}>
+                <div className="h-20 flex mb-0" onClick={() => handleNotitie()}>
                   <img className="w-20" src="/img/feather/edit-2.svg" alt="" />
                   <span className="pl-15">maak een notitie</span>
                 </div>
