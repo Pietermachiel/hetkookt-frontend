@@ -4,24 +4,17 @@ import { slugify, kalender } from "../common/common.js";
 import AddpanelWeekmenu from "./AddpanelWeekmenu.js";
 import { recipeUrl } from "../../config.json";
 
-const Recipe = ({
-  user,
-  thecart,
-  doFavorite,
-  doSave,
-  categories,
-  ...props
-}) => {
+const Recipe = ({ user, thecart, doFavorite, doSave, sorts, ...props }) => {
   var [therecipe, setTheRecipe] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [notitie, setNotitie] = useState(false);
   // const [isFavorite, setIsFavorite] = useState(false);
 
   const API = props.match.url;
-  console.log("props.match.url");
-  console.log(props.match.url);
-  console.log("therecipe");
-  console.log(therecipe);
+  // console.log("props.match.url");
+  // console.log(props.match.url);
+  // console.log("therecipe");
+  // console.log(therecipe);
 
   const handleIsOpen = () => {
     // console.log("isopen?");
@@ -96,7 +89,7 @@ const Recipe = ({
             <p>vers</p>
             <div className="ingredienten-box">
               {therecipe.fresh.map((f, xid) => {
-                const category = categories.find((s) => s.title === f.item);
+                const category = sorts.find((s) => s.title === f.item);
                 if (category === undefined) return [];
                 const catcolor = category.category;
                 return (

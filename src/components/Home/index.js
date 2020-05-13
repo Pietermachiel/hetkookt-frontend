@@ -11,6 +11,7 @@ const Home = ({
   user,
   dishes,
   recipes,
+  categories,
   sorts,
   handleSave,
   handleDelete,
@@ -35,11 +36,11 @@ const Home = ({
   // console.log(recipes);
   // console.log(dishes);
   // console.log(kalender);
-  console.log("sorts1");
-  console.log(sorts);
+  // console.log("sorts1");
+  // console.log(sorts);
   return (
     <div className="container-x">
-      <CategoriesFilter sorts={sorts} />
+      <CategoriesFilter categories={categories} />
       <CollectionsFilter dishes={dishes} />
       <h1 className="text-center md:text-left text-4xl font-bold">
         watkookt<span className="text-36 pl-2">?</span>

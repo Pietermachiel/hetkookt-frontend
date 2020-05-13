@@ -293,6 +293,7 @@ const App = () => {
                 {...props}
                 user={user}
                 recipes={recipes}
+                categories={categories}
                 sorts={sorts}
                 dishes={dishes}
                 doSave={doSave}
@@ -378,8 +379,8 @@ const App = () => {
                 <Sorts
                   thecart={thecart}
                   recipes={recipes}
-                  sorts={sorts}
                   categories={categories}
+                  sorts={sorts}
                   {...props}
                 />
               );
@@ -393,7 +394,7 @@ const App = () => {
                   thecart={thecart}
                   recipes={recipes}
                   {...props}
-                  sorts={sorts}
+                  categories={categories}
                 />
               );
             }}

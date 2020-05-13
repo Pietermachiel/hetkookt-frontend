@@ -17,15 +17,16 @@ const Sorts = ({ thecart, recipes, sorts, categories, ...props }) => {
 
   console.log("categoriesX");
   console.log(categories);
+  console.log(sorts);
   // console.log(recipes);
   console.log("props.match.params.id");
   console.log(props.match.params.id);
 
-  const category = categories.find(
+  const sort = sorts.find(
     (s) => s.title.replace(" ", "-") === props.match.params.id
   );
-  if (category === undefined) return [];
-  const catcolor = category.category;
+  if (sort === undefined) return [];
+  const catcolor = sort.category;
 
   const recipeItem = recipes.filter((element) => {
     let fresh = element.fresh.some(
@@ -33,11 +34,11 @@ const Sorts = ({ thecart, recipes, sorts, categories, ...props }) => {
     );
     return fresh;
   });
-  // console.log("recipeItem");
-  // console.log(recipeItem);
+  console.log("recipeItem");
+  console.log(recipeItem);
 
-  // console.log("category");
-  // console.log(category);
+  console.log("sort");
+  console.log(sort);
 
   return (
     <>
@@ -46,10 +47,10 @@ const Sorts = ({ thecart, recipes, sorts, categories, ...props }) => {
       </div> */}
       <div className="container-x">
         <h1 className={`pt-15 text-42 pb-18 ${catcolor}`}>
-          {category.title}
-          <Link to={`/categories/${category.category}`}>
+          {sort.title}
+          <Link to={`/categories/${sort.category}`}>
             <span className="ml-18 text-19 text-black font-300">
-              > {category.category}
+              > {sort.category}
             </span>
           </Link>
         </h1>
