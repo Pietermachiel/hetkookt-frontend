@@ -1,11 +1,20 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CollectionsFilter = ({ dishes }) => {
   return (
-    <div className="categories-filter">
-      {dishes.map((d, xid) => (
-        <li key={xid}>{d}</li>
-      ))}
+    <div className="collections-filter">
+      {dishes.map((d, xid) => {
+        // console.log("p");
+        // console.log(p);
+        return (
+          <div key={xid}>
+            <Link aria-label={`collections/${d}`} to={`/collections/${d}`}>
+              <p>{d}</p>
+            </Link>
+          </div>
+        );
+      })}
     </div>
   );
 };

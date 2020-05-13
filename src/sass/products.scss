@@ -42,23 +42,47 @@
       padding: 4 9px;
     }
   }
-  span {
-    color: black;
+}
+
+.collections-filter {
+  width: 100%;
+  max-width: 984px;
+  margin: 0 auto;
+  padding: 0 15px 15px;
+  columns: 2;
+  column-gap: 30px;
+  background: #f4f8fb;
+  // text-align: center;
+  @media (min-width: 667px) {
+    padding: 15px;
+    margin-bottom: 15px;
+    columns: 3;
   }
-  span.products {
-    display: block;
-    // padding-top: 36px;
-    position: relative;
-    font-size: 19px;
+  @media (min-width: $on-tablet) {
+    // margin-top: 0;
+    columns: 4;
+  }
+  @media (min-width: $on-laptop) {
+    columns: 5;
+  }
+  a {
+    text-decoration: none;
+  }
+  p {
     font-weight: 300;
-    text-align: center;
-    background: transparent;
-    border: 0;
+    font-size: 19px;
+    line-height: 24px;
+    margin: 0;
+    margin-bottom: 5px;
+    display: block;
+    cursor: pointer;
     &:hover {
-      letter-spacing: 0.01em !important;
-      font-weight: 300 !important;
-      background: transparent;
-      color: black !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.03em !important;
+      font-size: 21px;
+    }
+    @media (min-width: $on-tablet) {
+      padding: 4 9px;
     }
   }
 }

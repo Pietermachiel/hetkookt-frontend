@@ -7,6 +7,7 @@ module.exports = {
         full70: "calc(100% - 70px)",
       },
       colors: {
+        offblack: "#1d1d1d",
         badge: "#e6e6e6",
         week: "#c5c5c5",
         rose: "mistyrose",
