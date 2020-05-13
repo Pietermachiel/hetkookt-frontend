@@ -134,6 +134,14 @@ const Recipe = ({
                 </Link>
               ))}
             </div>
+            {therecipe.related.length > 0 ? <p>gerelateerd</p> : null}
+            <div className="ingredienten-box">
+              {therecipe.related.map((b, xid) => (
+                <Link key={xid} to={`/recipe/${slugify(b)}`}>
+                  <span className="font-600">{b}</span>
+                </Link>
+              ))}
+            </div>
           </div>
           <div className="w-werkwijze">
             {/* tracking-015 > type.scss */}
@@ -165,7 +173,7 @@ const Recipe = ({
                       src="/img/feather/list.svg"
                       alt=""
                     />
-                    zet op het weekmenu >
+                    zet op het weekmenu
                   </button>
                 </NavLink>
               )}
@@ -179,7 +187,7 @@ const Recipe = ({
                     src="/img/feather/list.svg"
                     alt=""
                   />
-                  zet op het weekmenu >
+                  zet op het weekmenu
                 </button>
               )}
 
@@ -244,7 +252,7 @@ const Recipe = ({
                       />
                     )}
                     <span className="pl-10 text-19 text-indigo-700 font-600 hover:text-red-500">
-                      zet in favorieten >
+                      zet in favorieten
                     </span>
                   </button>
                 </div>
@@ -261,7 +269,7 @@ const Recipe = ({
                         alt=""
                       />
                       <span className="pl-10 text-19 text-indigo-700 font-600 hover:text-red-500">
-                        zet in favorieten >
+                        zet in favorieten
                       </span>
                     </button>
                   </NavLink>
@@ -276,7 +284,7 @@ const Recipe = ({
                       alt=""
                     />
                     <span className="pl-10 text-19 text-indigo-700 font-600 hover:text-red-500">
-                      zet in favorieten >
+                      zet in favorieten
                     </span>
                   </button>
                 )}
@@ -286,7 +294,9 @@ const Recipe = ({
               <div className="">
                 <div className="h-20 flex mb-0" onClick={() => handleNotitie()}>
                   <img className="w-20" src="/img/feather/edit-2.svg" alt="" />
-                  <span className="pl-15">maak een notitie</span>
+                  <span className="pl-14 text-19 text-indigo-700 font-600 hover:text-red-500">
+                    maak een notitie
+                  </span>
                 </div>
                 <textarea
                   className={`ishidden ${
