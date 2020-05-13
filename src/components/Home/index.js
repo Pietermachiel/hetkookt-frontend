@@ -34,6 +34,8 @@ const Home = ({
   // console.log(recipes);
   // console.log(dishes);
   // console.log(kalender);
+  console.log("sorts1");
+  console.log(sorts);
   return (
     <div className="container-x">
       <CategoriesFilter sorts={sorts} />

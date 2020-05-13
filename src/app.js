@@ -282,7 +282,7 @@ const App = () => {
     <>
       <div className="content">
         <header>
-          <Nav sorts={sorts} thecart={thecart} user={user} recipes={recipes} />
+          <Nav thecart={thecart} user={user} recipes={recipes} />
         </header>
         <Switch>
           <Route
@@ -293,6 +293,7 @@ const App = () => {
                 {...props}
                 user={user}
                 recipes={recipes}
+                sorts={sorts}
                 dishes={dishes}
                 doSave={doSave}
                 handleDelete={handleDelete}

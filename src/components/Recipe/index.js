@@ -179,7 +179,7 @@ const Recipe = ({
               )}
               {user && (
                 <button
-                  className="btn-add mr-10 text-19 font-600 text-indigo-700 flex item-center"
+                  className="btn-add mr-10 text-19 font-600 text-indigo-700 flex item-center hover:text-red-500"
                   onClick={() => handleIsOpen()}
                 >
                   <img

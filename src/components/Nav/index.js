@@ -7,7 +7,7 @@ import Search from "../Search";
 // import { kalender } from "../common/common";
 import NavAdd from "./NavAdd";
 
-const Nav = ({ user, thecart, sorts, ...props }) => {
+const Nav = ({ user, thecart, ...props }) => {
   const [isOn, setIsOn] = useState(false);
   const [visible, setVisible] = useState(false);
   // const width = useCurrentWidth();
@@ -141,10 +141,6 @@ const Nav = ({ user, thecart, sorts, ...props }) => {
           </button>
         </div>
       </div>
-
-      {/* <div className="container-x">
-        {location === "/" ? <CategoriesFilter sorts={sorts} /> : null}
-      </div> */}
     </>
   );
   // }
