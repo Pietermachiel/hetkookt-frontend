@@ -8,7 +8,7 @@ const CollectionsFilter = ({ dishes }) => {
         // console.log("p");
         // console.log(p);
         return (
-          <div key={xid}>
+          <div className="first-letter" key={xid}>
             <Link aria-label={`collections/${d}`} to={`/collections/${d}`}>
               <p>{d}</p>
             </Link>

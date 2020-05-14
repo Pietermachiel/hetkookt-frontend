@@ -1,9 +1,9 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import useCurrentWidth from "../common/use-current-width";
-import useCurrentHeight from "../common/use-current-height";
-import useCurrentScroll from "../common/use-current-scroll";
-import { slugify, kalender } from "../common/common";
+// import useCurrentWidth from "../common/use-current-width";
+// import useCurrentHeight from "../common/use-current-height";
+// import useCurrentScroll from "../common/use-current-scroll";
+// import { slugify, kalender } from "../common/common";
 import CategoriesFilter from "../CategoriesFilter";
 import CollectionsFilter from "../CollectionsFilter";
 
@@ -18,12 +18,13 @@ const Home = ({
   thecart,
   ...props
 }) => {
-  const width = useCurrentWidth();
-  const height = useCurrentHeight();
-  const scroll = useCurrentScroll();
-  const offset = 0;
-  const box = 265;
-  const boxheight = height + scroll;
+  const [isOn, setIsOn] = useState(false);
+  // const width = useCurrentWidth();
+  // const height = useCurrentHeight();
+  // const scroll = useCurrentScroll();
+  // const offset = 0;
+  // const box = 265;
+  // const boxheight = height + scroll;
 
   if (recipes.length === 0)
     return (
@@ -40,15 +41,25 @@ const Home = ({
   // console.log(sorts);
   return (
     <div className="container-x">
-      <CategoriesFilter categories={categories} />
-      <CollectionsFilter dishes={dishes} />
+      {isOn ? (
+        <CollectionsFilter dishes={dishes} />
+      ) : (
+        <CategoriesFilter categories={categories} />
+      )}
       <h1 className="text-center md:text-left text-4xl font-bold">
-        watkookt<span className="text-36 pl-2">?</span>
-        {/* <img
-          className="inline w-45 h-45 pb-10 -ml-12"
-          src="/img/icons/watkookt.svg"
-          alt=""
-        /> */}
+        <span
+          onClick={() => setIsOn(false)}
+          className={` ${isOn ? "text-gray-400 hover:text-red-500" : null}`}
+        >
+          watkookt<span className="text-36 pl-2">?</span>
+        </span>
+        <span
+          onClick={() => setIsOn(true)}
+          className={`${isOn ? null : "text-gray-400 hover:text-red-500"}`}
+        >
+          &nbsp;hoe
+          <span className="text-36 pl-2">?</span>
+        </span>
       </h1>
       {!user ? (
         <div className="">
@@ -67,7 +78,7 @@ const Home = ({
           </NavLink>
         </p>
       )}
-      {dishes.map((d, xid) => {
+      {/* {dishes.map((d, xid) => {
         const therecipes = recipes.filter((recipe) => recipe.dish === d);
         if (therecipes === undefined) return [];
         return (
@@ -83,13 +94,11 @@ const Home = ({
             <div className="-ml-10 sm:ml-0 md:-ml-15 mb-10 flex flex-row flex-wrap">
               {therecipes.slice(0, 4).map((recipe, index) => {
                 let cart = thecart.find((c) => c._id === recipe._id);
-                // console.log(cart);
                 if (cart === undefined) cart = [];
                 const thelength = recipe.tags.length - 1;
                 if (recipe.basics === undefined) return (recipe.basics = []);
                 return (
                   <div
-                    // className="grid-box unvisable slide work-grid-item"
                     key={recipe._id}
                     className={`border border-gray-400 min-h-250 ${
                       recipe.meal === "true" ? "bg-rose" : "bg-badge"
@@ -133,32 +142,15 @@ const Home = ({
                       ))}
                     </div>
                     <div className="h-60 relative">
-                      {/* {recipe.meal === "true" ? (
-                        <span
-                          className={`uppercase tracking-widest text-14 pl-15 mb-0 text-red font-500`}
-                        >
-                          meal
-                        </span>
-                      ) : null} */}
-
                       <p
                         className={`uppercase tracking-widest text-14 pl-15 mb-0`}
                       >
-                        {/* {recipe.meal === "true" ? (
-                          <span className="text-red-500 font-600">m</span>
-                        ) : null}
-                        {recipe.meal === "true" ? <span> – </span> : null} */}
                         {recipe.dish}
                       </p>
                       <div className="pt-5 mr-10 flex items-center justify-end">
                         {kalender.map((w, xid) =>
                           cart.date && cart.date.includes(w.year) ? (
-                            // <span
-                            //   key={xid}
-                            //   className="pr-10 flex item-center text-red"
-                            // >
-                            //   {w.day}
-                            // </span>
+
                             <NavLink key={w.index} to="/weekmenu">
                               <div
                                 className={`relative mr-6 p-10 w-24 h-24 text-center ${
@@ -193,7 +185,7 @@ const Home = ({
             </div>
           </Fragment>
         );
-      })}
+      })} */}
     </div>
   );
 };

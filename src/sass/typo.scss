@@ -158,3 +158,10 @@ input {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.first-letter {
+  p::first-letter {
+    font-size: 21px;
+    font-weight: 700;
+  }
+}

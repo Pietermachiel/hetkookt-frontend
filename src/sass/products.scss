@@ -9,14 +9,12 @@
   columns: 2;
   column-gap: 30px;
   background: #f4f8fb;
-  // text-align: center;
   @media (min-width: 667px) {
     padding: 15px;
     margin-bottom: 15px;
     columns: 3;
   }
   @media (min-width: $on-tablet) {
-    // margin-top: 0;
     columns: 4;
   }
   @media (min-width: $on-laptop) {
@@ -52,14 +50,12 @@
   columns: 2;
   column-gap: 30px;
   background: #f4f8fb;
-  // text-align: center;
   @media (min-width: 667px) {
     padding: 15px;
     margin-bottom: 15px;
     columns: 3;
   }
   @media (min-width: $on-tablet) {
-    // margin-top: 0;
     columns: 4;
   }
   @media (min-width: $on-laptop) {
@@ -71,7 +67,7 @@
   p {
     font-weight: 300;
     font-size: 19px;
-    line-height: 24px;
+    line-height: 36px;
     margin: 0;
     margin-bottom: 5px;
     display: block;
