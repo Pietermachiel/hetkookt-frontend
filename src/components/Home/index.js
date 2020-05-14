@@ -6,6 +6,7 @@ import { Link, NavLink } from "react-router-dom";
 // import { slugify, kalender } from "../common/common";
 import CategoriesFilter from "../CategoriesFilter";
 import CollectionsFilter from "../CollectionsFilter";
+import Search from "../Search";
 
 const Home = ({
   user,
@@ -41,38 +42,43 @@ const Home = ({
   // console.log(sorts);
   return (
     <div className="container-x">
+      <Search recipes={recipes} />
       {isOn ? (
         <CollectionsFilter dishes={dishes} />
       ) : (
         <CategoriesFilter categories={categories} />
       )}
-      <h1 className="text-center md:text-left text-4xl font-bold">
+      <h1 className="text-center text-4xl font-bold">
         <span
           onClick={() => setIsOn(false)}
           className={` ${isOn ? "text-gray-400 hover:text-red-500" : null}`}
         >
-          watkookt<span className="text-36 pl-2">?</span>
+          wathetkookt
+          {/* <span className="text-36 pl-2">?</span> */}
         </span>
+        <span className="text-36 pl-10">/</span>
         <span
           onClick={() => setIsOn(true)}
           className={`${isOn ? null : "text-gray-400 hover:text-red-500"}`}
         >
-          &nbsp;hoe
-          <span className="text-36 pl-2">?</span>
+          &nbsp;hoehetkookt
+          {/* <span className="text-36 pl-2">?</span> */}
         </span>
       </h1>
       {!user ? (
         <div className="">
-          <p className="text-center md:text-left mb-0">
+          <p className="text-center mb-0">
             Schrijf je in bij <span className="font-700">hetkookt</span> en maak
             een eigen kookschrift.
           </p>
           <NavLink aria-label="register" to="/register">
-            <p className="text-indigo-700 font-500 mb-36">inschrijven ></p>
+            <p className="text-center text-indigo-700 font-500 mb-36">
+              inschrijven >
+            </p>
           </NavLink>
         </div>
       ) : (
-        <p className="text-center md:text-left">
+        <p className="text-center">
           <NavLink aria-label="user" to="/user">
             <span className="text-indigo-700 font-600">{user.name}</span>
           </NavLink>

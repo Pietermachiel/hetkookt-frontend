@@ -70,22 +70,38 @@ const Nav = ({ user, thecart, ...props }) => {
               className="flex items-center pl-15 md:pl-0"
               onClick={isOn ? handleMouseDown : null}
             >
-              {/* <img
-                className="w-45 h-45 pr-5 mr-5"
+              <img
+                className="w-40 h-40 pr-5 mr-5"
                 src="/img/icons/koksmuts.png"
                 alt=""
-              /> */}
-              <div className="hetkookt_logo block font-700 text-rood tracking-wide text-36 pl-5">
-                <span className="font-500 text-32 pr-1">het</span>
-                kookt
+              />
+              <div className="flex items-baseline">
+                <div className="hetkookt_logo block font-700 text-rood tracking-wide text-36 pl-5 pr-18">
+                  <span className="font-500 text-32 pr-1">het</span>
+                  kookt
+                </div>
+                <ul className="flex text-21">
+                  {/* <li className="mb-0 mr-18 font-500 hover:text-red-500">
+                  <span className="font-300">wat</span>hetkookt
+                </li> */}
+                  <li className="mb-0 mr-18 font-500 hover:text-red-500">
+                    <span className="font-300">waarom</span>hetkookt
+                  </li>
+                  {/* <li className="mb-0 mr-18 font-500 hover:text-red-500">
+                  <span className="font-300">hoe</span>hetkookt
+                </li> */}
+                </ul>
               </div>
             </div>
           </Link>
-          <Search recipes={recipes} />
+          {/* <Search recipes={recipes} /> */}
+
           {!user && (
             <div className="absolute right-0 md:relative md:mr-36">
               <NavLink aria-label="login" to="/login">
-                <p className="mt-15 mr-60 md:mt-18 md:mr-0 font-400">login</p>
+                <p className="mt-15 mr-60 md:mt-18 md:mr-0 font-300 text-21">
+                  login
+                </p>
               </NavLink>
             </div>
           )}

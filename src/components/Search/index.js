@@ -3,15 +3,14 @@ import { Link } from "react-router-dom";
 import parseHtml from "html-react-parser";
 import { slugify } from "../common/common";
 
-const Search = ({ recipes, isOn, ...props }) => {
+const Search = ({ recipes }) => {
   const [searchTerm, setSearchTerm] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
     const results = recipes.filter((recipe) => {
-      return (
-        recipe.title.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1
-      );
+      const lowercaserecipe = recipe.title.toLowerCase();
+      return lowercaserecipe.indexOf(searchTerm) !== -1;
     });
     setSearchResults(results);
   }, [searchTerm]);
@@ -29,9 +28,8 @@ const Search = ({ recipes, isOn, ...props }) => {
 
   return (
     <>
-      <div className="relative sm:mx-0 sm:mx-0 px-20 mt-10 sm:mt-0 pt-10 sm:pt-0 bg-gray-100 sm:bg-white sm:w-full sm:pr-72 md:pr-0 sm:pl-28 sm:mr-72 sm:ml-72">
+      <div className="relative bg-gray-100 bg-white w-full mb-9">
         <form className="relative w-full">
-          {/* {isOn ? "form-zoekrecept hidden" : "form-zoekrecept"} */}
           <input
             className={`border border-gray-300 transition-colors duration-100 ease-in-out bg-white sm:shadow-md focus:outline-0 border border-transparent placeholder-gray-600 rounded-lg py-8 pr-16 pl-36 w-full appearance-none leading-normal ds-input text-16`}
             type="text"
