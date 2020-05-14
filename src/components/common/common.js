@@ -11,6 +11,10 @@ export function slugify(text) {
   );
 }
 
+export function uniq(value, index, self) {
+  return self.indexOf(value) === index;
+}
+
 export function vandaag(e) {
   const event = new Date();
 
