@@ -1,9 +1,9 @@
 import React, { Fragment, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-// import useCurrentWidth from "../common/use-current-width";
-// import useCurrentHeight from "../common/use-current-height";
-// import useCurrentScroll from "../common/use-current-scroll";
-// import { slugify, kalender } from "../common/common";
+import useCurrentWidth from "../common/use-current-width";
+import useCurrentHeight from "../common/use-current-height";
+import useCurrentScroll from "../common/use-current-scroll";
+import { slugify, kalender } from "../common/common";
 import CategoriesFilter from "../CategoriesFilter";
 import CollectionsFilter from "../CollectionsFilter";
 import Search from "../Search";
@@ -20,12 +20,13 @@ const Home = ({
   ...props
 }) => {
   const [isOn, setIsOn] = useState(false);
-  // const width = useCurrentWidth();
-  // const height = useCurrentHeight();
-  // const scroll = useCurrentScroll();
-  // const offset = 0;
-  // const box = 265;
-  // const boxheight = height + scroll;
+
+  const width = useCurrentWidth();
+  const height = useCurrentHeight();
+  const scroll = useCurrentScroll();
+  const offset = 0;
+  const box = 265;
+  const boxheight = height + scroll;
 
   if (recipes.length === 0)
     return (
@@ -84,7 +85,7 @@ const Home = ({
           </NavLink>
         </p>
       )}
-      {/* {dishes.map((d, xid) => {
+      {dishes.map((d, xid) => {
         const therecipes = recipes.filter((recipe) => recipe.dish === d);
         if (therecipes === undefined) return [];
         return (
@@ -100,6 +101,12 @@ const Home = ({
             <div className="-ml-10 sm:ml-0 md:-ml-15 mb-10 flex flex-row flex-wrap">
               {therecipes.slice(0, 4).map((recipe, index) => {
                 let cart = thecart.find((c) => c._id === recipe._id);
+                console.log("cart");
+                console.log(cart);
+                console.log("thecart");
+                console.log(thecart);
+                console.log("therecipes");
+                console.log(therecipes);
                 if (cart === undefined) cart = [];
                 const thelength = recipe.tags.length - 1;
                 if (recipe.basics === undefined) return (recipe.basics = []);
@@ -156,7 +163,6 @@ const Home = ({
                       <div className="pt-5 mr-10 flex items-center justify-end">
                         {kalender.map((w, xid) =>
                           cart.date && cart.date.includes(w.year) ? (
-
                             <NavLink key={w.index} to="/weekmenu">
                               <div
                                 className={`relative mr-6 p-10 w-24 h-24 text-center ${
@@ -191,7 +197,7 @@ const Home = ({
             </div>
           </Fragment>
         );
-      })} */}
+      })}
     </div>
   );
 };

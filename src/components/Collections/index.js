@@ -33,20 +33,12 @@ const Collections = ({ thecart, sorts, recipes, ...props }) => {
     (recipe) => recipe.dish === props.match.params.id
   );
   var selectedtags = therecipes.map((s) => s.tags[0]);
-  console.log("selectedtags");
-  console.log(selectedtags);
-
   selectedtags = selectedtags.filter(uniq).filter((e) => e != undefined);
-  console.log("selectedtags uniq");
-  console.log(selectedtags);
 
   const collection = selectedtags.map((s) => {
     const selection = therecipes.filter((r) => r.tags[0] === s);
     return { title: s, selection: selection };
   });
-
-  console.log("collection");
-  console.log(collection);
 
   const width = useCurrentWidth();
   const height = useCurrentHeight();
@@ -101,6 +93,9 @@ const Collections = ({ thecart, sorts, recipes, ...props }) => {
                 </div>
                 {col.selection.map((recipe, index) => {
                   let cart = thecart.find((c) => c._id === recipe._id);
+                  console.log(cart);
+                  console.log(thecart);
+                  console.log(therecipes);
                   if (cart === undefined) cart = [];
                   const thelength = recipe.tags.length - 1;
                   if (recipe.basics === undefined) return (recipe.basics = []);

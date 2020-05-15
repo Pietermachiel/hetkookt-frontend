@@ -130,7 +130,7 @@ li {
 }
 
 b {
-  font-weight: 500;
+  font-weight: 700;
   font-size: 1em;
 }
 
@@ -163,5 +163,9 @@ input {
   p::first-letter {
     font-size: 21px;
     font-weight: 700;
+    color: black;
+  }
+  p:hover {
+    color: red;
   }
 }
