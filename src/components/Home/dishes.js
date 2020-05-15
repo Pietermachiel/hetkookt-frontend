@@ -1,15 +1,11 @@
 import React, { Fragment, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import useCurrentWidth from "../common/use-current-width";
-import useCurrentHeight from "../common/use-current-height";
-import useCurrentScroll from "../common/use-current-scroll";
+// import useCurrentWidth from "../common/use-current-width";
+// import useCurrentHeight from "../common/use-current-height";
+// import useCurrentScroll from "../common/use-current-scroll";
 import { slugify, kalender } from "../common/common";
-import CategoriesFilter from "../CategoriesFilter";
-import CollectionsFilter from "../CollectionsFilter";
-import Search from "../Search";
-import Dishes from "./dishes";
 
-const Home = ({
+const Dishes = ({
   user,
   dishes,
   recipes,
@@ -18,16 +14,20 @@ const Home = ({
   handleSave,
   handleDelete,
   thecart,
+  width,
+  boxheight,
+  offset,
+  box,
   ...props
 }) => {
   const [isOn, setIsOn] = useState(false);
 
-  const width = useCurrentWidth();
-  const height = useCurrentHeight();
-  const scroll = useCurrentScroll();
-  const offset = 0;
-  const box = 265;
-  const boxheight = height + scroll;
+  //   const width = useCurrentWidth();
+  //   const height = useCurrentHeight();
+  //   const scroll = useCurrentScroll();
+  //   const offset = 0;
+  //   const box = 265;
+  //   const boxheight = height + scroll;
 
   if (recipes.length === 0)
     return (
@@ -43,68 +43,8 @@ const Home = ({
   // console.log("sorts1");
   // console.log(sorts);
   return (
-    <div className="container-x">
-      <Search recipes={recipes} />
-      {isOn ? (
-        <CollectionsFilter dishes={dishes} />
-      ) : (
-        <CategoriesFilter categories={categories} />
-      )}
-      {/* <h1 className="text-center text-4xl font-bold">
-        <span
-          onClick={() => setIsOn(false)}
-          className={` ${isOn ? "text-gray-400 hover:text-red-500" : null}`}
-        >
-          wathetkookt
-        </span>
-        <span className="text-36 pl-10">/</span>
-        <span
-          onClick={() => setIsOn(true)}
-          className={`${isOn ? null : "text-gray-400 hover:text-red-500"}`}
-        >
-          &nbsp;hoehetkookt
-        </span>
-      </h1> */}
-      {
-        !user ? (
-          <div className="">
-            <h1 className="text-center text-4xl font-500">
-              <span className="font-300">dat</span>hetkookt!
-            </h1>
-            <p className="text-center mb-0">
-              Schrijf je in bij <span className="font-700">hetkookt</span> en
-              maak een eigen kookschrift.
-            </p>
-            <NavLink aria-label="register" to="/register">
-              <p className="text-center text-indigo-700 font-500 mb-18">
-                inschrijven >
-              </p>
-            </NavLink>
-          </div>
-        ) : null
-        // <p className="text-center">
-        //   <NavLink aria-label="user" to="/user">
-        //     <span className="text-indigo-700 font-600">{user.name}</span>
-        //   </NavLink>
-        // </p>
-      }
-      <Dishes
-        recipes={recipes}
-        user={user}
-        dishes={dishes}
-        categories={categories}
-        sorts={sorts}
-        handleSave={handleSave}
-        handleDelete={handleDelete}
-        thecart={thecart}
-        user={user}
-        props={props}
-        width={width}
-        boxheight={boxheight}
-        offset={offset}
-        box={box}
-      />
-      {/* {dishes.map((d, xid) => {
+    <Fragment>
+      {dishes.map((d, xid) => {
         const therecipes = recipes.filter((recipe) => recipe.dish === d);
         if (therecipes === undefined) return [];
         return (
@@ -216,9 +156,9 @@ const Home = ({
             </div>
           </Fragment>
         );
-      })} */}
-    </div>
+      })}
+    </Fragment>
   );
 };
 
-export default Home;
+export default Dishes;
