@@ -49,13 +49,12 @@ const Home = ({
       ) : (
         <CategoriesFilter categories={categories} />
       )}
-      <h1 className="text-center text-4xl font-bold">
+      {/* <h1 className="text-center text-4xl font-bold">
         <span
           onClick={() => setIsOn(false)}
           className={` ${isOn ? "text-gray-400 hover:text-red-500" : null}`}
         >
           wathetkookt
-          {/* <span className="text-36 pl-2">?</span> */}
         </span>
         <span className="text-36 pl-10">/</span>
         <span
@@ -63,28 +62,31 @@ const Home = ({
           className={`${isOn ? null : "text-gray-400 hover:text-red-500"}`}
         >
           &nbsp;hoehetkookt
-          {/* <span className="text-36 pl-2">?</span> */}
         </span>
-      </h1>
-      {!user ? (
-        <div className="">
-          <p className="text-center mb-0">
-            Schrijf je in bij <span className="font-700">hetkookt</span> en maak
-            een eigen kookschrift.
-          </p>
-          <NavLink aria-label="register" to="/register">
-            <p className="text-center text-indigo-700 font-500 mb-36">
-              inschrijven >
+      </h1> */}
+      {
+        !user ? (
+          <div className="">
+            <h1 className="text-center text-4xl font-500">
+              <span className="font-300">dat</span>hetkookt!
+            </h1>
+            <p className="text-center mb-0">
+              Schrijf je in bij <span className="font-700">hetkookt</span> en
+              maak een eigen kookschrift.
             </p>
-          </NavLink>
-        </div>
-      ) : (
-        <p className="text-center">
-          <NavLink aria-label="user" to="/user">
-            <span className="text-indigo-700 font-600">{user.name}</span>
-          </NavLink>
-        </p>
-      )}
+            <NavLink aria-label="register" to="/register">
+              <p className="text-center text-indigo-700 font-500 mb-18">
+                inschrijven >
+              </p>
+            </NavLink>
+          </div>
+        ) : null
+        // <p className="text-center">
+        //   <NavLink aria-label="user" to="/user">
+        //     <span className="text-indigo-700 font-600">{user.name}</span>
+        //   </NavLink>
+        // </p>
+      }
       {dishes.map((d, xid) => {
         const therecipes = recipes.filter((recipe) => recipe.dish === d);
         if (therecipes === undefined) return [];

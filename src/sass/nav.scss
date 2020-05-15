@@ -80,6 +80,17 @@
   z-index: 10;
 }
 
+.nav-add {
+  .hairline {
+    height: 1px;
+    margin-top: 30px;
+    margin-bottom: 24px;
+    margin-right: 125px;
+    border-color: #e2e8f0;
+    border-top-width: 1px;
+  }
+}
+
 .navbar {
   float: none;
   width: 100%;
@@ -214,13 +225,16 @@
   float: right;
   position: absolute;
   top: -8px; // 32px;
-  right: 0; // 15px;
+  right: 5px; // 15px;
   background-color: transparent;
   margin: 0; // 20px 0 20px 36px
   border: 0;
   outline: none;
   cursor: pointer;
   z-index: 10000;
+  @media (min-width: $on-laptop) {
+    right: 40px;
+  }
 }
 
 .hamburger span {

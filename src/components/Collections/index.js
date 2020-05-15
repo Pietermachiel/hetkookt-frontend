@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useCurrentWidth from "../common/use-current-width";
 import useCurrentHeight from "../common/use-current-height";
 import useCurrentScroll from "../common/use-current-scroll";
@@ -151,11 +151,11 @@ const Collections = ({ thecart, sorts, recipes, ...props }) => {
                       </div>
                       <div className="h-60">
                         <p
-                          className={`uppercase tracking-widest text-14 pl-15 `}
+                          className={`uppercase tracking-widest text-14 pl-15 pt-7 mb-0`}
                         >
                           {recipe.dish}
                         </p>
-                        {kalender.map((w) =>
+                        {/* {kalender.map((w) =>
                           w.year === cart.date ? (
                             <p
                               key={w.index}
@@ -166,7 +166,38 @@ const Collections = ({ thecart, sorts, recipes, ...props }) => {
                               {w.day} {w.index}
                             </p>
                           ) : null
-                        )}
+                        )} */}
+
+                        <div className="pt-0 mr-10 flex items-center justify-end">
+                          {kalender.map((w, xid) =>
+                            cart.date && cart.date.includes(w.year) ? (
+                              <NavLink key={w.index} to="/weekmenu">
+                                <div
+                                  className={`relative mr-6 p-10 w-24 h-24 text-center ${
+                                    cart.length !== 0
+                                      ? "bg-orange-400"
+                                      : "bg-gray-500"
+                                  } text-black rounded-50`}
+                                >
+                                  <span className={`absolute text-12 inset-0`}>
+                                    <span className="flex justify-center pt-3">
+                                      {w.index}
+                                    </span>
+                                  </span>
+                                </div>
+                              </NavLink>
+                            ) : null
+                          )}
+                          {cart.favorite === true ? (
+                            <NavLink to="/favorites">
+                              <img
+                                className="w-25"
+                                src="/img/feather/bookmark-red.svg"
+                                alt=""
+                              />
+                            </NavLink>
+                          ) : null}
+                        </div>
                       </div>
                     </div>
                   );

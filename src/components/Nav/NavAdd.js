@@ -25,23 +25,28 @@ const NavAdd = ({ user, favorites, handleIsOpen, isOpen, thecart }) => {
             {/* <span className="pr-5">{props.user.name}</span> */}
           </div>
         </NavLink>
-        <NavLink aria-label="to weekmenu" className="" to="/weekmenu">
-          <div onClick={handleIsOpen} className="flex items-center mb-18 mt-0">
-            <img className="w-25" src="/img/feather/list.svg" alt="" />
-            <span className="pl-12 hover:text-black">
-              weekmenu
-              <span className="text-red-300">&nbsp;{thedates.length}</span>
+        <NavLink aria-label="to home" className="text-white " to="/">
+          <div onClick={handleIsOpen} className="flex items-center mb-18">
+            <span className="pl-36 text-24 font-300 hover:text-black">
+              wat het kookt
             </span>
             {/* <span className="pr-5">{props.user.name}</span> */}
           </div>
         </NavLink>
-        <NavLink aria-label="to favorites" className="" to="/favorites">
+        <NavLink aria-label="to home" className="text-white " to="/">
           <div onClick={handleIsOpen} className="flex items-center mb-18">
-            <img className="w-25" src="/img/feather/bookmark.svg" alt="" />
-            <span className="pl-12 hover:text-black">
-              kookschrift
-              <span className="text-red-300">&nbsp;{favorites.length}</span>
+            <span className="pl-36 text-24 font-300 hover:text-black">
+              hoe het kookt
             </span>
+            {/* <span className="pr-5">{props.user.name}</span> */}
+          </div>
+        </NavLink>
+        <NavLink aria-label="to home" className="text-white " to="/">
+          <div onClick={handleIsOpen} className="flex items-center mb-18">
+            <span className="pl-36 text-24 font-300 hover:text-black">
+              waarom het kookt
+            </span>
+            {/* <span className="pr-5">{props.user.name}</span> */}
           </div>
         </NavLink>
         <NavLink aria-label="to books" className="" to="/books">
@@ -52,6 +57,7 @@ const NavAdd = ({ user, favorites, handleIsOpen, isOpen, thecart }) => {
             </span>
           </div>
         </NavLink>
+        <div className="hairline"></div>
         {user && (
           <NavLink aria-label="to user" className="" to="/user">
             <div onClick={handleIsOpen} className="flex items-center mb-18">
@@ -67,7 +73,26 @@ const NavAdd = ({ user, favorites, handleIsOpen, isOpen, thecart }) => {
               <span className="pl-12 hover:text-black">gebruikersprofiel</span>
             </div>
           </NavLink>
-        )}
+        )}{" "}
+        <NavLink aria-label="to weekmenu" className="" to="/weekmenu">
+          <div onClick={handleIsOpen} className="flex items-center mb-18 mt-0">
+            <img className="w-25" src="/img/feather/list.svg" alt="" />
+            <span className="pl-12 font-300 hover:text-black">
+              weekmenu
+              <span className="text-red-300">&nbsp;{thedates.length}</span>
+            </span>
+            {/* <span className="pr-5">{props.user.name}</span> */}
+          </div>
+        </NavLink>
+        <NavLink aria-label="to favorites" className="" to="/favorites">
+          <div onClick={handleIsOpen} className="flex items-center mb-18">
+            <img className="w-25" src="/img/feather/bookmark.svg" alt="" />
+            <span className="pl-12 font-300 hover:text-black">
+              kookschrift
+              <span className="text-red-300">&nbsp;{favorites.length}</span>
+            </span>
+          </div>
+        </NavLink>
         {user && (
           <NavLink aria-label="to logout" className="" to="/logout">
             <div onClick={handleIsOpen} className="flex items-center">
@@ -88,7 +113,6 @@ const NavAdd = ({ user, favorites, handleIsOpen, isOpen, thecart }) => {
             </div>
           </NavLink>
         )}
-
         {/* <NavLink to="/logout">
           <div className="pl-60" onClick={handleIsOpen}>
             loguit >
