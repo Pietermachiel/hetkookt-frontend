@@ -51,10 +51,25 @@ const Weekmenu = ({ user, thecart, handleDelete, handleUpdate, ...props }) => {
             <Fragment key={k.index}>
               {cart.length !== 0 ? (
                 <Fragment>
-                  <h2 className="text-orange border-b-4 border-gray-400 pt-15 first:pt-0 pb-15 ">
+                  <div className="flex items-center text-orange border-b-4 border-gray-400 pt-15 first:pt-0 pb-15">
                     {/* {k.day} {k.day !== "vandaag" ? k.index : null} */}
-                    {k.day === vandaag(0) ? "vandaag" : k.day} {k.index}
-                  </h2>
+                    <h2 className="mr-5">
+                      {k.day === vandaag(0) ? "vandaag" : k.day}
+                    </h2>
+                    <div className="relative pt-3">
+                      <img
+                        className="w-30 h-30"
+                        src="/img/feather/circle-orange.svg"
+                        alt="circle orange"
+                      />
+                      <div className={`absolute inset-0 text-12`}>
+                        <span className="flex justify-center pt-9">
+                          {k.index}
+                        </span>
+                      </div>
+                      {/* {k.index} */}
+                    </div>
+                  </div>
                   <p></p>
                 </Fragment>
               ) : null}
@@ -62,10 +77,14 @@ const Weekmenu = ({ user, thecart, handleDelete, handleUpdate, ...props }) => {
                 {cart
                   ? cart.map((c) => (
                       <Fragment key={c._id}>
-                        <div
-                          key={c._id}
-                          className="border border-gray-400 min-h-250 bg-badge w-1/2/10 sm:w-1/2/15 md:w-1/3/15 lg:w-1/4/15 ml-10 mb-10 md:ml-15 md:mb-15 unvisable slide work-grid-item grid-box__gray"
-                        >
+                        <div className="border border-gray-400 min-h-250 bg-badge w-1/2/10 sm:w-1/2/15 md:w-1/3/15 lg:w-1/4/15 ml-10 mb-10 md:ml-15 md:mb-15 unvisable slide work-grid-item grid-box__gray">
+                          <img
+                            className="h-auto"
+                            src={`img/products/product_${c.tags[0]}.jpg`}
+                            alt=""
+                          />
+                        </div>
+                        <div className="border border-gray-400 min-h-250 bg-badge w-1/2/10 sm:w-1/2/15 md:w-1/3/15 lg:w-1/4/15 ml-10 mb-10 md:ml-15 md:mb-15 unvisable slide work-grid-item grid-box__gray">
                           <div className={`min-h-full70 px-15 pt-15`}>
                             <Link to={`/recipe/${slugify(c.title)}`}>
                               <h4 className={`break-words mb-15`}>{c.title}</h4>

@@ -16,29 +16,25 @@ const NavAdd = ({ user, favorites, handleIsOpen, isOpen, thecart }) => {
           isOpen ? "add-panel__open" : null
         }`}
       >
-        <NavLink aria-label="to home" className="text-white " to="/">
-          <div onClick={handleIsOpen} className="flex items-center mb-18">
+        <div className="flex">
+          <span onClick={handleIsOpen} className="flex items-center mb-18">
             <img className="w-25" src="/img/feather/home.svg" alt="" />
-            <span className="pl-12 hover:text-black">home</span>
-          </div>
-        </NavLink>
+            <NavLink aria-label="to home" className="text-white " to="/">
+              <span className="pl-12 hover:text-black">wat</span>
+            </NavLink>
+          </span>
+          <span onClick={handleIsOpen} className="flex items-center mb-18">
+            <NavLink aria-label="to home" className="text-white " to="/hoe">
+              <span className="pl-12 text-24 font-300 hover:text-black">
+                hoe
+              </span>
+            </NavLink>
+          </span>
+        </div>
         <NavLink aria-label="to home" className="text-white " to="/">
           <div onClick={handleIsOpen} className="flex items-center mb-18">
-            <span className="pl-36 text-24 font-300 hover:text-black">
-              wat het kookt
-            </span>
-          </div>
-        </NavLink>
-        <NavLink aria-label="to home" className="text-white " to="/">
-          <div onClick={handleIsOpen} className="flex items-center mb-18">
-            <span className="pl-36 text-24 font-300 hover:text-black">
-              hoe het kookt
-            </span>
-          </div>
-        </NavLink>
-        <NavLink aria-label="to home" className="text-white " to="/">
-          <div onClick={handleIsOpen} className="flex items-center mb-18">
-            <span className="pl-36 text-24 font-300 hover:text-black">
+            <img className="w-25" src="/img/feather/help-circle.svg" alt="" />
+            <span className="pl-12 text-24 hover:text-black">
               waarom het kookt
             </span>
           </div>
