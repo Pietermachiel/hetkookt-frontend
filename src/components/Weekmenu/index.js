@@ -22,22 +22,24 @@ const Weekmenu = ({ user, thecart, handleDelete, handleUpdate, ...props }) => {
 
   return (
     <div className="container-x">
-      <h1 className="text-gray-500">weekmenu</h1>
-      <KalenderWeekmenu props={props} thecart={thecart} user={user} />
-      {thedates.length === 0 ? (
-        <>
-          <p className="font-600 mt-21">Er staat nog niets op het menu.</p>
-          <p className="w-full md:w-50">
-            Stel je eigen menu samen voor vandaag&nbsp;
-            <span className="font-600 text-gray-600">
-              {vandaag(0)} {dedatum(0)} april
-            </span>
-            &nbsp; en de zeven daaropvolgende dagen. <br />
-            <br />
-            Zoek een recept en zet op het weekmenu.
-          </p>
-        </>
-      ) : null}
+      <div className="flex items-center">
+        <h1 className="text-gray-500 mr-18 mt-10">weekmenu</h1>
+        <KalenderWeekmenu props={props} thecart={thecart} user={user} />
+        {thedates.length === 0 ? (
+          <>
+            <p className="font-600 mt-21">Er staat nog niets op het menu.</p>
+            <p className="w-full md:w-50">
+              Stel je eigen menu samen voor vandaag&nbsp;
+              <span className="font-600 text-gray-600">
+                {vandaag(0)} {dedatum(0)} april
+              </span>
+              &nbsp; en de zeven daaropvolgende dagen. <br />
+              <br />
+              Zoek een recept en zet op het weekmenu.
+            </p>
+          </>
+        ) : null}
+      </div>
 
       <div className="mb-10 mt-18">
         {kalender.map((k) => {

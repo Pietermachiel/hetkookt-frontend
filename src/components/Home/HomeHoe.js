@@ -4,12 +4,11 @@ import useCurrentWidth from "../common/use-current-width";
 import useCurrentHeight from "../common/use-current-height";
 import useCurrentScroll from "../common/use-current-scroll";
 import { slugify, kalender } from "../common/common";
-import CategoriesFilter from "../CategoriesFilter";
 import CollectionsFilter from "../CollectionsFilter";
 import Search from "../Search";
 import Dishes from "./dishes";
 
-const Home = ({
+const HomeHoe = ({
   user,
   dishes,
   recipes,
@@ -20,8 +19,6 @@ const Home = ({
   thecart,
   ...props
 }) => {
-  const [isOn, setIsOn] = useState(false);
-
   const width = useCurrentWidth();
   const height = useCurrentHeight();
   const scroll = useCurrentScroll();
@@ -39,11 +36,7 @@ const Home = ({
   return (
     <div className="container-x">
       <Search recipes={recipes} />
-      {isOn ? (
-        <CollectionsFilter dishes={dishes} />
-      ) : (
-        <CategoriesFilter categories={categories} />
-      )}
+      <CollectionsFilter dishes={dishes} />
       {!user ? (
         <div className="">
           <h1 className="text-center text-4xl font-500">
@@ -73,4 +66,4 @@ const Home = ({
   );
 };
 
-export default Home;
+export default HomeHoe;

@@ -6,29 +6,6 @@ import useCurrentScroll from "../common/use-current-scroll";
 import { slugify, kalender, uniq } from "../common/common";
 
 const Collections = ({ thecart, sorts, recipes, ...props }) => {
-  // const [collection, setCollection] = useState([]);
-
-  // const API = props.match.url;
-
-  // useEffect(() => {
-  //   async function getData() {
-  //     const res = await fetch(`https://hetkookt.roozen.nl/api${API}.json`);
-  //     res.json().then(res => setCollection(res));
-  //   }
-  //   getData();
-  // }, [API]);
-
-  // console.log(props);
-  // console.log(dishes);
-  // console.log("recipes");
-  // console.log(recipes);
-
-  // function uniq(value, index, self) {
-  //   return self.indexOf(value) === index;
-  // }
-
-  // var unique = myArray.filter((v, i, a) => a.indexOf(v) === i);
-
   const therecipes = recipes.filter(
     (recipe) => recipe.dish === props.match.params.id
   );
@@ -47,22 +24,12 @@ const Collections = ({ thecart, sorts, recipes, ...props }) => {
   const box = 272;
   const boxheight = height + scroll;
 
-  // console.log(categories);
-  // console.log(sorts);
-
-  // const category = categories.find(s => s.title === props.match.params.id);
-  // if (category === undefined) return [];
-  // const catcolor = category.category;
-
   return (
     <>
-      {/* <div className="container-categoriesFilter">
-        <CategoriesFilter sorts={sorts} />
-      </div> */}
       <div className="container-x">
         <h1 className={`pt-15 text-42 pb-18`}>
           {props.match.params.id}
-          <Link to="/">
+          <Link to="/hoe">
             <span className="ml-18 text-19 font-300">> home</span>
           </Link>
         </h1>
@@ -71,7 +38,6 @@ const Collections = ({ thecart, sorts, recipes, ...props }) => {
             <Fragment key={xid}>
               <div className="-ml-15 flex flex-row flex-wrap">
                 <div
-                  // className="grid-box unvisable slide work-grid-item"
                   key={xid}
                   className="bg-offblack text-white border border-gray-400 min-h-250 w-1/2/10 sm:w-1/2/15 lg:w-1/4/15 xl:w-1/4/15 ml-10 mb-10 md:ml-15 md:mb-15"
                 >
@@ -155,19 +121,6 @@ const Collections = ({ thecart, sorts, recipes, ...props }) => {
                         >
                           {recipe.dish}
                         </p>
-                        {/* {kalender.map((w) =>
-                          w.year === cart.date ? (
-                            <p
-                              key={w.index}
-                              className={`-mt-21 font-500 text-18 float-right pr-15 pt-11 mb-0 ${
-                                red ? "text-red-500" : null
-                              }`}
-                            >
-                              {w.day} {w.index}
-                            </p>
-                          ) : null
-                        )} */}
-
                         <div className="pt-0 mr-10 flex items-center justify-end">
                           {kalender.map((w, xid) =>
                             cart.date && cart.date.includes(w.year) ? (

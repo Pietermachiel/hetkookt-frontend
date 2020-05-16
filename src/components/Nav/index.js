@@ -1,34 +1,23 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link, NavLink, withRouter } from "react-router-dom";
-import Search from "../Search";
-// import CategoriesFilter from "../CategoriesFilter";
-// import useCurrentWidth from "../common/use-current-width";
-// import { kalender } from "../common/common";
 import NavAdd from "./NavAdd";
 
 const Nav = ({ user, thecart, ...props }) => {
   const [isOn, setIsOn] = useState(false);
   const [visible, setVisible] = useState(false);
-  // const width = useCurrentWidth();
   const recipes = props.recipes;
-  // const location = props.location.pathname;
   const [isOpen, setIsOpen] = useState(false);
 
+  console.log("props nav");
+  console.log(props);
+
   const handleIsOpen = () => {
-    // console.log("isopen?");
     setIsOpen(!isOpen);
     toggleSwitch();
-    // console.log(isOpen);
   };
-  // console.log("props");
-  // console.log(props);
-  // console.log("user");
-  // console.log(user);
 
   const favorites = thecart.filter((c) => c.favorite === true);
-  // console.log("favorites.length");
-  // console.log(favorites.length);
 
   const handleMouseDown = (e) => {
     toggleMenu();
@@ -43,20 +32,7 @@ const Nav = ({ user, thecart, ...props }) => {
 
   const toggleSwitch = () => {
     setIsOn(!isOn);
-    // console.log(isOn);
   };
-
-  // function toggle() {
-  //   isOn ? setIsOn(false) : setIsOn(true);
-  // }
-
-  // const isMobile = width <= 992;
-  // var visibility = "hide";
-  // var expanded = "false";
-  // if (visible) {
-  //   visibility = "show";
-  //   expanded = "true";
-  // }
 
   return (
     <>
@@ -75,11 +51,7 @@ const Nav = ({ user, thecart, ...props }) => {
               alt=""
             />
             <div className="flex items-center block font-700 text-rood tracking-wide text-36 pl-5 pr-36">
-              <Link
-                aria-label="logo hetkookt"
-                // className=""
-                to="/"
-              >
+              <Link aria-label="logo hetkookt" to="/">
                 <span className="font-500 text-32 pr-1">het</span>
                 kookt
               </Link>
@@ -87,12 +59,28 @@ const Nav = ({ user, thecart, ...props }) => {
           </div>
           <div className="flex items-baseline sm:justify-between w-full">
             <ul className="hidden lg:flex text-21 ">
-              <li className="mb-0 font-500 hover:text-red-500">
-                <span className="font-300 pr-1">wat</span>/
-              </li>
-              <li className="mb-0 mr-24 font-500 hover:text-red-500">
-                <span className="font-300 pr-1">hoe</span>
-              </li>
+              <NavLink aria-label="home" to="/">
+                <li
+                  className={`mb-0 ${
+                    props.location.pathname === "/"
+                      ? "text-red-500 font-700"
+                      : null
+                  } hover:text-red-500`}
+                >
+                  <span className="pr-1">wat</span>
+                </li>
+              </NavLink>
+              <NavLink aria-label="home" to="/hoe">
+                <li
+                  className={`${
+                    props.location.pathname === "/hoe"
+                      ? "text-red-500 font-700"
+                      : null
+                  } mb-0 mr-24 hover:text-red-500`}
+                >
+                  <span className="pr-1">hoe</span>
+                </li>
+              </NavLink>
               <li className="mb-0 font-500 hover:text-red-500">
                 <span className="font-300 pr-1">waarom</span>hetkookt
               </li>
@@ -119,7 +107,6 @@ const Nav = ({ user, thecart, ...props }) => {
         </div>
       </div>
       <div className={`navbox-panel ${isOpen ? "show " : null}`} id="navPanel">
-        {/* <img src="/img/icons/hetkookt-oowit.svg" alt="" /> */}
         <NavAdd
           handleIsOpen={handleIsOpen}
           isOpen={isOpen}
@@ -142,7 +129,6 @@ const Nav = ({ user, thecart, ...props }) => {
       </div>
     </>
   );
-  // }
 };
 
 export default withRouter(Nav);

@@ -16,13 +16,10 @@ const NavAdd = ({ user, favorites, handleIsOpen, isOpen, thecart }) => {
           isOpen ? "add-panel__open" : null
         }`}
       >
-        {/* <NavWeekmenu props={props} thecart={thecart} user={user} /> */}
-        {/* <p className="maandjaar">loguit</p> */}
         <NavLink aria-label="to home" className="text-white " to="/">
           <div onClick={handleIsOpen} className="flex items-center mb-18">
             <img className="w-25" src="/img/feather/home.svg" alt="" />
             <span className="pl-12 hover:text-black">home</span>
-            {/* <span className="pr-5">{props.user.name}</span> */}
           </div>
         </NavLink>
         <NavLink aria-label="to home" className="text-white " to="/">
@@ -30,7 +27,6 @@ const NavAdd = ({ user, favorites, handleIsOpen, isOpen, thecart }) => {
             <span className="pl-36 text-24 font-300 hover:text-black">
               wat het kookt
             </span>
-            {/* <span className="pr-5">{props.user.name}</span> */}
           </div>
         </NavLink>
         <NavLink aria-label="to home" className="text-white " to="/">
@@ -38,7 +34,6 @@ const NavAdd = ({ user, favorites, handleIsOpen, isOpen, thecart }) => {
             <span className="pl-36 text-24 font-300 hover:text-black">
               hoe het kookt
             </span>
-            {/* <span className="pr-5">{props.user.name}</span> */}
           </div>
         </NavLink>
         <NavLink aria-label="to home" className="text-white " to="/">
@@ -46,7 +41,6 @@ const NavAdd = ({ user, favorites, handleIsOpen, isOpen, thecart }) => {
             <span className="pl-36 text-24 font-300 hover:text-black">
               waarom het kookt
             </span>
-            {/* <span className="pr-5">{props.user.name}</span> */}
           </div>
         </NavLink>
         <NavLink aria-label="to books" className="" to="/books">
@@ -81,7 +75,6 @@ const NavAdd = ({ user, favorites, handleIsOpen, isOpen, thecart }) => {
               weekmenu
               <span className="text-red-300">&nbsp;{thedates.length}</span>
             </span>
-            {/* <span className="pr-5">{props.user.name}</span> */}
           </div>
         </NavLink>
         <NavLink aria-label="to favorites" className="" to="/favorites">
@@ -113,11 +106,6 @@ const NavAdd = ({ user, favorites, handleIsOpen, isOpen, thecart }) => {
             </div>
           </NavLink>
         )}
-        {/* <NavLink to="/logout">
-          <div className="pl-60" onClick={handleIsOpen}>
-            loguit >
-          </div>
-        </NavLink> */}
       </div>
     </div>
   );

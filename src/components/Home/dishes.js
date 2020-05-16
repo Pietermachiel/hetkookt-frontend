@@ -1,33 +1,17 @@
 import React, { Fragment, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-// import useCurrentWidth from "../common/use-current-width";
-// import useCurrentHeight from "../common/use-current-height";
-// import useCurrentScroll from "../common/use-current-scroll";
 import { slugify, kalender } from "../common/common";
 
 const Dishes = ({
-  user,
   dishes,
   recipes,
-  categories,
-  sorts,
-  handleSave,
-  handleDelete,
   thecart,
   width,
   boxheight,
   offset,
   box,
-  ...props
 }) => {
   const [isOn, setIsOn] = useState(false);
-
-  //   const width = useCurrentWidth();
-  //   const height = useCurrentHeight();
-  //   const scroll = useCurrentScroll();
-  //   const offset = 0;
-  //   const box = 265;
-  //   const boxheight = height + scroll;
 
   if (recipes.length === 0)
     return (
@@ -36,12 +20,6 @@ const Dishes = ({
       </div>
     );
 
-  // console.log(today);
-  // console.log(recipes);
-  // console.log(dishes);
-  // console.log(kalender);
-  // console.log("sorts1");
-  // console.log(sorts);
   return (
     <Fragment>
       {dishes.map((d, xid) => {
@@ -60,12 +38,6 @@ const Dishes = ({
             <div className="-ml-10 sm:ml-0 md:-ml-15 mb-10 flex flex-row flex-wrap">
               {therecipes.slice(0, 4).map((recipe, index) => {
                 let cart = thecart.find((c) => c._id === recipe._id);
-                console.log("cart");
-                console.log(cart);
-                console.log("thecart");
-                console.log(thecart);
-                console.log("therecipes");
-                console.log(therecipes);
                 if (cart === undefined) cart = [];
                 const thelength = recipe.tags.length - 1;
                 if (recipe.basics === undefined) return (recipe.basics = []);

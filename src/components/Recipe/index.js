@@ -259,7 +259,7 @@ const Recipe = ({ user, thecart, doFavorite, doSave, sorts, ...props }) => {
                       <img
                         className="w-25"
                         src="/img/feather/bookmark-red.svg"
-                        alt=""
+                        alt="bookmark red"
                       />
                       <span className="pl-10 text-19 text-indigo-700 font-600 hover:text-red-500">
                         zet in favorieten
@@ -274,7 +274,7 @@ const Recipe = ({ user, thecart, doFavorite, doSave, sorts, ...props }) => {
                     <img
                       className="w-25"
                       src="/img/feather/bookmark.svg"
-                      alt=""
+                      alt="bookmark"
                     />
                     <span className="pl-10 text-19 text-indigo-700 font-600 hover:text-red-500">
                       zet in favorieten
@@ -282,6 +282,25 @@ const Recipe = ({ user, thecart, doFavorite, doSave, sorts, ...props }) => {
                   </button>
                 )}
               </div>
+            )}
+            {!user && (
+              <NavLink to="/login">
+                <div className="">
+                  <div
+                    className="h-20 flex mb-0"
+                    // onClick={() => handleNotitie()}
+                  >
+                    <img
+                      className="w-20"
+                      src="/img/feather/edit-2.svg"
+                      alt=""
+                    />
+                    <span className="pl-14 text-19 text-indigo-700 font-600 hover:text-red-500">
+                      maak een notitie
+                    </span>
+                  </div>
+                </div>
+              </NavLink>
             )}
             {user && (
               <div className="">

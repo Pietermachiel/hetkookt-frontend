@@ -23,13 +23,13 @@ const KalenderWeekmenu = ({ thecart, ...props }) => {
                     <img
                       className="w-30 h-30"
                       src="/img/feather/circle-gray.svg"
-                      alt=""
+                      alt="circle gray"
                     />
                   ) : (
                     <img
                       className="w-30 h-30"
                       src="/img/feather/circle-orange.svg"
-                      alt=""
+                      alt="circle orange"
                     />
                   )}
 
@@ -45,8 +45,8 @@ const KalenderWeekmenu = ({ thecart, ...props }) => {
               );
             })}
           </div>
-          <p className="text-16 pl-3 mb-0 leading-7 text-gray-500 pt-3">
-            april <span className="text-14">2020</span>
+          <p className="text-16 pl-3 mb-0 leading-7 text-gray-500 pt-3 mt-10">
+            mei <span className="text-14">2020</span>
           </p>
         </>
       )}

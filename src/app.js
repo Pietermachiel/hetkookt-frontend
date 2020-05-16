@@ -6,7 +6,8 @@ import inschrijven from "./components/inschrijven";
 import Verify from "./components/verify";
 import logout from "./components/logout";
 import Test from "./components/Test";
-import Home from "./components/Home";
+import HomeWat from "./components/Home/HomeWat";
+import HomeHoe from "./components/Home/HomeHoe";
 import Recipe from "./components/Recipe";
 import Sorts from "./components/Sorts";
 import Categories from "./components/Categories";
@@ -289,7 +290,7 @@ const App = () => {
             exact
             path="/"
             render={(props) => (
-              <Home
+              <HomeWat
                 {...props}
                 user={user}
                 recipes={recipes}
@@ -304,6 +305,25 @@ const App = () => {
               />
             )}
           />
+          <Route
+            exact
+            path="/hoe"
+            render={(props) => (
+              <HomeHoe
+                {...props}
+                user={user}
+                recipes={recipes}
+                categories={categories}
+                sorts={sorts}
+                dishes={dishes}
+                doSave={doSave}
+                handleDelete={handleDelete}
+                handleUpdate={handleUpdate}
+                // handleOpen={handleOpen}
+                thecart={thecart}
+              />
+            )}
+          />{" "}
           <Route
             path="/recipe/:id"
             render={(props) => {
