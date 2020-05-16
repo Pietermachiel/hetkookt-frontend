@@ -376,6 +376,7 @@ const App = () => {
                 handleUpdate={handleUpdate}
                 thecart={thecart}
                 recipes={recipes}
+                dishes={dishes}
               />
             )}
           />

@@ -9,8 +9,8 @@ const Nav = ({ user, thecart, ...props }) => {
   const recipes = props.recipes;
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log("props nav");
-  console.log(props);
+  // console.log("props nav");
+  // console.log(props);
 
   const handleIsOpen = () => {
     setIsOpen(!isOpen);
