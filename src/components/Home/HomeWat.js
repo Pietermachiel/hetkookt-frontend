@@ -17,6 +17,7 @@ const HomeWat = ({
   handleSave,
   handleDelete,
   thecart,
+  about,
   ...props
 }) => {
   const width = useCurrentWidth();
@@ -53,6 +54,18 @@ const HomeWat = ({
           </NavLink>
         </div>
       ) : null}
+
+      {about.map((a) => {
+        return (
+          <Fragment>
+            <h2>{a.title}</h2>
+            {a.lines.map((line) => (
+              <li>{line}</li>
+            ))}
+          </Fragment>
+        );
+      })}
+
       {/* <Dishes
         dishes={dishes}
         recipes={recipes}

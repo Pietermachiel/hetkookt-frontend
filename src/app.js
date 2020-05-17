@@ -311,6 +311,7 @@ const App = () => {
                 handleUpdate={handleUpdate}
                 // handleOpen={handleOpen}
                 thecart={thecart}
+                about={about}
               />
             )}
           />
