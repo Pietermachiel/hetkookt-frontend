@@ -67,7 +67,7 @@ const Nav = ({ user, thecart, ...props }) => {
                       : null
                   } hover:text-red-500`}
                 >
-                  <span className="pr-1">wat</span>
+                  <span className="pr-24">wat</span>
                 </li>
               </NavLink>
               <NavLink aria-label="home" to="/hoe">

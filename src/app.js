@@ -30,6 +30,7 @@ const App = () => {
   const [dishes, setDishes] = useState([]);
   const [user, setUser] = useState([]);
   const [me, setMe] = useState([]);
+  const [about, setAbout] = useState([]);
   // const [placeholder, setPlaceholder] = useState([]);
 
   // console.log("recipes");
@@ -117,8 +118,16 @@ const App = () => {
     getData();
   }, []);
 
-  // console.log("dishes");
-  // console.log(dishes);
+  useEffect(() => {
+    async function getData() {
+      const res = await fetch(`${recipeUrl}/about.json`);
+      res.json().then((res) => setAbout(res));
+    }
+    getData();
+  }, []);
+
+  console.log("about");
+  console.log(about);
 
   // thecart = all me.recipes ({_id, title, author})
 

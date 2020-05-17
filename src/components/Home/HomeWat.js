@@ -53,7 +53,7 @@ const HomeWat = ({
           </NavLink>
         </div>
       ) : null}
-      <Dishes
+      {/* <Dishes
         dishes={dishes}
         recipes={recipes}
         thecart={thecart}
@@ -61,7 +61,7 @@ const HomeWat = ({
         boxheight={boxheight}
         offset={offset}
         box={box}
-      />
+      /> */}
     </div>
   );
 };
