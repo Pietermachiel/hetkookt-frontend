@@ -52,7 +52,7 @@ const Home = ({
           </h1>
           <p className="text-center mb-0">
             Schrijf je in bij <span className="font-700">hetkookt</span> en maak
-            een eigen kookschrift.
+            een kookschrift, weekplanner en notities.
           </p>
           <NavLink aria-label="register" to="/register">
             <p className="text-center text-indigo-700 font-500 mb-18">
