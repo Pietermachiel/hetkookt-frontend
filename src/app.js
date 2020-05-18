@@ -6,7 +6,7 @@ import inschrijven from "./components/inschrijven";
 import Verify from "./components/verify";
 import logout from "./components/logout";
 import Test from "./components/Test";
-import HomeWat from "./components/Home/HomeWat";
+import Home from "./components/Home";
 import HomeHoe from "./components/Home/HomeHoe";
 import Recipe from "./components/Recipe";
 import Sorts from "./components/Sorts";
@@ -31,6 +31,8 @@ const App = () => {
   const [user, setUser] = useState([]);
   const [me, setMe] = useState([]);
   const [about, setAbout] = useState([]);
+  const [isWat, setIsWat] = useState(false);
+
   // const [placeholder, setPlaceholder] = useState([]);
 
   // console.log("recipes");
@@ -292,14 +294,20 @@ const App = () => {
     <>
       <div className="content">
         <header>
-          <Nav thecart={thecart} user={user} recipes={recipes} />
+          <Nav
+            thecart={thecart}
+            user={user}
+            recipes={recipes}
+            isWat={isWat}
+            setIsWat={setIsWat}
+          />
         </header>
         <Switch>
           <Route
             exact
             path="/"
             render={(props) => (
-              <HomeWat
+              <Home
                 {...props}
                 user={user}
                 recipes={recipes}
@@ -312,10 +320,12 @@ const App = () => {
                 // handleOpen={handleOpen}
                 thecart={thecart}
                 about={about}
+                isWat={isWat}
+                setIsWat={setIsWat}
               />
             )}
           />
-          <Route
+          {/* <Route
             exact
             path="/hoe"
             render={(props) => (
@@ -333,7 +343,7 @@ const App = () => {
                 thecart={thecart}
               />
             )}
-          />{" "}
+          />*/}
           <Route
             path="/recipe/:id"
             render={(props) => {

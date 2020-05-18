@@ -7,6 +7,7 @@ import { slugify, kalender } from "../common/common";
 import CollectionsFilter from "../CollectionsFilter";
 import Search from "../Search";
 import Dishes from "./dishes";
+import About from "./about";
 
 const HomeHoe = ({
   user,
@@ -17,6 +18,7 @@ const HomeHoe = ({
   handleSave,
   handleDelete,
   thecart,
+  about,
   ...props
 }) => {
   const width = useCurrentWidth();
@@ -53,7 +55,9 @@ const HomeHoe = ({
           </NavLink>
         </div>
       ) : null}
-      <Dishes
+      {/* <About about={about} /> */}
+
+      {/* <Dishes
         dishes={dishes}
         recipes={recipes}
         thecart={thecart}
@@ -61,7 +65,7 @@ const HomeHoe = ({
         boxheight={boxheight}
         offset={offset}
         box={box}
-      />
+      /> */}
     </div>
   );
 };

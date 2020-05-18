@@ -7,6 +7,7 @@ import { slugify, kalender } from "../common/common";
 import CategoriesFilter from "../CategoriesFilter";
 import Search from "../Search";
 import Dishes from "./dishes";
+import About from "./about";
 
 const HomeWat = ({
   user,
@@ -55,16 +56,7 @@ const HomeWat = ({
         </div>
       ) : null}
 
-      {about.map((a) => {
-        return (
-          <Fragment>
-            <h2>{a.title}</h2>
-            {a.lines.map((line) => (
-              <li>{line}</li>
-            ))}
-          </Fragment>
-        );
-      })}
+      <About about={about} />
 
       {/* <Dishes
         dishes={dishes}

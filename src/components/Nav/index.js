@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import { Link, NavLink, withRouter } from "react-router-dom";
 import NavAdd from "./NavAdd";
 
-const Nav = ({ user, thecart, ...props }) => {
+const Nav = ({ user, thecart, isWat, setIsWat, ...props }) => {
   const [isOn, setIsOn] = useState(false);
   const [visible, setVisible] = useState(false);
   const recipes = props.recipes;
@@ -59,28 +59,30 @@ const Nav = ({ user, thecart, ...props }) => {
           </div>
           <div className="flex items-baseline sm:justify-between w-full">
             <ul className="hidden lg:flex text-21 ">
-              <NavLink aria-label="home" to="/">
-                <li
-                  className={`mb-0 ${
-                    props.location.pathname === "/"
-                      ? "text-red-500 font-700"
-                      : null
-                  } hover:text-red-500`}
-                >
-                  <span className="pr-24">wat</span>
-                </li>
-              </NavLink>
-              <NavLink aria-label="home" to="/hoe">
-                <li
-                  className={`${
-                    props.location.pathname === "/hoe"
-                      ? "text-red-500 font-700"
-                      : null
-                  } mb-0 mr-24 hover:text-red-500`}
-                >
-                  <span className="pr-1">hoe</span>
-                </li>
-              </NavLink>
+              {/* <NavLink aria-label="home" to="/"> */}
+              <li
+                onClick={() => setIsWat(false)}
+                className={`mb-0 ${
+                  props.location.pathname === "/"
+                    ? "text-red-500 font-700"
+                    : null
+                } hover:text-red-500`}
+              >
+                <span className="pr-24">wat</span>
+              </li>
+              {/* </NavLink> */}
+              {/* <NavLink aria-label="home" to="/hoe"> */}
+              <li
+                onClick={() => setIsWat(true)}
+                className={`${
+                  props.location.pathname === "/hoe"
+                    ? "text-red-500 font-700"
+                    : null
+                } mb-0 mr-24 hover:text-red-500`}
+              >
+                <span className="pr-1">hoe</span>
+              </li>
+              {/* </NavLink> */}
               <li className="mb-0 font-500 hover:text-red-500">
                 <span className="font-300 pr-1">waarom</span>hetkookt
               </li>

@@ -8,6 +8,7 @@ import CategoriesFilter from "../CategoriesFilter";
 import CollectionsFilter from "../CollectionsFilter";
 import Search from "../Search";
 import Dishes from "./dishes";
+import About from "./about";
 
 const Home = ({
   user,
@@ -18,10 +19,10 @@ const Home = ({
   handleSave,
   handleDelete,
   thecart,
+  about,
+  isWat,
   ...props
 }) => {
-  const [isOn, setIsOn] = useState(false);
-
   const width = useCurrentWidth();
   const height = useCurrentHeight();
   const scroll = useCurrentScroll();
@@ -38,14 +39,14 @@ const Home = ({
 
   return (
     <div className="container-x">
-      <Search recipes={recipes} />
-      {isOn ? (
+      {/* <Search recipes={recipes} /> */}
+      {isWat ? (
         <CollectionsFilter dishes={dishes} />
       ) : (
         <CategoriesFilter categories={categories} />
       )}
       {!user ? (
-        <div className="">
+        <div className="mt-36">
           <h1 className="text-center text-4xl font-500">
             <span className="font-300">dat</span>hetkookt!
           </h1>
@@ -60,7 +61,8 @@ const Home = ({
           </NavLink>
         </div>
       ) : null}
-      <Dishes
+      <About about={about} />
+      {/* <Dishes
         dishes={dishes}
         recipes={recipes}
         thecart={thecart}
@@ -68,7 +70,7 @@ const Home = ({
         boxheight={boxheight}
         offset={offset}
         box={box}
-      />
+      /> */}
     </div>
   );
 };
