@@ -7,12 +7,13 @@ import Verify from "./components/verify";
 import logout from "./components/logout";
 import Test from "./components/Test";
 import Home from "./components/Home";
-import HomeHoe from "./components/Home/HomeHoe";
+import Waarom from "./components/Home/Waarom";
 import Recipe from "./components/Recipe";
 import Sorts from "./components/Sorts";
 import Categories from "./components/Categories";
 import Collections from "./components/Collections";
 import Favorites from "./components/Favorites";
+import Voorraad from "./components/Voorraad";
 import Weekmenu from "./components/Weekmenu";
 import User from "./components/User";
 import Nav from "./components/Nav";
@@ -300,6 +301,8 @@ const App = () => {
             recipes={recipes}
             isWat={isWat}
             setIsWat={setIsWat}
+            dishes={dishes}
+            categories={categories}
           />
         </header>
         <Switch>
@@ -325,11 +328,11 @@ const App = () => {
               />
             )}
           />
-          {/* <Route
+          <Route
             exact
-            path="/hoe"
+            path="/waarom"
             render={(props) => (
-              <HomeHoe
+              <Waarom
                 {...props}
                 user={user}
                 recipes={recipes}
@@ -343,7 +346,7 @@ const App = () => {
                 thecart={thecart}
               />
             )}
-          />*/}
+          />
           <Route
             path="/recipe/:id"
             render={(props) => {
@@ -356,6 +359,7 @@ const App = () => {
                   categories={categories}
                   sorts={sorts}
                   thecart={thecart}
+                  setIsWat={setIsWat}
                   {...props}
                   doSave={doSave}
                   doFavorite={doFavorite}
@@ -451,6 +455,12 @@ const App = () => {
                   {...props}
                 />
               );
+            }}
+          />
+          <Route
+            path="/voorraad"
+            render={(props) => {
+              return <Voorraad {...props} />;
             }}
           />
         </Switch>

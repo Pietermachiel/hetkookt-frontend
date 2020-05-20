@@ -1,0 +1,245 @@
+[{
+      "storage"       : "olie en azijn",
+      "index"         : "1",
+      "product"       : [ 
+        "zonnebloemolie", 
+        "olijfolie", 
+        "extravergineolijfolie", 
+        "arachideolie", 
+        "sezamolie", 
+        "koolzaadolie", 
+        "walnootolie", 
+        "wittewijnazijn", 
+        "rodewijnazijn", 
+        "sherryazijn", 
+        "appelazijn", 
+        "balsamicoazijn"
+      ] 
+    },
+  {
+      "storage"       : "smaakmakers",
+      "index"         : "2",
+      "product"       : [ 
+        "dijonmosterd", 
+        "grovemosterd", 
+        "worcestershiresaus", 
+        "oestersaus", 
+        "mierikswortelpasta", 
+        "mayonnaise", 
+        "sambal", 
+        "ansjovis", 
+        "kappertjes"
+      ] 
+    },
+  {
+      "storage"       : "kruiden en specerijen",
+      "index"         : "3",
+      "product"       : [ 
+        "anijszaad", 
+        "cayennepeper", 
+        "chilipoeder", 
+        "currypoeder", 
+        "daonsalem", 
+        "djerukpurut", 
+        "dragonblad", 
+        "foelieblad", 
+        "foenegriekzaad", 
+        "garammasala", 
+        "gemberpoeder", 
+        "jeneverbes", 
+        "kaneelpoeder", 
+        "kardemompoeder", 
+        "kardemomzaad", 
+        "kentjour", 
+        "kerriepoeder", 
+        "kerrieblad", 
+        "komijnpoeder", 
+        "korianderpoeder", 
+        "korianderzaad", 
+        "kurkuma", 
+        "limoengedroogd", 
+        "lavendel", 
+        "maanzaad", 
+        "marjoraanblad", 
+        "mosterzaad", 
+        "mosterdpoeder", 
+        "muntblad", 
+        "nigellazaad", 
+        "oreganoblad", 
+        "paprikapoeder", 
+        "peperkorrel", 
+        "peterselieblad", 
+        "pimentzaad", 
+        "pimentpoeder", 
+        "pulbiber", 
+        "raselhanoute", 
+        "rozemarijnblad", 
+        "salieblad", 
+        "soemak", 
+        "steranijs", 
+        "thijmblad", 
+        "vanillestokjes", 
+        "vanillesuiker", 
+        "venkelzaad", 
+        "za’hatar"
+      ] 
+    },
+  {
+      "storage"       : "koelkast",
+      "index"         : "4",
+      "product"       : [ 
+        "eieren", 
+        "boter", 
+        "melk", 
+        "karnemelk", 
+        "kokosmelk", 
+        "kokosboter", 
+        "yoghurt", 
+        "kwark", 
+        "slagroom", 
+        "zureroom", 
+        "boerenbelegenkaas", 
+        "feta", 
+        "mozarella", 
+        "parmezaan", 
+        "geitenkaas", 
+        "gorgonzola", 
+        "ricotta", 
+        "roquefort"
+      ] 
+    },
+  {
+      "storage"       : "diepvries",
+      "index"         : "5",
+      "product"       : [ 
+        "tomatensaus", 
+        "bolognesesaus", 
+        "pesto", 
+        "doperwten", 
+        "tuinbonen", 
+        "vanilleijs", 
+        "runderbouillon", 
+        "kippenbouillon", 
+        "champignonbouillon", 
+        "visbouillon"
+      ] 
+    },
+  {
+      "storage"       : "bakken",
+      "index"         : "6",
+      "product"       : [ 
+        "patentbloem", 
+        "tarwebloem", 
+        "tarwevolkoren", 
+        "roggevolkoren", 
+        "pannekoekenmeel", 
+        "instantgist", 
+        "bakpoeder", 
+        "rozijnen", 
+        "krenten", 
+        "cranberries", 
+        "berberisbessen", 
+        "sucade", 
+        "pruimen", 
+        "abrikozen", 
+        "kokos", 
+        "dadel", 
+        "vijg"
+      ] 
+    },
+  {
+      "storage"       : "zoet",
+      "index"         : "7",
+      "product"       : [ 
+        "suiker", 
+        "bruinebasterdsuiker", 
+        "wittebasterdsuiker", 
+        "poedersuiker", 
+        "vanillesuiker", 
+        "palmsuiker", 
+        "keukenstroop", 
+        "ahornsiroop", 
+        "honing"
+      ] 
+    },
+  {
+      "storage"       : "peulvruchten",
+      "index"         : "8",
+      "product"       : [ 
+        "wittebonen", 
+        "bruinebonen", 
+        "zwartebonen", 
+        "groenelinzen", 
+        "rodelinzen", 
+        "borlottibonen", 
+        "kidneybonen", 
+        "kikkererwten", 
+        "spliterwten", 
+        "kapucijners"
+      ] 
+    },
+  {
+      "storage"       : "granen",
+      "index"         : "9",
+      "product"       : [ 
+        "witterijst", 
+        "zwarterijst", 
+        "zilvervliesrijst", 
+        "polenta", 
+        "bulgur", 
+        "quinoa", 
+        "risotto", 
+        "couscous"
+      ] 
+    },
+  {
+      "storage"       : "noten",
+      "index"         : "10",
+      "product"       : [ 
+        "walnoten", 
+        "pijnboompitten", 
+        "amandelen", 
+        "amandelschaafsel", 
+        "kastanje", 
+        "pindakaas", 
+        "wittetahin"
+      ] 
+    },
+  {
+      "storage"       : "zaden",
+      "index"         : "11",
+      "product"       : [ 
+        "sesamzaad", 
+        "zonnebloempitten", 
+        "pompoenpitten"
+      ] 
+    },
+  {
+      "storage"       : "uit blik of glas",
+      "index"         : "12",
+      "product"       : [ 
+        "mais", 
+        "flageolets", 
+        "kapucijners", 
+        "bruinelinzen", 
+        "augurk", 
+        "cornichons", 
+        "kersenopsap"
+      ] 
+    },
+  {
+      "storage"       : "alcohol",
+      "index"         : "13",
+      "product"       : [ 
+        "wittewijn", 
+        "rodewijn", 
+        "pernod", 
+        "vermouth", 
+        "madeira", 
+        "bier"
+      ] 
+    }
+  
+]
+
+

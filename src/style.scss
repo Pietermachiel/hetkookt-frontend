@@ -3,7 +3,7 @@
 $mono: "Fira Mono";
 $on-palm: 768px;
 $on-tablet: 1024px;
-$on-laptop: 1200px;
+$on-laptop: 1260px;
 
 $text-color: #111;
 $brand-color: rgb(64, 212, 57);
@@ -39,7 +39,7 @@ html {
 
 @import "./sass/color", "./sass/form", "./sass/grid", "./sass/login",
   "./sass/pages", "./sass/products", "./sass/recepten", "./sass/nav",
-  "./sass/typo";
+  "./sass/typo", "./sass/voorraad";
 
 // body {
 //   // background: red;

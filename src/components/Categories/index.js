@@ -20,11 +20,11 @@ const Categories = ({ thecart, categories, recipes, ...props }) => {
   return (
     <>
       <div className="container-x">
-        <h1 className={`text-48 mb-18 ${props.match.params.id}`}>
+        <h1 className={`my-10 leading-relaxed ${props.match.params.id}`}>
           {props.match.params.id}
-          <Link to="/">
+          {/* <Link to="/">
             <span className="ml-18 text-19 text-black font-300">> home</span>
-          </Link>
+          </Link> */}
         </h1>
         {categories.map((category, index) => {
           // console.log(props.match.params.id);
@@ -50,16 +50,16 @@ const Categories = ({ thecart, categories, recipes, ...props }) => {
                             key={xid}
                             className="bg-offblack text-white border border-gray-400 min-h-250 w-1/2/10 sm:w-1/2/15 lg:w-1/4/15 xl:w-1/4/15 ml-10 mb-10 md:ml-15 md:mb-15"
                           >
-                            <Link to={`/sorts/${slugify(s.title)}`}>
-                              <div className="">
-                                <img
-                                  src={`/img/products/product_${slugify(
-                                    s.title
-                                  )}.jpg`}
-                                  alt=""
-                                />
-                              </div>
-                            </Link>
+                            {/* <Link to={`/sorts/${slugify(s.title)}`}> */}
+                            <div className="">
+                              <img
+                                src={`/img/products/product_${slugify(
+                                  s.title
+                                )}.jpg`}
+                                alt=""
+                              />
+                            </div>
+                            {/* </Link> */}
                             <div className="relative h-60">
                               <p
                                 className={`mt-10 uppercase absolute tracking-widest top-0 left-0 text-14`}

@@ -1,0 +1,86 @@
+.menu-box__inner {
+  columns: 5;
+}
+
+.filter-box__stock {
+  color: #498ddc;
+  line-height: 1.6;
+}
+
+.boodschappen {
+  background: #f9f3dc;
+  border-bottom: 1px solid white;
+  padding-bottom: 2em;
+  margin-top: 36px;
+}
+
+.voorraadkast {
+  background: #f6ad55;
+  padding-top: 0.5em;
+  h2 {
+    padding: 0.5em 0;
+  }
+}
+
+.form {
+  margin-bottom: 1em;
+  input {
+    width: 280px;
+  }
+}
+
+.btn {
+  border-radius: 2px;
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: #eee;
+  border: 1px solid #e6e6e6;
+  border-bottom: 2px solid #c3c3c3;
+}
+.btn-small {
+  margin-top: 0;
+  padding: 10px 10px;
+  position: relative;
+}
+.btn-small__green:hover {
+  // border: 1px solid blue;
+  border-bottom: 2px solid blue;
+  background-color: white;
+  transition: all 0.25s ease;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: blue;
+    transition: all 0.25s ease;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    left: 46%;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: blue;
+    transition: all 0.25s ease;
+  }
+}
+.btn-small__red:hover {
+  border: 1px solid red;
+  border-bottom: 2px solid red;
+  background-color: white;
+  transition: all 0.25s ease;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: red;
+    transition: all 0.25s ease;
+  }
+}

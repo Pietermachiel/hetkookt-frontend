@@ -27,9 +27,9 @@ const Collections = ({ thecart, sorts, recipes, ...props }) => {
   return (
     <>
       <div className="container-x">
-        <h1 className={`pt-15 text-42 pb-18`}>
+        <h1 className={`my-10 text-indigo-600`}>
           {props.match.params.id}
-          <Link to="/hoe">
+          <Link to="/">
             <span className="ml-18 text-19 font-300">> home</span>
           </Link>
         </h1>

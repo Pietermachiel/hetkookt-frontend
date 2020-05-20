@@ -4,7 +4,15 @@ import { slugify, kalender } from "../common/common.js";
 import AddpanelWeekmenu from "./AddpanelWeekmenu.js";
 import { recipeUrl } from "../../config.json";
 
-const Recipe = ({ user, thecart, doFavorite, doSave, sorts, ...props }) => {
+const Recipe = ({
+  user,
+  thecart,
+  doFavorite,
+  doSave,
+  sorts,
+  setIsWat,
+  ...props
+}) => {
   var [therecipe, setTheRecipe] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [notitie, setNotitie] = useState(false);
@@ -77,10 +85,13 @@ const Recipe = ({ user, thecart, doFavorite, doSave, sorts, ...props }) => {
             <h1 className="font-600 mt-15 mb-10">{therecipe.title}</h1>
             <Link
               className="hover:text-red-500"
-              to={`/collections/${therecipe.dish}`}
+              to={`/sorts/${therecipe.tags[0]}`}
             >
-              <p className="font-300 text-19 leading-4 mb-36">
-                meer {therecipe.dish} &nbsp;>
+              <p
+                onClick={() => setIsWat(false)}
+                className="font-300 text-19 leading-4 mb-36"
+              >
+                meer {therecipe.tags[0]} &nbsp;>
               </p>
             </Link>
           </div>

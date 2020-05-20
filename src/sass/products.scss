@@ -3,29 +3,31 @@
 }
 .categories-filter {
   width: 100%;
-  max-width: 984px;
+  // max-width: 984px;
   margin: 0 auto;
-  padding: 0 15px 15px;
+  padding: 0 15px;
+  padding-bottom: 24px;
   columns: 2;
   column-gap: 30px;
-  background: #f4f8fb;
+  background: white; // #f4f8fb;
   @media (min-width: 667px) {
-    padding: 15px;
-    margin-bottom: 15px;
-    columns: 3;
+    padding: 0 25px;
+    // columns: 3;
   }
   @media (min-width: $on-tablet) {
-    columns: 4;
+    padding: 15px calc(50vw - (965px / 2));
+    padding-bottom: 24px;
+    columns: 5;
   }
   @media (min-width: $on-laptop) {
-    columns: 5;
+    // columns: 5;
   }
   a {
     text-decoration: none;
   }
   p {
     font-weight: 500;
-    font-size: 16px;
+    font-size: 17px;
     line-height: 21px;
     margin: 0;
     margin-bottom: 5px;
@@ -44,32 +46,33 @@
 
 .collections-filter {
   width: 100%;
-  max-width: 984px;
+  // max-width: 984px;
   margin: 0 auto;
   padding: 0 15px 15px;
   columns: 2;
   column-gap: 30px;
-  background: #f4f8fb;
+  background: white; // #f4f8fb;
   @media (min-width: 667px) {
-    padding: 15px;
-    padding-top: 5px;
-    padding-bottom: 13px;
-    margin-bottom: 15px;
-    columns: 3;
+    // padding: 15px;
+    // padding-top: 0;
+    padding-bottom: 18px;
+    // columns: 3;
   }
   @media (min-width: $on-tablet) {
-    columns: 4;
+    padding: 15px calc(50vw - (965px / 2));
+    margin-bottom: 15px;
+    columns: 5;
   }
   @media (min-width: $on-laptop) {
-    columns: 5;
+    // columns: 5;
   }
   a {
     text-decoration: none;
   }
   p {
-    font-weight: 300;
+    font-weight: 500;
     font-size: 19px;
-    line-height: 36px;
+    line-height: 39px;
     margin: 0;
     margin-bottom: 5px;
     display: block;

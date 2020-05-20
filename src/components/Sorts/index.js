@@ -46,7 +46,7 @@ const Sorts = ({ thecart, recipes, sorts, categories, ...props }) => {
         <Productenfilter sorts={sorts} />
       </div> */}
       <div className="container-x">
-        <h1 className={`pt-15 text-42 pb-18 ${catcolor}`}>
+        <h1 className={`text-42 my-10 ${catcolor}`}>
           {sort.title}
           <Link to={`/categories/${sort.category}`}>
             <span className="ml-18 text-19 text-black font-300">
@@ -55,6 +55,28 @@ const Sorts = ({ thecart, recipes, sorts, categories, ...props }) => {
           </Link>
         </h1>
         <div className="-ml-15 mb-10 flex flex-row flex-wrap">
+          <div
+            // className="grid-box unvisable slide work-grid-item"
+
+            className="bg-offblack text-white border border-gray-400 min-h-250 w-1/2/10 sm:w-1/2/15 lg:w-1/4/15 xl:w-1/4/15 ml-10 mb-10 md:ml-15 md:mb-15"
+          >
+            <Link to={`/sorts/${slugify(sort.title)}`}>
+              <div className="">
+                <img
+                  src={`/img/products/product_${slugify(sort.title)}.jpg`}
+                  alt=""
+                />
+              </div>
+            </Link>
+            <div className="relative h-60">
+              <p
+                className={`mt-10 uppercase absolute tracking-widest top-0 left-0 text-14`}
+              >
+                <span className="pl-15">{sort.title}</span>
+              </p>
+            </div>
+          </div>
+
           {recipeItem.map((recipe, index) => {
             let cart = thecart.find((c) => c._id === recipe._id);
             if (cart === undefined) cart = [];

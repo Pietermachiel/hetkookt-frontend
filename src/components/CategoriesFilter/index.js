@@ -11,7 +11,7 @@ const CategoriesFilter = ({ categories }) => {
         // console.log("p");
         // console.log(p);
         return (
-          <div key={xid}>
+          <div className={``} key={xid}>
             <Link
               aria-label={`categories/${p.title}`}
               to={`/categories/${p.title}`}

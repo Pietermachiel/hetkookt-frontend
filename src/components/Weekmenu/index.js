@@ -22,8 +22,8 @@ const Weekmenu = ({ user, thecart, handleDelete, handleUpdate, ...props }) => {
 
   return (
     <div className="container-x">
-      <div className="flex items-center">
-        <h1 className="text-gray-500 mr-18 mt-10">weekmenu</h1>
+      <div className="lg:flex lg:items-center">
+        <h1 className="text-gray-500 mr-18 mt-18">weekmenu</h1>
         <KalenderWeekmenu props={props} thecart={thecart} user={user} />
       </div>
       {thedates.length === 0 ? (
