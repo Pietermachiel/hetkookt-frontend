@@ -2,15 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { kalender } from "../common/common.js";
 
-const NavAdd = ({
-  user,
-  favorites,
-  handleIsOpen,
-  isOpen,
-  thecart,
-  isWat,
-  setIsWat,
-}) => {
+const NavAdd = ({ user, favorites, handleIsOpen, isOpen, thecart }) => {
   const thedates = kalender.filter((k) => {
     const item = thecart.find((c) => (c.date ? c.date.includes(k.year) : null));
     return item;
@@ -28,20 +20,12 @@ const NavAdd = ({
           <span onClick={handleIsOpen} className="flex items-center mb-18">
             <img className="w-25" src="/img/feather/home.svg" alt="" />
             <NavLink aria-label="to home" className="text-white " to="/">
-              <span
-                onClick={() => setIsWat(false)}
-                className="pl-12 hover:text-black"
-              >
-                wat
-              </span>
+              <span className="pl-12 hover:text-black">wat</span>
             </NavLink>
           </span>
           <span onClick={handleIsOpen} className="flex items-center mb-18">
             <NavLink aria-label="to home" className="text-white " to="/">
-              <span
-                onClick={() => setIsWat(true)}
-                className={`pl-12 text-24 font-300 hover:text-black`}
-              >
+              <span className={`pl-12 text-24 font-300 hover:text-black`}>
                 hoe
               </span>
             </NavLink>

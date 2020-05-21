@@ -4,6 +4,7 @@ import useCurrentWidth from "../common/use-current-width";
 import useCurrentHeight from "../common/use-current-height";
 import useCurrentScroll from "../common/use-current-scroll";
 import { slugify, kalender } from "../common/common";
+import CategoriesFilter from "../CategoriesFilter";
 
 const Sorts = ({ thecart, recipes, sorts, categories, ...props }) => {
   // console.log(props);
@@ -42,9 +43,7 @@ const Sorts = ({ thecart, recipes, sorts, categories, ...props }) => {
 
   return (
     <>
-      {/* <div className="container-productenfilter">
-        <Productenfilter sorts={sorts} />
-      </div> */}
+      <CategoriesFilter categories={categories} />
       <div className="container-x">
         <h1 className={`text-42 my-10 ${catcolor}`}>
           {sort.title}

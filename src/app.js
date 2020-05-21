@@ -7,6 +7,8 @@ import Verify from "./components/verify";
 import logout from "./components/logout";
 import Test from "./components/Test";
 import Home from "./components/Home";
+import Wat from "./components/Home/Wat";
+import Hoe from "./components/Home/Hoe";
 import Waarom from "./components/Home/Waarom";
 import Recipe from "./components/Recipe";
 import Sorts from "./components/Sorts";
@@ -29,12 +31,13 @@ const App = () => {
   const [sorts, setSorts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [dishes, setDishes] = useState([]);
+  const [stock, setStock] = useState([]);
   const [user, setUser] = useState([]);
   const [me, setMe] = useState([]);
   const [about, setAbout] = useState([]);
-  const [isWat, setIsWat] = useState(false);
 
   // const [placeholder, setPlaceholder] = useState([]);
+  // const [inProp, setInProp] = useState(true);
 
   // console.log("recipes");
   // console.log(recipes);
@@ -48,8 +51,7 @@ const App = () => {
   // console.log(user);
   // console.log("me");
   // console.log(me);
-
-  // const [inProp, setInProp] = useState(true);
+  // console.log(stock);
 
   useEffect(() => {
     async function getData() {
@@ -105,6 +107,14 @@ const App = () => {
   }, []);
 
   useEffect(() => {
+    async function getData() {
+      const res = await fetch(`${recipeUrl}/stock.json`);
+      res.json().then((res) => setStock(res));
+    }
+    getData();
+  }, []);
+
+  useEffect(() => {
     const user = auth.getCurrentUser();
     setUser(user);
     // console.log("user");
@@ -129,8 +139,8 @@ const App = () => {
     getData();
   }, []);
 
-  console.log("about");
-  console.log(about);
+  // console.log("about");
+  // console.log(about);
 
   // thecart = all me.recipes ({_id, title, author})
 
@@ -299,8 +309,6 @@ const App = () => {
             thecart={thecart}
             user={user}
             recipes={recipes}
-            isWat={isWat}
-            setIsWat={setIsWat}
             dishes={dishes}
             categories={categories}
           />
@@ -323,16 +331,54 @@ const App = () => {
                 // handleOpen={handleOpen}
                 thecart={thecart}
                 about={about}
-                isWat={isWat}
-                setIsWat={setIsWat}
               />
             )}
           />
           <Route
             exact
-            path="/waarom"
+            path="/"
             render={(props) => (
-              <Waarom
+              <Home
+                {...props}
+                user={user}
+                recipes={recipes}
+                categories={categories}
+                sorts={sorts}
+                dishes={dishes}
+                doSave={doSave}
+                handleDelete={handleDelete}
+                handleUpdate={handleUpdate}
+                // handleOpen={handleOpen}
+                thecart={thecart}
+                about={about}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/wat"
+            render={(props) => (
+              <Wat
+                {...props}
+                user={user}
+                recipes={recipes}
+                categories={categories}
+                sorts={sorts}
+                dishes={dishes}
+                doSave={doSave}
+                handleDelete={handleDelete}
+                handleUpdate={handleUpdate}
+                // handleOpen={handleOpen}
+                thecart={thecart}
+                about={about}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/hoe"
+            render={(props) => (
+              <Hoe
                 {...props}
                 user={user}
                 recipes={recipes}
@@ -359,7 +405,6 @@ const App = () => {
                   categories={categories}
                   sorts={sorts}
                   thecart={thecart}
-                  setIsWat={setIsWat}
                   {...props}
                   doSave={doSave}
                   doFavorite={doFavorite}
@@ -460,7 +505,7 @@ const App = () => {
           <Route
             path="/voorraad"
             render={(props) => {
-              return <Voorraad {...props} />;
+              return <Voorraad {...props} stock={stock} />;
             }}
           />
         </Switch>

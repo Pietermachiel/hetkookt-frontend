@@ -11,6 +11,7 @@ module.exports = {
         badge: "#e6e6e6",
         week: "#c5c5c5",
         rose: "mistyrose",
+        papier: "#f9f3dc",
         rood: "red",
         red: {
           100: "#fff5f5",

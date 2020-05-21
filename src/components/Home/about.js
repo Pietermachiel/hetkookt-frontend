@@ -6,16 +6,14 @@ const about = ({ about }) => {
       <div className="mb-48">
         {about.map((a) => {
           return (
-            <Fragment>
-              <div className="about-box mt-48">
-                <h2 className="text-36 mb-24 font-500">{a.title}</h2>
-                <div className="text-19 leading-loose">
-                  {a.lines.map((line) => (
-                    <span>{line} </span>
-                  ))}
-                </div>
+            <div key={a.index} className="about-box mt-48">
+              <h2 className="text-36 mb-24 font-500">{a.title}</h2>
+              <div className="text-19 leading-loose">
+                {a.lines.map((line, xid) => (
+                  <span key={xid}>{line} </span>
+                ))}
               </div>
-            </Fragment>
+            </div>
           );
         })}
         <div className="clear-both"></div>

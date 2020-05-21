@@ -4,7 +4,7 @@ import useCurrentWidth from "../common/use-current-width";
 import useCurrentHeight from "../common/use-current-height";
 import useCurrentScroll from "../common/use-current-scroll";
 import { slugify, kalender } from "../common/common";
-
+import CategoriesFilter from "../CategoriesFilter";
 const Categories = ({ thecart, categories, recipes, ...props }) => {
   // console.log(sorts);
 
@@ -19,6 +19,8 @@ const Categories = ({ thecart, categories, recipes, ...props }) => {
 
   return (
     <>
+      <CategoriesFilter categories={categories} />
+
       <div className="container-x">
         <h1 className={`my-10 leading-relaxed ${props.match.params.id}`}>
           {props.match.params.id}

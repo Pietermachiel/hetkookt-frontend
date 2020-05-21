@@ -4,8 +4,9 @@ import useCurrentWidth from "../common/use-current-width";
 import useCurrentHeight from "../common/use-current-height";
 import useCurrentScroll from "../common/use-current-scroll";
 import { slugify, kalender, uniq } from "../common/common";
+import CollectionsFilter from "../CollectionsFilter";
 
-const Collections = ({ thecart, sorts, recipes, ...props }) => {
+const Collections = ({ thecart, sorts, dishes, recipes, ...props }) => {
   const therecipes = recipes.filter(
     (recipe) => recipe.dish === props.match.params.id
   );
@@ -26,6 +27,7 @@ const Collections = ({ thecart, sorts, recipes, ...props }) => {
 
   return (
     <>
+      <CollectionsFilter dishes={dishes} />
       <div className="container-x">
         <h1 className={`my-10 text-indigo-600`}>
           {props.match.params.id}

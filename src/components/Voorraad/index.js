@@ -1,108 +1,83 @@
-import React, { useState } from "react";
-import stock from "./stock.json";
-import {
-  Transition,
-  TransitionGroup,
-  CSSTransition,
-} from "react-transition-group";
+import React, { Fragment, useState } from "react";
+// import stock from "./stock.json";
 
-const Voorraad = ({ ...props }) => {
-  //   constructor(props) {
-  //     super(props);
-  //     this.state = {
-  //       buyItems: [],
-  //       message: "alles is op voorraad",
-  //     };
-  //   }
-  const [buyItems, setBuyItems] = useState([]);
+const Voorraad = ({ stock, ...props }) => {
+  const [value, setValue] = useState("");
+  const [items, setItems] = useState([]);
   const [message, setMessage] = useState("alles is op voorraad");
 
-  const handleClick = (e) => {
-    // e.preventDefault();
-    // const { buyItems } = this.state;
-    // const theValue = e.target.value;
-    // const isOnTheList = buyItems.includes(theValue);
-    // if (isOnTheList) return null;
-    // else
-    //   theValue !==
-    //     this.setState({
-    //       buyItems: [...this.state.buyItems, theValue],
-    //       message: "",
-    //     });
+  const handleClick = (value) => {
+    console.log("de value");
+    console.log(value);
+    const isOnTheList = items.includes(value);
+    if (isOnTheList) return null;
+    else setItems([...items, value]);
   };
 
   const addItem = (e) => {
-    // e.preventDefault();
-    // // const { buyItems } = this.state;
-    // const newItem = newItem.value; // ‘test’
-    // const isOnTheList = buyItems.includes(newItem);
-    // if (isOnTheList) {
-    // } else {
-    //   newItem !== "" &&
-    //     this.setState({
-    //       buyItems: [...buyItems, newItem],
-    //       message: "",
-    //     });
-    // }
-    // this.addForm.reset();
+    const trimmedText = e.trim();
+
+    if (trimmedText.length > 0) {
+      setItems([...items, trimmedText]);
+    }
+    setValue("");
   };
 
-  const removeItem = (item) => {
-    const newBuyItems = buyItems.filter((buyItem) => {
-      return buyItem !== item;
+  const removeItem = (todoindex) => {
+    const newitems = items.filter((item, index) => {
+      return index !== todoindex;
     });
-    this.setState({
-      buyItems: [...newBuyItems],
-      message: "alles is op voorraad",
-    });
+
+    setItems(newitems);
   };
 
-  //   render() {
-  // const { buyItems, message } = this.state;
+  console.log(stock);
 
   return (
-    <TransitionGroup>
+    <Fragment>
+      <div className="boodschappen">
+        {/* <h1>Boodschappen</h1> */}
+        <div className="grid grid-cols-5">
+          {stock.map((s) => (
+            <div className="">
+              <p>{s.title}</p>
+            </div>
+          ))}
+        </div>
+
+        <form
+          // ref={(input) => (addForm = input)}
+          className="form"
+          onSubmit={(e) => {
+            e.preventDefault();
+            addItem(value);
+          }}
+        >
+          <button className="btn btn-small  btn-small__green" type="submit" />
+          &nbsp;
+          <input
+            value={value}
+            type="text"
+            onChange={(e) => setValue(e.target.value)}
+            placeholder="Zet dit ook nog op de lijst..."
+          />
+        </form>
+        {items.map((item, index) => {
+          return (
+            <div key={index} className="">
+              {item}&nbsp;&nbsp;
+              <span className="rood" onClick={() => removeItem(index)}>
+                x
+              </span>
+            </div>
+          );
+        })}
+        <div className="filter-box__stock">
+          {items.length === 0 && <p>alles is op voorraad</p>}
+        </div>
+      </div>
       <div className="container-x">
         {/* <div className="container-chapeau">Voorraadkast</div> */}
-        <div className="boodschappen">
-          <div className="home-box grid-0 grid-laptop-1024">
-            <div className="shopping-list">
-              <br />
-              <h1>Boodschappen</h1>
-              <form
-                // ref={(input) => (addForm = input)}
-                className="form"
-                onSubmit={(e) => {
-                  addItem(e);
-                }}
-              >
-                <button
-                  className="btn btn-small  btn-small__green"
-                  type="submit"
-                />
-                &nbsp;
-                {/* <input
-                  ref={(input) => (newItem = input)}
-                  type="text"
-                  placeholder="Zet dit ook nog op de lijst..."
-                /> */}
-              </form>
-              {buyItems.map((item) => {
-                return (
-                  <div key={item} className="content">
-                    {item}&nbsp;&nbsp;
-                    <span className="rood" onClick={(e) => removeItem(item)}>
-                      x
-                    </span>
-                  </div>
-                );
-              })}
-              <div className="filter-box__stock">
-                {buyItems !== "" && <p>{message}</p>}
-              </div>
-            </div>
-          </div>
-        </div>
 
         <div className="voorraadkast">
           <div className="home-box grid-0 grid-laptop-1024">
@@ -110,15 +85,18 @@ const Voorraad = ({ ...props }) => {
             <div className="menu-box__inner">
               {stock.map((item) => (
                 <div key={item.index} className="storage-item">
-                  <strong>{item.storage}</strong>
-                  {item.product.map((hit) => (
-                    <li key={hit}>
+                  <strong>{item.title}</strong>
+                  {item.item.map((hit, index) => (
+                    <li key={index}>
                       <button
-                        value={hit}
+                        value={hit.title}
                         className="btn btn-small btn-small__green"
-                        onClick={() => handleClick()}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleClick(hit.title);
+                        }}
                       ></button>
-                      &nbsp;{hit}
+                      &nbsp;{hit.title}
                     </li>
                   ))}
                 </div>
@@ -127,7 +105,7 @@ const Voorraad = ({ ...props }) => {
           </div>
         </div>
       </div>
-    </TransitionGroup>
+    </Fragment>
   );
   //   }
 };

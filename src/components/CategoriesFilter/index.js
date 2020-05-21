@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import categories from "../../data/categories.json";
+// import categories from "../../data/categories.json";
 
 const CategoriesFilter = ({ categories }) => {
   // console.log("sortsX");
@@ -11,7 +11,7 @@ const CategoriesFilter = ({ categories }) => {
         // console.log("p");
         // console.log(p);
         return (
-          <div className={``} key={xid}>
+          <div className={`first-letter `} key={xid}>
             <Link
               aria-label={`categories/${p.title}`}
               to={`/categories/${p.title}`}

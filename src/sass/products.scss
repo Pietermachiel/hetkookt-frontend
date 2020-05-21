@@ -27,8 +27,8 @@
   }
   p {
     font-weight: 500;
-    font-size: 17px;
-    line-height: 21px;
+    font-size: 19px;
+    line-height: 28px;
     margin: 0;
     margin-bottom: 5px;
     display: block;
@@ -59,7 +59,7 @@
     // columns: 3;
   }
   @media (min-width: $on-tablet) {
-    padding: 15px calc(50vw - (965px / 2));
+    padding: 15px calc(50vw - (965px / 2)) 36px;
     margin-bottom: 15px;
     columns: 5;
   }
@@ -72,7 +72,7 @@
   p {
     font-weight: 500;
     font-size: 19px;
-    line-height: 39px;
+    line-height: 28px;
     margin: 0;
     margin-bottom: 5px;
     display: block;
