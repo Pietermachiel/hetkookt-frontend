@@ -28,7 +28,7 @@ const Search = ({ recipes }) => {
 
   return (
     <>
-      <div className="relative bg-gray-100 bg-white w-full mb-9">
+      <div className="relative bg-gray-100 bg-white w-full mb-9 mt-15">
         <form className="relative w-full">
           <input
             className={`border border-gray-300 transition-colors duration-100 ease-in-out bg-white sm:shadow-md focus:outline-0 border border-transparent placeholder-gray-600 rounded-lg py-8 pr-16 pl-36 w-full appearance-none leading-normal ds-input text-16`}

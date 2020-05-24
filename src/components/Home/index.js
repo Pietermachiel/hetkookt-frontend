@@ -7,7 +7,7 @@ import { slugify, kalender } from "../common/common";
 import Hetkookt from "./hetkookt";
 // import CategoriesFilter from "../CategoriesFilter";
 // import CollectionsFilter from "../CollectionsFilter";
-// import Search from "../Search";
+import Search from "../Search";
 // import Dishes from "./dishes";
 import About from "./about";
 
@@ -41,7 +41,7 @@ const Home = ({
     <Fragment>
       <Hetkookt user={user} />
       <div className="container-x">
-        {/* <Search recipes={recipes} /> */}
+        <Search recipes={recipes} />
         <About about={about} />
         {/* <Dishes
         dishes={dishes}
