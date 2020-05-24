@@ -1,20 +1,29 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { slugify, uniq } from "../common/common";
+import { handleDeleteFavorite } from "../../services/userService";
 
-const Favorites = ({ handleDeleteFavorite, thecart, dishes }) => {
+const Favorites = ({ me, setMe, recipes, thecart, dishes }) => {
   if (thecart === undefined) thecart = [];
   // console.log("thecart");
   // console.log(thecart.length);
-  console.log(dishes);
+  // console.log(dishes);
+  // console.log(thecart);
 
-  const favoritecart = thecart.filter((s) => s.favorite === true);
-  console.log("favoritecart");
-  console.log(favoritecart);
+  let favoritecart = [];
+  thecart.map((r) => {
+    let thefavorite = recipes.find((f) => f._id === r);
+    return favoritecart.push(thefavorite);
+  });
+
+  // const favoritecart = thecart.filter((s) => s.favorite === true);
+  // console.log("favoritecart");
+  // console.log(favoritecart);
+  // let favoritedish = [];
   let favoritedish = favoritecart.map((f) => f.dish);
   favoritedish = favoritedish.filter(uniq);
-  console.log("favoritedish");
-  console.log(favoritedish);
+  // console.log("favoritedish");
+  // console.log(favoritedish);
 
   // var selectedtags = therecipes.map((s) => s.tags[0]);
   // selectedtags = selectedtags.filter(uniq).filter((e) => e != undefined);
@@ -91,7 +100,9 @@ const Favorites = ({ handleDeleteFavorite, thecart, dishes }) => {
                                 <button
                                   className="btn-delete"
                                   // onClick={() => handleUpdate(m._id)}
-                                  onClick={() => handleDeleteFavorite(m._id)}
+                                  onClick={() =>
+                                    handleDeleteFavorite(me, setMe, m._id)
+                                  }
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +115,9 @@ const Favorites = ({ handleDeleteFavorite, thecart, dishes }) => {
                                   </svg>
                                 </button>
                                 <button
-                                  onClick={() => handleDeleteFavorite(m._id)}
+                                  onClick={() =>
+                                    handleDeleteFavorite(me, setMe, m._id)
+                                  }
                                   className="btn-weg"
                                 >
                                   Wegdoen

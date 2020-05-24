@@ -3,8 +3,18 @@ import { Link, NavLink } from "react-router-dom";
 import { slugify, kalender } from "../common/common.js";
 import AddpanelWeekmenu from "./AddpanelWeekmenu.js";
 import { recipeUrl } from "../../config.json";
+import { doFavorite } from "../../services/userService";
 
-const Recipe = ({ user, thecart, doFavorite, doSave, sorts, ...props }) => {
+const Recipe = ({
+  user,
+  me,
+  setMe,
+  thecart,
+  // doFavorite,
+  doSave,
+  sorts,
+  ...props
+}) => {
   var [therecipe, setTheRecipe] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [notitie, setNotitie] = useState(false);
@@ -25,10 +35,10 @@ const Recipe = ({ user, thecart, doFavorite, doSave, sorts, ...props }) => {
     setNotitie(!notitie);
   };
 
-  const handleIsFavorite = (therecipe) => {
+  const handleIsFavorite = (me, setMe, therecipe) => {
     // console.log("isFavorite");
     // setIsFavorite(!isFavorite);
-    doFavorite(therecipe);
+    doFavorite(me, setMe, therecipe);
   };
 
   useEffect(() => {
@@ -57,6 +67,8 @@ const Recipe = ({ user, thecart, doFavorite, doSave, sorts, ...props }) => {
 
   console.log("therecipe");
   console.log(therecipe);
+  console.log("thecart");
+  console.log(thecart);
 
   // console.log("categories");
   // console.log(categories);
@@ -253,7 +265,7 @@ const Recipe = ({ user, thecart, doFavorite, doSave, sorts, ...props }) => {
             )}
             {user && (
               <div className="mr-15 my-18">
-                {therecipe.favorite === true ? (
+                {therecipe._id === thecart[0] ? (
                   <NavLink to="/favorites">
                     <button className="like flex">
                       <img
@@ -269,7 +281,7 @@ const Recipe = ({ user, thecart, doFavorite, doSave, sorts, ...props }) => {
                 ) : (
                   <button
                     className="like flex"
-                    onClick={() => handleIsFavorite(therecipe)}
+                    onClick={() => handleIsFavorite(me, setMe, therecipe._id)}
                   >
                     <img
                       className="w-25"

@@ -39,8 +39,8 @@ const App = () => {
   // const [placeholder, setPlaceholder] = useState([]);
   // const [inProp, setInProp] = useState(true);
 
-  // console.log("recipes");
-  // console.log(recipes);
+  console.log("recipes");
+  console.log(recipes);
   // console.log("sorts");
   // console.log(sorts);
   // console.log("categories");
@@ -49,8 +49,8 @@ const App = () => {
   // console.log(dishes);
   // console.log("user");
   // console.log(user);
-  // console.log("me");
-  // console.log(me);
+  console.log("me");
+  console.log(me);
   // console.log(stock);
 
   useEffect(() => {
@@ -187,54 +187,54 @@ const App = () => {
     return axios.put(`${apiUrl}/users/favorites/${id}`, body);
   }
 
-  function doFavorite(recipe) {
-    const newrecipe = me.recipes.find((r) => r._id === recipe._id);
-    me.recipes = me.recipes.filter((r) => r._id !== recipe._id);
-    setMe({
-      _id: me._id,
-      name: me.name,
-      email: me.email,
-      recipes: [...me.recipes],
-    });
-    const thebody = { recipes: me.recipes };
-    putAxios(me._id, thebody);
-    recipe = newrecipe || recipe;
-    // if (recipe.favorite === true) return;
-    recipe.favorite = !recipe.favorite;
-    setMe({
-      _id: me._id,
-      name: me.name,
-      email: me.email,
-      recipes: [...me.recipes, recipe],
-    });
-    me.recipes.push(recipe);
-    const body = { recipes: me.recipes };
-    putAxios(me._id, body);
-  }
+  // function doFavorite(recipe) {
+  //   const newrecipe = me.recipes.find((r) => r._id === recipe._id);
+  //   me.recipes = me.recipes.filter((r) => r._id !== recipe._id);
+  //   setMe({
+  //     _id: me._id,
+  //     name: me.name,
+  //     email: me.email,
+  //     recipes: [...me.recipes],
+  //   });
+  //   const thebody = { recipes: me.recipes };
+  //   putAxios(me._id, thebody);
+  //   recipe = newrecipe || recipe;
+  //   // if (recipe.favorite === true) return;
+  //   recipe.favorite = !recipe.favorite;
+  //   setMe({
+  //     _id: me._id,
+  //     name: me.name,
+  //     email: me.email,
+  //     recipes: [...me.recipes, recipe],
+  //   });
+  //   me.recipes.push(recipe);
+  //   const body = { recipes: me.recipes };
+  //   putAxios(me._id, body);
+  // }
 
-  function handleDeleteFavorite(id) {
-    // console.log("handleDeleteFavorite");
-    var allMeRecipes = me.recipes.map((r) => r);
-    // console.log("allMeRecipes1");
-    // console.log(allMeRecipes);
-    var myRecipe = allMeRecipes.find((item) => item._id === id);
-    myRecipe.favorite = !myRecipe.favorite;
-    // myRecipe.isOpen = !myRecipe.isOpen;
-    allMeRecipes =
-      myRecipe.date === null
-        ? allMeRecipes.filter((item) => item._id !== id)
-        : [];
-    // console.log("allMeRecipes2");
-    // console.log(allMeRecipes);
-    setMe({
-      _id: me._id,
-      name: me.name,
-      email: me.email,
-      recipes: allMeRecipes,
-    });
-    const body = { recipes: allMeRecipes };
-    return axios.put(`${apiUrl}/users/favminus/${me._id}`, body);
-  }
+  // function handleDeleteFavorite(id) {
+  //   console.log("handleDeleteFavorite");
+  //   var allMeRecipes = me.recipes.map((r) => r);
+  //   // console.log("allMeRecipes1");
+  //   console.log(allMeRecipes);
+  //   var myRecipe = allMeRecipes.filter((item) => item !== id);
+  //   // myRecipe.favorite = !myRecipe.favorite;
+  //   // myRecipe.isOpen = !myRecipe.isOpen;
+  //   // allMeRecipes =
+  //   //   myRecipe.date === null
+  //   //     ? allMeRecipes.filter((item) => item._id !== id)
+  //   //     : [];
+  //   // console.log("allMeRecipes2");
+  //   // console.log(allMeRecipes);
+  //   setMe({
+  //     _id: me._id,
+  //     name: me.name,
+  //     email: me.email,
+  //     recipes: myRecipe,
+  //   });
+  //   const body = { recipes: myRecipe };
+  //   return axios.put(`${apiUrl}/users/favminus/${me._id}`, body);
+  // }
 
   function handleDelete(id, year) {
     var allMeRecipes = me.recipes.map((r) => r);
@@ -402,12 +402,14 @@ const App = () => {
               return (
                 <Recipe
                   user={user}
+                  me={me}
+                  setMe={setMe}
                   categories={categories}
                   sorts={sorts}
                   thecart={thecart}
-                  {...props}
                   doSave={doSave}
-                  doFavorite={doFavorite}
+                  // doFavorite={doFavorite}
+                  {...props}
                 />
               );
             }}
@@ -440,12 +442,14 @@ const App = () => {
             render={(props) => (
               <Favorites
                 {...props}
-                handleDeleteFavorite={handleDeleteFavorite}
+                // handleDeleteFavorite={handleDeleteFavorite}
                 handleDelete={handleDelete}
                 handleUpdate={handleUpdate}
                 thecart={thecart}
                 recipes={recipes}
                 dishes={dishes}
+                me={me}
+                setMe={setMe}
               />
             )}
           />

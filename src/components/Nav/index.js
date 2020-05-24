@@ -19,7 +19,7 @@ const Nav = ({ user, dishes, categories, thecart, ...props }) => {
     toggleSwitch();
   };
 
-  const favorites = thecart.filter((c) => c.favorite === true);
+  // const favorites = thecart.filter((c) => c.favorite === true);
 
   const handleMouseDown = (e) => {
     toggleMenu();
@@ -121,7 +121,7 @@ const Nav = ({ user, dishes, categories, thecart, ...props }) => {
           isOpen={isOpen}
           user={user}
           thecart={thecart}
-          favorites={favorites}
+          // favorites={favorites}
         />
       </div>
     </>
