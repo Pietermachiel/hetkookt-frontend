@@ -4,7 +4,7 @@ import React, { Fragment, useState } from "react";
 const Voorraad = ({ stock, ...props }) => {
   const [value, setValue] = useState("");
   const [items, setItems] = useState([]);
-  const [message, setMessage] = useState("alles is op voorraad");
+  // const [message, setMessage] = useState("alles is op voorraad");
 
   const handleClick = (value) => {
     console.log("de value");
@@ -38,10 +38,8 @@ const Voorraad = ({ stock, ...props }) => {
       <div className="boodschappen">
         {/* <h1>Boodschappen</h1> */}
         <div className="grid grid-cols-5">
-          {stock.map((s) => (
-            <div className="">
-              <p>{s.title}</p>
-            </div>
+          {stock.map((s, xid) => (
+            <p key={xid}>{s.title}</p>
           ))}
         </div>
 
@@ -83,8 +81,8 @@ const Voorraad = ({ stock, ...props }) => {
           <div className="home-box grid-0 grid-laptop-1024">
             <h2>Voorraad</h2>
             <div className="menu-box__inner">
-              {stock.map((item) => (
-                <div key={item.index} className="storage-item">
+              {stock.map((item, xid) => (
+                <div key={xid} className="storage-item">
                   <strong>{item.title}</strong>
                   {item.item.map((hit, index) => (
                     <li key={index}>

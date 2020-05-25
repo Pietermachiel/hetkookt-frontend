@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link, NavLink, withRouter } from "react-router-dom";
 import NavAdd from "./NavAdd";
-import CategoriesFilter from "../CategoriesFilter";
-import CollectionsFilter from "../CollectionsFilter/index";
+// import CategoriesFilter from "../CategoriesFilter";
+// import CollectionsFilter from "../CollectionsFilter/index";
 
-const Nav = ({ user, dishes, categories, thecart, ...props }) => {
+const Nav = ({ user, dishes, categories, thefavorites, thecart, ...props }) => {
   const [isOn, setIsOn] = useState(false);
   const [visible, setVisible] = useState(false);
-  const recipes = props.recipes;
+  // const recipes = props.recipes;
   const [isOpen, setIsOpen] = useState(false);
 
   // console.log("props nav");
@@ -105,7 +105,6 @@ const Nav = ({ user, dishes, categories, thecart, ...props }) => {
               aria-label="hamburger menu"
               onClick={handleMouseDown}
               className={isOn ? "hamburger navbox--menu-open" : "hamburger"}
-              aria-label="Open Menu"
             >
               <span></span>
               <span></span>
@@ -121,6 +120,7 @@ const Nav = ({ user, dishes, categories, thecart, ...props }) => {
           isOpen={isOpen}
           user={user}
           thecart={thecart}
+          thefavorites={thefavorites}
           // favorites={favorites}
         />
       </div>

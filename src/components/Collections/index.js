@@ -11,7 +11,7 @@ const Collections = ({ thecart, sorts, dishes, recipes, ...props }) => {
     (recipe) => recipe.dish === props.match.params.id
   );
   var selectedtags = therecipes.map((s) => s.tags[0]);
-  selectedtags = selectedtags.filter(uniq).filter((e) => e != undefined);
+  selectedtags = selectedtags.filter(uniq).filter((e) => e !== undefined);
 
   const collection = selectedtags.map((s) => {
     const selection = therecipes.filter((r) => r.tags[0] === s);
@@ -67,7 +67,7 @@ const Collections = ({ thecart, sorts, dishes, recipes, ...props }) => {
                   if (cart === undefined) cart = [];
                   const thelength = recipe.tags.length - 1;
                   if (recipe.basics === undefined) return (recipe.basics = []);
-                  const red = kalender.find((w) => w.year === cart.date);
+                  // const red = kalender.find((w) => w.year === cart.date);
                   return (
                     <div
                       key={recipe._id}

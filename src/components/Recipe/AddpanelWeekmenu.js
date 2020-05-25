@@ -1,16 +1,19 @@
 import React from "react";
 import { kalender, hetjaar, theweek } from "../common/common";
+import { doSave } from "../../services/userService";
 
 const AddpanelWeekmenu = ({
   isOpen,
   therecipe,
   thecart,
-  doSave,
-  setIsOpen,
+  me,
+  setMe,
+  // doSave,
+  // setIsOpen,
   handleIsOpen,
 }) => {
-  const handleSave = (therecipe, hetjaar) => {
-    doSave(therecipe, hetjaar);
+  const handleSave = (me, setMe, therecipe, hetjaar) => {
+    doSave(me, setMe, therecipe, hetjaar);
     // props.history.push(props.location.pathname);
     handleIsOpen(!isOpen);
   };
@@ -39,7 +42,7 @@ const AddpanelWeekmenu = ({
             return (
               <div
                 key={k.index}
-                onClick={() => handleSave(therecipe, hetjaar(xid))}
+                onClick={() => handleSave(me, setMe, therecipe, hetjaar(xid))}
                 className={`relative ${
                   cart.length !== 0
                     ? "bg-orange-300 hover:bg-orange-400"

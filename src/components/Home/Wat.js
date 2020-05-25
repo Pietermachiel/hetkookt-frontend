@@ -1,13 +1,10 @@
-import React, { Fragment, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import useCurrentWidth from "../common/use-current-width";
-import useCurrentHeight from "../common/use-current-height";
-import useCurrentScroll from "../common/use-current-scroll";
-import { slugify, kalender } from "../common/common";
+import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
+// import useCurrentWidth from "../common/use-current-width";
+// import useCurrentHeight from "../common/use-current-height";
+// import useCurrentScroll from "../common/use-current-scroll";
+import { slugify } from "../common/common";
 import CategoriesFilter from "../CategoriesFilter";
-import Search from "../Search";
-import Dishes from "./dishes";
-import About from "./about";
 
 const Wat = ({
   user,
@@ -21,12 +18,12 @@ const Wat = ({
   about,
   ...props
 }) => {
-  const width = useCurrentWidth();
-  const height = useCurrentHeight();
-  const scroll = useCurrentScroll();
-  const offset = 0;
-  const box = 265;
-  const boxheight = height + scroll;
+  // const width = useCurrentWidth();
+  // const height = useCurrentHeight();
+  // const scroll = useCurrentScroll();
+  // const offset = 0;
+  // const box = 265;
+  // const boxheight = height + scroll;
 
   if (recipes.length === 0)
     return (
@@ -59,7 +56,7 @@ const Wat = ({
 
         {categories.map((c, xid) => {
           return (
-            <Fragment>
+            <Fragment key={xid}>
               <Link to={`categories/${c.title}`}>
                 <h1 className={`my-10 leading-relaxed ${c.title}`}>
                   {c.title}

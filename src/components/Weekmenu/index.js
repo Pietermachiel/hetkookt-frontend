@@ -2,8 +2,17 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { vandaag, dedatum, kalender, slugify } from "../common/common";
 import KalenderWeekmenu from "./KalenderWeekmenu";
+import { handleDelete } from "../../services/userService";
 
-const Weekmenu = ({ user, thecart, handleDelete, handleUpdate, ...props }) => {
+const Weekmenu = ({
+  me,
+  setMe,
+  user,
+  thecart,
+  // handleDelete,
+  // handleUpdate,
+  ...props
+}) => {
   // console.log("props collecties");
   // console.log(props);
   // console.log(vandaag(0));
@@ -123,7 +132,9 @@ const Weekmenu = ({ user, thecart, handleDelete, handleUpdate, ...props }) => {
                               <div className="recipe-footer__box-buttons">
                                 <button
                                   className="btn-delete"
-                                  onClick={() => handleDelete(c._id, k.year)}
+                                  onClick={() =>
+                                    handleDelete(me, setMe, c._id, k.year)
+                                  }
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -135,7 +146,9 @@ const Weekmenu = ({ user, thecart, handleDelete, handleUpdate, ...props }) => {
                                   </svg>
                                 </button>
                                 <button
-                                  onClick={() => handleDelete(c._id, k.year)}
+                                  onClick={() =>
+                                    handleDelete(me, setMe, c._id, k.year)
+                                  }
                                   className="btn-weg"
                                 >
                                   Wegdoen

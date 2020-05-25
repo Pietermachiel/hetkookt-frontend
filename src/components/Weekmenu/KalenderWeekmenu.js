@@ -6,8 +6,8 @@ const KalenderWeekmenu = ({ thecart, ...props }) => {
   // console.log(props);
   // console.log(kalender);
   // console.log(thecart);
-  console.log("vandaag(0)");
-  console.log(vandaag(0));
+  // console.log("vandaag(0)");
+  // console.log(vandaag(0));
   return (
     <div className="font-light lg:flex lg:items-center">
       {props.user && (

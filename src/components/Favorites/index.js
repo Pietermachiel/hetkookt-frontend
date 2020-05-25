@@ -3,19 +3,20 @@ import { Link } from "react-router-dom";
 import { slugify, uniq } from "../common/common";
 import { handleDeleteFavorite } from "../../services/userService";
 
-const Favorites = ({ me, setMe, recipes, thecart, dishes }) => {
-  if (thecart === undefined) thecart = [];
-  // console.log("thecart");
-  // console.log(thecart.length);
+const Favorites = ({ me, setMe, recipes, thefavorites }) => {
+  if (thefavorites === undefined) thefavorites = [];
+  console.log("thefavorites");
+  console.log(thefavorites);
+  console.log(thefavorites.length);
   // console.log(dishes);
-  // console.log(thecart);
+  // console.log(thefavorites);
 
   let favoritecart = [];
-  thecart.map((r) => {
+  thefavorites.map((r) => {
     let thefavorite = recipes.find((f) => f._id === r);
     return favoritecart.push(thefavorite);
   });
-
+  console.log(favoritecart);
   // const favoritecart = thecart.filter((s) => s.favorite === true);
   // console.log("favoritecart");
   // console.log(favoritecart);
@@ -37,7 +38,7 @@ const Favorites = ({ me, setMe, recipes, thecart, dishes }) => {
     <Fragment>
       <div className="container-x">
         <h1 className="mb-10 pt-15">kookschrift</h1>
-        {thecart.length === 0 ? (
+        {thefavorites.length === 0 ? (
           <div className="">
             <p className="font-600">Er staat nog niets in het kookschrift.</p>
             <p className="w-full md:w-50">

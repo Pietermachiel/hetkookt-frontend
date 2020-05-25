@@ -1,13 +1,9 @@
-import React, { Fragment, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { Fragment } from "react";
 import useCurrentWidth from "../common/use-current-width";
 import useCurrentHeight from "../common/use-current-height";
 import useCurrentScroll from "../common/use-current-scroll";
-import { slugify, kalender } from "../common/common";
 import CollectionsFilter from "../CollectionsFilter";
-import Search from "../Search";
 import Dishes from "./dishes";
-import About from "./about";
 
 const Hoe = ({
   user,

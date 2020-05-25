@@ -13,7 +13,7 @@ const Search = ({ recipes }) => {
       return lowercaserecipe.indexOf(searchTerm) !== -1;
     });
     setSearchResults(results);
-  }, [searchTerm]);
+  }, [searchTerm, recipes]);
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value);

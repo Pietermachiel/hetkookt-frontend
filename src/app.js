@@ -9,7 +9,7 @@ import Test from "./components/Test";
 import Home from "./components/Home";
 import Wat from "./components/Home/Wat";
 import Hoe from "./components/Home/Hoe";
-import Waarom from "./components/Home/Waarom";
+// import Waarom from "./components/Home/Waarom";
 import Recipe from "./components/Recipe";
 import Sorts from "./components/Sorts";
 import Categories from "./components/Categories";
@@ -23,7 +23,6 @@ import Footer from "./components/Footer";
 import auth from "./services/authService";
 import ProtectedRoute from "./components/common/protectedRoute";
 import axios from "axios";
-// import _ from "lodash";
 import { apiUrl, recipeUrl } from "./config.json";
 
 const App = () => {
@@ -36,11 +35,8 @@ const App = () => {
   const [me, setMe] = useState([]);
   const [about, setAbout] = useState([]);
 
-  // const [placeholder, setPlaceholder] = useState([]);
-  // const [inProp, setInProp] = useState(true);
-
-  console.log("recipes");
-  console.log(recipes);
+  // console.log("recipes");
+  // console.log(recipes);
   // console.log("sorts");
   // console.log(sorts);
   // console.log("categories");
@@ -49,8 +45,8 @@ const App = () => {
   // console.log(dishes);
   // console.log("user");
   // console.log(user);
-  console.log("me");
-  console.log(me);
+  // console.log("me");
+  // console.log(me);
   // console.log(stock);
 
   useEffect(() => {
@@ -60,27 +56,6 @@ const App = () => {
     }
     getData();
   }, []);
-
-  // useEffect(() => {
-  //   async function getData() {
-  //     const res = await axios.get(`https://jsonplaceholder.typicode.com/users`);
-  //     const placeholder = await res.data;
-  //     setPlaceholder(placeholder);
-  //   }
-  //   getData();
-  // }, []);
-
-  // console.log("placeholder");
-  // console.log(placeholder);
-
-  // useEffect(() => {
-  //   async function getData() {
-  //     const res = await axios.get(`/recipes.json`);
-  //     const recipes = await res.data;
-  //     setRecipes(recipes);
-  //   }
-  //   getData();
-  // }, []);
 
   useEffect(() => {
     async function getData() {
@@ -117,8 +92,6 @@ const App = () => {
   useEffect(() => {
     const user = auth.getCurrentUser();
     setUser(user);
-    // console.log("user");
-    // console.log(user);
   }, []);
 
   useEffect(() => {
@@ -139,167 +112,11 @@ const App = () => {
     getData();
   }, []);
 
-  // console.log("about");
-  // console.log(about);
-
-  // thecart = all me.recipes ({_id, title, author})
-
   var thecart = me.recipes;
   if (thecart === undefined) thecart = [];
 
-  function doSave(recipe, dedate) {
-    // if (me.recipes.find(r => r._id === recipe._id)) return;
-    // console.log("recipe");
-    // console.log(recipe);
-    // if (recipe.date.includes(dedate)) return;
-    // const newrecipe = me.recipes.find((r) => r._id === recipe._id);
-    me.recipes = me.recipes.filter((r) => r._id !== recipe._id);
-    setMe({
-      _id: me._id,
-      name: me.name,
-      email: me.email,
-      recipes: [...me.recipes],
-    });
-    const thebody = { recipes: me.recipes };
-    putAxios(me._id, thebody);
-    // recipe = newrecipe || recipe;
-    recipe.date = recipe.date || [];
-    // console.log("recipe.date");
-    // console.log(recipe.date);
-    // console.log(dedate);
-    recipe.date.push(dedate);
-    setMe({
-      _id: me._id,
-      name: me.name,
-      email: me.email,
-      recipes: [...me.recipes, recipe],
-    });
-    // console.log("me.recipes1");
-    // console.log(me.recipes);
-    me.recipes.push(recipe);
-    // console.log("me.recipes2");
-    // console.log(me.recipes);
-    const body = { recipes: me.recipes };
-    putAxios(me._id, body);
-  }
-
-  function putAxios(id, body) {
-    return axios.put(`${apiUrl}/users/favorites/${id}`, body);
-  }
-
-  // function doFavorite(recipe) {
-  //   const newrecipe = me.recipes.find((r) => r._id === recipe._id);
-  //   me.recipes = me.recipes.filter((r) => r._id !== recipe._id);
-  //   setMe({
-  //     _id: me._id,
-  //     name: me.name,
-  //     email: me.email,
-  //     recipes: [...me.recipes],
-  //   });
-  //   const thebody = { recipes: me.recipes };
-  //   putAxios(me._id, thebody);
-  //   recipe = newrecipe || recipe;
-  //   // if (recipe.favorite === true) return;
-  //   recipe.favorite = !recipe.favorite;
-  //   setMe({
-  //     _id: me._id,
-  //     name: me.name,
-  //     email: me.email,
-  //     recipes: [...me.recipes, recipe],
-  //   });
-  //   me.recipes.push(recipe);
-  //   const body = { recipes: me.recipes };
-  //   putAxios(me._id, body);
-  // }
-
-  // function handleDeleteFavorite(id) {
-  //   console.log("handleDeleteFavorite");
-  //   var allMeRecipes = me.recipes.map((r) => r);
-  //   // console.log("allMeRecipes1");
-  //   console.log(allMeRecipes);
-  //   var myRecipe = allMeRecipes.filter((item) => item !== id);
-  //   // myRecipe.favorite = !myRecipe.favorite;
-  //   // myRecipe.isOpen = !myRecipe.isOpen;
-  //   // allMeRecipes =
-  //   //   myRecipe.date === null
-  //   //     ? allMeRecipes.filter((item) => item._id !== id)
-  //   //     : [];
-  //   // console.log("allMeRecipes2");
-  //   // console.log(allMeRecipes);
-  //   setMe({
-  //     _id: me._id,
-  //     name: me.name,
-  //     email: me.email,
-  //     recipes: myRecipe,
-  //   });
-  //   const body = { recipes: myRecipe };
-  //   return axios.put(`${apiUrl}/users/favminus/${me._id}`, body);
-  // }
-
-  function handleDelete(id, year) {
-    var allMeRecipes = me.recipes.map((r) => r);
-    var myRecipe = allMeRecipes.filter((item) => item._id === id);
-    // console.log("myRecipe.date");
-    // console.log(myRecipe[0].date, year);
-    // console.log("filter");
-    myRecipe[0].date = myRecipe[0].date.filter((d) => d !== year);
-    // myRecipe[0] = myRecipe[0].date.splice(myRecipe[0].date.indexOf(year), 1);
-    // console.log("myRecipe.date2");
-    // console.log(myRecipe[0], year);
-    // allMeRecipes = allMeRecipes.filter(item => item._id !== id);
-    // console.log("allMeRecipes");
-    // console.log(allMeRecipes, year);
-
-    // myRecipe[0].isOpen = !myRecipe[0].isOpen;
-    // console.log("allMeRecipes");
-    // console.log(allMeRecipes);
-
-    allMeRecipes =
-      myRecipe[0].date.length === 0 && myRecipe[0].favorite === false
-        ? allMeRecipes.filter((item) => item._id !== id)
-        : allMeRecipes;
-
-    // console.log("allMeRecipes2");
-    // console.log(allMeRecipes);
-
-    setMe({
-      _id: me._id,
-      name: me.name,
-      email: me.email,
-      recipes: allMeRecipes,
-    });
-    const body = { recipes: allMeRecipes };
-    updateAxios(me._id, body);
-    // console.log("myRecipe[0].favorite");
-    // console.log(myRecipe[0].favorite);
-    if (myRecipe[0].favorite === true) return;
-    const allMeRecipes2 = allMeRecipes.filter((a) => a._id !== id);
-    const body2 = { recipes: allMeRecipes2 };
-    // console.log("allMeRecipes2");
-    // console.log(allMeRecipes2);
-    updateAxios(me._id, body2);
-  }
-
-  function updateAxios(id, body) {
-    return axios.put(`${apiUrl}/users/favminus/${id}`, body);
-  }
-
-  function handleUpdate(id, year) {
-    var allMeRecipes = me.recipes.map((r) => r);
-    var myRecipe = allMeRecipes.filter((item) => item._id === id);
-    // console.log("myRecipe");
-    // console.log(myRecipe[0].date);
-    // const find = myRecipe[0].date.find((d) => d === year);
-    // console.log("find");
-    // console.log(find);
-    myRecipe[0].isOpen = !myRecipe[0].isOpen;
-    setMe({
-      _id: me._id,
-      name: me.name,
-      email: me.email,
-      recipes: allMeRecipes,
-    });
-  }
+  var thefavorites = me.favorites;
+  if (thefavorites === undefined) thefavorites = [];
 
   return (
     <>
@@ -307,6 +124,7 @@ const App = () => {
         <header>
           <Nav
             thecart={thecart}
+            thefavorites={thefavorites}
             user={user}
             recipes={recipes}
             dishes={dishes}
@@ -325,10 +143,6 @@ const App = () => {
                 categories={categories}
                 sorts={sorts}
                 dishes={dishes}
-                doSave={doSave}
-                handleDelete={handleDelete}
-                handleUpdate={handleUpdate}
-                // handleOpen={handleOpen}
                 thecart={thecart}
                 about={about}
               />
@@ -345,10 +159,6 @@ const App = () => {
                 categories={categories}
                 sorts={sorts}
                 dishes={dishes}
-                doSave={doSave}
-                handleDelete={handleDelete}
-                handleUpdate={handleUpdate}
-                // handleOpen={handleOpen}
                 thecart={thecart}
                 about={about}
               />
@@ -365,10 +175,6 @@ const App = () => {
                 categories={categories}
                 sorts={sorts}
                 dishes={dishes}
-                doSave={doSave}
-                handleDelete={handleDelete}
-                handleUpdate={handleUpdate}
-                // handleOpen={handleOpen}
                 thecart={thecart}
                 about={about}
               />
@@ -385,10 +191,6 @@ const App = () => {
                 categories={categories}
                 sorts={sorts}
                 dishes={dishes}
-                doSave={doSave}
-                handleDelete={handleDelete}
-                handleUpdate={handleUpdate}
-                // handleOpen={handleOpen}
                 thecart={thecart}
               />
             )}
@@ -396,9 +198,6 @@ const App = () => {
           <Route
             path="/recipe/:id"
             render={(props) => {
-              // const recipe = recipes.find(
-              //   r => slugify(r.title) === props.match.params.id
-              // );
               return (
                 <Recipe
                   user={user}
@@ -407,8 +206,7 @@ const App = () => {
                   categories={categories}
                   sorts={sorts}
                   thecart={thecart}
-                  doSave={doSave}
-                  // doFavorite={doFavorite}
+                  thefavorites={thefavorites}
                   {...props}
                 />
               );
@@ -428,13 +226,7 @@ const App = () => {
           <ProtectedRoute
             path="/user"
             render={(props) => (
-              <User
-                {...props}
-                user={user}
-                thecart={thecart}
-                me={me}
-                handleDelete={handleDelete}
-              />
+              <User {...props} user={user} thecart={thecart} me={me} />
             )}
           />
           <ProtectedRoute
@@ -442,10 +234,8 @@ const App = () => {
             render={(props) => (
               <Favorites
                 {...props}
-                // handleDeleteFavorite={handleDeleteFavorite}
-                handleDelete={handleDelete}
-                handleUpdate={handleUpdate}
                 thecart={thecart}
+                thefavorites={thefavorites}
                 recipes={recipes}
                 dishes={dishes}
                 me={me}
@@ -461,8 +251,8 @@ const App = () => {
                 user={user}
                 thecart={thecart} //  [ _id, _id, ... ]
                 recipes={recipes}
-                handleDelete={handleDelete}
-                handleUpdate={handleUpdate}
+                me={me}
+                setMe={setMe}
               />
             )}
           />
@@ -517,8 +307,6 @@ const App = () => {
       <footer className="">
         <Footer />
       </footer>
-      {/* </AnimatedSwitch> */}
-      {/* </div> */}
     </>
   );
 };

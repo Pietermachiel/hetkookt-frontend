@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { slugify, kalender } from "../common/common";
 
@@ -11,7 +11,7 @@ const Dishes = ({
   offset,
   box,
 }) => {
-  const [isOn, setIsOn] = useState(false);
+  // const [isOn, setIsOn] = useState(false);
 
   if (recipes.length === 0)
     return (

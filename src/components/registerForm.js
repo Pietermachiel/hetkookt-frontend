@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Joi from "joi-browser";
 import Form from "./common/form";
-import * as userService from "../services/userService";
+// import * as userService from "../services/userService";
 // import auth from "../services/authService";
 
 class RegisterForm extends Form {
@@ -20,7 +20,7 @@ class RegisterForm extends Form {
   doSubmit = async () => {
     console.log("dosubmit");
     try {
-      const response = await userService.register(this.state.data); // dit in een try-catch block
+      // const response = await userService.register(this.state.data); // dit in een try-catch block
       // auth.loginWithJwt(response.headers["x-auth-token"]);
       window.location = "/inschrijven";
     } catch (ex) {

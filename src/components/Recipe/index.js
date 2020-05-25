@@ -10,6 +10,7 @@ const Recipe = ({
   me,
   setMe,
   thecart,
+  thefavorites,
   // doFavorite,
   doSave,
   sorts,
@@ -62,13 +63,15 @@ const Recipe = ({
   if (therecipe.tags === undefined) return [];
   // const thelength = props.tags.length - 1;
 
-  const newrecipe = thecart.find((c) => c._id === therecipe._id);
+  const newrecipe = thefavorites.find((c) => c._id === therecipe._id);
   therecipe = newrecipe || therecipe;
 
   console.log("therecipe");
   console.log(therecipe);
   console.log("thecart");
   console.log(thecart);
+  console.log("thefavorites");
+  console.log(thefavorites);
 
   // console.log("categories");
   // console.log(categories);
@@ -233,6 +236,8 @@ const Recipe = ({
               therecipe={therecipe}
               thecart={thecart}
               doSave={doSave}
+              me={me}
+              setMe={setMe}
             />
 
             {/* kookschrift */}
@@ -265,7 +270,7 @@ const Recipe = ({
             )}
             {user && (
               <div className="mr-15 my-18">
-                {therecipe._id === thecart[0] ? (
+                {thefavorites.includes(therecipe._id) ? (
                   <NavLink to="/favorites">
                     <button className="like flex">
                       <img

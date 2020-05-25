@@ -16,12 +16,12 @@ const Sorts = ({ thecart, recipes, sorts, categories, ...props }) => {
   const box = 272;
   const boxheight = height + scroll;
 
-  console.log("categoriesX");
-  console.log(categories);
-  console.log(sorts);
+  // console.log("categoriesX");
+  // console.log(categories);
+  // console.log(sorts);
   // console.log(recipes);
-  console.log("props.match.params.id");
-  console.log(props.match.params.id);
+  // console.log("props.match.params.id");
+  // console.log(props.match.params.id);
 
   const sort = sorts.find(
     (s) => s.title.replace(" ", "-") === props.match.params.id

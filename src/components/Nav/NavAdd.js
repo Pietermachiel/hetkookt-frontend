@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { kalender } from "../common/common.js";
 
-const NavAdd = ({ user, handleIsOpen, isOpen, thecart }) => {
+const NavAdd = ({ user, handleIsOpen, isOpen, thecart, thefavorites }) => {
   const thedates = kalender.filter((k) => {
     const item = thecart.find((c) => (c.date ? c.date.includes(k.year) : null));
     return item;
@@ -78,7 +78,7 @@ const NavAdd = ({ user, handleIsOpen, isOpen, thecart }) => {
             <img className="w-25" src="/img/feather/bookmark.svg" alt="" />
             <span className="pl-12 font-300 hover:text-black">
               kookschrift
-              <span className="text-red-300">&nbsp;{thecart.length}</span>
+              <span className="text-red-300">&nbsp;{thefavorites.length}</span>
             </span>
           </div>
         </NavLink>

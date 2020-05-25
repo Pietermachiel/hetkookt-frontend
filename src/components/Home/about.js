@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import abouts from "../../data/abouts";
 
 const about = () => {
-  console.log(abouts);
+  // console.log(abouts);
   return (
     <Fragment>
       <div className="mb-48">

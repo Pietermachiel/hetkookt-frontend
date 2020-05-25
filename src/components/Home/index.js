@@ -1,9 +1,9 @@
-import React, { Fragment, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import useCurrentWidth from "../common/use-current-width";
-import useCurrentHeight from "../common/use-current-height";
-import useCurrentScroll from "../common/use-current-scroll";
-import { slugify, kalender } from "../common/common";
+import React, { Fragment } from "react";
+// import { Link, NavLink } from "react-router-dom";
+// import useCurrentWidth from "../common/use-current-width";
+// import useCurrentHeight from "../common/use-current-height";
+// import useCurrentScroll from "../common/use-current-scroll";
+// import { slugify, kalender } from "../common/common";
 import Hetkookt from "./hetkookt";
 // import CategoriesFilter from "../CategoriesFilter";
 // import CollectionsFilter from "../CollectionsFilter";
@@ -23,12 +23,12 @@ const Home = ({
   about,
   ...props
 }) => {
-  const width = useCurrentWidth();
-  const height = useCurrentHeight();
-  const scroll = useCurrentScroll();
-  const offset = 0;
-  const box = 265;
-  const boxheight = height + scroll;
+  // const width = useCurrentWidth();
+  // const height = useCurrentHeight();
+  // const scroll = useCurrentScroll();
+  // const offset = 0;
+  // const box = 265;
+  // const boxheight = height + scroll;
 
   if (recipes.length === 0)
     return (
