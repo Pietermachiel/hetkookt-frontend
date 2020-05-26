@@ -127,5 +127,5 @@ export function handleDelete(me, setMe, id, year) {
 }
 
 function updateAxios(id, body) {
-  return axios.put(`${apiUrl}/users/recminus/${id}`, body);
+  return axios.put(`${apiUrl}/users/recipes/${id}`, body);
 }
