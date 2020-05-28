@@ -36,8 +36,8 @@ const Home = ({
   // const box = 265;
   // const boxheight = height + scroll;
 
-  // console.log("thecart");
-  // console.log(thecart);
+  console.log("thecart");
+  console.log(thecart);
   // const list = thecart.filter((c) => {
   //   let freshitem = c.fresh.reduce(function (accumulator, currentValue) {
   //     return accumulator.concat(currentValue);
@@ -63,7 +63,7 @@ const Home = ({
     { item: "room", quantity: 60, unit: "ml" },
   ];
 
-  let result = data.reduce(
+  let result = allfresh.reduce(
     (function (hash) {
       return function (r, a) {
         var key = a.item;
