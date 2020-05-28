@@ -138,6 +138,8 @@ const App = () => {
             render={(props) => (
               <Home
                 {...props}
+                me={me}
+                setMe={setMe}
                 user={user}
                 recipes={recipes}
                 categories={categories}
@@ -148,7 +150,7 @@ const App = () => {
               />
             )}
           />
-          <Route
+          {/* <Route
             exact
             path="/"
             render={(props) => (
@@ -163,7 +165,7 @@ const App = () => {
                 about={about}
               />
             )}
-          />
+          /> */}
           <Route
             exact
             path="/wat"
@@ -299,7 +301,9 @@ const App = () => {
           <Route
             path="/voorraad"
             render={(props) => {
-              return <Voorraad {...props} stock={stock} />;
+              return (
+                <Voorraad me={me} setMe={setMe} stock={stock} {...props} />
+              );
             }}
           />
         </Switch>

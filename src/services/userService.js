@@ -60,11 +60,11 @@ export function doFavorite(me, setMe, recipeId) {
   return axios.put(`${apiUrl}/users/favorites/${me._id}`, body);
 }
 
-export function handleDeleteFavorite(me, setMe, id) {
+export function handleDeleteFavorite(me, setMe, recipeId) {
   console.log("handleDeleteFavorite");
   var allMeFavorites = me.favorites.map((r) => r);
   console.log(allMeFavorites);
-  var myFavorite = allMeFavorites.filter((item) => item !== id);
+  var myFavorite = allMeFavorites.filter((item) => item !== recipeId);
   setMe({
     _id: me._id,
     name: me.name,
@@ -128,4 +128,55 @@ export function handleDelete(me, setMe, id, year) {
 
 function updateAxios(id, body) {
   return axios.put(`${apiUrl}/users/recipes/${id}`, body);
+}
+
+export function deleteFresh(me, setMe, id, freshitem) {
+  console.log("deleteFresh");
+  console.log(freshitem);
+  var allMeRecipes = me.recipes.map((r) => r);
+  var myRecipe = allMeRecipes.find((item) => item._id === id);
+  console.log(myRecipe);
+  myRecipe.fresh = myRecipe.fresh.filter(
+    (element) => element.item !== freshitem
+  );
+  setMe({
+    _id: me._id,
+    name: me.name,
+    email: me.email,
+    recipes: me.recipes,
+    favorites: allMeRecipes,
+  });
+  const body = { recipes: allMeRecipes };
+  return axios.put(`${apiUrl}/users/recipes/${me._id}`, body);
+}
+
+export function addStock(me, setMe, item) {
+  console.log(item);
+  setMe({
+    _id: me._id,
+    name: me.name,
+    email: me.email,
+    favorites: me.favorites,
+    stock: [...me.stock, item],
+    recipes: me.recipes,
+  });
+  me.stock.push(item);
+  const body = { stock: me.stock };
+  return axios.put(`${apiUrl}/users/stock/${me._id}`, body);
+}
+
+export function removeStock(me, setMe, item) {
+  let allItems = me.stock.map((s) => s);
+  let newItems = allItems.filter((a) => a !== item);
+  console.log(allItems);
+  setMe({
+    _id: me._id,
+    name: me.name,
+    email: me.email,
+    favorites: me.favorites,
+    stock: newItems,
+    recipes: me.recipes,
+  });
+  const body = { stock: newItems };
+  return axios.put(`${apiUrl}/users/stock/${me._id}`, body);
 }
