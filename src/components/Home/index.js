@@ -36,34 +36,21 @@ const Home = ({
   // const box = 265;
   // const boxheight = height + scroll;
 
-  console.log("thecart");
-  console.log(thecart);
-  // const list = thecart.filter((c) => {
-  //   let freshitem = c.fresh.reduce(function (accumulator, currentValue) {
-  //     return accumulator.concat(currentValue);
-  //   }, []);
-  //   return freshitem;
-  // });
-  // console.log("list");
-  // console.log(list);
+  console.log("me");
+  console.log(me);
 
+  if (me.stock === undefined) return [];
+
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
   let allfresh = thecart.reduce(function (accumulator, currentValue) {
     return [...accumulator, ...currentValue.fresh];
   }, []);
   console.log("allfresh");
   console.log(allfresh);
-  console.log(parseInt("400"));
 
-  var data = [
-    { item: "spinazie", quantity: 200, unit: "g" },
-    { item: "spinazie", quantity: 400, unit: "g" },
-    { item: "eieren", quantity: 2, unit: "" },
-    { item: "eieren", quantity: 1, unit: "" },
-    { item: "room", quantity: 100, unit: "ml" },
-    { item: "room", quantity: 60, unit: "ml" },
-  ];
-
-  let result = allfresh.reduce(
+  // https://stackoverflow.com/questions/44332180/merge-objects-with-the-same-id-but-sum-values-of-the-objects
+  // For a version with Array#reduce, you could use a hash table as reference to the same company with a closure over the hash table.
+  let boodschappen = allfresh.reduce(
     (function (hash) {
       return function (r, a) {
         var key = a.item;
@@ -78,7 +65,7 @@ const Home = ({
     []
   );
 
-  console.log(result);
+  console.log(boodschappen);
 
   if (recipes.length === 0)
     return (
@@ -173,7 +160,7 @@ const Home = ({
                                         {c.title}
                                       </h4>
                                     </Link>
-                                  </div>{" "}
+                                  </div>
                                   <div className="grid grid-cols-4 mb-15">
                                     {c.fresh.map((f, xid) => (
                                       <div key={xid} className="ml-18">
@@ -190,7 +177,8 @@ const Home = ({
                                         >
                                           x
                                         </span>
-                                        {f.quantity} {f.unit} {f.item}
+                                        {f.quantity} {f.unit}
+                                        <strong> {f.item}</strong>
                                       </div>
                                     ))}
                                   </div>
@@ -203,6 +191,37 @@ const Home = ({
                   </Fragment>
                 );
               })}
+            </div>
+            <div className="boodschappen">
+              <h2 className="mt-18">Boodschappen</h2>
+              <div className="grid grid-cols-2 mt-36 mb-18">
+                <div className="">
+                  <p className="font-300 uppercase text-14 tracking-wider mb-24">
+                    Vers
+                  </p>
+                  {boodschappen.map((b, xid) => (
+                    <li key={xid} className="mb-9">
+                      {b.quantity} {b.unit} <strong>{b.item}</strong>
+                    </li>
+                  ))}
+                </div>
+                <div className="">
+                  <p className="font-300 uppercase text-14 tracking-wider mb-24">
+                    Voorraad
+                  </p>
+                  {me.stock.map((v, xid) => (
+                    <li key={xid} className="mb-9">
+                      {v}
+                    </li>
+                  ))}
+                </div>
+                {/* <button className="btn-boodschappen">boodschappenlijst</button>
+              <a
+                href={`mailto:${me.email}?SUBJECT=bestelling&BODY=Boodschappen, %0D%0A%0D%0AVers: %0D%0A%0D%0AVoorraad: %0D%0A%0D%0AMijn telefoonnummer is:`}
+              >
+                boodschappenlijst
+              </a> */}
+              </div>
             </div>
           </Fragment>
         ) : (

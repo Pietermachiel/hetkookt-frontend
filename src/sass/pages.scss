@@ -1,3 +1,23 @@
+.btn-boodschappen {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  text-transform: uppercase;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  background: #5872f5;
+  width: 50%;
+  margin: auto;
+  margin-top: 36px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  // @media (min-width: 768px) {
+  //   margin: inherit;
+  //   margin-top: 36px;
+  // }
+}
+
 .about-box {
   width: 60%;
   &:nth-child(odd) {

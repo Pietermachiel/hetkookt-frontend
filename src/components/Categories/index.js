@@ -46,10 +46,13 @@ const Categories = ({ thecart, categories, recipes, ...props }) => {
                   if (recipeItem.length !== 0)
                     return (
                       <>
-                        <div className="-ml-15 flex flex-row flex-wrap">
+                        <div
+                          key={xid}
+                          className="-ml-15 flex flex-row flex-wrap"
+                        >
                           <div
                             // className="grid-box unvisable slide work-grid-item"
-                            // key={xid}
+                            //
                             className="bg-offblack text-white border border-gray-400 min-h-250 w-1/2/10 sm:w-1/2/15 lg:w-1/4/15 xl:w-1/4/15 ml-10 mb-10 md:ml-15 md:mb-15"
                           >
                             {/* <Link to={`/sorts/${slugify(s.title)}`}> */}
