@@ -1,31 +1,31 @@
 import React, { Fragment, useState } from "react";
 // import stock from "./stock.json";
-import { addStock, removeStock } from "../../services/userService";
+import { toggleStock, removeStock } from "../../services/userService";
 
 const Voorraad = ({ me, setMe, stock, ...props }) => {
   const [value, setValue] = useState("");
-  // const [items, setItems] = useState([]);
-  // const [message, setMessage] = useState("alles is op voorraad");
+  const [items, setItems] = useState([]);
+  const [message, setMessage] = useState("alles is op voorraad");
   if (me.stock === undefined) return (me.stock = []);
 
   // console.log("items");
   // console.log(items);
 
-  const handleClick = (value) => {
-    // console.log("de value");
-    // console.log(value);
-    // const isOnTheList = items.includes(value);
-    // if (isOnTheList) return null;
-    // else setItems([...items, value]);
-    addStock(me, setMe, value);
-  };
+  // const handleClick = (value) => {
+  //   // console.log("de value");
+  //   // console.log(value);
+  //   // const isOnTheList = items.includes(value);
+  //   // if (isOnTheList) return null;
+  //   // else setItems([...items, value]);
+  //   toggleStock(me, setMe, value);
+  // };
 
   const addItem = (e) => {
-    // const trimmedText = e.trim();
-    // if (trimmedText.length > 0) {
-    //   setItems([...items, trimmedText]);
-    // }
-    // setValue("");
+    const trimmedText = e.trim();
+    if (trimmedText.length > 0) {
+      setItems([...items, trimmedText]);
+    }
+    setValue("");
   };
 
   const removeItem = (value) => {
@@ -49,16 +49,21 @@ const Voorraad = ({ me, setMe, stock, ...props }) => {
               {s.item.map((i, xid) => (
                 <Fragment key={xid}>
                   {me.stock.includes(i.title) ? (
-                    <p className="font-700 text-red-600">
+                    <p className="font-700 ">
                       {i.title}{" "}
-                      <span onClick={() => removeItem(i.title)}>x</span>
+                      <span
+                        className="text-red-600"
+                        onClick={() => removeItem(i.title)}
+                      >
+                        x
+                      </span>
                     </p>
                   ) : (
                     <p
-                      onClick={() => handleClick(i.title)}
+                      onClick={() => toggleStock(me, setMe, i.title)}
                       className="hover:text-red-600"
                     >
-                      {i.title}
+                      {i.title} <span className="">+</span>
                     </p>
                   )}
                 </Fragment>
@@ -67,7 +72,7 @@ const Voorraad = ({ me, setMe, stock, ...props }) => {
           </Fragment>
         ))}
 
-        {/* <form
+        <form
           // ref={(input) => (addForm = input)}
           className="form"
           onSubmit={(e) => {
@@ -81,10 +86,10 @@ const Voorraad = ({ me, setMe, stock, ...props }) => {
             value={value}
             type="text"
             onChange={(e) => setValue(e.target.value)}
-            placeholder="Zet dit ook nog op de lijst..."
+            placeholder="Zet dit extra op de lijst..."
           />
-        </form> */}
-        {/* {items.map((item, index) => {
+        </form>
+        {items.map((item, index) => {
           return (
             <div key={index} className="">
               {item}&nbsp;&nbsp;
@@ -93,10 +98,10 @@ const Voorraad = ({ me, setMe, stock, ...props }) => {
               </span>
             </div>
           );
-        })} */}
-        {/* <div className="filter-box__stock">
+        })}
+        <div className="filter-box__stock">
           {items.length === 0 && <p>alles is op voorraad</p>}
-        </div> */}
+        </div>
       </div>
       <div className="container-x">
         {/* <div className="container-chapeau">Voorraadkast</div> */}
@@ -120,7 +125,7 @@ const Voorraad = ({ me, setMe, stock, ...props }) => {
                               className="btn btn-small btn-small__green btn-small__selected"
                               onClick={(e) => {
                                 e.preventDefault();
-                                handleClick(hit.title);
+                                toggleStock(me, setMe, hit.title);
                               }}
                             ></button>
                             &nbsp;{hit.title}
@@ -132,7 +137,7 @@ const Voorraad = ({ me, setMe, stock, ...props }) => {
                               className="btn btn-small btn-small__green"
                               onClick={(e) => {
                                 e.preventDefault();
-                                handleClick(hit.title);
+                                toggleStock(me, setMe, hit.title);
                               }}
                             ></button>
                             &nbsp;{hit.title}

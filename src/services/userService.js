@@ -54,6 +54,7 @@ export function doFavorite(me, setMe, recipeId) {
     email: me.email,
     recipes: me.recipes,
     favorites: [...me.favorites, recipeId],
+    stock: me.stock,
   });
   me.favorites.push(recipeId);
   const body = { favorites: me.favorites };
@@ -71,6 +72,7 @@ export function handleDeleteFavorite(me, setMe, recipeId) {
     email: me.email,
     recipes: me.recipes,
     favorites: myFavorite,
+    stock: me.stock,
   });
   const body = { favorites: myFavorite };
   return axios.put(`${apiUrl}/users/favorites/${me._id}`, body);
@@ -84,6 +86,7 @@ export function doSave(me, setMe, recipe, dedate) {
     email: me.email,
     favorites: me.favorites,
     recipes: [...me.recipes],
+    stock: me.stock,
   });
   const thebody = { recipes: me.recipes };
   putAxios(me._id, thebody);
@@ -98,6 +101,7 @@ export function doSave(me, setMe, recipe, dedate) {
     email: me.email,
     favorites: me.favorites,
     recipes: [...me.recipes, recipe],
+    stock: me.stock,
   });
   me.recipes.push(recipe);
   const body = { recipes: me.recipes };
@@ -121,6 +125,7 @@ export function handleDelete(me, setMe, id, year) {
     email: me.email,
     favorites: allMeFavorites,
     recipes: allMeRecipes,
+    stock: me.stock,
   });
   const body = { recipes: allMeRecipes };
   updateAxios(me._id, body);
@@ -136,21 +141,22 @@ export function deleteFresh(me, setMe, id, freshitem) {
   var allMeRecipes = me.recipes.map((r) => r);
   var myRecipe = allMeRecipes.find((item) => item._id === id);
   console.log(myRecipe);
-  myRecipe.fresh = myRecipe.fresh.filter(
-    (element) => element.item !== freshitem
-  );
+  var donotbuy = myRecipe.fresh.find((e) => e.item === freshitem);
+  donotbuy.to_buy = !donotbuy.to_buy;
+  console.log(donotbuy);
   setMe({
     _id: me._id,
     name: me.name,
     email: me.email,
-    recipes: me.recipes,
-    favorites: allMeRecipes,
+    recipes: allMeRecipes,
+    favorites: me.favorites,
+    stock: me.stock,
   });
   const body = { recipes: allMeRecipes };
   return axios.put(`${apiUrl}/users/recipes/${me._id}`, body);
 }
 
-export function addStock(me, setMe, item) {
+export function toggleStock(me, setMe, item) {
   console.log(item);
   setMe({
     _id: me._id,
@@ -179,4 +185,35 @@ export function removeStock(me, setMe, item) {
   });
   const body = { stock: newItems };
   return axios.put(`${apiUrl}/users/stock/${me._id}`, body);
+}
+
+export function deleteBoodschappen(me, setMe, title) {
+  console.log("deleteBoodschappen");
+  console.log(title);
+  let allRecipes = me.recipes.map((r) => r);
+  allRecipes = allRecipes.filter((element) => {
+    let fresh = element.fresh.some(({ item }) => item === title);
+    return fresh;
+  });
+  console.log("allRecipes");
+  console.log(allRecipes);
+  allRecipes = allRecipes.map((recipe) => {
+    var donotbuy = recipe.fresh.find((e) => e.item === title);
+    console.log(donotbuy);
+    donotbuy.to_buy = !donotbuy.to_buy;
+    console.log(donotbuy);
+    return recipe;
+  });
+  console.log("allRecipes after");
+  console.log(allRecipes);
+  setMe({
+    _id: me._id,
+    name: me.name,
+    email: me.email,
+    recipes: me.recipes,
+    favorites: me.favorites,
+    stock: me.stock,
+  });
+  const body = { recipes: me.recipes };
+  return axios.put(`${apiUrl}/users/recipes/${me._id}`, body);
 }

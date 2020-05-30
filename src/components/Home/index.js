@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 // import { Link, NavLink } from "react-router-dom";
 // import useCurrentWidth from "../common/use-current-width";
@@ -13,7 +13,12 @@ import Search from "../Search";
 import About from "./about";
 // import Weekmenu from "../Weekmenu";
 import { vandaag, dedatum, kalender, slugify } from "../common/common";
-import { handleDelete, deleteFresh } from "../../services/userService";
+import {
+  handleDelete,
+  deleteFresh,
+  removeStock,
+  deleteBoodschappen,
+} from "../../services/userService";
 
 const Home = ({
   me,
@@ -29,6 +34,9 @@ const Home = ({
   about,
   ...props
 }) => {
+  const [items, setItems] = useState([]);
+  const [message, setMessage] = useState("alles is op voorraad");
+
   // const width = useCurrentWidth();
   // const height = useCurrentHeight();
   // const scroll = useCurrentScroll();
@@ -41,12 +49,22 @@ const Home = ({
 
   if (me.stock === undefined) return [];
 
+  const addItem = (e) => {
+    // const trimmedText = e.trim();
+    // if (trimmedText.length > 0) {
+    //   setItems([...items, trimmedText]);
+    // }
+    // setValue("");
+  };
+
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
   let allfresh = thecart.reduce(function (accumulator, currentValue) {
     return [...accumulator, ...currentValue.fresh];
   }, []);
   console.log("allfresh");
   console.log(allfresh);
+
+  allfresh = allfresh.filter((f) => f.to_buy === true);
 
   // https://stackoverflow.com/questions/44332180/merge-objects-with-the-same-id-but-sum-values-of-the-objects
   // For a version with Array#reduce, you could use a hash table as reference to the same company with a closure over the hash table.
@@ -55,7 +73,12 @@ const Home = ({
       return function (r, a) {
         var key = a.item;
         if (!hash[key]) {
-          hash[key] = { item: a.item, quantity: 0, unit: a.unit };
+          hash[key] = {
+            item: a.item,
+            quantity: 0,
+            unit: a.unit,
+            to_buy: a.to_buy,
+          };
           r.push(hash[key]);
         }
         hash[key].quantity += a.quantity;
@@ -66,6 +89,10 @@ const Home = ({
   );
 
   console.log(boodschappen);
+  // if (boodschappen.quantity === 0) return "";
+  // boodschappen = boodschappen.map((b) =>
+  //   b.quantity === "0" ? b.quantity === "" : null
+  // );
 
   if (recipes.length === 0)
     return (
@@ -162,25 +189,51 @@ const Home = ({
                                     </Link>
                                   </div>
                                   <div className="grid grid-cols-4 mb-15">
-                                    {c.fresh.map((f, xid) => (
-                                      <div key={xid} className="ml-18">
-                                        <span
-                                          onClick={() =>
-                                            deleteFresh(
-                                              me,
-                                              setMe,
-                                              c._id,
-                                              f.item
-                                            )
-                                          }
-                                          className="text-red-600 mr-10"
-                                        >
-                                          x
-                                        </span>
-                                        {f.quantity} {f.unit}
-                                        <strong> {f.item}</strong>
-                                      </div>
-                                    ))}
+                                    {c.fresh.map((f, xid) => {
+                                      return (
+                                        <Fragment key={xid}>
+                                          {f.to_buy === true ? (
+                                            <div className="ml-18">
+                                              <span
+                                                onClick={() =>
+                                                  deleteFresh(
+                                                    me,
+                                                    setMe,
+                                                    c._id,
+                                                    f.item,
+                                                    f.do_buy
+                                                  )
+                                                }
+                                                className="text-red-600 mr-10"
+                                              >
+                                                x
+                                              </span>
+                                              {f.quantity} {f.unit}
+                                              <strong> {f.item}</strong>
+                                            </div>
+                                          ) : (
+                                            <div className="ml-18 text-gray-500">
+                                              <span
+                                                onClick={() =>
+                                                  deleteFresh(
+                                                    me,
+                                                    setMe,
+                                                    c._id,
+                                                    f.item,
+                                                    f.do_buy
+                                                  )
+                                                }
+                                                className="mr-10"
+                                              >
+                                                x
+                                              </span>
+                                              {f.quantity} {f.unit}
+                                              <strong> {f.item}</strong>
+                                            </div>
+                                          )}
+                                        </Fragment>
+                                      );
+                                    })}
                                   </div>
                                 </div>
                               </div>
@@ -201,6 +254,12 @@ const Home = ({
                   </p>
                   {boodschappen.map((b, xid) => (
                     <li key={xid} className="mb-9">
+                      <span
+                        onClick={() => deleteBoodschappen(me, setMe, b.item)}
+                        className="text-red-600 mr-10"
+                      >
+                        x
+                      </span>
                       {b.quantity} {b.unit} <strong>{b.item}</strong>
                     </li>
                   ))}
@@ -209,18 +268,60 @@ const Home = ({
                   <p className="font-300 uppercase text-14 tracking-wider mb-24">
                     Voorraad
                   </p>
+                  <div className="filter-box__stock">
+                    {me.stock.length === 0 && <p>Is alles op voorraad?</p>}
+                  </div>
                   {me.stock.map((v, xid) => (
                     <li key={xid} className="mb-9">
+                      <span
+                        onClick={() => removeStock(me, setMe, v)}
+                        className="text-red-500 mr-9"
+                      >
+                        x
+                      </span>
                       {v}
                     </li>
                   ))}
+                  <p className="font-300 uppercase text-14 tracking-wider mb-24 mt-24">
+                    Extra
+                  </p>
+                  {/* <form
+                    // ref={(input) => (addForm = input)}
+                    className="form"
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      addItem(value);
+                    }}
+                  >
+                    <button
+                      className="btn btn-small  btn-small__green"
+                      type="submit"
+                    />
+                    &nbsp;
+                    <input
+                      value={value}
+                      type="text"
+                      onChange={(e) => setValue(e.target.value)}
+                      placeholder="Zet dit ook nog op de lijst..."
+                    />
+                  </form>
+                  {items.map((item, index) => {
+                    return (
+                      <div key={index} className="">
+                        {item}&nbsp;&nbsp;
+                        <span
+                          className="rood"
+                          onClick={() => removeItem(index)}
+                        >
+                          x
+                        </span>
+                      </div>
+                    );
+                  })}
+                  <div className="filter-box__stock">
+                    {items.length === 0 && <p>alles is op voorraad</p>}
+                  </div> */}
                 </div>
-                {/* <button className="btn-boodschappen">boodschappenlijst</button>
-              <a
-                href={`mailto:${me.email}?SUBJECT=bestelling&BODY=Boodschappen, %0D%0A%0D%0AVers: %0D%0A%0D%0AVoorraad: %0D%0A%0D%0AMijn telefoonnummer is:`}
-              >
-                boodschappenlijst
-              </a> */}
               </div>
             </div>
           </Fragment>
