@@ -34,6 +34,7 @@ const Home = ({
   about,
   ...props
 }) => {
+  const [value, setValue] = useState("");
   const [items, setItems] = useState([]);
   const [message, setMessage] = useState("alles is op voorraad");
 
@@ -50,11 +51,21 @@ const Home = ({
   if (me.stock === undefined) return [];
 
   const addItem = (e) => {
-    // const trimmedText = e.trim();
-    // if (trimmedText.length > 0) {
-    //   setItems([...items, trimmedText]);
-    // }
-    // setValue("");
+    const trimmedText = e.trim();
+    if (trimmedText.length > 0) {
+      setItems([...items, trimmedText]);
+    }
+    setValue("");
+  };
+
+  const removeItem = (value) => {
+    // console.log(title);
+    // const newitems = items.filter((item, index) => {
+    //   return item !== title;
+    // });
+    // console.log(newitems);
+
+    removeStock(me, setMe, value);
   };
 
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
@@ -285,7 +296,7 @@ const Home = ({
                   <p className="font-300 uppercase text-14 tracking-wider mb-24 mt-24">
                     Extra
                   </p>
-                  {/* <form
+                  <form
                     // ref={(input) => (addForm = input)}
                     className="form"
                     onSubmit={(e) => {
@@ -318,7 +329,7 @@ const Home = ({
                       </div>
                     );
                   })}
-                  <div className="filter-box__stock">
+                  {/* <div className="filter-box__stock">
                     {items.length === 0 && <p>alles is op voorraad</p>}
                   </div> */}
                 </div>

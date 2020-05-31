@@ -87,6 +87,7 @@ export function doSave(me, setMe, recipe, dedate) {
     favorites: me.favorites,
     recipes: [...me.recipes],
     stock: me.stock,
+    extra: me.extra,
   });
   const thebody = { recipes: me.recipes };
   putAxios(me._id, thebody);
@@ -102,6 +103,7 @@ export function doSave(me, setMe, recipe, dedate) {
     favorites: me.favorites,
     recipes: [...me.recipes, recipe],
     stock: me.stock,
+    extra: me.extra,
   });
   me.recipes.push(recipe);
   const body = { recipes: me.recipes };
@@ -126,6 +128,7 @@ export function handleDelete(me, setMe, id, year) {
     favorites: allMeFavorites,
     recipes: allMeRecipes,
     stock: me.stock,
+    extra: me.extra,
   });
   const body = { recipes: allMeRecipes };
   updateAxios(me._id, body);
@@ -151,6 +154,7 @@ export function deleteFresh(me, setMe, id, freshitem) {
     recipes: allMeRecipes,
     favorites: me.favorites,
     stock: me.stock,
+    extra: me.extra,
   });
   const body = { recipes: allMeRecipes };
   return axios.put(`${apiUrl}/users/recipes/${me._id}`, body);
@@ -165,6 +169,7 @@ export function toggleStock(me, setMe, item) {
     favorites: me.favorites,
     stock: [...me.stock, item],
     recipes: me.recipes,
+    extra: me.extra,
   });
   me.stock.push(item);
   const body = { stock: me.stock };
@@ -182,6 +187,7 @@ export function removeStock(me, setMe, item) {
     favorites: me.favorites,
     stock: newItems,
     recipes: me.recipes,
+    extra: me.extra,
   });
   const body = { stock: newItems };
   return axios.put(`${apiUrl}/users/stock/${me._id}`, body);
@@ -213,6 +219,7 @@ export function deleteBoodschappen(me, setMe, title) {
     recipes: me.recipes,
     favorites: me.favorites,
     stock: me.stock,
+    extra: me.extra,
   });
   const body = { recipes: me.recipes };
   return axios.put(`${apiUrl}/users/recipes/${me._id}`, body);
