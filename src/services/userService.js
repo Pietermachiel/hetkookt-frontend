@@ -193,6 +193,39 @@ export function removeStock(me, setMe, item) {
   return axios.put(`${apiUrl}/users/stock/${me._id}`, body);
 }
 
+export function toggleExtra(me, setMe, item) {
+  console.log(item);
+  setMe({
+    _id: me._id,
+    name: me.name,
+    email: me.email,
+    favorites: me.favorites,
+    extra: [...me.extra, item],
+    recipes: me.recipes,
+    stock: me.stock,
+  });
+  me.extra.push(item);
+  const body = { extra: me.extra };
+  return axios.put(`${apiUrl}/users/extra/${me._id}`, body);
+}
+
+export function removeExtra(me, setMe, item) {
+  let allItems = me.stock.map((s) => s);
+  let newItems = allItems.filter((a) => a !== item);
+  console.log(allItems);
+  setMe({
+    _id: me._id,
+    name: me.name,
+    email: me.email,
+    favorites: me.favorites,
+    stock: me.stock,
+    recipes: me.recipes,
+    extra: newItems,
+  });
+  const body = { stock: newItems };
+  return axios.put(`${apiUrl}/users/extra/${me._id}`, body);
+}
+
 export function deleteBoodschappen(me, setMe, title) {
   console.log("deleteBoodschappen");
   console.log(title);

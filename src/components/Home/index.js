@@ -16,6 +16,7 @@ import { vandaag, dedatum, kalender, slugify } from "../common/common";
 import {
   handleDelete,
   deleteFresh,
+  toggleStock,
   removeStock,
   deleteBoodschappen,
 } from "../../services/userService";
@@ -50,10 +51,10 @@ const Home = ({
 
   if (me.stock === undefined) return [];
 
-  const addItem = (e) => {
-    const trimmedText = e.trim();
+  const handleExtra = (value) => {
+    const trimmedText = value.trim();
     if (trimmedText.length > 0) {
-      setItems([...items, trimmedText]);
+      toggleStock(me, setMe, value);
     }
     setValue("");
   };
@@ -279,9 +280,12 @@ const Home = ({
                   <p className="font-300 uppercase text-14 tracking-wider mb-24">
                     Voorraad
                   </p>
-                  <div className="filter-box__stock">
-                    {me.stock.length === 0 && <p>Is alles op voorraad?</p>}
-                  </div>
+                  <Link to="/voorraad">
+                    <div className="filter-box__stock">
+                      {me.stock.length === 0 && <p>Is alles op voorraad?</p>}
+                    </div>{" "}
+                  </Link>
+
                   {me.stock.map((v, xid) => (
                     <li key={xid} className="mb-9">
                       <span
@@ -301,7 +305,7 @@ const Home = ({
                     className="form"
                     onSubmit={(e) => {
                       e.preventDefault();
-                      addItem(value);
+                      handleExtra(value);
                     }}
                   >
                     <button
