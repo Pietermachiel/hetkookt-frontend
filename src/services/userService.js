@@ -55,6 +55,7 @@ export function doFavorite(me, setMe, recipeId) {
     recipes: me.recipes,
     favorites: [...me.favorites, recipeId],
     stock: me.stock,
+    extra: me.extra,
   });
   me.favorites.push(recipeId);
   const body = { favorites: me.favorites };
@@ -73,6 +74,7 @@ export function handleDeleteFavorite(me, setMe, recipeId) {
     recipes: me.recipes,
     favorites: myFavorite,
     stock: me.stock,
+    extra: me.extra,
   });
   const body = { favorites: myFavorite };
   return axios.put(`${apiUrl}/users/favorites/${me._id}`, body);
@@ -210,7 +212,9 @@ export function toggleExtra(me, setMe, item) {
 }
 
 export function removeExtra(me, setMe, item) {
-  let allItems = me.stock.map((s) => s);
+  console.log("item");
+  console.log(item);
+  let allItems = me.extra.map((s) => s);
   let newItems = allItems.filter((a) => a !== item);
   console.log(allItems);
   setMe({

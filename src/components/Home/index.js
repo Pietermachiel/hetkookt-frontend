@@ -16,8 +16,9 @@ import { vandaag, dedatum, kalender, slugify } from "../common/common";
 import {
   handleDelete,
   deleteFresh,
-  toggleStock,
   removeStock,
+  toggleExtra,
+  removeExtra,
   deleteBoodschappen,
 } from "../../services/userService";
 
@@ -36,8 +37,8 @@ const Home = ({
   ...props
 }) => {
   const [value, setValue] = useState("");
-  const [items, setItems] = useState([]);
-  const [message, setMessage] = useState("alles is op voorraad");
+  // const [items, setItems] = useState([]);
+  // const [message, setMessage] = useState("alles is op voorraad");
 
   // const width = useCurrentWidth();
   // const height = useCurrentHeight();
@@ -50,24 +51,25 @@ const Home = ({
   console.log(me);
 
   if (me.stock === undefined) return [];
+  if (me.extra === undefined) return [];
 
   const handleExtra = (value) => {
     const trimmedText = value.trim();
     if (trimmedText.length > 0) {
-      toggleStock(me, setMe, value);
+      toggleExtra(me, setMe, value);
     }
     setValue("");
   };
 
-  const removeItem = (value) => {
-    // console.log(title);
-    // const newitems = items.filter((item, index) => {
-    //   return item !== title;
-    // });
-    // console.log(newitems);
+  // const removeExtra = (value) => {
+  //   // console.log(title);
+  //   // const newitems = items.filter((item, index) => {
+  //   //   return item !== title;
+  //   // });
+  //   // console.log(newitems);
 
-    removeStock(me, setMe, value);
-  };
+  //   removeExtra(me, setMe, value);
+  // };
 
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
   let allfresh = thecart.reduce(function (accumulator, currentValue) {
@@ -181,31 +183,38 @@ const Home = ({
                             <Fragment key={c._id}>
                               <div className="unvisable slide work-grid-item w-full">
                                 <div className={`px-15 pt-15`}>
-                                  <div className="flex item-center">
-                                    <button
-                                      className="btn-delete"
+                                  <div className="flex item-baseline">
+                                    <Link to={`/recipe/${slugify(c.title)}`}>
+                                      <h4 className={`break-words mb-15 pr-18`}>
+                                        {c.title}
+                                      </h4>
+                                    </Link>{" "}
+                                    <span className="text-18 font-700 mr-18">
+                                      {c.dish}
+                                    </span>
+                                    <span
+                                      className="pr-18"
                                       onClick={() =>
                                         handleDelete(me, setMe, c._id, k.year)
                                       }
                                     >
-                                      <img
+                                      {/* <img
                                         className="w-25 h-25"
                                         src="/img/icons/btn-remove-red.svg"
                                         alt=""
-                                      />
-                                    </button>
-                                    <Link to={`/recipe/${slugify(c.title)}`}>
-                                      <h4 className={`break-words mb-15`}>
-                                        {c.title}
-                                      </h4>
-                                    </Link>
+                                      /> */}
+                                      verwijder
+                                    </span>
+                                    <span>bestel</span>
                                   </div>
-                                  <div className="grid grid-cols-4 mb-15">
+                                  <div className="grid grid-cols-2 lg:grid-cols-4 mb-15">
                                     {c.fresh.map((f, xid) => {
                                       return (
                                         <Fragment key={xid}>
                                           {f.to_buy === true ? (
                                             <div className="ml-18">
+                                              {f.quantity} {f.unit}
+                                              <strong> {f.item}</strong>{" "}
                                               <span
                                                 onClick={() =>
                                                   deleteFresh(
@@ -220,11 +229,11 @@ const Home = ({
                                               >
                                                 x
                                               </span>
-                                              {f.quantity} {f.unit}
-                                              <strong> {f.item}</strong>
                                             </div>
                                           ) : (
                                             <div className="ml-18 text-gray-500">
+                                              {f.quantity} {f.unit}
+                                              <strong> {f.item}</strong>{" "}
                                               <span
                                                 onClick={() =>
                                                   deleteFresh(
@@ -237,10 +246,8 @@ const Home = ({
                                                 }
                                                 className="mr-10"
                                               >
-                                                x
+                                                +
                                               </span>
-                                              {f.quantity} {f.unit}
-                                              <strong> {f.item}</strong>
                                             </div>
                                           )}
                                         </Fragment>
@@ -266,13 +273,13 @@ const Home = ({
                   </p>
                   {boodschappen.map((b, xid) => (
                     <li key={xid} className="mb-9">
+                      {b.quantity} {b.unit} <strong>{b.item}</strong>{" "}
                       <span
                         onClick={() => deleteBoodschappen(me, setMe, b.item)}
                         className="text-red-600 mr-10"
                       >
                         x
                       </span>
-                      {b.quantity} {b.unit} <strong>{b.item}</strong>
                     </li>
                   ))}
                 </div>
@@ -282,22 +289,23 @@ const Home = ({
                   </p>
                   <Link to="/voorraad">
                     <div className="filter-box__stock">
-                      {me.stock.length === 0 && <p>Is alles op voorraad?</p>}
-                    </div>{" "}
+                      {/* {me.stock.length === 0 && } */}
+                      <p>Is alles op voorraad?</p>
+                    </div>
                   </Link>
 
                   {me.stock.map((v, xid) => (
                     <li key={xid} className="mb-9">
+                      {v}{" "}
                       <span
                         onClick={() => removeStock(me, setMe, v)}
                         className="text-red-500 mr-9"
                       >
                         x
                       </span>
-                      {v}
                     </li>
                   ))}
-                  <p className="font-300 uppercase text-14 tracking-wider mb-24 mt-24">
+                  <p className="font-300 uppercase text-14 tracking-wider mb-24 mt-48">
                     Extra
                   </p>
                   <form
@@ -308,25 +316,26 @@ const Home = ({
                       handleExtra(value);
                     }}
                   >
+                    <input
+                      className="py-5 px-10 text-16"
+                      value={value}
+                      type="text"
+                      onChange={(e) => setValue(e.target.value)}
+                      placeholder="Zet dit extra op de lijst..."
+                    />{" "}
+                    &nbsp;
                     <button
                       className="btn btn-small  btn-small__green"
                       type="submit"
                     />
-                    &nbsp;
-                    <input
-                      value={value}
-                      type="text"
-                      onChange={(e) => setValue(e.target.value)}
-                      placeholder="Zet dit ook nog op de lijst..."
-                    />
                   </form>
-                  {items.map((item, index) => {
+                  {me.extra.map((item, index) => {
                     return (
                       <div key={index} className="">
-                        {item}&nbsp;&nbsp;
+                        {item}&nbsp;
                         <span
-                          className="rood"
-                          onClick={() => removeItem(index)}
+                          className="text-red-500 mr-9"
+                          onClick={() => removeExtra(me, setMe, item)}
                         >
                           x
                         </span>

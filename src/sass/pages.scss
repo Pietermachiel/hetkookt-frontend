@@ -224,3 +224,84 @@ button.btn-home.open {
     animation-delay: 0.1s;
   }
 }
+
+// categories
+
+.category-box {
+  width: 100%;
+  display: inline-block;
+  margin-bottom: 2em;
+  ul {
+    background-color: white;
+    border: 2px solid #eee;
+  }
+  li.hover {
+    // background: #f9f9f9;
+    a:hover {
+      color: #0056b3;
+      text-decoration: none;
+    }
+  }
+  li.show-border {
+    border-left: 2px solid #26abe2;
+  }
+  li,
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  h2 {
+    font-size: 28px;
+    background: #f6f7fc;
+    padding: 7px 12px;
+    margin: 0;
+    font-weight: 500;
+    border: 2px solid #eee;
+    border-bottom: 0;
+    a {
+      font-size: 0.5em;
+      float: right;
+      padding: 7px 3px;
+    }
+  }
+  h4.brand-color {
+  }
+
+  h4 {
+    font-weight: 500;
+    font-size: 21px;
+    letter-spacing: 0.03em;
+    margin: 0;
+    border: 1px solid #eee;
+    // color: rgb(63,185,53);
+    border-left: 0;
+    border-right: 0;
+    padding: 7px 12px;
+    cursor: pointer;
+    // transition: color .2s ease;
+    span.soort {
+      font-weight: 500;
+      font-size: 16px;
+    }
+    span.name {
+      font-weight: 500;
+      font-size: 16px;
+      color: rgb(172, 172, 172);
+    }
+    .aanbieding {
+      display: inline;
+      font-weight: 400 !important;
+      // color: #e64b97 !important;
+      color: magenta !important;
+      font-size: 18px !important;
+      span {
+        color: silver;
+      }
+    }
+  }
+  h4:hover {
+    // color: rgb(63,165,53);
+    text-decoration: none;
+  }
+}
