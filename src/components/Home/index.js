@@ -1,112 +1,19 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-// import { Link, NavLink } from "react-router-dom";
-// import useCurrentWidth from "../common/use-current-width";
-// import useCurrentHeight from "../common/use-current-height";
-// import useCurrentScroll from "../common/use-current-scroll";
-// import { slugify, kalender } from "../common/common";
 import Hetkookt from "./hetkookt";
-// import CategoriesFilter from "../CategoriesFilter";
-// import CollectionsFilter from "../CollectionsFilter";
 import Search from "../Search";
-// import Dishes from "./dishes";
 import About from "./about";
-// import Weekmenu from "../Weekmenu";
 import { vandaag, dedatum, kalender, slugify } from "../common/common";
-import {
-  handleDelete,
-  deleteFresh,
-  removeStock,
-  toggleExtra,
-  removeExtra,
-  deleteBoodschappen,
-} from "../../services/userService";
+import { deleteFresh } from "../../services/userService";
+import Boodschappen from "./Boodschappen";
+import Accordion from "./Accordion";
 
-const Home = ({
-  me,
-  setMe,
-  user,
-  dishes,
-  recipes,
-  categories,
-  sorts,
-  // handleSave,
-  // handleDelete,
-  thecart,
-  about,
-  ...props
-}) => {
-  const [value, setValue] = useState("");
-  // const [items, setItems] = useState([]);
-  // const [message, setMessage] = useState("alles is op voorraad");
-
-  // const width = useCurrentWidth();
-  // const height = useCurrentHeight();
-  // const scroll = useCurrentScroll();
-  // const offset = 0;
-  // const box = 265;
-  // const boxheight = height + scroll;
-
-  console.log("me");
-  console.log(me);
+const Home = ({ me, setMe, user, recipes, about }) => {
+  // console.log("me");
+  // console.log(me);
 
   if (me.stock === undefined) return [];
   if (me.extra === undefined) return [];
-
-  const handleExtra = (value) => {
-    const trimmedText = value.trim();
-    if (trimmedText.length > 0) {
-      toggleExtra(me, setMe, value);
-    }
-    setValue("");
-  };
-
-  // const removeExtra = (value) => {
-  //   // console.log(title);
-  //   // const newitems = items.filter((item, index) => {
-  //   //   return item !== title;
-  //   // });
-  //   // console.log(newitems);
-
-  //   removeExtra(me, setMe, value);
-  // };
-
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
-  let allfresh = thecart.reduce(function (accumulator, currentValue) {
-    return [...accumulator, ...currentValue.fresh];
-  }, []);
-  console.log("allfresh");
-  console.log(allfresh);
-
-  allfresh = allfresh.filter((f) => f.to_buy === true);
-
-  // https://stackoverflow.com/questions/44332180/merge-objects-with-the-same-id-but-sum-values-of-the-objects
-  // For a version with Array#reduce, you could use a hash table as reference to the same company with a closure over the hash table.
-  let boodschappen = allfresh.reduce(
-    (function (hash) {
-      return function (r, a) {
-        var key = a.item;
-        if (!hash[key]) {
-          hash[key] = {
-            item: a.item,
-            quantity: 0,
-            unit: a.unit,
-            to_buy: a.to_buy,
-          };
-          r.push(hash[key]);
-        }
-        hash[key].quantity += a.quantity;
-        return r;
-      };
-    })(Object.create(null)),
-    []
-  );
-
-  console.log(boodschappen);
-  // if (boodschappen.quantity === 0) return "";
-  // boodschappen = boodschappen.map((b) =>
-  //   b.quantity === "0" ? b.quantity === "" : null
-  // );
 
   if (recipes.length === 0)
     return (
@@ -116,9 +23,14 @@ const Home = ({
     );
 
   const thedates = kalender.filter((k) => {
-    const item = thecart.find((c) => (c.date ? c.date.includes(k.year) : null));
+    const item = me.recipes.find((c) =>
+      c.date ? c.date.includes(k.year) : null
+    );
     return item;
   });
+
+  console.log("thedates");
+  console.log(thedates);
 
   return (
     <Fragment>
@@ -144,70 +56,29 @@ const Home = ({
                 </p>
               </>
             ) : null}
-            <div className="mb-10 mt-18">
-              {kalender.map((k) => {
-                var cart = thecart.filter((c) =>
-                  c.date ? c.date.includes(k.year) : null
-                );
-                // console.log("cart");
-                // console.log(cart);
-                return (
-                  <Fragment key={k.index}>
-                    {cart.length !== 0 ? (
-                      <Fragment>
-                        <div className="flex items-center text-orange border-b-4 border-gray-400 pt-15 first:pt-0 pb-15">
-                          {/* {k.day} {k.day !== "vandaag" ? k.index : null} */}
-                          <h2 className="mr-5">
+            <div className="mt-18">
+              <div className="category-box mb-10 mt-18">
+                {thedates.map((k) => {
+                  var cart = me.recipes.filter((c) =>
+                    c.date ? c.date.includes(k.year) : null
+                  );
+                  return (
+                    <Fragment key={k.index}>
+                      {cart.length !== 0 ? (
+                        <Fragment>
+                          <h2 className="">
                             {k.day === vandaag(0) ? "vandaag" : k.day}
                           </h2>
-                          <div className="relative pt-3">
-                            <img
-                              className="w-30 h-30"
-                              src="/img/feather/circle-orange.svg"
-                              alt="circle orange"
-                            />
-                            <div className={`absolute inset-0 text-12`}>
-                              <span className="flex justify-center pt-9">
-                                {k.index}
-                              </span>
-                            </div>
-                            {/* {k.index} */}
-                          </div>
-                        </div>
-                        <p></p>
-                      </Fragment>
-                    ) : null}
-                    <div className="-ml-10 sm:ml-0 md:-ml-15 mb-10 flex flex-row flex-wrap">
-                      {cart
-                        ? cart.map((c) => (
-                            <Fragment key={c._id}>
-                              <div className="unvisable slide work-grid-item w-full">
-                                <div className={`px-15 pt-15`}>
-                                  <div className="flex item-baseline">
-                                    <Link to={`/recipe/${slugify(c.title)}`}>
-                                      <h4 className={`break-words mb-15 pr-18`}>
-                                        {c.title}
-                                      </h4>
-                                    </Link>{" "}
-                                    <span className="text-18 font-700 mr-18">
-                                      {c.dish}
-                                    </span>
-                                    <span
-                                      className="pr-18"
-                                      onClick={() =>
-                                        handleDelete(me, setMe, c._id, k.year)
-                                      }
-                                    >
-                                      {/* <img
-                                        className="w-25 h-25"
-                                        src="/img/icons/btn-remove-red.svg"
-                                        alt=""
-                                      /> */}
-                                      verwijder
-                                    </span>
-                                    <span>bestel</span>
-                                  </div>
-                                  <div className="grid grid-cols-2 lg:grid-cols-4 mb-15">
+                        </Fragment>
+                      ) : null}
+                      <ul className="">
+                        {cart
+                          ? cart.map((c) => (
+                              <Fragment key={c._id}>
+                                <Accordion title={c.title}>
+                                  <div
+                                    className={`specs-box sm:grid sm:grid-cols-2 lg:grid lg:grid-cols-4 pb-15`}
+                                  >
                                     {c.fresh.map((f, xid) => {
                                       return (
                                         <Fragment key={xid}>
@@ -254,100 +125,18 @@ const Home = ({
                                       );
                                     })}
                                   </div>
-                                </div>
-                              </div>
-                            </Fragment>
-                          ))
-                        : null}
-                    </div>{" "}
-                  </Fragment>
-                );
-              })}
-            </div>
-            <div className="boodschappen">
-              <h2 className="mt-18">Boodschappen</h2>
-              <div className="grid grid-cols-2 mt-36 mb-18">
-                <div className="">
-                  <p className="font-300 uppercase text-14 tracking-wider mb-24">
-                    Vers
-                  </p>
-                  {boodschappen.map((b, xid) => (
-                    <li key={xid} className="mb-9">
-                      {b.quantity} {b.unit} <strong>{b.item}</strong>{" "}
-                      <span
-                        onClick={() => deleteBoodschappen(me, setMe, b.item)}
-                        className="text-red-600 mr-10"
-                      >
-                        x
-                      </span>
-                    </li>
-                  ))}
-                </div>
-                <div className="">
-                  <p className="font-300 uppercase text-14 tracking-wider mb-24">
-                    Voorraad
-                  </p>
-                  <Link to="/voorraad">
-                    <div className="filter-box__stock">
-                      {/* {me.stock.length === 0 && } */}
-                      <p>Is alles op voorraad?</p>
-                    </div>
-                  </Link>
-
-                  {me.stock.map((v, xid) => (
-                    <li key={xid} className="mb-9">
-                      {v}{" "}
-                      <span
-                        onClick={() => removeStock(me, setMe, v)}
-                        className="text-red-500 mr-9"
-                      >
-                        x
-                      </span>
-                    </li>
-                  ))}
-                  <p className="font-300 uppercase text-14 tracking-wider mb-24 mt-48">
-                    Extra
-                  </p>
-                  <form
-                    // ref={(input) => (addForm = input)}
-                    className="form"
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      handleExtra(value);
-                    }}
-                  >
-                    <input
-                      className="py-5 px-10 text-16"
-                      value={value}
-                      type="text"
-                      onChange={(e) => setValue(e.target.value)}
-                      placeholder="Zet dit extra op de lijst..."
-                    />{" "}
-                    &nbsp;
-                    <button
-                      className="btn btn-small  btn-small__green"
-                      type="submit"
-                    />
-                  </form>
-                  {me.extra.map((item, index) => {
-                    return (
-                      <div key={index} className="">
-                        {item}&nbsp;
-                        <span
-                          className="text-red-500 mr-9"
-                          onClick={() => removeExtra(me, setMe, item)}
-                        >
-                          x
-                        </span>
-                      </div>
-                    );
-                  })}
-                  {/* <div className="filter-box__stock">
-                    {items.length === 0 && <p>alles is op voorraad</p>}
-                  </div> */}
-                </div>
+                                </Accordion>
+                              </Fragment>
+                            ))
+                          : null}
+                      </ul>
+                    </Fragment>
+                  );
+                })}
               </div>
             </div>
+
+            <Boodschappen me={me} setMe={setMe} />
           </Fragment>
         ) : (
           <About about={about} />

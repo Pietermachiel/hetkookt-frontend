@@ -4,15 +4,7 @@ import { vandaag, dedatum, kalender, slugify } from "../common/common";
 import KalenderWeekmenu from "./KalenderWeekmenu";
 import { handleDelete } from "../../services/userService";
 
-const Weekmenu = ({
-  me,
-  setMe,
-  user,
-  thecart,
-  // handleDelete,
-  // handleUpdate,
-  ...props
-}) => {
+const Weekmenu = ({ me, setMe, user, thecart, ...props }) => {
   // console.log("props collecties");
   // console.log(props);
   // console.log(vandaag(0));
