@@ -89,15 +89,15 @@ const Recipe = ({
       <div className="recepten">
         <div className="recepten-box">
           <div className="title">
-            <h1 className="font-600 mt-15 mb-10">{therecipe.title}</h1>
-            <Link
+            <h1 className="font-600 mt-15 mb-18">{therecipe.title}</h1>
+            {/* <Link
               className="hover:text-red-500"
               to={`/sorts/${therecipe.tags[0]}`}
             >
               <p className="font-300 text-19 leading-4 mb-36">
                 meer {therecipe.tags[0]} &nbsp;>
               </p>
-            </Link>
+            </Link> */}
           </div>
           {/* ingredienten */}
           <div className="ingredienten">

@@ -15,7 +15,7 @@ const Accordion = ({ title, children, me, setMe, id, year }) => {
             className="text-red-500"
             onClick={() => handleDelete(me, setMe, id, year)}
           >
-            x
+            &nbsp;<span className="text-19">x</span>
           </span>
         </div>
 

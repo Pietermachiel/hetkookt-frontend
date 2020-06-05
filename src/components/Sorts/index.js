@@ -35,11 +35,11 @@ const Sorts = ({ thecart, recipes, sorts, categories, ...props }) => {
     );
     return fresh;
   });
-  console.log("recipeItem");
-  console.log(recipeItem);
+  // console.log("recipeItem");
+  // console.log(recipeItem);
 
-  console.log("sort");
-  console.log(sort);
+  // console.log("sort");
+  // console.log(sort);
 
   return (
     <>
@@ -47,11 +47,11 @@ const Sorts = ({ thecart, recipes, sorts, categories, ...props }) => {
       <div className="container-x">
         <h1 className={`text-42 my-10 ${catcolor}`}>
           {sort.title}
-          <Link to={`/categories/${sort.category}`}>
+          {/* <Link to={`/categories/${sort.category}`}>
             <span className="ml-18 text-19 text-black font-300">
               > {sort.category}
             </span>
-          </Link>
+          </Link> */}
         </h1>
         <div className="-ml-15 mb-10 flex flex-row flex-wrap">
           <div

@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   removeStock,
@@ -6,9 +6,32 @@ import {
   removeExtra,
   deleteBoodschappen,
 } from "../../services/userService";
+import { recipeUrl } from "../../config.json";
+import { kalender } from "../common/common";
 
 const Boodschappen = ({ me, setMe }) => {
   const [value, setValue] = useState("");
+  const [groceries, setGroceries] = useState([]);
+
+  useEffect(() => {
+    async function getData() {
+      const res = await fetch(`${recipeUrl}/groceries.json`);
+      res.json().then((res) => setGroceries(res));
+    }
+    getData();
+  }, []);
+
+  // console.log(groceries);
+  // console.log(me);
+
+  const thedates = kalender.filter((k) => {
+    const item = me.recipes.find((c) =>
+      c.date ? c.date.includes(k.year) : null
+    );
+    return item;
+  });
+
+  // console.log(thedates);
 
   const handleExtra = (value) => {
     const trimmedText = value.trim();
@@ -53,29 +76,52 @@ const Boodschappen = ({ me, setMe }) => {
   return (
     <Fragment>
       <div className="boodschappen">
-        <h2 className="mt-18">Boodschappen</h2>
+        <h2 className="">Boodschappen</h2>
         <div className="sm:grid sm:grid-cols-2 mt-36 mb-18">
           <div className="ingredienten w-full">
             <p className="font-300 uppercase text-14 tracking-wider mb-24">
               Vers
             </p>
             <div className="ingredienten-box">
-              {boodschappen.map((b, xid) => (
-                <li key={xid} className="mb-9">
-                  <div className="items-quantity">
-                    {b.quantity} {b.unit}
-                  </div>
-                  <div className="items-product">
-                    {b.item}
-                    <span
-                      onClick={() => deleteBoodschappen(me, setMe, b.item)}
-                      className="text-red-600 mr-10"
-                    >
-                      &nbsp;x
-                    </span>
-                  </div>
-                </li>
-              ))}
+              {groceries.map((g, xid) => {
+                const deboodschappen = boodschappen.filter((b) =>
+                  g.sort.includes(b.item)
+                );
+                // console.log("deboodschappen");
+                // console.log(deboodschappen);
+                if (deboodschappen.length !== 0)
+                  return (
+                    <Fragment key={xid}>
+                      <h4 className="mb-18 border-b border-gray-600 lg:mr-36 pb-9">
+                        {deboodschappen.length !== 0 ? g.title : null}
+                      </h4>
+                      <div className="mb-18">
+                        {deboodschappen.map((b, xid) =>
+                          // console.log(g.sort);
+                          // if (g.sort.includes(b.item))
+                          deboodschappen.length !== 0 ? (
+                            <li key={xid} className="">
+                              <div className="items-quantity">
+                                {b.quantity} {b.unit}
+                              </div>
+                              <div className="items-product">
+                                {b.item}{" "}
+                                <span
+                                  onClick={() =>
+                                    deleteBoodschappen(me, setMe, b.item)
+                                  }
+                                  className="text-red-600 mr-10 font-500"
+                                >
+                                  &nbsp;x
+                                </span>
+                              </div>
+                            </li>
+                          ) : null
+                        )}
+                      </div>
+                    </Fragment>
+                  );
+              })}
             </div>
           </div>
           <div className="">

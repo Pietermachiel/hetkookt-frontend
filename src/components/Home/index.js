@@ -33,6 +33,10 @@ const Home = ({ me, setMe, user, recipes, about }) => {
   // console.log(thedates);
   // console.log("hetjaar");
   // console.log(hetjaar(0));
+  // console.log("dedatum");
+  // console.log(dedatum(0));
+  // console.log("kalender");
+  // console.log(kalender);
 
   return (
     <Fragment>
@@ -59,6 +63,8 @@ const Home = ({ me, setMe, user, recipes, about }) => {
               </>
             ) : null} */}
 
+            <h2 className="pl-18 -mb-18">Weekmenu</h2>
+
             {thedates.map((k) => {
               var cart = me.recipes.filter((c) =>
                 c.date ? c.date.includes(k.year) : null
@@ -67,7 +73,6 @@ const Home = ({ me, setMe, user, recipes, about }) => {
                 <Fragment key={k.index}>
                   {cart.length === 0 ? (
                     <div className="">
-                      {" "}
                       <h2 className="pt-15">Weekmenu</h2>
                       <p className="font-600 mt-21">
                         Er staat nog niets op het menu.
@@ -78,7 +83,7 @@ const Home = ({ me, setMe, user, recipes, about }) => {
               );
             })}
 
-            <div className="mt-18">
+            <div className="mt-18 mb-36">
               <div className="category-box mb-10 mt-18">
                 {thedates.map((k) => {
                   var cart = me.recipes.filter((c) =>
@@ -89,7 +94,10 @@ const Home = ({ me, setMe, user, recipes, about }) => {
                       {cart.length !== 0 ? (
                         <Fragment>
                           <h2 className="">
-                            {k.day === vandaag(0) ? "vandaag" : k.day}
+                            {k.day === vandaag(0) ? "vandaag" : k.day}{" "}
+                            <span className="text-gray-600 text-22">
+                              {k.dedag}
+                            </span>
                           </h2>
                         </Fragment>
                       ) : null}

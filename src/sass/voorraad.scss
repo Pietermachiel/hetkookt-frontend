@@ -12,14 +12,10 @@
   width: 100%;
   // max-width: 984px;
   margin: 0 auto;
-  // padding: 0 15px;
+  padding: 18px;
   padding-bottom: 24px;
-  @media (min-width: 667px) {
-    // padding: 0 25px;
-    // columns: 3;
-  }
   @media (min-width: $on-tablet) {
-    padding: 15px calc(50vw - (1060px / 2));
+    // padding: 15px calc(50vw - (1060px / 2));
     padding-bottom: 24px;
     // columns: 5;
   }

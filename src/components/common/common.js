@@ -57,14 +57,14 @@ export function dedag(e) {
   theday.setDate(event.getDate() + e);
 
   const options = {
-    weekday: "long",
+    // weekday: "long",
     // year: "numeric",
     month: "long",
     day: "numeric",
   };
 
   const dedag = theday.toLocaleDateString("nl-NL", options);
-  return dedag; // dedag(0) = woensdag 22 april
+  return dedag; // dedag(0) = 22 april
 }
 
 export function hetjaar(e) {
@@ -81,18 +81,18 @@ export function hetjaar(e) {
   };
 
   const hetjaar = theday.toLocaleDateString("nl-NL", options);
-  return hetjaar;
+  return hetjaar; // hetjaar(0) = woensdag 22 april 2020
 }
 
 export const kalender = [
-  { index: dedatum(0), year: hetjaar(0), day: vandaag(0) },
-  { index: dedatum(1), year: hetjaar(1), day: vandaag(1) },
-  { index: dedatum(2), year: hetjaar(2), day: vandaag(2) },
-  { index: dedatum(3), year: hetjaar(3), day: vandaag(3) },
-  { index: dedatum(4), year: hetjaar(4), day: vandaag(4) },
-  { index: dedatum(5), year: hetjaar(5), day: vandaag(5) },
-  { index: dedatum(6), year: hetjaar(6), day: vandaag(6) },
-  { index: dedatum(7), year: hetjaar(7), day: vandaag(7) },
+  { index: dedatum(0), year: hetjaar(0), day: vandaag(0), dedag: dedag(0) },
+  { index: dedatum(1), year: hetjaar(1), day: vandaag(1), dedag: dedag(1) },
+  { index: dedatum(2), year: hetjaar(2), day: vandaag(2), dedag: dedag(2) },
+  { index: dedatum(3), year: hetjaar(3), day: vandaag(3), dedag: dedag(3) },
+  { index: dedatum(4), year: hetjaar(4), day: vandaag(4), dedag: dedag(4) },
+  { index: dedatum(5), year: hetjaar(5), day: vandaag(5), dedag: dedag(5) },
+  { index: dedatum(6), year: hetjaar(6), day: vandaag(6), dedag: dedag(6) },
+  { index: dedatum(7), year: hetjaar(7), day: vandaag(7), dedag: dedag(7) },
 ];
 
 export function theweek() {

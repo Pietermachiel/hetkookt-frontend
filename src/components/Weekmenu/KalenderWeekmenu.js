@@ -46,7 +46,7 @@ const KalenderWeekmenu = ({ thecart, ...props }) => {
             })}
           </div>
           <p className="text-16 pl-3 mb-0 leading-7 text-gray-600 pt-3 mt-10">
-            mei <span className="text-14">2020</span>
+            juni <span className="text-14">2020</span>
           </p>
         </>
       )}
