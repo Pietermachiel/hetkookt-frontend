@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Hetkookt from "./hetkookt";
 import Search from "../Search";
 import About from "./about";
-import { vandaag, dedatum, kalender, slugify } from "../common/common";
+import { vandaag, dedatum, kalender, slugify, hetjaar } from "../common/common";
 import { deleteFresh } from "../../services/userService";
 import Boodschappen from "./Boodschappen";
 import Accordion from "./Accordion";
@@ -29,8 +29,10 @@ const Home = ({ me, setMe, user, recipes, about }) => {
     return item;
   });
 
-  console.log("thedates");
-  console.log(thedates);
+  // console.log("thedates");
+  // console.log(thedates);
+  // console.log("hetjaar");
+  // console.log(hetjaar(0));
 
   return (
     <Fragment>
@@ -39,7 +41,7 @@ const Home = ({ me, setMe, user, recipes, about }) => {
         <Search recipes={recipes} />
         {user ? (
           <Fragment>
-            {thedates.length === 0 ? (
+            {/* {thedates.length === 0 ? (
               <>
                 <h2 className="pt-15">Weekmenu</h2>
                 <p className="font-600 mt-21">
@@ -55,7 +57,27 @@ const Home = ({ me, setMe, user, recipes, about }) => {
                   Zoek een recept en zet op het weekmenu.
                 </p>
               </>
-            ) : null}
+            ) : null} */}
+
+            {thedates.map((k) => {
+              var cart = me.recipes.filter((c) =>
+                c.date ? c.date.includes(k.year) : null
+              );
+              return (
+                <Fragment key={k.index}>
+                  {cart.length === 0 ? (
+                    <div className="">
+                      {" "}
+                      <h2 className="pt-15">Weekmenu</h2>
+                      <p className="font-600 mt-21">
+                        Er staat nog niets op het menu.
+                      </p>
+                    </div>
+                  ) : null}
+                </Fragment>
+              );
+            })}
+
             <div className="mt-18">
               <div className="category-box mb-10 mt-18">
                 {thedates.map((k) => {
@@ -75,7 +97,13 @@ const Home = ({ me, setMe, user, recipes, about }) => {
                         {cart
                           ? cart.map((c) => (
                               <Fragment key={c._id}>
-                                <Accordion title={c.title}>
+                                <Accordion
+                                  title={c.title}
+                                  id={c._id}
+                                  year={k.year}
+                                  me={me}
+                                  setMe={setMe}
+                                >
                                   <div
                                     className={`specs-box sm:grid sm:grid-cols-2 lg:grid lg:grid-cols-4 pb-15`}
                                   >

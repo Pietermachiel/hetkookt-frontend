@@ -34,26 +34,43 @@
   justify-content: space-between;
   align-items: center;
 
-  &::after {
-    content: "";
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid currentColor;
-  }
+  // &::after {
+  //   content: "";
+  //   width: 0;
+  //   height: 0;
+  //   border-left: 5px solid transparent;
+  //   border-right: 5px solid transparent;
+  //   border-top: 5px solid currentColor;
+  // }
 
   &:hover,
   &.open {
     color: black;
   }
 
+  // &.open {
+  //   &::after {
+  //     content: "";
+  //     border-top: 0;
+  //     border-bottom: 5px solid;
+  //   }
+  // }
+}
+
+.accordion-arrow {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid currentColor;
+
+  &:hover,
   &.open {
-    &::after {
-      content: "";
-      border-top: 0;
-      border-bottom: 5px solid;
-    }
+    color: black;
+  }
+  &.open {
+    border-top: 0;
+    border-bottom: 6px solid;
   }
 }
 

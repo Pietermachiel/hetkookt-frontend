@@ -66,12 +66,12 @@ const Recipe = ({
   const newrecipe = thefavorites.find((c) => c._id === therecipe._id);
   therecipe = newrecipe || therecipe;
 
-  console.log("therecipe");
-  console.log(therecipe);
-  console.log("thecart");
-  console.log(thecart);
-  console.log("thefavorites");
-  console.log(thefavorites);
+  // console.log("therecipe");
+  // console.log(therecipe);
+  // console.log("thecart");
+  // console.log(thecart);
+  // console.log("thefavorites");
+  // console.log(thefavorites);
 
   // console.log("categories");
   // console.log(categories);

@@ -48,28 +48,35 @@ const Boodschappen = ({ me, setMe }) => {
     })(Object.create(null)),
     []
   );
-  console.log(boodschappen);
+  // console.log(boodschappen);
 
   return (
     <Fragment>
       <div className="boodschappen">
         <h2 className="mt-18">Boodschappen</h2>
         <div className="sm:grid sm:grid-cols-2 mt-36 mb-18">
-          <div className="">
+          <div className="ingredienten w-full">
             <p className="font-300 uppercase text-14 tracking-wider mb-24">
               Vers
             </p>
-            {boodschappen.map((b, xid) => (
-              <li key={xid} className="mb-9">
-                {b.quantity} {b.unit} <strong>{b.item}</strong>{" "}
-                <span
-                  onClick={() => deleteBoodschappen(me, setMe, b.item)}
-                  className="text-red-600 mr-10"
-                >
-                  x
-                </span>
-              </li>
-            ))}
+            <div className="ingredienten-box">
+              {boodschappen.map((b, xid) => (
+                <li key={xid} className="mb-9">
+                  <div className="items-quantity">
+                    {b.quantity} {b.unit}
+                  </div>
+                  <div className="items-product">
+                    {b.item}
+                    <span
+                      onClick={() => deleteBoodschappen(me, setMe, b.item)}
+                      className="text-red-600 mr-10"
+                    >
+                      &nbsp;x
+                    </span>
+                  </div>
+                </li>
+              ))}
+            </div>
           </div>
           <div className="">
             <p className="font-300 uppercase text-14 tracking-wider mb-24">

@@ -11,6 +11,7 @@ export function slugify(text) {
   );
 }
 
+// const unique = thearray.filter(uniq)
 export function uniq(value, index, self) {
   return self.indexOf(value) === index;
 }

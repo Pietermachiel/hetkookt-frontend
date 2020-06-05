@@ -217,6 +217,7 @@ export function removeExtra(me, setMe, item) {
   let allItems = me.extra.map((s) => s);
   let newItems = allItems.filter((a) => a !== item);
   console.log(allItems);
+  console.log(newItems);
   setMe({
     _id: me._id,
     name: me.name,

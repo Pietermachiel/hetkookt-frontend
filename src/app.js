@@ -39,8 +39,8 @@ const App = () => {
   // console.log(recipes);
   // console.log("sorts");
   // console.log(sorts);
-  // console.log("categories");
-  // console.log(categories);
+  console.log("categories");
+  console.log(categories);
   // console.log("dishes");
   // console.log(dishes);
   // console.log("user");
