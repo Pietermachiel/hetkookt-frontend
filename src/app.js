@@ -9,12 +9,13 @@ import Test from "./components/Test";
 import Home from "./components/Home";
 import Wat from "./components/Home/Wat";
 import Hoe from "./components/Home/Hoe";
-// import Waarom from "./components/Home/Waarom";
+import Waarom from "./components/Home/Waarom";
 import Recipe from "./components/Recipe";
 import Sorts from "./components/Sorts";
 import Categories from "./components/Categories";
 import Collections from "./components/Collections";
 import Favorites from "./components/Favorites";
+import Boodschappen from "./components/Home/Boodschappen";
 import Voorraad from "./components/Voorraad";
 import Weekmenu from "./components/Weekmenu";
 import User from "./components/User";
@@ -137,9 +138,25 @@ const App = () => {
             path="/"
             render={(props) => (
               <Home
-                {...props}
                 me={me}
                 setMe={setMe}
+                user={user}
+                recipes={recipes}
+                categories={categories}
+                sorts={sorts}
+                dishes={dishes}
+                thecart={thecart}
+                about={about}
+                {...props}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/waarom"
+            render={(props) => (
+              <Waarom
+                {...props}
                 user={user}
                 recipes={recipes}
                 categories={categories}
@@ -150,22 +167,6 @@ const App = () => {
               />
             )}
           />
-          {/* <Route
-            exact
-            path="/"
-            render={(props) => (
-              <Home
-                {...props}
-                user={user}
-                recipes={recipes}
-                categories={categories}
-                sorts={sorts}
-                dishes={dishes}
-                thecart={thecart}
-                about={about}
-              />
-            )}
-          /> */}
           <Route
             exact
             path="/wat"
@@ -295,6 +296,14 @@ const App = () => {
                   recipes={recipes}
                   {...props}
                 />
+              );
+            }}
+          />
+          <Route
+            path="/boodschappen"
+            render={(props) => {
+              return (
+                <Boodschappen me={me} setMe={setMe} stock={stock} {...props} />
               );
             }}
           />

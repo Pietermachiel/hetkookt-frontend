@@ -20,7 +20,7 @@ const Categories = ({ thecart, categories, recipes, ...props }) => {
 
   return (
     <>
-      <CategoriesFilter categories={categories} />
+      {/* <CategoriesFilter categories={categories} /> */}
 
       <div className="container-x">
         <h1 className={`my-10 leading-relaxed ${props.match.params.id}`}>

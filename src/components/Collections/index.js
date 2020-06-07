@@ -27,7 +27,7 @@ const Collections = ({ thecart, sorts, dishes, recipes, ...props }) => {
 
   return (
     <>
-      <CollectionsFilter dishes={dishes} />
+      {/* <CollectionsFilter dishes={dishes} /> */}
       <div className="container-x">
         <h1 className={`my-10 text-indigo-600`}>
           {props.match.params.id}

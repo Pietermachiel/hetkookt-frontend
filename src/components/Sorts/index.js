@@ -43,7 +43,7 @@ const Sorts = ({ thecart, recipes, sorts, categories, ...props }) => {
 
   return (
     <>
-      <CategoriesFilter categories={categories} />
+      {/* <CategoriesFilter categories={categories} /> */}
       <div className="container-x">
         <h1 className={`text-42 my-10 ${catcolor}`}>
           {sort.title}

@@ -37,7 +37,7 @@ const Favorites = ({ me, setMe, recipes, thefavorites }) => {
   return (
     <Fragment>
       <div className="container-x">
-        <h1 className="mb-10 pt-15">kookschrift</h1>
+        <h1 className="mt-4 mb-18 pt-15">kookschrift</h1>
         {thefavorites.length === 0 ? (
           <div className="">
             <p className="font-600">Er staat nog niets in het kookschrift.</p>

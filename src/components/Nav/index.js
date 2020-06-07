@@ -2,17 +2,33 @@ import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link, NavLink, withRouter } from "react-router-dom";
 import NavAdd from "./NavAdd";
-// import CategoriesFilter from "../CategoriesFilter";
-// import CollectionsFilter from "../CollectionsFilter/index";
+import Search from "../Search";
+import CollectionsFilter from "../CollectionsFilter";
+import CategoriesFilter from "../CategoriesFilter";
+import NavAccordion from "./NavAccordion";
 
-const Nav = ({ user, dishes, categories, thefavorites, thecart, ...props }) => {
+const Nav = ({
+  user,
+  dishes,
+  recipes,
+  categories,
+  thefavorites,
+  thecart,
+  ...props
+}) => {
   const [isOn, setIsOn] = useState(false);
   const [visible, setVisible] = useState(false);
-  // const recipes = props.recipes;
   const [isOpen, setIsOpen] = useState(false);
 
-  // console.log("props nav");
-  // console.log(props);
+  // console.log("user");
+  // console.log(user.name);
+
+  if (user) {
+    var name = user.name;
+    if (name === undefined) return "";
+    var namestring = name.charAt(0);
+  }
+  // console.log(namestring.charAt(0));
 
   const handleIsOpen = () => {
     setIsOpen(!isOpen);
@@ -22,16 +38,17 @@ const Nav = ({ user, dishes, categories, thefavorites, thecart, ...props }) => {
   // const favorites = thecart.filter((c) => c.favorite === true);
 
   const handleMouseDown = (e) => {
-    toggleMenu();
+    // toggleMenu();
     toggleSwitch();
     setIsOpen(!isOpen);
     e.stopPropagation();
   };
 
-  const toggleMenu = () => {
-    setVisible(!visible);
-  };
+  // const toggleMenu = () => {
+  //   setVisible(!visible);
+  // };
 
+  // hamburger: = => x, red => white
   const toggleSwitch = () => {
     setIsOn(!isOn);
   };
@@ -42,64 +59,43 @@ const Nav = ({ user, dishes, categories, thefavorites, thecart, ...props }) => {
         <html className={isOpen ? "menu-open" : null} />
       </Helmet>
       <div className="bg-white">
-        <div className="container-x relative pt-10">
-          <div className="flex flex-col md:flex-row md:items-center">
+        <div className="px-25 relative pt-10">
+          <div className="flex items-baseline">
             <Link aria-label="logo hetkookt" to="/">
-              <img
-                className="w-200 mb-8"
+              <span className="space-x-1 text-red-500 text-32 font-500">
+                het<span className="font-700 text-36">kookt</span>
+              </span>
+
+              {/* <img
+                className="h-50"
                 src="/img/icons/hetkookt_picture.svg"
                 alt=""
-              />
+              /> */}
             </Link>
-            <div className="flex items-baseline sm:justify-between w-full ml-25 mr-40 xl:mr-0">
-              <ul className="flex text-21 pt-0">
-                <NavLink aria-label="wat" to="/wat">
-                  <li
-                    className={`mb-0 text-green-600 font-700 hover:text-green-600 
-                    `}
-                  >
-                    <span className="pr-24">wat</span>
-                  </li>
-                </NavLink>
-
-                <NavLink aria-label="hoe" to="/hoe">
-                  <li
-                    className={`text-indigo-600 font-700 mb-0 mr-24 hover:text-indigo-600 `}
-                  >
-                    <span className="pr-1">hoe</span>
-                  </li>
-                </NavLink>
-                {/* <NavLink aria-label="waarom het kookt" to="/waarom">
-                  <li className="hidden md:inline-block mr-24 mb-0 font-500 hover:text-red-500">
-                    <span className="font-300 pr-1">waarom</span>hetkookt
-                  </li>
-                </NavLink> */}
-                <NavLink aria-label="waarom het kookt" to="/voorraad">
-                  <li className="hidden md:inline-block mb-0 font-500 hover:text-red-500">
-                    <span className="font-300 pr-1">voorraad</span>
-                  </li>
-                </NavLink>
-              </ul>
+            <div className="w-full flex flex-row items-baseline justify-between ml-9 mr-36">
               {!user && (
-                <div className="hidden lg:absolute right-0 -mt-60 sm:-mt-30 lg:mt-0 lg:relative lg:mr-36">
+                <div className="lg:absolute right-0 -mt-60 sm:-mt-30 lg:mt-0 lg:relative lg:mr-36">
                   <NavLink aria-label="login" to="/login">
-                    <p className="mt-18 mr-60 lg:mr-0 font-300 text-21">
-                      login
-                    </p>
+                    <p className="mr-60 lg:mr-0 font-300 text-21">login</p>
                   </NavLink>
                 </div>
               )}
               {user && (
-                <div className="hidden lg:absolute right-0 md:relative md:mr-36">
-                  <NavLink aria-label="user" to="/user">
-                    <p className="mt-15 mr-60 md:mt-18 md:mr-0 font-300 text-21">
-                      {user.name}
-                    </p>
+                <div className="relative ">
+                  <NavLink aria-label="login" to="/login">
+                    {/* <p className="mr-60 lg:mr-0 font-300 text-21"> */}
+                    <div className="absolute -mt-25 bg-rose rounded-full h-30 w-30 flex items-center justify-center">
+                      <span className="">{namestring}</span>
+                    </div>
+                    {/* </p> */}
                   </NavLink>
                 </div>
               )}
+              {/* <div className="font-300 text-24">Q</div> */}
+              <Search recipes={recipes} />
             </div>
           </div>
+
           <div className="hamburger-box">
             <button
               aria-label="hamburger menu"
@@ -112,6 +108,15 @@ const Nav = ({ user, dishes, categories, thefavorites, thecart, ...props }) => {
             </button>
           </div>
         </div>
+        <div className="container-x">
+          <ul className="flex justify-around text-21 pt-0">
+            <CategoriesFilter categories={categories} />
+            {/* <NavAccordion title="categorieën"> */}
+            <CollectionsFilter dishes={dishes} />
+            {/* </NavAccordion> */}
+          </ul>
+        </div>
+        <div className="container-x"></div>
       </div>
 
       <div className={`navbox-panel ${isOpen ? "show " : null}`} id="navPanel">

@@ -28,7 +28,7 @@ const Dishes = ({
         let thetags = therecipes.map((t) => t.tags[0]);
         thetags = thetags.filter((tt) => tt !== undefined);
         const unique = thetags.filter(uniq);
-        console.log(unique);
+        // console.log(unique);
         return (
           <Fragment key={xid}>
             <h1 className="text-indigo-600 mb-10 sm:ml-10 md:ml-0">{d}</h1>

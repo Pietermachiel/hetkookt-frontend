@@ -31,7 +31,7 @@ const NavAdd = ({ user, handleIsOpen, isOpen, thecart, thefavorites }) => {
             </NavLink>
           </span>
         </div>
-        <NavLink aria-label="to home" className="text-white " to="/">
+        <NavLink aria-label="to home" className="text-white " to="/waarom">
           <div onClick={handleIsOpen} className="flex items-center mb-18">
             <img className="w-25" src="/img/feather/help-circle.svg" alt="" />
             <span className="pl-12 text-24 hover:text-black">

@@ -24,14 +24,15 @@ const Boodschappen = ({ me, setMe }) => {
   // console.log(groceries);
   // console.log(me);
 
-  const thedates = kalender.filter((k) => {
-    const item = me.recipes.find((c) =>
-      c.date ? c.date.includes(k.year) : null
+  const themenu = me.recipes.filter((r) => {
+    const item = kalender.find((k) =>
+      r.date ? r.date.includes(k.year) : null
     );
     return item;
   });
 
-  // console.log(thedates);
+  console.log("themenu");
+  console.log(themenu);
 
   const handleExtra = (value) => {
     const trimmedText = value.trim();
@@ -42,13 +43,14 @@ const Boodschappen = ({ me, setMe }) => {
   };
 
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
-  let allfresh = me.recipes.reduce(function (accumulator, currentValue) {
+  let allfresh = themenu.reduce(function (accumulator, currentValue) {
     return [...accumulator, ...currentValue.fresh];
   }, []);
-  //   console.log("allfresh");
-  //   console.log(allfresh);
+  console.log("allfresh");
+  console.log(allfresh);
 
   allfresh = allfresh.filter((f) => f.to_buy === true);
+  console.log(allfresh);
 
   // https://stackoverflow.com/questions/44332180/merge-objects-with-the-same-id-but-sum-values-of-the-objects
   // For a version with Array#reduce, you could use a hash table as reference to the same company with a closure over the hash table.
@@ -71,12 +73,17 @@ const Boodschappen = ({ me, setMe }) => {
     })(Object.create(null)),
     []
   );
-  // console.log(boodschappen);
+  console.log(boodschappen);
 
   return (
     <Fragment>
-      <div className="boodschappen">
-        <h2 className="">Boodschappen</h2>
+      <div className="container-x boodschappen">
+        <h1 className="">
+          <span className="text-21 mr-36">
+            <Link to="/">menu</Link>
+          </span>{" "}
+          boodschappen
+        </h1>
         <div className="sm:grid sm:grid-cols-2 mt-36 mb-18">
           <div className="ingredienten w-full">
             <p className="font-300 uppercase text-14 tracking-wider mb-24">
