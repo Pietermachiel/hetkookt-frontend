@@ -58,7 +58,19 @@ const Nav = ({
       <Helmet>
         <html className={isOpen ? "menu-open" : null} />
       </Helmet>
-      <div className="bg-white">
+      <div className="bg-red-500">
+        <span className="text-16 ml-18 font-300 text-white">
+          <Link to="/">week</Link>
+        </span>{" "}
+        <span className="text-16 ml-18 font-300 text-white">
+          <Link to="/boodschappen">boodschappen</Link>
+        </span>
+        <span className="text-16 ml-18 font-300 text-white">
+          {" "}
+          <Link to="/favorites">favorites</Link>
+        </span>
+      </div>{" "}
+      <div className="bg-rose">
         <div className="px-25 relative pt-10">
           <div className="flex items-baseline">
             <Link aria-label="logo hetkookt" to="/">
@@ -92,10 +104,9 @@ const Nav = ({
                 </div>
               )}
               {/* <div className="font-300 text-24">Q</div> */}
-              <Search recipes={recipes} />
+              {/* <Search recipes={recipes} /> */}
             </div>
           </div>
-
           <div className="hamburger-box">
             <button
               aria-label="hamburger menu"
@@ -118,7 +129,6 @@ const Nav = ({
         </div>
         <div className="container-x"></div>
       </div>
-
       <div className={`navbox-panel ${isOpen ? "show " : null}`} id="navPanel">
         <NavAdd
           handleIsOpen={handleIsOpen}

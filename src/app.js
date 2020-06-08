@@ -17,6 +17,7 @@ import Collections from "./components/Collections";
 import Favorites from "./components/Favorites";
 import Boodschappen from "./components/Home/Boodschappen";
 import Voorraad from "./components/Voorraad";
+import Books from "./components/Books";
 import Weekmenu from "./components/Weekmenu";
 import User from "./components/User";
 import Nav from "./components/Nav";
@@ -35,6 +36,7 @@ const App = () => {
   const [user, setUser] = useState([]);
   const [me, setMe] = useState([]);
   const [about, setAbout] = useState([]);
+  const [books, setBooks] = useState([]);
 
   // console.log("recipes");
   // console.log(recipes);
@@ -109,6 +111,14 @@ const App = () => {
     async function getData() {
       const res = await fetch(`${recipeUrl}/about.json`);
       res.json().then((res) => setAbout(res));
+    }
+    getData();
+  }, []);
+
+  useEffect(() => {
+    async function getData() {
+      const res = await fetch(`${recipeUrl}/source.json`);
+      res.json().then((res) => setBooks(res));
     }
     getData();
   }, []);
@@ -312,6 +322,20 @@ const App = () => {
             render={(props) => {
               return (
                 <Voorraad me={me} setMe={setMe} stock={stock} {...props} />
+              );
+            }}
+          />
+          <Route
+            path="/books"
+            render={(props) => {
+              return (
+                <Books
+                  me={me}
+                  setMe={setMe}
+                  books={books}
+                  stock={stock}
+                  {...props}
+                />
               );
             }}
           />

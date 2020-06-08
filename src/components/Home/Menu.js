@@ -26,12 +26,15 @@ const Menu = ({ me, setMe, user, recipes, about, ...props }) => {
   return (
     <Fragment>
       <h1 className="-mb-18 mt-18">
-        menu{" "}
-        <span className="text-21 ml-36">
+        menu
+        {/* <span className="text-16 ml-18 font-300">menu</span>
+        <span className="text-16 ml-18 font-300">
           <Link to="/boodschappen">boodschappen</Link>
         </span>
+        <span className="text-16 ml-18 font-300">
+          <Link to="/favorites">favorieten</Link>
+        </span> */}
       </h1>
-
       {thedates.map((k) => {
         var cart = me.recipes.filter((c) =>
           c.date ? c.date.includes(k.year) : null

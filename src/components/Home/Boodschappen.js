@@ -79,10 +79,14 @@ const Boodschappen = ({ me, setMe }) => {
     <Fragment>
       <div className="container-x boodschappen">
         <h1 className="">
-          <span className="text-21 mr-36">
+          boodschappen
+          {/* <span className="text-16 ml-18 font-300">
             <Link to="/">menu</Link>
           </span>{" "}
-          boodschappen
+          <span className="text-16 ml-18 font-300">boodschappen</span>
+          <span className="text-16 ml-18 font-300">
+            <Link to="/favorites">favorieten</Link>
+          </span> */}
         </h1>
         <div className="sm:grid sm:grid-cols-2 mt-36 mb-18">
           <div className="ingredienten w-full">

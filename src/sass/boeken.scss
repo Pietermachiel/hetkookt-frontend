@@ -1,0 +1,409 @@
+/*------------------------------------*\
+  #PAGES-KOOKBOEK
+\*------------------------------------*/
+
+// kookboeken nieuw
+
+.ko-box {
+  width: calc(100% - 25px);
+  margin: auto;
+  margin-top: 36px;
+  // @media (min-width: $on-palm) {
+  // 	width: 768px;
+  // 	margin-top: 0;
+  // }
+  @media (min-width: $on-tablet) {
+    width: 924px;
+  }
+  @media (min-width: $on-laptop) {
+    width: 1024px;
+  }
+}
+
+// right
+
+.ko-box-right {
+  display: table-footer-group;
+  margin-bottom: 3em;
+  h6 {
+    margin-bottom: 2em;
+    font-weight: 300;
+    font-size: 21px;
+    display: none;
+    @media (min-width: $on-palm) {
+      display: block;
+    }
+  }
+  h5 {
+    color: white;
+    font-weight: 400;
+    letter-spacing: 0.07;
+    background: red;
+    display: inline;
+    padding: 15px;
+    // margin-left: 25px;
+  }
+  @media (min-width: $on-palm) {
+  }
+  @media (min-width: $on-tablet) {
+    display: block;
+    width: 45%;
+    float: right;
+  }
+  @media (min-width: $on-laptop) {
+  }
+}
+
+.ko-box-right__outer {
+  width: 50%;
+  float: left;
+  display: block;
+  position: relative;
+  h6 {
+    font-weight: 600;
+    color: gray;
+    margin-bottom: 1em;
+    font-size: 21px;
+  }
+  @media (min-width: $on-tablet) {
+    width: 100%;
+    float: none;
+    display: flex;
+    margin-bottom: 3em;
+    box-shadow: 0px 10px 50px -3px rgba(169, 167, 169, 0.46);
+  }
+}
+
+.ko-box-right__text {
+  width: 100%;
+  position: relative;
+  padding: 15px;
+  padding-bottom: 25px;
+  text-align: center;
+  p {
+    font-size: 19px;
+    line-height: 1.4;
+    margin-bottom: 0;
+  }
+  p:first-child {
+    font-weight: 600;
+  }
+  h2 {
+    display: none;
+    font-size: 36px;
+    font-weight: 100;
+    text-align: right;
+    position: absolute;
+    bottom: 9px;
+    right: 18px;
+  }
+  @media (min-width: $on-tablet) {
+    width: 50%;
+    background-color: mistyrose;
+    h2 {
+      display: block;
+    }
+    text-align: left;
+    p {
+      font-size: 19px;
+      margin-bottom: 1em;
+    }
+  }
+  @media (min-width: $on-laptop) {
+    padding: 18px;
+    p {
+      margin-bottom: 0;
+    }
+    h2 {
+      font-size: 42px;
+    }
+  }
+}
+
+.ko-box-right__img {
+  width: 70%;
+  // margin: auto;
+  background-color: black;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  @media (min-width: $on-tablet) {
+    width: 50%;
+  }
+}
+
+// left
+
+.ko-box-left {
+  position: relative;
+  display: table-header-group;
+  @media (min-width: $on-tablet) {
+    display: block;
+    width: 55%;
+    padding-right: 10px;
+  }
+  @media (min-width: $on-laptop) {
+  }
+}
+
+.ko-box-left__outer {
+  position: relative;
+  margin: auto;
+  margin-bottom: 0;
+  width: 50%;
+  height: 100%;
+  float: left;
+  @media (min-width: $on-tablet) {
+    // display: flex;
+    display: block;
+    margin-bottom: 75px;
+    width: 100%;
+    float: none;
+  }
+}
+
+.ko-box-left__top {
+  margin: 0;
+  width: auto;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  @media (min-width: $on-tablet) {
+    position: absolute;
+  }
+}
+
+.ko-box-left__img {
+  width: 70%;
+  margin: auto;
+  margin-bottom: 10px;
+  img {
+    width: 100%;
+    // height: 100%px;
+    border: 1px solid silver;
+  }
+  @media (min-width: $on-tablet) {
+    width: 200px;
+    margin: auto;
+  }
+}
+
+.ko-box-left__bottom {
+  position: relative;
+  margin-bottom: 20px;
+  h4 {
+    font-size: 18px;
+    // padding-top: 22px;
+    text-align: center;
+  }
+  h5 {
+    font-size: 18px;
+    font-weight: 200;
+    padding-bottom: 5px;
+    text-align: center;
+  }
+  h6 {
+    display: none;
+    font-weight: 400;
+  }
+  span {
+    font-weight: 200;
+    font-size: 21px;
+  }
+  p:first-child {
+    display: none;
+    border-bottom: 1px solid red;
+    margin-bottom: 0;
+  }
+  p:last-child {
+    display: none;
+    font-size: 21px;
+    font-family: "Rufina";
+    padding-right: 50px;
+    margin-left: -160px;
+    margin-bottom: 0;
+  }
+  span {
+    font-family: "Rufina";
+    text-align: right;
+    display: block;
+    padding-right: 75px;
+  }
+  @media (min-width: $on-tablet) {
+    margin-top: 50px;
+    margin-left: 225px;
+    padding-left: 0;
+    h4 {
+      font-size: 24px;
+      padding-top: 12px;
+      text-align: left;
+    }
+    h5 {
+      font-size: 24px;
+      font-weight: 200;
+      padding-bottom: 5px;
+      text-align: left;
+    }
+    h6 {
+      display: block;
+    }
+    p:first-child {
+      display: block;
+      border-bottom: 0;
+      margin-bottom: 1em;
+    }
+    p:last-child {
+      display: block;
+      margin-top: 75px;
+      margin-left: -160px;
+    }
+  }
+}
+
+// layout-kookboek.html
+
+.koo-box-top {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  width: calc(100% - 25px);
+  margin: auto;
+  font-size: 19px;
+  @media (min-width: $on-palm) {
+    flex-flow: row;
+    width: 768px;
+  }
+  @media (min-width: $on-tablet) {
+    width: 924px;
+  }
+  @media (min-width: $on-laptop) {
+  }
+}
+
+.koo-box-top__left {
+  position: relative;
+  width: 60%;
+  margin: auto;
+  margin-left: 15%;
+  @media (min-width: $on-palm) {
+    width: 50%;
+    margin-left: 0;
+    margin-bottom: 1em;
+  }
+}
+
+.koo-box-top__right {
+  position: relative;
+  margin-top: 0;
+  margin-bottom: 1em;
+  width: 100%;
+  @media (min-width: $on-palm) {
+    width: 45%;
+    margin-top: 3em;
+  }
+}
+
+.koo-box-boek {
+  position: relative;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 50px;
+  h2 {
+    font-weight: 300;
+    text-align: center;
+  }
+  img {
+    border: 1px solid silver;
+    box-shadow: 25px -25px 0 0 mistyrose;
+  }
+  @media screen and (min-width: $on-palm) {
+    width: 70%;
+    margin: auto;
+  }
+}
+
+.koo-box-title {
+  h2 {
+    line-height: 1.1;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  h4 {
+    font-size: 24px;
+  }
+  p {
+    margin-bottom: 0;
+  }
+  @media (min-width: $on-tablet) {
+    h4 {
+      font-size: 28px;
+    }
+  }
+  @media (min-width: $on-laptop) {
+    // font-size: 54px
+  }
+}
+
+.koo-box-bottom {
+  width: calc(100% - 25px);
+  margin: auto;
+  font-size: 19px;
+  @media (min-width: $on-palm) {
+    width: 768px;
+  }
+  @media (min-width: $on-tablet) {
+    width: 924px;
+  }
+  @media (min-width: $on-laptop) {
+  }
+}
+
+.koo-box-footer {
+  position: relative;
+  width: calc(100% - 25px);
+  margin: auto;
+  margin-top: 25px;
+  margin-bottom: 4em;
+  @media (min-width: $on-palm) {
+    width: calc(50% - 50px);
+    // height: 300px;
+  }
+  @media (min-width: $on-tablet) {
+  }
+  @media (min-width: $on-laptop) {
+  }
+}
+
+.kookboek-content {
+  position: relative;
+  margin: auto;
+  margin-bottom: 1em;
+  width: 100%;
+  column-gap: 50px;
+  h5 {
+    margin-top: -1em;
+  }
+  @media (min-width: $on-palm) {
+    columns: 2;
+  }
+}
+
+.kookboek-portret {
+  margin: auto;
+  margin-bottom: 16px;
+  width: 160px;
+  h6 {
+    text-align: center;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid silver;
+  }
+  @media (min-width: $on-palm) {
+    position: absolute;
+    right: 0px;
+  }
+}

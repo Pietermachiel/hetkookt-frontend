@@ -14,7 +14,7 @@ const CategoriesFilter = ({ categories }) => {
         <div
           className={`text-center text-indigo-600 font-300 mb-0 hover:text-indigo-600 py-9`}
         >
-          producten
+          ingrediënten
         </div>
         <div
           className={`hide accordion-item  absolute z-20 ${show ? "show" : ""}`}
