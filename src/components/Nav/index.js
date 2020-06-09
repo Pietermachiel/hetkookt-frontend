@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link, NavLink, withRouter } from "react-router-dom";
 import NavAdd from "./NavAdd";
@@ -59,33 +59,33 @@ const Nav = ({
         <html className={isOpen ? "menu-open" : null} />
       </Helmet>
       <div className="container-y bg-red-600 py-9">
-        <span className="text-16 mr-18 font-300 text-white">
-          <Link to="/">Week 24 (3)</Link>
+        <span className="text-16 mr-18 font-500 text-white">
+          <Link to="/">Week 2</Link>
         </span>{" "}
-        <span className="text-16 mr-18 font-300 text-white">
-          <Link to="/boodschappen">Boodschappen (17)</Link>
+        <span className="text-16 mr-18 font-500 text-white">
+          <Link to="/boodschappen">Boodschappen</Link>
         </span>
-        <span className="text-16 mr-18 font-300 text-white">
+        <span className="text-16 mr-18 font-500 text-white">
           {" "}
-          <Link to="/favorites">Favorites (8)</Link>
+          <Link to="/favorites">Favorites</Link>
         </span>
       </div>{" "}
       <div className="container-y bg-red-500">
-        <div className="bg-red-500">
+        <div className="">
           <div className="relative pt-10">
-            <div className="flex items-baseline">
+            <div className="flex items-center">
               <Link aria-label="logo hetkookt" to="/">
                 <span className="space-x-1 text-white text-30 font-300">
                   het<span className="font-700 text-32">kookt</span>
                 </span>
 
                 {/* <img
-                className="h-50"
-                src="/img/icons/hetkookt_picture.svg"
-                alt=""
-              /> */}
+                  className="h-50"
+                  src="/img/icons/hetkookt_picture.svg"
+                  alt=""
+                /> */}
               </Link>
-              <div className="w-full flex flex-row items-baseline justify-between ml-9 mr-36">
+              <div className="flex items-center ml-9 mr-36 pb-5">
                 {!user && (
                   <div className="lg:absolute right-0 -mt-60 sm:-mt-30 lg:mt-0 lg:relative lg:mr-36">
                     <NavLink aria-label="login" to="/login">
@@ -94,15 +94,23 @@ const Nav = ({
                   </div>
                 )}
                 {user && (
-                  <div className="relative ">
-                    <NavLink aria-label="login" to="/login">
-                      {/* <p className="mr-60 lg:mr-0 font-300 text-21"> */}
-                      <div className="absolute -mt-25 bg-rose rounded-full h-30 w-30 flex items-center justify-center">
-                        <span className="">{namestring}</span>
-                      </div>
-                      {/* </p> */}
-                    </NavLink>
-                  </div>
+                  <Fragment>
+                    {/* <NavLink aria-label="login" to="/login">
+                        <div className="absolute mt-5 ml-5 bg-rose rounded-full h-30 w-30 flex items-center justify-center">
+                          <span className="">{namestring}</span>
+                        </div>
+                      </NavLink> */}
+                    <img
+                      className="h-36 w-initial ml-10"
+                      src="/img/icons/tomaat3.svg"
+                      alt=""
+                    />
+                    <img
+                      className="h-36 w-initial ml-10"
+                      src="/img/icons/flame3.svg"
+                      alt=""
+                    />
+                  </Fragment>
                 )}
                 {/* <div className="font-300 text-24">Q</div> */}
                 {/* <Search recipes={recipes} /> */}
@@ -131,7 +139,7 @@ const Nav = ({
           <div className="container-x"></div>
         </div>
         <div
-          className={`navbox-panel ${isOpen ? "show " : null}`}
+          className={`navbox-panel bg-red-600 ${isOpen ? "show " : null}`}
           id="navPanel"
         >
           <NavAdd

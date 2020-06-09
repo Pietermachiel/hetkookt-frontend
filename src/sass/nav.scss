@@ -69,8 +69,8 @@
   justify-content: flex-end;
   left: 0;
   top: 0;
-  background-color: #fb263b;
-  background-image: linear-gradient(#f14300, #fb263b);
+  // background-color: #fb263b;
+  // background-image: linear-gradient(#f14300, #fb263b);
   width: 100%;
   height: 100%;
   list-style: none;
@@ -243,7 +243,7 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: $brand;
+  background-color: white;
   -webkit-transition: all 0.25s 0.1s;
   transition: all 0.25s 0.1s;
 }
