@@ -38,7 +38,7 @@ const Favorites = ({ me, setMe, recipes, thefavorites }) => {
     <Fragment>
       <div className="container-x">
         <h1 className="mt-4 mb-18 pt-15">
-          favorieten
+          Favorieten
           {/* <span className="text-16 ml-18 font-300">
             <Link to="/">menu</Link>
           </span>{" "}

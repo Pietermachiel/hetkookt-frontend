@@ -26,7 +26,7 @@ const Menu = ({ me, setMe, user, recipes, about, ...props }) => {
   return (
     <Fragment>
       <h1 className="-mb-18 mt-18">
-        menu
+        Week 24
         {/* <span className="text-16 ml-18 font-300">menu</span>
         <span className="text-16 ml-18 font-300">
           <Link to="/boodschappen">boodschappen</Link>

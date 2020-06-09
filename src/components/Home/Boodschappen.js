@@ -78,8 +78,8 @@ const Boodschappen = ({ me, setMe }) => {
   return (
     <Fragment>
       <div className="container-x boodschappen">
-        <h1 className="">
-          boodschappen
+        <h1 className="mt-18">
+          Boodschappen
           {/* <span className="text-16 ml-18 font-300">
             <Link to="/">menu</Link>
           </span>{" "}

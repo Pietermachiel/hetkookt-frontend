@@ -29,7 +29,7 @@ const Collections = ({ thecart, sorts, dishes, recipes, ...props }) => {
     <>
       {/* <CollectionsFilter dishes={dishes} /> */}
       <div className="container-x">
-        <h1 className={`my-10 text-indigo-600`}>
+        <h1 className={`my-10 leading-relaxed text-indigo-600`}>
           {props.match.params.id}
           {/* <Link to="/">
             <span className="ml-18 text-19 font-300">> home</span>
