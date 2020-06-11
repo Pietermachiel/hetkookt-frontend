@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { slugify, kalender } from "../common/common.js";
 import AddpanelWeekmenu from "./AddpanelWeekmenu.js";
@@ -85,12 +85,17 @@ const Recipe = ({
   // console.log(menu);
 
   return (
-    <div className="container-x">
-      <div className="recepten">
-        <div className="recepten-box">
-          <div className="title">
-            <h1 className="font-600 mt-15 mb-18">{therecipe.title}</h1>
-            {/* <Link
+    <Fragment>
+      <div className="container-y bg-red-100">
+        <h1 className="text-24 lg:text-36 p-20 -mx-20 my-10 mt-0">
+          {therecipe.title}
+        </h1>
+      </div>
+      <div className="container-x">
+        <div className="recepten">
+          <div className="recepten-box">
+            <div className="title">
+              {/* <Link
               className="hover:text-red-500"
               to={`/sorts/${therecipe.tags[0]}`}
             >
@@ -98,83 +103,99 @@ const Recipe = ({
                 meer {therecipe.tags[0]} &nbsp;>
               </p>
             </Link> */}
-          </div>
-          {/* ingredienten */}
-          <div className="ingredienten">
-            <p>vers</p>
-            <div className="ingredienten-box">
-              {therecipe.fresh.map((f, xid) => {
-                const category = sorts.find((s) => s.title === f.item);
-                if (category === undefined) return [];
-                const catcolor = category.category;
-                return (
-                  <li key={xid}>
-                    <div className="items-quantity">
-                      {f.quantity} {f.unit}
-                    </div>
-                    <div className="items-product">
-                      <Link to={"/sorts/" + f.item} className={`${catcolor}`}>
-                        &nbsp;{f.item}
-                      </Link>
-                    </div>
-                  </li>
-                );
-              })}
             </div>
-            <p>voorraad</p>
-            <div className="ingredienten-box">
-              {therecipe.stock.map((f, xid) => {
-                return (
-                  <li key={xid}>
-                    <div className="items-quantity">
-                      {f.quantity} {f.unit}
-                    </div>
-                    <div className="items-product">{f.item}</div>
-                  </li>
-                );
-              })}
-            </div>
-            {therecipe.basics.length > 0 ? <p>basisrecepten</p> : null}
-            <div className="ingredienten-box">
-              {therecipe.basics.map((b, xid) => (
-                <Link key={xid} to={`/recipe/${slugify(b)}`}>
-                  <span className="font-600">{b}</span>
-                </Link>
-              ))}
-            </div>
-            {therecipe.related.length > 0 ? <p>gerelateerd</p> : null}
-            <div className="ingredienten-box">
-              {therecipe.related.map((b, xid) => (
-                <Link key={xid} to={`/recipe/${slugify(b)}`}>
-                  <span className="font-600">{b}</span>
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div className="w-werkwijze">
-            {/* tracking-015 > type.scss */}
-            <p className="uppercase tracking-015 text-14 mb-24">werkwijze</p>
-            {/* directions > recepten.scss */}
-            <div className="directions">
-              <ol>
-                {therecipe.directions.map((d, xid) => (
-                  <li key={xid}>{d}</li>
+            {/* ingredienten */}
+            <div className="ingredienten">
+              <p>vers</p>
+              <div className="ingredienten-box">
+                {therecipe.fresh.map((f, xid) => {
+                  const category = sorts.find((s) => s.title === f.item);
+                  if (category === undefined) return [];
+                  const catcolor = category.category;
+                  return (
+                    <li key={xid}>
+                      <div className="items-quantity">
+                        {f.quantity} {f.unit}
+                      </div>
+                      <div className="items-product">
+                        <Link to={"/sorts/" + f.item} className={`${catcolor}`}>
+                          &nbsp;{f.item}
+                        </Link>
+                      </div>
+                    </li>
+                  );
+                })}
+              </div>
+              <p>voorraad</p>
+              <div className="ingredienten-box">
+                {therecipe.stock.map((f, xid) => {
+                  return (
+                    <li key={xid}>
+                      <div className="items-quantity">
+                        {f.quantity} {f.unit}
+                      </div>
+                      <div className="items-product">{f.item}</div>
+                    </li>
+                  );
+                })}
+              </div>
+              {therecipe.basics.length > 0 ? <p>basisrecepten</p> : null}
+              <div className="ingredienten-box">
+                {therecipe.basics.map((b, xid) => (
+                  <Link key={xid} to={`/recipe/${slugify(b)}`}>
+                    <span className="font-600">{b}</span>
+                  </Link>
                 ))}
-              </ol>
+              </div>
+              {therecipe.related.length > 0 ? <p>gerelateerd</p> : null}
+              <div className="ingredienten-box">
+                {therecipe.related.map((b, xid) => (
+                  <Link key={xid} to={`/recipe/${slugify(b)}`}>
+                    <span className="font-600">{b}</span>
+                  </Link>
+                ))}
+              </div>
             </div>
-            <div className="text-18 mt-24">
-              <p className="uppercase tracking-015 text-14 mb-24">Nota bene</p>
+            <div className="w-werkwijze">
+              {/* tracking-015 > type.scss */}
+              <p className="uppercase tracking-015 text-14 mb-24">werkwijze</p>
+              {/* directions > recepten.scss */}
+              <div className="directions">
+                <ol>
+                  {therecipe.directions.map((d, xid) => (
+                    <li key={xid}>{d}</li>
+                  ))}
+                </ol>
+              </div>
+              <div className="text-18 mt-24">
+                <p className="uppercase tracking-015 text-14 mb-24">
+                  Nota bene
+                </p>
 
-              <p className="font-700">{therecipe.info}</p>
-            </div>
+                <p className="font-700">{therecipe.info}</p>
+              </div>
 
-            <div className="flex items-center mb-18 mt-0">
-              {/* weekmenu */}
-              {!user && (
-                <NavLink className="" to="/login">
+              <div className="flex items-center mb-18 mt-0">
+                {/* weekmenu */}
+                {!user && (
+                  <NavLink className="" to="/login">
+                    <button
+                      className="btn-add mr-10 text-19 font-600 text-indigo-700 flex item-center"
+                      onClick={handleIsOpen}
+                    >
+                      <img
+                        className="w-25 h-25 mr-10"
+                        src="/img/feather/list.svg"
+                        alt=""
+                      />
+                      zet op het weekmenu
+                    </button>
+                  </NavLink>
+                )}
+                {user && (
                   <button
-                    className="btn-add mr-10 text-19 font-600 text-indigo-700 flex item-center"
-                    onClick={() => handleIsOpen()}
+                    className="btn-add mr-10 text-19 font-600 text-indigo-700 flex item-center hover:text-red-500"
+                    onClick={handleIsOpen}
                   >
                     <img
                       className="w-25 h-25 mr-10"
@@ -183,129 +204,133 @@ const Recipe = ({
                     />
                     zet op het weekmenu
                   </button>
+                )}
+
+                <div className="flex">
+                  {kalender.map((k) => {
+                    var cart = thecart.filter((c) =>
+                      c.date ? c.date.includes(k.year) : null
+                    );
+                    return cart.map((c) =>
+                      c._id === therecipe._id ? (
+                        <NavLink key={c._id} to="/weekmenu">
+                          <div className={`relative`}>
+                            <img
+                              className="w-30 h-30"
+                              src="/img/feather/circle-orange.svg"
+                              alt=""
+                            />
+                            <div className="absolute inset-0">
+                              <span
+                                key={k.index}
+                                className={`flex justify-center pt-6 text-12`}
+                              >
+                                {k.index}
+                              </span>
+                            </div>
+                          </div>
+                        </NavLink>
+                      ) : null
+                    );
+                  })}
+                </div>
+              </div>
+              {/* add panel */}
+              <AddpanelWeekmenu
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                handleIsOpen={handleIsOpen}
+                therecipe={therecipe}
+                thecart={thecart}
+                doSave={doSave}
+                me={me}
+                setMe={setMe}
+              />
+
+              {/* kookschrift */}
+              {!user && (
+                <NavLink to="/login">
+                  <div className="mr-15 my-18">
+                    <button
+                      className="like flex"
+                      // onClick={() => handleIsFavorite(therecipe)}
+                    >
+                      {therecipe.favorite === true ? (
+                        <img
+                          className="w-25"
+                          src="/img/feather/bookmark-red.svg"
+                          alt=""
+                        />
+                      ) : (
+                        <img
+                          className="w-25"
+                          src="/img/feather/bookmark.svg"
+                          alt=""
+                        />
+                      )}
+                      <span className="pl-10 text-19 text-indigo-700 font-600 hover:text-red-500">
+                        zet in favorieten
+                      </span>
+                    </button>
+                  </div>
                 </NavLink>
               )}
               {user && (
-                <button
-                  className="btn-add mr-10 text-19 font-600 text-indigo-700 flex item-center hover:text-red-500"
-                  onClick={() => handleIsOpen()}
-                >
-                  <img
-                    className="w-25 h-25 mr-10"
-                    src="/img/feather/list.svg"
-                    alt=""
-                  />
-                  zet op het weekmenu
-                </button>
-              )}
-
-              <div className="flex">
-                {kalender.map((k) => {
-                  var cart = thecart.filter((c) =>
-                    c.date ? c.date.includes(k.year) : null
-                  );
-                  return cart.map((c) =>
-                    c._id === therecipe._id ? (
-                      <NavLink key={c._id} to="/weekmenu">
-                        <div className={`relative`}>
-                          <img
-                            className="w-30 h-30"
-                            src="/img/feather/circle-orange.svg"
-                            alt=""
-                          />
-                          <div className="absolute inset-0">
-                            <span
-                              key={k.index}
-                              className={`flex justify-center pt-6 text-12`}
-                            >
-                              {k.index}
-                            </span>
-                          </div>
-                        </div>
-                      </NavLink>
-                    ) : null
-                  );
-                })}
-              </div>
-            </div>
-            {/* add panel */}
-            <AddpanelWeekmenu
-              isOpen={isOpen}
-              setIsOpen={setIsOpen}
-              handleIsOpen={handleIsOpen}
-              therecipe={therecipe}
-              thecart={thecart}
-              doSave={doSave}
-              me={me}
-              setMe={setMe}
-            />
-
-            {/* kookschrift */}
-            {!user && (
-              <NavLink to="/login">
                 <div className="mr-15 my-18">
-                  <button
-                    className="like flex"
-                    // onClick={() => handleIsFavorite(therecipe)}
-                  >
-                    {therecipe.favorite === true ? (
-                      <img
-                        className="w-25"
-                        src="/img/feather/bookmark-red.svg"
-                        alt=""
-                      />
-                    ) : (
+                  {thefavorites.includes(therecipe._id) ? (
+                    <NavLink to="/favorites">
+                      <button className="like flex">
+                        <img
+                          className="w-25"
+                          src="/img/feather/bookmark-red.svg"
+                          alt="bookmark red"
+                        />
+                        <span className="pl-10 text-19 text-indigo-700 font-600 hover:text-red-500">
+                          zet in favorieten
+                        </span>
+                      </button>
+                    </NavLink>
+                  ) : (
+                    <button
+                      className="like flex"
+                      onClick={() => handleIsFavorite(me, setMe, therecipe._id)}
+                    >
                       <img
                         className="w-25"
                         src="/img/feather/bookmark.svg"
-                        alt=""
-                      />
-                    )}
-                    <span className="pl-10 text-19 text-indigo-700 font-600 hover:text-red-500">
-                      zet in favorieten
-                    </span>
-                  </button>
-                </div>
-              </NavLink>
-            )}
-            {user && (
-              <div className="mr-15 my-18">
-                {thefavorites.includes(therecipe._id) ? (
-                  <NavLink to="/favorites">
-                    <button className="like flex">
-                      <img
-                        className="w-25"
-                        src="/img/feather/bookmark-red.svg"
-                        alt="bookmark red"
+                        alt="bookmark"
                       />
                       <span className="pl-10 text-19 text-indigo-700 font-600 hover:text-red-500">
                         zet in favorieten
                       </span>
                     </button>
-                  </NavLink>
-                ) : (
-                  <button
-                    className="like flex"
-                    onClick={() => handleIsFavorite(me, setMe, therecipe._id)}
-                  >
-                    <img
-                      className="w-25"
-                      src="/img/feather/bookmark.svg"
-                      alt="bookmark"
-                    />
-                    <span className="pl-10 text-19 text-indigo-700 font-600 hover:text-red-500">
-                      zet in favorieten
-                    </span>
-                  </button>
-                )}
-              </div>
-            )}
-            {!user && (
-              <NavLink to="/login">
+                  )}
+                </div>
+              )}
+              {!user && (
+                <NavLink to="/login">
+                  <div className="">
+                    <div
+                      className="h-20 flex mb-0"
+                      // onClick={() => handleNotitie()}
+                    >
+                      <img
+                        className="w-20"
+                        src="/img/feather/edit-2.svg"
+                        alt=""
+                      />
+                      <span className="pl-14 text-19 text-indigo-700 font-600 hover:text-red-500">
+                        maak een notitie
+                      </span>
+                    </div>
+                  </div>
+                </NavLink>
+              )}
+              {user && (
                 <div className="">
                   <div
                     className="h-20 flex mb-0"
-                    // onClick={() => handleNotitie()}
+                    onClick={() => handleNotitie()}
                   >
                     <img
                       className="w-20"
@@ -316,39 +341,29 @@ const Recipe = ({
                       maak een notitie
                     </span>
                   </div>
+                  <textarea
+                    className={`ishidden ${
+                      notitie ? "isshowing py-8 my-18" : null
+                    } border border-gray-300 bg-white shadow-md focus:outline-0 border border-transparent placeholder-gray-600 rounded-lg pr-16 pl-16 w-full text-16`}
+                    placeholder="Maak hier een notitie..."
+                  ></textarea>
                 </div>
-              </NavLink>
-            )}
-            {user && (
-              <div className="">
-                <div className="h-20 flex mb-0" onClick={() => handleNotitie()}>
-                  <img className="w-20" src="/img/feather/edit-2.svg" alt="" />
-                  <span className="pl-14 text-19 text-indigo-700 font-600 hover:text-red-500">
-                    maak een notitie
-                  </span>
+              )}
+              <a
+                href={`${therecipe.source_url}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="flex mt-72">
+                  <img className="w-25" src="/img/feather/book.svg" alt="" />
+                  &nbsp;<span className="pl-5">Bron: {therecipe.source}</span>
                 </div>
-                <textarea
-                  className={`ishidden ${
-                    notitie ? "isshowing py-8 my-18" : null
-                  } border border-gray-300 bg-white shadow-md focus:outline-0 border border-transparent placeholder-gray-600 rounded-lg pr-16 pl-16 w-full text-16`}
-                  placeholder="Maak hier een notitie..."
-                ></textarea>
-              </div>
-            )}
-            <a
-              href={`${therecipe.source_url}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className="flex mt-72">
-                <img className="w-25" src="/img/feather/book.svg" alt="" />
-                &nbsp;<span className="pl-5">Bron: {therecipe.source}</span>
-              </div>
-            </a>
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </Fragment>
   );
 };
 

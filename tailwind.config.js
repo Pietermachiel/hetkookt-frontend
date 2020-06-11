@@ -3,6 +3,7 @@ module.exports = {
   theme: {
     extend: {
       minHeight: {
+        "220": "220px",
         "250": "250px",
         full70: "calc(100% - 70px)",
       },
@@ -14,7 +15,7 @@ module.exports = {
         papier: "#f9f3dc",
         rood: "red",
         red: {
-          100: "#f5c5c5",
+          100: "#ffe4e1", // #f5c5c5
           200: "#ff9191",
           300: "#f57676",
           400: "#ff5c5c",
@@ -90,6 +91,7 @@ module.exports = {
       fontSize: {
         "12": "12px",
         "14": "14px",
+        "15": "15px",
         "16": "16px",
         "18": "18px",
         "19": "19px",

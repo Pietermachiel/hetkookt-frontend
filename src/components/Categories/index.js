@@ -23,7 +23,9 @@ const Categories = ({ thecart, categories, recipes, ...props }) => {
       {/* <CategoriesFilter categories={categories} /> */}
 
       <div className="container-x">
-        <h1 className={`my-10 leading-relaxed ${props.match.params.id}`}>
+        <h1
+          className={`mt-0 -mx-20 text-center bg-red-100 text-black my-10 leading-relaxed ${props.match.params.id}`}
+        >
           {props.match.params.id}
           {/* <Link to="/">
             <span className="ml-18 text-19 text-black font-300">> home</span>
@@ -50,7 +52,7 @@ const Categories = ({ thecart, categories, recipes, ...props }) => {
                         <div
                           // className="grid-box unvisable slide work-grid-item"
                           //
-                          className="bg-offblack text-white border border-gray-400 min-h-250 w-1/2/10 sm:w-1/2/15 lg:w-1/4/15 xl:w-1/4/15 ml-10 mb-10 md:ml-15 md:mb-15"
+                          className="bg-offblack min-h-220 lg:min-h-250 text-white border border-gray-400 w-1/2/10 sm:w-1/2/15 lg:w-1/4/15 xl:w-1/4/15 ml-10 mb-10 md:ml-15 md:mb-15"
                         >
                           {/* <Link to={`/sorts/${slugify(s.title)}`}> */}
                           <div className="">
@@ -64,7 +66,7 @@ const Categories = ({ thecart, categories, recipes, ...props }) => {
                           {/* </Link> */}
                           <div className="relative h-60">
                             <p
-                              className={`mt-10 uppercase absolute tracking-widest top-0 left-0 text-14`}
+                              className={`mt-10 uppercase absolute tracking-widest top-0 left-0 text-12`}
                             >
                               <span className="pl-15">{s.title}</span>
                             </p>
@@ -82,7 +84,7 @@ const Categories = ({ thecart, categories, recipes, ...props }) => {
                           return (
                             <div
                               key={recipe._id}
-                              className={`border border-gray-400 min-h-250 ${
+                              className={`border border-gray-400 min-h-220 lg:min-h-250 ${
                                 recipe.meal === "true" ? "bg-rose" : "bg-badge"
                               } w-1/2/10 sm:w-1/2/15 md:w-1/3/15 lg:w-1/4/15 ml-10 mb-10 md:ml-15 md:mb-15 unvisable ${
                                 width > 992
@@ -107,7 +109,7 @@ const Categories = ({ thecart, categories, recipes, ...props }) => {
                             >
                               <div className={`min-h-full70 p-15`}>
                                 <Link to={`/recipe/${slugify(recipe.title)}`}>
-                                  <h4 className={`break-words mb-15`}>
+                                  <h4 className={`text-18 break-words mb-15`}>
                                     {recipe.title}
                                   </h4>
                                 </Link>
@@ -115,22 +117,26 @@ const Categories = ({ thecart, categories, recipes, ...props }) => {
                                   {recipe.basics.map((b, id) => (
                                     <li
                                       key={id}
-                                      className={`mb-0 leading-tight font-700 text-18 md:text-19 `}
+                                      className={`mb-0 font-700 text-15 md:text-16 `}
                                     >
                                       {b}
                                     </li>
                                   ))}
                                 </ul>
-                                {recipe.tags.map((t, id) => (
-                                  <Fragment key={id}>
-                                    <span className={`text-16`}>{t}</span>
-                                    {thelength === id ? "" : ", "}
-                                  </Fragment>
-                                ))}
+                                <ul className={`leading-tight`}>
+                                  {recipe.tags.map((t, id) => (
+                                    <Fragment key={id}>
+                                      <li className={`inline text-15`}>
+                                        {t}
+                                        {thelength === id ? "" : ", "}
+                                      </li>
+                                    </Fragment>
+                                  ))}
+                                </ul>
                               </div>
                               <div className="h-60">
                                 <p
-                                  className={`uppercase tracking-widest text-14 pl-15 `}
+                                  className={`uppercase tracking-widest text-12 pl-15 `}
                                 >
                                   {recipe.dish}
                                 </p>

@@ -77,17 +77,17 @@ const Boodschappen = ({ me, setMe }) => {
 
   return (
     <Fragment>
-      <div className="container-x boodschappen">
-        <h1 className="mt-18">
-          Boodschappen
-          {/* <span className="text-16 ml-18 font-300">
+      <h1 className="mt-0 -mx-20 text-center bg-red-500 text-red-100 my-10 leading-relaxed ">
+        Boodschappen
+        {/* <span className="text-16 ml-18 font-300">
             <Link to="/">menu</Link>
           </span>{" "}
           <span className="text-16 ml-18 font-300">boodschappen</span>
           <span className="text-16 ml-18 font-300">
             <Link to="/favorites">favorieten</Link>
           </span> */}
-        </h1>
+      </h1>{" "}
+      <div className="container-x boodschappen">
         <div className="sm:grid sm:grid-cols-2 mt-36 mb-18">
           <div className="ingredienten w-full">
             <p className="font-300 uppercase text-14 tracking-wider mb-24">

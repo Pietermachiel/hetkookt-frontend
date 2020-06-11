@@ -26,7 +26,7 @@ const AddpanelWeekmenu = ({
       >
         <div className="zetophetweekmenu-box">
           <h6 className="pt-24 pb-5 mx-auto">week {theweek()}</h6>
-          <button className="btn-menu" onClick={() => handleIsOpen()}>
+          <button className="btn-menu" onClick={handleIsOpen}>
             <svg width="100" height="100" viewBox="0 0 50 50">
               <path d="M14.691,13.382l21.101,21.101" />
               <path d="M35.792,13.382l-21.102,21.101" />

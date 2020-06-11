@@ -19,9 +19,12 @@ const Nav = ({
   const [isOn, setIsOn] = useState(false);
   const [visible, setVisible] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [show, setShow] = useState(false);
 
   // console.log("user");
   // console.log(user.name);
+  // console.log("props nav");
+  // console.log(props);
 
   if (user) {
     var name = user.name;
@@ -58,24 +61,41 @@ const Nav = ({
       <Helmet>
         <html className={isOpen ? "menu-open" : null} />
       </Helmet>
-      <div className="container-y bg-red-600 py-9">
-        <span className="text-16 mr-18 font-500 text-white">
-          <Link to="/">Week 2</Link>
-        </span>{" "}
-        <span className="text-16 mr-18 font-500 text-white">
-          <Link to="/boodschappen">Boodschappen</Link>
-        </span>
-        <span className="text-16 mr-18 font-500 text-white">
-          {" "}
-          <Link to="/favorites">Favorites</Link>
-        </span>
-      </div>{" "}
-      <div className="container-y bg-red-500">
+      {user ? (
+        <div className="container-y bg-red-600 py-9">
+          <span className="text-16 mr-18 font-500 text-white">
+            <Link to="/">Week 24</Link>
+          </span>{" "}
+          <span className="text-16 mr-18 font-500 text-white">
+            <Link to="/boodschappen">Boodschappen</Link>
+          </span>
+          <span className="text-16 mr-18 font-500 text-white">
+            {" "}
+            <Link to="/favorites">Favorites</Link>
+          </span>
+        </div>
+      ) : null}
+
+      <div
+        className={`container-y ${
+          props.location.pathname.includes("/recipe/") ||
+          props.location.pathname.includes("/categories/")
+            ? "bg-red-100"
+            : "bg-red-500"
+        }`}
+      >
         <div className="">
           <div className="relative pt-10">
             <div className="flex items-center">
               <Link aria-label="logo hetkookt" to="/">
-                <span className="space-x-1 text-white text-30 font-300">
+                <span
+                  className={`space-x-1 text-30 font-300 ${
+                    props.location.pathname.includes("/recipe/") ||
+                    props.location.pathname.includes("/categories/")
+                      ? "text-red-500"
+                      : "text-white"
+                  }`}
+                >
                   het<span className="font-700 text-32">kookt</span>
                 </span>
 
@@ -101,8 +121,9 @@ const Nav = ({
                         </div>
                       </NavLink> */}
                     <img
+                      onClick={() => setShow(!show)}
                       className="h-36 w-initial ml-10"
-                      src="/img/icons/tomaat3.svg"
+                      src="/img/icons/tomaat2.svg"
                       alt=""
                     />
                     <img
@@ -130,7 +151,11 @@ const Nav = ({
           </div>
           <div className="container-x">
             <ul className="flex justify-around text-21 pt-0">
-              <CategoriesFilter categories={categories} />
+              <CategoriesFilter
+                categories={categories}
+                show={show}
+                setShow={setShow}
+              />
               {/* <NavAccordion title="categorieën"> */}
               <CollectionsFilter dishes={dishes} />
               {/* </NavAccordion> */}

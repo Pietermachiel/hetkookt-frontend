@@ -24,11 +24,10 @@ const Home = ({ me, setMe, user, recipes, about, ...props }) => {
   return (
     <Fragment>
       {/* <Hetkookt user={user} /> */}
-      <div className="container-x">
-        {/* <Search recipes={recipes} /> */}
-        {user ? (
-          <Fragment>
-            {/* <h2 className="pt-15">Weekmenu</h2>
+      {/* <Search recipes={recipes} /> */}
+      {user ? (
+        <Fragment>
+          {/* <h2 className="pt-15">Weekmenu</h2>
             <p className="font-600 mt-21">Er staat nog niets op het menu.</p>
             <p className="w-full md:w-50">
               Stel je eigen menu samen voor vandaag&nbsp;
@@ -39,13 +38,12 @@ const Home = ({ me, setMe, user, recipes, about, ...props }) => {
               <br />
               Zoek een recept en zet op het weekmenu.
             </p> */}
-            <Menu me={me} setMe={setMe} recipes={recipes} />
-            {/* <Boodschappen me={me} setMe={setMe} /> */}
-          </Fragment>
-        ) : (
-          <About about={about} />
-        )}
-      </div>
+          <Menu me={me} setMe={setMe} recipes={recipes} />
+          {/* <Boodschappen me={me} setMe={setMe} /> */}
+        </Fragment>
+      ) : (
+        <About about={about} />
+      )}
     </Fragment>
   );
 };

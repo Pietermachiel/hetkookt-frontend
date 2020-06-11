@@ -1,3 +1,10 @@
+.recipe-title {
+  margin-left: calc(550px - (100vw / 2)) !important;
+  margin-right: calc(550px - (100vw / 2)) !important;
+  padding-left: calc((100vw / 2) - 550px) !important;
+  padding-bottom: 48px !important;
+}
+
 .therecipe-dish__hover:hover {
   color: red;
 }
@@ -31,6 +38,14 @@
   position: relative;
 }
 
+svg.feather-circle {
+  fill: #f6ad55;
+}
+
+svg.feather-circle:hover {
+  fill: #fbd38d;
+}
+
 .action-panel {
   background-color: #fff;
   border: 1px solid #b3b3b3;
@@ -53,14 +68,6 @@
     height: 46px;
     text-align: center;
   }
-}
-
-svg.feather-circle {
-  fill: #f6ad55;
-}
-
-svg.feather-circle:hover {
-  fill: #fbd38d;
 }
 
 .action-panel__open {
