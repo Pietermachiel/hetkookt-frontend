@@ -22,16 +22,15 @@ const Categories = ({ thecart, categories, recipes, ...props }) => {
   return (
     <>
       {/* <CategoriesFilter categories={categories} /> */}
-
-      <div className="container-x">
-        <h1
-          className={`mt-0 -mx-20 text-center bg-red-100 text-black my-10 leading-relaxed ${props.match.params.id}`}
-        >
-          {props.match.params.id}
-          {/* <Link to="/">
+      <h1
+        className={`mt-0 -mx-20 text-center bg-red-100 text-black my-10 leading-relaxed ${props.match.params.id}`}
+      >
+        {props.match.params.id}
+        {/* <Link to="/">
             <span className="ml-18 text-19 text-black font-300">> home</span>
           </Link> */}
-        </h1>
+      </h1>
+      <div className="container-x">
         {categories.map((category, index) => {
           // console.log(props.match.params.id);
           // console.log(category.title);

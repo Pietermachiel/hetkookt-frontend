@@ -5,7 +5,7 @@ import NavAdd from "./NavAdd";
 import Search from "../Search";
 import CollectionsFilter from "../CollectionsFilter";
 import CategoriesFilter from "../CategoriesFilter";
-import NavAccordion from "./NavAccordion";
+// import NavAccordion from "./NavAccordion";
 
 const Nav = ({
   user,
@@ -19,7 +19,7 @@ const Nav = ({
   const [isOn, setIsOn] = useState(false);
   const [visible, setVisible] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
 
   // console.log("user");
   // console.log(user.name);
@@ -79,6 +79,7 @@ const Nav = ({
       <div
         className={`container-y ${
           props.location.pathname.includes("/recipe/") ||
+          props.location.pathname.includes("/sorts/") ||
           props.location.pathname.includes("/categories/")
             ? "bg-red-100"
             : "bg-red-500"
@@ -91,6 +92,7 @@ const Nav = ({
                 <span
                   className={`space-x-1 text-30 font-300 ${
                     props.location.pathname.includes("/recipe/") ||
+                    props.location.pathname.includes("/sorts/") ||
                     props.location.pathname.includes("/categories/")
                       ? "text-red-500"
                       : "text-white"
@@ -120,8 +122,8 @@ const Nav = ({
                           <span className="">{namestring}</span>
                         </div>
                       </NavLink> */}
-                    <img
-                      onClick={() => setShow(!show)}
+                    {/* <img
+                      // // onClick={() => setShow(!show)}
                       className="h-36 w-initial ml-10"
                       src="/img/icons/tomaat2.svg"
                       alt=""
@@ -130,7 +132,7 @@ const Nav = ({
                       className="h-36 w-initial ml-10"
                       src="/img/icons/flame3.svg"
                       alt=""
-                    />
+                    /> */}
                   </Fragment>
                 )}
                 {/* <div className="font-300 text-24">Q</div> */}
@@ -153,8 +155,8 @@ const Nav = ({
             <ul className="flex justify-around text-21 pt-0">
               <CategoriesFilter
                 categories={categories}
-                show={show}
-                setShow={setShow}
+                // show={show}
+                // setShow={setShow}
               />
               {/* <NavAccordion title="categorieën"> */}
               <CollectionsFilter dishes={dishes} />

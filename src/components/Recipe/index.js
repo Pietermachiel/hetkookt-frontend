@@ -87,10 +87,11 @@ const Recipe = ({
   return (
     <Fragment>
       <div className="container-y bg-red-100">
-        <h1 className="text-24 lg:text-36 p-20 -mx-20 my-10 mt-0">
+        <h1 className="text-24 mt-0 mb-20 p-20 pb-15 pl-0 bg-red-100 my-10">
           {therecipe.title}
         </h1>
       </div>
+
       <div className="container-x">
         <div className="recepten">
           <div className="recepten-box">
@@ -110,8 +111,10 @@ const Recipe = ({
               <div className="ingredienten-box">
                 {therecipe.fresh.map((f, xid) => {
                   const category = sorts.find((s) => s.title === f.item);
+                  console.log("category");
+                  console.log(category);
                   if (category === undefined) return [];
-                  const catcolor = category.category;
+                  const catcolor = category.sorts;
                   return (
                     <li key={xid}>
                       <div className="items-quantity">
@@ -134,7 +137,9 @@ const Recipe = ({
                       <div className="items-quantity">
                         {f.quantity} {f.unit}
                       </div>
-                      <div className="items-product">{f.item}</div>
+                      <div className="items-product text-gray-600">
+                        {f.item}
+                      </div>
                     </li>
                   );
                 })}

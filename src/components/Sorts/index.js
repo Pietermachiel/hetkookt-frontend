@@ -44,15 +44,13 @@ const Sorts = ({ thecart, recipes, sorts, categories, ...props }) => {
   return (
     <>
       {/* <CategoriesFilter categories={categories} /> */}
+      <h1
+        className={`mt-0 -mx-20 text-center bg-red-100 text-black my-10 leading-relaxed  ${catcolor}`}
+      >
+        {sort.title}
+      </h1>
+
       <div className="container-x">
-        <h1 className={`text-42 my-10 ${catcolor}`}>
-          {sort.title}
-          {/* <Link to={`/categories/${sort.category}`}>
-            <span className="ml-18 text-19 text-black font-300">
-              > {sort.category}
-            </span>
-          </Link> */}
-        </h1>
         <div className="-ml-15 mb-10 flex flex-row flex-wrap">
           <div
             // className="grid-box unvisable slide work-grid-item"
