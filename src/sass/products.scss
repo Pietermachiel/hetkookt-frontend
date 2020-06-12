@@ -17,7 +17,7 @@
   @media (min-width: $on-tablet) {
     padding: 15px calc(50vw - (975px / 2));
     padding-bottom: 24px;
-    columns: 5;
+    // columns: 5;
   }
   @media (min-width: $on-laptop) {
     // columns: 5;

@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 
 const CategoriesFilter = ({ categories, show, setShow }) => {
   // const [show, setShow] = useState(false);
+  console.log("categories");
   console.log(categories);
+
+  categories.sort((a, b) => a.id - b.id);
 
   return (
     <Fragment>
@@ -18,7 +21,7 @@ const CategoriesFilter = ({ categories, show, setShow }) => {
           ingrediënten
         </div> */}
         <div className={`accordion-item z-30 ${show ? "show" : ""}`}>
-          <p className="px-20 pt-72 text-24 font-500">Ingrediënten</p>
+          <p className="px-15 pt-72 text-24 font-500">Ingrediënten</p>
           <div className="categories-filter bg-red-100">
             {categories.map((p, xid) => {
               return (

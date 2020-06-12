@@ -103,7 +103,7 @@ const NavAdd = ({ user, handleIsOpen, isOpen, thecart, thefavorites }) => {
           </NavLink>
         )}
       </div>
-      <p>
+      {/* <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio,
         modi eum vero id, non nemo maxime perspiciatis dignissimos quod minima
         illo ex illum culpa nisi laboriosam obcaecati vitae ullam neque.
@@ -112,7 +112,7 @@ const NavAdd = ({ user, handleIsOpen, isOpen, thecart, thefavorites }) => {
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio,
         modi eum vero id, non nemo maxime perspiciatis dignissimos quod minima
         illo ex illum culpa nisi laboriosam obcaecati vitae ullam neque.
-      </p>
+      </p> */}
     </div>
   );
 };

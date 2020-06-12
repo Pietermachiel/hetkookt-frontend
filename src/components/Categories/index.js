@@ -16,7 +16,8 @@ const Categories = ({ thecart, categories, recipes, ...props }) => {
   const box = 272;
   const boxheight = height + scroll;
 
-  // console.log(categories);
+  // console.log("thecart");
+  // console.log(thecart);
 
   return (
     <>
