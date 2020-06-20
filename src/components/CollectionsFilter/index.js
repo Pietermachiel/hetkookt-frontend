@@ -11,11 +11,12 @@ const CollectionsFilter = ({ dishes }) => {
         // onKeyPress={() => setShow(!show)}
         onClick={() => setShow(!show)}
       >
-        {/* <div
+        <div
           className={`text-center text-indigo-600 font-300 mb-0 hover:text-indigo-600 py-9`}
+          onClick={() => setShow(!show)}
         >
           collecties
-        </div> */}
+        </div>
         <div
           className={`hide accordion-item accordion-item-collecties absolute z-10 ${
             show ? "show" : ""

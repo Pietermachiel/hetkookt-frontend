@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Fragment } from "react";
-import Accordion from "./Accordion";
+import Accordion from "../Weekmenu/Accordion";
 import { vandaag, dedatum, kalender, slugify, hetjaar } from "../common/common";
 import { deleteFresh } from "../../services/userService";
 

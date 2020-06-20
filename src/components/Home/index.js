@@ -23,27 +23,9 @@ const Home = ({ me, setMe, user, recipes, about, ...props }) => {
 
   return (
     <Fragment>
-      {/* <Hetkookt user={user} /> */}
-      {/* <Search recipes={recipes} /> */}
-      {user ? (
-        <Fragment>
-          {/* <h2 className="pt-15">Weekmenu</h2>
-            <p className="font-600 mt-21">Er staat nog niets op het menu.</p>
-            <p className="w-full md:w-50">
-              Stel je eigen menu samen voor vandaag&nbsp;
-              <span className="font-600 text-gray-600">
-                {vandaag(0)} {dedatum(0)} april
-              </span>
-              &nbsp; en de zeven daaropvolgende dagen. <br />
-              <br />
-              Zoek een recept en zet op het weekmenu.
-            </p> */}
-          <Menu me={me} setMe={setMe} recipes={recipes} />
-          {/* <Boodschappen me={me} setMe={setMe} /> */}
-        </Fragment>
-      ) : (
+      <div className="container-x">
         <About about={about} />
-      )}
+      </div>
     </Fragment>
   );
 };

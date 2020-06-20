@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 
-const CategoriesFilter = ({ categories, show, setShow }) => {
-  // const [show, setShow] = useState(false);
+const CategoriesFilter = ({ categories }) => {
+  const [show, setShow] = useState(false);
   console.log("categories");
   console.log(categories);
 
@@ -13,14 +13,15 @@ const CategoriesFilter = ({ categories, show, setShow }) => {
       <div
         className="accordion-wrapper relative w-50 "
         // onKeyPress={() => setShow(!show)}
-        // onClick={() => setShow(!show)}
+        onClick={() => setShow(!show)}
       >
-        {/* <div
+        <div
           className={`text-center text-indigo-600 font-300 mb-0 hover:text-indigo-600 py-9`}
+          onClick={() => setShow(!show)}
         >
           ingrediënten
-        </div> */}
-        <div className={`accordion-item z-30 ${show ? "show" : ""}`}>
+        </div>
+        <div className={`hide accordion-item z-30 ${show ? "show" : ""}`}>
           <p className="px-15 pt-72 text-24 font-500">Ingrediënten</p>
           <div className="categories-filter bg-red-100">
             {categories.map((p, xid) => {

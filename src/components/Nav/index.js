@@ -19,7 +19,6 @@ const Nav = ({
   const [isOn, setIsOn] = useState(false);
   const [visible, setVisible] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  // const [show, setShow] = useState(false);
 
   // console.log("user");
   // console.log(user.name);
@@ -61,11 +60,11 @@ const Nav = ({
       <Helmet>
         <html className={isOpen ? "menu-open" : null} />
       </Helmet>
-      {user ? (
+      {/* {user ? (
         <div className="container-y bg-red-600 py-9">
           <span className="text-16 mr-18 font-500 text-white">
-            <Link to="/">Week 24</Link>
-          </span>{" "}
+            <Link to="/weekmenu">Week 24</Link>
+          </span>
           <span className="text-16 mr-18 font-500 text-white">
             <Link to="/boodschappen">Boodschappen</Link>
           </span>
@@ -74,7 +73,7 @@ const Nav = ({
             <Link to="/favorites">Favorites</Link>
           </span>
         </div>
-      ) : null}
+      ) : null} */}
 
       <div
         className={`container-y ${
@@ -88,13 +87,17 @@ const Nav = ({
         <div className="">
           <div className="relative pt-10">
             <div className="flex items-center">
-              <Link aria-label="logo hetkookt" to="/">
+              <Link
+                className={`${!isOpen ? null : "z-100"}`}
+                aria-label="logo hetkookt"
+                to="/"
+              >
                 <span
                   className={`space-x-1 text-30 font-300 ${
                     props.location.pathname.includes("/recipe/") ||
                     props.location.pathname.includes("/sorts/") ||
                     props.location.pathname.includes("/categories/")
-                      ? "text-red-500"
+                      ? `${!isOpen ? "text-red-500" : "z-100 text-white"}`
                       : "text-white"
                   }`}
                 >
@@ -123,7 +126,6 @@ const Nav = ({
                         </div>
                       </NavLink> */}
                     {/* <img
-                      // // onClick={() => setShow(!show)}
                       className="h-36 w-initial ml-10"
                       src="/img/icons/tomaat2.svg"
                       alt=""
@@ -143,7 +145,18 @@ const Nav = ({
               <button
                 aria-label="hamburger menu"
                 onClick={handleMouseDown}
-                className={isOn ? "hamburger navbox--menu-open" : "hamburger"}
+                // className={isOn ? "hamburger navbox--menu-open" : "hamburger"}
+                className={`${
+                  props.location.pathname.includes("/recipe/") ||
+                  props.location.pathname.includes("/sorts/") ||
+                  props.location.pathname.includes("/categories/")
+                    ? `hamburger recipesection ${
+                        isOn ? "hamburger navbox--menu-open" : "hamburger"
+                      }`
+                    : `hamburger ${
+                        isOn ? "hamburger navbox--menu-open" : "hamburger"
+                      }`
+                }`}
               >
                 <span></span>
                 <span></span>
@@ -151,18 +164,12 @@ const Nav = ({
               </button>
             </div>
           </div>
-          <div className="container-x">
+          {/* <div className="container-x">
             <ul className="flex justify-around text-21 pt-0">
-              <CategoriesFilter
-                categories={categories}
-                // show={show}
-                // setShow={setShow}
-              />
-              {/* <NavAccordion title="categorieën"> */}
+              <CategoriesFilter categories={categories} />
               <CollectionsFilter dishes={dishes} />
-              {/* </NavAccordion> */}
             </ul>
-          </div>
+          </div> */}
           <div className="container-x"></div>
         </div>
         <div

@@ -1,3 +1,36 @@
+.recipe-box {
+  width: calc(50% - 10px);
+  margin-left: 10px;
+  margin-bottom: 10px;
+  min-height: 220px;
+  border-width: 1px;
+  border-color: #cbd5e0;
+  @media screen and (min-width: $on-tablet) {
+    width: calc(25% - 15px);
+    margin-left: 15px;
+    margin-bottom: 15px;
+  }
+}
+.recipe-box-footer {
+  position: relative;
+  height: 60px;
+  p {
+    padding-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    top: 0;
+    left: 0;
+    font-size: 12px;
+    span {
+      padding-left: 15px;
+    }
+  }
+}
+.recipe-box_sorts {
+  background-color: #1d1d1d;
+  color: white;
+}
+
 .recipe-title {
   margin-left: calc(550px - (100vw / 2)) !important;
   margin-right: calc(550px - (100vw / 2)) !important;
@@ -141,7 +174,7 @@ svg.recipe-corner {
   position: absolute;
   right: 0;
   top: 20px;
-  margin-right: -100px;
+  // margin-right: -100px;
   transition: margin-right 0.2s ease-out;
 }
 .day-flag {

@@ -19,15 +19,15 @@
 }
 
 .about-box {
-  width: 60%;
-  &:nth-child(odd) {
-    float: left;
-    padding-right: 20px;
-  }
-  &:nth-child(even) {
-    float: right;
-    padding-left: 20px;
-  }
+  // width: 60%;
+  // &:nth-child(odd) {
+  //   float: left;
+  //   padding-right: 20px;
+  // }
+  // &:nth-child(even) {
+  //   float: right;
+  //   padding-left: 20px;
+  // }
 }
 
 .count {

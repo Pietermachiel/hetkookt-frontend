@@ -261,6 +261,7 @@ const App = () => {
             render={(props) => (
               <Weekmenu
                 {...props}
+                dishes={dishes}
                 user={user}
                 thecart={thecart} //  [ _id, _id, ... ]
                 recipes={recipes}
@@ -274,6 +275,7 @@ const App = () => {
             render={(props) => {
               return (
                 <Sorts
+                  me={me}
                   thecart={thecart}
                   recipes={recipes}
                   categories={categories}
