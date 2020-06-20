@@ -44,7 +44,7 @@
   }
   ul {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     @media screen and (max-width: 767px) {
       display: none;
       width: calc(100vw - 141px);

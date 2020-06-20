@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { slugify } from "../common/common";
-import { handleDelete } from "../../services/userService";
 
 // https://codepen.io/davidmunro/pen/xxxeoOo
 const AccordionVoorraad = ({ s, title, children, me, setMe, id, year }) => {

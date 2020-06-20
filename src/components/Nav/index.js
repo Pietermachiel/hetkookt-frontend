@@ -1,5 +1,5 @@
-import React, { Fragment, useState } from "react";
-import { Link, NavLink, withRouter } from "react-router-dom";
+import React, { Fragment } from "react";
+import { NavLink, withRouter } from "react-router-dom";
 import CategoriesNav from "./CategoriesNav";
 import CollectionsNav from "./CollectionsNav";
 import auth from "../../services/authService";

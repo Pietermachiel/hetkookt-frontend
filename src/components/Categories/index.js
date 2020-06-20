@@ -1,23 +1,11 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import useCurrentWidth from "../common/use-current-width";
-import useCurrentHeight from "../common/use-current-height";
-import useCurrentScroll from "../common/use-current-scroll";
-import { slugify, kalender } from "../common/common";
-// import CategoriesFilter from "../CategoriesFilter";
+import { slugify } from "../common/common";
 import RecipeItems from "../RecipeItems";
 import { handleDeleteFavorite } from "../../services/userService";
 
 const Categories = ({ me, setMe, thecart, categories, recipes, ...props }) => {
   // console.log(sorts);
-
-  const width = useCurrentWidth();
-  const height = useCurrentHeight();
-  const scroll = useCurrentScroll();
-  const offset = -272;
-  const box = 272;
-  const boxheight = height + scroll;
-
   // console.log("thecart");
   // console.log(thecart);
 
@@ -64,12 +52,8 @@ const Categories = ({ me, setMe, thecart, categories, recipes, ...props }) => {
                         {recipeItem.map((recipe, index) => {
                           let cart = thecart.find((c) => c._id === recipe._id);
                           if (cart === undefined) cart = [];
-                          const thelength = recipe.tags.length - 1;
                           if (recipe.basics === undefined)
                             return (recipe.basics = []);
-                          const red = kalender.find(
-                            (w) => w.year === cart.date
-                          );
                           return (
                             <Fragment>
                               <RecipeItems

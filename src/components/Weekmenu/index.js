@@ -1,8 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Fragment } from "react";
 import AccordionWeekMenu from "./AccordionWeekMenu";
-import { vandaag, dedatum, kalender, slugify, hetjaar } from "../common/common";
+import { vandaag, kalender } from "../common/common";
 import { deleteFresh } from "../../services/userService";
 
 const Menu = ({ me, setMe, user, recipes, about, ...props }) => {

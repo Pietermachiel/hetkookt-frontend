@@ -1,9 +1,6 @@
 import React from "react";
 import { Fragment } from "react";
 import { slugify, kalender } from "../common/common";
-import useCurrentWidth from "../common/use-current-width";
-import useCurrentHeight from "../common/use-current-height";
-import useCurrentScroll from "../common/use-current-scroll";
 
 const RecipeItems = ({
   width,
@@ -19,13 +16,6 @@ const RecipeItems = ({
   handleDeleteFavorite,
   ...props
 }) => {
-  //   const width = useCurrentWidth();
-  //   const height = useCurrentHeight();
-  const scroll = useCurrentScroll();
-  const offset = -272;
-  const box = 272;
-  const boxheight = height + scroll;
-
   // console.log("recipe");
   // console.log(me.favorites);
 

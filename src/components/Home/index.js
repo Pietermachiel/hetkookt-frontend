@@ -1,5 +1,4 @@
-import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { Fragment } from "react";
 import About from "./about";
 
 const Home = ({ me, setMe, user, recipes, about, ...props }) => {

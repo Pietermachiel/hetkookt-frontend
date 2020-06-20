@@ -1,10 +1,5 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import Weekmenu from "../Weekmenu";
-import Boodschappen from "../Boodschappen";
-import Voorraad from "../Voorraad";
-import Favorites from "../Favorites";
-import { kalender } from "../common/common";
 
 const Kookschrift = ({ user, location }) => {
   const [kookschriftOpen, setKookschriftOpen] = useState(false);

@@ -4,7 +4,6 @@ import useCurrentWidth from "../common/use-current-width";
 import useCurrentHeight from "../common/use-current-height";
 import useCurrentScroll from "../common/use-current-scroll";
 import { slugify, kalender, uniq } from "../common/common";
-import CollectionsFilter from "../CollectionsFilter";
 
 const Collections = ({ thecart, sorts, dishes, recipes, ...props }) => {
   const therecipes = recipes.filter(

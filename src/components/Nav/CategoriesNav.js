@@ -1,7 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { slugify } from "../common/common";
-import { handleDelete } from "../../services/userService";
 
 // https://codepen.io/davidmunro/pen/xxxeoOo
 const AccordionNav = ({ handleCatOpen, isCatOpen, setCatOpen, categories }) => {

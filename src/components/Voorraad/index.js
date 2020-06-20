@@ -1,5 +1,4 @@
-import React, { Fragment, useState } from "react";
-// import stock from "./stock.json";
+import React, { Fragment } from "react";
 import { toggleStock, removeStock } from "../../services/userService";
 import AccordionVoorraad from "./AccordionVoorraad";
 

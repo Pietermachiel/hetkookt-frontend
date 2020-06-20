@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import { slugify, uniq } from "../common/common";
-import { handleDeleteFavorite, handleDelete } from "../../services/userService";
+import { uniq } from "../common/common";
+import { handleDeleteFavorite } from "../../services/userService";
 import RecipeItems from "../RecipeItems";
 
 const Favorites = ({ me, setMe, recipes, ...props }) => {
