@@ -5,15 +5,15 @@ const Books = ({ books, ...props }) => {
   console.log(books);
   return (
     <Fragment>
-      <h1>Boekentop100</h1>
-      <div className="container">
+      <div className="container-x">
+        <h1 className="mb-36 -mt-20">Boeken top 100</h1>
         <div className="ko-box">
           <div className="ko-box-right">
             <h6>kookboeken</h6>
             {books.map((b) => (
               <div
                 key={b.index}
-                className="keuken ko-box-right__outer content-item work-grid-item inview"
+                className="keuken ko-box-right__outer  unvisable slide work-grid-item"
               >
                 <div className="ko-box-right__img">
                   <img src={`/img/books/${b.sourceId}_title.jpg`} alt="" />
@@ -33,7 +33,7 @@ const Books = ({ books, ...props }) => {
             {books.map((b) => (
               <div
                 key={b.index}
-                className="keuken ko-box-left__outer content-item work-grid-item inview"
+                className="keuken ko-box-left__outer  unvisable slide work-grid-item"
               >
                 <div className="ko-box-left__top">
                   <div className="ko-box-left__img">

@@ -5,7 +5,7 @@ import useCurrentHeight from "../common/use-current-height";
 import useCurrentScroll from "../common/use-current-scroll";
 import { slugify, kalender } from "../common/common";
 import CategoriesFilter from "../CategoriesFilter";
-import RecipeItems from "../Categories/RecipeItems";
+import RecipeItems from "../RecipeItems";
 
 const Sorts = ({ me, thecart, recipes, sorts, categories, ...props }) => {
   // console.log(props);
@@ -33,14 +33,11 @@ const Sorts = ({ me, thecart, recipes, sorts, categories, ...props }) => {
 
   return (
     <>
-      {/* <CategoriesFilter categories={categories} /> */}
-      <h1
-        className={`mt-0 m-full text-center bg-red-100 text-black my-10 lg:mb-15 leading-relaxed  ${catcolor}`}
-      >
-        {sort.title}
-      </h1>
-
       <div className="container-x">
+        <h1 className={`-mt-20 mb-36 ${sort.sorts}`}>
+          {sort.title} <span className="text-21 ml-10">{sort.sorts}</span>
+        </h1>
+
         <div className="flexbox flexbox-margin">
           <div className="recipe-box recipe-box_sorts">
             <Link to={`/sorts/${slugify(sort.title)}`}>

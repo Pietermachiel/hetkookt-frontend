@@ -21,26 +21,27 @@ const User = ({ me, user, thecart, ...props }) => {
 
   return (
     <div className="container-x">
-      <h1 className="py-15">{me.name}</h1>
-      <p>Name: {me.name}</p>
-      <p>Email: {me.email}</p>
-      <button
-        className="button-blue bg-indigo-500 hover:bg-indigo-700"
-        onClick={() => handleLogout()}
-        // style={{ fontFamily: "Fira Mono" }}
-      >
-        Logout
-      </button>
+      <h1 className="-mt-20 mb-36">{me.name}</h1>
+      <div className=" unvisable slide work-grid-item">
+        <p>Name: {me.name}</p>
+        <p>Email: {me.email}</p>
+        <button
+          className="button-blue bg-indigo-500 hover:bg-indigo-700"
+          onClick={() => handleLogout()}
+          // style={{ fontFamily: "Fira Mono" }}
+        >
+          Logout
+        </button>
 
-      <button
-        className="button-blue bg-red hover:bg-red-700"
-        onClick={() => handleDelete(user._id)}
-        // style={{ fontFamily: "Fira Mono" }}
-      >
-        Delete account
-      </button>
+        <button
+          className="button-blue bg-red hover:bg-red-700"
+          onClick={() => handleDelete(user._id)}
+          // style={{ fontFamily: "Fira Mono" }}
+        >
+          Delete account
+        </button>
 
-      {/* <div className="mt-18">
+        {/* <div className="mt-18">
         {user && (
           <>
             <Link
@@ -81,6 +82,7 @@ const User = ({ me, user, thecart, ...props }) => {
           </>
         )}
       </div> */}
+      </div>
     </div>
   );
 };

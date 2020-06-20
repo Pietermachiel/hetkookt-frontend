@@ -2,10 +2,10 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { slugify, uniq } from "../common/common";
 import { handleDeleteFavorite, handleDelete } from "../../services/userService";
-import RecipeItems from "../Categories/RecipeItems";
+import RecipeItems from "../RecipeItems";
 
-const Favorites = ({ me, setMe, recipes, thefavorites, ...props }) => {
-  if (thefavorites === undefined) thefavorites = [];
+const Favorites = ({ me, setMe, recipes, ...props }) => {
+  if (me.favorites === undefined) me.favorites = [];
   // console.log("thefavorites");
   // console.log(thefavorites);
   // console.log(thefavorites.length);
@@ -13,7 +13,7 @@ const Favorites = ({ me, setMe, recipes, thefavorites, ...props }) => {
   // console.log(thefavorites);
 
   let favoritecart = [];
-  thefavorites.map((r) => {
+  me.favorites.map((r) => {
     let thefavorite = recipes.find((f) => f._id === r);
     return favoritecart.push(thefavorite);
   });
@@ -33,11 +33,9 @@ const Favorites = ({ me, setMe, recipes, thefavorites, ...props }) => {
 
   return (
     <Fragment>
-      <h1 className="mt-0 -mx-20 text-center bg-red-500 text-red-100 my-10 leading-relaxed ">
-        Favorieten
-      </h1>
       <div className="container-x">
-        {thefavorites.length === 0 ? (
+        <h1 className="mb-36 -mt-20">Favorieten</h1>
+        {me.favorites.length === 0 ? (
           <div className="">
             <p className="font-600">Er staat nog niets in het kookschrift.</p>
             <p className="w-full md:w-50">
@@ -50,7 +48,7 @@ const Favorites = ({ me, setMe, recipes, thefavorites, ...props }) => {
           return (
             <Fragment key={xid}>
               <h2 className="mb-18">{d}</h2>
-              <div className="-ml-15 mb-10 flex flex-row flex-wrap">
+              <div className="relative -ml-15 mb-10 flex flex-row flex-wrap">
                 {favoritecart.map((recipe) => {
                   let cart = me.recipes.find((c) => c._id === recipe._id);
                   if (cart === undefined) cart = [];

@@ -7,15 +7,12 @@ import Verify from "./components/verify";
 import logout from "./components/logout";
 import Test from "./components/Test";
 import Home from "./components/Home";
-import Wat from "./components/Home/Wat";
-import Hoe from "./components/Home/Hoe";
-import Waarom from "./components/Home/Waarom";
 import Recipe from "./components/Recipe";
 import Sorts from "./components/Sorts";
 import Categories from "./components/Categories";
 import Collections from "./components/Collections";
 import Favorites from "./components/Favorites";
-import Boodschappen from "./components/Home/Boodschappen";
+import Boodschappen from "./components/Boodschappen";
 import Voorraad from "./components/Voorraad";
 import Books from "./components/Books";
 import Weekmenu from "./components/Weekmenu";
@@ -26,6 +23,7 @@ import auth from "./services/authService";
 import ProtectedRoute from "./components/common/protectedRoute";
 import axios from "axios";
 import { apiUrl, recipeUrl } from "./config.json";
+import LogoBox from "./components/LogoBox";
 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
@@ -37,7 +35,34 @@ const App = () => {
   const [me, setMe] = useState([]);
   const [about, setAbout] = useState([]);
   const [books, setBooks] = useState([]);
+  const [isOn, setIsOn] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isCatOpen, setCatOpen] = useState(false);
+  const [isColOpen, setColOpen] = useState(false);
 
+  const handleIsOpen = (e) => {
+    // toggleMenu();
+    toggleSwitch();
+    setIsOpen(!isOpen);
+    e.stopPropagation();
+  };
+
+  const handleCatOpen = () => {
+    toggleSwitch();
+    setIsOpen(!isOpen);
+    setCatOpen(!isCatOpen);
+  };
+
+  const handleColOpen = () => {
+    toggleSwitch();
+    setIsOpen(!isOpen);
+    setColOpen(!isColOpen);
+  };
+
+  // hamburger: = => x, red => white
+  const toggleSwitch = () => {
+    setIsOn(!isOn);
+  };
   // console.log("recipes");
   // console.log(recipes);
   // console.log("sorts");
@@ -131,17 +156,26 @@ const App = () => {
 
   return (
     <>
-      <div className="content">
+      <div className={`${isOpen ? "content menu-open" : "content"}`}>
         <header>
           <Nav
-            thecart={thecart}
-            thefavorites={thefavorites}
+            isOn={isOn}
+            isOpen={isOpen}
+            handleIsOpen={handleIsOpen}
+            isCatOpen={isCatOpen}
+            setCatOpen={setCatOpen}
+            handleCatOpen={handleCatOpen}
+            isColOpen={isColOpen}
+            setColOpen={setColOpen}
+            handleColOpen={handleColOpen}
+            me={me}
             user={user}
-            recipes={recipes}
-            dishes={dishes}
             categories={categories}
+            sorts={sorts}
+            dishes={dishes}
           />
         </header>
+        <LogoBox me={me} user={user} />
         <Switch>
           <Route
             exact
@@ -158,53 +192,6 @@ const App = () => {
                 thecart={thecart}
                 about={about}
                 {...props}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/waarom"
-            render={(props) => (
-              <Waarom
-                {...props}
-                user={user}
-                recipes={recipes}
-                categories={categories}
-                sorts={sorts}
-                dishes={dishes}
-                thecart={thecart}
-                about={about}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/wat"
-            render={(props) => (
-              <Wat
-                {...props}
-                user={user}
-                recipes={recipes}
-                categories={categories}
-                sorts={sorts}
-                dishes={dishes}
-                thecart={thecart}
-                about={about}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/hoe"
-            render={(props) => (
-              <Hoe
-                {...props}
-                user={user}
-                recipes={recipes}
-                categories={categories}
-                sorts={sorts}
-                dishes={dishes}
-                thecart={thecart}
               />
             )}
           />
@@ -230,12 +217,6 @@ const App = () => {
           <Route path="/inschrijven" component={inschrijven} />
           <Route path="/verify/:id" component={Verify} />
           <Route path="/logout" component={logout} />
-          <Route
-            path="/test"
-            render={(props) => (
-              <Test {...props} dishes={dishes} recipes={recipes} />
-            )}
-          />
           <ProtectedRoute
             path="/user"
             render={(props) => (
@@ -341,11 +322,17 @@ const App = () => {
               );
             }}
           />
+          <Route
+            path="/test/:id"
+            render={(props) => (
+              <Test {...props} dishes={dishes} recipes={recipes} />
+            )}
+          />
         </Switch>
+        <footer className="">
+          <Footer />
+        </footer>
       </div>
-      <footer className="">
-        <Footer />
-      </footer>
     </>
   );
 };

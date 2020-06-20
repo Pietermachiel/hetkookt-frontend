@@ -87,7 +87,7 @@ svg.feather-circle:hover {
   // left: 4px;
   margin-top: 14px;
   position: absolute;
-  bottom: 71px;
+  top: -36px;
   left: 0;
   height: 300px;
   width: 100%;
@@ -116,9 +116,9 @@ svg.feather-circle:hover {
   position: absolute;
   border-left: 14px solid transparent;
   border-right: 14px solid transparent;
-  border-top: 18px solid white;
-  bottom: -18px;
-  right: 50%;
+  border-bottom: 18px solid white;
+  top: -18px;
+  right: 45%;
 }
 
 .action-panel::before {
@@ -130,9 +130,9 @@ svg.feather-circle:hover {
   position: absolute;
   border-left: 14px solid transparent;
   border-right: 14px solid transparent;
-  border-top: 18px solid #757575;
-  bottom: -19px;
-  right: 50%;
+  border-bottom: 18px solid #757575;
+  top: -19px;
+  right: 45%;
 }
 
 // weekmenu
@@ -296,6 +296,7 @@ button.btn-menu {
   justify-content: space-between;
   // max-width: 1024px;
   margin: auto;
+  z-index: -1;
 }
 
 .recepten-box {

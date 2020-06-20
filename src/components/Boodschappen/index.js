@@ -23,6 +23,7 @@ const Boodschappen = ({ me, setMe }) => {
 
   // console.log(groceries);
   // console.log(me);
+  if (me.recipes === undefined) return [];
 
   const themenu = me.recipes.filter((r) => {
     const item = kalender.find((k) =>
@@ -31,8 +32,8 @@ const Boodschappen = ({ me, setMe }) => {
     return item;
   });
 
-  console.log("themenu");
-  console.log(themenu);
+  // console.log("themenu");
+  // console.log(themenu);
 
   const handleExtra = (value) => {
     const trimmedText = value.trim();
@@ -46,11 +47,11 @@ const Boodschappen = ({ me, setMe }) => {
   let allfresh = themenu.reduce(function (accumulator, currentValue) {
     return [...accumulator, ...currentValue.fresh];
   }, []);
-  console.log("allfresh");
-  console.log(allfresh);
+  // console.log("allfresh");
+  // console.log(allfresh);
 
   allfresh = allfresh.filter((f) => f.to_buy === true);
-  console.log(allfresh);
+  // console.log(allfresh);
 
   // https://stackoverflow.com/questions/44332180/merge-objects-with-the-same-id-but-sum-values-of-the-objects
   // For a version with Array#reduce, you could use a hash table as reference to the same company with a closure over the hash table.
@@ -73,27 +74,18 @@ const Boodschappen = ({ me, setMe }) => {
     })(Object.create(null)),
     []
   );
-  console.log(boodschappen);
+  // console.log(boodschappen);
 
   return (
     <Fragment>
-      <h1 className="mt-0 -mx-20 text-center bg-red-500 text-red-100 my-10 leading-relaxed ">
-        Boodschappen
-        {/* <span className="text-16 ml-18 font-300">
-            <Link to="/">menu</Link>
-          </span>{" "}
-          <span className="text-16 ml-18 font-300">boodschappen</span>
-          <span className="text-16 ml-18 font-300">
-            <Link to="/favorites">favorieten</Link>
-          </span> */}
-      </h1>{" "}
       <div className="container-x boodschappen">
-        <div className="sm:grid sm:grid-cols-2 mt-36 mb-18">
+        {/* <h1 className="mt-0 mt-100 mb-48">Boodschappen</h1> */}
+        <h1 className="mb-36 -mt-20">Boodschappen</h1>
+
+        <div className=" mt-36 mb-18 unvisable slide work-grid-item">
           <div className="ingredienten w-full">
-            <p className="font-300 uppercase text-14 tracking-wider mb-24">
-              Vers
-            </p>
-            <div className="ingredienten-box">
+            <h2 className="mb-24">Vers</h2>
+            <div className="category-box">
               {groceries.map((g, xid) => {
                 const deboodschappen = boodschappen.filter((b) =>
                   g.sort.includes(b.item)
@@ -103,15 +95,18 @@ const Boodschappen = ({ me, setMe }) => {
                 if (deboodschappen.length !== 0)
                   return (
                     <Fragment key={xid}>
-                      <h4 className="mb-18 border-b border-gray-600 lg:mr-36 pb-9">
+                      <h2 className="">
                         {deboodschappen.length !== 0 ? g.title : null}
-                      </h4>
-                      <div className="mb-18">
+                      </h2>
+                      <ul className="mb-18">
                         {deboodschappen.map((b, xid) =>
                           // console.log(g.sort);
                           // if (g.sort.includes(b.item))
                           deboodschappen.length !== 0 ? (
-                            <li key={xid} className="">
+                            <li
+                              key={xid}
+                              className="accordion-title py-9 px-24 bg-green-200"
+                            >
                               <div className="items-quantity">
                                 {b.quantity} {b.unit}
                               </div>
@@ -129,35 +124,38 @@ const Boodschappen = ({ me, setMe }) => {
                             </li>
                           ) : null
                         )}
-                      </div>
+                      </ul>
                     </Fragment>
                   );
               })}
             </div>
           </div>
           <div className="">
-            <p className="font-300 uppercase text-14 tracking-wider mb-24">
-              Voorraad
-            </p>
+            <h2 className="mb-24">Voorraad</h2>
             <Link to="/voorraad">
               <div className="filter-box__stock">
                 <p>Is alles op voorraad?</p>
               </div>
             </Link>
-            {me.stock.map((v, xid) => (
-              <li key={xid} className="mb-9">
-                {v}{" "}
-                <span
-                  onClick={() => removeStock(me, setMe, v)}
-                  className="text-red-500 mr-9"
-                >
-                  x
-                </span>
-              </li>
-            ))}
-            <p className="font-300 uppercase text-14 tracking-wider mb-24 mt-48">
-              Extra
-            </p>
+            <div className="category-box">
+              <ul className="mb-18">
+                {me.stock.map((v, xid) => (
+                  <li
+                    key={xid}
+                    className="accordion-title py-9 px-24 bg-orange-400"
+                  >
+                    {v}{" "}
+                    <span
+                      onClick={() => removeStock(me, setMe, v)}
+                      className="text-red-500 mr-9"
+                    >
+                      x
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <h2 className="mb-24 mt-48">Extra</h2>
             <form
               className="form"
               onSubmit={(e) => {
@@ -178,19 +176,26 @@ const Boodschappen = ({ me, setMe }) => {
                 type="submit"
               />
             </form>
-            {me.extra.map((item, index) => {
-              return (
-                <div key={index} className="">
-                  {item}&nbsp;
-                  <span
-                    className="text-red-500 mr-9"
-                    onClick={() => removeExtra(me, setMe, item)}
-                  >
-                    x
-                  </span>
-                </div>
-              );
-            })}
+            <div className="category-box">
+              <ul className="mb-18">
+                {me.extra.map((item, index) => {
+                  return (
+                    <li
+                      key={index}
+                      className="accordion-title py-9 px-24 bg-orange-400"
+                    >
+                      {item}&nbsp;
+                      <span
+                        className="text-red-500 mr-9"
+                        onClick={() => removeExtra(me, setMe, item)}
+                      >
+                        x
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           </div>
         </div>
       </div>

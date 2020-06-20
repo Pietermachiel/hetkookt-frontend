@@ -230,10 +230,10 @@ button.btn-home.open {
 .category-box {
   width: 100%;
   display: inline-block;
-  margin-bottom: 2em;
   ul {
     background-color: white;
     border: 2px solid #eee;
+    margin-bottom: 2em;
   }
   li.hover {
     // background: #f9f9f9;
@@ -253,7 +253,7 @@ button.btn-home.open {
   }
   h2 {
     font-size: 28px;
-    background: #ebeefb;
+    background: #e1e4ef; // #ebeefb;
     padding: 7px 12px;
     margin: 0;
     font-weight: 500;

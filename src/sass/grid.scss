@@ -1,7 +1,12 @@
 /*------------------------------------*\
   #PAGES-GRID
 \*------------------------------------*/
-
+// .content {
+//   position: relative;
+// }
+.zindex-1 {
+  z-index: -1;
+}
 .w-werkwijze {
   width: 100%;
   @media screen and (min-width: 768px) {
@@ -16,8 +21,8 @@
   width: 100%;
   // max-width: 984px;
   margin: 0 auto;
-  padding-right: 10px;
-  padding-left: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
   // padding-bottom: 24px;
   // @media (min-width: 768px) {
   //   padding-right: 15px;
@@ -36,19 +41,19 @@
   width: 100%;
   max-width: 1024px;
   margin: auto;
-  padding-right: 10px;
-  padding-left: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
   // margin-left: -10px;
   // @media screen and (min-width: 768px) {
   //   padding-right: 15px;
   //   padding-left: 15px;
   //   // width: 748px;
   // }
-  @media screen and (min-width: $on-tablet) {
-    // width: 984px;
-    padding-right: 20px;
-    padding-left: 20px;
-  }
+  // @media screen and (min-width: $on-tablet) {
+  //   // width: 984px;
+  //   padding-right: 20px;
+  //   padding-left: 20px;
+  // }
 }
 
 .flexbox {

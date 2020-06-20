@@ -29,12 +29,10 @@ const Collections = ({ thecart, sorts, dishes, recipes, ...props }) => {
     <>
       {/* <CollectionsFilter dishes={dishes} /> */}
       <div className="container-x">
-        <h1 className={`my-10 leading-relaxed text-indigo-600`}>
+        <h1 className="-mt-20 mb-36 text-indigo-600 ">
           {props.match.params.id}
-          {/* <Link to="/">
-            <span className="ml-18 text-19 font-300">> home</span>
-          </Link> */}
         </h1>
+
         {collection.map((col, xid) => {
           return (
             <Fragment key={xid}>
@@ -61,9 +59,9 @@ const Collections = ({ thecart, sorts, dishes, recipes, ...props }) => {
                 </div>
                 {col.selection.map((recipe, index) => {
                   let cart = thecart.find((c) => c._id === recipe._id);
-                  console.log(cart);
-                  console.log(thecart);
-                  console.log(therecipes);
+                  // console.log(cart);
+                  // console.log(thecart);
+                  // console.log(therecipes);
                   if (cart === undefined) cart = [];
                   const thelength = recipe.tags.length - 1;
                   if (recipe.basics === undefined) return (recipe.basics = []);

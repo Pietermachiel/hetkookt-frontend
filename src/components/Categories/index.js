@@ -4,10 +4,11 @@ import useCurrentWidth from "../common/use-current-width";
 import useCurrentHeight from "../common/use-current-height";
 import useCurrentScroll from "../common/use-current-scroll";
 import { slugify, kalender } from "../common/common";
-import CategoriesFilter from "../CategoriesFilter";
-import RecipeItems from "./RecipeItems";
+// import CategoriesFilter from "../CategoriesFilter";
+import RecipeItems from "../RecipeItems";
+import { handleDeleteFavorite } from "../../services/userService";
 
-const Categories = ({ thecart, categories, recipes, ...props }) => {
+const Categories = ({ me, setMe, thecart, categories, recipes, ...props }) => {
   // console.log(sorts);
 
   const width = useCurrentWidth();
@@ -22,16 +23,9 @@ const Categories = ({ thecart, categories, recipes, ...props }) => {
 
   return (
     <>
-      {/* <CategoriesFilter categories={categories} /> */}
-      <h1
-        className={`mt-0 m-full text-center bg-red-100 text-black my-10 lg:mb-15 leading-relaxed ${props.match.params.id}`}
-      >
-        {props.match.params.id}
-        {/* <Link to="/">
-            <span className="ml-18 text-19 text-black font-300">> home</span>
-          </Link> */}
-      </h1>
       <div className="container-x">
+        <h1 className="-mt-20 mb-36">{props.match.params.id}</h1>
+
         {categories.map((category, index) => {
           // console.log(props.match.params.id);
           // console.log(category.title);
@@ -77,16 +71,18 @@ const Categories = ({ thecart, categories, recipes, ...props }) => {
                             (w) => w.year === cart.date
                           );
                           return (
-                            <RecipeItems
-                              recipe={recipe}
-                              thelength={thelength}
-                              red={red}
-                              cart={cart}
-                              width={width}
-                              height={height}
-                              index={index}
-                              Link={Link}
-                            />
+                            <Fragment>
+                              <RecipeItems
+                                key={recipe._id}
+                                recipe={recipe}
+                                cart={cart}
+                                Link={Link}
+                                handleDeleteFavorite={handleDeleteFavorite}
+                                me={me}
+                                setMe={setMe}
+                                {...props}
+                              />
+                            </Fragment>
                           );
                         })}
                       </div>

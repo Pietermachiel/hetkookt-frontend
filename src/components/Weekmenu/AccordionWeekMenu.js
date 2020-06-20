@@ -4,7 +4,7 @@ import { slugify } from "../common/common";
 import { handleDelete } from "../../services/userService";
 
 // https://codepen.io/davidmunro/pen/xxxeoOo
-const Accordion = ({ title, children, me, setMe, id, year }) => {
+const AccordionWeekMenu = ({ title, children, me, setMe, id, year }) => {
   const [isOpen, setOpen] = useState(false);
   return (
     <div className="accordion-wrapper">
@@ -31,4 +31,4 @@ const Accordion = ({ title, children, me, setMe, id, year }) => {
   );
 };
 
-export default Accordion;
+export default AccordionWeekMenu;

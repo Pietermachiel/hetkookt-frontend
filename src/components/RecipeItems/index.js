@@ -67,7 +67,7 @@ const RecipeItems = ({
             w.year.includes(cart.date) ? (
               <p
                 key={w.index}
-                className={`-mt-21 font-500 text-18 float-right pr-15 pt-11 mb-0 ${
+                className={`-mt-21 font-300 text-16 float-right pr-48 pt-11 mb-0 ${
                   red ? "text-red-500" : null
                 }`}
               >
@@ -80,7 +80,6 @@ const RecipeItems = ({
               <div className="recipe-footer__box-buttons">
                 <button
                   className="btn-delete"
-                  // onClick={() => handleUpdate(recipe._id)}
                   onClick={() => handleDeleteFavorite(me, setMe, recipe._id)}
                 >
                   <svg
@@ -88,17 +87,10 @@ const RecipeItems = ({
                     width="100"
                     height="100"
                     viewBox="0 0 19 19"
-                    // stroke-linejoin="round"
                   >
                     <path d="M14.9 17.5l2.6-2.6 -5.4-5.4 5.4-5.4 -2.6-2.6 -5.4 5.4 -5.4-5.4 -2.6 2.6 5.4 5.4 -5.4 5.4 2.6 2.6 5.4-5.4 5.4 5.4Z" />
                   </svg>
                 </button>
-                {/* <button
-                onClick={() => handleDeleteFavorite(me, setMe, recipe._id)}
-                className="btn-weg"
-              >
-                Wegdoen
-              </button> */}
               </div>
             </div>
           )}

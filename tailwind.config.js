@@ -14,6 +14,7 @@ module.exports = {
         rose: "mistyrose",
         papier: "#f9f3dc",
         rood: "red",
+        background: "#eff2f5",
         red: {
           100: "#ffe4e1", // #f5c5c5
           200: "#ff9191",
@@ -35,6 +36,9 @@ module.exports = {
           700: "#c05621",
           800: "#9c4221",
           900: "#7b341e",
+        },
+        gray: {
+          400: "#ced3d8",
         },
       },
       borderRadius: {
@@ -79,6 +83,7 @@ module.exports = {
         "80": "80px",
         "90": "90px",
         "100": "100px",
+        "125": "125px",
         "150": "150px",
         "200": "200px",
         "250": "250px",

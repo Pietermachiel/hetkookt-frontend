@@ -1,17 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Fragment } from "react";
-import Accordion from "./Accordion";
+import AccordionWeekMenu from "./AccordionWeekMenu";
 import { vandaag, dedatum, kalender, slugify, hetjaar } from "../common/common";
 import { deleteFresh } from "../../services/userService";
 
 const Menu = ({ me, setMe, user, recipes, about, ...props }) => {
-  console.log("me");
-  console.log(me);
-  console.log("user");
-  console.log(user);
-  console.log("recipes");
-  console.log(recipes);
+  // console.log("me");
+  // console.log(me);
+  // console.log("user");
+  // console.log(user);
+  // console.log("recipes");
+  // console.log(recipes);
 
   if (me.stock === undefined) return [];
   if (me.extra === undefined) return [];
@@ -25,17 +25,9 @@ const Menu = ({ me, setMe, user, recipes, about, ...props }) => {
 
   return (
     <Fragment>
-      <h1 className="mt-0 -mx-20 text-center bg-red-500 text-red-100 my-10 leading-relaxed ">
-        Week 24
-        {/* <span className="text-16 ml-18 font-300">menu</span>
-        <span className="text-16 ml-18 font-300">
-          <Link to="/boodschappen">boodschappen</Link>
-        </span>
-        <span className="text-16 ml-18 font-300">
-          <Link to="/favorites">favorieten</Link>
-        </span> */}
-      </h1>{" "}
       <div className="container-x">
+        <h1 className="-mt-20">Week 25</h1>
+
         {thedates.map((k) => {
           var cart = me.recipes.filter((c) =>
             c.date ? c.date.includes(k.year) : null
@@ -54,7 +46,7 @@ const Menu = ({ me, setMe, user, recipes, about, ...props }) => {
           );
         })}
 
-        <div className="mt-18 mb-36">
+        <div className="mt-18 mb-36 unvisable slide work-grid-item ">
           <div className="category-box mb-10 mt-18">
             {thedates.map((k) => {
               var cart = me.recipes.filter((c) =>
@@ -65,8 +57,10 @@ const Menu = ({ me, setMe, user, recipes, about, ...props }) => {
                   {cart.length !== 0 ? (
                     <Fragment>
                       <h2 className="">
-                        {k.day === vandaag(0) ? "vandaag" : k.day}{" "}
-                        <span className="text-gray-600 text-22">{k.dedag}</span>
+                        {k.day === vandaag(0) ? "vandaag" : k.day}
+                        <span className="pl-10 text-gray-600 text-22">
+                          {k.dedag}
+                        </span>
                       </h2>
                     </Fragment>
                   ) : null}
@@ -74,7 +68,7 @@ const Menu = ({ me, setMe, user, recipes, about, ...props }) => {
                     {cart
                       ? cart.map((c) => (
                           <Fragment key={c._id}>
-                            <Accordion
+                            <AccordionWeekMenu
                               title={c.title}
                               id={c._id}
                               year={k.year}
@@ -130,7 +124,7 @@ const Menu = ({ me, setMe, user, recipes, about, ...props }) => {
                                   );
                                 })}
                               </div>
-                            </Accordion>
+                            </AccordionWeekMenu>
                           </Fragment>
                         ))
                       : null}
