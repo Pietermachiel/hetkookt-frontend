@@ -32,7 +32,10 @@ const Sorts = ({ me, thecart, recipes, sorts, categories, ...props }) => {
     <>
       <div className="container-x">
         <h1 className={`-mt-20 mb-36 ${sort.sorts}`}>
-          {sort.title} <span className="text-21 ml-10">{sort.sorts}</span>
+          {sort.title}{" "}
+          <Link to={`/categories/${sort.sorts}`}>
+            <span className="text-21 ml-10">{sort.sorts}</span>
+          </Link>
         </h1>
 
         <div className="flexbox flexbox-margin">

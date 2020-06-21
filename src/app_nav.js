@@ -41,8 +41,8 @@ const App = () => {
           id="menu"
         >
           <div className="main-navigation">
-            <ul className="list-links">
-              <li>
+            <div className="list-links">
+              <div>
                 <div className="list-links__link">
                   <a className="" href="/">
                     Home
@@ -53,8 +53,8 @@ const App = () => {
                     <a className="text-light-hover" href="/" tabIndex="-1"></a>
                   </li>
                 </ul>
-              </li>
-              <li>
+              </div>
+              <div>
                 <div className="list-links__link">
                   <a className="" href="/">
                     Ingrediënten
@@ -83,8 +83,8 @@ const App = () => {
                     </a>
                   </li>
                 </ul>
-              </li>
-              <li>
+              </div>
+              <div>
                 <div className="list-links__link">
                   <a className="" href="/">
                     Gerechten
@@ -109,8 +109,8 @@ const App = () => {
                     </a>
                   </li>
                 </ul>
-              </li>
-              <li>
+              </div>
+              <div>
                 <div className="list-links__link">
                   <a className="" href="/">
                     User
@@ -145,8 +145,8 @@ const App = () => {
                     </a>
                   </li>
                 </ul>
-              </li>
-            </ul>
+              </div>
+            </div>
           </div>
         </nav>
         <div className={`page ${isOpen ? "menu-open" : null}`} id="top">
