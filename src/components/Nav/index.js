@@ -57,7 +57,7 @@ const Nav = ({
           <div className={`panel ${isOpen ? "menu-open" : "menu-closed"}`}>
             <div className="panel-content">
               <div className="main-navigation">
-                <ul className="list-links">
+                <div className="list-links">
                   <li>
                     <div className="list-links__link">
                       <NavLink onClick={handleIsOpen} className="" to="/">
@@ -139,7 +139,12 @@ const Nav = ({
                     </p> */}
                   <li>
                     <div className="list-links__link">
-                      <NavLink onClick={handleIsOpen} className="" to="/user">
+                      <NavLink
+                        aria-label="user"
+                        onClick={handleIsOpen}
+                        className=""
+                        to="/user"
+                      >
                         {me.name}
                       </NavLink>
                     </div>
@@ -156,7 +161,7 @@ const Nav = ({
                       </div>
                     </li>
                   )}
-                </ul>
+                </div>
               </div>
             </div>
           </div>

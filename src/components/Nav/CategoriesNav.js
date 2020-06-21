@@ -15,7 +15,7 @@ const AccordionNav = ({ handleCatOpen, isCatOpen, setCatOpen, categories }) => {
       <div className={`accordion-nav-item ${!isCatOpen ? "collapsed" : ""}`}>
         <div className="accordion-nav-content">
           {categories.map((c) => (
-            <li key={c.id}>
+            <div key={c.id}>
               <ul className="item-links">
                 <li>
                   <Link
@@ -27,7 +27,7 @@ const AccordionNav = ({ handleCatOpen, isCatOpen, setCatOpen, categories }) => {
                   </Link>
                 </li>
               </ul>
-            </li>
+            </div>
           ))}
         </div>
       </div>

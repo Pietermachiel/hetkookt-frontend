@@ -16,7 +16,7 @@ const LogoBox = ({ user, me }) => {
       )}
       <div className="hetkookt-logo">
         <NavLink to="/">
-          <img src="/img/icons/hetkookt.png" alt="" />
+          <img src="/img/icons/hetkookt.png" alt="logo hetkookt" />
         </NavLink>
       </div>
       {/* <div className="logo-hetkookt">
