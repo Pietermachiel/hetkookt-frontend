@@ -3,38 +3,47 @@ import { Link } from "react-router-dom";
 import parseHtml from "html-react-parser";
 import { slugify } from "../common/common";
 
-const Search = ({ recipes }) => {
-  const [searchTerm, setSearchTerm] = useState([]);
-  const [searchResults, setSearchResults] = useState([]);
-  const [search, setSearch] = useState(false);
+const Search = ({
+  recipes,
+  searchResults,
+  setSearchResults,
+  search,
+  setSearch,
+  handleChange,
+  handleClick,
+  searchTerm,
+}) => {
+  // const [searchTerm, setSearchTerm] = useState([]);
+  // const [searchResults, setSearchResults] = useState([]);
+  // const [search, setSearch] = useState(false);
 
-  useEffect(() => {
-    const results = recipes.filter((recipe) => {
-      const lowercaserecipe = recipe.title.toLowerCase();
-      return lowercaserecipe.indexOf(searchTerm) !== -1;
-    });
-    setSearchResults(results);
-  }, [searchTerm, recipes]);
+  // useEffect(() => {
+  //   const results = recipes.filter((recipe) => {
+  //     const lowercaserecipe = recipe.title.toLowerCase();
+  //     return lowercaserecipe.indexOf(searchTerm) !== -1;
+  //   });
+  //   setSearchResults(results);
+  // }, [searchTerm, recipes]);
 
-  const handleChange = (e) => {
-    setSearchTerm(e.target.value);
-    setSearch(true);
-    console.log("search");
-  };
+  // const handleChange = (e) => {
+  //   setSearchTerm(e.target.value);
+  //   setSearch(true);
+  //   // console.log("search");
+  // };
 
-  const handleClick = (e) => {
-    // console.log("handleClick");
-    // console.log(e);
-    setSearchTerm(e);
-    // setSearchResults([]);
-  };
+  // const handleClick = (e) => {
+  //   // console.log("handleClick");
+  //   // console.log(e);
+  //   setSearchTerm(e);
+  //   // setSearchResults([]);
+  // };
 
   return (
     <>
       <div className="relative">
         <form className="relative w-full">
           <input
-            className={`w-full bg-red-400 text-white placeholder-white py-18 pr-20 pl-36 w-full  text-17`}
+            className={`w-full bg-red-400 text-white placeholder-white py-16 pr-20 pl-36 w-full  text-17`}
             type="text"
             placeholder="Zoek recept..."
             label="Search recipe"

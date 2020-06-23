@@ -84,7 +84,7 @@ const Recipe = ({
 
   return (
     <Fragment>
-      <div className="container-x">
+      <div className="container-x unvisable slide work-grid-item">
         <h1 className="-mt-20 text-28 lg:text-36 text-green-600 mb-18 lg:mb-8">
           {therecipe.title}{" "}
           {/* <span className="text-21 lg:pl-10">bladgroenten</span> */}
@@ -178,19 +178,8 @@ const Recipe = ({
           me={me}
           setMe={setMe}
         />
-
         <div className="recepten">
           <div className="recepten-box">
-            <div className="title">
-              {/* <Link
-              className="hover:text-red-500"
-              to={`/sorts/${therecipe.tags[0]}`}
-            >
-              <p className="font-300 text-19 leading-4 mb-36">
-                meer {therecipe.tags[0]} &nbsp;>
-              </p>
-            </Link> */}
-            </div>
             {/* ingredienten */}
             <div className="ingredienten">
               <p>vers</p>
@@ -267,73 +256,6 @@ const Recipe = ({
               </div>
 
               <div className="mb-18 mt-0">
-                {/* weekmenu */}
-
-                {/* {!user && (
-                  <NavLink className="" to="/login">
-                    <button
-                      className="mb-10 pr-18 btn-add mr-10 text-19 font-600 text-indigo-700 flex item-center"
-                      onClick={handleIsOpen}
-                    >
-                      <img
-                        className="w-25 h-25 mr-10"
-                        src="/img/feather/list.svg"
-                        alt=""
-                      />
-                      zet op het weekmenu
-                    </button>
-                  </NavLink>
-                )} */}
-
-                {/* kookschrift */}
-
-                {/* {!user && (
-                <NavLink to="/login">
-                  <div className="mr-15">
-                    <button
-                      className="like flex"
-                      // onClick={() => handleIsFavorite(therecipe)}
-                    >
-                      {therecipe.favorite === true ? (
-                        <img
-                          className="w-25"
-                          src="/img/feather/bookmark-red.svg"
-                          alt=""
-                        />
-                      ) : (
-                        <img
-                          className="w-25"
-                          src="/img/feather/bookmark.svg"
-                          alt=""
-                        />
-                      )}
-                      <span className="pl-10 text-19 text-indigo-700 font-600 hover:text-red-500">
-                        zet in favorieten
-                      </span>
-                    </button>
-                  </div>
-                </NavLink>
-              )} */}
-
-                {/* {!user && (
-                <NavLink to="/login">
-                  <div className="">
-                    <div
-                      className="h-20 flex mb-0"
-                      // onClick={() => handleNotitie()}
-                    >
-                      <img
-                        className="w-20"
-                        src="/img/feather/edit-2.svg"
-                        alt=""
-                      />
-                      <span className="pl-14 text-19 text-indigo-700 font-600 hover:text-red-500">
-                        maak een notitie
-                      </span>
-                    </div>
-                  </div>
-                </NavLink>
-              )} */}
                 {user && (
                   <div className="">
                     <div
@@ -357,19 +279,21 @@ const Recipe = ({
                     ></textarea>
                   </div>
                 )}
-                <a
-                  href={`${therecipe.source_url}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div className="flex mt-72">
-                    <img className="w-25" src="/img/feather/book.svg" alt="" />
-                    &nbsp;<span className="pl-5">Bron: {therecipe.source}</span>
-                  </div>
-                </a>
               </div>
+            </div>{" "}
+          </div>{" "}
+        </div>{" "}
+        <div className="recepten-source">
+          <a
+            href={`${therecipe.source_url}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="flex mt-72">
+              <img className="w-25" src="/img/feather/book.svg" alt="" />
+              &nbsp;<span className="pl-5">Bron: {therecipe.source}</span>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </Fragment>

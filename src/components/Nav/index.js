@@ -23,6 +23,13 @@ const Nav = ({
   recipes,
   categories,
   dishes,
+  searchResults,
+  setSearchResults,
+  search,
+  setSearch,
+  handleChange,
+  handleClick,
+  searchTerm,
   ...props
 }) => {
   function handleDelete(userId) {
@@ -57,7 +64,16 @@ const Nav = ({
           </div>
           <div className={`panel ${isOpen ? "menu-open" : "menu-closed"}`}>
             <div className="panel-content">
-              <Search recipes={recipes} />
+              <Search
+                recipes={recipes}
+                searchResults={searchResults}
+                setSearchResults={setSearchResults}
+                search={search}
+                setSearch={setSearch}
+                handleChange={handleChange}
+                handleClick={handleClick}
+                searchTerm={searchTerm}
+              />
               <div className="main-navigation">
                 <div className="list-links">
                   <li>

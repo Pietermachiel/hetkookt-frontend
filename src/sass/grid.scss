@@ -1,9 +1,10 @@
 /*------------------------------------*\
   #PAGES-GRID
 \*------------------------------------*/
-// .content {
-//   position: relative;
-// }
+.content {
+  min-height: calc(100vh - 250px);
+  // position: relative;
+}
 .zindex-1 {
   z-index: -1;
 }

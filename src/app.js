@@ -40,7 +40,37 @@ const App = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isCatOpen, setCatOpen] = useState(false);
   const [isColOpen, setColOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+  const [search, setSearch] = useState(false);
 
+  // search
+
+  useEffect(() => {
+    const results = recipes.filter((recipe) => {
+      const lowercaserecipe = recipe.title.toLowerCase();
+      return lowercaserecipe.indexOf(searchTerm) !== -1;
+    });
+    setSearchResults(results);
+  }, [searchTerm, recipes]);
+
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value);
+    setSearch(true);
+    // console.log("search");
+  };
+
+  const handleClick = (e) => {
+    // console.log("handleClick");
+    // console.log(e);
+    setSearchTerm(e);
+    // setSearchResults([]);
+    setSearch(false);
+    toggleSwitch();
+    setIsOpen(!isOpen);
+  };
+
+  // menu
   const handleIsOpen = (e) => {
     // toggleMenu();
     toggleSwitch();
@@ -48,12 +78,14 @@ const App = () => {
     e.stopPropagation();
   };
 
+  // categories
   const handleCatOpen = () => {
     toggleSwitch();
     setIsOpen(!isOpen);
     setCatOpen(!isCatOpen);
   };
 
+  // collections
   const handleColOpen = () => {
     toggleSwitch();
     setIsOpen(!isOpen);
@@ -169,6 +201,13 @@ const App = () => {
             isColOpen={isColOpen}
             setColOpen={setColOpen}
             handleColOpen={handleColOpen}
+            searchResults={searchResults}
+            setSearchResults={setSearchResults}
+            search={search}
+            setSearch={setSearch}
+            handleChange={handleChange}
+            handleClick={handleClick}
+            searchTerm={searchTerm}
             me={me}
             user={user}
             recipes={recipes}
@@ -340,10 +379,10 @@ const App = () => {
             render={(props) => <Test user={user} {...props} />}
           />
         </Switch>
-        <footer className="">
-          <Footer />
-        </footer>
-      </div>
+      </div>{" "}
+      <footer className="">
+        <Footer />
+      </footer>
     </>
   );
 };
