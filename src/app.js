@@ -5,6 +5,7 @@ import RegisterForm from "./components/registerForm";
 import inschrijven from "./components/inschrijven";
 import Verify from "./components/verify";
 import logout from "./components/logout";
+import Welkom from "./components/welkom";
 import Test from "./components/Test";
 import Home from "./components/Home";
 import Recipe from "./components/Recipe";
@@ -170,6 +171,7 @@ const App = () => {
             handleColOpen={handleColOpen}
             me={me}
             user={user}
+            recipes={recipes}
             categories={categories}
             sorts={sorts}
             dishes={dishes}
@@ -191,6 +193,7 @@ const App = () => {
                 dishes={dishes}
                 thecart={thecart}
                 about={about}
+                recipes={recipes}
                 {...props}
               />
             )}
@@ -304,7 +307,13 @@ const App = () => {
             path="/voorraad"
             render={(props) => {
               return (
-                <Voorraad me={me} setMe={setMe} stock={stock} {...props} />
+                <Voorraad
+                  me={me}
+                  setMe={setMe}
+                  recipes={recipes}
+                  stock={stock}
+                  {...props}
+                />
               );
             }}
           />
@@ -323,10 +332,12 @@ const App = () => {
             }}
           />
           <Route
-            path="/test/:id"
-            render={(props) => (
-              <Test {...props} dishes={dishes} recipes={recipes} />
-            )}
+            path="/welkom"
+            render={(props) => <Welkom user={user} {...props} />}
+          />
+          <Route
+            path="/test"
+            render={(props) => <Test user={user} {...props} />}
           />
         </Switch>
         <footer className="">

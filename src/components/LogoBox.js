@@ -19,14 +19,6 @@ const LogoBox = ({ user, me }) => {
           <img src="/img/icons/hetkookt.png" alt="logo hetkookt" />
         </NavLink>
       </div>
-      {/* <div className="logo-hetkookt">
-        h
-        <span className="shift">
-          <span>e</span>
-        </span>
-        t <br />
-        kookt
-      </div> */}
     </div>
   );
 };

@@ -154,14 +154,9 @@ const App = () => {
             <div className="page-header">
               <button className="button-login">Login</button>
             </div>
-            <div className="logo-hetkookt">
-              h
-              <span className="shift">
-                <span>e</span>
-              </span>
-              t <br />
-              kookt
-            </div>
+            {/* <div className="logo-hetkookt">
+              h<span className="shift">e</span>t kookt
+            </div> */}
             <div class="page-unit"></div>
           </div>
         </div>

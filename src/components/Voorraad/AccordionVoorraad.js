@@ -2,32 +2,37 @@ import React, { useState } from "react";
 
 // https://codepen.io/davidmunro/pen/xxxeoOo
 const AccordionVoorraad = ({ s, title, children, me, setMe, id, year }) => {
-  const [isVoorraadOpen, setVoorraadOpen] = useState(false);
+  const [isVoorraadOpen, setVoorraadOpen] = useState(true);
 
-  console.log(s);
+  // console.log(s);
   return (
     <div className="mb-10">
-      <div className={` ${isVoorraadOpen ? "open" : ""}`}>
+      <div className="">
+        {/* <div className={` ${isVoorraadOpen ? "open" : ""}`}> */}
         <div
           onClick={() => setVoorraadOpen(!isVoorraadOpen)}
           className="accordion-voorraad-title"
         >
           <h2 className="text-36 mb-10 flex items-baseline">
             {title}&nbsp;{" "}
-            {s.item.map((i) => {
-              if (me.stock.includes(i.title))
+            {s.item.map((i, xid) => {
+              console.log("i");
+              console.log(i);
+              console.log("me.stock");
+              console.log(me.stock);
+              if (me.stock.includes(i))
                 return (
-                  <span className="h-20 w-20 ml-5">
+                  <span key={xid} className="h-20 w-20 ml-5">
                     <img src="/img/feather/circle-orange.svg" alt="" />
                   </span>
                 );
             })}
           </h2>
-          <span
+          {/* <span
             className={`accordion-voorraad-arrow ${
               isVoorraadOpen ? "open" : ""
             }`}
-          ></span>
+          ></span> */}
         </div>
       </div>
       <div

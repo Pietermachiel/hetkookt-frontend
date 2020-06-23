@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
+import { NavLink } from "react-router-dom";
 
-const Test = ({ user, ...props }) => {
+const Welkom = ({ user, ...props }) => {
   // console.log("recipes");
   // console.log(recipes);
   // console.log(props);
@@ -16,10 +17,15 @@ const Test = ({ user, ...props }) => {
   return (
     <Fragment>
       <div className="container-x -mt-20">
-        <h1>Test</h1>
+        <h1>Welkom bij hetkookt!</h1>
+
+        <p>Je kunt nu inloggen</p>
+
+        <button className="button-blue mt-18 mb-24">
+          <NavLink to="/login">inloggen</NavLink>
+        </button>
       </div>
     </Fragment>
   );
 };
-
-export default Test;
+export default Welkom;

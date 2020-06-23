@@ -15,8 +15,8 @@ const AccordionNav = ({ handleColOpen, isColOpen, setColOpen, dishes }) => {
       </div>
       <div className={`accordion-nav-item ${!isColOpen ? "collapsed" : ""}`}>
         <div className="accordion-nav-content">
-          {dishes.map((c) => (
-            <div key={c.id}>
+          {dishes.map((c, xid) => (
+            <div key={xid}>
               <ul className="item-links">
                 <li>
                   <Link

@@ -5,7 +5,7 @@ import CollectionsNav from "./CollectionsNav";
 import auth from "../../services/authService";
 import { deleteUser } from "../../services/userService";
 import Kookschrift from "../Kookschrift";
-
+import Search from "../Search";
 // import SlidingPanel from "react-sliding-side-panel";
 
 const Nav = ({
@@ -20,6 +20,7 @@ const Nav = ({
   handleIsOpen,
   me,
   user,
+  recipes,
   categories,
   dishes,
   ...props
@@ -29,8 +30,8 @@ const Nav = ({
     auth.logout();
     window.location = "/";
   }
-  console.log("props-nav");
-  console.log(props.location.pathname);
+  // console.log("props-nav");
+  // console.log(props.location.pathname);
   const location = props.location.pathname;
   return (
     <Fragment>
@@ -56,6 +57,7 @@ const Nav = ({
           </div>
           <div className={`panel ${isOpen ? "menu-open" : "menu-closed"}`}>
             <div className="panel-content">
+              <Search recipes={recipes} />
               <div className="main-navigation">
                 <div className="list-links">
                   <li>

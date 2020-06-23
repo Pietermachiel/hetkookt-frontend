@@ -5,8 +5,8 @@ const Kookschrift = ({ user, location }) => {
   const [kookschriftOpen, setKookschriftOpen] = useState(false);
   // const [kookschriftItem, setKookschriftItem] = useState("weekmenu");
 
-  console.log("props-kookschrift");
-  console.log(location);
+  // console.log("props-kookschrift");
+  // console.log(location);
 
   const handleClick = () => {
     setKookschriftOpen(!kookschriftOpen);

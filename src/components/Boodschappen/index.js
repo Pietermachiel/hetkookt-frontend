@@ -178,7 +178,7 @@ const Boodschappen = ({ me, setMe }) => {
             </form>
             <div className="category-box">
               <ul className="mb-18">
-                {me.extra.map((item, index) => {
+                {/* {me.extra.map((item, index) => {
                   return (
                     <li
                       key={index}
@@ -193,7 +193,7 @@ const Boodschappen = ({ me, setMe }) => {
                       </span>
                     </li>
                   );
-                })}
+                })} */}
               </ul>
             </div>
           </div>

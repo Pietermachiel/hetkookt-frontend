@@ -38,12 +38,9 @@ class RegisterForm extends Form {
         <div id="checkoutBox" className="login-box mt-24">
           <div className="login-box__inner">
             <h3 className="">
-              Schrijf je in bij
-              <span className="font-500">
-                &nbsp;het<span className="font-700">kookt</span>.
-              </span>
+              Schrijf je in bij <span className="logo-hetkookt">hetkookt!</span>
             </h3>
-            <br />
+            <br />{" "}
             {/* <p className="text-24 mb-18 leading-snug">
               Maak een account aan voor een weekmenu en een kookschrift met
               persoonlijke notities.
