@@ -5,8 +5,8 @@ import { kalender } from "../common/common";
 
 const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
   if (me.stock === undefined) return (me.stock = []);
-  console.log("me.stock");
-  console.log(me.stock);
+  // console.log("me.stock");
+  // console.log(me.stock);
 
   // console.log(me);
   if (me.recipes === undefined) return [];
@@ -53,12 +53,23 @@ const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
     })(Object.create(null)),
     []
   );
-  console.log("voorraad1");
+
+  console.log("voorraad");
   console.log(voorraad);
 
   const removeItem = (value) => {
     removeStock(me, setMe, value);
   };
+
+  const devoorraad = stock.filter((r) => {
+    const item = voorraad.find((k) =>
+      r.stockitems ? r.stockitems.includes(k.item) : null
+    );
+    return item;
+  });
+
+  console.log("devoorraad");
+  console.log(devoorraad);
 
   return (
     <Fragment>
@@ -66,50 +77,46 @@ const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
         <h1 className="mb-36 -mt-20">Voorraad</h1>
         <div className=" grid-box unvisable slide work-grid-item ">
           <Fragment>
-            {voorraad.map((v) => (
-              <Fragment>
-                {stock.map((s, xid) => {
-                  console.log("stock");
-                  console.log(s);
-                  if (s.item.includes(v.item))
-                    return (
-                      <Fragment key={xid}>
-                        <AccordionVoorraad s={s} title={s.title} me={me}>
-                          <ul className="mb-18 ">
-                            {s.item.map((i, xid) => {
-                              if (i === v.item)
-                                return (
-                                  <Fragment key={xid}>
-                                    {me.stock.includes(i) ? (
-                                      <li className="mb-0 py-9 px-24 font-500 bg-orange-400">
-                                        {i}{" "}
-                                        <span
-                                          className="text-red-600 font-500"
-                                          onClick={() => removeItem(i)}
-                                        >
-                                          x
-                                        </span>
-                                      </li>
-                                    ) : (
-                                      <li
-                                        onClick={() =>
-                                          toggleStock(me, setMe, i)
-                                        }
-                                        className="mb-0 py-9 px-24 bg-green-200"
-                                      >
-                                        {i} <span className="">+</span>
-                                      </li>
-                                    )}
-                                  </Fragment>
-                                );
-                            })}
-                          </ul>
-                        </AccordionVoorraad>
-                      </Fragment>
-                    );
-                })}
-              </Fragment>
-            ))}
+            {devoorraad.map((dv, xid) => {
+              //   console.log("dv");
+              //   console.log(dv.title);
+              if (dv === undefined) return [];
+              return (
+                <Fragment key={xid}>
+                  {/* <h2>{dv.title}</h2> */}
+
+                  <AccordionVoorraad s={dv} title={dv.title} me={me}>
+                    <ul className="mb-18 " key={xid}>
+                      {voorraad.map((v, xid) => {
+                        if (dv.stockitems.includes(v.item))
+                          return (
+                            <Fragment key={xid}>
+                              {me.stock.includes(v.item) ? (
+                                <li className="mb-0 py-9 px-24 font-500 bg-orange-400">
+                                  {v.item}{" "}
+                                  <span
+                                    className="text-red-600 font-500"
+                                    onClick={() => removeItem(v.item)}
+                                  >
+                                    x
+                                  </span>
+                                </li>
+                              ) : (
+                                <li
+                                  onClick={() => toggleStock(me, setMe, v.item)}
+                                  className="mb-0 py-9 px-24 bg-orange-200"
+                                >
+                                  {v.item} <span className="">+</span>
+                                </li>
+                              )}
+                            </Fragment>
+                          );
+                      })}
+                    </ul>
+                  </AccordionVoorraad>
+                </Fragment>
+              );
+            })}
           </Fragment>
         </div>
       </div>
@@ -119,3 +126,12 @@ const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
 };
 
 export default Voorraad;
+
+// {voorraad.map((v, xid) => {
+//   if (dv.stockitems.includes(v.item))
+//     return (
+//       <Fragment key={xid}>
+//         <div className="mb-10">{v.item}</div>
+//       </Fragment>
+//     );
+// })}

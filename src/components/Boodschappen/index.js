@@ -90,8 +90,8 @@ const Boodschappen = ({ me, setMe }) => {
                 const deboodschappen = boodschappen.filter((b) =>
                   g.sort.includes(b.item)
                 );
-                // console.log("deboodschappen");
-                // console.log(deboodschappen);
+                console.log("deboodschappen");
+                console.log(deboodschappen);
                 if (deboodschappen.length !== 0)
                   return (
                     <Fragment key={xid}>
@@ -105,22 +105,25 @@ const Boodschappen = ({ me, setMe }) => {
                           deboodschappen.length !== 0 ? (
                             <li
                               key={xid}
-                              className="accordion-title py-9 px-24 bg-green-200"
+                              className={`accordion-title py-9 px-24 bg-${g.title}`}
                             >
-                              <div className="items-quantity">
-                                {b.quantity} {b.unit}
+                              <div className="flex">
+                                <div className="items-quantity">
+                                  {b.quantity} {b.unit}
+                                </div>
+                                <div className="items-product font-700">
+                                  {b.item}{" "}
+                                </div>{" "}
                               </div>
-                              <div className="items-product">
-                                {b.item}{" "}
-                                <span
-                                  onClick={() =>
-                                    deleteBoodschappen(me, setMe, b.item)
-                                  }
-                                  className="text-red-600 mr-10 font-500"
-                                >
-                                  &nbsp;x
-                                </span>
-                              </div>
+
+                              <span
+                                onClick={() =>
+                                  deleteBoodschappen(me, setMe, b.item)
+                                }
+                                className="text-red-600 mr-10 font-500"
+                              >
+                                &nbsp;x
+                              </span>
                             </li>
                           ) : null
                         )}
@@ -142,7 +145,7 @@ const Boodschappen = ({ me, setMe }) => {
                 {me.stock.map((v, xid) => (
                   <li
                     key={xid}
-                    className="accordion-title py-9 px-24 bg-orange-400"
+                    className="accordion-title text-16 py-9 px-24 bg-orange-400"
                   >
                     {v}{" "}
                     <span
@@ -178,7 +181,7 @@ const Boodschappen = ({ me, setMe }) => {
             </form>
             <div className="category-box">
               <ul className="mb-18">
-                {/* {me.extra.map((item, index) => {
+                {me.extra.map((item, index) => {
                   return (
                     <li
                       key={index}
@@ -193,7 +196,7 @@ const Boodschappen = ({ me, setMe }) => {
                       </span>
                     </li>
                   );
-                })} */}
+                })}
               </ul>
             </div>
           </div>

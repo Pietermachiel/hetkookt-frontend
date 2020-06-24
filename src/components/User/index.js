@@ -1,6 +1,7 @@
-import React from "react";
+import React, { Fragment } from "react";
 import auth from "../../services/authService";
 import { deleteUser } from "../../services/userService";
+import { vandaag, kalender } from "../common/common";
 
 const User = ({ me, user, thecart, ...props }) => {
   function handleLogout() {
@@ -14,10 +15,27 @@ const User = ({ me, user, thecart, ...props }) => {
     window.location = "/";
   }
 
+  const thedates = me.recipes.map((dd) => {
+    const total = [];
+    total.push(dd.title);
+    return total;
+  });
+
+  // const devoorraad = stock.filter((r) => {
+  //   const item = voorraad.find((k) =>
+  //     r.stockitems ? r.stockitems.includes(k.item) : null
+  //   );
+  //   return item;
+  // });
+
   // console.log("props");
   // console.log(props);
   // console.log("user");
   // console.log(user);
+  console.log("me.recipes");
+  console.log(me.recipes);
+  console.log("thedates");
+  console.log(thedates);
 
   return (
     <div className="container-x">
@@ -41,47 +59,62 @@ const User = ({ me, user, thecart, ...props }) => {
           Delete account
         </button>
 
-        {/* <div className="mt-18">
-        {user && (
-          <>
-            <Link
-              className={
-                "favorites" === props.location.pathname
-                  ? `nav-link flex active`
-                  : `nav-link flex`
-              }
-              to={"/favorites"}
-            >
-              <p className="pr-5">
-                kookschrift{" "}
-                <span className="text-red-500">{favorites.length}</span>
-              </p>
-            </Link>
-
-            <div className="">
-              {thecart.map((m) => {
-                if (m.favorite === true)
-                  return (
-                    <div className="" key={m._id}>
-                      <h3 className={`break-words mb-15`}>{m.title}</h3>
+        <Fragment>
+          <div className="container-x">
+            <h1 className="-mt-20">Week 25</h1>
+            {/* 
+            {thedates.map((k) => {
+              var cart = me.recipes.filter((c) =>
+                c.date ? c.date.includes(k.year) : null
+              );
+              return (
+                <Fragment key={k.index}>
+                  {cart.length === 0 ? (
+                    <div className="">
+                      <h2 className="pt-15">Menu</h2>
+                      <p className="font-600 mt-21">
+                        Er staat nog niets op het menu.
+                      </p>
                     </div>
-                  );
-              })}
-            </div>
+                  ) : null}
+                </Fragment>
+              );
+            })} */}
 
-            <Link
-              className={`nav-link
-            ${props.location.pathname === "favorites" ? `active` : ``}
-            `}
-              to={"/weekmenu"}
-            >
-              <div className="items-center">
-                weekmenu <span className="text-red-500">{thedates.length}</span>
+            <div className="mt-18 mb-36 unvisable slide work-grid-item ">
+              <div className="category-box mb-10 mt-18">
+                {/* {thedates.map((k) => {
+                  var cart = me.recipes.filter((c) =>
+                    c.date ? c.date.includes(k.year) : null
+                  );
+                  return (
+                    <Fragment key={k.index}>
+                      {cart.length !== 0 ? (
+                        <Fragment>
+                          <h2 className="">
+                            {k.day === vandaag(0) ? "vandaag" : k.day}
+                            <span className="pl-10 text-gray-600 text-22">
+                              {k.dedag}
+                            </span>
+                          </h2>
+                        </Fragment>
+                      ) : null}
+                      <ul className="mb-18">
+                        {cart
+                          ? cart.map((c) => (
+                              <Fragment key={c._id}>
+                               
+                              </Fragment>
+                            ))
+                          : null}
+                      </ul>
+                    </Fragment>
+                  );
+                })} */}
               </div>
-            </Link>
-          </>
-        )}
-      </div> */}
+            </div>
+          </div>
+        </Fragment>
       </div>
     </div>
   );
