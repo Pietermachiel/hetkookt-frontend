@@ -15,11 +15,38 @@ const User = ({ me, user, thecart, ...props }) => {
     window.location = "/";
   }
 
+  // .concat (of .map)
+
   const thedates = me.recipes.map((dd) => {
-    const total = [];
-    total.push(dd.title);
-    return total;
+    const dedates = dd.date.map((d) => {
+      const x = [];
+      var totaldates = x.concat(d);
+      return totaldates[0];
+    });
+    return dedates;
   });
+
+  // spread operator
+
+  // const thedates = me.recipes.map((dd) => {
+  //   const dedates = dd.date.map((d) => {
+  //     const x = [];
+  //     var totaldates = [...x, d];
+  //     return totaldates[0];
+  //   });
+  //   return dedates;
+  // });
+
+  // reduce
+
+  // const myrecipes = me.recipes;
+
+  // const thedates = myrecipes.reduce(
+  //   (acc, dates) => acc + dates.date + ", ",
+  //   ""
+  // );
+
+  const newdates = thedates.reduce((acc, date) => acc + date, []);
 
   // const devoorraad = stock.filter((r) => {
   //   const item = voorraad.find((k) =>
@@ -36,6 +63,8 @@ const User = ({ me, user, thecart, ...props }) => {
   console.log(me.recipes);
   console.log("thedates");
   console.log(thedates);
+  console.log("newdates");
+  console.log(newdates);
 
   return (
     <div className="container-x">

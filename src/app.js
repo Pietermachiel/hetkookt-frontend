@@ -376,7 +376,9 @@ const App = () => {
           />
           <Route
             path="/test"
-            render={(props) => <Test user={user} {...props} />}
+            render={(props) => (
+              <Test user={user} recipes={recipes} {...props} />
+            )}
           />
         </Switch>
       </div>{" "}

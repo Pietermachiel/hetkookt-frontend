@@ -20,8 +20,8 @@ const Recipe = ({
   const [notitie, setNotitie] = useState(false);
 
   const API = props.match.url;
-  // console.log("props.match.url");
-  // console.log(props.match.url);
+  console.log("props.match.url");
+  console.log(props.match.url);
   // console.log("therecipe");
   // console.log(therecipe);
 
