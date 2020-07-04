@@ -23,7 +23,7 @@ const Kookschrift = ({ user, location }) => {
 
       <div className="pl-20">
         <div className="kookschrift">
-          <Link to="/weekmenu">
+          <Link to="/kookschrift">
             <div className="kookschrift-title">
               Kookschrift
               <span
@@ -37,17 +37,16 @@ const Kookschrift = ({ user, location }) => {
               {/* <Link to="/weekmenu">
               <li>weekmenu</li>
             </Link> */}
+              <Link onClick={() => handleClick()} to="/weekmenu">
+                <li>weekmenu</li>
+              </Link>{" "}
               <Link onClick={() => handleClick()} to="/boodschappen">
                 <li>boodschappen</li>
               </Link>
-              <Link onClick={() => handleClick()} to="/voorraad">
+              {/* <Link onClick={() => handleClick()} to="/voorraad">
                 {" "}
                 <li>voorraad</li>
-              </Link>
-              <Link onClick={() => handleClick()} to="/favorites">
-                <li>favorieten</li>
-              </Link>
-
+              </Link> */}
               {/* <li onClick={() => handleClick("weekmenu")}>weekmenu</li>
           <li onClick={() => handleClick("boodschappen")}>boodschappen</li>
           <li onClick={() => handleClick("voorraad")}>voorraad</li>

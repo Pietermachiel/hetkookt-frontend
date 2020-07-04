@@ -1,35 +1,20 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { uniq } from "../common/common";
-import { handleDeleteFavorite } from "../../services/userService";
+// import { handleDeleteFavorite } from "../../services/userService";
 import RecipeItems from "../RecipeItems";
 
 const Favorites = ({ me, setMe, recipes, ...props }) => {
   if (me.favorites === undefined) me.favorites = [];
-  // console.log("thefavorites");
-  // console.log(thefavorites);
-  // console.log(thefavorites.length);
-  // console.log(dishes);
-  // console.log(thefavorites);
 
   let favoritecart = [];
   me.favorites.map((r) => {
     let thefavorite = recipes.find((f) => f._id === r);
     return favoritecart.push(thefavorite);
   });
-  // console.log("me.recipes");
-  // console.log(me.recipes);
-  // console.log("favoritecart");
-  // console.log(favoritecart);
 
-  // const favoritecart = thecart.filter((s) => s.favorite === true);
-  // console.log("favoritecart");
-  // console.log(favoritecart);
-  // let favoritedish = [];
   let favoritedish = favoritecart.map((f) => f.dish);
   favoritedish = favoritedish.filter(uniq);
-  // console.log("favoritedish");
-  // console.log(favoritedish);
 
   return (
     <Fragment>
@@ -67,7 +52,7 @@ const Favorites = ({ me, setMe, recipes, ...props }) => {
                         // width={width}
                         // height={height}
                         Link={Link}
-                        handleDeleteFavorite={handleDeleteFavorite}
+                        // handleDeleteFavorite={handleDeleteFavorite}
                         me={me}
                         setMe={setMe}
                         {...props}

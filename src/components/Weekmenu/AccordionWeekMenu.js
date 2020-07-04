@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { slugify } from "../common/common";
-import { handleDelete } from "../../services/userService";
+import { deleteFromMenu } from "../../services/userService";
 
 // https://codepen.io/davidmunro/pen/xxxeoOo
 const AccordionWeekMenu = ({ title, children, me, setMe, id, year }) => {
@@ -10,19 +10,20 @@ const AccordionWeekMenu = ({ title, children, me, setMe, id, year }) => {
     <div className="accordion-wrapper">
       <div className={`accordion-title ${isOpen ? "open" : ""}`}>
         <div className="">
-          <Link to={`/recipe/${slugify(title)}`}>{title} </Link>{" "}
+          <Link to={`/kookschrift/${slugify(title)}`}>{title} </Link>{" "}
           <span
             className="text-red-500"
-            onClick={() => handleDelete(me, setMe, id, year)}
+            onClick={() => deleteFromMenu(me, setMe, id, year)}
           >
             &nbsp;<span className="text-19">x</span>
           </span>
         </div>
-
-        <span
-          onClick={() => setOpen(!isOpen)}
-          className={`accordion-arrow ${isOpen ? "open" : ""}`}
-        ></span>
+        <div onClick={() => setOpen(!isOpen)} className="relative flex ">
+          <span className="font-300 mr-10 text-16">verse ingredienten</span>
+          <span
+            className={`accordion-arrow mt-10 ${isOpen ? "open" : ""}`}
+          ></span>
+        </div>
       </div>
       <div className={`accordion-item ${!isOpen ? "collapsed" : ""}`}>
         <div className="accordion-content">{children}</div>

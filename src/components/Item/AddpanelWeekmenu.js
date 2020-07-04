@@ -1,29 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { kalender, hetjaar, theweek } from "../common/common";
-// import { doSave } from "../../services/userService";
+import { doPutMenu } from "../../services/userService";
+import { Redirect } from "react-router";
 
-const AddpanelWeekmenu = ({
-  isOpen,
-  therecipe,
-  thecart,
-  me,
-  setMe,
-  // doSave,
-  // setIsOpen,
-  handleIsOpen,
-}) => {
-  // const handleSave = (me, setMe, therecipe, hetjaar) => {
-  //   doSave(me, setMe, therecipe, hetjaar);
-  //   // props.history.push(props.location.pathname);
-  //   handleIsOpen(!isOpen);
-  // };
+const AddpanelWeekmenu = ({ isOpen, therecipe, me, setMe, handleIsOpen }) => {
+  const [routeRedirect, setRedirect] = useState("");
+
+  const handleSave = (me, setMe, therecipe, dedate) => {
+    // console.log("addpanel: dedate");
+    // console.log(dedate);
+    doPutMenu(me, setMe, therecipe, dedate);
+    // props.history.push(props.location.pathname);
+    handleIsOpen(!isOpen);
+    setRedirect(true);
+  };
+
+  const redirect = routeRedirect;
+  if (redirect) {
+    return <Redirect to="/weekmenu" />;
+  }
 
   return (
     <div className="add">
-      <div
-        // onMouseLeave={() => handleIsOpen()}
-        className={`action-panel ${isOpen ? "action-panel__open" : null}`}
-      >
+      <div className={`action-panel ${isOpen ? "action-panel__open" : null}`}>
         <div className="zetophetweekmenu-box">
           <h6 className="pt-24 pb-5 mx-auto">week {theweek()}</h6>
           <button className="btn-menu" onClick={handleIsOpen}>
@@ -36,13 +35,15 @@ const AddpanelWeekmenu = ({
 
         <div className="mt-10 grid grid-cols-4 gap-10 p-24">
           {kalender.map((k, xid) => {
-            var cart = thecart.filter((c) =>
+            var cart = me.items.filter((c) =>
               c.date ? c.date.includes(k.year) : null
             );
+            // console.log("hetjaar(xid)");
+            // console.log(hetjaar(xid));
             return (
               <div
                 key={k.index}
-                // onClick={() => handleSave(me, setMe, therecipe, hetjaar(xid))}
+                onClick={() => handleSave(me, setMe, therecipe, hetjaar(xid))}
                 className={`relative ${
                   cart.length !== 0
                     ? "bg-orange-300 hover:bg-orange-400"

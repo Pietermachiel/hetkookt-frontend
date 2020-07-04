@@ -2,22 +2,24 @@ import React, { Fragment, useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { slugify, kalender } from "../common/common.js";
 import AddpanelWeekmenu from "./AddpanelWeekmenu.js";
-import { recipeUrl } from "../../config.json";
-import { createRecipe } from "../../services/userService";
 
-const Recipe = ({
-  user,
-  me,
-  setMe,
-  thecart,
-  thefavorites,
-  // doSave,
-  sorts,
-  ...props
-}) => {
-  var [therecipe, setTheRecipe] = useState([]);
+const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [notitie, setNotitie] = useState(false);
+  const [item, setItem] = useState([]);
+
+  // console.log(props);
+  // console.log(user);
+  // console.log(props.match.params.id);
+  // console.log(me.items);
+
+  if (me.items === undefined) return [];
+  const therecipe = me.items.find(
+    (i) => slugify(i.title) === props.match.params.id
+  );
+  //   const therecipe = me.items.map((i) => i.title);
+
+  // console.log("therecipe");
+  // console.log(therecipe);
 
   const API = props.match.url;
 
@@ -25,42 +27,6 @@ const Recipe = ({
     setIsOpen(!isOpen);
   };
 
-  const handleNotitie = () => {
-    setNotitie(!notitie);
-  };
-
-  // const handleIsFavorite = (me, setMe, therecipe) => {
-  //   doFavorite(me, setMe, therecipe);
-  // };
-
-  const handleCreateRecipe = (me, setMe, therecipe) => {
-    // console.log("therecipe index");
-    // console.log(therecipe);
-    createRecipe(me, setMe, therecipe);
-  };
-
-  useEffect(() => {
-    async function getData() {
-      const res = await fetch(`${recipeUrl}${API}.json`);
-      res.json().then((res) => setTheRecipe(res));
-    }
-    getData();
-  }, [API]);
-
-  if (therecipe.tags === undefined) return [];
-  // const thelength = props.tags.length - 1;
-
-  const newrecipe = thefavorites.find((c) => c._id === therecipe._id);
-  therecipe = newrecipe || therecipe;
-
-  // console.log("therecipe");
-  // console.log(therecipe);
-  const theitems = me.items.map((i) => i._id);
-  // console.log(theitems);
-  // console.log(therecipe.title);
-  // console.log(theitems.includes(therecipe._id));
-  // console.log("therecipe.date");
-  // console.log(therecipe.date);
   return (
     <Fragment>
       <div className="container-x unvisable slide work-grid-item">
@@ -73,49 +39,77 @@ const Recipe = ({
         </h1>
         <div className="lg:flex align-baseline mb-36 ">
           {user && (
-            <div className="mr-15">
-              {theitems.includes(therecipe._id) ? (
-                <Fragment>
-                  <div className="mb-5 lg:pr-18 btn-add mr-10 text-19 font-600 text-indigo-300 flex item-center">
-                    <img
-                      className="w-25"
-                      src="/img/feather/bookmark-red.svg"
-                      alt="bookmark red"
-                    />
-                    {/* zet op het weekmenu */}
-                    <span className="ml-10">in kookschrift</span>
-                  </div>
-                </Fragment>
-              ) : (
-                <Fragment>
-                  <button
-                    className="mb-5 lg:pr-18 btn-add mr-10 text-19 font-600 text-indigo-700 flex item-center hover:text-red-500"
-                    onClick={() => handleCreateRecipe(me, setMe, therecipe)}
-                  >
-                    <img
-                      className="w-25"
-                      src="/img/feather/bookmark.svg"
-                      alt="bookmark"
-                    />
-                    {/* zet op het weekmenu */}
-                    <span className="ml-10">zet in kookschrift</span>
-                  </button>
-                </Fragment>
-              )}
-            </div>
+            <button
+              className="mb-5 lg:pr-18 btn-add mr-10 text-19 font-600 text-indigo-700 flex item-center hover:text-red-500"
+              onClick={handleIsOpen}
+            >
+              <img
+                className="w-25 h-25 mr-10"
+                src="/img/feather/list.svg"
+                alt=""
+              />
+              zet op het weekmenu
+              <div className="flex">
+                {kalender.map((k) => {
+                  var cart = me.items.filter((c) =>
+                    c.date ? c.date.includes(k.year) : null
+                  );
+                  return cart.map((c) =>
+                    c._id === therecipe._id ? (
+                      <NavLink className="ml-10" key={c._id} to={`/weekmenu`}>
+                        <div className={`relative`}>
+                          <img
+                            className="w-30 h-30"
+                            src="/img/feather/circle-orange.svg"
+                            alt=""
+                          />
+                          <div className="absolute inset-0">
+                            <span
+                              key={k.index}
+                              className={`flex justify-center pt-6 text-12`}
+                            >
+                              {k.index}
+                            </span>
+                          </div>
+                        </div>
+                      </NavLink>
+                    ) : null
+                  );
+                })}
+              </div>
+            </button>
           )}
+          <Link to={`/edit/${slugify(therecipe.title)}`}>
+            <button className="mb-5 lg:pr-18 btn-add mr-10 text-19 font-600 text-indigo-700 flex item-center hover:text-red-500">
+              <img
+                className="w-25 h-25 mr-10"
+                src="/img/feather/edit.svg"
+                alt=""
+              />
+              edit
+            </button>
+          </Link>
+
+          {/* <button className="mb-5 lg:pr-18 btn-add mr-10 text-19 font-600 text-red-700 flex item-center hover:text-red-500">
+            <img
+              className="w-25 h-25 mr-10"
+              src="/img/feather/x-square.svg"
+              alt=""
+            />
+            delete
+          </button> */}
         </div>
         {/* add panel */}
-        {/* <AddpanelWeekmenu
+        <AddpanelWeekmenu
           isOpen={isOpen}
           setIsOpen={setIsOpen}
           handleIsOpen={handleIsOpen}
           therecipe={therecipe}
-          thecart={thecart}
-          doSave={doSave}
+          // thecart={me.items}
+          // doSave={doSave}
           me={me}
           setMe={setMe}
-        /> */}
+        />
         <div className="recepten">
           <div className="recepten-box">
             {/* ingredienten */}
@@ -215,4 +209,4 @@ const Recipe = ({
   );
 };
 
-export default Recipe;
+export default Item;

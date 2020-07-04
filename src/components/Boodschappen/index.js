@@ -23,9 +23,9 @@ const Boodschappen = ({ me, setMe }) => {
 
   // console.log(groceries);
   // console.log(me);
-  if (me.recipes === undefined) return [];
+  if (me.items === undefined) return [];
 
-  const themenu = me.recipes.filter((r) => {
+  const themenu = me.items.filter((r) => {
     const item = kalender.find((k) =>
       r.date ? r.date.includes(k.year) : null
     );
@@ -58,10 +58,10 @@ const Boodschappen = ({ me, setMe }) => {
   let boodschappen = allfresh.reduce(
     (function (hash) {
       return function (r, a) {
-        var key = a.item;
+        var key = a.ingredient;
         if (!hash[key]) {
           hash[key] = {
-            item: a.item,
+            ingredient: a.ingredient,
             quantity: 0,
             unit: a.unit,
             to_buy: a.to_buy,
@@ -76,11 +76,34 @@ const Boodschappen = ({ me, setMe }) => {
   );
   // console.log(boodschappen);
 
+  const theemail = {
+    subject: "bestelling",
+    body:
+      "Hallo Studio Roozen, %0D%0A%0D%0AIk wil graag de volgende bestelling doen: ",
+    boodschappen: "%0D%0A%0D%0ABestelling: ",
+    adres: "%0D%0A%0D%0AMijn adres is: ",
+    afzender: "%0D%0A%0D%0AMijn afzender is: ",
+    email: me.email,
+  };
+
   return (
     <Fragment>
       <div className="container-x boodschappen">
         {/* <h1 className="mt-0 mt-100 mb-48">Boodschappen</h1> */}
         <h1 className="mb-36 -mt-20">Boodschappen</h1>
+        {/* <a href="mailto:bezorgservice@versman.nl?SUBJECT=bestelling&BODY=Hallo Versman, %0D%0A%0D%0AIk wil graag de volgende bestelling doen: %0D%0A%0D%0AMijn adres is: %0D%0A%0D%0AMijn telefoonnummer is:"> */}
+        <a
+          href={`mailto:studio@roozen.nl?SUBJECT=${theemail.subject}&BODY=${
+            theemail.body +
+            theemail.boodschappen +
+            boodschappen.map((b) => b.ingredient) +
+            theemail.adres +
+            theemail.afzender +
+            theemail.email
+          }`}
+        >
+          bestel boodschappen per email bij Studio Roozen
+        </a>
 
         <div className=" mt-36 mb-18 unvisable slide work-grid-item">
           <div className="ingredienten w-full">
@@ -88,10 +111,10 @@ const Boodschappen = ({ me, setMe }) => {
             <div className="category-box">
               {groceries.map((g, xid) => {
                 const deboodschappen = boodschappen.filter((b) =>
-                  g.sort.includes(b.item)
+                  g.sort.includes(b.ingredient)
                 );
-                console.log("deboodschappen");
-                console.log(deboodschappen);
+                // console.log("deboodschappen");
+                // console.log(deboodschappen);
                 if (deboodschappen.length !== 0)
                   return (
                     <Fragment key={xid}>
@@ -101,7 +124,7 @@ const Boodschappen = ({ me, setMe }) => {
                       <ul className="mb-18">
                         {deboodschappen.map((b, xid) =>
                           // console.log(g.sort);
-                          // if (g.sort.includes(b.item))
+                          // if (g.sort.includes(b.ingredient))
                           deboodschappen.length !== 0 ? (
                             <li
                               key={xid}
@@ -112,13 +135,13 @@ const Boodschappen = ({ me, setMe }) => {
                                   {b.quantity} {b.unit}
                                 </div>
                                 <div className="items-product font-700">
-                                  {b.item}{" "}
-                                </div>{" "}
+                                  {b.ingredient}
+                                </div>
                               </div>
 
                               <span
                                 onClick={() =>
-                                  deleteBoodschappen(me, setMe, b.item)
+                                  deleteBoodschappen(me, setMe, b.ingredient)
                                 }
                                 className="text-red-600 mr-10 font-500"
                               >
@@ -147,7 +170,7 @@ const Boodschappen = ({ me, setMe }) => {
                     key={xid}
                     className="accordion-title text-16 py-9 px-24 bg-orange-400"
                   >
-                    {v}{" "}
+                    {v}
                     <span
                       onClick={() => removeStock(me, setMe, v)}
                       className="text-red-500 mr-9"
@@ -172,7 +195,7 @@ const Boodschappen = ({ me, setMe }) => {
                 type="text"
                 onChange={(e) => setValue(e.target.value)}
                 placeholder="Zet dit extra op de lijst..."
-              />{" "}
+              />
               &nbsp;
               <button
                 className="btn btn-small  btn-small__green"
@@ -181,16 +204,16 @@ const Boodschappen = ({ me, setMe }) => {
             </form>
             <div className="category-box">
               <ul className="mb-18">
-                {me.extra.map((item, index) => {
+                {me.extra.map((ex, index) => {
                   return (
                     <li
                       key={index}
                       className="accordion-title py-9 px-24 bg-orange-400"
                     >
-                      {item}&nbsp;
+                      {ex}&nbsp;
                       <span
                         className="text-red-500 mr-9"
-                        onClick={() => removeExtra(me, setMe, item)}
+                        onClick={() => removeExtra(me, setMe, ex)}
                       >
                         x
                       </span>

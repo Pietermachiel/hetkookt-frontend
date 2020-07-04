@@ -13,6 +13,10 @@ import Sorts from "./components/Sorts";
 import Categories from "./components/Categories";
 import Collections from "./components/Collections";
 import Favorites from "./components/Favorites";
+import Items from "./components/Items";
+import Item from "./components/Item";
+import NieuwItem from "./components/Item/NieuwItem";
+import EditItem from "./components/Item/EditItem";
 import Boodschappen from "./components/Boodschappen";
 import Voorraad from "./components/Voorraad";
 import Books from "./components/Books";
@@ -25,6 +29,7 @@ import ProtectedRoute from "./components/common/protectedRoute";
 import axios from "axios";
 import { apiUrl, recipeUrl } from "./config.json";
 import LogoBox from "./components/LogoBox";
+import { slugify } from "./components/common/common.js";
 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
@@ -43,7 +48,6 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [search, setSearch] = useState(false);
-
   // search
 
   useEffect(() => {
@@ -155,14 +159,15 @@ const App = () => {
     setUser(user);
   }, []);
 
-  useEffect(() => {
+  async function getUsersMe() {
     if (!auth.getCurrentUser()) return;
-    async function getData() {
-      const res = await axios.get(`${apiUrl}/users/me`);
-      const me = await res.data;
-      setMe(me);
-    }
-    getData();
+    const res = await axios.get(`${apiUrl}/users/me`);
+    const me = await res.data;
+    setMe(me);
+  }
+
+  useEffect(() => {
+    getUsersMe();
   }, []);
 
   useEffect(() => {
@@ -278,6 +283,59 @@ const App = () => {
                 setMe={setMe}
               />
             )}
+          />
+          <Route
+            exact
+            path="/kookschrift"
+            render={(props) => (
+              <Items
+                {...props}
+                thecart={thecart}
+                thefavorites={thefavorites}
+                recipes={recipes}
+                dishes={dishes}
+                me={me}
+                setMe={setMe}
+              />
+            )}
+          />
+          <Route
+            path="/kookschrift/:id"
+            render={(props) => (
+              <Item
+                {...props}
+                recipes={recipes}
+                sorts={sorts}
+                dishes={dishes}
+                user={user}
+                me={me}
+                setMe={setMe}
+              />
+            )}
+          />
+          <Route
+            path="/nieuwrecept"
+            render={(props) => {
+              return <NieuwItem me={me} setMe={setMe} {...props} />;
+            }}
+          />
+          <Route
+            path="/edit/:id"
+            render={(props) => {
+              if (me.items === undefined) return [];
+              const therecipe = me.items.find(
+                (i) => slugify(i.title) === props.match.params.id
+              );
+              if (therecipe === undefined) return [];
+              return (
+                <EditItem
+                  me={me}
+                  setMe={setMe}
+                  therecipe={therecipe}
+                  {...props}
+                />
+              );
+            }}
           />
           <ProtectedRoute
             path="/weekmenu"

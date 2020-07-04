@@ -3,12 +3,12 @@ import { NavLink } from "react-router-dom";
 import abouts from "../../data/abouts";
 
 const Home = ({ me, setMe, user, recipes, about, ...props }) => {
-  // console.log("me");
-  // console.log(me);
-  console.log("user");
-  console.log(user);
-  console.log("recipes");
-  console.log(recipes);
+  console.log("me");
+  console.log(me);
+  // console.log("user");
+  // console.log(user);
+  // console.log("recipes");
+  // console.log(recipes);
 
   if (recipes.length === 0)
     return (
@@ -24,9 +24,9 @@ const Home = ({ me, setMe, user, recipes, about, ...props }) => {
           <div className="mb-48">
             <h1 className="-mt-20 mb-24">hetkookt!</h1>
             <div className=" unvisable slide work-grid-item">
-              {abouts.map((a) => {
+              {abouts.map((a, xid) => {
                 return (
-                  <Fragment>
+                  <Fragment key={xid}>
                     {!user && (
                       <Fragment>
                         <h2 className="text-24 font-500">Schrijf je nu in!</h2>

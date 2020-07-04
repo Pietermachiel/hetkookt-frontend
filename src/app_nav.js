@@ -3,16 +3,16 @@ import { Fragment } from "react";
 
 const App = () => {
   const [isOn, setIsOn] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
 
-  const handleIsOpen = () => {
-    setIsOpen(!isOpen);
-    toggleSwitch();
-  };
+  // const handleIsOpen = () => {
+  //   setIsOpen(!isOpen);
+  //   toggleSwitch();
+  // };
 
   const handleMouseDown = (e) => {
     toggleSwitch();
-    setIsOpen(!isOpen);
+    // setIsOpen(!isOpen);
     e.stopPropagation();
   };
 

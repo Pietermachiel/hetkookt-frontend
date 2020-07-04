@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // https://codepen.io/davidmunro/pen/xxxeoOo
-const AccordionVoorraad = ({ s, title, children, me, setMe, id, year }) => {
+const AccordionVoorraad = ({ title, children }) => {
   const [isVoorraadOpen, setVoorraadOpen] = useState(true);
 
   // console.log(s);
@@ -14,11 +14,6 @@ const AccordionVoorraad = ({ s, title, children, me, setMe, id, year }) => {
           className="accordion-voorraad-title"
         >
           <h2 className="text-36 mb-10 flex items-baseline">{title}&nbsp; </h2>
-          {/* <span
-            className={`accordion-voorraad-arrow ${
-              isVoorraadOpen ? "open" : ""
-            }`}
-          ></span> */}
         </div>
       </div>
       <div

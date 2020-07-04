@@ -4,7 +4,7 @@ import CategoriesNav from "./CategoriesNav";
 import CollectionsNav from "./CollectionsNav";
 import auth from "../../services/authService";
 import { deleteUser } from "../../services/userService";
-import Kookschrift from "../Kookschrift";
+import Kookschrift from "./kookschrift";
 import Search from "../Search";
 // import SlidingPanel from "react-sliding-side-panel";
 

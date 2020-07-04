@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { slugify } from "../common/common";
 import RecipeItems from "../RecipeItems";
-import { handleDeleteFavorite } from "../../services/userService";
+// import { handleDeleteFavorite } from "../../services/userService";
 
 const Categories = ({ me, setMe, thecart, categories, recipes, ...props }) => {
   // console.log(sorts);
@@ -23,7 +23,8 @@ const Categories = ({ me, setMe, thecart, categories, recipes, ...props }) => {
                 {category.sorts.map((s, xid) => {
                   const recipeItem = recipes.filter((element) => {
                     let fresh = element.fresh.some(
-                      ({ item }) => item.replace(" ", "-") === s.title
+                      ({ ingredient }) =>
+                        ingredient.replace(" ", "-") === s.title
                     );
                     return fresh;
                   });
@@ -55,13 +56,12 @@ const Categories = ({ me, setMe, thecart, categories, recipes, ...props }) => {
                           if (recipe.basics === undefined)
                             return (recipe.basics = []);
                           return (
-                            <Fragment>
+                            <Fragment key={recipe._id}>
                               <RecipeItems
-                                key={recipe._id}
                                 recipe={recipe}
                                 cart={cart}
                                 Link={Link}
-                                handleDeleteFavorite={handleDeleteFavorite}
+                                // handleDeleteFavorite={handleDeleteFavorite}
                                 me={me}
                                 setMe={setMe}
                                 {...props}

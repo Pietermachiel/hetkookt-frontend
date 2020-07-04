@@ -1,12 +1,12 @@
 import React from "react";
 import { Fragment } from "react";
 import AccordionWeekMenu from "./AccordionWeekMenu";
-import { vandaag, kalender } from "../common/common";
-import { deleteFresh } from "../../services/userService";
+import { vandaag, kalender, theweek } from "../common/common";
+import { toggleFresh } from "../../services/userService";
 
 const Menu = ({ me, setMe, user, recipes, about, ...props }) => {
   // console.log("me");
-  // console.log(me);
+  // console.log(me.items);
   // console.log("user");
   // console.log(user);
   // console.log("recipes");
@@ -16,39 +16,32 @@ const Menu = ({ me, setMe, user, recipes, about, ...props }) => {
   if (me.extra === undefined) return [];
 
   const thedates = kalender.filter((k) => {
-    const item = me.recipes.find((c) =>
+    const item = me.items.find((c) =>
       c.date ? c.date.includes(k.year) : null
     );
     return item;
   });
 
+  // console.log(thedates);
+
   return (
     <Fragment>
       <div className="container-x">
-        <h1 className="-mt-20">Week 25</h1>
-
-        {thedates.map((k) => {
-          var cart = me.recipes.filter((c) =>
-            c.date ? c.date.includes(k.year) : null
-          );
-          return (
-            <Fragment key={k.index}>
-              {cart.length === 0 ? (
-                <div className="">
-                  <h2 className="pt-15">Menu</h2>
-                  <p className="font-600 mt-21">
-                    Er staat nog niets op het menu.
-                  </p>
-                </div>
-              ) : null}
-            </Fragment>
-          );
-        })}
+        <h1 className="-mt-20">Week {theweek()}</h1>
+        {thedates.length === 0 ? (
+          <div className="">
+            <p className="font-600 mt-21">Er staat nog niets op het menu.</p>
+            <p>
+              Zet eerst een recept in het kookschrift. <br /> Kies dan het
+              recept en zet op het weekmenu.{" "}
+            </p>
+          </div>
+        ) : null}
 
         <div className="mt-18 mb-36 unvisable slide work-grid-item ">
           <div className="category-box mb-10 mt-18">
             {thedates.map((k) => {
-              var cart = me.recipes.filter((c) =>
+              var cart = me.items.filter((c) =>
                 c.date ? c.date.includes(k.year) : null
               );
               return (
@@ -83,14 +76,14 @@ const Menu = ({ me, setMe, user, recipes, about, ...props }) => {
                                       {f.to_buy === true ? (
                                         <div className="ml-18">
                                           {f.quantity} {f.unit}
-                                          <strong> {f.item}</strong>{" "}
+                                          <strong> {f.ingredient}</strong>{" "}
                                           <span
                                             onClick={() =>
-                                              deleteFresh(
+                                              toggleFresh(
                                                 me,
                                                 setMe,
                                                 c._id,
-                                                f.item,
+                                                f.ingredient,
                                                 f.do_buy
                                               )
                                             }
@@ -102,14 +95,14 @@ const Menu = ({ me, setMe, user, recipes, about, ...props }) => {
                                       ) : (
                                         <div className="ml-18 text-gray-500">
                                           {f.quantity} {f.unit}
-                                          <strong> {f.item}</strong>{" "}
+                                          <strong> {f.ingredient}</strong>{" "}
                                           <span
                                             onClick={() =>
-                                              deleteFresh(
+                                              toggleFresh(
                                                 me,
                                                 setMe,
                                                 c._id,
-                                                f.item,
+                                                f.ingredient,
                                                 f.do_buy
                                               )
                                             }

@@ -9,9 +9,9 @@ const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
   // console.log(me.stock);
 
   // console.log(me);
-  if (me.recipes === undefined) return [];
+  if (me.items === undefined) return [];
 
-  const themenu = me.recipes.filter((r) => {
+  const themenu = me.items.filter((r) => {
     const item = kalender.find((k) =>
       r.date ? r.date.includes(k.year) : null
     );
@@ -19,7 +19,7 @@ const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
   });
 
   console.log("themenu");
-  console.log(themenu);
+  console.log(stock);
 
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
   let allstock = themenu.reduce(function (accumulator, currentValue) {
@@ -29,7 +29,7 @@ const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
   console.log(allstock);
 
   allstock = allstock.filter((f) => f.to_buy === true);
-  // console.log(allstock2);
+  console.log("allstock2");
   console.log(allstock);
 
   // https://stackoverflow.com/questions/44332180/merge-objects-with-the-same-id-but-sum-values-of-the-objects
@@ -37,10 +37,11 @@ const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
   let voorraad = allstock.reduce(
     (function (hash) {
       return function (r, a) {
-        var key = a.item;
+        var key = a.ingredient;
         if (!hash[key]) {
           hash[key] = {
-            item: a.item,
+            _id: a._id,
+            ingredient: a.ingredient,
             quantity: 0,
             unit: a.unit,
             to_buy: a.to_buy,
@@ -63,7 +64,7 @@ const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
 
   const devoorraad = stock.filter((r) => {
     const item = voorraad.find((k) =>
-      r.stockitems ? r.stockitems.includes(k.item) : null
+      r.stockitems ? r.stockitems.includes(k.ingredient) : null
     );
     return item;
   });
@@ -85,28 +86,30 @@ const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
                 <Fragment key={xid}>
                   {/* <h2>{dv.title}</h2> */}
 
-                  <AccordionVoorraad s={dv} title={dv.title} me={me}>
+                  <AccordionVoorraad title={dv.title}>
                     <ul className="mb-18 " key={xid}>
                       {voorraad.map((v, xid) => {
-                        if (dv.stockitems.includes(v.item))
+                        if (dv.stockitems.includes(v.ingredient))
                           return (
                             <Fragment key={xid}>
-                              {me.stock.includes(v.item) ? (
+                              {me.stock.includes(v.ingredient) ? (
                                 <li className="mb-0 py-9 px-24 font-500 bg-orange-400">
-                                  {v.item}{" "}
+                                  {v.ingredient}
                                   <span
                                     className="text-red-600 font-500"
-                                    onClick={() => removeItem(v.item)}
+                                    onClick={() => removeItem(v.ingredient)}
                                   >
                                     x
                                   </span>
                                 </li>
                               ) : (
                                 <li
-                                  onClick={() => toggleStock(me, setMe, v.item)}
+                                  onClick={() =>
+                                    toggleStock(me, setMe, v.ingredient)
+                                  }
                                   className="mb-0 py-9 px-24 bg-orange-200"
                                 >
-                                  {v.item} <span className="">+</span>
+                                  {v.ingredient} <span className="">+</span>
                                 </li>
                               )}
                             </Fragment>

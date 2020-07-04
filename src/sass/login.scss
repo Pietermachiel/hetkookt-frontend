@@ -139,19 +139,35 @@
     .form-input {
       position: relative;
       border: 0;
-      margin-bottom: 1em;
+      // margin-bottom: 1em;
       width: 100%;
+      select {
+        // background: none;
+        // border: 1px solid #999;
+        // color: #111;
+        text-indent: 18px;
+        // font-size: 1.3rem;
+        width: 100%;
+        border: 1px solid #e0e0e0;
+        border-radius: 0;
+        color: #303030;
+        background: white;
+        // padding-left: 18px;
+        height: 48px;
+        width: 100%;
+        font-weight: 200;
+        font-size: 18px;
+        color: gray;
+      }
     }
     .input-field {
       border: 1px solid #e0e0e0;
       border-radius: 0;
-      color: #303030;
-      padding-left: 54px;
+      text-indent: 18px;
       height: 48px;
       width: 100%;
-      font-weight: 200;
-      font-size: 18px;
-      color: gray;
+      font-weight: 300;
+      font-size: 14px;
     }
     .input-field__postcode {
       width: 70%;
@@ -212,3 +228,11 @@
     }
   }
 }
+// option {
+//   font-weight: normal;
+//   display: block;
+//   white-space: pre;
+//   min-height: 0;
+//   padding: 10px 10px 10px;
+//   width: 400px;
+// }
