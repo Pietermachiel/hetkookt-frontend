@@ -3,7 +3,7 @@ import auth from "../../services/authService";
 import { deleteUser } from "../../services/userService";
 import { vandaag, kalender } from "../common/common";
 
-const User = ({ me, user, thecart, ...props }) => {
+const User = ({ me, therecipes, user, thecart, ...props }) => {
   function handleLogout() {
     auth.logout();
     window.location = "/";
@@ -15,7 +15,12 @@ const User = ({ me, user, thecart, ...props }) => {
     window.location = "/";
   }
 
-  const thedates = thecart.map((dd) => {
+  if (therecipes === undefined) return [];
+
+  console.log("therecipes");
+  console.log(therecipes);
+
+  const thedates = therecipes.map((dd) => {
     const dedates = dd.date.map((d) => {
       const x = [];
       var totaldates = x.concat(d);

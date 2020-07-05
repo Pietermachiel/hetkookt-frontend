@@ -18,7 +18,7 @@ config.json
 config.json
 {
 "apiUrl": "http://localhost:3900/api",
-"recipeUrl": "http://localhost:3000/api"
+"recipeUrl": "https://hetkooktapi.netlify.app/api"
 }
 
 ## upload Netlify

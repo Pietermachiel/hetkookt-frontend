@@ -18,7 +18,7 @@ const Sorts = ({ me, thecart, recipes, sorts, categories, ...props }) => {
 
   const recipeItem = recipes.filter((element) => {
     let fresh = element.fresh.some(
-      ({ item }) => item.replace(" ", "-") === props.match.params.id
+      ({ ingredient }) => ingredient.replace(" ", "-") === props.match.params.id
     );
     return fresh;
   });

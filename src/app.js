@@ -12,7 +12,7 @@ import Recipe from "./components/Recipe";
 import Sorts from "./components/Sorts";
 import Categories from "./components/Categories";
 import Collections from "./components/Collections";
-import Favorites from "./components/Favorites";
+// import Favorites from "./components/Favorites";
 import Items from "./components/Items";
 import Item from "./components/Item";
 import NieuwItem from "./components/Item/NieuwItem";
@@ -266,24 +266,25 @@ const App = () => {
           <Route path="/logout" component={logout} />
           <ProtectedRoute
             path="/user"
-            render={(props) => (
-              <User {...props} user={user} thecart={thecart} me={me} />
-            )}
+            // component={User}
+            render={(props) => {
+              return <User me={me} user={user} thecart={thecart} {...props} />;
+            }}
           />
-          <ProtectedRoute
+          {/* <ProtectedRoute
             path="/favorites"
             render={(props) => (
               <Favorites
                 {...props}
                 thecart={thecart}
-                thefavorites={thefavorites}
+                // thefavorites={thefavorites}
                 recipes={recipes}
                 dishes={dishes}
                 me={me}
                 setMe={setMe}
               />
             )}
-          />
+          /> */}
           <Route
             exact
             path="/kookschrift"
@@ -291,7 +292,7 @@ const App = () => {
               <Items
                 {...props}
                 thecart={thecart}
-                thefavorites={thefavorites}
+                // thefavorites={thefavorites}
                 recipes={recipes}
                 dishes={dishes}
                 me={me}
@@ -327,6 +328,7 @@ const App = () => {
                 (i) => slugify(i.title) === props.match.params.id
               );
               if (therecipe === undefined) return [];
+
               return (
                 <EditItem
                   me={me}
