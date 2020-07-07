@@ -16,8 +16,8 @@ const RecipeItems = ({
   // handleDeleteFavorite,
   ...props
 }) => {
-  // console.log("me");
-  // console.log(recipe);
+  console.log("me");
+  console.log(cart);
 
   return (
     <Fragment>
@@ -53,35 +53,13 @@ const RecipeItems = ({
           <p className={`uppercase tracking-widest text-12 pl-15 `}>
             {recipe.dish}
           </p>
-          {kalender.map((w) =>
-            w.year.includes(cart.date) ? (
-              <p
-                key={w.index}
-                className={`-mt-21 font-300 text-16 float-right pr-48 pt-11 mb-0 ${
-                  red ? "text-red-500" : null
-                }`}
-              >
-                {w.day} {w.index}
-              </p>
-            ) : null
-          )}
-          {props.location.pathname.includes("/favorites") && (
-            <div className={`recipe-footer__box-delete`}>
-              <div className="recipe-footer__box-buttons">
-                {/* <button
-                  className="btn-delete"
-                  onClick={() => handleDeleteFavorite(me, setMe, recipe._id)}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="100"
-                    height="100"
-                    viewBox="0 0 19 19"
-                  >
-                    <path d="M14.9 17.5l2.6-2.6 -5.4-5.4 5.4-5.4 -2.6-2.6 -5.4 5.4 -5.4-5.4 -2.6 2.6 5.4 5.4 -5.4 5.4 2.6 2.6 5.4-5.4 5.4 5.4Z" />
-                  </svg>
-                </button> */}
-              </div>
+          {cart.length !== 0 && (
+            <div className="float-right mr-18">
+              <img
+                className="h-25"
+                src="/img/feather/bookmark-red.svg"
+                alt=""
+              />
             </div>
           )}
         </div>

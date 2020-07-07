@@ -14,8 +14,8 @@ const ItemsItem = ({
   // handleDeleteFavorite,
   ...props
 }) => {
-  console.log("recipe");
-  console.log(recipe);
+  // console.log("recipe");
+  // console.log(recipe);
 
   return (
     <Fragment>

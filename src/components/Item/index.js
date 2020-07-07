@@ -48,7 +48,7 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
                 src="/img/feather/list.svg"
                 alt=""
               />
-              zet op het weekmenu
+              weekmenu >
               <div className="flex">
                 {kalender.map((k) => {
                   var cart = me.items.filter((c) =>

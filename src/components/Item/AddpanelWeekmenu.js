@@ -12,7 +12,7 @@ const AddpanelWeekmenu = ({ isOpen, therecipe, me, setMe, handleIsOpen }) => {
     doPutMenu(me, setMe, therecipe, dedate);
     // props.history.push(props.location.pathname);
     handleIsOpen(!isOpen);
-    setRedirect(true);
+    // setRedirect(true);
   };
 
   const redirect = routeRedirect;

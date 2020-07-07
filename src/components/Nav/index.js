@@ -6,6 +6,8 @@ import auth from "../../services/authService";
 import { deleteUser } from "../../services/userService";
 import Kookschrift from "./kookschrift";
 import Search from "../Search";
+import useCurrentWitdh from "../common/use-current-width";
+
 // import SlidingPanel from "react-sliding-side-panel";
 
 const Nav = ({
@@ -37,9 +39,18 @@ const Nav = ({
     auth.logout();
     window.location = "/";
   }
+
+  function handleLogin(e) {
+    handleIsOpen(e);
+    window.location = "/login";
+  }
   // console.log("props-nav");
   // console.log(props.location.pathname);
   const location = props.location.pathname;
+
+  const width = useCurrentWitdh();
+  // console.log(width);
+
   return (
     <Fragment>
       <div
@@ -105,79 +116,44 @@ const Nav = ({
                       </NavLink>
                     </div>
                   </li>
-                  {/* <p className="font-500 tracking-widest text-center mb-0 mt-18">
-                      kookschrift
-                    </p> */}
-                  {/* <li>
-                      <div className="list-links__link">
-                        <NavLink
-                          onClick={handleIsOpen}
-                          className=""
-                          to="/weekmenu"
-                        >
-                          Weekmenu
-                        </NavLink>
-                      </div>
-                    </li>
+                  {!user && (
                     <li>
-                      <div className="list-links__link">
-                        <NavLink
-                          onClick={handleIsOpen}
-                          className=""
-                          to="/boodschappen"
-                        >
-                          Boodschappen
-                        </NavLink>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="list-links__link">
-                        <NavLink
-                          onClick={handleIsOpen}
-                          className=""
-                          to="/voorraad"
-                        >
-                          Voorraad
-                        </NavLink>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="list-links__link">
-                        <NavLink
-                          onClick={handleIsOpen}
-                          className=""
-                          to="/favorites"
-                        >
-                          Favorieten
-                        </NavLink>
-                      </div>
-                    </li> */}
-                  {/* <p className="font-500 tracking-widest text-center mb-0 mt-18">
-                      user
-                    </p> */}
-                  <li>
-                    <div className="list-links__link">
-                      <NavLink
-                        aria-label="user"
-                        onClick={handleIsOpen}
-                        className=""
-                        to="/user"
+                      {/* <NavLink to="/login"> */}
+                      <div
+                        onClick={(e) => handleLogin(e)}
+                        className="list-links__link"
                       >
-                        {me.name}
-                      </NavLink>
-                    </div>
-                  </li>
-                  {user && (
-                    <li>
-                      <div className="list-links__link">
-                        <span
-                          className="font-300"
-                          onClick={() => handleDelete(user._id)}
-                        >
-                          Logout >
-                        </span>
+                        <span className="font-300">Login ></span>
                       </div>
+                      {/* </NavLink> */}
                     </li>
+                  )}
+
+                  {user && (
+                    <Fragment>
+                      <li>
+                        <div className="list-links__link">
+                          <NavLink
+                            aria-label="user"
+                            onClick={handleIsOpen}
+                            className=""
+                            to="/user"
+                          >
+                            {me.name}
+                          </NavLink>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="list-links__link">
+                          <span
+                            className="font-300"
+                            onClick={() => handleDelete(user._id)}
+                          >
+                            Logout >
+                          </span>
+                        </div>
+                      </li>
+                    </Fragment>
                   )}
                 </div>
               </div>
@@ -189,7 +165,7 @@ const Nav = ({
           ></div> */}
         </div>
       </div>
-      <Kookschrift user={user} location={location} />
+      <Kookschrift width={width} user={user} location={location} />
     </Fragment>
   );
 };

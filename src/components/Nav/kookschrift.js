@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 
-const Kookschrift = ({ user, location }) => {
+const Kookschrift = ({ width, user, location }) => {
   const [kookschriftOpen, setKookschriftOpen] = useState(false);
   // const [kookschriftItem, setKookschriftItem] = useState("weekmenu");
 
@@ -12,46 +12,43 @@ const Kookschrift = ({ user, location }) => {
     setKookschriftOpen(!kookschriftOpen);
   };
 
+  // console.log("width2");
+  // console.log(width);
+
   return (
     <Fragment>
-      {/* {location === "/weekmenu" ||
-      location === "/boodschappen" ||
-      location === "/favorites" ||
-      location === "/voorraad" ? (
-        
-      ) : null} */}
-
       <div className="pl-20">
         <div className="kookschrift">
-          <Link to="/kookschrift">
-            <div className="kookschrift-title">
-              Kookschrift
-              <span
-                onClick={() => setKookschriftOpen(!kookschriftOpen)}
-                className="kookschrift-arrow"
-              ></span>
-            </div>
-          </Link>
           {user && (
-            <ul className={`${kookschriftOpen ? "kookschrift-open" : ""}`}>
-              {/* <Link to="/weekmenu">
-              <li>weekmenu</li>
-            </Link> */}
-              <Link onClick={() => handleClick()} to="/weekmenu">
-                <li>weekmenu</li>
-              </Link>{" "}
-              <Link onClick={() => handleClick()} to="/boodschappen">
-                <li>boodschappen</li>
-              </Link>
-              {/* <Link onClick={() => handleClick()} to="/voorraad">
-                {" "}
-                <li>voorraad</li>
-              </Link> */}
-              {/* <li onClick={() => handleClick("weekmenu")}>weekmenu</li>
-          <li onClick={() => handleClick("boodschappen")}>boodschappen</li>
-          <li onClick={() => handleClick("voorraad")}>voorraad</li>
-          <li onClick={() => handleClick("favorieten")}>favorieten</li> */}
-            </ul>
+            <Fragment>
+              <div
+                onClick={() =>
+                  width < 768 ? setKookschriftOpen(!kookschriftOpen) : null
+                }
+                className="kookschrift-title"
+              >
+                <div className="flex items-center">
+                  <img
+                    className="h-25"
+                    src="/img/feather/bookmark-red.svg"
+                    alt=""
+                  />
+                  <span className="ml-5">Kookschrift</span>
+                </div>
+                <span className="kookschrift-arrow"></span>
+              </div>
+              <ul className={`${kookschriftOpen ? "kookschrift-open" : ""}`}>
+                <Link onClick={() => handleClick()} to="/kookschrift">
+                  <li>favorieten</li>
+                </Link>
+                <Link onClick={() => handleClick()} to="/weekmenu">
+                  <li>weekmenu</li>
+                </Link>
+                <Link onClick={() => handleClick()} to="/boodschappen">
+                  <li>boodschappen</li>
+                </Link>
+              </ul>
+            </Fragment>
           )}
         </div>
       </div>

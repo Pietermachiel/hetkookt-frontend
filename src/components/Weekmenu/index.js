@@ -1,5 +1,5 @@
-import React from "react";
-import { Fragment } from "react";
+import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 import AccordionWeekMenu from "./AccordionWeekMenu";
 import { vandaag, kalender, theweek } from "../common/common";
 import { toggleFresh } from "../../services/userService";
@@ -27,14 +27,56 @@ const Menu = ({ me, setMe, user, recipes, about, ...props }) => {
   return (
     <Fragment>
       <div className="container-x">
-        <h1 className="-mt-20">Week {theweek()}</h1>
+        <h1 className="-mt-20">
+          Weekmenu <span className="text-24 ml-10">week {theweek()}</span>
+          {thedates.length !== 0 && (
+            <span>
+              <Link
+                className="ml-18 text-18 text-indigo-600 hover:text-red-500"
+                to="/boodschappen"
+              >
+                Boodschappen >
+              </Link>
+            </span>
+          )}
+        </h1>
         {thedates.length === 0 ? (
           <div className="">
             <p className="font-600 mt-21">Er staat nog niets op het menu.</p>
-            <p>
-              Zet eerst een recept in het kookschrift. <br /> Kies dan het
-              recept en zet op het weekmenu.{" "}
-            </p>
+            <div>
+              <p className="w-full md:w-50">
+                Zoek een recept in{" "}
+                <Link
+                  className="font-700 text-indigo-600 hover:text-red-500"
+                  to="categories"
+                >
+                  recepten
+                </Link>{" "}
+                of{" "}
+                <Link
+                  className="font-700 text-indigo-600 hover:text-red-500"
+                  to="/collections"
+                >
+                  collecties
+                </Link>{" "}
+                of maak zelf een{" "}
+                <Link
+                  className="font-700 text-indigo-600 hover:text-red-500"
+                  to="/nieuwrecept"
+                >
+                  nieuw recept
+                </Link>{" "}
+                aan.
+              </p>{" "}
+              <br /> Kies dan het recept in{" "}
+              <Link
+                className="font-700 text-indigo-600 hover:text-red-500"
+                to="/kookschrift"
+              >
+                favorieten
+              </Link>{" "}
+              en zet op het weekmenu.{" "}
+            </div>
           </div>
         ) : null}
 

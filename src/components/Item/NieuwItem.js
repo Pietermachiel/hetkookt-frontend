@@ -64,6 +64,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
     console.log("handleCreateRecipe: theitem");
     console.log(theitem);
     createRecipe(me, setMe, theitem, dedate);
+    setRedirect(true);
   };
 
   // Tags
@@ -208,7 +209,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
 
   const redirect = routeRedirect;
   if (redirect) {
-    return <Redirect to="/" />;
+    return <Redirect to="/kookschrift" />;
   }
 
   return (

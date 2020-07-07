@@ -74,113 +74,45 @@ const Boodschappen = ({ me, setMe }) => {
     })(Object.create(null)),
     []
   );
-  // console.log(boodschappen);
+  console.log(boodschappen);
 
   const theemail = {
     subject: "bestelling",
     body:
-      "Hallo Studio Roozen, %0D%0A%0D%0AIk wil graag de volgende bestelling doen: ",
-    boodschappen: "%0D%0A%0D%0ABestelling: ",
+      "Hallo Studio Roozen, %0D%0A%0D%0AIk wil graag de volgende bestelling doen:%0D%0A  ",
     adres: "%0D%0A%0D%0AMijn adres is: ",
     afzender: "%0D%0A%0D%0AMijn afzender is: ",
     email: me.email,
   };
 
+  const myBoodschappen = boodschappen.map(
+    (b) => "%0D%0A" + " " + b.quantity + " " + b.unit + " " + b.ingredient
+  );
+
+  console.log("myBoodschappen");
+  console.log(myBoodschappen.length);
+
   return (
     <Fragment>
       <div className="container-x boodschappen">
-        {/* <h1 className="mt-0 mt-100 mb-48">Boodschappen</h1> */}
-        <h1 className="mb-36 -mt-20">Boodschappen</h1>
-        {/* <a href="mailto:bezorgservice@versman.nl?SUBJECT=bestelling&BODY=Hallo Versman, %0D%0A%0D%0AIk wil graag de volgende bestelling doen: %0D%0A%0D%0AMijn adres is: %0D%0A%0D%0AMijn telefoonnummer is:"> */}
-        <a
-          href={`mailto:studio@roozen.nl?SUBJECT=${theemail.subject}&BODY=${
-            theemail.body +
-            theemail.boodschappen +
-            boodschappen.map((b) => b.ingredient) +
-            theemail.adres +
-            theemail.afzender +
-            theemail.email
-          }`}
-        >
-          bestel boodschappen per email bij Studio Roozen
-        </a>
-
-        <div className=" mt-36 mb-18 unvisable slide work-grid-item">
-          <div className="ingredienten w-full">
-            <h2 className="mb-24">Vers</h2>
-            <div className="category-box">
-              {groceries.map((g, xid) => {
-                const deboodschappen = boodschappen.filter((b) =>
-                  g.sort.includes(b.ingredient)
-                );
-                // console.log("deboodschappen");
-                // console.log(deboodschappen);
-                if (deboodschappen.length !== 0)
-                  return (
-                    <Fragment key={xid}>
-                      <h2 className="">
-                        {deboodschappen.length !== 0 ? g.title : null}
-                      </h2>
-                      <ul className="mb-18">
-                        {deboodschappen.map((b, xid) =>
-                          // console.log(g.sort);
-                          // if (g.sort.includes(b.ingredient))
-                          deboodschappen.length !== 0 ? (
-                            <li
-                              key={xid}
-                              className={`accordion-title py-9 px-24 bg-${g.title}`}
-                            >
-                              <div className="flex">
-                                <div className="items-quantity">
-                                  {b.quantity} {b.unit}
-                                </div>
-                                <div className="items-product font-700">
-                                  {b.ingredient}
-                                </div>
-                              </div>
-
-                              <span
-                                onClick={() =>
-                                  deleteBoodschappen(me, setMe, b.ingredient)
-                                }
-                                className="text-red-600 mr-10 font-500"
-                              >
-                                &nbsp;x
-                              </span>
-                            </li>
-                          ) : null
-                        )}
-                      </ul>
-                    </Fragment>
-                  );
-              })}
-            </div>
-          </div>
-          <div className="">
-            <h2 className="mb-24">Voorraad</h2>
-            <Link to="/voorraad">
-              <div className="filter-box__stock">
-                <p>Is alles op voorraad?</p>
-              </div>
-            </Link>
-            <div className="category-box">
-              <ul className="mb-18">
-                {me.stock.map((v, xid) => (
-                  <li
-                    key={xid}
-                    className="accordion-title text-16 py-9 px-24 bg-orange-400"
-                  >
-                    {v}
-                    <span
-                      onClick={() => removeStock(me, setMe, v)}
-                      className="text-red-500 mr-9"
-                    >
-                      x
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+        <h1 className="mb-36 -mt-20">
+          Boodschappen{" "}
+          {myBoodschappen.length !== 0 && (
+            <span>
+              <Link
+                className="ml-10 text-18 text-indigo-600 hover:text-red-500"
+                to="/voorraad"
+              >
+                Is alles op voorraad? >
+              </Link>
+            </span>
+          )}
+        </h1>
+        {myBoodschappen.length === 0 ? (
+          <Fragment>
+            <p className="font-600 mt-21">
+              Er zijn geen boodschappen want er staat nog niets op het menu.
+            </p>
             <h2 className="mb-24 mt-48">Extra</h2>
             <form
               className="form"
@@ -222,8 +154,157 @@ const Boodschappen = ({ me, setMe }) => {
                 })}
               </ul>
             </div>
-          </div>
-        </div>
+          </Fragment>
+        ) : (
+          <Fragment>
+            <a
+              href={`mailto:studio@roozen.nl?SUBJECT=${theemail.subject}&BODY=${
+                theemail.body +
+                myBoodschappen +
+                theemail.adres +
+                theemail.afzender +
+                theemail.email
+              }`}
+            >
+              bestel boodschappen per email bij Studio Roozen
+              <span className="p-18 px-30 bg-indigo-500 text-white ml-18 uppercase text-16 tracking-widest">
+                bestel
+              </span>
+            </a>
+
+            <div className=" mt-36 mb-18 unvisable slide work-grid-item">
+              <div className="ingredienten w-full">
+                <h2 className="mb-24">Vers</h2>
+                {!groceries && (
+                  <div className="hollow-dots-spinner">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                  </div>
+                )}
+                <div className="category-box">
+                  {groceries.map((g, xid) => {
+                    const deboodschappen = boodschappen.filter((b) =>
+                      g.sort.includes(b.ingredient)
+                    );
+                    // console.log("deboodschappen");
+                    // console.log(deboodschappen);
+                    if (deboodschappen.length !== 0)
+                      return (
+                        <Fragment key={xid}>
+                          <h2 className="">
+                            {deboodschappen.length !== 0 ? g.title : null}
+                          </h2>
+                          <ul className="mb-18">
+                            {deboodschappen.map((b, xid) =>
+                              // console.log(g.sort);
+                              // if (g.sort.includes(b.ingredient))
+                              deboodschappen.length !== 0 ? (
+                                <li
+                                  key={xid}
+                                  className={`accordion-title py-9 px-24 bg-${g.title}`}
+                                >
+                                  <div className="flex">
+                                    <div className="items-quantity">
+                                      {b.quantity} {b.unit}
+                                    </div>
+                                    <div className="items-product font-700">
+                                      {b.ingredient}
+                                    </div>
+                                  </div>
+
+                                  <span
+                                    onClick={() =>
+                                      deleteBoodschappen(
+                                        me,
+                                        setMe,
+                                        b.ingredient
+                                      )
+                                    }
+                                    className="text-red-600 mr-10 font-500"
+                                  >
+                                    &nbsp;x
+                                  </span>
+                                </li>
+                              ) : null
+                            )}
+                          </ul>
+                        </Fragment>
+                      );
+                  })}
+                </div>
+              </div>
+              <div className="">
+                <h2 className="mb-24">Voorraad</h2>
+                <Link
+                  className="text-18 font-500 text-indigo-600 hover:text-red-500"
+                  to="/voorraad"
+                >
+                  Is alles op voorraad? >
+                </Link>
+                <div className="category-box">
+                  <ul className="mb-18">
+                    {me.stock.map((v, xid) => (
+                      <li
+                        key={xid}
+                        className="accordion-title text-16 py-9 px-24 bg-orange-400"
+                      >
+                        {v}
+                        <span
+                          onClick={() => removeStock(me, setMe, v)}
+                          className="text-red-500 mr-9"
+                        >
+                          x
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <h2 className="mb-24 mt-48">Extra</h2>
+                <form
+                  className="form"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    handleExtra(value);
+                  }}
+                >
+                  <input
+                    className="py-5 px-10 text-16"
+                    value={value}
+                    type="text"
+                    onChange={(e) => setValue(e.target.value)}
+                    placeholder="Zet dit extra op de lijst..."
+                  />
+                  &nbsp;
+                  <button
+                    className="btn btn-small  btn-small__green"
+                    type="submit"
+                  />
+                </form>
+                <div className="category-box">
+                  <ul className="mb-18">
+                    {me.extra.map((ex, index) => {
+                      return (
+                        <li
+                          key={index}
+                          className="accordion-title py-9 px-24 bg-orange-400"
+                        >
+                          {ex}&nbsp;
+                          <span
+                            className="text-red-500 mr-9"
+                            onClick={() => removeExtra(me, setMe, ex)}
+                          >
+                            x
+                          </span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </Fragment>
+        )}
       </div>
     </Fragment>
   );

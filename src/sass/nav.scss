@@ -15,7 +15,7 @@
   display: block;
   align-items: baseline;
   margin-top: 70px;
-  margin-bottom: 36px;
+  margin-bottom: 48px;
   margin-left: 0;
   padding-left: 0;
   // border-right: 1px solid silver;
@@ -24,11 +24,13 @@
 
   @media screen and (min-width: 768px) {
     display: flex;
+    align-items: center;
+    margin-bottom: 36px;
   }
   .kookschrift-title {
     display: flex;
     // justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     font-size: 18px;
     font-weight: 700;
     color: red;
@@ -95,9 +97,9 @@
 .kookschrift-arrow {
   width: 0;
   height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 6px solid currentColor;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid currentColor;
   padding: 0;
 
   &:hover,

@@ -53,14 +53,10 @@ const Recipe = ({
   const newrecipe = thefavorites.find((c) => c._id === therecipe._id);
   therecipe = newrecipe || therecipe;
 
-  // console.log("therecipe");
-  // console.log(therecipe);
-  const theitems = me.items.map((i) => i._id);
-  // console.log(theitems);
-  // console.log(therecipe.title);
-  // console.log(theitems.includes(therecipe._id));
-  // console.log("therecipe.date");
-  // console.log(therecipe.date);
+  const myrecipes = thecart.map((m) => m._id);
+  // console.log("myrecipes");
+  // console.log(myrecipes);
+
   return (
     <Fragment>
       <div className="container-x unvisable slide work-grid-item">
@@ -74,22 +70,23 @@ const Recipe = ({
         <div className="lg:flex align-baseline mb-36 ">
           {user && (
             <div className="mr-15">
-              {theitems.includes(therecipe._id) ? (
+              {myrecipes.includes(therecipe._id) ? (
                 <Fragment>
-                  <div className="mb-5 lg:pr-18 btn-add mr-10 text-19 font-600 text-indigo-300 flex item-center">
-                    <img
-                      className="w-25"
-                      src="/img/feather/bookmark-red.svg"
-                      alt="bookmark red"
-                    />
-                    {/* zet op het weekmenu */}
-                    <span className="ml-10">in kookschrift</span>
-                  </div>
+                  <Link to="/kookschrift">
+                    <div className="mb-5 lg:pr-18 btn-add mr-10 text-18 font-600 text-red-200 hover:text-red-500 flex item-center">
+                      <img
+                        className="w-25"
+                        src="/img/feather/bookmark-red-stroke.svg"
+                        alt="bookmark red"
+                      />
+                      <span className="ml-10">favorieten ></span>
+                    </div>
+                  </Link>
                 </Fragment>
               ) : (
                 <Fragment>
-                  <button
-                    className="mb-5 lg:pr-18 btn-add mr-10 text-19 font-600 text-indigo-700 flex item-center hover:text-red-500"
+                  <div
+                    className="mb-5 lg:pr-18 btn-add mr-10 text-18 font-600 text-indigo-700 flex item-center hover:text-red-500"
                     onClick={() => handleCreateRecipe(me, setMe, therecipe)}
                   >
                     <img
@@ -97,9 +94,8 @@ const Recipe = ({
                       src="/img/feather/bookmark.svg"
                       alt="bookmark"
                     />
-                    {/* zet op het weekmenu */}
-                    <span className="ml-10">zet in kookschrift</span>
-                  </button>
+                    <span className="ml-10">favorieten ></span>
+                  </div>
                 </Fragment>
               )}
             </div>

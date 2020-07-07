@@ -15,7 +15,10 @@ const AccordionWeekMenu = ({ title, children, me, setMe, id, year }) => {
             className="text-red-500"
             onClick={() => deleteFromMenu(me, setMe, id, year)}
           >
-            &nbsp;<span className="text-19">x</span>
+            &nbsp;
+            <span className="text-19">
+              <span className="ml-5 text-16 font-300">verwijder</span> x
+            </span>
           </span>
         </div>
         <div onClick={() => setOpen(!isOpen)} className="relative flex ">

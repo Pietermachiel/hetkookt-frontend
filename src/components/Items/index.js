@@ -24,9 +24,9 @@ const Items = ({ me, setMe, recipes, ...props }) => {
     <Fragment>
       <div className="container-x">
         <h1 className="mb-36 -mt-20">
-          Kookschrift
+          Favorieten
           <Link to={`/nieuwrecept`}>
-            <button className="bg-indigo-500 text-18 p-12 ml-18 align-bottom text-white">
+            <button className="bg-indigo-500 text-16 p-16 px-30 ml-18 align-bottom text-white uppercase tracking-widest">
               nieuw recept
             </button>
           </Link>
@@ -36,10 +36,56 @@ const Items = ({ me, setMe, recipes, ...props }) => {
           <div className="">
             <p className="font-600">Er staat nog niets in het kookschrift.</p>
             <p className="w-full md:w-50">
-              Zoek een recept of maak zelf een nieuw recept aan.
+              Zoek een recept in{" "}
+              <Link
+                className="font-700 text-indigo-600 hover:text-red-500"
+                to="categories"
+              >
+                recepten
+              </Link>{" "}
+              of{" "}
+              <Link
+                className="font-700 text-indigo-600 hover:text-red-500"
+                to="/collections"
+              >
+                collecties
+              </Link>{" "}
+              of maak zelf een{" "}
+              <Link
+                className="font-700 text-indigo-600 hover:text-red-500"
+                to="/nieuwrecept"
+              >
+                nieuw recept
+              </Link>{" "}
+              aan.
             </p>
           </div>
-        ) : null}
+        ) : (
+          <p className="w-full">
+            Zoek een recept in{" "}
+            <Link
+              className="font-700 text-indigo-600 hover:text-red-500"
+              to="categories"
+            >
+              recepten
+            </Link>{" "}
+            of{" "}
+            <Link
+              className="font-700 text-indigo-600 hover:text-red-500"
+              to="/collections"
+            >
+              collecties
+            </Link>{" "}
+            of maak zelf een{" "}
+            <Link
+              className="font-700 text-indigo-600 hover:text-red-500"
+              to="/nieuwrecept"
+            >
+              nieuw recept
+            </Link>{" "}
+            aan.
+          </p>
+        )}
         {favoritedish.map((d, xid) => {
           return (
             <Fragment key={xid}>

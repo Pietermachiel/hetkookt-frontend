@@ -10,7 +10,9 @@ import Test from "./components/Test";
 import Home from "./components/Home";
 import Recipe from "./components/Recipe";
 import Sorts from "./components/Sorts";
+import CategoriesItems from "./components/Categories/CategoriesItems";
 import Categories from "./components/Categories";
+import CollectionsItems from "./components/Collections/CollectionsItems";
 import Collections from "./components/Collections";
 // import Favorites from "./components/Favorites";
 import Items from "./components/Items";
@@ -186,7 +188,7 @@ const App = () => {
     getData();
   }, []);
 
-  var thecart = me.recipes;
+  var thecart = me.items;
   if (thecart === undefined) thecart = [];
 
   var thefavorites = me.favorites;
@@ -285,7 +287,7 @@ const App = () => {
               />
             )}
           /> */}
-          <Route
+          <ProtectedRoute
             exact
             path="/kookschrift"
             render={(props) => (
@@ -369,7 +371,8 @@ const App = () => {
             }}
           />
           <Route
-            path="/categories/:id"
+            exact
+            path="/categories"
             render={(props) => {
               return (
                 <Categories
@@ -382,10 +385,37 @@ const App = () => {
             }}
           />
           <Route
-            path="/collections/:id"
+            path="/categories/:id"
+            render={(props) => {
+              return (
+                <CategoriesItems
+                  thecart={thecart}
+                  recipes={recipes}
+                  {...props}
+                  categories={categories}
+                />
+              );
+            }}
+          />
+          <Route
+            exact
+            path="/collections"
             render={(props) => {
               return (
                 <Collections
+                  thecart={thecart}
+                  dishes={dishes}
+                  recipes={recipes}
+                  {...props}
+                />
+              );
+            }}
+          />
+          <Route
+            path="/collections/:id"
+            render={(props) => {
+              return (
+                <CollectionsItems
                   thecart={thecart}
                   dishes={dishes}
                   recipes={recipes}

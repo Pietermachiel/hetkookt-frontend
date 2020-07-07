@@ -1,7 +1,9 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 import { toggleStock, removeStock } from "../../services/userService";
 import AccordionVoorraad from "./AccordionVoorraad";
 import { kalender } from "../common/common";
+import Boodschappen from "../Boodschappen/index";
 
 const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
   if (me.stock === undefined) return (me.stock = []);
@@ -75,7 +77,17 @@ const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
   return (
     <Fragment>
       <div className="container-x">
-        <h1 className="mb-36 -mt-20">Voorraad</h1>
+        <h1 className="mb-36 -mt-20">
+          Voorraad{" "}
+          <span>
+            <Link
+              className="ml-10 text-18 text-indigo-600 hover:text-red-500"
+              to="/boodschappen"
+            >
+              Boodschappen >
+            </Link>
+          </span>
+        </h1>
         <div className=" grid-box unvisable slide work-grid-item ">
           <Fragment>
             {devoorraad.map((dv, xid) => {
