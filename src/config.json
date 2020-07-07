@@ -1,4 +1,4 @@
 {
-  "apiUrl": "http://localhost:3900/api",
+  "apiUrl": "https://hetkookt.netlify.app/api",
   "recipeUrl": "https://hetkooktapi.netlify.app/api"
 }
