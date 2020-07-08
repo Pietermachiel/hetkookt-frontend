@@ -113,6 +113,16 @@ const Boodschappen = ({ me, setMe }) => {
             <p className="font-600 mt-21">
               Er zijn geen boodschappen want er staat nog niets op het menu.
             </p>
+            <p>
+              Selecteer een recept in{" "}
+              <Link
+                className="font-700 text-indigo-600 hover:text-red-500"
+                to="/kookschrift"
+              >
+                favorieten
+              </Link>{" "}
+              en zet op het weekmenu.
+            </p>
             <h2 className="mb-24 mt-48">Extra</h2>
             <form
               className="form"

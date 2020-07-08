@@ -254,24 +254,6 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                 ))}
               </select>
             </div>
-            {/* <div className="formgroup__collectie">
-              <label className="input-label" htmlFor="dish">
-                Meal
-              </label>
-              <select
-                name="meal"
-                id="meal"
-                className="form-control input-field"
-                onChange={(e) => setMeal(e.target.value)}
-              >
-                <option value="" />
-                {themeal.map((option, xid) => (
-                  <option key={xid} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
-            </div> */}
 
             {/* input Tags */}
 
@@ -552,7 +534,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                           onChange={(e) => handleInputStock(e, i)}
                         />
                       </div>
-                      {inputFresh.length !== 1 && (
+                      {inputStock.length !== 1 && (
                         <button
                           className="btn-fresh__remove"
                           onClick={() => handleRemoveStock(i)}
@@ -601,7 +583,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                         />
                       </div>
 
-                      {inputFresh.length !== 1 && (
+                      {inputDirections.length !== 1 && (
                         <button
                           className="btn-fresh__remove"
                           onClick={() => handleRemoveDirections(i)}

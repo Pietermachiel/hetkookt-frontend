@@ -140,8 +140,6 @@ export function doEditMenu(me, setMe, item) {
     _id: me._id,
     name: me.name,
     email: me.email,
-    favorites: me.favorites,
-    recipes: me.recipes,
     items: allItems,
     stock: me.stock,
     extra: me.extra,
@@ -152,8 +150,6 @@ export function doEditMenu(me, setMe, item) {
     _id: me._id,
     name: me.name,
     email: me.email,
-    favorites: me.favorites,
-    recipes: me.recipes,
     items: [...me.items, editItem],
     stock: me.stock,
     extra: me.extra,
@@ -173,16 +169,6 @@ function putEditAxios(id, body) {
 
 export function doSave(me, setMe, item) {
   me.items = me.items.filter((r) => r._id !== item._id);
-  // setMe({
-  //   _id: me._id,
-  //   name: me.name,
-  //   email: me.email,
-  //   items: [...me.items],
-  //   stock: me.stock,
-  //   extra: me.extra,
-  // });
-  // const thebody = { items: me.items };
-  // doSaveAxios(me._id, thebody);
   setMe({
     _id: me._id,
     name: me.name,

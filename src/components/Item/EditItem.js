@@ -55,7 +55,7 @@ const EditItem = ({ me, setMe, therecipe, ...props }) => {
     setSource_url(therecipe.source_url);
     setInfo(therecipe.info);
     setDate(therecipe.date);
-    setRecipeItem(therecipe.recipeItem);
+    setRecipeItem(therecipe.item);
   }, [therecipe]);
 
   const theitem = {
@@ -536,14 +536,14 @@ const EditItem = ({ me, setMe, therecipe, ...props }) => {
                 return (
                   <Fragment key={i}>
                     <div className="flex relative">
-                      <div className="form-input__quantity relative">
+                      <div className="form-input__quantity">
                         {/* <label htmlFor="title">Hoeveel </label> */}
                         <input
                           placeholder="hoeveel"
                           className="input-field"
                           name="quantity"
                           title="quantity"
-                          value={x.quantity | ""}
+                          value={x.quantity || ""}
                           onChange={(e) => handleInputStock(e, i)}
                         />
                       </div>

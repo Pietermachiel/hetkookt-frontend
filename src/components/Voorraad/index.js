@@ -91,8 +91,8 @@ const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
         <div className=" grid-box unvisable slide work-grid-item ">
           <Fragment>
             {devoorraad.map((dv, xid) => {
-              //   console.log("dv");
-              //   console.log(dv.title);
+              console.log("dv");
+              console.log(dv.title);
               if (dv === undefined) return [];
               return (
                 <Fragment key={xid}>

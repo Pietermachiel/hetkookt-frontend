@@ -8,8 +8,8 @@ import { slugify, kalender } from "../common/common";
 const Items = ({ me, setMe, recipes, ...props }) => {
   if (me.items === undefined) me.items = [];
 
-  // console.log("me.items");
-  // console.log(me.items);
+  console.log("me.items");
+  console.log(me.items);
 
   //   let favoritecart = [];
   //   me.items.map((r) => {

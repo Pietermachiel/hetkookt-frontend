@@ -29,23 +29,30 @@ const Home = ({ me, setMe, user, recipes, about, ...props }) => {
               </button>
             </h1>
             <div className=" unvisable slide work-grid-item">
-              {abouts.map((a, xid) => {
+              <p>Een verzameling basisrecepten uit alle windstreken.</p>
+              <p>
+                Maak een eigen kookschrift aan met favorieten, weekplanner en
+                boodschappenlijst.
+              </p>
+              <p>
+                Kies uit de collectie recepten, wijzig het recept naar eigen
+                inzicht, of maak zelf een nieuw recept aan.
+              </p>
+              <p>
+                Maak de boodschappenlijst compleet en houd de voorraadkast op
+                peil.
+              </p>
+              <p>Bestel de boodschappen met één druk op de knop.</p>
+              <p>
+                Inschrijven is <strong>safe</strong> en <strong>secure</strong>{" "}
+                met <strong>two factor authorisation </strong>
+                (2FA).
+              </p>
+
+              {/* {abouts.map((a, xid) => {
                 return (
                   <Fragment key={xid}>
-                    {!user && (
-                      <Fragment>
-                        {/* <h2 className="text-24 font-500">
-                          Schrijf je nu in!
-
-                        </h2> */}
-                        {/* <button className="bg-indigo-500 text-16 p-16 px-30 mb-36 align-bottom text-white uppercase tracking-widest">
-                          <NavLink to="/register">inschrijven</NavLink>
-                        </button>{" "} */}
-                        {/* <button className="mt-18 mb-24">
-                          <NavLink to="/register">inschrijven</NavLink>
-                        </button> */}
-                      </Fragment>
-                    )}
+                    {!user && <Fragment></Fragment>}
                     <div key={a.index} className="about-box mt-0">
                       <div className="text-19 leading-loose">
                         {a.lines.map((line, xid) => (
@@ -55,7 +62,7 @@ const Home = ({ me, setMe, user, recipes, about, ...props }) => {
                     </div>{" "}
                   </Fragment>
                 );
-              })}
+              })} */}
               <div className="clear-both"></div>
             </div>
           </div>
