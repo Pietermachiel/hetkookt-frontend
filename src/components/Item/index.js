@@ -34,7 +34,7 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
           {therecipe.title}
           {/* <span className="text-21 lg:pl-10">bladgroenten</span> */}
           <Link to={`/collections/${therecipe.dish}`}>
-            <span className="text-21 lg:pl-10">{therecipe.dish}</span>
+            <span className="text-21 pl-10">{therecipe.dish}</span>
           </Link>
         </h1>
         <div className="lg:flex align-baseline mb-36 ">

@@ -177,7 +177,7 @@ const Boodschappen = ({ me, setMe }) => {
               }`}
             >
               bestel boodschappen per email bij Studio Roozen
-              <span className="p-18 px-30 bg-indigo-500 text-white ml-18 uppercase text-16 tracking-widest">
+              <span className="table md:inline mt-18 md:mt-0 ml-0 md:ml-18 py-18 px-36 bg-indigo-500 text-white uppercase text-16 tracking-widest">
                 bestel
               </span>
             </a>
@@ -253,7 +253,7 @@ const Boodschappen = ({ me, setMe }) => {
                   Is alles op voorraad? >
                 </Link>
                 <div className="category-box">
-                  <ul className="mb-18">
+                  <ul className="my-18">
                     {me.stock.map((v, xid) => (
                       <li
                         key={xid}
@@ -270,7 +270,7 @@ const Boodschappen = ({ me, setMe }) => {
                     ))}
                   </ul>
                 </div>
-                <h2 className="mb-24 mt-48">Extra</h2>
+                <h2 className="mb-24">Extra</h2>
                 <form
                   className="form"
                   onSubmit={(e) => {

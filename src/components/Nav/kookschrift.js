@@ -19,7 +19,7 @@ const Kookschrift = ({ width, user, location }) => {
     <Fragment>
       <div className="pl-20">
         <div className="kookschrift">
-          {user && (
+          {user ? (
             <Fragment>
               <div
                 onClick={() =>
@@ -49,6 +49,8 @@ const Kookschrift = ({ width, user, location }) => {
                 </Link>
               </ul>
             </Fragment>
+          ) : (
+            <div className="kookschrift-title"></div>
           )}
         </div>
       </div>
