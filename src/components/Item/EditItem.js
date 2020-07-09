@@ -38,6 +38,7 @@ const EditItem = ({ me, setMe, therecipe, ...props }) => {
   const [info, setInfo] = useState("");
   const [date, setDate] = useState([""]);
   const [recipeItem, setRecipeItem] = useState("");
+  const [error, setError] = useState(false);
   // const [routeRedirect, setRedirect] = useState("");
 
   useEffect(() => {
@@ -81,12 +82,16 @@ const EditItem = ({ me, setMe, therecipe, ...props }) => {
   // console.log("therecipe");
   // console.log(therecipe);
 
-  const handledoSave = (me, setMe, theitem) => {
+  const handledoSave = async (me, setMe, theitem) => {
     console.log("theitem index");
     console.log(theitem);
-    doSave(me, setMe, theitem);
-    const { state } = props.location;
-    window.location = state ? state.from.pathname : "/kookschrift";
+    try {
+      await doSave(me, setMe, theitem);
+      const { state } = props.location;
+      window.location = state ? state.from.pathname : "/kookschrift";
+    } catch (error) {
+      setError(true);
+    }
   };
 
   // Tags
@@ -276,24 +281,6 @@ const EditItem = ({ me, setMe, therecipe, ...props }) => {
                 ))}
               </select>
             </div>
-            {/* <div className="formgroup__collectie">
-              <label className="input-label" htmlFor="dish">
-                Meal
-              </label>
-              <select
-                name="meal"
-                id="meal"
-                className="form-control input-field"
-                onChange={(e) => setMeal(e.target.value)}
-              >
-                <option value="" />
-                {themeal.map((option, xid) => (
-                  <option key={xid} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
-            </div> */}
 
             {/* input Tags */}
 

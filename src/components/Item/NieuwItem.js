@@ -60,10 +60,12 @@ const NieuwItem = ({ me, setMe, ...props }) => {
   console.log("theitem");
   console.log(theitem);
 
-  const handleCreateRecipe = (me, setMe, theitem, dedate) => {
+  const handleCreateRecipe = async (me, setMe, theitem, dedate) => {
     console.log("handleCreateRecipe: theitem");
     console.log(theitem);
-    createRecipe(me, setMe, theitem, dedate);
+    await createRecipe(me, setMe, theitem, dedate);
+    // const { state } = props.location;
+    // window.location = state ? state.from.pathname : "/kookschrift";
     setRedirect(true);
   };
 
