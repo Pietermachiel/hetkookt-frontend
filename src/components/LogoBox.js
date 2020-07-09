@@ -14,6 +14,9 @@ const LogoBox = ({ user, me }) => {
           <button className="button-loginmenu">login</button>
         </NavLink>
       )}
+      {/* <NavLink aria-label="to loginreact" className="" to="/loginreact">
+        <button className="button-loginreact">loginreact</button>
+      </NavLink> */}
       <div className="hetkookt-logo">
         <NavLink to="/">
           <img src="/img/icons/hetkookt.png" alt="logo hetkookt" />

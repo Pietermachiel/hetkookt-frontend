@@ -39,6 +39,7 @@ module.exports = {
         },
         gray: {
           400: "#ced3d8",
+          500: "#808080",
         },
       },
       borderRadius: {
@@ -135,6 +136,7 @@ module.exports = {
         "1/3/15": "calc(33.333333% - 15px)",
         "1/4/15": "calc(25% - 15px)",
         "50": "50%",
+        "550": "550px",
       }),
       zIndex: {
         auto: "auto",

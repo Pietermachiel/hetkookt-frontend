@@ -429,6 +429,23 @@
   }
 }
 
+.button-loginreact {
+  position: absolute;
+  top: 17px;
+  left: 237px;
+  font-family: "MuseoSans";
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.03em;
+  color: black;
+  z-index: 0;
+  @media screen and (max-width: 767px) {
+    top: 16px;
+    left: 120px;
+    font-size: 14px;
+  }
+}
+
 // .main-navigation > .list-links > li ul {
 //   overflow: hidden;
 //   margin: 0;

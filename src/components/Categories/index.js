@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import { slugify } from "../common/common";
 
 const Categories = ({ me, setMe, thecart, categories, recipes, ...props }) => {
   console.log("categories");
@@ -10,13 +11,13 @@ const Categories = ({ me, setMe, thecart, categories, recipes, ...props }) => {
         {categories.map((c) => (
           <div key={c.id} className="cat-box mb-36">
             <h1 className="-mt-20 mb-36">{c.title}</h1>
-            <div className="flexbox flexbox-margin">
+            <div className="flexbox flexbox-margin unvisable slide work-grid-item">
               {c.sorts.map((s, xid) => (
                 <div class="recipe-box recipe-box_sorts">
                   <Link to={`/sorts/${s.title}`}>
                     <div class="">
                       <img
-                        src={`/img/products/product_${s.title}.jpg`}
+                        src={`/img/products/product_${slugify(s.title)}.jpg`}
                         alt=""
                       />
                     </div>

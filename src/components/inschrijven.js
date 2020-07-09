@@ -1,6 +1,6 @@
 import React from "react";
 
-const inschrijven = () => {
+const Inschrijven = () => {
   return (
     <div className="container-x">
       <div className="login-box__inner">
@@ -15,4 +15,4 @@ const inschrijven = () => {
   );
 };
 
-export default inschrijven;
+export default Inschrijven;

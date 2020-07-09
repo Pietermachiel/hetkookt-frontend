@@ -12,7 +12,7 @@ const Input = ({ name, label, error, ...rest }) => {
         id={name}
         className="form-control input-field__user"
       />
-      {error && <div className="alert alert-danger">{error}</div>}
+      {error && <div className="alert alert-danger font-700">{error}</div>}
     </div>
   );
 };

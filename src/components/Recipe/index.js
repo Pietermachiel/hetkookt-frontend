@@ -10,7 +10,7 @@ const Recipe = ({
   me,
   setMe,
   thecart,
-  thefavorites,
+  // thefavorites,
   // doSave,
   sorts,
   ...props
@@ -50,8 +50,8 @@ const Recipe = ({
   if (therecipe.tags === undefined) return [];
   // const thelength = props.tags.length - 1;
 
-  const newrecipe = thefavorites.find((c) => c._id === therecipe._id);
-  therecipe = newrecipe || therecipe;
+  // const newrecipe = thefavorites.find((c) => c._id === therecipe._id);
+  // therecipe = newrecipe || therecipe;
 
   const myrecipes = thecart.map((m) => m._id);
   // console.log("myrecipes");
@@ -59,7 +59,7 @@ const Recipe = ({
 
   return (
     <Fragment>
-      <div className="container-x unvisable slide work-grid-item">
+      <div className="container-x">
         <h1 className="-mt-20 text-28 lg:text-36 text-green-600 mb-18 lg:mb-8">
           {therecipe.title}
           {/* <span className="text-21 lg:pl-10">bladgroenten</span> */}
@@ -67,7 +67,7 @@ const Recipe = ({
             <span className="text-21 pl-10">{therecipe.dish}</span>
           </Link>
         </h1>
-        <div className="lg:flex align-baseline mb-36 ">
+        <div className="lg:flex align-baseline mb-36 unvisable slide work-grid-item">
           {user && (
             <div className="mr-15">
               {myrecipes.includes(therecipe._id) ? (

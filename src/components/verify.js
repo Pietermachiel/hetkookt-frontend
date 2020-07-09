@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { verifyUser } from "../services/userService";
 
 const Verify = (props) => {
@@ -20,9 +21,9 @@ const Verify = (props) => {
         <br />
         <p>
           Je kunt nu inloggen.
-          <a href="/">
+          <Link to="/login">
             <button className="button-blue">Login</button>
-          </a>
+          </Link>
         </p>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
-import LoginForm from "./components/loginForm";
-import RegisterForm from "./components/registerForm";
+import Login from "./components/login";
+import Register from "./components/register";
 import inschrijven from "./components/inschrijven";
 import Verify from "./components/verify";
 import logout from "./components/logout";
@@ -14,7 +14,6 @@ import CategoriesItems from "./components/Categories/CategoriesItems";
 import Categories from "./components/Categories";
 import CollectionsItems from "./components/Collections/CollectionsItems";
 import Collections from "./components/Collections";
-// import Favorites from "./components/Favorites";
 import Items from "./components/Items";
 import Item from "./components/Item";
 import NieuwItem from "./components/Item/NieuwItem";
@@ -191,9 +190,6 @@ const App = () => {
   var thecart = me.items;
   if (thecart === undefined) thecart = [];
 
-  var thefavorites = me.favorites;
-  if (thefavorites === undefined) thefavorites = [];
-
   return (
     <>
       <div className={`${isOpen ? "content menu-open" : "content"}`}>
@@ -255,14 +251,14 @@ const App = () => {
                   categories={categories}
                   sorts={sorts}
                   thecart={thecart}
-                  thefavorites={thefavorites}
                   {...props}
                 />
               );
             }}
           />
-          <Route path="/login" component={LoginForm} />
-          <Route path="/register" component={RegisterForm} />
+          <Route path="/login" component={Login} />
+          {/* <Route path="/Login" component={Login} /> */}
+          <Route path="/register" component={Register} />
           <Route path="/inschrijven" component={inschrijven} />
           <Route path="/verify/:id" component={Verify} />
           <Route path="/logout" component={logout} />
@@ -273,20 +269,6 @@ const App = () => {
               return <User me={me} user={user} thecart={thecart} {...props} />;
             }}
           />
-          {/* <ProtectedRoute
-            path="/favorites"
-            render={(props) => (
-              <Favorites
-                {...props}
-                thecart={thecart}
-                // thefavorites={thefavorites}
-                recipes={recipes}
-                dishes={dishes}
-                me={me}
-                setMe={setMe}
-              />
-            )}
-          /> */}
           <ProtectedRoute
             exact
             path="/kookschrift"
@@ -294,7 +276,6 @@ const App = () => {
               <Items
                 {...props}
                 thecart={thecart}
-                // thefavorites={thefavorites}
                 recipes={recipes}
                 dishes={dishes}
                 me={me}
