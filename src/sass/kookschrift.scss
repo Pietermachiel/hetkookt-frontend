@@ -46,7 +46,7 @@ body {
   }
 }
 .form-input__quantity {
-  width: 100px;
+  width: 100px !important;
 }
 .form-input__ingredient {
   width: calc(100% - 199px);

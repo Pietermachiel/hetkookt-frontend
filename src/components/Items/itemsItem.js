@@ -32,7 +32,7 @@ const ItemsItem = ({
           <ul className="mb-12">
             {recipe.basics.map((b, id) => (
               <li key={id} className={`mb-0 font-700 text-15 md:text-16 `}>
-                {b}
+                {b.name}
               </li>
             ))}
           </ul>
@@ -40,7 +40,7 @@ const ItemsItem = ({
             {recipe.tags.map((t, id) => (
               <Fragment key={id}>
                 <li className={`inline text-15`}>
-                  {t}
+                  {t.name}
                   {thelength === id ? "" : ", "}
                 </li>
               </Fragment>

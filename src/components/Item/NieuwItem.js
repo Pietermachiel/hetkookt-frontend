@@ -5,208 +5,64 @@ import { uniq } from "../common/common";
 import tags from "../../data/tags.json";
 import thedishes from "../../data/dishes.json";
 import { createRecipe } from "../../services/userService";
+import { useForm, useFieldArray } from "react-hook-form";
 
 // const themeal = ["true", "false"];
 
 const theunits = [{ unit: "g" }, { unit: "ml" }];
 
 const NieuwItem = ({ me, setMe, ...props }) => {
-  const [title, setTitle] = useState("");
-  const [dish, setDish] = useState("");
-  const [inputTags, setInputTags] = useState([""]);
-  const [inputBasics, setInputBasics] = useState([""]);
-  const [inputRelated, setInputRelated] = useState([""]);
-  const [inputFresh, setInputFresh] = useState([
-    {
-      ingredient: "",
-      quantity: "",
-      unit: "",
-    },
-  ]);
-  const [inputStock, setInputStock] = useState([
-    {
-      ingredient: "",
-      quantity: "",
-      unit: "",
-    },
-  ]);
-  const [inputDirections, setInputDirections] = useState([""]);
-  const [author, setAuthor] = useState("");
-  const [source, setSource] = useState("");
-  const [source_url, setSource_url] = useState("");
-  const [info, setInfo] = useState("");
-  const [date, setDate] = useState([""]);
-  const [recipeItem, setRecipeItem] = useState(true);
   const [routeRedirect, setRedirect] = useState("");
 
-  const theitem = {
-    title: title,
-    dish: dish,
-    // meal: meal,
-    fresh: inputFresh,
-    stock: inputStock,
-    tags: inputTags,
-    basics: inputBasics,
-    related: inputRelated,
-    directions: inputDirections,
-    author: author,
-    source: source,
-    source_url: source_url,
-    info: info,
-    date: date,
-    item: recipeItem,
-  };
+  const { register, control, handleSubmit, watch, errors } = useForm({
+    defaultValues: {
+      tags: [{ name: "" }],
+      basics: [{ name: "" }],
+      related: [{ name: "" }],
+      fresh: [{ name: "" }],
+      stock: [{ name: "" }],
+      directions: [{ name: "" }],
+    },
+  });
 
-  console.log("theitem");
-  console.log(theitem);
+  const {
+    fields: tagsFields,
+    append: tagsAppend,
+    remove: tagsRemove,
+  } = useFieldArray({ control, name: "tags" });
+  const {
+    fields: basicsFields,
+    append: basicsAppend,
+    remove: basicsRemove,
+  } = useFieldArray({ control, name: "basics" });
+  const {
+    fields: relatedFields,
+    append: relatedAppend,
+    remove: relatedRemove,
+  } = useFieldArray({ control, name: "related" });
+  const {
+    fields: freshFields,
+    append: freshAppend,
+    remove: freshRemove,
+  } = useFieldArray({ control, name: "fresh" });
+  const {
+    fields: stockFields,
+    append: stockAppend,
+    remove: stockRemove,
+  } = useFieldArray({ control, name: "stock" });
+  const {
+    fields: directionsFields,
+    append: directionsAppend,
+    remove: directionsRemove,
+  } = useFieldArray({ control, name: "directions" });
 
-  const handleCreateRecipe = async (me, setMe, theitem, dedate) => {
-    console.log("handleCreateRecipe: theitem");
-    console.log(theitem);
-    await createRecipe(me, setMe, theitem, dedate);
-    // const { state } = props.location;
-    // window.location = state ? state.from.pathname : "/kookschrift";
+  const handleCreateRecipe = async (data) => {
+    console.log("handleCreateRecipe: data");
+    console.log(data);
+    await createRecipe(me, setMe, data);
+    // // const { state } = props.location;
+    // // window.location = state ? state.from.pathname : "/kookschrift";
     setRedirect(true);
-  };
-
-  // Tags
-
-  const handleInputTags = (e, index) => {
-    const { value } = e.target;
-    const list = [...inputTags];
-    list[index] = value;
-    setInputTags(list);
-  };
-
-  const handleRemoveTags = (index) => {
-    const list = [...inputTags];
-    list.splice(index, 1);
-    setInputTags(list);
-  };
-
-  const handleAddTags = () => {
-    setInputTags([...inputTags, ""]);
-  };
-
-  // Stock
-
-  const handleInputStock = (e, index) => {
-    console.log("e");
-    console.log(e);
-    console.log("e.target");
-    console.log(e.target);
-    const { name, value } = e.target;
-    const list = [...inputStock];
-    list[index][name] = value;
-    setInputStock(list);
-    console.log("list");
-    console.log(list);
-  };
-
-  const handleRemoveStock = (index) => {
-    const list = [...inputStock];
-    list.splice(index, 1);
-    setInputStock(list);
-  };
-
-  const handleAddStock = () => {
-    setInputStock([
-      ...inputStock,
-      {
-        ingredient: "",
-        quantity: "",
-        unit: "",
-      },
-    ]);
-  };
-
-  // Fresh
-
-  const handleInputFresh = (e, index) => {
-    console.log("e");
-    console.log(e);
-    console.log("e.target");
-    console.log(e.target);
-    const { name, value } = e.target;
-    const list = [...inputFresh];
-    list[index][name] = value;
-    setInputFresh(list);
-    console.log("list");
-    console.log(list);
-  };
-
-  const handleRemoveFresh = (index) => {
-    const list = [...inputFresh];
-    list.splice(index, 1);
-    setInputFresh(list);
-  };
-
-  const handleAddFresh = () => {
-    setInputFresh([
-      ...inputFresh,
-      {
-        ingredient: "",
-        quantity: "",
-        unit: "",
-      },
-    ]);
-  };
-
-  // Basics
-
-  const handleInputBasics = (e, index) => {
-    const { value } = e.target;
-    const list = [...inputBasics];
-    list[index] = value;
-    setInputBasics(list);
-  };
-
-  const handleRemoveBasics = (index) => {
-    const list = [...inputBasics];
-    list.splice(index, 1);
-    setInputBasics(list);
-  };
-
-  const handleAddBasics = () => {
-    setInputBasics([...inputBasics, ""]);
-  };
-
-  // Related
-
-  const handleInputRelated = (e, index) => {
-    const { value } = e.target;
-    const list = [...inputRelated];
-    list[index] = value;
-    setInputRelated(list);
-  };
-
-  const handleRemoveRelated = (index) => {
-    const list = [...inputRelated];
-    list.splice(index, 1);
-    setInputRelated(list);
-  };
-
-  const handleAddRelated = () => {
-    setInputRelated([...inputRelated, ""]);
-  };
-
-  // Directions
-
-  const handleInputDirections = (e, index) => {
-    const { value } = e.target;
-    const list = [...inputDirections];
-    list[index] = value;
-    setInputDirections(list);
-  };
-
-  const handleRemoveDirections = (index) => {
-    const list = [...inputDirections];
-    list.splice(index, 1);
-    setInputDirections(list);
-  };
-
-  const handleAddDirections = () => {
-    setInputDirections([...inputDirections, ""]);
   };
 
   const redirect = routeRedirect;
@@ -216,37 +72,38 @@ const NieuwItem = ({ me, setMe, ...props }) => {
 
   return (
     <React.Fragment>
-      <div className="container-x">
-        {/* <div className="banner"></div> */}
-
-        <div className="newrecipe login-box__inner">
-          <h3>Nieuw recept</h3>
-          <form
-            onSubmit={() =>
-              handleCreateRecipe(me, setMe, theitem, theitem.date)
-            }
-            className="login-form"
-          >
-            <div className="formgroup w-556">
-              <label className="input-label" htmlFor="title">
+      <div className="container-x -mt-20">
+        <div className="md:w-550 m-auto relative">
+          <h1>Test</h1>
+          <form onSubmit={handleSubmit(handleCreateRecipe)}>
+            {/* titel */}
+            <div className="">
+              <label className="text-16 text-gray-500" htmlFor="email">
                 Titel
               </label>
               <input
-                className="form-control input-field"
-                type="text"
-                title="title"
-                onChange={(e) => setTitle(e.target.value)}
+                name="title"
+                className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                ref={register({
+                  required: true,
+                })}
               />
+              {errors.titel?.type === "required" && (
+                <span className="block text-16 py-6 font-700 text-orange-500">
+                  Dit veld is verplicht
+                </span>
+              )}
             </div>
+            {/* collectie */}
             <div className="formgroup__collectie">
-              <label className="input-label" htmlFor="dish">
+              <label htmlFor="collectie" className="text-16 text-gray-500">
                 Collectie
               </label>
               <select
                 name="dish"
+                ref={register({ required: true })}
                 id="dish"
-                className="form-control input-field"
-                onChange={(e) => setDish(e.target.value)}
+                className="select h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
               >
                 <option value="" />
                 {thedishes.map((option, xid) => (
@@ -255,409 +112,322 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                   </option>
                 ))}
               </select>
+              {errors.dish?.type === "required" && (
+                <span className="block text-16 py-6 font-700 text-orange-500">
+                  Dit veld is verplicht
+                </span>
+              )}
             </div>
-
-            {/* input Tags */}
-
+            {/* Tags */}
             <div className="formgroup__collectie">
-              <label className="input-label" htmlFor="dish">
+              <label className="text-16 text-gray-500" htmlFor="email">
                 Tags
               </label>
-              {inputTags.map((x, i) => {
-                return (
-                  <Fragment key={i}>
-                    <div className="relative">
-                      <div className="relative">
-                        <select
-                          name="unit"
-                          value={x}
-                          id="unit"
-                          className="form-control input-field"
-                          onChange={(e) => handleInputTags(e, i)}
-                        >
-                          <option value="" />
-                          {tags.map((option, xid) => (
-                            <option key={xid} value={option}>
-                              {option}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-
-                      {inputTags.length !== 1 && (
-                        <button
-                          className="btn-fresh__remove"
-                          onClick={() => handleRemoveTags(i)}
-                        >
-                          <img src="/img/feather/trash.svg" alt="" />
-                        </button>
-                      )}
-                    </div>
-                    <div className="relative">
-                      {inputTags.length - 1 === i && (
-                        <Fragment>
-                          <button
-                            className="btn-fresh__add"
-                            onClick={handleAddTags}
-                          >
-                            <div className="absolute">
-                              <img src="/img/feather/plus.svg" alt="" />
-                            </div>
-                            Nog een label
-                          </button>
-                        </Fragment>
-                      )}
-                    </div>
-                  </Fragment>
-                );
-              })}
+              <ul>
+                {tagsFields.map((item, index) => (
+                  <li className="relative mb-0" key={item.id}>
+                    <select
+                      name={`tags[${index}].name`}
+                      className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                      defaultValue={item.name}
+                      ref={register()}
+                    >
+                      <option value="" />
+                      {thedishes.map((option, xid) => (
+                        <option key={xid} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                    <button
+                      className="absolute top-0"
+                      style={{ right: "-30px" }}
+                      onClick={() => tagsRemove(index)}
+                    >
+                      <img
+                        className="w-20 h-20 mt-13 opacity-50"
+                        src="/img/feather/trash.svg"
+                        alt=""
+                      />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+              <button
+                className="relative w-full text-left pt-4 pl-30 text-indigo-600"
+                onClick={() => tagsAppend({ name: "" })}
+              >
+                <div className="absolute left-0 top-0">
+                  <img className="pt-6" src="/img/feather/plus.svg" alt="" />
+                </div>
+                tag
+              </button>
             </div>
-
-            {/* input Basics */}
-
-            <div className="formgroup">
-              <label className="input-label" htmlFor="dish">
+            {/* Basics */}
+            <div className="formgroup__collectie">
+              <label className="text-16 text-gray-500" htmlFor="email">
                 Basics
               </label>
-              {inputBasics.map((x, i) => {
-                return (
-                  <Fragment key={i}>
-                    <div className="relative">
-                      <div className="relative w-556">
-                        <input
-                          name="unit"
-                          value={x}
-                          id="unit"
-                          className="form-control input-field" // form-control
-                          onChange={(e) => handleInputBasics(e, i)}
-                        />
-                      </div>
-
-                      {inputBasics.length !== 1 && (
-                        <button
-                          className="btn-fresh__remove"
-                          onClick={() => handleRemoveBasics(i)}
-                        >
-                          <img src="/img/feather/trash.svg" alt="" />
-                        </button>
-                      )}
-                    </div>
-                    <div className="relative w-556">
-                      {inputBasics.length - 1 === i && (
-                        <Fragment>
-                          <button
-                            className="btn-fresh__add"
-                            onClick={handleAddBasics}
-                          >
-                            <div className="absolute">
-                              <img src="/img/feather/plus.svg" alt="" />
-                            </div>
-                            Nog een basic
-                          </button>
-                        </Fragment>
-                      )}
-                    </div>
-                  </Fragment>
-                );
-              })}
+              <ul>
+                {basicsFields.map((item, index) => (
+                  <li className="relative mb-0" key={item.id}>
+                    <input
+                      name={`basics[${index}].name`}
+                      className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                      defaultValue={item.name}
+                      ref={register()}
+                    />
+                    <button
+                      className="absolute top-0"
+                      style={{ right: "-44px" }}
+                      onClick={() => basicsRemove(index)}
+                    >
+                      <img
+                        className="w-20 h-20 mt-13 mr-15 opacity-50"
+                        src="/img/feather/trash.svg"
+                        alt=""
+                      />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+              <button
+                className="relative w-full text-left pt-4 pl-30 text-indigo-600"
+                onClick={() => basicsAppend({ name: "" })}
+              >
+                <div className="absolute left-0 top-0">
+                  <img className="pt-6" src="/img/feather/plus.svg" alt="" />
+                </div>
+                titel basisrecept
+              </button>
             </div>
-
-            {/* input Related */}
-
-            <div className="formgroup">
-              <label className="input-label" htmlFor="dish">
+            {/* Related */}
+            <div className="formgroup__collectie">
+              <label className="text-16 text-gray-500" htmlFor="email">
                 Related
               </label>
-              {inputRelated.map((x, i) => {
-                return (
-                  <Fragment key={i}>
-                    <div className="relative">
-                      <div className="relative w-556">
-                        <input
-                          name="unit"
-                          value={x}
-                          id="unit"
-                          className="form-control input-field" // form-control
-                          onChange={(e) => handleInputRelated(e, i)}
-                        />
-                      </div>
-
-                      {inputRelated.length !== 1 && (
-                        <button
-                          className="btn-fresh__remove"
-                          onClick={() => handleRemoveRelated(i)}
-                        >
-                          <img src="/img/feather/trash.svg" alt="" />
-                        </button>
-                      )}
-                    </div>
-                    <div className="relative w-556">
-                      {inputRelated.length - 1 === i && (
-                        <Fragment>
-                          <button
-                            className="btn-fresh__add"
-                            onClick={handleAddRelated}
-                          >
-                            <div className="absolute">
-                              <img src="/img/feather/plus.svg" alt="" />
-                            </div>
-                            Nog een related
-                          </button>
-                        </Fragment>
-                      )}
-                    </div>
-                  </Fragment>
-                );
-              })}
+              <ul>
+                {relatedFields.map((item, index) => (
+                  <li className="relative mb-0" key={item.id}>
+                    <input
+                      name={`related[${index}].name`}
+                      className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                      defaultValue={item.name}
+                      ref={register()}
+                    />
+                    <button
+                      className="absolute top-0"
+                      style={{ right: "-44px" }}
+                      onClick={() => relatedRemove(index)}
+                    >
+                      <img
+                        className="w-20 h-20 mt-13 mr-15 opacity-50"
+                        src="/img/feather/trash.svg"
+                        alt=""
+                      />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+              <button
+                className="relative w-full text-left pt-4 pl-30 text-indigo-600"
+                onClick={() => relatedAppend({ name: "" })}
+              >
+                <div className="absolute left-0 top-0">
+                  <img className="pt-6" src="/img/feather/plus.svg" alt="" />
+                </div>
+                titel gerelateerd recept
+              </button>
             </div>
-
-            {/* input Fresh */}
-
-            <div className="formgroup__vers">
-              <label className="input-label" htmlFor="dish">
-                Verse ingredienten
+            {/* vers */}
+            <div className="formgroup__collectie">
+              <label className="text-16 text-gray-500" htmlFor="email">
+                Vers
               </label>
-              {inputFresh.map((x, i) => {
-                return (
-                  <Fragment key={i}>
-                    <div className="flex relative">
-                      <div className="form-input__quantity">
-                        {/* <label htmlFor="title">Hoeveel </label> */}
-                        <input
-                          placeholder="hoeveel"
-                          className="input-field"
-                          name="quantity"
-                          title="quantity"
-                          value={x.quantity}
-                          onChange={(e) => handleInputFresh(e, i)}
-                        />
-                      </div>
-                      <div className="form-input__unit">
-                        {/* <label htmlFor="dish">Eenheid</label> */}
-                        <select
-                          name="unit"
-                          value={x.unit}
-                          id="unit"
-                          className="" // form-control
-                          onChange={(e) => handleInputFresh(e, i)}
-                        >
-                          <option value="" />
-                          {theunits.map((option, xid) => (
-                            <option key={xid} value={option.unit}>
-                              {option.unit}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                      <div className="form-input__ingredient flex flex-column">
-                        {/* <label htmlFor="title">Ingredient </label> */}
-                        <input
-                          placeholder="ingredient"
-                          className="form-control input-field"
-                          name="ingredient"
-                          value={x.ingredient}
-                          onChange={(e) => handleInputFresh(e, i)}
-                        />
-                      </div>
-                      {inputFresh.length !== 1 && (
-                        <button
-                          className="btn-fresh__remove"
-                          onClick={() => handleRemoveFresh(i)}
-                        >
-                          <img src="/img/feather/trash.svg" alt="" />
-                        </button>
-                      )}
-                    </div>
-                    <div className="relative">
-                      {inputFresh.length - 1 === i && (
-                        <Fragment>
-                          <button
-                            className="btn-fresh__add"
-                            onClick={handleAddFresh}
-                          >
-                            <div className="absolute">
-                              <img src="/img/feather/plus.svg" alt="" />
-                            </div>
-                            Nog een vers ingredient
-                          </button>
-                        </Fragment>
-                      )}
-                    </div>
-                  </Fragment>
-                );
-              })}
+              <ul>
+                {freshFields.map((item, index) => (
+                  <li className="relative mb-0" key={item.id}>
+                    <input
+                      name={`fresh[${index}].quantity`}
+                      placeholder="hoeveel"
+                      className="form-input__quantity h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
+                      defaultValue={item.quantity}
+                      ref={register()}
+                    />
+                    <input
+                      name={`fresh[${index}].unit`}
+                      className="form-input__unit h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
+                      defaultValue={item.unit}
+                      ref={register()}
+                    />
+                    <input
+                      name={`fresh[${index}].ingredient`}
+                      placeholder="ingredient"
+                      className="form-input__ingredient h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
+                      defaultValue={item.ingredient}
+                      ref={register()}
+                    />
+                    <button
+                      className="absolute top-0"
+                      style={{ right: "-44px" }}
+                      onClick={() => freshRemove(index)}
+                    >
+                      <img
+                        className="w-20 h-20 mt-13 mr-15 opacity-50"
+                        src="/img/feather/trash.svg"
+                        alt=""
+                      />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+              <button
+                className="relative w-full text-left pt-4 pl-30 text-indigo-600"
+                onClick={() => freshAppend({ name: "" })}
+              >
+                <div className="absolute left-0 top-0">
+                  <img className="pt-6" src="/img/feather/plus.svg" alt="" />
+                </div>
+                vers ingredient
+              </button>
             </div>
-
-            {/* input Stock */}
-
-            <div className="formgroup__vers">
-              <label className="input-label" htmlFor="dish">
-                Houdbare ingredienten
+            {/* houdbaar */}
+            <div className="formgroup__collectie">
+              <label className="text-16 text-gray-500" htmlFor="email">
+                Houdbaar
               </label>
-              {inputStock.map((x, i) => {
-                return (
-                  <Fragment key={i}>
-                    <div className="flex relative">
-                      <div className="form-input__quantity relative">
-                        {/* <label htmlFor="title">Hoeveel </label> */}
-                        <input
-                          placeholder="hoeveel"
-                          className="input-field"
-                          name="quantity"
-                          title="quantity"
-                          value={x.quantity}
-                          onChange={(e) => handleInputStock(e, i)}
-                        />
-                      </div>
-                      <div className="form-input__unit">
-                        {/* <label htmlFor="dish">Eenheid</label> */}
-                        <select
-                          name="unit"
-                          value={x.unit}
-                          id="unit"
-                          className="" // form-control
-                          onChange={(e) => handleInputStock(e, i)}
-                        >
-                          <option value="" />
-                          {theunits.map((option, xid) => (
-                            <option key={xid} value={option.unit}>
-                              {option.unit}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                      <div className="form-input__ingredient flex flex-column">
-                        {/* <label htmlFor="title">Ingredient </label> */}
-                        <input
-                          placeholder="ingredient"
-                          className="form-control input-field"
-                          name="ingredient"
-                          value={x.ingredient}
-                          onChange={(e) => handleInputStock(e, i)}
-                        />
-                      </div>
-                      {inputStock.length !== 1 && (
-                        <button
-                          className="btn-fresh__remove"
-                          onClick={() => handleRemoveStock(i)}
-                        >
-                          <img src="/img/feather/trash.svg" alt="" />
-                        </button>
-                      )}
-                    </div>
-                    <div className="relative">
-                      {inputStock.length - 1 === i && (
-                        <Fragment>
-                          <button
-                            className="btn-fresh__add"
-                            onClick={handleAddStock}
-                          >
-                            <div className="absolute">
-                              <img src="/img/feather/plus.svg" alt="" />
-                            </div>
-                            Nog een houdbaar ingredient
-                          </button>
-                        </Fragment>
-                      )}
-                    </div>
-                  </Fragment>
-                );
-              })}
+              <ul>
+                {stockFields.map((item, index) => (
+                  <li className="relative mb-0" key={item.id}>
+                    <input
+                      name={`stock[${index}].quantity`}
+                      placeholder="hoeveel"
+                      className="form-input__quantity h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
+                      defaultValue={item.quantity}
+                      ref={register()}
+                    />
+                    <input
+                      name={`stock[${index}].unit`}
+                      className="form-input__unit h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
+                      defaultValue={item.unit}
+                      ref={register()}
+                    />
+                    <input
+                      name={`stock[${index}].ingredient`}
+                      placeholder="ingredient"
+                      className="form-input__ingredient h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
+                      defaultValue={item.ingredient}
+                      ref={register()}
+                    />
+                    <button
+                      className="absolute top-0"
+                      style={{ right: "-44px" }}
+                      onClick={() => stockRemove(index)}
+                    >
+                      <img
+                        className="w-20 h-20 mt-13 mr-15 opacity-50"
+                        src="/img/feather/trash.svg"
+                        alt=""
+                      />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+              <button
+                className="relative w-full text-left pt-4 pl-30 text-indigo-600"
+                onClick={() => stockAppend({ name: "" })}
+              >
+                <div className="absolute left-0 top-0">
+                  <img className="pt-6" src="/img/feather/plus.svg" alt="" />
+                </div>
+                houdbaar ingredient
+              </button>
             </div>
-
-            {/* input Directions */}
-
-            <div className="formgroup">
-              <label className="input-label" htmlFor="dish">
-                Directions
+            {/* directions */}
+            <div className="formgroup__collectie">
+              <label className="text-16 text-gray-500" htmlFor="email">
+                Werkwijze
               </label>
-              {inputDirections.map((x, i) => {
-                return (
-                  <Fragment key={i}>
-                    <div className="relative">
-                      <div className="relative w-556">
-                        <input
-                          name="unit"
-                          value={x}
-                          id="unit"
-                          className="form-control input-field" // form-control
-                          onChange={(e) => handleInputDirections(e, i)}
-                        />
-                      </div>
-
-                      {inputDirections.length !== 1 && (
-                        <button
-                          className="btn-fresh__remove"
-                          onClick={() => handleRemoveDirections(i)}
-                        >
-                          <img src="/img/feather/trash.svg" alt="" />
-                        </button>
-                      )}
-                    </div>
-                    <div className="relative w-556">
-                      {inputDirections.length - 1 === i && (
-                        <Fragment>
-                          <button
-                            className="btn-fresh__add"
-                            onClick={handleAddDirections}
-                          >
-                            <div className="absolute">
-                              <img src="/img/feather/plus.svg" alt="" />
-                            </div>
-                            Volgende stap
-                          </button>
-                        </Fragment>
-                      )}
-                    </div>
-                  </Fragment>
-                );
-              })}
+              <ul>
+                {directionsFields.map((item, index) => (
+                  <li className="relative mb-0" key={item.id}>
+                    <input
+                      name={`directions[${index}].name`}
+                      className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                      defaultValue={item.name}
+                      ref={register()}
+                    />
+                    <button
+                      className="absolute top-0"
+                      style={{ right: "-44px" }}
+                      onClick={() => directionsRemove(index)}
+                    >
+                      <img
+                        className="w-20 h-20 mt-13 mr-15 opacity-50"
+                        src="/img/feather/trash.svg"
+                        alt=""
+                      />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+              <button
+                className="relative w-full text-left pt-4 pl-30 text-indigo-600"
+                onClick={() => directionsAppend({ name: "" })}
+              >
+                <div className="absolute left-0 top-0">
+                  <img className="pt-6" src="/img/feather/plus.svg" alt="" />
+                </div>
+                stap
+              </button>
             </div>
-            <div className="formgroup w-556">
-              <label className="input-label" htmlFor="title">
+            {/* author */}
+            <div className="">
+              <label className="text-16 text-gray-500" htmlFor="email">
                 Author
               </label>
               <input
-                className="form-control input-field"
-                type="text"
-                title="title"
-                onChange={(e) => setAuthor(e.target.value)}
+                name="author"
+                className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                ref={register()}
               />
-            </div>
-            <div className="formgroup w-556">
-              <label className="input-label" htmlFor="title">
+            </div>{" "}
+            {/* source */}
+            <div className="">
+              <label className="text-16 text-gray-500" htmlFor="email">
                 Source
               </label>
               <input
-                className="form-control input-field"
-                type="text"
-                title="title"
-                onChange={(e) => setSource(e.target.value)}
+                name="source"
+                className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                ref={register()}
               />
-            </div>
-            <div className="formgroup w-556">
-              <label className="input-label" htmlFor="title">
-                Source_url
+            </div>{" "}
+            {/* url */}
+            <div className="">
+              <label className="text-16 text-gray-500" htmlFor="email">
+                Url
               </label>
               <input
-                className="form-control input-field"
-                type="text"
-                title="title"
-                onChange={(e) => setSource_url(e.target.value)}
+                name="source_url"
+                className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                ref={register()}
               />
-            </div>
-            <div className="formgroup w-556">
-              <label className="input-label" htmlFor="title">
+            </div>{" "}
+            {/* info */}
+            <div className="">
+              <label className="text-16 text-gray-500" htmlFor="email">
                 Info
               </label>
               <input
-                className="form-control input-field"
-                type="text"
-                title="title"
-                onChange={(e) => setInfo(e.target.value)}
+                name="info"
+                className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                ref={register()}
               />
             </div>
-            <button className="btn-newrecipe__submit">Submit</button>
+            <button className="uppercase text-16 bg-indigo-500 mt-36 px-36 py-10 text-white tracking-widest">
+              nieuw
+            </button>
           </form>
         </div>
       </div>

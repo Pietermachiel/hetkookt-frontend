@@ -158,7 +158,7 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
               <div className="ingredienten-box">
                 {therecipe.basics.map((b, xid) => (
                   <Link key={xid} to={`/recipe/${slugify(b)}`}>
-                    <span className="font-600">{b}</span>
+                    <span className="font-600">{b.name}</span>
                   </Link>
                 ))}
               </div>
@@ -166,7 +166,7 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
               <div className="ingredienten-box">
                 {therecipe.related.map((b, xid) => (
                   <Link key={xid} to={`/recipe/${slugify(b)}`}>
-                    <span className="font-600">{b}</span>
+                    <span className="font-600">{b.name}</span>
                   </Link>
                 ))}
               </div>
@@ -178,7 +178,7 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
               <div className="directions">
                 <ol>
                   {therecipe.directions.map((d, xid) => (
-                    <li key={xid}>{d}</li>
+                    <li key={xid}>{d.name}</li>
                   ))}
                 </ol>
               </div>
