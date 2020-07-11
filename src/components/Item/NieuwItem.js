@@ -7,7 +7,8 @@ import thedishes from "../../data/dishes.json";
 import { createRecipe } from "../../services/userService";
 import { useForm, useFieldArray } from "react-hook-form";
 
-// const themeal = ["true", "false"];
+// https://www.carlrippon.com/custom-validation-rules-in-react-hook-form/
+// https://www.carlrippon.com/master-detail-forms-with-react-form-hook/
 
 const theunits = [{ unit: "g" }, { unit: "ml" }];
 
@@ -59,6 +60,10 @@ const NieuwItem = ({ me, setMe, ...props }) => {
   const handleCreateRecipe = async (data) => {
     console.log("handleCreateRecipe: data");
     console.log(data);
+    data = { ...data, item: true };
+    console.log("data2");
+    console.log(data);
+
     await createRecipe(me, setMe, data);
     // // const { state } = props.location;
     // // window.location = state ? state.from.pathname : "/kookschrift";
@@ -77,7 +82,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
           <h1>Test</h1>
           <form onSubmit={handleSubmit(handleCreateRecipe)}>
             {/* titel */}
-            <div className="">
+            <div className="formgroup__collectie">
               <label className="text-16 text-gray-500" htmlFor="email">
                 Titel
               </label>
@@ -88,7 +93,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                   required: true,
                 })}
               />
-              {errors.titel?.type === "required" && (
+              {errors.title?.type === "required" && (
                 <span className="block text-16 py-6 font-700 text-orange-500">
                   Dit veld is verplicht
                 </span>
@@ -125,35 +130,46 @@ const NieuwItem = ({ me, setMe, ...props }) => {
               </label>
               <ul>
                 {tagsFields.map((item, index) => (
-                  <li className="relative mb-0" key={item.id}>
-                    <select
-                      name={`tags[${index}].name`}
-                      className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
-                      defaultValue={item.name}
-                      ref={register()}
-                    >
-                      <option value="" />
-                      {thedishes.map((option, xid) => (
-                        <option key={xid} value={option}>
-                          {option}
-                        </option>
-                      ))}
-                    </select>
-                    <button
-                      className="absolute top-0"
-                      style={{ right: "-30px" }}
-                      onClick={() => tagsRemove(index)}
-                    >
-                      <img
-                        className="w-20 h-20 mt-13 opacity-50"
-                        src="/img/feather/trash.svg"
-                        alt=""
-                      />
-                    </button>
-                  </li>
+                  <Fragment key={index}>
+                    <li className="relative mb-0">
+                      <select
+                        name={`tags[${index}].name`}
+                        className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                        defaultValue={item.name}
+                        ref={register()}
+                        // ref={register({ required: true })}
+                      >
+                        <option value="" />
+                        {tags.map((option, xid) => (
+                          <option key={xid} value={option}>
+                            {option}
+                          </option>
+                        ))}
+                      </select>
+
+                      <button
+                        className="absolute top-0"
+                        style={{ right: "-30px" }}
+                        onClick={() => tagsRemove(index)}
+                      >
+                        <img
+                          className="w-20 h-20 mt-13 opacity-50"
+                          src="/img/feather/trash.svg"
+                          alt=""
+                        />
+                      </button>
+                    </li>
+                    {/* {errors.tags &&
+                      errors.tags[index] &&
+                      errors.tags[index].name?.type === "required" && (
+                        <span className="block text-16 py-6 font-700 text-orange-500">
+                          Dit veld is verplicht
+                        </span>
+                      )} */}
+                  </Fragment>
                 ))}
               </ul>
-              <button
+              <div
                 className="relative w-full text-left pt-4 pl-30 text-indigo-600"
                 onClick={() => tagsAppend({ name: "" })}
               >
@@ -161,7 +177,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                   <img className="pt-6" src="/img/feather/plus.svg" alt="" />
                 </div>
                 tag
-              </button>
+              </div>
             </div>
             {/* Basics */}
             <div className="formgroup__collectie">
@@ -170,7 +186,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
               </label>
               <ul>
                 {basicsFields.map((item, index) => (
-                  <li className="relative mb-0" key={item.id}>
+                  <li key={index} className="relative mb-0">
                     <input
                       name={`basics[${index}].name`}
                       className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
@@ -191,7 +207,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                   </li>
                 ))}
               </ul>
-              <button
+              <div
                 className="relative w-full text-left pt-4 pl-30 text-indigo-600"
                 onClick={() => basicsAppend({ name: "" })}
               >
@@ -199,7 +215,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                   <img className="pt-6" src="/img/feather/plus.svg" alt="" />
                 </div>
                 titel basisrecept
-              </button>
+              </div>
             </div>
             {/* Related */}
             <div className="formgroup__collectie">
@@ -208,7 +224,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
               </label>
               <ul>
                 {relatedFields.map((item, index) => (
-                  <li className="relative mb-0" key={item.id}>
+                  <li key={index} className="relative mb-0">
                     <input
                       name={`related[${index}].name`}
                       className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
@@ -229,7 +245,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                   </li>
                 ))}
               </ul>
-              <button
+              <div
                 className="relative w-full text-left pt-4 pl-30 text-indigo-600"
                 onClick={() => relatedAppend({ name: "" })}
               >
@@ -237,7 +253,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                   <img className="pt-6" src="/img/feather/plus.svg" alt="" />
                 </div>
                 titel gerelateerd recept
-              </button>
+              </div>
             </div>
             {/* vers */}
             <div className="formgroup__collectie">
@@ -246,42 +262,66 @@ const NieuwItem = ({ me, setMe, ...props }) => {
               </label>
               <ul>
                 {freshFields.map((item, index) => (
-                  <li className="relative mb-0" key={item.id}>
-                    <input
-                      name={`fresh[${index}].quantity`}
-                      placeholder="hoeveel"
-                      className="form-input__quantity h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
-                      defaultValue={item.quantity}
-                      ref={register()}
-                    />
-                    <input
-                      name={`fresh[${index}].unit`}
-                      className="form-input__unit h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
-                      defaultValue={item.unit}
-                      ref={register()}
-                    />
-                    <input
-                      name={`fresh[${index}].ingredient`}
-                      placeholder="ingredient"
-                      className="form-input__ingredient h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
-                      defaultValue={item.ingredient}
-                      ref={register()}
-                    />
-                    <button
-                      className="absolute top-0"
-                      style={{ right: "-44px" }}
-                      onClick={() => freshRemove(index)}
-                    >
-                      <img
-                        className="w-20 h-20 mt-13 mr-15 opacity-50"
-                        src="/img/feather/trash.svg"
-                        alt=""
+                  <Fragment key={index}>
+                    <li className="relative mb-0" key={item.id}>
+                      <input
+                        name={`fresh[${index}].quantity`}
+                        placeholder="hoeveel"
+                        className="form-input__quantity h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
+                        defaultValue={item.quantity}
+                        // ref={register()}
+                        ref={register({ pattern: /^[0-9]+$/ })}
                       />
-                    </button>
-                  </li>
+                      <select
+                        name={`fresh[${index}].unit`}
+                        className="form-input__unit h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
+                        defaultValue={item.unit}
+                        ref={register()}
+                      >
+                        <option value="" />
+                        {theunits.map((option, xid) => (
+                          <option key={xid} value={option.unit}>
+                            {option.unit}
+                          </option>
+                        ))}
+                      </select>
+                      <input
+                        name={`fresh[${index}].ingredient`}
+                        placeholder="ingredient"
+                        className="form-input__ingredient h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
+                        defaultValue={item.ingredient}
+                        ref={register()}
+                      />
+                      <button
+                        className="absolute top-0"
+                        style={{ right: "-44px" }}
+                        onClick={() => freshRemove(index)}
+                      >
+                        <img
+                          className="w-20 h-20 mt-13 mr-15 opacity-50"
+                          src="/img/feather/trash.svg"
+                          alt=""
+                        />
+                      </button>
+                    </li>
+                    {/* {errors.fresh[index].quantity?.type ===
+                      "required"(
+                        <span className="block text-16 py-6 font-700 text-orange-500">
+                          Alleen cijfers
+                        </span>
+                      )} */}
+                    {errors.fresh &&
+                      errors.fresh[index] &&
+                      errors.fresh[index].quantity?.type === "pattern" && (
+                        <span className="block text-16 py-6 font-700 text-orange-500">
+                          Alleen cijfers
+                        </span>
+                      )}
+                  </Fragment>
                 ))}
               </ul>
-              <button
+
+              <div
                 className="relative w-full text-left pt-4 pl-30 text-indigo-600"
                 onClick={() => freshAppend({ name: "" })}
               >
@@ -289,7 +329,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                   <img className="pt-6" src="/img/feather/plus.svg" alt="" />
                 </div>
                 vers ingredient
-              </button>
+              </div>
             </div>
             {/* houdbaar */}
             <div className="formgroup__collectie">
@@ -298,42 +338,51 @@ const NieuwItem = ({ me, setMe, ...props }) => {
               </label>
               <ul>
                 {stockFields.map((item, index) => (
-                  <li className="relative mb-0" key={item.id}>
-                    <input
-                      name={`stock[${index}].quantity`}
-                      placeholder="hoeveel"
-                      className="form-input__quantity h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
-                      defaultValue={item.quantity}
-                      ref={register()}
-                    />
-                    <input
-                      name={`stock[${index}].unit`}
-                      className="form-input__unit h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
-                      defaultValue={item.unit}
-                      ref={register()}
-                    />
-                    <input
-                      name={`stock[${index}].ingredient`}
-                      placeholder="ingredient"
-                      className="form-input__ingredient h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
-                      defaultValue={item.ingredient}
-                      ref={register()}
-                    />
-                    <button
-                      className="absolute top-0"
-                      style={{ right: "-44px" }}
-                      onClick={() => stockRemove(index)}
-                    >
-                      <img
-                        className="w-20 h-20 mt-13 mr-15 opacity-50"
-                        src="/img/feather/trash.svg"
-                        alt=""
+                  <Fragment key={index}>
+                    <li className="relative mb-0">
+                      <input
+                        name={`stock[${index}].quantity`}
+                        placeholder="hoeveel"
+                        className="form-input__quantity h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
+                        defaultValue={item.quantity}
+                        ref={register({ pattern: /^[0-9]+$/ })}
                       />
-                    </button>
-                  </li>
+                      <input
+                        name={`stock[${index}].unit`}
+                        className="form-input__unit h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
+                        defaultValue={item.unit}
+                        ref={register()}
+                      />
+                      <input
+                        name={`stock[${index}].ingredient`}
+                        placeholder="ingredient"
+                        className="form-input__ingredient h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
+                        defaultValue={item.ingredient}
+                        ref={register()}
+                      />
+                      <button
+                        className="absolute top-0"
+                        style={{ right: "-44px" }}
+                        onClick={() => stockRemove(index)}
+                      >
+                        <img
+                          className="w-20 h-20 mt-13 mr-15 opacity-50"
+                          src="/img/feather/trash.svg"
+                          alt=""
+                        />
+                      </button>
+                    </li>
+                    {errors.stock &&
+                      errors.stock[index] &&
+                      errors.stock[index].quantity?.type === "pattern" && (
+                        <span className="block text-16 py-6 font-700 text-orange-500">
+                          Alleen cijfers
+                        </span>
+                      )}
+                  </Fragment>
                 ))}
               </ul>
-              <button
+              <div
                 className="relative w-full text-left pt-4 pl-30 text-indigo-600"
                 onClick={() => stockAppend({ name: "" })}
               >
@@ -341,7 +390,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                   <img className="pt-6" src="/img/feather/plus.svg" alt="" />
                 </div>
                 houdbaar ingredient
-              </button>
+              </div>
             </div>
             {/* directions */}
             <div className="formgroup__collectie">
@@ -350,7 +399,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
               </label>
               <ul>
                 {directionsFields.map((item, index) => (
-                  <li className="relative mb-0" key={item.id}>
+                  <li key={index} className="relative mb-0">
                     <input
                       name={`directions[${index}].name`}
                       className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
@@ -371,7 +420,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                   </li>
                 ))}
               </ul>
-              <button
+              <div
                 className="relative w-full text-left pt-4 pl-30 text-indigo-600"
                 onClick={() => directionsAppend({ name: "" })}
               >
@@ -379,7 +428,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                   <img className="pt-6" src="/img/feather/plus.svg" alt="" />
                 </div>
                 stap
-              </button>
+              </div>
             </div>
             {/* author */}
             <div className="">

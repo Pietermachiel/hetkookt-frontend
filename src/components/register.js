@@ -5,10 +5,31 @@ import * as userService from "../services/userService";
 
 const Register = (props) => {
   const { register, handleSubmit, watch, errors } = useForm();
+  const [err, setErr] = useState("");
+
+  // const doSubmit = async (data) => {
+  //   await userService.register(data);
+  //   window.location = "/inschrijven";
+  // };
 
   const doSubmit = async (data) => {
-    await userService.register(data);
-    window.location = "/inschrijven";
+    console.log("data");
+    console.log(data);
+    console.log(data.email);
+    console.log(data.password);
+    try {
+      await userService.register(data);
+      window.location = "/inschrijven";
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        console.log(ex);
+        console.log(ex.response);
+        console.log(err);
+        const theerr = ex.response.data;
+        console.log(theerr);
+        setErr(theerr);
+      }
+    }
   };
 
   return (
@@ -47,6 +68,7 @@ const Register = (props) => {
                 className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-48"
                 ref={register({
                   required: true,
+                  minLength: 2,
                 })}
               />
               <span className="absolute left-0 top-0">
@@ -59,6 +81,11 @@ const Register = (props) => {
               {errors.name?.type === "required" && (
                 <span className="block text-16 py-6 font-700 text-orange-500">
                   Dit veld is verplicht
+                </span>
+              )}
+              {errors.name?.type === "minLength" && (
+                <span className="block text-16 py-6 font-700 text-orange-500">
+                  Minimaal 2 letters
                 </span>
               )}
             </div>
@@ -100,6 +127,7 @@ const Register = (props) => {
               </label>
               <input
                 name="password"
+                type="password"
                 className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-48"
                 ref={register({ required: true, minLength: 6 })}
               />
@@ -121,6 +149,11 @@ const Register = (props) => {
                 </span>
               )}
             </div>
+            {err && (
+              <p className="font-700 text-16 text-orange-500 mb-0 mt-6">
+                {err}
+              </p>
+            )}
             <button className="uppercase text-16 bg-indigo-500 mt-36 px-36 py-10 text-white tracking-widest">
               inschrijven
             </button>

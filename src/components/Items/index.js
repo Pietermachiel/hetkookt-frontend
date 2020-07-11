@@ -8,8 +8,8 @@ import { slugify, kalender } from "../common/common";
 const Items = ({ me, setMe, recipes, ...props }) => {
   if (me.items === undefined) me.items = [];
 
-  console.log("me.items");
-  console.log(me.items);
+  // console.log("me.items");
+  // console.log(me.items);
 
   //   let favoritecart = [];
   //   me.items.map((r) => {
@@ -18,7 +18,7 @@ const Items = ({ me, setMe, recipes, ...props }) => {
   //   });
 
   let favoritedish = me.items.map((f) => f.dish);
-  favoritedish = favoritedish.filter(uniq);
+  favoritedish = favoritedish.filter(uniq).sort();
 
   return (
     <Fragment>

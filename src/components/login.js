@@ -80,6 +80,7 @@ const Login = (props) => {
               </label>
               <input
                 name="password"
+                type="password"
                 className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-48"
                 ref={register({ required: true })}
               />

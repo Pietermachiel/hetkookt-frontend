@@ -10,12 +10,18 @@ const CollectionsItems = ({ thecart, sorts, dishes, recipes, ...props }) => {
     (recipe) => recipe.dish === props.match.params.id
   );
   var selectedtags = therecipes.map((s) => s.tags[0]);
+  selectedtags = selectedtags.map((ss) => ss.name);
   selectedtags = selectedtags.filter(uniq).filter((e) => e !== undefined);
 
   const collection = selectedtags.map((s) => {
-    const selection = therecipes.filter((r) => r.tags[0] === s);
+    const selection = therecipes.filter((r) => r.tags[0].name === s);
     return { title: s, selection: selection };
   });
+
+  console.log("selectedtags");
+  console.log(selectedtags);
+  console.log("collection");
+  console.log(collection);
 
   const width = useCurrentWidth();
   const height = useCurrentHeight();
@@ -101,13 +107,13 @@ const CollectionsItems = ({ thecart, sorts, dishes, recipes, ...props }) => {
                               key={id}
                               className={`mb-0 leading-tight font-700 text-18 md:text-19 `}
                             >
-                              {b}
+                              {b.name}
                             </li>
                           ))}
                         </ul>
                         {recipe.tags.map((t, id) => (
                           <Fragment key={id}>
-                            <span className={`text-16`}>{t}</span>
+                            <span className={`text-16`}>{t.name}</span>
                             {thelength === id ? "" : ", "}
                           </Fragment>
                         ))}
