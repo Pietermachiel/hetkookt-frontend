@@ -7,23 +7,14 @@ const Login = (props) => {
   const [routeRedirect, setRedirect] = useState("");
   const [err, setErr] = useState("");
   const { register, handleSubmit, watch, errors } = useForm();
-  //   const onSubmit = (data) => console.log(data);
 
   const doSubmit = async (data) => {
-    console.log("data");
-    console.log(data);
-    console.log(data.email);
-    console.log(data.password);
     try {
       await auth.login(data.email, data.password);
       window.location = "/welkom";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
-        console.log(ex);
-        console.log(ex.response);
-        console.log(err);
         const theerr = ex.response.data;
-        console.log(theerr);
         setErr(theerr);
       }
     }

@@ -7,8 +7,6 @@ import thedishes from "../../data/dishes.json";
 import { doSave } from "../../services/userService";
 import { useForm, useFieldArray } from "react-hook-form";
 
-// const themeal = ["true", "false"];
-
 const theunits = [{ unit: "g" }, { unit: "ml" }];
 
 const NieuwItem = ({ me, setMe, therecipe, ...props }) => {
@@ -266,12 +264,19 @@ const NieuwItem = ({ me, setMe, therecipe, ...props }) => {
                       defaultValue={item.quantity}
                       ref={register()}
                     />
-                    <input
+                    <select
                       name={`fresh[${index}].unit`}
                       className="form-input__unit h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
                       defaultValue={item.unit}
                       ref={register()}
-                    />
+                    >
+                      <option value="" />
+                      {theunits.map((option, xid) => (
+                        <option key={xid} value={option.unit}>
+                          {option.unit}
+                        </option>
+                      ))}
+                    </select>
                     <input
                       name={`fresh[${index}].ingredient`}
                       placeholder="ingredient"
@@ -318,12 +323,19 @@ const NieuwItem = ({ me, setMe, therecipe, ...props }) => {
                       defaultValue={item.quantity}
                       ref={register()}
                     />
-                    <input
+                    <select
                       name={`stock[${index}].unit`}
                       className="form-input__unit h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
                       defaultValue={item.unit}
                       ref={register()}
-                    />
+                    >
+                      <option value="" />
+                      {theunits.map((option, xid) => (
+                        <option key={xid} value={option.unit}>
+                          {option.unit}
+                        </option>
+                      ))}
+                    </select>
                     <input
                       name={`stock[${index}].ingredient`}
                       placeholder="ingredient"

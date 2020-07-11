@@ -1,5 +1,4 @@
 import React, { useEffect, useState, Fragment } from "react";
-// import defaultImage from "../assets/images.png";
 import { Redirect } from "react-router";
 import { uniq } from "../common/common";
 import tags from "../../data/tags.json";
@@ -159,13 +158,6 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                         />
                       </button>
                     </li>
-                    {/* {errors.tags &&
-                      errors.tags[index] &&
-                      errors.tags[index].name?.type === "required" && (
-                        <span className="block text-16 py-6 font-700 text-orange-500">
-                          Dit veld is verplicht
-                        </span>
-                      )} */}
                   </Fragment>
                 ))}
               </ul>
@@ -304,12 +296,6 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                         />
                       </button>
                     </li>
-                    {/* {errors.fresh[index].quantity?.type ===
-                      "required"(
-                        <span className="block text-16 py-6 font-700 text-orange-500">
-                          Alleen cijfers
-                        </span>
-                      )} */}
                     {errors.fresh &&
                       errors.fresh[index] &&
                       errors.fresh[index].quantity?.type === "pattern" && (
@@ -347,12 +333,19 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                         defaultValue={item.quantity}
                         ref={register({ pattern: /^[0-9]+$/ })}
                       />
-                      <input
+                      <select
                         name={`stock[${index}].unit`}
                         className="form-input__unit h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
                         defaultValue={item.unit}
                         ref={register()}
-                      />
+                      >
+                        <option value="" />
+                        {theunits.map((option, xid) => (
+                          <option key={xid} value={option.unit}>
+                            {option.unit}
+                          </option>
+                        ))}
+                      </select>
                       <input
                         name={`stock[${index}].ingredient`}
                         placeholder="ingredient"

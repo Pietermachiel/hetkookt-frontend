@@ -7,26 +7,13 @@ const Register = (props) => {
   const { register, handleSubmit, watch, errors } = useForm();
   const [err, setErr] = useState("");
 
-  // const doSubmit = async (data) => {
-  //   await userService.register(data);
-  //   window.location = "/inschrijven";
-  // };
-
   const doSubmit = async (data) => {
-    console.log("data");
-    console.log(data);
-    console.log(data.email);
-    console.log(data.password);
     try {
       await userService.register(data);
       window.location = "/inschrijven";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
-        console.log(ex);
-        console.log(ex.response);
-        console.log(err);
         const theerr = ex.response.data;
-        console.log(theerr);
         setErr(theerr);
       }
     }
@@ -39,24 +26,18 @@ const Register = (props) => {
           <h3 className="">
             Schrijf je in bij <span className="logo-hetkookt">hetkookt!</span>
           </h3>
-          <br />{" "}
-          {/* <p className="text-24 mb-18 leading-snug">
-              Maak een account aan voor een weekmenu en een kookschrift met
-              persoonlijke notities.
-            </p> */}
+          <br />
           <p className="link-inschrijven">
             Heb je al een account?&nbsp;
             <NavLink to="/login">
               <span className="ml-5 font-500">login &gt;</span>
             </NavLink>
           </p>
-          {/* <h2>inschrijven</h2> */}
           <h4 className="font-600">Nieuw bij hetkookt?</h4>
           <p>
             Na verzending van je gegevens sturen we je een email ter
             verificatie. Je kunt je inschrijving te allen tijde intrekken.
           </p>
-          {/* <p className="text-indigo-700 font-600">disclaimer</p> */}
           <form className="login-form" onSubmit={handleSubmit(doSubmit)}>
             {/* name */}
             <div className={`relative`}>

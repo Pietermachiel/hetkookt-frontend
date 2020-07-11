@@ -7,19 +7,10 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [item, setItem] = useState([]);
 
-  // console.log(props);
-  // console.log(user);
-  // console.log(props.match.params.id);
-  // console.log(me.items);
-
   if (me.items === undefined) return [];
   const therecipe = me.items.find(
     (i) => slugify(i.title) === props.match.params.id
   );
-  //   const therecipe = me.items.map((i) => i.title);
-
-  // console.log("therecipe");
-  // console.log(therecipe);
 
   const API = props.match.url;
 
@@ -32,7 +23,6 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
       <div className="container-x unvisable slide work-grid-item">
         <h1 className="-mt-20 text-28 lg:text-36 text-green-600 mb-18 lg:mb-8">
           {therecipe.title}
-          {/* <span className="text-21 lg:pl-10">bladgroenten</span> */}
           <Link to={`/collections/${therecipe.dish}`}>
             <span className="text-21 pl-10">{therecipe.dish}</span>
           </Link>
@@ -89,15 +79,6 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
               edit
             </button>
           </Link>
-
-          {/* <button className="mb-5 lg:pr-18 btn-add mr-10 text-19 font-600 text-red-700 flex item-center hover:text-red-500">
-            <img
-              className="w-25 h-25 mr-10"
-              src="/img/feather/x-square.svg"
-              alt=""
-            />
-            delete
-          </button> */}
         </div>
         {/* add panel */}
         <AddpanelWeekmenu
@@ -105,8 +86,6 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
           setIsOpen={setIsOpen}
           handleIsOpen={handleIsOpen}
           therecipe={therecipe}
-          // thecart={me.items}
-          // doSave={doSave}
           me={me}
           setMe={setMe}
         />
@@ -118,8 +97,6 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
               <div className="ingredienten-box">
                 {therecipe.fresh.map((f, xid) => {
                   const category = sorts.find((s) => s.title === f.ingredient);
-                  // console.log("category");
-                  // console.log(category);
                   if (category === undefined) return [];
                   const catcolor = category.sorts;
                   return (

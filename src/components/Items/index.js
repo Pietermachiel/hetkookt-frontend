@@ -8,15 +8,6 @@ import { slugify, kalender } from "../common/common";
 const Items = ({ me, setMe, recipes, ...props }) => {
   if (me.items === undefined) me.items = [];
 
-  // console.log("me.items");
-  // console.log(me.items);
-
-  //   let favoritecart = [];
-  //   me.items.map((r) => {
-  //     let thefavorite = recipes.find((f) => f._id === r);
-  //     return favoritecart.push(thefavorite);
-  //   });
-
   let favoritedish = me.items.map((f) => f.dish);
   favoritedish = favoritedish.filter(uniq).sort();
 
@@ -95,8 +86,6 @@ const Items = ({ me, setMe, recipes, ...props }) => {
                   {me.items.map((recipe) => {
                     let cart = me.items.find((c) => c._id === recipe._id);
                     if (cart === undefined) cart = [];
-                    // console.log("recipe recipeitems");
-                    // console.log(recipe._id);
                     const red = kalender.find((w) => w.year === cart.date);
                     if (recipe.dish === undefined) return [];
                     if (recipe.dish === d)
@@ -107,7 +96,6 @@ const Items = ({ me, setMe, recipes, ...props }) => {
                             red={red}
                             cart={cart}
                             Link={Link}
-                            // handleDeleteFavorite={handleDeleteFavorite}
                             me={me}
                             setMe={setMe}
                             {...props}
