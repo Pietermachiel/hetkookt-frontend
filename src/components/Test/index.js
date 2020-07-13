@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { uniq } from "../common/common";
-import RecipeItems from "../RecipeItems";
+import RecipeItems from "../Recipes/RecipeItems";
 
 const Test = ({ user, recipes, ...props }) => {
   // console.log("recipes");

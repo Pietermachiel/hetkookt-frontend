@@ -88,7 +88,7 @@ const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
             </Link>
           </span>
         </h1>
-        <div className=" grid-box unvisable slide work-grid-item ">
+        <div className=" grid-box unvisable slide work-grid-item pb-10">
           <Fragment>
             {devoorraad.map((dv, xid) => {
               console.log("dv");

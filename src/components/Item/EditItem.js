@@ -10,7 +10,7 @@ import { useForm, useFieldArray } from "react-hook-form";
 const theunits = [{ unit: "g" }, { unit: "ml" }];
 
 const NieuwItem = ({ me, setMe, therecipe, ...props }) => {
-  const [routeRedirect, setRedirect] = useState("");
+  // const [routeRedirect, setRedirect] = useState("");
   const [error, setError] = useState(false);
   const { register, control, handleSubmit, watch, errors } = useForm({
     defaultValues: {
@@ -70,10 +70,10 @@ const NieuwItem = ({ me, setMe, therecipe, ...props }) => {
     }
   };
 
-  const redirect = routeRedirect;
-  if (redirect) {
-    return <Redirect to="/kookschrift" />;
-  }
+  // const redirect = routeRedirect;
+  // if (redirect) {
+  //   return <Redirect to="/kookschrift" />;
+  // }
 
   // console.log("EditItem: me.items");
   // console.log(me.items);

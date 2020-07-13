@@ -202,7 +202,7 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <div className="flex mt-72">
+            <div className="flex mt-72 pb-24">
               <img className="w-25" src="/img/feather/book.svg" alt="" />
               &nbsp;<span className="pl-5">Bron: {therecipe.source}</span>
             </div>

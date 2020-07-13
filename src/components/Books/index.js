@@ -1,5 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Fragment } from "react";
+import { slugify } from "../common/common";
 
 const Books = ({ books, ...props }) => {
   console.log(books);
@@ -20,13 +22,21 @@ const Books = ({ books, ...props }) => {
                 className="keuken ko-box-right__outer  unvisable slide work-grid-item"
               >
                 <div className="ko-box-right__img">
-                  <img src={`/img/books/${b.sourceId}_title.jpg`} alt="" />
+                  <Link to={`/book/${slugify(b.title)}`}>
+                    <img src={`/img/books/${b.sourceId}_title.jpg`} alt="" />
+                  </Link>
                 </div>
-                <div className="ko-box-right__text">
-                  <p>{b.title}</p>
-                  <h2>{b.year}</h2>
-                  <p>{b.author}</p>
-                </div>
+                <Link
+                  className="ko-box-right__text"
+                  to={`/book/${slugify(b.title)}`}
+                >
+                  <div>
+                    <p>{b.title}</p>
+
+                    <h2>{b.year}</h2>
+                    <p>{b.author}</p>
+                  </div>{" "}
+                </Link>
               </div>
             ))}
           </div>

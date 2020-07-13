@@ -78,9 +78,12 @@ const Items = ({ me, setMe, recipes, ...props }) => {
           </p>
         )}
         {favoritedish.map((d, xid) => {
+          // if (d === undefined) return [];
+          console.log("d");
+          console.log(d);
           return (
             <Fragment key={xid}>
-              <div className="border-t mb-18 pt-18">
+              <div className="border-t pb-18 pt-18">
                 <h2 className="mb-18">{d}</h2>
                 <div className="relative -ml-15 mb-10 flex flex-row flex-wrap">
                   {me.items.map((recipe) => {

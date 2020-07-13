@@ -12,8 +12,8 @@ import { useForm, useFieldArray } from "react-hook-form";
 const theunits = [{ unit: "g" }, { unit: "ml" }];
 
 const NieuwItem = ({ me, setMe, ...props }) => {
-  const [routeRedirect, setRedirect] = useState("");
-
+  // const [routeRedirect, setRedirect] = useState("");
+  const [error, setError] = useState(false);
   const { register, control, handleSubmit, watch, errors } = useForm({
     defaultValues: {
       tags: [{ name: "" }],
@@ -57,28 +57,31 @@ const NieuwItem = ({ me, setMe, ...props }) => {
   } = useFieldArray({ control, name: "directions" });
 
   const handleCreateRecipe = async (data) => {
-    console.log("handleCreateRecipe: data");
-    console.log(data);
+    // console.log("handleCreateRecipe: data");
+    // console.log(data);
     data = { ...data, item: true };
-    console.log("data2");
-    console.log(data);
-
-    await createRecipe(me, setMe, data);
-    // // const { state } = props.location;
-    // // window.location = state ? state.from.pathname : "/kookschrift";
-    setRedirect(true);
+    // console.log("data2");
+    // console.log(data);
+    try {
+      await createRecipe(me, setMe, data);
+      const { state } = props.location;
+      window.location = state ? state.from.pathname : "/kookschrift";
+    } catch (error) {
+      setError(true);
+    }
+    // setRedirect(true);
   };
 
-  const redirect = routeRedirect;
-  if (redirect) {
-    return <Redirect to="/kookschrift" />;
-  }
+  // const redirect = routeRedirect;
+  // if (redirect) {
+  //   return <Redirect to="/kookschrift" />;
+  // }
 
   return (
     <React.Fragment>
-      <div className="container-x -mt-20">
+      <div className="container-x">
         <div className="md:w-550 m-auto relative">
-          <h1>Test</h1>
+          <h1 className="favorieten-title">Nieuw recept</h1>
           <form onSubmit={handleSubmit(handleCreateRecipe)}>
             {/* titel */}
             <div className="formgroup__collectie">

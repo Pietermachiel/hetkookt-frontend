@@ -32,6 +32,7 @@ import axios from "axios";
 import { apiUrl, recipeUrl } from "./config.json";
 import LogoBox from "./components/LogoBox";
 import { slugify } from "./components/common/common.js";
+import _ from "lodash";
 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
@@ -42,7 +43,7 @@ const App = () => {
   const [user, setUser] = useState([]);
   const [me, setMe] = useState([]);
   const [about, setAbout] = useState([]);
-  const [books, setBooks] = useState([]);
+  let [books, setBooks] = useState([]);
   const [isOn, setIsOn] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isCatOpen, setCatOpen] = useState(false);
@@ -115,6 +116,13 @@ const App = () => {
   // console.log("me");
   // console.log(me);
   // console.log(stock);
+  console.log("books");
+  console.log(books);
+
+  books = _.orderBy(books, ["year"], ["desc"]); // Use Lodash to sort array by 'name'
+
+  console.log("books2");
+  console.log(books);
 
   useEffect(() => {
     async function getData() {

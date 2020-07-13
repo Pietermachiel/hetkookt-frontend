@@ -47,10 +47,10 @@ const Recipe = ({
     getData();
   }, [API]);
 
-  console.log("therecipe")
-  console.log(therecipe)
-console.log("API")
-  console.log(API)
+  console.log("therecipe");
+  console.log(therecipe);
+  console.log("API");
+  console.log(API);
 
   if (therecipe.tags === undefined) return [];
   // const thelength = props.tags.length - 1;
@@ -203,16 +203,12 @@ console.log("API")
           </div>
         </div>
         <div className="recepten-source">
-          <a
-            href={`${therecipe.source_url}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div className="flex mt-72">
+          <Link to={`/book/${slugify(therecipe.source)}`}>
+            <div className="flex mt-72 pb-20">
               <img className="w-25" src="/img/feather/book.svg" alt="" />
               &nbsp;<span className="pl-5">Bron: {therecipe.source}</span>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
     </Fragment>
