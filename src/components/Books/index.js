@@ -6,8 +6,8 @@ const Books = ({ books, ...props }) => {
   return (
     <Fragment>
       <div className="container-x">
-        <h1 className="mb-36 -mt-20">Boeken top 100</h1>
-        <div class="filter-box__kookboeken">
+        <h1 className="favorieten-title">Boeken top 100</h1>
+        <div className="filter-box__kookboeken">
           nederlands&nbsp; frans&nbsp; duits&nbsp; engels&nbsp; vs&nbsp;
           italiaans&nbsp; spaans&nbsp; nordic&nbsp; oosters&nbsp;
           vegetarisch&nbsp; geschiedenis&nbsp;

@@ -22,7 +22,7 @@ const Home = ({ me, setMe, user, recipes, about, ...props }) => {
       <div className="container-x">
         <Fragment>
           <div className="mb-48">
-            <h1 className="-mt-20 mb-36">
+            <h1 className="favorieten-title">
               hetkookt!
               {!user && (
                 <button className="bg-indigo-500 text-16 p-16 px-30 mt-18 md:mt-0 md:ml-18 align-bottom text-white uppercase tracking-widest">
@@ -32,7 +32,7 @@ const Home = ({ me, setMe, user, recipes, about, ...props }) => {
             </h1>
             <div className=" unvisable slide work-grid-item">
               <p>
-                Een verzameling <strong>basisrecepten</strong> uit alle
+                Een bonte verzameling <strong>basisrecepten</strong> uit alle
                 windstreken.
               </p>
               <br />
@@ -41,11 +41,14 @@ const Home = ({ me, setMe, user, recipes, about, ...props }) => {
               </p>
               <ul>
                 <li className="list-inside list-disc">
-                  Pas de recepten naar eigen inzicht aan.
+                  Maak een kookschrift met je eigen <strong>favoriete </strong>
+                  recepten.
+                </li>{" "}
+                <li className="list-inside list-disc">
+                  Pas alle recepten naar eigen inzicht aan.
                 </li>
                 <li className="list-inside list-disc">
-                  Maak een eigen kookschrift met <strong>favorieten</strong>,{" "}
-                  <strong>weekplanner</strong> en{" "}
+                  Maak een <strong>weekmenu</strong> en{" "}
                   <strong>boodschappenlijst</strong>.
                 </li>
                 <li className="list-inside list-disc">
@@ -60,6 +63,34 @@ const Home = ({ me, setMe, user, recipes, about, ...props }) => {
                   <strong>
                     Bestel de boodschappen met één druk op de knop.
                   </strong>
+                </li>
+              </ul>
+
+              <br />
+
+              <p className="text-19 font-700 text-indigo-600">Voordelen</p>
+              <ul>
+                <li className="list-inside list-disc">
+                  Basisrecepten met bronvermelding.
+                </li>
+                <li className="list-inside list-disc">
+                  Maak zelf favoriete recepten in een kookschrift of pas de
+                  basisrecepten aan naar eigen inzicht en hoeveelheden.
+                </li>
+                <li className="list-inside list-disc">
+                  Maak een weekmenu en doe efficiënt boodschappen.
+                </li>
+                <li className="list-inside list-disc">
+                  Vers en voorraad gescheiden.
+                </li>
+                <li className="list-inside list-disc">
+                  Werk met exacte maten.
+                </li>
+                <li className="list-inside list-disc">
+                  Je boodschappenlijst altijd en overal bij de hand.
+                </li>
+                <li className="list-inside list-disc">
+                  Koop niet meer dan je nodig hebt.
                 </li>
               </ul>
 

@@ -13,8 +13,8 @@ const Items = ({ me, setMe, recipes, ...props }) => {
 
   return (
     <Fragment>
-      <div className="container-x">
-        <h1 className="mb-36 -mt-20">
+      <div className="container-y bg-rose-100">
+        <h1 className="favorieten-title">
           Favorieten
           <Link to={`/nieuwrecept`}>
             <button className="bg-indigo-500 text-16 p-16 px-30 mt-18 md:mt-0 md:ml-18 align-bottom text-white uppercase tracking-widest">

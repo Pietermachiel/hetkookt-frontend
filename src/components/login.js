@@ -24,7 +24,7 @@ const Login = (props) => {
     <Fragment>
       <div className="container-x unvisable slide work-grid-item">
         <div className="md:w-550 m-auto relative">
-          <h3 className="">
+          <h3 className="favorieten-title">
             Login bij
             <span className="font-500">
               &nbsp;het<span className="font-700">kookt</span>.

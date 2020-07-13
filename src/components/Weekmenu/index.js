@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import AccordionWeekMenu from "./AccordionWeekMenu";
 import { vandaag, kalender, theweek } from "../common/common";
 import { toggleFresh } from "../../services/userService";
+import KalenderWeekmenu from "./KalenderWeekmenu";
 
-const Menu = ({ me, setMe, user, recipes, about, ...props }) => {
+const Menu = ({ me, setMe, user, thecart, recipes, about, ...props }) => {
   // console.log("me");
   // console.log(me.items);
   // console.log("user");
@@ -26,13 +27,13 @@ const Menu = ({ me, setMe, user, recipes, about, ...props }) => {
 
   return (
     <Fragment>
-      <div className="container-x">
-        <h1 className="-mt-20">
+      <div className="container-y bg-rose-100">
+        <h1 className="favorieten-title">
           Weekmenu <span className="text-24 ml-10">week {theweek()}</span>
           {thedates.length !== 0 && (
             <span>
               <Link
-                className="ml-18 text-18 text-indigo-600 hover:text-red-500"
+                className="block lg:inline mt-10 lg:mt-0 lg:ml-18 text-18 text-indigo-600 hover:text-red-500"
                 to="/boodschappen"
               >
                 Boodschappen >
@@ -40,35 +41,12 @@ const Menu = ({ me, setMe, user, recipes, about, ...props }) => {
             </span>
           )}
         </h1>
+        <KalenderWeekmenu props={props} thecart={thecart} user={user} />
         {thedates.length === 0 ? (
           <div className="">
             <p className="font-600 mt-21">Er staat nog niets op het menu.</p>
             <div>
-              <p className="w-full md:w-50">
-                Zoek een recept in{" "}
-                <Link
-                  className="font-700 text-indigo-600 hover:text-red-500"
-                  to="categories"
-                >
-                  recepten
-                </Link>{" "}
-                of{" "}
-                <Link
-                  className="font-700 text-indigo-600 hover:text-red-500"
-                  to="/collections"
-                >
-                  collecties
-                </Link>{" "}
-                of maak zelf een{" "}
-                <Link
-                  className="font-700 text-indigo-600 hover:text-red-500"
-                  to="/nieuwrecept"
-                >
-                  nieuw recept
-                </Link>{" "}
-                aan.
-              </p>{" "}
-              <br /> Kies dan het recept in{" "}
+              <br /> Kies een recept in{" "}
               <Link
                 className="font-700 text-indigo-600 hover:text-red-500"
                 to="/kookschrift"

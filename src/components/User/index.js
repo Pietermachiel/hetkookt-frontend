@@ -10,6 +10,7 @@ const User = ({ me, user, thecart, ...props }) => {
   }
 
   function handleDelete(userId) {
+    alert("Weet je het zeker?");
     deleteUser(userId);
     auth.logout();
     window.location = "/";
@@ -39,19 +40,19 @@ const User = ({ me, user, thecart, ...props }) => {
 
   return (
     <div className="container-x">
-      <h1 className="-mt-20 mb-36">{me.name}</h1>
-      <div className=" unvisable slide work-grid-item">
-        <p>Name: {me.name}</p>
-        <p>Email: {me.email}</p>
+      <h1 className="favorieten-title">{me.name}</h1>
+      <div className="unvisable slide work-grid-item -mt-18">
+        {/* <p>Name: {me.name}</p> */}
+        <p>Username: {me.email}</p>
         <button
-          className="button-blue bg-indigo-500 hover:bg-indigo-700"
+          className="uppercase text-16 bg-indigo-500 mt-36 px-36 py-10 text-white tracking-widest"
           onClick={() => handleLogout()}
         >
           Logout
         </button>
 
         <button
-          className="button-blue bg-red hover:bg-red-700"
+          className="uppercase text-16 mt-36 px-36 py-10 text-white tracking-widest bg-red hover:bg-red-700"
           onClick={() => handleDelete(user._id)}
         >
           Delete account

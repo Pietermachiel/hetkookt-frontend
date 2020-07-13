@@ -1,9 +1,11 @@
 import React from "react";
 import { Fragment } from "react";
 import { slugify, kalender } from "../common/common";
-import { deleteRecipe } from "../../services/userService";
 
-const ItemsItem = ({
+const FavoriteItems = ({
+  width,
+  height,
+  index,
   cart,
   Link,
   recipe,
@@ -11,12 +13,12 @@ const ItemsItem = ({
   red,
   me,
   setMe,
+  // handleDeleteFavorite,
   ...props
 }) => {
-  console.log("cart");
+  console.log("me");
   console.log(cart);
-  console.log("kalender");
-  console.log(kalender);
+
   return (
     <Fragment>
       <div
@@ -49,34 +51,13 @@ const ItemsItem = ({
           <p className={`uppercase tracking-widest text-12 pl-15 `}>
             {recipe.dish}
           </p>
-          {kalender.map((w) =>
-            cart.date.includes(w.year) ? (
-              <p
-                key={w.index}
-                className={`-mt-21 font-700 text-red-500 text-16 float-right pr-18 pt-16 mb-0 ${
-                  red ? "text-red-500" : null
-                }`}
-              >
-                {w.day} {w.index}
-              </p>
-            ) : null
-          )}
-          {/* <div className={`recipe-footer__box-delete`}>
-            <div className="recipe-footer__box-buttons">
-              <button
-                className="btn-delete"
-                onClick={() => deleteRecipe(me, setMe, recipe._id)}
-              >
-                <span>
-                  <img className="h-28 w-28" src="/img/feather/x.svg" alt="" />
-                </span>
-              </button>
-            </div>
-          </div> */}
+          <div className="float-right mr-18">
+            <img className="h-25" src="/img/feather/bookmark-red.svg" alt="" />
+          </div>
         </div>
       </div>
     </Fragment>
   );
 };
 
-export default ItemsItem;
+export default FavoriteItems;

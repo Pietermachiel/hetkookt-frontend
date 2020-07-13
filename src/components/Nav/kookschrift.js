@@ -17,8 +17,8 @@ const Kookschrift = ({ width, user, location }) => {
 
   return (
     <Fragment>
-      <div className="pl-20">
-        <div className="kookschrift">
+      <div className={`pl-20 ${user && "bg-gray-400"}`}>
+        <div className={`${user ? "kookschrift-user" : "kookschrift-user"}`}>
           {user ? (
             <Fragment>
               <div
@@ -50,7 +50,30 @@ const Kookschrift = ({ width, user, location }) => {
               </ul>
             </Fragment>
           ) : (
-            <div className="kookschrift-title"></div>
+            <Fragment>
+              <Link to="/login" className="kookschrift-title">
+                <div className="flex items-center">
+                  <img
+                    className="h-25"
+                    src="/img/feather/bookmark-red.svg"
+                    alt=""
+                  />
+                  <span className="ml-5">Kookschrift</span>
+                </div>
+                {/* <span className="kookschrift-arrow"></span> */}
+              </Link>
+              {/* <ul className={`${kookschriftOpen ? "kookschrift-open" : ""}`}>
+                <Link onClick={() => handleClick()} to="/kookschrift">
+                  <li>favorieten</li>
+                </Link>
+                <Link onClick={() => handleClick()} to="/weekmenu">
+                  <li>weekmenu</li>
+                </Link>
+                <Link onClick={() => handleClick()} to="/boodschappen">
+                  <li>boodschappen</li>
+                </Link>
+              </ul> */}
+            </Fragment>
           )}
         </div>
       </div>

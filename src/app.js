@@ -8,7 +8,7 @@ import logout from "./components/logout";
 import Welkom from "./components/welkom";
 import Test from "./components/Test";
 import Home from "./components/Home";
-import Recipe from "./components/Recipe";
+import Recipe from "./components/Recipes/Recipe";
 import Sorts from "./components/Sorts";
 import CategoriesItems from "./components/Categories/CategoriesItems";
 import Categories from "./components/Categories";
@@ -21,6 +21,7 @@ import EditItem from "./components/Item/EditItem";
 import Boodschappen from "./components/Boodschappen";
 import Voorraad from "./components/Voorraad";
 import Books from "./components/Books";
+import Book from "./components/Books/Book";
 import Weekmenu from "./components/Weekmenu";
 import User from "./components/User";
 import Nav from "./components/Nav";
@@ -343,6 +344,7 @@ const App = () => {
                 <Sorts
                   me={me}
                   thecart={thecart}
+                  user={user}
                   recipes={recipes}
                   categories={categories}
                   sorts={sorts}
@@ -397,6 +399,8 @@ const App = () => {
             render={(props) => {
               return (
                 <CollectionsItems
+                  me={me}
+                  setMe={setMe}
                   thecart={thecart}
                   dishes={dishes}
                   recipes={recipes}
@@ -428,17 +432,16 @@ const App = () => {
             }}
           />
           <Route
+            exact
             path="/books"
             render={(props) => {
-              return (
-                <Books
-                  me={me}
-                  setMe={setMe}
-                  books={books}
-                  stock={stock}
-                  {...props}
-                />
-              );
+              return <Books books={books} {...props} />;
+            }}
+          />
+          <Route
+            path="/book/:id"
+            render={(props) => {
+              return <Book books={books} recipes={recipes} {...props} />;
             }}
           />
           <Route

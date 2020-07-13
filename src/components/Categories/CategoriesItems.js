@@ -1,7 +1,9 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { slugify } from "../common/common";
-import RecipeItems from "../RecipeItems";
+import RecipeItems from "../Recipes/RecipeItems";
+import FavoriteItems from "../Recipes/FavoriteItems";
+import { includes } from "lodash";
 // import { handleDeleteFavorite } from "../../services/userService";
 
 const CategoriesItems = ({
@@ -19,7 +21,7 @@ const CategoriesItems = ({
   return (
     <>
       <div className="container-x">
-        <h1 className="-mt-20 mb-36">{props.match.params.id}</h1>
+        <h1 className="favorieten-title">{props.match.params.id}</h1>
 
         {categories.map((category, index) => {
           // console.log(props.match.params.id);
@@ -28,7 +30,7 @@ const CategoriesItems = ({
             return (
               <Fragment key={index}>
                 {category.sorts.map((s, xid) => {
-                  const recipeItem = recipes.filter((element) => {
+                  let recipeItem = recipes.filter((element) => {
                     let fresh = element.fresh.some(
                       ({ ingredient }) =>
                         ingredient.replace(" ", "-") === s.title
@@ -71,15 +73,27 @@ const CategoriesItems = ({
                             return (recipe.basics = []);
                           return (
                             <Fragment key={recipe._id}>
-                              <RecipeItems
-                                recipe={recipe}
-                                cart={cart}
-                                Link={Link}
-                                // handleDeleteFavorite={handleDeleteFavorite}
-                                me={me}
-                                setMe={setMe}
-                                {...props}
-                              />
+                              {cart._id === recipe._id ? (
+                                <FavoriteItems
+                                  recipe={recipe}
+                                  cart={cart}
+                                  Link={Link}
+                                  // handleDeleteFavorite={handleDeleteFavorite}
+                                  me={me}
+                                  setMe={setMe}
+                                  {...props}
+                                />
+                              ) : (
+                                <RecipeItems
+                                  recipe={recipe}
+                                  cart={cart}
+                                  Link={Link}
+                                  // handleDeleteFavorite={handleDeleteFavorite}
+                                  me={me}
+                                  setMe={setMe}
+                                  {...props}
+                                />
+                              )}
                             </Fragment>
                           );
                         })}

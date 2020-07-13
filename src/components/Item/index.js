@@ -1,11 +1,14 @@
 import React, { Fragment, useState, useEffect } from "react";
+import { Redirect } from "react-router";
 import { Link, NavLink } from "react-router-dom";
 import { slugify, kalender } from "../common/common.js";
 import AddpanelWeekmenu from "./AddpanelWeekmenu.js";
+import { deleteRecipe } from "../../services/userService";
 
 const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [item, setItem] = useState([]);
+  const [routeRedirect, setRedirect] = useState("");
 
   if (me.items === undefined) return [];
   const therecipe = me.items.find(
@@ -18,10 +21,23 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
     setIsOpen(!isOpen);
   };
 
+  const handleDeleteRecipe = (id) => {
+    alert("Verwijder dit recept");
+    deleteRecipe(me, setMe, id);
+    setRedirect(true);
+    // const { state } = props.location;
+    // window.location = state ? state.from.pathname : "/kookschrift";
+  };
+
+  const redirect = routeRedirect;
+  if (redirect) {
+    return <Redirect to="/kookschrift" />;
+  }
+
   return (
     <Fragment>
-      <div className="container-x unvisable slide work-grid-item">
-        <h1 className="-mt-20 text-28 lg:text-36 text-green-600 mb-18 lg:mb-8">
+      <div className="container-y bg-rose-100 unvisable slide work-grid-item">
+        <h1 className="recepten-title lg:text-36 text-green-600">
           {therecipe.title}
           <Link to={`/collections/${therecipe.dish}`}>
             <span className="text-21 pl-10">{therecipe.dish}</span>
@@ -38,7 +54,7 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
                 src="/img/feather/list.svg"
                 alt=""
               />
-              weekmenu >
+              zet op weekmenu >
               <div className="flex">
                 {kalender.map((k) => {
                   var cart = me.items.filter((c) =>
@@ -79,6 +95,17 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
               edit
             </button>
           </Link>
+          <button
+            onClick={() => handleDeleteRecipe(therecipe._id)}
+            className="mb-5 lg:pr-18 btn-add mr-10 text-19 font-600 text-red-700 flex item-center hover:text-red-500"
+          >
+            <img
+              className="w-25 h-25 mr-10"
+              src="/img/feather/x-square.svg"
+              alt=""
+            />
+            delete
+          </button>
         </div>
         {/* add panel */}
         <AddpanelWeekmenu

@@ -1,30 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Fragment } from "react";
 import { slugify, kalender } from "../common/common";
 
-const RecipeItems = ({
-  width,
-  height,
-  index,
-  cart,
-  Link,
-  recipe,
-  thelength,
-  red,
-  me,
-  setMe,
-  // handleDeleteFavorite,
-  ...props
-}) => {
-  console.log("me");
-  console.log(cart);
+const RecipeItems = ({ recipe, ...props }) => {
+  // console.log("me");
+  // console.log(cart);
 
   return (
     <Fragment>
       <div
         key={recipe._id}
         className={`recipe-box ${
-          recipe.item === "true" ? "bg-rose" : "bg-badge"
+          recipe.item === "true" ? "bg-rose-200" : "bg-badge"
         } grid-box unvisable slide work-grid-item grid-box__black `}
       >
         <div className={`min-h-full70 p-12 md:p-15`}>
@@ -43,7 +31,7 @@ const RecipeItems = ({
               <Fragment key={id}>
                 <li className={`inline text-15`}>
                   {t.name}
-                  {thelength === id ? "" : ", "}
+                  {/* {thelength === id ? "" : ", "} */}
                 </li>
               </Fragment>
             ))}
@@ -53,15 +41,6 @@ const RecipeItems = ({
           <p className={`uppercase tracking-widest text-12 pl-15 `}>
             {recipe.dish}
           </p>
-          {cart.length !== 0 && (
-            <div className="float-right mr-18">
-              <img
-                className="h-25"
-                src="/img/feather/bookmark-red.svg"
-                alt=""
-              />
-            </div>
-          )}
         </div>
       </div>
     </Fragment>

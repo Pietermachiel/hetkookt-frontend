@@ -101,11 +101,12 @@
 .ko-box-right__text {
   width: 100%;
   position: relative;
-  padding: 15px;
-  padding-bottom: 25px;
+  padding-top: 15px;
+  padding-bottom: 9px;
+  margin-bottom: 25px;
   text-align: center;
   p {
-    font-size: 19px;
+    font-size: 17px;
     line-height: 1.4;
     margin-bottom: 0;
   }
@@ -123,7 +124,9 @@
   }
   @media (min-width: $on-tablet) {
     width: 50%;
-    background-color: mistyrose;
+    height: 100%;
+    background-color: #fbecc4;
+    padding: 15px;
     h2 {
       display: block;
     }
@@ -145,7 +148,7 @@
 }
 
 .ko-box-right__img {
-  width: 70%;
+  // width: 70%;
   // margin: auto;
   background-color: black;
   img {

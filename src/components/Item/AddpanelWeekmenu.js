@@ -1,24 +1,14 @@
 import React, { useState } from "react";
 import { kalender, hetjaar, theweek } from "../common/common";
 import { doPutMenu } from "../../services/userService";
-import { Redirect } from "react-router";
 
 const AddpanelWeekmenu = ({ isOpen, therecipe, me, setMe, handleIsOpen }) => {
   const [routeRedirect, setRedirect] = useState("");
 
   const handleSave = (me, setMe, therecipe, dedate) => {
-    // console.log("addpanel: dedate");
-    // console.log(dedate);
     doPutMenu(me, setMe, therecipe, dedate);
-    // props.history.push(props.location.pathname);
     handleIsOpen(!isOpen);
-    // setRedirect(true);
   };
-
-  const redirect = routeRedirect;
-  if (redirect) {
-    return <Redirect to="/weekmenu" />;
-  }
 
   return (
     <div className="add">

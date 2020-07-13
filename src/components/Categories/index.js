@@ -10,7 +10,7 @@ const Categories = ({ me, setMe, thecart, categories, recipes, ...props }) => {
       <div className="container-x">
         {categories.map((c) => (
           <div key={c.id} className="cat-box mb-36">
-            <h1 className="-mt-20 mb-36">{c.title}</h1>
+            <h1 className="favorieten-title">{c.title}</h1>
             <div className="flexbox flexbox-margin unvisable slide work-grid-item">
               {c.sorts.map((s, xid) => (
                 <div class="recipe-box recipe-box_sorts">

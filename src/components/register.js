@@ -23,18 +23,20 @@ const Register = (props) => {
     <Fragment>
       <div className="container-x unvisable slide work-grid-item">
         <div className="md:w-550 m-auto relative">
-          <h3 className="">
-            Schrijf je in bij <span className="logo-hetkookt">hetkookt!</span>
+          <h3 className="favorieten-title">
+            Schrijf je in bij{" "}
+            <span>
+              <strong>hetkookt!</strong>
+            </span>
           </h3>
-          <br />
           <p className="link-inschrijven">
             Heb je al een account?&nbsp;
             <NavLink to="/login">
               <span className="ml-5 font-500">login &gt;</span>
             </NavLink>
           </p>
-          <h4 className="font-600">Nieuw bij hetkookt?</h4>
-          <p>
+          {/* <h4 className="font-600">Nieuw bij hetkookt?</h4> */}
+          <p className="text-red-500">
             Na verzending van je gegevens sturen we je een email ter
             verificatie. Je kunt je inschrijving te allen tijde intrekken.
           </p>
@@ -140,12 +142,12 @@ const Register = (props) => {
             </button>
           </form>
           <br />
-          <p className="link-inschrijven">
+          {/* <p className="link-inschrijven">
             Nieuw bij <span className="font-700">hetkookt</span>? &nbsp;
             <Link to="/register">
               <span>Inschrijven &gt;</span>
             </Link>
-          </p>
+          </p> */}
         </div>
       </div>
     </Fragment>

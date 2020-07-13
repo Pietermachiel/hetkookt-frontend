@@ -6,7 +6,12 @@ const LogoBox = ({ user, me }) => {
     <div className="logo-box">
       {user && (
         <NavLink aria-label="to login" className="" to="/user">
-          <button className="button-loginmenu">{me.name}</button>
+          <button className="button-loginmenu  flex items-center">
+            <div className="absolute top-0 left-0"></div>
+            <img className="h-25 w-25" src="/img/feather/user.svg" alt="" />
+            <span className="pr-7"></span>
+            {me.name}
+          </button>
         </NavLink>
       )}
       {!user && (

@@ -76,12 +76,12 @@ const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
 
   return (
     <Fragment>
-      <div className="container-x">
-        <h1 className="mb-36 -mt-20">
+      <div className="container-y bg-rose-100">
+        <h1 className="favorieten-title">
           Voorraad{" "}
           <span>
             <Link
-              className="ml-10 text-18 text-indigo-600 hover:text-red-500"
+              className="block lg:inline mt-10 lg:mt-0 lg:ml-10 text-18 text-indigo-600 hover:text-red-500"
               to="/boodschappen"
             >
               Boodschappen >

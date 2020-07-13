@@ -2,6 +2,12 @@
   min-height: calc(100vh - 550px);
 }
 
+.recepten-title {
+  margin-top: 0;
+  padding-top: 18px;
+  // padding-bottom: 18px;
+}
+
 .recepten-source {
   margin-left: 30%;
 }
@@ -39,12 +45,12 @@
   color: white;
 }
 
-.recipe-title {
-  margin-left: calc(550px - (100vw / 2)) !important;
-  margin-right: calc(550px - (100vw / 2)) !important;
-  padding-left: calc((100vw / 2) - 550px) !important;
-  padding-bottom: 48px !important;
-}
+// .recipe-title {
+//   margin-left: calc(550px - (100vw / 2)) !important;
+//   margin-right: calc(550px - (100vw / 2)) !important;
+//   padding-left: calc((100vw / 2) - 550px) !important;
+//   padding-bottom: 48px !important;
+// }
 
 .therecipe-dish__hover:hover {
   color: red;

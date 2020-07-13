@@ -16,18 +16,18 @@ const Recipe = ({
   ...props
 }) => {
   var [therecipe, setTheRecipe] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
-  const [notitie, setNotitie] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
+  // const [notitie, setNotitie] = useState(false);
 
   const API = props.match.url;
 
-  const handleIsOpen = () => {
-    setIsOpen(!isOpen);
-  };
+  // const handleIsOpen = () => {
+  //   setIsOpen(!isOpen);
+  // };
 
-  const handleNotitie = () => {
-    setNotitie(!notitie);
-  };
+  // const handleNotitie = () => {
+  //   setNotitie(!notitie);
+  // };
 
   // const handleIsFavorite = (me, setMe, therecipe) => {
   //   doFavorite(me, setMe, therecipe);
@@ -47,6 +47,11 @@ const Recipe = ({
     getData();
   }, [API]);
 
+  console.log("therecipe")
+  console.log(therecipe)
+console.log("API")
+  console.log(API)
+
   if (therecipe.tags === undefined) return [];
   // const thelength = props.tags.length - 1;
 
@@ -60,7 +65,7 @@ const Recipe = ({
   return (
     <Fragment>
       <div className="container-x">
-        <h1 className="-mt-20 text-28 lg:text-36 text-green-600 mb-18 lg:mb-8">
+        <h1 className="recepten-title text-green-600">
           {therecipe.title}
           {/* <span className="text-21 lg:pl-10">bladgroenten</span> */}
           <Link to={`/collections/${therecipe.dish}`}>
@@ -68,7 +73,7 @@ const Recipe = ({
           </Link>
         </h1>
         <div className="lg:flex align-baseline mb-36 unvisable slide work-grid-item">
-          {user && (
+          {user ? (
             <div className="mr-15">
               {myrecipes.includes(therecipe._id) ? (
                 <Fragment>
@@ -79,7 +84,7 @@ const Recipe = ({
                         src="/img/feather/bookmark-red-stroke.svg"
                         alt="bookmark red"
                       />
-                      <span className="ml-10">favorieten ></span>
+                      <span className="ml-10">zet in favorieten ></span>
                     </div>
                   </Link>
                 </Fragment>
@@ -94,24 +99,27 @@ const Recipe = ({
                       src="/img/feather/bookmark.svg"
                       alt="bookmark"
                     />
-                    <span className="ml-10">favorieten ></span>
+                    <span className="ml-10">zet in favorieten ></span>
                   </div>
                 </Fragment>
               )}
             </div>
+          ) : (
+            <Fragment>
+              <Link
+                to="/login"
+                className="mb-5 lg:pr-18 btn-add mr-10 text-18 font-600 text-indigo-700 flex item-center hover:text-red-500"
+              >
+                <img
+                  className="w-25"
+                  src="/img/feather/bookmark.svg"
+                  alt="bookmark"
+                />
+                <span className="ml-10">zet in favorieten ></span>
+              </Link>
+            </Fragment>
           )}
         </div>
-        {/* add panel */}
-        {/* <AddpanelWeekmenu
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
-          handleIsOpen={handleIsOpen}
-          therecipe={therecipe}
-          thecart={thecart}
-          doSave={doSave}
-          me={me}
-          setMe={setMe}
-        /> */}
         <div className="recepten">
           <div className="recepten-box">
             {/* ingredienten */}
@@ -131,7 +139,7 @@ const Recipe = ({
                       </div>
                       <div className="items-product">
                         <Link
-                          to={"/sorts/" + f.ingredient}
+                          to={"/sorts/" + slugify(f.ingredient)}
                           className={`${catcolor}`}
                         >
                           &nbsp;{f.ingredient}

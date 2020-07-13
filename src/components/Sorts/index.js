@@ -1,11 +1,21 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import useCurrentWidth from "../common/use-current-width";
 import useCurrentHeight from "../common/use-current-height";
 import { slugify, kalender } from "../common/common";
-import RecipeItems from "../RecipeItems";
+import RecipeItems from "../Recipes/RecipeItems";
+import FavoriteItems from "../Recipes/FavoriteItems";
 
-const Sorts = ({ me, thecart, recipes, sorts, categories, ...props }) => {
+const Sorts = ({
+  me,
+  setMe,
+  user,
+  thecart,
+  recipes,
+  sorts,
+  categories,
+  ...props
+}) => {
   // console.log(props);
 
   const width = useCurrentWidth();
@@ -22,16 +32,16 @@ const Sorts = ({ me, thecart, recipes, sorts, categories, ...props }) => {
     );
     return fresh;
   });
-  // console.log("recipeItem");
-  // console.log(recipeItem);
+  console.log("recipeItem");
+  console.log(recipeItem);
 
-  // console.log("sort");
-  // console.log(sort);
+  console.log("sort");
+  console.log(sort);
 
   return (
     <>
       <div className="container-x">
-        <h1 className={`-mt-20 mb-36 ${sort.sorts}`}>
+        <h1 className={`favorieten-title ${sort.sorts}`}>
           {sort.title}{" "}
           <Link to={`/categories/${sort.sorts}`}>
             <span className="text-21 ml-10">{sort.sorts}</span>
@@ -62,19 +72,24 @@ const Sorts = ({ me, thecart, recipes, sorts, categories, ...props }) => {
             if (recipe.basics === undefined) return (recipe.basics = []);
             const red = kalender.find((w) => w.year === cart.date);
             return (
-              <RecipeItems
-                key={index}
-                me={me}
-                recipe={recipe}
-                thelength={thelength}
-                red={red}
-                cart={cart}
-                width={width}
-                height={height}
-                index={index}
-                Link={Link}
-                {...props}
-              />
+              <Fragment key={index}>
+                {user && recipe._id === cart._id ? (
+                  <Fragment>
+                    <FavoriteItems
+                      recipe={recipe}
+                      cart={cart}
+                      Link={Link}
+                      me={me}
+                      setMe={setMe}
+                      {...props}
+                    />
+                  </Fragment>
+                ) : (
+                  <Fragment>
+                    <RecipeItems recipe={recipe} {...props} />
+                  </Fragment>
+                )}
+              </Fragment>
             );
           })}
         </div>

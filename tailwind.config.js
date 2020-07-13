@@ -11,7 +11,10 @@ module.exports = {
         offblack: "#1d1d1d",
         badge: "#e6e6e6",
         week: "#c5c5c5",
-        rose: "mistyrose",
+        rose: {
+          100: "#f1e7e6",
+          200: "mistyrose",
+        },
         papier: "#f9f3dc",
         rood: "red",
         background: "#eff2f5",
@@ -24,7 +27,7 @@ module.exports = {
           600: "#e82d2d",
           700: "#c52626",
           800: "#901d1d",
-          900: "#4e0f0f",
+          900: "#2b1515",
         },
         orange: {
           100: "#fffaf0",

@@ -1,13 +1,8 @@
 import React, { Fragment } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import abouts from "../data/abouts";
 
 const Welkom = ({ user, ...props }) => {
-  // console.log("recipes");
-  // console.log(recipes);
-  // console.log(props);
-  console.log(props);
-
   if (user === null)
     return (
       <div className="container-x">
@@ -17,12 +12,36 @@ const Welkom = ({ user, ...props }) => {
 
   return (
     <Fragment>
-      <div className="container-x -mt-20">
-        <h1 className="mb-24">Welkom bij hetkookt!</h1>
+      <div className="container-y bg-rose-100">
+        <h1 className="favorieten-title">Kookschrift van {user.name}</h1>
 
         <div className=" unvisable slide work-grid-item">
-          <p>
+          {/* <p>
             Een verzameling <strong>basisrecepten</strong> uit alle windstreken.
+          </p> */}
+          <p className="w-full">
+            Zoek een recept in{" "}
+            <Link
+              className="font-700 text-indigo-600 hover:text-red-500"
+              to="categories"
+            >
+              recepten
+            </Link>{" "}
+            of{" "}
+            <Link
+              className="font-700 text-indigo-600 hover:text-red-500"
+              to="/collections"
+            >
+              collecties
+            </Link>{" "}
+            of maak zelf een{" "}
+            <Link
+              className="font-700 text-indigo-600 hover:text-red-500"
+              to="/nieuwrecept"
+            >
+              nieuw recept
+            </Link>{" "}
+            aan.
           </p>
 
           <ul>
