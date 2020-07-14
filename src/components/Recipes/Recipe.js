@@ -167,7 +167,7 @@ const Recipe = ({
               {therecipe.basics.length > 0 ? <p>basisrecepten</p> : null}
               <div className="ingredienten-box">
                 {therecipe.basics.map((b, xid) => (
-                  <Link key={xid} to={`/recipe/${slugify(b)}`}>
+                  <Link key={xid} to={`/recipe/${slugify(b.name)}`}>
                     <span className="font-600">{b.name}</span>
                   </Link>
                 ))}
@@ -175,7 +175,7 @@ const Recipe = ({
               {therecipe.related.length > 0 ? <p>gerelateerd</p> : null}
               <div className="ingredienten-box">
                 {therecipe.related.map((b, xid) => (
-                  <Link key={xid} to={`/recipe/${slugify(b)}`}>
+                  <Link key={xid} to={`/recipe/${slugify(b.name)}`}>
                     <span className="font-600">{b.name}</span>
                   </Link>
                 ))}

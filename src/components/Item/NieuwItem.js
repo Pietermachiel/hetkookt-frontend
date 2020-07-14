@@ -334,7 +334,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                         placeholder="hoeveel"
                         className="form-input__quantity h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
                         defaultValue={item.quantity}
-                        ref={register({ pattern: /^[0-9]+$/ })}
+                        ref={register()}
                       />
                       <select
                         name={`stock[${index}].unit`}
@@ -368,13 +368,13 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                         />
                       </button>
                     </li>
-                    {errors.stock &&
+                    {/* {errors.stock &&
                       errors.stock[index] &&
                       errors.stock[index].quantity?.type === "pattern" && (
                         <span className="block text-16 py-6 font-700 text-orange-500">
                           Alleen cijfers
                         </span>
-                      )}
+                      )} */}
                   </Fragment>
                 ))}
               </ul>

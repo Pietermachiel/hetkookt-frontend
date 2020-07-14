@@ -60,9 +60,8 @@ const Home = ({ me, setMe, user, recipes, about, ...props }) => {
                   <strong>voorraadkast</strong> op peil.
                 </li>
                 <li className="list-inside list-disc">
-                  <strong>
-                    Bestel de boodschappen met één druk op de knop.
-                  </strong>
+                  <strong>Bestel de boodschappen</strong> met één druk op de
+                  knop bij je favoriete leverancier.
                 </li>
               </ul>
 
