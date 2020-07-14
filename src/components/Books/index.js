@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import { slugify } from "../common/common";
 
 const Books = ({ books, ...props }) => {
-  console.log(books);
+  // console.log(books);
   return (
     <Fragment>
       <div className="container-x">

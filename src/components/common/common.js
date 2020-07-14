@@ -11,6 +11,18 @@ export function slugify(text) {
   );
 }
 
+export function slugifyu(text) {
+  return (
+    text
+      .toString()
+      .replace(/\s+/g, "-")
+      .replace(/\.+/g, "")
+      .replace(/’+/g, "-")
+      // .replace(/é+/g, "e")
+      .replace(/'+/g, "-")
+  );
+}
+
 // const unique = thearray.filter(uniq)
 export function uniq(value, index, self) {
   return self.indexOf(value) === index;

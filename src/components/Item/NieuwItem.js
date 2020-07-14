@@ -10,6 +10,12 @@ import { useForm, useFieldArray } from "react-hook-form";
 // https://www.carlrippon.com/master-detail-forms-with-react-form-hook/
 
 const theunits = [{ unit: "g" }, { unit: "ml" }];
+const stockunits = [
+  { unit: "g" },
+  { unit: "ml" },
+  { unit: "tl" },
+  { unit: "el" },
+];
 
 const NieuwItem = ({ me, setMe, ...props }) => {
   // const [routeRedirect, setRedirect] = useState("");
@@ -343,7 +349,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                         ref={register()}
                       >
                         <option value="" />
-                        {theunits.map((option, xid) => (
+                        {stockunits.map((option, xid) => (
                           <option key={xid} value={option.unit}>
                             {option.unit}
                           </option>

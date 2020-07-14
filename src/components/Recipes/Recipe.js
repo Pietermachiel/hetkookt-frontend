@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { slugify, kalender } from "../common/common.js";
+import { slugify, slugifyu, kalender } from "../common/common.js";
 import AddpanelWeekmenu from "./AddpanelWeekmenu.js";
 import { recipeUrl } from "../../config.json";
 import { createRecipe } from "../../services/userService";
@@ -139,7 +139,7 @@ const Recipe = ({
                       </div>
                       <div className="items-product">
                         <Link
-                          to={"/sorts/" + slugify(f.ingredient)}
+                          to={"/sorts/" + slugifyu(f.ingredient)}
                           className={`${catcolor}`}
                         >
                           &nbsp;{f.ingredient}

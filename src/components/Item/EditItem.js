@@ -7,9 +7,16 @@ import thedishes from "../../data/dishes.json";
 import { doSave } from "../../services/userService";
 import { useForm, useFieldArray } from "react-hook-form";
 
-const theunits = [{ unit: "g" }, { unit: "ml" }];
+const theunits = [{ unit: "" }, { unit: "g" }, { unit: "ml" }];
+const stockunits = [
+  { unit: "" },
+  { unit: "g" },
+  { unit: "ml" },
+  { unit: "tl" },
+  { unit: "el" },
+];
 
-const NieuwItem = ({ me, setMe, therecipe, ...props }) => {
+const EditItem = ({ me, setMe, therecipe, ...props }) => {
   // const [routeRedirect, setRedirect] = useState("");
   const [error, setError] = useState(false);
   const { register, control, handleSubmit, watch, errors } = useForm({
@@ -21,6 +28,7 @@ const NieuwItem = ({ me, setMe, therecipe, ...props }) => {
       stock: therecipe.stock,
       directions: therecipe.directions,
       item: therecipe.item,
+      date: therecipe.date,
     },
   });
 
@@ -81,9 +89,9 @@ const NieuwItem = ({ me, setMe, therecipe, ...props }) => {
 
   return (
     <React.Fragment>
-      <div className="container-x -mt-20">
+      <div className="container-x">
         <div className="md:w-550 m-auto relative">
-          <h1>Test</h1>
+          <h1 className="favorieten-title">{therecipe.title}</h1>
           <form onSubmit={handleSubmit(handleDoSave)}>
             {/* titel */}
             <div className="">
@@ -330,7 +338,7 @@ const NieuwItem = ({ me, setMe, therecipe, ...props }) => {
                       ref={register()}
                     >
                       <option value="" />
-                      {theunits.map((option, xid) => (
+                      {stockunits.map((option, xid) => (
                         <option key={xid} value={option.unit}>
                           {option.unit}
                         </option>
@@ -454,14 +462,12 @@ const NieuwItem = ({ me, setMe, therecipe, ...props }) => {
               />
             </div>
             <div className="">
-              <input
-                name="item"
-                // defaultValue={therecipe.item}
-                ref={register()}
-                className="hidden"
-              />
+              <input name="item" ref={register()} className="hidden" />
             </div>
-            <button className="uppercase text-16 bg-indigo-500 mt-36 px-36 py-10 text-white tracking-widest">
+            <div className="">
+              <input name="date" ref={register()} className="hidden" />
+            </div>
+            <button className="uppercase text-16 bg-indigo-500 mt-36 mb-36 px-36 py-10 text-white tracking-widest">
               submit
             </button>
           </form>
@@ -471,4 +477,4 @@ const NieuwItem = ({ me, setMe, therecipe, ...props }) => {
   );
 };
 
-export default NieuwItem;
+export default EditItem;

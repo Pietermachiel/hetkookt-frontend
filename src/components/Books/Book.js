@@ -23,10 +23,10 @@ const Book = ({ books, recipes, ...props }) => {
 
   //   console.log("recipeUrl");
   //   console.log(recipeUrl);
-  console.log("thebook");
-  console.log(thebook);
-  console.log("recipes");
-  console.log(recipes);
+  // console.log("thebook");
+  // console.log(thebook);
+  // console.log("recipes");
+  // console.log(recipes);
 
   return (
     <Fragment>

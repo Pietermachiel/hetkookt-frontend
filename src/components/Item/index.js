@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Redirect } from "react-router";
 import { Link, NavLink } from "react-router-dom";
-import { slugify, kalender } from "../common/common.js";
+import { slugify, slugifyu, kalender } from "../common/common.js";
 import AddpanelWeekmenu from "./AddpanelWeekmenu.js";
 import { deleteRecipe } from "../../services/userService";
 
@@ -22,8 +22,8 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
   };
 
   const handleDeleteRecipe = (id) => {
-    alert("Verwijder dit recept");
-    deleteRecipe(me, setMe, id);
+    // alert("Verwijder dit recept");
+    if (window.confirm("Weet je het zeker?")) deleteRecipe(me, setMe, id);
     setRedirect(true);
     // const { state } = props.location;
     // window.location = state ? state.from.pathname : "/kookschrift";
@@ -133,7 +133,7 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
                       </div>
                       <div className="items-product">
                         <Link
-                          to={"/sorts/" + f.ingredient}
+                          to={"/sorts/" + slugifyu(f.ingredient)}
                           className={`${catcolor}`}
                         >
                           &nbsp;{f.ingredient}

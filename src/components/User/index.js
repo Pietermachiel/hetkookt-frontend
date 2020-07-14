@@ -11,8 +11,7 @@ const User = ({ me, user, thecart, ...props }) => {
 
   function handleDelete(userId) {
     // alert("Weet je het zeker?");
-    if (window.confirm("Are you sure you wish to delete this item?"))
-      deleteUser(userId);
+    if (window.confirm("Weet je het zeker?")) deleteUser(userId);
     auth.logout();
     window.location = "/";
   }

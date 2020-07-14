@@ -80,6 +80,8 @@ const App = () => {
   // menu
   const handleIsOpen = (e) => {
     // toggleMenu();
+    setSearchTerm([]);
+    setSearch(false);
     toggleSwitch();
     setIsOpen(!isOpen);
     e.stopPropagation();
@@ -116,13 +118,8 @@ const App = () => {
   // console.log("me");
   // console.log(me);
   // console.log(stock);
-  console.log("books");
-  console.log(books);
-
-  books = _.orderBy(books, ["year"], ["desc"]); // Use Lodash to sort array by 'name'
-
-  console.log("books2");
-  console.log(books);
+  // console.log("books");
+  // console.log(books);
 
   useEffect(() => {
     async function getData() {
@@ -195,6 +192,8 @@ const App = () => {
     }
     getData();
   }, []);
+
+  books = _.orderBy(books, ["year"], ["desc"]); // Use Lodash to sort array by 'name'
 
   var thecart = me.items;
   if (thecart === undefined) thecart = [];
