@@ -46,6 +46,7 @@
     padding: 10px 0;
     span {
       margin-left: 10px;
+      text-shadow: $tshadow;
     }
     width: calc(100vw - 140px);
     @media screen and (min-width: 768px) {

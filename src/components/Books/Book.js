@@ -41,16 +41,17 @@ const Book = ({ books, recipes, ...props }) => {
             </div>
           </div>
           <div className="lg:w-50 p-36 pt-0 lg:pt-72">
-            <div className="">
+            <div className="mb-48">
               <h1>{thebook.title}</h1>
-              <h4 className="my-18">
-                <a href="">{thebook.author}</a>
-              </h4>
+              <h4 className="my-18">{thebook.author}</h4>
               <p>
                 {thebook.publisher} {thebook.year}
               </p>
               <p>keuken: {thebook.kitchen}</p>
-            </div>
+            </div>{" "}
+            <Link className="text-indigo-600 font-700" to="/books">
+              Boeken top 100 >
+            </Link>
           </div>
         </div>
 

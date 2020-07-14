@@ -33,9 +33,9 @@ const Kookschrift = ({ width, user, location }) => {
                     src="/img/feather/bookmark-red.svg"
                     alt=""
                   />
-                  <span className="ml-5">Kookschrift</span>
+                  <span className="ml-5 text-white">Kookschrift</span>
                 </div>
-                <span className="kookschrift-arrow"></span>
+                <span className="kookschrift-arrow text-white"></span>
               </div>
               <ul className={`${kookschriftOpen ? "kookschrift-open" : ""}`}>
                 <Link onClick={() => handleClick()} to="/kookschrift">
