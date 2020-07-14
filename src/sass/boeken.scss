@@ -333,7 +333,7 @@
 
 .koo-box-boek {
   position: relative;
-  width: 100%;
+  width: 97%;
   margin: auto;
   margin-bottom: 50px;
   h2 {
@@ -391,9 +391,9 @@
   width: calc(100% - 25px);
   margin: auto;
   margin-top: 25px;
-  margin-bottom: 4em;
   @media (min-width: $on-palm) {
     width: calc(50% - 50px);
+    margin-bottom: 4em;
     // height: 300px;
   }
   @media (min-width: $on-tablet) {

@@ -2,7 +2,7 @@ import React, { useEffect, useState, Fragment } from "react";
 // import defaultImage from "../assets/images.png";
 import { Redirect } from "react-router";
 import { uniq } from "../common/common";
-import tags from "../../data/tags.json";
+// import tags from "../../data/tags.json";
 import thedishes from "../../data/dishes.json";
 import { doSave } from "../../services/userService";
 import { useForm, useFieldArray } from "react-hook-form";
@@ -16,7 +16,7 @@ const stockunits = [
   { unit: "el" },
 ];
 
-const EditItem = ({ me, setMe, therecipe, ...props }) => {
+const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
   // const [routeRedirect, setRedirect] = useState("");
   const [error, setError] = useState(false);
   const { register, control, handleSubmit, watch, errors } = useForm({

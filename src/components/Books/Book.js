@@ -31,8 +31,8 @@ const Book = ({ books, recipes, ...props }) => {
   return (
     <Fragment>
       <div className="container-x">
-        <div className="flexbox mt-20">
-          <div className="w-50 p-36">
+        <div className="flexbox-lg mt-20">
+          <div className="lg:w-50 p-36 pb-0 lg:pb-36">
             <div className="koo-box-boek">
               <img
                 src={`/img/books/${slugify(thebook.title)}_cover.jpg`}
@@ -40,7 +40,7 @@ const Book = ({ books, recipes, ...props }) => {
               />
             </div>
           </div>
-          <div className="w-50 p-36 pt-72">
+          <div className="lg:w-50 p-36 pt-0 lg:pt-72">
             <div className="">
               <h1>{thebook.title}</h1>
               <h4 className="my-18">
@@ -75,7 +75,7 @@ const Book = ({ books, recipes, ...props }) => {
           </div>
         </div>
 
-        <div className="flex">
+        <div className="lg:flex">
           <div className="koo-box-footer">
             <div className="kookboek-portret">
               <img

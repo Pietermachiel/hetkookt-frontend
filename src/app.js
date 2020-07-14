@@ -44,6 +44,7 @@ const App = () => {
   const [me, setMe] = useState([]);
   const [about, setAbout] = useState([]);
   let [books, setBooks] = useState([]);
+  let [tags, setTags] = useState([]);
   const [isOn, setIsOn] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isCatOpen, setCatOpen] = useState(false);
@@ -193,7 +194,19 @@ const App = () => {
     getData();
   }, []);
 
+  useEffect(() => {
+    async function getData() {
+      const res = await fetch(`${recipeUrl}/tags.json`);
+      res.json().then((res) => setTags(res));
+    }
+    getData();
+  }, []);
+
+  tags = _.orderBy(tags); // Use Lodash to sort array by 'name'
   books = _.orderBy(books, ["year"], ["desc"]); // Use Lodash to sort array by 'name'
+
+  console.log("tags");
+  console.log(tags);
 
   var thecart = me.items;
   if (thecart === undefined) thecart = [];
@@ -324,6 +337,7 @@ const App = () => {
                 <EditItem
                   me={me}
                   setMe={setMe}
+                  tags={tags}
                   therecipe={therecipe}
                   {...props}
                 />

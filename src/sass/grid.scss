@@ -42,6 +42,13 @@
   flex-flow: row wrap;
   justify-content: flex-start;
 }
+.flexbox-lg {
+  @media screen and (min-width: $on-tablet) {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+  }
+}
 
 .flexbox-margin {
   margin-left: -10px;
