@@ -1,5 +1,4 @@
-import React from "react";
-import { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { slugify, kalender } from "../common/common";
 import { deleteRecipe } from "../../services/userService";
 
@@ -13,10 +12,15 @@ const ItemsItem = ({
   setMe,
   ...props
 }) => {
+  const [isOpen, setIsOpen] = useState(false);
   console.log("cart");
   console.log(cart);
   console.log("kalender");
   console.log(kalender);
+
+  const handleDeleteRecipe = (id) => {
+    deleteRecipe(me, setMe, id);
+  };
 
   return (
     <Fragment>
@@ -46,7 +50,7 @@ const ItemsItem = ({
             ))}
           </ul>
         </div>
-        <div className="h-60 relative">
+        {/* <div className="h-60 relative">
           <p className={`uppercase tracking-widest text-12 pl-15 `}>
             {recipe.dish}
           </p>
@@ -54,7 +58,7 @@ const ItemsItem = ({
             cart.date.includes(w.year) ? (
               <p
                 key={w.index}
-                className={`-mt-21 font-700 text-red-500 text-16 float-right pr-18 pt-16 mb-0 ${
+                className={`-mt-21 font-700 text-red-500 text-16 float-right pr-60 pt-16 mb-0 ${
                   red ? "text-red-500" : null
                 }`}
               >
@@ -62,18 +66,49 @@ const ItemsItem = ({
               </p>
             ) : null
           )}
-          {/* <div className={`recipe-footer__box-delete`}>
+          <div className={`recipe-footer__box-delete`}>
             <div className="recipe-footer__box-buttons">
               <button
                 className="btn-delete"
-                onClick={() => deleteRecipe(me, setMe, recipe._id)}
+                onClick={() => handleDeleteRecipe(recipe._id)}
               >
                 <span>
                   <img className="h-28 w-28" src="/img/feather/x.svg" alt="" />
                 </span>
               </button>
             </div>
-          </div> */}
+          </div>
+        </div> */}
+        <div className="h-72 relative overflow-hidden">
+          <p className={`uppercase tracking-widest text-14 pl-15 mb-0`}>
+            {recipe.dish}
+          </p>
+
+          <div
+            className={`recipe-footer__box-delete ${
+              isOpen ? "box-delete__open" : null
+            }`}
+          >
+            <div className="flex items-center">
+              <button
+                className="btn-delete"
+                // onClick={() => handleUpdate(recipe._id)}
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                <img
+                  className="w-32 h32 -mt-3"
+                  src="/img/icons/btn-remove.svg"
+                  alt=""
+                />
+              </button>
+              <button
+                onClick={() => handleDeleteRecipe(recipe._id)}
+                className="btn-weg"
+              >
+                Wegdoen
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </Fragment>

@@ -3,7 +3,7 @@ import { Redirect } from "react-router";
 import { Link, NavLink } from "react-router-dom";
 import { slugify, slugifyu, kalender } from "../common/common.js";
 import AddpanelWeekmenu from "./AddpanelWeekmenu.js";
-import { deleteRecipe } from "../../services/userService";
+// import { deleteRecipe } from "../../services/userService";
 
 const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,13 +21,13 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
     setIsOpen(!isOpen);
   };
 
-  const handleDeleteRecipe = (id) => {
-    // alert("Verwijder dit recept");
-    if (window.confirm("Weet je het zeker?")) deleteRecipe(me, setMe, id);
-    setRedirect(true);
-    // const { state } = props.location;
-    // window.location = state ? state.from.pathname : "/kookschrift";
-  };
+  // const handleDeleteRecipe = (id) => {
+  //   // alert("Verwijder dit recept");
+  //   if (window.confirm("Weet je het zeker?")) deleteRecipe(me, setMe, id);
+  //   setRedirect(true);
+  //   // const { state } = props.location;
+  //   // window.location = state ? state.from.pathname : "/kookschrift";
+  // };
 
   const redirect = routeRedirect;
   if (redirect) {
@@ -95,7 +95,7 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
               edit
             </button>
           </Link>
-          <button
+          {/* <button
             onClick={() => handleDeleteRecipe(therecipe._id)}
             className="mb-5 lg:pr-18 btn-add mr-10 text-19 font-600 text-red-700 flex item-center hover:text-red-500"
           >
@@ -105,7 +105,7 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
               alt=""
             />
             delete
-          </button>
+          </button> */}
         </div>
         {/* add panel */}
         <AddpanelWeekmenu

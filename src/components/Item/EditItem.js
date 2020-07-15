@@ -1,8 +1,6 @@
 import React, { useEffect, useState, Fragment } from "react";
-// import defaultImage from "../assets/images.png";
-import { Redirect } from "react-router";
-import { uniq } from "../common/common";
-// import tags from "../../data/tags.json";
+import { Link } from "react-router-dom";
+import { slugify } from "../common/common";
 import thedishes from "../../data/dishes.json";
 import { doSave } from "../../services/userService";
 import { useForm, useFieldArray } from "react-hook-form";
@@ -65,10 +63,6 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
 
   const handleDoSave = async (data) => {
     const thedata = { ...data, _id: therecipe._id };
-    console.log("handleDoSave: data");
-    console.log(data);
-    console.log("thedata");
-    console.log(thedata);
     try {
       await doSave(me, setMe, thedata);
       const { state } = props.location;
@@ -89,9 +83,16 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
 
   return (
     <React.Fragment>
-      <div className="container-x">
+      <div className="container-y bg-rose-100">
         <div className="md:w-550 m-auto relative">
-          <h1 className="favorieten-title">{therecipe.title}</h1>
+          <h1 className="favorieten-title text-36 text-green-600">
+            {therecipe.title}{" "}
+            <Link to={`/kookschrift/${slugify(therecipe.title)}`}>
+              <span className="ml-18 py-18 px-36 bg-indigo-500 uppercase tracking-widest text-16 text-white">
+                terug
+              </span>
+            </Link>
+          </h1>
           <form onSubmit={handleSubmit(handleDoSave)}>
             {/* titel */}
             <div className="">
@@ -468,7 +469,7 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
               <input name="date" ref={register()} className="hidden" />
             </div>
             <button className="uppercase text-16 bg-indigo-500 mt-36 mb-36 px-36 py-10 text-white tracking-widest">
-              submit
+              aanpassen
             </button>
           </form>
         </div>

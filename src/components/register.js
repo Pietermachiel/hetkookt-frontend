@@ -36,7 +36,7 @@ const Register = (props) => {
             </NavLink>
           </p>
           {/* <h4 className="font-600">Nieuw bij hetkookt?</h4> */}
-          <p className="text-red-500">
+          <p className="text-green-600">
             Na verzending van je gegevens sturen we je een email ter
             verificatie. Je kunt je inschrijving te allen tijde intrekken.
           </p>

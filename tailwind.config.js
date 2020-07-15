@@ -18,6 +18,8 @@ module.exports = {
         papier: "#f9f3dc",
         rood: "red",
         background: "#eff2f5",
+        kookschrift: "#d8d1ce",
+        footer: "#b3b5bb",
         red: {
           100: "#ffe4e1", // #f5c5c5
           200: "#ff9191",
@@ -41,6 +43,7 @@ module.exports = {
           900: "#7b341e",
         },
         gray: {
+          300: "#e3e8ef",
           400: "#ced3d8",
           500: "#808080",
         },

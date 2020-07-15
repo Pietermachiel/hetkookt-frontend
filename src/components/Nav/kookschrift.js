@@ -17,7 +17,7 @@ const Kookschrift = ({ width, user, location }) => {
 
   return (
     <Fragment>
-      <div className={`pl-20 ${user && "bg-gray-400"}`}>
+      <div className={`pl-20 ${user && "bg-kookschrift"}`}>
         <div className={`${user ? "kookschrift-user" : "kookschrift-user"}`}>
           {user ? (
             <Fragment>

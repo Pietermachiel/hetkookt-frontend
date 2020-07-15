@@ -19,7 +19,7 @@ const Home = ({ me, setMe, user, recipes, about, ...props }) => {
 
   return (
     <Fragment>
-      <div className="container-x">
+      <div className={`container-y ${user && "bg-rose-100"}`}>
         <Fragment>
           <div className="mb-48">
             <h1 className="favorieten-title">
@@ -30,44 +30,49 @@ const Home = ({ me, setMe, user, recipes, about, ...props }) => {
                 </button>
               )}
             </h1>
-            <div className=" unvisable slide work-grid-item">
-              <p>
-                Een bonte verzameling <strong>basisrecepten</strong> uit alle
-                windstreken.
-              </p>
-              <br />
-              <p className="text-19 font-700 text-indigo-600">
-                Schrijf je in en...
-              </p>
-              <ul>
-                <li className="list-inside list-disc">
-                  Maak een kookschrift met je eigen <strong>favoriete </strong>
-                  recepten.
-                </li>{" "}
-                <li className="list-inside list-disc">
-                  Pas alle recepten naar eigen inzicht aan.
-                </li>
-                <li className="list-inside list-disc">
-                  Maak een <strong>weekmenu</strong> en{" "}
-                  <strong>boodschappenlijst</strong>.
-                </li>
-                <li className="list-inside list-disc">
-                  Kies uit de collectie recepten of maak zelf een{" "}
-                  <strong>nieuw recept</strong> aan.
-                </li>
-                <li className="list-inside list-disc">
-                  Maak de boodschappenlijst compleet en houd de{" "}
-                  <strong>voorraadkast</strong> op peil.
-                </li>
-                <li className="list-inside list-disc">
-                  <strong>Bestel de boodschappen</strong> met één druk op de
-                  knop bij je favoriete leverancier.
-                </li>
-              </ul>
+            {!user && (
+              <div className=" unvisable slide work-grid-item">
+                <p>
+                  Een bonte verzameling <strong>basisrecepten</strong> uit alle
+                  windstreken.
+                </p>
+                <br />
+                <p className="text-19 font-700 text-indigo-600">
+                  Schrijf je in en...
+                </p>
+                <ul>
+                  <li className="list-inside list-disc">
+                    Maak een kookschrift met je eigen{" "}
+                    <strong>favoriete </strong>
+                    recepten.
+                  </li>{" "}
+                  <li className="list-inside list-disc">
+                    Pas alle recepten naar eigen inzicht aan.
+                  </li>
+                  <li className="list-inside list-disc">
+                    Maak een <strong>weekmenu</strong> en{" "}
+                    <strong>boodschappenlijst</strong>.
+                  </li>
+                  <li className="list-inside list-disc">
+                    Kies uit de collectie recepten of maak zelf een{" "}
+                    <strong>nieuw recept</strong> aan.
+                  </li>
+                  <li className="list-inside list-disc">
+                    Maak de boodschappenlijst compleet en houd de{" "}
+                    <strong>voorraadkast</strong> op peil.
+                  </li>
+                  <li className="list-inside list-disc">
+                    <strong>Bestel de boodschappen</strong> met één druk op de
+                    knop bij je favoriete leverancier.
+                  </li>
+                </ul>
 
-              <br />
+                <br />
 
-              <p className="text-19 font-700 text-indigo-600">Voordelen</p>
+                <p className="text-19 font-700 text-indigo-600">Voordelen</p>
+              </div>
+            )}
+            <div>
               <ul>
                 <li className="list-inside list-disc">
                   Basisrecepten met bronvermelding.

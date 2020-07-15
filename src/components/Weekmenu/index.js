@@ -68,9 +68,9 @@ const Menu = ({ me, setMe, user, thecart, recipes, about, ...props }) => {
                 <Fragment key={k.index}>
                   {cart.length !== 0 ? (
                     <Fragment>
-                      <h2 className="">
+                      <h2 className="bg-gray-400 ">
                         {k.day === vandaag(0) ? "vandaag" : k.day}
-                        <span className="pl-10 text-gray-600 text-22">
+                        <span className="pl-10 text-gray-500 text-22">
                           {k.dedag}
                         </span>
                       </h2>

@@ -23,7 +23,7 @@ const Items = ({ me, setMe, recipes, ...props }) => {
           </Link>
         </h1>
 
-        {me.items.length === 0 ? (
+        {me.items.length === 0 && (
           <div className="">
             <p className="font-600">Er staat nog niets in het kookschrift.</p>
             <p className="w-full md:w-50">
@@ -51,31 +51,6 @@ const Items = ({ me, setMe, recipes, ...props }) => {
               aan.
             </p>
           </div>
-        ) : (
-          <p className="w-full">
-            Zoek een recept in{" "}
-            <Link
-              className="font-700 text-indigo-600 hover:text-red-500"
-              to="categories"
-            >
-              recepten
-            </Link>{" "}
-            of{" "}
-            <Link
-              className="font-700 text-indigo-600 hover:text-red-500"
-              to="/collections"
-            >
-              collecties
-            </Link>{" "}
-            of maak zelf een{" "}
-            <Link
-              className="font-700 text-indigo-600 hover:text-red-500"
-              to="/nieuwrecept"
-            >
-              nieuw recept
-            </Link>{" "}
-            aan.
-          </p>
         )}
         {favoritedish.map((d, xid) => {
           // if (d === undefined) return [];
@@ -83,7 +58,7 @@ const Items = ({ me, setMe, recipes, ...props }) => {
           console.log(d);
           return (
             <Fragment key={xid}>
-              <div className="border-t pb-18 pt-18">
+              <div className="border-t pb-18">
                 <h2 className="mb-18">{d}</h2>
                 <div className="relative -ml-15 mb-10 flex flex-row flex-wrap">
                   {me.items.map((recipe) => {

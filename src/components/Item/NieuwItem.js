@@ -63,11 +63,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
   } = useFieldArray({ control, name: "directions" });
 
   const handleCreateRecipe = async (data) => {
-    // console.log("handleCreateRecipe: data");
-    // console.log(data);
     data = { ...data, item: true };
-    // console.log("data2");
-    // console.log(data);
     try {
       await createRecipe(me, setMe, data);
       const { state } = props.location;
@@ -75,19 +71,13 @@ const NieuwItem = ({ me, setMe, ...props }) => {
     } catch (error) {
       setError(true);
     }
-    // setRedirect(true);
   };
-
-  // const redirect = routeRedirect;
-  // if (redirect) {
-  //   return <Redirect to="/kookschrift" />;
-  // }
 
   return (
     <React.Fragment>
-      <div className="container-x">
+      <div className="container-y bg-rose-100">
         <div className="md:w-550 m-auto relative">
-          <h1 className="favorieten-title">Nieuw recept</h1>
+          <h1 className="favorieten-title text-36">Nieuw recept</h1>
           <form onSubmit={handleSubmit(handleCreateRecipe)}>
             {/* titel */}
             <div className="formgroup__collectie">
@@ -476,7 +466,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                 ref={register()}
               />
             </div>
-            <button className="uppercase text-16 bg-indigo-500 mt-36 px-36 py-10 text-white tracking-widest">
+            <button className="mb-36 uppercase text-16 bg-indigo-500 mt-36 px-36 py-10 text-white tracking-widest">
               nieuw
             </button>
           </form>
