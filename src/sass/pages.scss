@@ -95,7 +95,7 @@
 //   color: white;
 // }
 
-// // ?
+// ?
 // .fade-box {
 //   height: 100px;
 //   width: 100px;
@@ -124,7 +124,7 @@
 //   will-change: transform;
 // }
 
-// // example
+// example
 
 // .example-enter {
 //   opacity: 0;
@@ -144,15 +144,15 @@
 //   transition: opacity 500ms ease-out;
 // }
 
-// .visable {
-//   opacity: 1;
-//   transition: opacity 500ms;
-// }
+.visable {
+  opacity: 1;
+  transition: opacity 500ms;
+}
 
-// .unvisable {
-//   opacity: 0.01;
-//   transition: opacity 500ms;
-// }
+.unvisable {
+  opacity: 0.01;
+  transition: opacity 500ms;
+}
 
 // .alert-enter {
 //   opacity: 0;

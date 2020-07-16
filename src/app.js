@@ -188,7 +188,7 @@ const App = () => {
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch(`${recipeUrl}/source.json`);
+      const res = await fetch(`${recipeUrl}/books.json`);
       res.json().then((res) => setBooks(res));
     }
     getData();
@@ -203,10 +203,10 @@ const App = () => {
   }, []);
 
   tags = _.orderBy(tags); // Use Lodash to sort array by 'name'
-  books = _.orderBy(books, ["year"], ["desc"]); // Use Lodash to sort array by 'name'
+  books = _.orderBy(books, ["year", "title"], ["desc"]); // Use Lodash to sort array by 'name'
 
-  console.log("tags");
-  console.log(tags);
+  // console.log("tags");
+  // console.log(tags);
 
   var thecart = me.items;
   if (thecart === undefined) thecart = [];
