@@ -45,25 +45,25 @@
 
 // boodschappen
 
-.btn-boodschappen {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  text-transform: uppercase;
-  font-size: 16px;
-  letter-spacing: 0.1em;
-  background: #5872f5;
-  width: 50%;
-  margin: auto;
-  margin-top: 36px;
-  padding: 10px 20px;
-  border-radius: 5px;
-  color: white;
-  // @media (min-width: 768px) {
-  //   margin: inherit;
-  //   margin-top: 36px;
-  // }
-}
+// .btn-boodschappen {
+//   display: flex;
+//   justify-content: center;
+//   width: 100%;
+//   text-transform: uppercase;
+//   font-size: 16px;
+//   letter-spacing: 0.1em;
+//   background: #5872f5;
+//   width: 50%;
+//   margin: auto;
+//   margin-top: 36px;
+//   padding: 10px 20px;
+//   border-radius: 5px;
+//   color: white;
+//   // @media (min-width: 768px) {
+//   //   margin: inherit;
+//   //   margin-top: 36px;
+//   // }
+// }
 
 .about-box {
   // width: 60%;
@@ -77,158 +77,160 @@
   // }
 }
 
-.count {
-  padding: 0 2px;
+// .count {
+//   padding: 0 2px;
 
-  @media screen and (min-width: $on-tablet) {
-    padding: 0 12px;
-  }
-}
+//   @media screen and (min-width: $on-tablet) {
+//     padding: 0 12px;
+//   }
+// }
 
-button.btn-home {
-  background-color: black;
-  color: white;
-  transition: background-color 0.2s ease-in;
-}
-button.btn-home.open {
-  background-color: red;
-  color: white;
-}
+// button.btn-home {
+//   background-color: black;
+//   color: white;
+//   transition: background-color 0.2s ease-in;
+// }
+// button.btn-home.open {
+//   background-color: red;
+//   color: white;
+// }
 
-// ?
-.fade-box {
-  height: 100px;
-  width: 100px;
-  background-color: yellow;
-  position: relative;
-  overflow: hidden;
-}
-.fade-box__inner {
-  margin-right: -100px;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
+// // ?
+// .fade-box {
+//   height: 100px;
+//   width: 100px;
+//   background-color: yellow;
+//   position: relative;
+//   overflow: hidden;
+// }
+// .fade-box__inner {
+//   margin-right: -100px;
+//   position: absolute;
+//   right: 0;
+//   top: 0;
+// }
 
-// Test
-.trail-container {
-  height: 500px;
-  width: 100%;
-}
-.trial-box {
-  cursor: pointer;
-  position: relative;
-  width: 50%;
-  height: 20%;
-  background-color: #f3ffbd;
-  will-change: transform;
-}
+// // Test
+// .trail-container {
+//   height: 500px;
+//   width: 100%;
+// }
+// .trial-box {
+//   cursor: pointer;
+//   position: relative;
+//   width: 50%;
+//   height: 20%;
+//   background-color: #f3ffbd;
+//   will-change: transform;
+// }
 
-// example
+// // example
 
-.example-enter {
-  opacity: 0;
-}
+// .example-enter {
+//   opacity: 0;
+// }
 
-.example-enter-active {
-  opacity: 1;
-  transition: opacity 500ms ease-out;
-}
+// .example-enter-active {
+//   opacity: 1;
+//   transition: opacity 500ms ease-out;
+// }
 
-.example-leave {
-  opacity: 1;
-}
+// .example-leave {
+//   opacity: 1;
+// }
 
-.example-leave-active {
-  opacity: 0;
-  transition: opacity 500ms ease-out;
-}
+// .example-leave-active {
+//   opacity: 0;
+//   transition: opacity 500ms ease-out;
+// }
 
-.visable {
-  opacity: 1;
-  transition: opacity 500ms;
-}
+// .visable {
+//   opacity: 1;
+//   transition: opacity 500ms;
+// }
 
-.unvisable {
-  opacity: 0.01;
-  transition: opacity 500ms;
-}
+// .unvisable {
+//   opacity: 0.01;
+//   transition: opacity 500ms;
+// }
 
-.alert-enter {
-  opacity: 0;
-  transform: scale(0.9);
-  // color: black;
-}
-.alert-enter-active {
-  opacity: 1;
-  // color: red;
-  transform: translateX(0);
-  transition: opacity 300ms;
-}
+// .alert-enter {
+//   opacity: 0;
+//   transform: scale(0.9);
+//   // color: black;
+// }
+// .alert-enter-active {
+//   opacity: 1;
+//   // color: red;
+//   transform: translateX(0);
+//   transition: opacity 300ms;
+// }
 
-.alert-exit {
-  opacity: 1;
-}
-.alert-exit-active {
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 300ms, transform 300ms;
-}
+// .alert-exit {
+//   opacity: 1;
+// }
+// .alert-exit-active {
+//   opacity: 0;
+//   transform: scale(0.9);
+//   transition: opacity 300ms, transform 300ms;
+// }
 
-// refs
+// // refs
 
-.refs {
-  .translated {
-    height: 100px;
-    width: 100px;
-    background-color: red;
-  }
-  .translated-plus {
-    background-color: purple;
-    transition: background-color 0.5sec ease;
-  }
-  .input-box {
-    margin-bottom: 2em;
-  }
-  .form-control {
-    height: calc(1.5em + 1rem + 2px);
-    padding: 0.5rem 1rem;
-    font-size: 1.25rem;
-    line-height: 1.5;
-    border-radius: 0.3rem;
-    display: block;
-    width: 100%;
-    height: calc(1.5em + 0.75rem + 2px);
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    font-weight: 300;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  }
-  .btn {
-    color: blue;
-    display: inline-block;
-    border-radius: 2px;
-    -webkit-appearance: none;
-    padding: 12px 21px;
-    margin-top: 2em;
-    font-size: 18px;
-    line-height: 28px;
-    letter-spacing: 0.05em;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    background-color: #eee;
-    border: 1px solid #e6e6e6;
-    border-bottom: 2px solid #c3c3c3;
-    text-decoration: none;
-  }
-}
+// .refs {
+//   .translated {
+//     height: 100px;
+//     width: 100px;
+//     background-color: red;
+//   }
+//   .translated-plus {
+//     background-color: purple;
+//     transition: background-color 0.5sec ease;
+//   }
+//   .input-box {
+//     margin-bottom: 2em;
+//   }
+//   .form-control {
+//     height: calc(1.5em + 1rem + 2px);
+//     padding: 0.5rem 1rem;
+//     font-size: 1.25rem;
+//     line-height: 1.5;
+//     border-radius: 0.3rem;
+//     display: block;
+//     width: 100%;
+//     height: calc(1.5em + 0.75rem + 2px);
+//     padding: 0.375rem 0.75rem;
+//     font-size: 1rem;
+//     font-weight: 300;
+//     line-height: 1.5;
+//     color: #495057;
+//     background-color: #fff;
+//     background-clip: padding-box;
+//     border: 1px solid #ced4da;
+//     border-radius: 0.25rem;
+//     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+//   }
+//   .btn {
+//     color: blue;
+//     display: inline-block;
+//     border-radius: 2px;
+//     -webkit-appearance: none;
+//     padding: 12px 21px;
+//     margin-top: 2em;
+//     font-size: 18px;
+//     line-height: 28px;
+//     letter-spacing: 0.05em;
+//     text-align: center;
+//     vertical-align: middle;
+//     cursor: pointer;
+//     background-color: #eee;
+//     border: 1px solid #e6e6e6;
+//     border-bottom: 2px solid #c3c3c3;
+//     text-decoration: none;
+//   }
+// }
+
+// slide workgrid item
 
 .slide {
   animation: slide 0.3s ease-in forwards;
@@ -272,7 +274,7 @@ button.btn-home.open {
   }
 }
 
-// categories
+// weekmenu recepten per dag
 
 .category-box {
   width: 100%;

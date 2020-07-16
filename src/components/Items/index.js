@@ -14,6 +14,13 @@ const Items = ({ me, setMe, recipes, ...props }) => {
   return (
     <Fragment>
       <div className="container-y bg-rose-100">
+        {!me.items && (
+          <div className="hollow-dots-spinner pt-36 m-auto">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+        )}
         <h1 className="favorieten-title">
           Favorieten
           <Link to={`/nieuwrecept`}>

@@ -20,6 +20,7 @@ module.exports = {
         background: "#eff2f5",
         kookschrift: "#d8d1ce",
         footer: "#b3b5bb",
+        voorraad: "#b57602",
         red: {
           100: "#ffe4e1", // #f5c5c5
           200: "#ff9191",
@@ -106,6 +107,7 @@ module.exports = {
         "14": "14px",
         "15": "15px",
         "16": "16px",
+        "17": "17px",
         "18": "18px",
         "19": "19px",
         "20": "20px",

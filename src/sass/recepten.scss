@@ -9,7 +9,9 @@
 }
 
 .recepten-source {
-  margin-left: 30%;
+  @media screen and (min-width: $on-tablet) {
+    margin-left: 30% !important;
+  }
 }
 
 .recipe-box {

@@ -6,38 +6,11 @@ import { slugify } from "../common/common";
 const Search = ({
   recipes,
   searchResults,
-  setSearchResults,
   search,
-  setSearch,
   handleChange,
   handleClick,
   searchTerm,
 }) => {
-  // const [searchTerm, setSearchTerm] = useState([]);
-  // const [searchResults, setSearchResults] = useState([]);
-  // const [search, setSearch] = useState(false);
-
-  // useEffect(() => {
-  //   const results = recipes.filter((recipe) => {
-  //     const lowercaserecipe = recipe.title.toLowerCase();
-  //     return lowercaserecipe.indexOf(searchTerm) !== -1;
-  //   });
-  //   setSearchResults(results);
-  // }, [searchTerm, recipes]);
-
-  // const handleChange = (e) => {
-  //   setSearchTerm(e.target.value);
-  //   setSearch(true);
-  //   // console.log("search");
-  // };
-
-  // const handleClick = (e) => {
-  //   // console.log("handleClick");
-  //   // console.log(e);
-  //   setSearchTerm(e);
-  //   // setSearchResults([]);
-  // };
-
   return (
     <>
       <div className="relative">

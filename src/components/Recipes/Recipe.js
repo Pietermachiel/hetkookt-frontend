@@ -65,11 +65,18 @@ const Recipe = ({
   return (
     <Fragment>
       <div className="container-x">
-        <h1 className="recepten-title text-green-600 mb-9 lg:mb-0 leading-none ">
+        {!therecipe && (
+          <div className="hollow-dots-spinner mt-36 m-auto">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+        )}
+        <h1 className="recepten-title text-green-600 mb-18 lg:mb-0 ">
           {therecipe.title}
           {/* <span className="text-21 lg:pl-10">bladgroenten</span> */}
-          <Link to={`/collections/${therecipe.dish}`}>
-            <span className="leading-none text-21 pl-10">{therecipe.dish}</span>
+          <Link className="leading-none" to={`/collections/${therecipe.dish}`}>
+            <span className="text-21 pl-10">{therecipe.dish}</span>
           </Link>
         </h1>
         <div className="lg:flex align-baseline mb-36 unvisable slide work-grid-item">
@@ -157,7 +164,7 @@ const Recipe = ({
                       <div className="items-quantity">
                         {f.quantity} {f.unit}
                       </div>
-                      <div className="items-product text-gray-600">
+                      <div className="items-product text-voorraad">
                         {f.ingredient}
                       </div>
                     </li>

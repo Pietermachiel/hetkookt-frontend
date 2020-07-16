@@ -1,120 +1,120 @@
-.menu-box__inner {
-  columns: 5;
-}
+// .menu-box__inner {
+//   columns: 5;
+// }
 
-.filter-box__stock {
-  color: #498ddc;
-  line-height: 1.6;
-}
+// .filter-box__stock {
+//   color: #498ddc;
+//   line-height: 1.6;
+// }
 
-.boodschappen {
-  // background: #f9f3dc;
-  width: 100%;
-  // max-width: 984px;
-  margin: 0 auto;
-  // padding: 18px;
-  padding-bottom: 24px;
-  @media (min-width: $on-tablet) {
-    // padding: 15px calc(50vw - (1060px / 2));
-    padding-bottom: 24px;
-    // columns: 5;
-  }
-}
+// .boodschappen {
+//   // background: #f9f3dc;
+//   width: 100%;
+//   // max-width: 984px;
+//   margin: 0 auto;
+//   // padding: 18px;
+//   padding-bottom: 24px;
+//   @media (min-width: $on-tablet) {
+//     // padding: 15px calc(50vw - (1060px / 2));
+//     padding-bottom: 24px;
+//     // columns: 5;
+//   }
+// }
 
-.voorraadkast {
-  background: #f6ad55;
-  padding-top: 0.5em;
-  h2 {
-    padding: 0.5em 0;
-  }
-}
+// .voorraadkast {
+//   background: #f6ad55;
+//   padding-top: 0.5em;
+//   h2 {
+//     padding: 0.5em 0;
+//   }
+// }
 
-.form {
-  margin-bottom: 1em;
-  input {
-    width: 280px;
-  }
-}
+// .form {
+//   margin-bottom: 1em;
+//   input {
+//     width: 280px;
+//   }
+// }
 
-.btn {
-  border-radius: 2px;
-  vertical-align: middle;
-  cursor: pointer;
-  // background-color: #eee;
-  // border: 1px solid #e6e6e6;
-  // border-bottom: 2px solid #c3c3c3;
-}
-.btn-small {
-  margin-top: 0;
-  padding: 10px 10px;
-  position: relative;
-}
-.btn-small__green {
-  // border: 1px solid blue;
-  // border-bottom: 2px solid blue;
-  background-color: transparent;
-  transition: all 0.25s ease;
-  &:before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: blue;
-    transition: all 0.25s ease;
-  }
-  &:after {
-    content: "";
-    position: absolute;
-    left: 46%;
-    top: 0;
-    height: 100%;
-    width: 2px;
-    background: blue;
-    transition: all 0.25s ease;
-  }
-}
-.btn-small__green:hover,
-.btn-small__selected {
-  // border: 1px solid blue;
-  // border-bottom: 2px solid blue;
-  // background-color: white;
-  transition: all 0.25s ease;
-  &:before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: red;
-    transition: all 0.25s ease;
-  }
-  &:after {
-    content: "";
-    position: absolute;
-    left: 46%;
-    top: 0;
-    height: 100%;
-    width: 2px;
-    background: red;
-    transition: all 0.25s ease;
-  }
-}
-.btn-small__red:hover {
-  border: 1px solid red;
-  border-bottom: 2px solid red;
-  background-color: white;
-  transition: all 0.25s ease;
-  &:before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: red;
-    transition: all 0.25s ease;
-  }
-}
+// .btn {
+//   border-radius: 2px;
+//   vertical-align: middle;
+//   cursor: pointer;
+//   // background-color: #eee;
+//   // border: 1px solid #e6e6e6;
+//   // border-bottom: 2px solid #c3c3c3;
+// }
+// .btn-small {
+//   margin-top: 0;
+//   padding: 10px 10px;
+//   position: relative;
+// }
+// .btn-small__green {
+//   // border: 1px solid blue;
+//   // border-bottom: 2px solid blue;
+//   background-color: transparent;
+//   transition: all 0.25s ease;
+//   &:before {
+//     content: "";
+//     position: absolute;
+//     top: 50%;
+//     left: 0;
+//     width: 100%;
+//     height: 2px;
+//     background: blue;
+//     transition: all 0.25s ease;
+//   }
+//   &:after {
+//     content: "";
+//     position: absolute;
+//     left: 46%;
+//     top: 0;
+//     height: 100%;
+//     width: 2px;
+//     background: blue;
+//     transition: all 0.25s ease;
+//   }
+// }
+// .btn-small__green:hover,
+// .btn-small__selected {
+//   // border: 1px solid blue;
+//   // border-bottom: 2px solid blue;
+//   // background-color: white;
+//   transition: all 0.25s ease;
+//   &:before {
+//     content: "";
+//     position: absolute;
+//     top: 50%;
+//     left: 0;
+//     width: 100%;
+//     height: 2px;
+//     background: red;
+//     transition: all 0.25s ease;
+//   }
+//   &:after {
+//     content: "";
+//     position: absolute;
+//     left: 46%;
+//     top: 0;
+//     height: 100%;
+//     width: 2px;
+//     background: red;
+//     transition: all 0.25s ease;
+//   }
+// }
+// .btn-small__red:hover {
+//   border: 1px solid red;
+//   border-bottom: 2px solid red;
+//   background-color: white;
+//   transition: all 0.25s ease;
+//   &:before {
+//     content: "";
+//     position: absolute;
+//     top: 50%;
+//     left: 0;
+//     width: 100%;
+//     height: 1px;
+//     background: red;
+//     transition: all 0.25s ease;
+//   }
+// }

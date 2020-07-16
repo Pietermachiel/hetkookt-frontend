@@ -13,7 +13,11 @@ const Home = ({ me, setMe, user, recipes, about, ...props }) => {
   if (recipes.length === 0)
     return (
       <div className="container-x">
-        <p>Loading...</p>
+        <div className="mt-36 hollow-dots-spinner m-auto">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
       </div>
     );
 

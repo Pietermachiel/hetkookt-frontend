@@ -37,9 +37,9 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
   return (
     <Fragment>
       <div className="container-y bg-rose-100 unvisable slide work-grid-item">
-        <h1 className="recepten-title lg:text-36 text-green-600">
+        <h1 className="recepten-title mb-18 lg:text-36 text-green-600">
           {therecipe.title}
-          <Link to={`/collections/${therecipe.dish}`}>
+          <Link className="leading-none" to={`/collections/${therecipe.dish}`}>
             <span className="text-21 pl-10">{therecipe.dish}</span>
           </Link>
         </h1>
@@ -151,7 +151,7 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
                       <div className="items-quantity">
                         {f.quantity} {f.unit}
                       </div>
-                      <div className="items-product text-gray-600">
+                      <div className="items-product text-voorraad">
                         {f.ingredient}
                       </div>
                     </li>

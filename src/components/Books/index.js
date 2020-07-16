@@ -26,15 +26,14 @@ const Books = ({ books, ...props }) => {
                     <img src={`/img/books/${b.sourceId}_title.jpg`} alt="" />
                   </Link>
                 </div>
-                <Link
-                  className="ko-box-right__text"
-                  to={`/book/${slugify(b.title)}`}
-                >
-                  <div>
-                    <p>{b.title}</p>
+                <Link className="w-50" to={`/book/${slugify(b.title)}`}>
+                  <div className="text-16 lg:text-19 text-center lg:text-left pt-18 pb-24 lg:px-18 relative lg:bg-orange-200 h-full">
+                    <strong className="text-17 lg:text-19">{b.title}</strong>
+                    <p className="lg:text-18 mb-0">{b.author}</p>
 
-                    <h2>{b.year}</h2>
-                    <p>{b.author}</p>
+                    <span className="hidden lg:block absolute bottom-0 right-0 pr-24 pb-9 text-36 font-100">
+                      {b.year}
+                    </span>
                   </div>{" "}
                 </Link>
               </div>

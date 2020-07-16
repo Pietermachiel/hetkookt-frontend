@@ -70,28 +70,8 @@ const Welkom = ({ user, ...props }) => {
 
           <p>Pieter 🌹</p>
 
-          {/* {abouts.map((a, xid) => {
-                return (
-                  <Fragment key={xid}>
-                    {!user && <Fragment></Fragment>}
-                    <div key={a.index} className="about-box mt-0">
-                      <div className="text-19 leading-loose">
-                        {a.lines.map((line, xid) => (
-                          <li key={xid}>{line} </li>
-                        ))}
-                      </div>
-                    </div>{" "}
-                  </Fragment>
-                );
-              })} */}
           <div className="clear-both"></div>
         </div>
-
-        {/* <p>Je kunt nu inloggen</p>
-
-        <button className="button-blue mt-18 mb-24">
-          <NavLink to="/login">inloggen</NavLink>
-        </button> */}
       </div>
     </Fragment>
   );

@@ -123,7 +123,7 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
                 defaultValue={therecipe.dish}
                 ref={register({ required: true })}
                 id="dish"
-                className="select h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                className="select h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
               >
                 <option value="" />
                 {thedishes.map((option, xid) => (
@@ -148,7 +148,7 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
                   <li className="relative mb-0" key={item.id}>
                     <select
                       name={`tags[${index}].name`}
-                      className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                      className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
                       ref={register()}
                     >
                       <option value="" />
@@ -159,8 +159,8 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
                       ))}
                     </select>
                     <button
-                      className="absolute top-0"
-                      style={{ right: "-30px" }}
+                      className="absolute top-0 right-0 pr-18"
+                      // style={{ right: "-30px" }}
                       onClick={() => tagsRemove(index)}
                     >
                       <img
@@ -192,13 +192,13 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
                   <li className="relative mb-0" key={item.id}>
                     <input
                       name={`basics[${index}].name`}
-                      className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                      className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
                       defaultValue={item.name}
                       ref={register()}
                     />
                     <button
-                      className="absolute top-0"
-                      style={{ right: "-44px" }}
+                      className="absolute top-0 right-0"
+                      // style={{ right: "-44px" }}
                       onClick={() => basicsRemove(index)}
                     >
                       <img
@@ -230,13 +230,13 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
                   <li className="relative mb-0" key={item.id}>
                     <input
                       name={`related[${index}].name`}
-                      className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                      className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
                       defaultValue={item.name}
                       ref={register()}
                     />
                     <button
-                      className="absolute top-0"
-                      style={{ right: "-44px" }}
+                      className="absolute top-0 right-0"
+                      // style={{ right: "-44px" }}
                       onClick={() => relatedRemove(index)}
                     >
                       <img
@@ -294,8 +294,8 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
                       ref={register()}
                     />
                     <button
-                      className="absolute top-0"
-                      style={{ right: "-44px" }}
+                      className="absolute top-0 right-0"
+                      // style={{ right: "-44px" }}
                       onClick={() => freshRemove(index)}
                     >
                       <img
@@ -334,7 +334,7 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
                     />
                     <select
                       name={`stock[${index}].unit`}
-                      className="form-input__unit h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
+                      className="form-input__unit h-48 font-300 text-14 border-solid border border-gray-400 pl-36"
                       defaultValue={item.unit}
                       ref={register()}
                     >
@@ -353,8 +353,8 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
                       ref={register()}
                     />
                     <button
-                      className="absolute top-0"
-                      style={{ right: "-44px" }}
+                      className="absolute top-0 right-0"
+                      // style={{ right: "44px" }}
                       onClick={() => stockRemove(index)}
                     >
                       <img
@@ -391,8 +391,8 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
                       ref={register()}
                     />
                     <button
-                      className="absolute top-0"
-                      style={{ right: "-44px" }}
+                      className="absolute top-0 right-0"
+                      // style={{ right: "0px" }}
                       onClick={() => directionsRemove(index)}
                     >
                       <img

@@ -92,7 +92,7 @@ const Book = ({ books, recipes, ...props }) => {
             {recipes.map((r) => {
               if (slugify(r.source) === thebook.bookId)
                 return (
-                  <p>
+                  <p key={r._id}>
                     <Link to={`/recipe/${slugify(r.title)}`}>
                       <strong className="text-indigo-600">{r.title}</strong>
                     </Link>{" "}
