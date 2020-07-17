@@ -19,12 +19,19 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
   const [error, setError] = useState(false);
   const { register, control, handleSubmit, watch, errors } = useForm({
     defaultValues: {
+      _id: therecipe._id,
+      title: therecipe.title,
+      dish: therecipe.dish,
       tags: therecipe.tags,
       basics: therecipe.basics,
       related: therecipe.related,
       fresh: therecipe.fresh,
       stock: therecipe.stock,
       directions: therecipe.directions,
+      author: therecipe.author,
+      source: therecipe.source,
+      source_url: therecipe.source_url,
+      info: therecipe.info,
       item: therecipe.item,
       date: therecipe.date,
     },
@@ -94,6 +101,10 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
             </Link>
           </h1>
           <form onSubmit={handleSubmit(handleDoSave)}>
+            {/* _id  */}
+            <div className="">
+              <input name="_id" ref={register()} className="hidden invisible" />
+            </div>
             {/* titel */}
             <div className="">
               <label className="text-16 text-gray-500" htmlFor="email">
@@ -101,7 +112,7 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
               </label>
               <input
                 name="title"
-                defaultValue={therecipe.title}
+                // defaultValue={therecipe.title}
                 className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
                 ref={register({
                   required: true,
@@ -120,7 +131,6 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
               </label>
               <select
                 name="dish"
-                defaultValue={therecipe.dish}
                 ref={register({ required: true })}
                 id="dish"
                 className="select h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
@@ -421,7 +431,6 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
               </label>
               <input
                 name="author"
-                defaultValue={therecipe.author}
                 className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
                 ref={register()}
               />
@@ -433,7 +442,6 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
               </label>
               <input
                 name="source"
-                defaultValue={therecipe.source}
                 className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
                 ref={register()}
               />
@@ -445,7 +453,6 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
               </label>
               <input
                 name="source_url"
-                defaultValue={therecipe.source_url}
                 className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
                 ref={register()}
               />
@@ -457,16 +464,23 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
               </label>
               <input
                 name="info"
-                defaultValue={therecipe.info}
                 className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
                 ref={register()}
               />
             </div>
             <div className="">
-              <input name="item" ref={register()} className="hidden" />
+              <input
+                name="item"
+                ref={register()}
+                className="hidden invisible"
+              />
             </div>
             <div className="">
-              <input name="date" ref={register()} className="hidden" />
+              <input
+                name="date"
+                ref={register()}
+                className="hidden invisible"
+              />
             </div>
             <button className="uppercase text-16 bg-indigo-500 mt-36 mb-36 px-36 py-10 text-white tracking-widest">
               aanpassen

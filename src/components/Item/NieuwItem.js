@@ -22,12 +22,21 @@ const NieuwItem = ({ me, setMe, ...props }) => {
   const [error, setError] = useState(false);
   const { register, control, handleSubmit, watch, errors } = useForm({
     defaultValues: {
+      _id: "",
+      title: "",
+      dish: "",
       tags: [{ name: "" }],
       basics: [{ name: "" }],
       related: [{ name: "" }],
-      fresh: [{ name: "" }],
-      stock: [{ name: "" }],
+      fresh: [{ quantity: null, unit: "", ingredient: "" }],
+      stock: [{ quantity: null, unit: "", ingredient: "" }],
       directions: [{ name: "" }],
+      author: "",
+      source: "",
+      source_url: "",
+      info: "",
+      item: true,
+      date: [""],
     },
   });
 
@@ -133,7 +142,6 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                       <select
                         name={`tags[${index}].name`}
                         className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
-                        defaultValue={item.name}
                         ref={register()}
                         // ref={register({ required: true })}
                       >
@@ -181,7 +189,6 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                     <input
                       name={`basics[${index}].name`}
                       className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
-                      defaultValue={item.name}
                       ref={register()}
                     />
                     <button
@@ -219,7 +226,6 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                     <input
                       name={`related[${index}].name`}
                       className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
-                      defaultValue={item.name}
                       ref={register()}
                     />
                     <button
@@ -395,7 +401,6 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                     <input
                       name={`directions[${index}].name`}
                       className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
-                      defaultValue={item.name}
                       ref={register()}
                     />
                     <button

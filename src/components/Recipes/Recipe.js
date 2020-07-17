@@ -37,6 +37,8 @@ const Recipe = ({
     // console.log("therecipe index");
     // console.log(therecipe);
     createRecipe(me, setMe, therecipe);
+    const { state } = props.location;
+    window.location = state ? state.from.pathname : "/kookschrift";
   };
 
   useEffect(() => {
