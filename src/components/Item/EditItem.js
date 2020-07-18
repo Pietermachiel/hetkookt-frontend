@@ -106,21 +106,26 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
               <input name="_id" ref={register()} className="hidden invisible" />
             </div>
             {/* titel */}
-            <div className="">
+            <div className="formgroup__collectie">
               <label className="text-16 text-gray-500" htmlFor="email">
                 Titel
               </label>
               <input
                 name="title"
-                // defaultValue={therecipe.title}
                 className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
                 ref={register({
                   required: true,
+                  maxLength: 30,
                 })}
               />
-              {errors.titel?.type === "required" && (
+              {errors.title?.type === "required" && (
                 <span className="block text-16 py-6 font-700 text-orange-500">
                   Dit veld is verplicht
+                </span>
+              )}
+              {errors.title?.type === "maxLength" && (
+                <span className="block text-16 py-6 font-700 text-orange-500">
+                  Maximaal 30 lettertekens
                 </span>
               )}
             </div>
@@ -155,31 +160,35 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
               </label>
               <ul>
                 {tagsFields.map((item, index) => (
-                  <li className="relative mb-0" key={item.id}>
-                    <select
-                      name={`tags[${index}].name`}
-                      className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
-                      ref={register()}
-                    >
-                      <option value="" />
-                      {tags.map((option, xid) => (
-                        <option key={xid} value={option}>
-                          {option}
-                        </option>
-                      ))}
-                    </select>
-                    <button
-                      className="absolute top-0 right-0 pr-18"
-                      // style={{ right: "-30px" }}
-                      onClick={() => tagsRemove(index)}
-                    >
-                      <img
-                        className="w-20 h-20 mt-13 opacity-50"
-                        src="/img/feather/trash.svg"
-                        alt=""
-                      />
-                    </button>
-                  </li>
+                  <Fragment key={index}>
+                    <li className="relative mb-0">
+                      <select
+                        name={`tags[${index}].name`}
+                        className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
+                        ref={register()}
+                        // ref={register({ required: true })}
+                      >
+                        <option value="" />
+                        {tags.map((option, xid) => (
+                          <option key={xid} value={option}>
+                            {option}
+                          </option>
+                        ))}
+                      </select>
+
+                      <button
+                        className="absolute top-0"
+                        style={{ right: "-30px" }}
+                        onClick={() => tagsRemove(index)}
+                      >
+                        <img
+                          className="w-20 h-20 mt-13 opacity-50"
+                          src="/img/feather/trash.svg"
+                          alt=""
+                        />
+                      </button>
+                    </li>
+                  </Fragment>
                 ))}
               </ul>
               <div
@@ -199,16 +208,15 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
               </label>
               <ul>
                 {basicsFields.map((item, index) => (
-                  <li className="relative mb-0" key={item.id}>
+                  <li key={index} className="relative mb-0">
                     <input
                       name={`basics[${index}].name`}
-                      className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
-                      defaultValue={item.name}
+                      className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
                       ref={register()}
-                    />
+                    />{" "}
                     <button
-                      className="absolute top-0 right-0"
-                      // style={{ right: "-44px" }}
+                      className="absolute top-0"
+                      style={{ right: "-44px" }}
                       onClick={() => basicsRemove(index)}
                     >
                       <img
@@ -237,16 +245,20 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
               </label>
               <ul>
                 {relatedFields.map((item, index) => (
-                  <li className="relative mb-0" key={item.id}>
+                  <li key={index} className="relative mb-0">
                     <input
                       name={`related[${index}].name`}
-                      className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
-                      defaultValue={item.name}
-                      ref={register()}
+                      className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                      ref={register({ maxLength: 30 })}
                     />
+                    {errors.related?.type === "maxLength" && (
+                      <span className="block text-16 py-6 font-700 text-orange-500">
+                        Maximaal 30 lettertekens
+                      </span>
+                    )}
                     <button
-                      className="absolute top-0 right-0"
-                      // style={{ right: "-44px" }}
+                      className="absolute top-0"
+                      style={{ right: "-44px" }}
                       onClick={() => relatedRemove(index)}
                     >
                       <img
@@ -275,48 +287,72 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
               </label>
               <ul>
                 {freshFields.map((item, index) => (
-                  <li className="relative mb-0" key={item.id}>
-                    <input
-                      name={`fresh[${index}].quantity`}
-                      placeholder="hoeveel"
-                      className="form-input__quantity h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
-                      defaultValue={item.quantity}
-                      ref={register()}
-                    />
-                    <select
-                      name={`fresh[${index}].unit`}
-                      className="form-input__unit h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
-                      defaultValue={item.unit}
-                      ref={register()}
-                    >
-                      <option value="" />
-                      {theunits.map((option, xid) => (
-                        <option key={xid} value={option.unit}>
-                          {option.unit}
-                        </option>
-                      ))}
-                    </select>
-                    <input
-                      name={`fresh[${index}].ingredient`}
-                      placeholder="ingredient"
-                      className="form-input__ingredient h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
-                      defaultValue={item.ingredient}
-                      ref={register()}
-                    />
-                    <button
-                      className="absolute top-0 right-0"
-                      // style={{ right: "-44px" }}
-                      onClick={() => freshRemove(index)}
-                    >
-                      <img
-                        className="w-20 h-20 mt-13 mr-15 opacity-50"
-                        src="/img/feather/trash.svg"
-                        alt=""
+                  <Fragment key={index}>
+                    <li className="relative mb-0" key={item.id}>
+                      <input
+                        name={`fresh[${index}].quantity`}
+                        placeholder="hoeveel"
+                        className="form-input__quantity h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
+                        defaultValue={item.quantity}
+                        ref={register({ pattern: /^[0-9]+$/, maxLength: 4 })}
                       />
-                    </button>
-                  </li>
+                      <select
+                        name={`fresh[${index}].unit`}
+                        className="form-input__unit h-48 font-300 text-14 border-solid border border-gray-400 pl-36"
+                        defaultValue={item.unit}
+                        ref={register()}
+                      >
+                        <option value="" />
+                        {theunits.map((option, xid) => (
+                          <option key={xid} value={option.unit}>
+                            {option.unit}
+                          </option>
+                        ))}
+                      </select>
+                      <input
+                        name={`fresh[${index}].ingredient`}
+                        placeholder="ingredient"
+                        className="form-input__ingredient h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
+                        defaultValue={item.ingredient}
+                        ref={register({ maxLength: 30 })}
+                      />
+                      <button
+                        className="absolute top-0"
+                        style={{ right: "-44px" }}
+                        onClick={() => freshRemove(index)}
+                      >
+                        <img
+                          className="w-20 h-20 mt-13 mr-15 opacity-50"
+                          src="/img/feather/trash.svg"
+                          alt=""
+                        />
+                      </button>
+                    </li>
+                    {errors.fresh &&
+                      errors.fresh[index] &&
+                      errors.fresh[index].quantity?.type === "pattern" && (
+                        <span className="block text-16 py-6 font-700 text-orange-500">
+                          Alleen cijfers
+                        </span>
+                      )}
+                    {errors.fresh &&
+                      errors.fresh[index] &&
+                      errors.fresh[index].quantity?.type === "maxLength" && (
+                        <span className="block text-16 py-6 font-700 text-orange-500">
+                          Hoeveelheid maximaal 4 cijfers
+                        </span>
+                      )}
+                    {errors.fresh &&
+                      errors.fresh[index] &&
+                      errors.fresh[index].ingredient?.type === "maxLength" && (
+                        <span className="block text-16 py-6 font-700 text-orange-500">
+                          Ingredient maximaal 30 lettertekens
+                        </span>
+                      )}
+                  </Fragment>
                 ))}
               </ul>
+
               <div
                 className="relative w-full text-left pt-4 pl-30 text-indigo-600"
                 onClick={() => freshAppend({ name: "" })}
@@ -334,46 +370,69 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
               </label>
               <ul>
                 {stockFields.map((item, index) => (
-                  <li className="relative mb-0" key={item.id}>
-                    <input
-                      name={`stock[${index}].quantity`}
-                      placeholder="hoeveel"
-                      className="form-input__quantity h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
-                      defaultValue={item.quantity}
-                      ref={register()}
-                    />
-                    <select
-                      name={`stock[${index}].unit`}
-                      className="form-input__unit h-48 font-300 text-14 border-solid border border-gray-400 pl-36"
-                      defaultValue={item.unit}
-                      ref={register()}
-                    >
-                      <option value="" />
-                      {stockunits.map((option, xid) => (
-                        <option key={xid} value={option.unit}>
-                          {option.unit}
-                        </option>
-                      ))}
-                    </select>
-                    <input
-                      name={`stock[${index}].ingredient`}
-                      placeholder="ingredient"
-                      className="form-input__ingredient h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
-                      defaultValue={item.ingredient}
-                      ref={register()}
-                    />
-                    <button
-                      className="absolute top-0 right-0"
-                      // style={{ right: "44px" }}
-                      onClick={() => stockRemove(index)}
-                    >
-                      <img
-                        className="w-20 h-20 mt-13 mr-15 opacity-50"
-                        src="/img/feather/trash.svg"
-                        alt=""
+                  <Fragment key={index}>
+                    <li className="relative mb-0">
+                      <input
+                        name={`stock[${index}].quantity`}
+                        placeholder="hoeveel"
+                        className="form-input__quantity h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
+                        defaultValue={item.quantity}
+                        ref={register({ maxLength: 4 })}
                       />
-                    </button>
-                  </li>
+                      <select
+                        name={`stock[${index}].unit`}
+                        className="form-input__unit h-48 font-300 text-14 border-solid border border-gray-400 pl-36"
+                        defaultValue={item.unit}
+                        ref={register()}
+                      >
+                        <option value="" />
+                        {stockunits.map((option, xid) => (
+                          <option key={xid} value={option.unit}>
+                            {option.unit}
+                          </option>
+                        ))}
+                      </select>
+                      <input
+                        name={`stock[${index}].ingredient`}
+                        placeholder="ingredient"
+                        className="form-input__ingredient h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
+                        defaultValue={item.ingredient}
+                        ref={register({ maxLength: 30 })}
+                      />
+                      <button
+                        className="absolute top-0"
+                        style={{ right: "-44px" }}
+                        onClick={() => stockRemove(index)}
+                      >
+                        <img
+                          className="w-20 h-20 mt-13 mr-15 opacity-50"
+                          src="/img/feather/trash.svg"
+                          alt=""
+                        />
+                      </button>
+                    </li>
+                    {/* {errors.stock &&
+                      errors.stock[index] &&
+                      errors.stock[index].quantity?.type === "pattern" && (
+                        <span className="block text-16 py-6 font-700 text-orange-500">
+                          Alleen cijfers
+                        </span>
+                      )} */}
+                    {errors.stock &&
+                      errors.stock[index] &&
+                      errors.stock[index].quantity?.type === "maxLength" && (
+                        <span className="block text-16 py-6 font-700 text-orange-500">
+                          Hoeveelheid maximaal 4 lettertekens
+                        </span>
+                      )}
+                    {errors.stock &&
+                      errors.stock[index] &&
+                      errors.stock[index].ingredient?.type === "maxLength" && (
+                        <span className="block text-16 py-6 font-700 text-orange-500">
+                          Ingredient maximaal 30 lettertekens
+                        </span>
+                      )}
+                  </Fragment>
                 ))}
               </ul>
               <div
@@ -393,16 +452,20 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
               </label>
               <ul>
                 {directionsFields.map((item, index) => (
-                  <li className="relative mb-0" key={item.id}>
+                  <li key={index} className="relative mb-0">
                     <input
                       name={`directions[${index}].name`}
                       className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
-                      defaultValue={item.name}
                       ref={register()}
                     />
+                    {/* {errors.directions?.type === "maxLength" && (
+                      <span className="block text-16 py-6 font-700 text-orange-500">
+                        Maximaal 30 lettertekens
+                      </span>
+                    )} */}
                     <button
-                      className="absolute top-0 right-0"
-                      // style={{ right: "0px" }}
+                      className="absolute top-0"
+                      style={{ right: "-44px" }}
                       onClick={() => directionsRemove(index)}
                     >
                       <img

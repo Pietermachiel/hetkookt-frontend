@@ -44,6 +44,7 @@ const Login = (props) => {
                 ref={register({
                   required: true,
                   pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+                  maxLength: 30,
                 })}
               />
               <span className="absolute left-0 top-0">

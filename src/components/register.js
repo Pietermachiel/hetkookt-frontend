@@ -52,6 +52,7 @@ const Register = (props) => {
                 ref={register({
                   required: true,
                   minLength: 2,
+                  maxLength: 30,
                 })}
               />
               <span className="absolute left-0 top-0">
@@ -68,7 +69,12 @@ const Register = (props) => {
               )}
               {errors.name?.type === "minLength" && (
                 <span className="block text-16 py-6 font-700 text-orange-500">
-                  Minimaal 2 letters
+                  Minimaal 2 lettertekens
+                </span>
+              )}
+              {errors.name?.type === "maxLength" && (
+                <span className="block text-16 py-6 font-700 text-orange-500">
+                  Maximaal 30 lettertekens
                 </span>
               )}
             </div>
@@ -83,6 +89,7 @@ const Register = (props) => {
                 ref={register({
                   required: true,
                   pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+                  maxLength: 30,
                 })}
               />
               <span className="absolute left-0 top-0">
@@ -100,6 +107,11 @@ const Register = (props) => {
               {errors.email?.type === "pattern" && (
                 <span className="block text-16 py-6 font-700 text-orange-500">
                   Vul een geldig email adres in
+                </span>
+              )}
+              {errors.name?.type === "maxLength" && (
+                <span className="block text-16 py-6 font-700 text-orange-500">
+                  Maximaal 30 lettertekens
                 </span>
               )}
             </div>
@@ -128,7 +140,7 @@ const Register = (props) => {
               )}
               {errors.password?.type === "minLength" && (
                 <span className="block text-16 py-6 font-700 text-orange-500">
-                  Minimaal 6 karakters
+                  Minimaal 6 lettertekens
                 </span>
               )}
             </div>

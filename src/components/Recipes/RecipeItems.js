@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Fragment } from "react";
 import { slugify, kalender } from "../common/common";
 
-const RecipeItems = ({ recipe, ...props }) => {
+const RecipeItems = ({ recipe, thelength, ...props }) => {
   // console.log("me");
   // console.log(cart);
 
@@ -31,7 +31,7 @@ const RecipeItems = ({ recipe, ...props }) => {
               <Fragment key={id}>
                 <li className={`inline text-15`}>
                   {t.name}
-                  {/* {thelength === id ? "" : ", "} */}
+                  {thelength === id ? "" : ", "}
                 </li>
               </Fragment>
             ))}

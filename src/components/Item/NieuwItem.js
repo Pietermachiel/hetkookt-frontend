@@ -25,12 +25,12 @@ const NieuwItem = ({ me, setMe, ...props }) => {
       _id: "",
       title: "",
       dish: "",
-      tags: [{ name: "" }],
-      basics: [{ name: "" }],
-      related: [{ name: "" }],
-      fresh: [{ quantity: null, unit: "", ingredient: "" }],
-      stock: [{ quantity: null, unit: "", ingredient: "" }],
-      directions: [{ name: "" }],
+      tags: [{ _id: "", name: "" }],
+      basics: [{ _id: "", name: "" }],
+      related: [{ _id: "", name: "" }],
+      fresh: [{ _id: "", quantity: null, unit: "", ingredient: "" }],
+      stock: [{ _id: "", quantity: null, unit: "", ingredient: "" }],
+      directions: [{ _id: "", name: "" }],
       author: "",
       source: "",
       source_url: "",
@@ -98,11 +98,17 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                 className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
                 ref={register({
                   required: true,
+                  maxLength: 30,
                 })}
               />
               {errors.title?.type === "required" && (
                 <span className="block text-16 py-6 font-700 text-orange-500">
                   Dit veld is verplicht
+                </span>
+              )}
+              {errors.title?.type === "maxLength" && (
+                <span className="block text-16 py-6 font-700 text-orange-500">
+                  Maximaal 30 lettertekens
                 </span>
               )}
             </div>
@@ -115,7 +121,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                 name="dish"
                 ref={register({ required: true })}
                 id="dish"
-                className="select h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                className="select h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
               >
                 <option value="" />
                 {thedishes.map((option, xid) => (
@@ -141,7 +147,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                     <li className="relative mb-0">
                       <select
                         name={`tags[${index}].name`}
-                        className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                        className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
                         ref={register()}
                         // ref={register({ required: true })}
                       >
@@ -190,7 +196,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                       name={`basics[${index}].name`}
                       className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
                       ref={register()}
-                    />
+                    />{" "}
                     <button
                       className="absolute top-0"
                       style={{ right: "-44px" }}
@@ -226,8 +232,13 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                     <input
                       name={`related[${index}].name`}
                       className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
-                      ref={register()}
+                      ref={register({ maxLength: 30 })}
                     />
+                    {errors.related?.type === "maxLength" && (
+                      <span className="block text-16 py-6 font-700 text-orange-500">
+                        Maximaal 30 lettertekens
+                      </span>
+                    )}
                     <button
                       className="absolute top-0"
                       style={{ right: "-44px" }}
@@ -266,12 +277,11 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                         placeholder="hoeveel"
                         className="form-input__quantity h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
                         defaultValue={item.quantity}
-                        // ref={register()}
-                        ref={register({ pattern: /^[0-9]+$/ })}
+                        ref={register({ pattern: /^[0-9]+$/, maxLength: 4 })}
                       />
                       <select
                         name={`fresh[${index}].unit`}
-                        className="form-input__unit h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
+                        className="form-input__unit h-48 font-300 text-14 border-solid border border-gray-400 pl-36"
                         defaultValue={item.unit}
                         ref={register()}
                       >
@@ -287,7 +297,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                         placeholder="ingredient"
                         className="form-input__ingredient h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
                         defaultValue={item.ingredient}
-                        ref={register()}
+                        ref={register({ maxLength: 30 })}
                       />
                       <button
                         className="absolute top-0"
@@ -306,6 +316,20 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                       errors.fresh[index].quantity?.type === "pattern" && (
                         <span className="block text-16 py-6 font-700 text-orange-500">
                           Alleen cijfers
+                        </span>
+                      )}
+                    {errors.fresh &&
+                      errors.fresh[index] &&
+                      errors.fresh[index].quantity?.type === "maxLength" && (
+                        <span className="block text-16 py-6 font-700 text-orange-500">
+                          Hoeveelheid maximaal 4 cijfers
+                        </span>
+                      )}
+                    {errors.fresh &&
+                      errors.fresh[index] &&
+                      errors.fresh[index].ingredient?.type === "maxLength" && (
+                        <span className="block text-16 py-6 font-700 text-orange-500">
+                          Ingredient maximaal 30 lettertekens
                         </span>
                       )}
                   </Fragment>
@@ -336,11 +360,11 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                         placeholder="hoeveel"
                         className="form-input__quantity h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
                         defaultValue={item.quantity}
-                        ref={register()}
+                        ref={register({ maxLength: 4 })}
                       />
                       <select
                         name={`stock[${index}].unit`}
-                        className="form-input__unit h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
+                        className="form-input__unit h-48 font-300 text-14 border-solid border border-gray-400 pl-36"
                         defaultValue={item.unit}
                         ref={register()}
                       >
@@ -356,7 +380,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                         placeholder="ingredient"
                         className="form-input__ingredient h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
                         defaultValue={item.ingredient}
-                        ref={register()}
+                        ref={register({ maxLength: 30 })}
                       />
                       <button
                         className="absolute top-0"
@@ -377,6 +401,20 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                           Alleen cijfers
                         </span>
                       )} */}
+                    {errors.stock &&
+                      errors.stock[index] &&
+                      errors.stock[index].quantity?.type === "maxLength" && (
+                        <span className="block text-16 py-6 font-700 text-orange-500">
+                          Hoeveelheid maximaal 4 lettertekens
+                        </span>
+                      )}
+                    {errors.stock &&
+                      errors.stock[index] &&
+                      errors.stock[index].ingredient?.type === "maxLength" && (
+                        <span className="block text-16 py-6 font-700 text-orange-500">
+                          Ingredient maximaal 30 lettertekens
+                        </span>
+                      )}
                   </Fragment>
                 ))}
               </ul>
@@ -403,6 +441,11 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                       className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
                       ref={register()}
                     />
+                    {/* {errors.directions?.type === "maxLength" && (
+                      <span className="block text-16 py-6 font-700 text-orange-500">
+                        Maximaal 30 lettertekens
+                      </span>
+                    )} */}
                     <button
                       className="absolute top-0"
                       style={{ right: "-44px" }}

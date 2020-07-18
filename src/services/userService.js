@@ -74,7 +74,7 @@ export function createRecipe(me, setMe, item) {
 }
 
 function putItemsAxios(id, body) {
-  return axios.put(`${apiUrl}/users/items/${id}`, body);
+  axios.put(`${apiUrl}/users/items/${id}`, body);
 }
 
 export function deleteRecipe(me, setMe, id) {
