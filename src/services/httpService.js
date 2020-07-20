@@ -1,6 +1,7 @@
+import React from "react";
 import axios from "axios"; // the only place we call axios, so here modify if change do different module
 import logger from "./logService";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 // axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
@@ -12,7 +13,16 @@ axios.interceptors.response.use(null, (error) => {
 
   if (!expectedError) {
     logger.log(error);
-    toast.error("An unexpected error occurrred.");
+    toast("Sorry, geen verbinding.", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+      hideProgressBar: false,
+      autoClose: false,
+      // bounce: false,
+      // newestOnTop: true,
+      closeOnClick: true,
+      // draggable: false,
+      // rtl: false,
+    });
   }
 
   return Promise.reject(error);

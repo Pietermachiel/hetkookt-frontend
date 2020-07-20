@@ -19,7 +19,7 @@ const stockunits = [
 
 const NieuwItem = ({ me, setMe, ...props }) => {
   // const [routeRedirect, setRedirect] = useState("");
-  const [error, setError] = useState(false);
+  const [err, setError] = useState("");
   const { register, control, handleSubmit, watch, errors } = useForm({
     defaultValues: {
       _id: "",
@@ -74,13 +74,21 @@ const NieuwItem = ({ me, setMe, ...props }) => {
   const handleCreateRecipe = async (data) => {
     data = { ...data, item: true };
     try {
+      // alert("create recipe");
       await createRecipe(me, setMe, data);
       const { state } = props.location;
       window.location = state ? state.from.pathname : "/kookschrift";
-    } catch (error) {
-      setError(true);
+    } catch (ex) {
+      // alert("catch error");
+      if (ex.response && ex.response.status === 400) {
+        const theerr = ex.response.data;
+        setError(theerr);
+      }
     }
   };
+
+  console.log("error");
+  console.log(err);
 
   return (
     <React.Fragment>
@@ -514,6 +522,11 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                 ref={register()}
               />
             </div>
+            {err && (
+              <p className="font-700 text-16 text-orange-500 mb-0 mt-6">
+                {err}
+              </p>
+            )}
             <button className="mb-36 uppercase text-16 bg-indigo-500 mt-36 px-36 py-10 text-white tracking-widest">
               nieuw
             </button>

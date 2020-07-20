@@ -1,4 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
+import auth from "./services/authService";
+import http from "./services/httpService";
 import { Switch, Route } from "react-router-dom";
 import Login from "./components/login";
 import Register from "./components/register";
@@ -26,13 +31,12 @@ import Weekmenu from "./components/Weekmenu";
 import User from "./components/User";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-import auth from "./services/authService";
 import ProtectedRoute from "./components/common/protectedRoute";
-import axios from "axios";
 import { apiUrl, recipeUrl } from "./config.json";
 import LogoBox from "./components/LogoBox";
 import { slugify } from "./components/common/common.js";
 import _ from "lodash";
+import { getUsersMe } from "./services/userService";
 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
@@ -167,9 +171,11 @@ const App = () => {
     setUser(user);
   }, []);
 
+  // users me
+
   async function getUsersMe() {
     if (!auth.getCurrentUser()) return;
-    const res = await axios.get(`${apiUrl}/users/me`);
+    const res = await http.get(`${apiUrl}/users/me`);
     const me = await res.data;
     setMe(me);
   }
@@ -212,7 +218,17 @@ const App = () => {
   if (thecart === undefined) thecart = [];
 
   return (
-    <>
+    <Fragment>
+      <ToastContainer
+        className="mytoaststyle"
+        // position="bottom-right"
+        // hideProgressBar={false}
+        // autoClose={false}
+        // newestOnTop={true}
+        // closeOnClick={false}
+        // draggable={false}
+        // rtl={false}
+      />
       <div className={`${isOpen ? "content menu-open" : "content"}`}>
         <header>
           <Nav
@@ -480,7 +496,7 @@ const App = () => {
       <footer className="">
         <Footer />
       </footer>
-    </>
+    </Fragment>
   );
 };
 

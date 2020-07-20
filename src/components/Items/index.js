@@ -61,8 +61,8 @@ const Items = ({ me, setMe, recipes, ...props }) => {
         )}
         {favoritedish.map((d, xid) => {
           // if (d === undefined) return [];
-          console.log("d");
-          console.log(d);
+          // console.log("d");
+          // console.log(d);
           return (
             <Fragment key={xid}>
               <div className="border-t pb-18">
@@ -77,6 +77,7 @@ const Items = ({ me, setMe, recipes, ...props }) => {
                       return (
                         <Fragment key={recipe._id}>
                           <ItemsItem
+                            key={recipe._id}
                             recipe={recipe}
                             red={red}
                             cart={cart}

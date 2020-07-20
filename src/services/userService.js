@@ -48,7 +48,7 @@ export function verifyUser(token) {
 
 // createRecipe
 
-export function createRecipe(me, setMe, item) {
+export async function createRecipe(me, setMe, item) {
   me.items = me.items.filter((r) => r._id !== item._id);
   setMe({
     _id: me._id,
@@ -59,7 +59,7 @@ export function createRecipe(me, setMe, item) {
     extra: me.extra,
   });
   const body = { items: me.items };
-  putItemsAxios(me._id, body);
+  await putItemsAxios(me._id, body);
   setMe({
     _id: me._id,
     name: me.name,
@@ -70,7 +70,7 @@ export function createRecipe(me, setMe, item) {
   });
   me.items.push(item);
   const thebody = { items: me.items };
-  putItemsAxios(me._id, thebody);
+  await putItemsAxios(me._id, thebody);
 }
 
 function putItemsAxios(id, body) {

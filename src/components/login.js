@@ -94,7 +94,7 @@ const Login = (props) => {
                 {err}
               </p>
             )}
-            <button className="uppercase text-16 bg-indigo-500 mt-36 px-36 py-10 text-white tracking-widest">
+            <button className="uppercase text-16 bg-indigo-600 mt-36 px-36 py-10 text-white tracking-widest">
               login
             </button>
           </form>

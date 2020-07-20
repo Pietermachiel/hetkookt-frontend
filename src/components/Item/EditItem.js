@@ -16,10 +16,10 @@ const stockunits = [
 
 const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
   // const [routeRedirect, setRedirect] = useState("");
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
   const { register, control, handleSubmit, watch, errors } = useForm({
     defaultValues: {
-      _id: therecipe._id,
+      // _id: therecipe._id,
       title: therecipe.title,
       dish: therecipe.dish,
       tags: therecipe.tags,
@@ -71,14 +71,21 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
   const handleDoSave = async (data) => {
     const thedata = { ...data, _id: therecipe._id };
     try {
+      // throw new Error("Whoops!");
       await doSave(me, setMe, thedata);
       const { state } = props.location;
       window.location = state ? state.from.pathname : "/kookschrift";
-    } catch (error) {
-      setError(true);
+    } catch (ex) {
+      // console.log(ex.message);
+      if (ex.response && ex.response.status === 400) {
+        const theerr = ex.response.data;
+        setError(theerr);
+      }
     }
   };
 
+  console.log("error");
+  console.log(error);
   // const redirect = routeRedirect;
   // if (redirect) {
   //   return <Redirect to="/kookschrift" />;
@@ -102,9 +109,9 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
           </h1>
           <form onSubmit={handleSubmit(handleDoSave)}>
             {/* _id  */}
-            <div className="">
+            {/* <div className="">
               <input name="_id" ref={register()} className="hidden invisible" />
-            </div>
+            </div> */}
             {/* titel */}
             <div className="formgroup__collectie">
               <label className="text-16 text-gray-500" htmlFor="email">

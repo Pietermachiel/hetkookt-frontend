@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 import abouts from "../../data/abouts";
 
 const Home = ({ me, setMe, user, recipes, about, ...props }) => {
-  console.log("me");
-  console.log(me);
+  // console.log("me");
+  // console.log(me);
   // console.log("user");
   // console.log(user);
   // console.log("recipes");
@@ -14,9 +14,9 @@ const Home = ({ me, setMe, user, recipes, about, ...props }) => {
     return (
       <div className="container-x">
         <div className="mt-36 hollow-dots-spinner m-auto">
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
+          <div className="dot"></div>
+          <div className="dot"></div>
+          <div className="dot"></div>
         </div>
       </div>
     );
@@ -29,7 +29,7 @@ const Home = ({ me, setMe, user, recipes, about, ...props }) => {
             <h1 className="favorieten-title">
               hetkookt!
               {!user && (
-                <button className="bg-indigo-500 text-16 p-16 px-30 mt-18 md:mt-0 md:ml-18 align-bottom text-white uppercase tracking-widest">
+                <button className="bg-indigo-600 text-16 p-16 px-30 mt-18 md:mt-0 md:ml-18 align-bottom text-white uppercase tracking-widest">
                   <NavLink to="/register">inschrijven</NavLink>
                 </button>
               )}

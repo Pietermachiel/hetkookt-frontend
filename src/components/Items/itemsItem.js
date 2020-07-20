@@ -13,10 +13,10 @@ const ItemsItem = ({
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  console.log("cart");
-  console.log(cart);
-  console.log("kalender");
-  console.log(kalender);
+  // console.log("cart");
+  // console.log(cart);
+  // console.log("kalender");
+  // console.log(kalender);
 
   const handleDeleteRecipe = (id) => {
     deleteRecipe(me, setMe, id);
