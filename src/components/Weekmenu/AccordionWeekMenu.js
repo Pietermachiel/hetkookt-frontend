@@ -29,7 +29,7 @@ const AccordionWeekMenu = ({ title, children, me, setMe, id, year }) => {
         </div>
       </div>
       <div className={`accordion-item ${!isOpen ? "collapsed" : ""}`}>
-        <div className="accordion-content">{children}</div>
+        <div className="accordion-content lg:px-18">{children}</div>
       </div>
     </div>
   );

@@ -221,6 +221,14 @@ const App = () => {
     <Fragment>
       <ToastContainer
         className="mytoaststyle"
+        position={toast.POSITION.BOTTOM_RIGHT}
+        hideProgressBar={false}
+        autoClose={false}
+        // bounce: false,
+        // newestOnTop: true,
+        closeOnClick={true}
+        // draggable: false,
+        // rtl: false,
         // position="bottom-right"
         // hideProgressBar={false}
         // autoClose={false}

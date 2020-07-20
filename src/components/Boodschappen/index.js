@@ -150,7 +150,7 @@ const Boodschappen = ({ me, setMe }) => {
                   return (
                     <li
                       key={index}
-                      className="accordion-title py-9 px-24 bg-orange-400"
+                      className="accordion-title py-9 lg:px-24 bg-orange-400"
                     >
                       {ex}&nbsp;
                       <span
@@ -212,7 +212,7 @@ const Boodschappen = ({ me, setMe }) => {
                               deboodschappen.length !== 0 ? (
                                 <li
                                   key={xid}
-                                  className={`accordion-title py-9 px-24 bg-${g.title}`}
+                                  className={`accordion-title py-9 lg:px-24 bg-${g.title}`}
                                 >
                                   <div className="flex">
                                     <div className="items-quantity">
@@ -233,7 +233,16 @@ const Boodschappen = ({ me, setMe }) => {
                                     }
                                     className="text-red-600 mr-10 font-500"
                                   >
-                                    &nbsp;x
+                                    {" "}
+                                    <span className="font-300 text-14 lg:text-16">
+                                      verwijder ingredient
+                                    </span>
+                                    &nbsp;
+                                    <img
+                                      className="w-20 h-20 inline"
+                                      src="/img/feather/x-red.svg"
+                                      alt=""
+                                    />
                                   </span>
                                 </li>
                               ) : null
@@ -257,7 +266,7 @@ const Boodschappen = ({ me, setMe }) => {
                     {me.stock.map((v, xid) => (
                       <li
                         key={xid}
-                        className="accordion-title text-16 py-9 px-24 bg-orange-400"
+                        className="accordion-title text-16 py-9 lg:px-24 bg-orange-400"
                       >
                         {v}
                         <span
@@ -279,7 +288,7 @@ const Boodschappen = ({ me, setMe }) => {
                   }}
                 >
                   <input
-                    className="py-5 px-10 text-16"
+                    className="py-5 px-10 text-16 mb-18"
                     value={value}
                     type="text"
                     onChange={(e) => setValue(e.target.value)}
@@ -287,9 +296,12 @@ const Boodschappen = ({ me, setMe }) => {
                   />
                   &nbsp;
                   <button
-                    className="btn btn-small  btn-small__green"
+                    // className="mb-36 uppercase text-16 bg-indigo-500 mt-36 px-36 py-10 text-white tracking-widest"
+                    // className="btn btn-small  btn-small__green"
                     type="submit"
-                  />
+                  >
+                    <img src="/img/feather/plus.svg" alt="" />
+                  </button>
                 </form>
                 <div className="category-box">
                   <ul className="mb-18">
@@ -297,7 +309,7 @@ const Boodschappen = ({ me, setMe }) => {
                       return (
                         <li
                           key={index}
-                          className="accordion-title py-9 px-24 bg-orange-400"
+                          className="accordion-title py-9 lg:px-24 bg-orange-400"
                         >
                           {ex}&nbsp;
                           <span

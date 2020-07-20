@@ -185,7 +185,7 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
 
                       <button
                         className="absolute top-0"
-                        style={{ right: "-30px" }}
+                        style={{ right: "18px" }}
                         onClick={() => tagsRemove(index)}
                       >
                         <img
@@ -223,7 +223,7 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
                     />{" "}
                     <button
                       className="absolute top-0"
-                      style={{ right: "-44px" }}
+                      style={{ right: "0" }}
                       onClick={() => basicsRemove(index)}
                     >
                       <img
@@ -265,7 +265,7 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
                     )}
                     <button
                       className="absolute top-0"
-                      style={{ right: "-44px" }}
+                      style={{ right: "0" }}
                       onClick={() => relatedRemove(index)}
                     >
                       <img
@@ -325,7 +325,7 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
                       />
                       <button
                         className="absolute top-0"
-                        style={{ right: "-44px" }}
+                        style={{ right: "0" }}
                         onClick={() => freshRemove(index)}
                       >
                         <img
@@ -408,7 +408,7 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
                       />
                       <button
                         className="absolute top-0"
-                        style={{ right: "-44px" }}
+                        style={{ right: "0" }}
                         onClick={() => stockRemove(index)}
                       >
                         <img
@@ -472,7 +472,7 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
                     )} */}
                     <button
                       className="absolute top-0"
-                      style={{ right: "-44px" }}
+                      style={{ right: "0" }}
                       onClick={() => directionsRemove(index)}
                     >
                       <img

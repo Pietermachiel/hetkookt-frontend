@@ -37,8 +37,9 @@ const Recipe = ({
     // console.log("therecipe index");
     // console.log(therecipe);
     createRecipe(me, setMe, therecipe);
-    const { state } = props.location;
-    window.location = state ? state.from.pathname : "/kookschrift";
+    window.location = `/kookschrift/${slugify(therecipe.title)}`;
+    // const { state } = props.location;
+    // window.location = state ? state.from.pathname : "/kookschrift";
   };
 
   useEffect(() => {
@@ -87,7 +88,7 @@ const Recipe = ({
               {myrecipes.includes(therecipe._id) ? (
                 <Fragment>
                   <Link to="/kookschrift">
-                    <div className="mb-5 lg:pr-18 btn-add mr-10 text-18 font-600 text-red-200 hover:text-red-500 flex item-center">
+                    <div className="mt-5 mb-5 lg:pr-18 btn-add mr-10 text-18 font-600 text-red-200 hover:text-red-500 flex item-center">
                       <img
                         className="w-25"
                         src="/img/feather/bookmark-red-stroke.svg"
@@ -100,7 +101,7 @@ const Recipe = ({
               ) : (
                 <Fragment>
                   <div
-                    className="mb-5 lg:pr-18 btn-add mr-10 text-18 font-600 text-indigo-700 flex item-center hover:text-red-500"
+                    className="mt-5 mb-5 lg:pr-18 btn-add mr-10 text-18 font-600 text-indigo-700 flex item-center hover:text-red-500"
                     onClick={() => handleCreateRecipe(me, setMe, therecipe)}
                   >
                     <img

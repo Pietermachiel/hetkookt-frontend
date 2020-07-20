@@ -49,6 +49,7 @@ export function verifyUser(token) {
 // createRecipe
 
 export async function createRecipe(me, setMe, item) {
+  console.log("create recipe");
   me.items = me.items.filter((r) => r._id !== item._id);
   setMe({
     _id: me._id,
@@ -60,6 +61,7 @@ export async function createRecipe(me, setMe, item) {
   });
   const body = { items: me.items };
   await putItemsAxios(me._id, body);
+
   setMe({
     _id: me._id,
     name: me.name,

@@ -37,7 +37,7 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
   return (
     <Fragment>
       <div className="container-y bg-rose-100 unvisable slide work-grid-item">
-        <h1 className="recepten-title mb-18 lg:text-36 text-green-600">
+        <h1 className="recepten-title mb-5 lg:text-36 text-green-600">
           {therecipe.title}
           <Link className="leading-none" to={`/collections/${therecipe.dish}`}>
             <span className="text-21 pl-10">{therecipe.dish}</span>

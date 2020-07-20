@@ -13,10 +13,15 @@ const Home = ({ me, setMe, user, recipes, about, ...props }) => {
   if (recipes.length === 0)
     return (
       <div className="container-x">
-        <div className="mt-36 hollow-dots-spinner m-auto">
+        <div className="mt-72 hollow-dots-spinner m-auto">
           <div className="dot"></div>
           <div className="dot"></div>
           <div className="dot"></div>
+        </div>{" "}
+        <div className="m-auto">
+          <p className="mt-18 text-36 text-center">
+            Sorry, geen verbinding met de server
+          </p>
         </div>
       </div>
     );

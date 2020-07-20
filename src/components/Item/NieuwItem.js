@@ -1,6 +1,7 @@
 import React, { useEffect, useState, Fragment } from "react";
 import { Redirect } from "react-router";
 import { uniq } from "../common/common";
+import { toast, ToastContainer } from "react-toastify";
 import tags from "../../data/tags.json";
 import thedishes from "../../data/dishes.json";
 import { createRecipe } from "../../services/userService";
@@ -76,13 +77,15 @@ const NieuwItem = ({ me, setMe, ...props }) => {
     try {
       // alert("create recipe");
       await createRecipe(me, setMe, data);
-      const { state } = props.location;
-      window.location = state ? state.from.pathname : "/kookschrift";
+      window.location = "/kookschrift";
+      // const { state } = props.location;
+      // window.location = state ? state.from.pathname : "/kookschrift";
     } catch (ex) {
       // alert("catch error");
       if (ex.response && ex.response.status === 400) {
-        const theerr = ex.response.data;
-        setError(theerr);
+        toast.error("foutje");
+        // const theerr = ex.response.data;
+        // setError(theerr);
       }
     }
   };
@@ -169,7 +172,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
 
                       <button
                         className="absolute top-0"
-                        style={{ right: "-30px" }}
+                        style={{ right: "18px" }}
                         onClick={() => tagsRemove(index)}
                       >
                         <img
@@ -207,7 +210,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                     />{" "}
                     <button
                       className="absolute top-0"
-                      style={{ right: "-44px" }}
+                      style={{ right: "0" }}
                       onClick={() => basicsRemove(index)}
                     >
                       <img
@@ -249,7 +252,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                     )}
                     <button
                       className="absolute top-0"
-                      style={{ right: "-44px" }}
+                      style={{ right: "0" }}
                       onClick={() => relatedRemove(index)}
                     >
                       <img
@@ -309,7 +312,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                       />
                       <button
                         className="absolute top-0"
-                        style={{ right: "-44px" }}
+                        style={{ right: "0" }}
                         onClick={() => freshRemove(index)}
                       >
                         <img
@@ -392,7 +395,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                       />
                       <button
                         className="absolute top-0"
-                        style={{ right: "-44px" }}
+                        style={{ right: "0" }}
                         onClick={() => stockRemove(index)}
                       >
                         <img
@@ -456,7 +459,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                     )} */}
                     <button
                       className="absolute top-0"
-                      style={{ right: "-44px" }}
+                      style={{ right: "0" }}
                       onClick={() => directionsRemove(index)}
                     >
                       <img

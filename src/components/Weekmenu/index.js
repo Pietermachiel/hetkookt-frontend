@@ -94,9 +94,19 @@ const Menu = ({ me, setMe, user, thecart, recipes, about, ...props }) => {
                                   return (
                                     <Fragment key={xid}>
                                       {f.to_buy === true ? (
-                                        <div className="ml-18">
-                                          {f.quantity} {f.unit}
-                                          <strong> {f.ingredient}</strong>{" "}
+                                        <div className="my-18 flex lg:block">
+                                          <div className="flex w-50">
+                                            <div className="w-70 text-right">
+                                              {f.quantity} {f.unit}
+                                            </div>
+
+                                            <div className="items-product">
+                                              <strong>
+                                                &nbsp;{f.ingredient}
+                                              </strong>
+                                            </div>
+                                          </div>
+
                                           <span
                                             onClick={() =>
                                               toggleFresh(
@@ -107,15 +117,24 @@ const Menu = ({ me, setMe, user, thecart, recipes, about, ...props }) => {
                                                 f.do_buy
                                               )
                                             }
-                                            className="text-red-600 mr-10"
+                                            className="text-red-600"
                                           >
-                                            x
+                                            {" "}
+                                            <span className="font-300 text-14 lg:text-16">
+                                              verwijder ingredient
+                                            </span>
+                                            &nbsp;
+                                            <img
+                                              className="w-20 h-20 inline"
+                                              src="/img/feather/x-red.svg"
+                                              alt=""
+                                            />
                                           </span>
                                         </div>
                                       ) : (
                                         <div className="ml-18 text-gray-500">
                                           {f.quantity} {f.unit}
-                                          <strong> {f.ingredient}</strong>{" "}
+                                          <strong>{f.ingredient}</strong>
                                           <span
                                             onClick={() =>
                                               toggleFresh(
