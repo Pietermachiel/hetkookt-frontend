@@ -37,7 +37,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
       source_url: "",
       info: "",
       item: true,
-      date: [""],
+      date: [{ _id: "", name: "" }],
     },
   });
 

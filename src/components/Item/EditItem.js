@@ -1,5 +1,6 @@
 import React, { useEffect, useState, Fragment } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { slugify } from "../common/common";
 import thedishes from "../../data/dishes.json";
 import { doSave } from "../../services/userService";
@@ -67,19 +68,29 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
     append: directionsAppend,
     remove: directionsRemove,
   } = useFieldArray({ control, name: "directions" });
+  const { fields: dateFields } = useFieldArray({ control, name: "date" });
+
+  console.log("therecipe");
+  console.log(therecipe);
 
   const handleDoSave = async (data) => {
     const thedata = { ...data, _id: therecipe._id };
+    console.log("data");
+    console.log(data);
     try {
       // throw new Error("Whoops!");
       await doSave(me, setMe, thedata);
-      const { state } = props.location;
-      window.location = state ? state.from.pathname : "/kookschrift";
+      // const { state } = props.location;
+      // window.location = state ? state.from.pathname : "/kookschrift";
+      window.location = "/kookschrift";
     } catch (ex) {
       // console.log(ex.message);
+      // if (ex.response && ex.response.status === 400) {
+      //   const theerr = ex.response.data;
+      //   setError(theerr);
+      // }
       if (ex.response && ex.response.status === 400) {
-        const theerr = ex.response.data;
-        setError(theerr);
+        toast.error("foutje");
       }
     }
   };
@@ -465,11 +476,6 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
                       className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
                       ref={register()}
                     />
-                    {/* {errors.directions?.type === "maxLength" && (
-                      <span className="block text-16 py-6 font-700 text-orange-500">
-                        Maximaal 30 lettertekens
-                      </span>
-                    )} */}
                     <button
                       className="absolute top-0"
                       style={{ right: "0" }}
@@ -545,12 +551,12 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
                 className="hidden invisible"
               />
             </div>
-            <div className="">
-              <input
-                name="date"
-                ref={register()}
-                className="hidden invisible"
-              />
+            <div className="hidden invisible">
+              {dateFields.map((item, index) => (
+                <li key={index}>
+                  <input name={`date[${index}].name`} ref={register()} />
+                </li>
+              ))}
             </div>
             <button className="uppercase text-16 bg-indigo-500 mt-36 mb-36 px-36 py-10 text-white tracking-widest">
               aanpassen

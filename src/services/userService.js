@@ -110,8 +110,8 @@ export function doPutMenu(me, setMe, item, dedate) {
   });
   const body = { items: me.items };
   putAxios(me._id, body);
-  item.date = item.date || [];
-  item.date.push(dedate);
+  // item.date = item.date || [];
+  item.date.push({ name: dedate });
   setMe({
     _id: me._id,
     name: me.name,
@@ -129,43 +129,66 @@ function putAxios(id, body) {
   return axios.put(`${apiUrl}/users/items/${id}`, body);
 }
 
-export function doEditMenu(me, setMe, item) {
-  console.log("doEditMenu");
-  console.log(me);
-  console.log(item);
-  const allItems = me.items.filter((r) => r._id !== item._id);
-  const editItem = me.items.filter((e) => e._id === item._id);
-  console.log(allItems);
-  console.log("editItem");
-  console.log(editItem);
+// deleteFromMenu
+
+export function deleteFromMenu(me, setMe, id, year) {
+  console.log("deleteFromMenu");
+  var allMeItems = me.items.map((r) => r);
+  var myItem = allMeItems.find((item) => item._id === id);
+  myItem.date = myItem.date.filter((d) => d.name !== year);
   setMe({
     _id: me._id,
     name: me.name,
     email: me.email,
-    items: allItems,
+    items: allMeItems,
     stock: me.stock,
     extra: me.extra,
   });
-  const body = { items: allItems };
-  putEditAxios(me._id, body);
-  setMe({
-    _id: me._id,
-    name: me.name,
-    email: me.email,
-    items: [...me.items, editItem],
-    stock: me.stock,
-    extra: me.extra,
-  });
-  allItems.push(editItem);
-  console.log("allItems2");
-  console.log(allItems);
-  const thebody = { items: allItems };
-  putEditAxios(me._id, thebody);
+  const body = { items: allMeItems };
+  updateAxios(me._id, body);
 }
 
-function putEditAxios(id, body) {
+function updateAxios(id, body) {
   return axios.put(`${apiUrl}/users/items/${id}`, body);
 }
+
+// export function doEditMenu(me, setMe, item) {
+//   console.log("doEditMenu");
+//   console.log(me);
+//   console.log(item);
+//   const allItems = me.items.filter((r) => r._id !== item._id);
+//   const editItem = me.items.filter((e) => e._id === item._id);
+//   console.log(allItems);
+//   console.log("editItem");
+//   console.log(editItem);
+//   setMe({
+//     _id: me._id,
+//     name: me.name,
+//     email: me.email,
+//     items: allItems,
+//     stock: me.stock,
+//     extra: me.extra,
+//   });
+//   const body = { items: allItems };
+//   putEditAxios(me._id, body);
+//   setMe({
+//     _id: me._id,
+//     name: me.name,
+//     email: me.email,
+//     items: [...me.items, editItem],
+//     stock: me.stock,
+//     extra: me.extra,
+//   });
+//   allItems.push(editItem);
+//   console.log("allItems2");
+//   console.log(allItems);
+//   const thebody = { items: allItems };
+//   putEditAxios(me._id, thebody);
+// }
+
+// function putEditAxios(id, body) {
+//   return axios.put(`${apiUrl}/users/items/${id}`, body);
+// }
 
 // TEST: doSave
 
@@ -185,29 +208,6 @@ export function doSave(me, setMe, item) {
 }
 
 function doSaveAxios(id, body) {
-  return axios.put(`${apiUrl}/users/items/${id}`, body);
-}
-
-// deleteFromMenu
-
-export function deleteFromMenu(me, setMe, id, year) {
-  console.log("deleteFromMenu");
-  var allMeItems = me.items.map((r) => r);
-  var myItem = allMeItems.find((item) => item._id === id);
-  myItem.date = myItem.date.filter((d) => d !== year);
-  setMe({
-    _id: me._id,
-    name: me.name,
-    email: me.email,
-    items: allMeItems,
-    stock: me.stock,
-    extra: me.extra,
-  });
-  const body = { items: allMeItems };
-  updateAxios(me._id, body);
-}
-
-function updateAxios(id, body) {
   return axios.put(`${apiUrl}/users/items/${id}`, body);
 }
 

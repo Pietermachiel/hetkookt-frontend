@@ -6,6 +6,8 @@ import { deleteFromMenu } from "../../services/userService";
 // https://codepen.io/davidmunro/pen/xxxeoOo
 const AccordionWeekMenu = ({ title, children, me, setMe, id, year }) => {
   const [isOpen, setOpen] = useState(false);
+  console.log("year");
+  console.log(year);
   return (
     <div className="accordion-wrapper">
       <div className={`accordion-title ${isOpen ? "open" : ""}`}>

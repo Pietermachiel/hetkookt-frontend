@@ -16,14 +16,20 @@ const Menu = ({ me, setMe, user, thecart, recipes, about, ...props }) => {
   if (me.stock === undefined) return [];
   if (me.extra === undefined) return [];
 
-  const thedates = kalender.filter((k) => {
-    const item = me.items.find((c) =>
-      c.date ? c.date.includes(k.year) : null
-    );
+  // const thedates = kalender.filter((k) => {
+  //   const item = me.items.find((c) =>
+  //     c.date ? c.date.includes(k.year) : null
+  //   );
+  //   return item;
+  // });
+
+  let thedates = kalender.filter((k) => {
+    const item = me.items.find((c) => c.date.find((d) => d.name === k.year));
     return item;
   });
+  // thedates = thedates.map((t) => t.year);
 
-  // console.log(thedates);
+  console.log(thedates);
 
   return (
     <Fragment>
@@ -60,12 +66,15 @@ const Menu = ({ me, setMe, user, thecart, recipes, about, ...props }) => {
 
         <div className="mt-18 mb-36 unvisable slide work-grid-item ">
           <div className="category-box mb-10 mt-18">
-            {thedates.map((k) => {
+            {thedates.map((k, xid) => {
               var cart = me.items.filter((c) =>
-                c.date ? c.date.includes(k.year) : null
+                // c.date ? c.date.includes(k.year) : null
+                c.date.find((d) => d.name === k.year)
               );
+              console.log("cart");
+              console.log(cart);
               return (
-                <Fragment key={k.index}>
+                <Fragment key={xid}>
                   {cart.length !== 0 ? (
                     <Fragment>
                       <h2 className="bg-gray-400 ">
