@@ -4,10 +4,10 @@ import { slugify } from "../common/common";
 import { deleteFromMenu } from "../../services/userService";
 
 // https://codepen.io/davidmunro/pen/xxxeoOo
-const AccordionWeekMenu = ({ title, children, me, setMe, id, year }) => {
+const AccordionWeekMenu = ({ title, children, me, setMe, id, dayall }) => {
   const [isOpen, setOpen] = useState(false);
-  console.log("year");
-  console.log(year);
+  console.log("dayall");
+  console.log(dayall);
   return (
     <div className="accordion-wrapper">
       <div className={`accordion-title ${isOpen ? "open" : ""}`}>
@@ -15,7 +15,7 @@ const AccordionWeekMenu = ({ title, children, me, setMe, id, year }) => {
           <Link to={`/kookschrift/${slugify(title)}`}>{title} </Link>{" "}
           <span
             className="text-red-500"
-            onClick={() => deleteFromMenu(me, setMe, id, year)}
+            onClick={() => deleteFromMenu(me, setMe, id, dayall)}
           >
             &nbsp;
             <span className="text-19">

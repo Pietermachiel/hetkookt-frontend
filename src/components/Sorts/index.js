@@ -68,9 +68,8 @@ const Sorts = ({
           {recipeItem.map((recipe, index) => {
             let cart = thecart.find((c) => c._id === recipe._id);
             if (cart === undefined) cart = [];
-            const thelength = recipe.tags.length - 1;
+            // const thelength = recipe.tags.length - 1;
             if (recipe.basics === undefined) return (recipe.basics = []);
-            const red = kalender.find((w) => w.year === cart.date);
             return (
               <Fragment key={index}>
                 {user && recipe._id === cart._id ? (

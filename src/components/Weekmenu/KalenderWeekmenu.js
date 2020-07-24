@@ -15,8 +15,8 @@ const KalenderWeekmenu = ({ thecart, ...props }) => {
           <div className="flex pt-3">
             {kalender.map((k, xid) => {
               var cart = thecart.filter((c) =>
-                // c.date ? c.date.includes(k.year) : null
-                c.date.find((d) => d.name === k.year)
+                // c.date ? c.date.includes(k.dayall) : null
+                c.date.find((d) => d.name === k.dayall)
               );
               return (
                 <div key={k.index} className={`relative mr-4 mt-12`}>

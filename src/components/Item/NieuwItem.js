@@ -110,6 +110,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                 ref={register({
                   required: true,
                   maxLength: 30,
+                  pattern: /^[a-zA-Z]+$/,
                 })}
               />
               {errors.title?.type === "required" && (
@@ -120,6 +121,11 @@ const NieuwItem = ({ me, setMe, ...props }) => {
               {errors.title?.type === "maxLength" && (
                 <span className="block text-16 py-6 font-700 text-orange-500">
                   Maximaal 30 lettertekens
+                </span>
+              )}
+              {errors.title?.type === "pattern" && (
+                <span className="block text-16 py-6 font-700 text-orange-500">
+                  Ongeldig teken
                 </span>
               )}
             </div>

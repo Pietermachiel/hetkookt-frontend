@@ -131,11 +131,11 @@ function putAxios(id, body) {
 
 // deleteFromMenu
 
-export function deleteFromMenu(me, setMe, id, year) {
+export function deleteFromMenu(me, setMe, id, dayall) {
   console.log("deleteFromMenu");
   var allMeItems = me.items.map((r) => r);
   var myItem = allMeItems.find((item) => item._id === id);
-  myItem.date = myItem.date.filter((d) => d.name !== year);
+  myItem.date = myItem.date.filter((d) => d.name !== dayall);
   setMe({
     _id: me._id,
     name: me.name,

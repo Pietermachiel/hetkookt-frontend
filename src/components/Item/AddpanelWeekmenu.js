@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { kalender, hetjaar, theweek } from "../common/common";
+import { kalender, heledag, theweek } from "../common/common";
 import { doPutMenu } from "../../services/userService";
 
 const AddpanelWeekmenu = ({ isOpen, therecipe, me, setMe, handleIsOpen }) => {
@@ -26,14 +26,12 @@ const AddpanelWeekmenu = ({ isOpen, therecipe, me, setMe, handleIsOpen }) => {
         <div className="mt-10 grid grid-cols-4 gap-10 p-24">
           {kalender.map((k, xid) => {
             var cart = me.items.filter((c) =>
-              c.date ? c.date.includes(k.year) : null
+              c.date.find((f) => f.name === k.dayall)
             );
-            // console.log("hetjaar(xid)");
-            // console.log(hetjaar(xid));
             return (
               <div
                 key={k.index}
-                onClick={() => handleSave(me, setMe, therecipe, hetjaar(xid))}
+                onClick={() => handleSave(me, setMe, therecipe, heledag(xid))}
                 className={`relative ${
                   cart.length !== 0
                     ? "bg-orange-300 hover:bg-orange-400"

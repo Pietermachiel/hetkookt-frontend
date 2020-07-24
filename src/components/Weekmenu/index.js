@@ -12,24 +12,26 @@ const Menu = ({ me, setMe, user, thecart, recipes, about, ...props }) => {
   // console.log(user);
   // console.log("recipes");
   // console.log(recipes);
+  console.log("kalender");
+  console.log(kalender);
 
   if (me.stock === undefined) return [];
   if (me.extra === undefined) return [];
 
   // const thedates = kalender.filter((k) => {
   //   const item = me.items.find((c) =>
-  //     c.date ? c.date.includes(k.year) : null
+  //     c.date ? c.date.includes(k.dayall) : null
   //   );
   //   return item;
   // });
 
   let thedates = kalender.filter((k) => {
-    const item = me.items.find((c) => c.date.find((d) => d.name === k.year));
+    const item = me.items.find((c) => c.date.find((d) => d.name === k.dayall));
     return item;
   });
-  // thedates = thedates.map((t) => t.year);
+  // thedates = thedates.map((t) => t.dayall);
 
-  console.log(thedates);
+  // console.log(thedates);
 
   return (
     <Fragment>
@@ -68,8 +70,8 @@ const Menu = ({ me, setMe, user, thecart, recipes, about, ...props }) => {
           <div className="category-box mb-10 mt-18">
             {thedates.map((k, xid) => {
               var cart = me.items.filter((c) =>
-                // c.date ? c.date.includes(k.year) : null
-                c.date.find((d) => d.name === k.year)
+                // c.date ? c.date.includes(k.dayall) : null
+                c.date.find((d) => d.name === k.dayall)
               );
               console.log("cart");
               console.log(cart);
@@ -92,7 +94,7 @@ const Menu = ({ me, setMe, user, thecart, recipes, about, ...props }) => {
                             <AccordionWeekMenu
                               title={c.title}
                               id={c._id}
-                              year={k.year}
+                              dayall={k.dayall}
                               me={me}
                               setMe={setMe}
                             >

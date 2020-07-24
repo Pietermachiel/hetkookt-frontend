@@ -58,8 +58,8 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
               <div className="flex">
                 {kalender.map((k) => {
                   var cart = me.items.filter((c) =>
-                    // c.date ? c.date.includes(k.year) : null
-                    c.date.find((d) => d.name === k.year)
+                    // c.date ? c.date.includes(k.dayall) : null
+                    c.date.find((d) => d.name === k.dayall)
                   );
                   return cart.map((c) =>
                     c._id === therecipe._id ? (

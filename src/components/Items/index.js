@@ -71,7 +71,6 @@ const Items = ({ me, setMe, recipes, ...props }) => {
                   {me.items.map((recipe) => {
                     let cart = me.items.find((c) => c._id === recipe._id);
                     if (cart === undefined) cart = [];
-                    const red = kalender.find((w) => w.year === cart.date);
                     if (recipe.dish === undefined) return [];
                     if (recipe.dish === d)
                       return (
@@ -79,7 +78,6 @@ const Items = ({ me, setMe, recipes, ...props }) => {
                           <ItemsItem
                             key={recipe._id}
                             recipe={recipe}
-                            red={red}
                             cart={cart}
                             Link={Link}
                             me={me}

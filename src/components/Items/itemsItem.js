@@ -2,16 +2,7 @@ import React, { Fragment, useState } from "react";
 import { slugify, kalender } from "../common/common";
 import { deleteRecipe } from "../../services/userService";
 
-const ItemsItem = ({
-  cart,
-  Link,
-  recipe,
-  thelength,
-  red,
-  me,
-  setMe,
-  ...props
-}) => {
+const ItemsItem = ({ cart, Link, recipe, thelength, me, setMe, ...props }) => {
   const [isOpen, setIsOpen] = useState(false);
   // console.log("cart");
   // console.log(cart);
@@ -50,40 +41,10 @@ const ItemsItem = ({
             ))}
           </ul>
         </div>
-        {/* <div className="h-60 relative">
-          <p className={`uppercase tracking-widest text-12 pl-15 `}>
-            {recipe.dish}
-          </p>
-          {kalender.map((w) =>
-            cart.date.includes(w.year) ? (
-              <p
-                key={w.index}
-                className={`-mt-21 font-700 text-red-500 text-16 float-right pr-60 pt-16 mb-0 ${
-                  red ? "text-red-500" : null
-                }`}
-              >
-                {w.day} {w.index}
-              </p>
-            ) : null
-          )}
-          <div className={`recipe-footer__box-delete`}>
-            <div className="recipe-footer__box-buttons">
-              <button
-                className="btn-delete"
-                onClick={() => handleDeleteRecipe(recipe._id)}
-              >
-                <span>
-                  <img className="h-28 w-28" src="/img/feather/x.svg" alt="" />
-                </span>
-              </button>
-            </div>
-          </div>
-        </div> */}
         <div className="h-72 relative overflow-hidden">
           <p className={`uppercase tracking-widest text-14 pl-15 mb-0`}>
             {recipe.dish}
           </p>
-
           <div
             className={`recipe-footer__box-delete ${
               isOpen ? "box-delete__open" : null

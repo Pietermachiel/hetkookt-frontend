@@ -27,7 +27,8 @@ const Boodschappen = ({ me, setMe }) => {
 
   const themenu = me.items.filter((r) => {
     const item = kalender.find((k) =>
-      r.date ? r.date.includes(k.year) : null
+      // r.date ? r.date.includes(k.dayall) : null
+      r.date.find((d) => d.name === k.dayall)
     );
     return item;
   });

@@ -1,37 +1,13 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { slugify, slugifyu, kalender } from "../common/common.js";
-import AddpanelWeekmenu from "./AddpanelWeekmenu.js";
 import { recipeUrl } from "../../config.json";
 import { createRecipe } from "../../services/userService";
 
-const Recipe = ({
-  user,
-  me,
-  setMe,
-  thecart,
-  // thefavorites,
-  // doSave,
-  sorts,
-  ...props
-}) => {
+const Recipe = ({ user, me, setMe, thecart, sorts, ...props }) => {
   var [therecipe, setTheRecipe] = useState([]);
-  // const [isOpen, setIsOpen] = useState(false);
-  // const [notitie, setNotitie] = useState(false);
 
   const API = props.match.url;
-
-  // const handleIsOpen = () => {
-  //   setIsOpen(!isOpen);
-  // };
-
-  // const handleNotitie = () => {
-  //   setNotitie(!notitie);
-  // };
-
-  // const handleIsFavorite = (me, setMe, therecipe) => {
-  //   doFavorite(me, setMe, therecipe);
-  // };
 
   const handleCreateRecipe = (me, setMe, therecipe) => {
     // console.log("therecipe index");
