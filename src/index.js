@@ -5,7 +5,7 @@ import ScrollToTop from "react-router-scroll-top";
 // import "bootstrap/dist/css/bootstrap.css";
 import "./assets/main.css";
 import "./style.scss";
-import * as ServiceWorker from "./serviceWorker";
+// import * as ServiceWorker from "./serviceWorker";
 
 import App from "./app";
 
@@ -25,4 +25,4 @@ const app = (
 
 ReactDOM.render(app, document.getElementById("app"));
 
-ServiceWorker.register();
+// ServiceWorker.unregister();

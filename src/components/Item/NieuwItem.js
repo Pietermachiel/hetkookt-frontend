@@ -71,6 +71,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
     append: directionsAppend,
     remove: directionsRemove,
   } = useFieldArray({ control, name: "directions" });
+  const { fields: dateFields } = useFieldArray({ control, name: "date" });
 
   const handleCreateRecipe = async (data) => {
     data = { ...data, item: true };
@@ -536,6 +537,20 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                 {err}
               </p>
             )}
+            <div className="">
+              <input
+                name="item"
+                ref={register()}
+                className="hidden invisible"
+              />
+            </div>
+            <div className="hidden invisible">
+              {dateFields.map((item, index) => (
+                <li key={index}>
+                  <input name={`date[${index}].name`} ref={register()} />
+                </li>
+              ))}
+            </div>
             <button className="mb-36 uppercase text-16 bg-indigo-500 mt-36 px-36 py-10 text-white tracking-widest">
               nieuw
             </button>
