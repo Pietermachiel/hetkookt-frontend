@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import { Link, NavLink } from "react-router-dom";
 import { slugify, slugifyu, kalender } from "../common/common.js";
 import { recipeUrl } from "../../config.json";
@@ -9,10 +10,18 @@ const Recipe = ({ user, me, setMe, thecart, sorts, ...props }) => {
 
   const API = props.match.url;
 
-  const handleCreateRecipe = (me, setMe, therecipe) => {
+  const handleCreateRecipe = async (me, setMe, therecipe) => {
     // console.log("therecipe index");
     // console.log(therecipe);
-    createRecipe(me, setMe, therecipe);
+    try {
+      await createRecipe(me, setMe, therecipe);
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        toast.error("foutje");
+        // const theerr = ex.response.data;
+        // setError(theerr);
+      }
+    }
     window.location = `/kookschrift/${slugify(therecipe.title)}`;
     // const { state } = props.location;
     // window.location = state ? state.from.pathname : "/kookschrift";
