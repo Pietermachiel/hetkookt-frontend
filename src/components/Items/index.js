@@ -11,6 +11,8 @@ const Items = ({ me, setMe, recipes, ...props }) => {
   let favoritedish = me.items.map((f) => f.dish);
   favoritedish = favoritedish.filter(uniq).sort();
 
+  console.log(me.items);
+
   return (
     <Fragment>
       <div className="container-y bg-rose-100">

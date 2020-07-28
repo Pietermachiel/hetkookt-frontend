@@ -22,7 +22,7 @@ const Recipe = ({ user, me, setMe, thecart, sorts, ...props }) => {
         // setError(theerr);
       }
     }
-    window.location = `/kookschrift/${slugify(therecipe.title)}`;
+    // window.location = `/kookschrift/${slugify(therecipe.title)}`;
     // const { state } = props.location;
     // window.location = state ? state.from.pathname : "/kookschrift";
   };

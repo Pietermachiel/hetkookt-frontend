@@ -208,11 +208,11 @@ const App = () => {
     getData();
   }, []);
 
-  tags = _.orderBy(tags); // Use Lodash to sort array by 'name'
+  tags = _.orderBy(tags, ["title"]); // Use Lodash to sort array by 'name'
   books = _.orderBy(books, ["year", "title"], ["desc"]); // Use Lodash to sort array by 'name'
 
-  // console.log("tags");
-  // console.log(tags);
+  // console.log("recipes");
+  // console.log(recipes);
 
   var thecart = me.items;
   if (thecart === undefined) thecart = [];
@@ -345,7 +345,7 @@ const App = () => {
           <Route
             path="/nieuwrecept"
             render={(props) => {
-              return <NieuwItem me={me} setMe={setMe} {...props} />;
+              return <NieuwItem tags={tags} me={me} setMe={setMe} {...props} />;
             }}
           />
           <Route

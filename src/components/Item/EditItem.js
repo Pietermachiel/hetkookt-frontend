@@ -33,7 +33,6 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
       source: therecipe.source,
       source_url: therecipe.source_url,
       info: therecipe.info,
-      item: therecipe.item,
       date: therecipe.date,
     },
   });
@@ -542,13 +541,6 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
                 name="info"
                 className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
                 ref={register()}
-              />
-            </div>
-            <div className="">
-              <input
-                name="item"
-                ref={register()}
-                className="hidden invisible"
               />
             </div>
             <div className="hidden invisible">

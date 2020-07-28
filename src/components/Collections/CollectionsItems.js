@@ -85,7 +85,7 @@ const CollectionsItems = ({
                   const thelength = recipe.tags.length - 1;
                   if (recipe.basics === undefined) return (recipe.basics = []);
                   return (
-                    <Fragment>
+                    <Fragment key={index}>
                       {cart._id === recipe._id ? (
                         <FavoriteItems
                           recipe={recipe}

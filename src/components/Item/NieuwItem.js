@@ -6,6 +6,7 @@ import tags from "../../data/tags.json";
 import thedishes from "../../data/dishes.json";
 import { createRecipe } from "../../services/userService";
 import { useForm, useFieldArray } from "react-hook-form";
+import _ from "lodash";
 
 // https://www.carlrippon.com/custom-validation-rules-in-react-hook-form/
 // https://www.carlrippon.com/master-detail-forms-with-react-form-hook/
@@ -26,18 +27,17 @@ const NieuwItem = ({ me, setMe, ...props }) => {
       _id: "",
       title: "",
       dish: "",
-      tags: [{ _id: "", name: "" }],
-      basics: [{ _id: "", name: "" }],
-      related: [{ _id: "", name: "" }],
-      fresh: [{ _id: "", quantity: null, unit: "", ingredient: "" }],
-      stock: [{ _id: "", quantity: null, unit: "", ingredient: "" }],
-      directions: [{ _id: "", name: "" }],
+      tags: [{ name: "" }],
+      basics: [{ name: "" }],
+      related: [{ name: "" }],
+      fresh: [{ quantity: null, unit: "", ingredient: "" }],
+      stock: [{ quantity: null, unit: "", ingredient: "" }],
+      directions: [{ name: "" }],
       author: "",
       source: "",
       source_url: "",
       info: "",
-      item: true,
-      date: [{ _id: "", name: "" }],
+      date: [{ name: "" }],
     },
   });
 
@@ -74,11 +74,10 @@ const NieuwItem = ({ me, setMe, ...props }) => {
   const { fields: dateFields } = useFieldArray({ control, name: "date" });
 
   const handleCreateRecipe = async (data) => {
-    data = { ...data, item: true };
     try {
       // alert("create recipe");
       await createRecipe(me, setMe, data);
-      window.location = "/kookschrift";
+      // window.location = "/kookschrift";
       // const { state } = props.location;
       // window.location = state ? state.from.pathname : "/kookschrift";
     } catch (ex) {
@@ -93,6 +92,8 @@ const NieuwItem = ({ me, setMe, ...props }) => {
 
   console.log("error");
   console.log(err);
+  console.log("tags");
+  console.log(tags);
 
   return (
     <React.Fragment>
@@ -537,13 +538,6 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                 {err}
               </p>
             )}
-            <div className="">
-              <input
-                name="item"
-                ref={register()}
-                className="hidden invisible"
-              />
-            </div>
             <div className="hidden invisible">
               {dateFields.map((item, index) => (
                 <li key={index}>
