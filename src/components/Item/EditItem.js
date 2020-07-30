@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { slugify } from "../common/common";
 import thedishes from "../../data/dishes.json";
-import { doSave } from "../../services/userService";
+import { createRecipe } from "../../services/userService";
 import { useForm, useFieldArray } from "react-hook-form";
 
 const theunits = [{ unit: "" }, { unit: "g" }, { unit: "ml" }];
@@ -72,13 +72,13 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
   console.log("therecipe");
   console.log(therecipe);
 
-  const handleDoSave = async (data) => {
+  const handlecreateRecipe = async (data) => {
     const thedata = { ...data, _id: therecipe._id };
     console.log("data");
     console.log(data);
     try {
       // throw new Error("Whoops!");
-      await doSave(me, setMe, thedata);
+      await createRecipe(me, setMe, thedata);
       // const { state } = props.location;
       // window.location = state ? state.from.pathname : "/kookschrift";
       window.location = "/kookschrift";
@@ -117,7 +117,7 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
               </span>
             </Link>
           </h1>
-          <form onSubmit={handleSubmit(handleDoSave)}>
+          <form onSubmit={handleSubmit(handlecreateRecipe)}>
             {/* _id  */}
             {/* <div className="">
               <input name="_id" ref={register()} className="hidden invisible" />

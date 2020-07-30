@@ -46,7 +46,7 @@ export function verifyUser(token) {
 
 // USER items/stock/extra
 
-// createRecipe
+// createRecipe (Item > NieuwItem en Recipes > Recipe)
 
 export async function createRecipe(me, setMe, item) {
   console.log("create recipe");
@@ -152,45 +152,7 @@ function updateAxios(id, body) {
   return axios.put(`${apiUrl}/users/items/${id}`, body);
 }
 
-// export function doEditMenu(me, setMe, item) {
-//   console.log("doEditMenu");
-//   console.log(me);
-//   console.log(item);
-//   const allItems = me.items.filter((r) => r._id !== item._id);
-//   const editItem = me.items.filter((e) => e._id === item._id);
-//   console.log(allItems);
-//   console.log("editItem");
-//   console.log(editItem);
-//   setMe({
-//     _id: me._id,
-//     name: me.name,
-//     email: me.email,
-//     items: allItems,
-//     stock: me.stock,
-//     extra: me.extra,
-//   });
-//   const body = { items: allItems };
-//   putEditAxios(me._id, body);
-//   setMe({
-//     _id: me._id,
-//     name: me.name,
-//     email: me.email,
-//     items: [...me.items, editItem],
-//     stock: me.stock,
-//     extra: me.extra,
-//   });
-//   allItems.push(editItem);
-//   console.log("allItems2");
-//   console.log(allItems);
-//   const thebody = { items: allItems };
-//   putEditAxios(me._id, thebody);
-// }
-
-// function putEditAxios(id, body) {
-//   return axios.put(`${apiUrl}/users/items/${id}`, body);
-// }
-
-// TEST: doSave
+// doSave (Item > EditItem)
 
 export function doSave(me, setMe, item) {
   me.items = me.items.filter((r) => r._id !== item._id);
