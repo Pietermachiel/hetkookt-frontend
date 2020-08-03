@@ -1,41 +1,11 @@
-# material
+# hetkookt backend
 
-https://material.io/
+### Digitaal kookschrift
 
-Build beautiful products, faster.
-Material is a design system – backed by open-source code – that helps teams build high-quality digital experiences.
-
-## heroku
-
-config.json
-{
-"apiUrl": "https://hetkookt.herokuapp.com/api",
-"recipeUrl": "https://hetkooktapi.netlify.app/api"
-}
-
-## local
-
-config.json
-{
-"apiUrl": "http://localhost:3900/api",
-"recipeUrl": "https://hetkooktapi.netlify.app/api"
-}
-
-## upload Netlify
-
-CI= npm run build
-
-netlify deploy --prod
-
-# example netlify.toml
-
-[build]
-command = "npm run build"
-functions = "functions"
-publish = "build/"
-base = "/"
-
-[[redirects]]
-from = "/\*"
-to = "/index.html"
-status = 200
+- Basisrecepten met bronvermelding.
+- Maak zelf favoriete recepten in een kookschrift of pas de basisrecepten aan naar eigen inzicht en hoeveelheden.
+- Maak een weekmenu en doe efficiënt boodschappen.
+- Vers en voorraad gescheiden.
+- Werk met exacte maten.
+- Je boodschappenlijst altijd en overal bij de hand.
+- Koop niet meer dan je nodig hebt.
