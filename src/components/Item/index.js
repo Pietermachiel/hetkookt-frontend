@@ -14,6 +14,8 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
   const therecipe = me.items.find(
     (i) => slugify(i.title) === props.match.params.id
   );
+  console.log("therecipe");
+  console.log(therecipe);
 
   const API = props.match.url;
 

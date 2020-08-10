@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { slugify } from "../common/common";
 import thedishes from "../../data/dishes.json";
-import { createRecipe } from "../../services/userService";
+import { doSave } from "../../services/userService";
 import { useForm, useFieldArray } from "react-hook-form";
 
 const theunits = [{ unit: "" }, { unit: "g" }, { unit: "ml" }];
@@ -72,16 +72,16 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
   console.log("therecipe");
   console.log(therecipe);
 
-  const handlecreateRecipe = async (data) => {
+  const handledoSave = async (data) => {
     const thedata = { ...data, _id: therecipe._id };
     console.log("data");
     console.log(data);
     try {
       // throw new Error("Whoops!");
-      await createRecipe(me, setMe, thedata);
+      await doSave(me, setMe, thedata);
       // const { state } = props.location;
       // window.location = state ? state.from.pathname : "/kookschrift";
-      window.location = "/kookschrift";
+      // window.location = "/kookschrift";
     } catch (ex) {
       // console.log(ex.message);
       // if (ex.response && ex.response.status === 400) {
@@ -117,7 +117,7 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
               </span>
             </Link>
           </h1>
-          <form onSubmit={handleSubmit(handlecreateRecipe)}>
+          <form onSubmit={handleSubmit(handledoSave)}>
             {/* _id  */}
             {/* <div className="">
               <input name="_id" ref={register()} className="hidden invisible" />
@@ -132,7 +132,8 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
                 className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
                 ref={register({
                   required: true,
-                  maxLength: 30,
+                  minLength: 5,
+                  maxLength: 50,
                 })}
               />
               {errors.title?.type === "required" && (
@@ -140,9 +141,14 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
                   Dit veld is verplicht
                 </span>
               )}
+              {errors.title?.type === "minLength" && (
+                <span className="block text-16 py-6 font-700 text-orange-500">
+                  Minimaal 5 lettertekens
+                </span>
+              )}
               {errors.title?.type === "maxLength" && (
                 <span className="block text-16 py-6 font-700 text-orange-500">
-                  Maximaal 30 lettertekens
+                  Maximaal 50 lettertekens
                 </span>
               )}
             </div>

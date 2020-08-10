@@ -79,7 +79,30 @@ function putItemsAxios(id, body) {
   axios.put(`${apiUrl}/users/items/${id}`, body);
 }
 
-export function deleteRecipe(me, setMe, id) {
+// doSave (Item > EditItem)
+
+export async function doSave(me, setMe, item) {
+  me.items = me.items.filter((r) => r._id !== item._id);
+  setMe({
+    _id: me._id,
+    name: me.name,
+    email: me.email,
+    items: [...me.items, item],
+    stock: me.stock,
+    extra: me.extra,
+  });
+  me.items.push(item);
+  const body = { items: me.items };
+  await doSaveAxios(me._id, body);
+}
+
+function doSaveAxios(id, body) {
+  return axios.put(`${apiUrl}/users/items/${id}`, body);
+}
+
+// delete recipe
+
+export async function deleteRecipe(me, setMe, id) {
   var allMeItems = me.items.map((r) => r);
   var myItem = allMeItems.find((item) => item._id === id);
   allMeItems = allMeItems.filter((f) => f._id !== id);
@@ -92,7 +115,7 @@ export function deleteRecipe(me, setMe, id) {
     extra: me.extra,
   });
   const body = { items: allMeItems };
-  axios.put(`${apiUrl}/users/items/${me._id}`, body);
+  await axios.put(`${apiUrl}/users/items/${me._id}`, body);
 }
 
 // doPutMenu
@@ -149,27 +172,6 @@ export function deleteFromMenu(me, setMe, id, dayall) {
 }
 
 function updateAxios(id, body) {
-  return axios.put(`${apiUrl}/users/items/${id}`, body);
-}
-
-// doSave (Item > EditItem)
-
-export function doSave(me, setMe, item) {
-  me.items = me.items.filter((r) => r._id !== item._id);
-  setMe({
-    _id: me._id,
-    name: me.name,
-    email: me.email,
-    items: [...me.items, item],
-    stock: me.stock,
-    extra: me.extra,
-  });
-  me.items.push(item);
-  const body = { items: me.items };
-  doSaveAxios(me._id, body);
-}
-
-function doSaveAxios(id, body) {
   return axios.put(`${apiUrl}/users/items/${id}`, body);
 }
 
