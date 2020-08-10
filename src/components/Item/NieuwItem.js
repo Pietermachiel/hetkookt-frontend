@@ -77,7 +77,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
     try {
       // alert("create recipe");
       await createRecipe(me, setMe, data);
-      // window.location = "/kookschrift";
+      window.location = "/kookschrift";
       // const { state } = props.location;
       // window.location = state ? state.from.pathname : "/kookschrift";
     } catch (ex) {

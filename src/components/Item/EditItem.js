@@ -81,7 +81,7 @@ const EditItem = ({ me, tags, setMe, therecipe, ...props }) => {
       await doSave(me, setMe, thedata);
       // const { state } = props.location;
       // window.location = state ? state.from.pathname : "/kookschrift";
-      // window.location = "/kookschrift";
+      window.location = "/kookschrift";
     } catch (ex) {
       // console.log(ex.message);
       // if (ex.response && ex.response.status === 400) {
