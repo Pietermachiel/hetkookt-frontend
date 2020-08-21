@@ -63,7 +63,7 @@ const NewRecipe = ({ tags, dish, books, ...props }) => {
     try {
       // alert("create recipe");
       await saveRecipe(data);
-      window.location = "/recipes";
+      window.location.pathname = "/recipes";
       // const { state } = props.location;
       // window.location = state ? state.from.pathname : "/kookschrift";
     } catch (ex) {
