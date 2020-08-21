@@ -123,7 +123,7 @@ const NewRecipe = ({ tags, dish, books, ...props }) => {
                 Collectie
               </label>
               <select
-                name="dish._id"
+                name="dish"
                 ref={register({ required: true })}
                 id="dish"
                 className="select h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
@@ -448,8 +448,10 @@ const NewRecipe = ({ tags, dish, books, ...props }) => {
                 Boek
               </label>
               <select
-                name="book._id"
-                ref={register({ required: true })}
+                name="book"
+                ref={register({
+                  required: true,
+                })}
                 id="book"
                 className="select h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
               >
