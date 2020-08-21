@@ -8,10 +8,15 @@ import { slugify, kalender } from "../common/common";
 const Items = ({ me, setMe, recipes, ...props }) => {
   if (me.items === undefined) me.items = [];
 
-  let favoritedish = me.items.map((f) => f.dish);
-  favoritedish = favoritedish.filter(uniq).sort();
+  let favoritedish = me.items.map((f) => f.dish.name);
+  favoritedish = favoritedish
+    .filter((f) => f !== undefined)
+    .filter(uniq)
+    .sort();
 
-  console.log(me.items);
+  // console.log("items: me.items");
+  // console.log(me.items);
+  // console.log(favoritedish);
 
   return (
     <Fragment>
@@ -25,7 +30,7 @@ const Items = ({ me, setMe, recipes, ...props }) => {
         )}
         <h1 className="favorieten-title">
           Favorieten
-          <Link to={`/nieuwrecept`}>
+          <Link to={`/nieuwitem`}>
             <button className="bg-indigo-500 text-16 p-16 px-30 mt-18 md:mt-0 md:ml-18 align-bottom text-white uppercase tracking-widest">
               nieuw recept
             </button>
@@ -73,8 +78,8 @@ const Items = ({ me, setMe, recipes, ...props }) => {
                   {me.items.map((recipe) => {
                     let cart = me.items.find((c) => c._id === recipe._id);
                     if (cart === undefined) cart = [];
-                    if (recipe.dish === undefined) return [];
-                    if (recipe.dish === d)
+                    if (recipe.dish.name === undefined) return [];
+                    if (recipe.dish.name === d)
                       return (
                         <Fragment key={recipe._id}>
                           <ItemsItem

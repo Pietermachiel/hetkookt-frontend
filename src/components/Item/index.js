@@ -7,7 +7,7 @@ import AddpanelWeekmenu from "./AddpanelWeekmenu.js";
 
 const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [item, setItem] = useState([]);
+  // const [item, setItem] = useState([]);
   const [routeRedirect, setRedirect] = useState("");
 
   if (me.items === undefined) return [];
@@ -33,7 +33,7 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
 
   const redirect = routeRedirect;
   if (redirect) {
-    return <Redirect to="/kookschrift" />;
+    return <Redirect to="/weekmenu" />;
   }
 
   return (
@@ -41,8 +41,11 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
       <div className="container-y bg-rose-100 unvisable slide work-grid-item">
         <h1 className="recepten-title mb-5 lg:text-36 text-green-600">
           {therecipe.title}
-          <Link className="leading-none" to={`/collections/${therecipe.dish}`}>
-            <span className="text-21 pl-10">{therecipe.dish}</span>
+          <Link
+            className="leading-none"
+            to={`/collections/${therecipe.dish.name}`}
+          >
+            <span className="text-21 pl-10">{therecipe.dish.name}</span>
           </Link>
         </h1>
         <div className="lg:flex align-baseline mb-36 ">
@@ -118,6 +121,8 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
           therecipe={therecipe}
           me={me}
           setMe={setMe}
+          routeRedirect={routeRedirect}
+          setRedirect={setRedirect}
         />
         <div className="recepten">
           <div className="recepten-box">
@@ -161,14 +166,14 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
                   );
                 })}
               </div>
-              {therecipe.basics.length > 0 ? <p>basisrecepten</p> : null}
+              {/* {therecipe.basics.length > 0 ? <p>basisrecepten</p> : null}
               <div className="ingredienten-box">
                 {therecipe.basics.map((b, xid) => (
                   <Link key={xid} to={`/recipe/${slugify(b)}`}>
                     <span className="font-600">{b.name}</span>
                   </Link>
                 ))}
-              </div>
+              </div> */}
               {therecipe.related.length > 0 ? <p>gerelateerd</p> : null}
               <div className="ingredienten-box">
                 {therecipe.related.map((b, xid) => (
@@ -200,12 +205,12 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
           </div>
         </div>
         <div className="recepten-source">
-          <Link to={`/book/${slugify(therecipe.source)}`}>
-            <div className="flex mt-72 pb-20">
-              <img className="w-25" src="/img/feather/book.svg" alt="" />
-              &nbsp;<span className="pl-5">Bron: {therecipe.source}</span>
-            </div>
-          </Link>
+          {/* <Link to={`/book/${slugify(therecipe.source)}`}> */}
+          <div className="flex mt-72 pb-20">
+            <img className="w-25" src="/img/feather/book.svg" alt="" />
+            &nbsp;<span className="pl-5">Mijn kookschrift</span>
+          </div>
+          {/* </Link> */}
         </div>
       </div>
     </Fragment>

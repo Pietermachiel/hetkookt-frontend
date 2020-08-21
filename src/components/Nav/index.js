@@ -24,7 +24,7 @@ const Nav = ({
   user,
   recipes,
   categories,
-  dishes,
+  dish,
   searchResults,
   setSearchResults,
   search,
@@ -104,7 +104,7 @@ const Nav = ({
                     setCatOpen={setCatOpen}
                   />
                   <CollectionsNav
-                    dishes={dishes}
+                    dish={dish}
                     handleColOpen={handleColOpen}
                     isColOpen={isColOpen}
                     setColOpen={setColOpen}
@@ -113,6 +113,17 @@ const Nav = ({
                     <div className="list-links__link">
                       <NavLink onClick={handleIsOpen} className="" to="/books">
                         Boekentop100
+                      </NavLink>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="list-links__link">
+                      <NavLink
+                        onClick={handleIsOpen}
+                        className=""
+                        to="/recipes"
+                      >
+                        Recipes
                       </NavLink>
                     </div>
                   </li>

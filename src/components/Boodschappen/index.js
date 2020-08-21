@@ -177,11 +177,15 @@ const Boodschappen = ({ me, setMe }) => {
                 theemail.email
               }`}
             >
-              bestel boodschappen per email bij Studio Roozen
+              Bestel boodschappen per email bij Studio Roozen:
               <span className="table md:inline mt-18 md:mt-0 ml-0 md:ml-18 py-18 px-36 bg-indigo-500 text-white uppercase text-16 tracking-widest">
                 bestel
               </span>
             </a>
+
+            <div className="-mb-18 mt-36">
+              Dit zijn de boodschappen voor het weekmenu:
+            </div>
 
             <div className=" mt-36 mb-18 unvisable slide work-grid-item">
               <div className="ingredienten w-full">

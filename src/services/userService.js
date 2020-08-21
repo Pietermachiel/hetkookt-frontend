@@ -50,19 +50,8 @@ export function verifyUser(token) {
 
 export async function createRecipe(me, setMe, item) {
   console.log("create recipe");
-  me.items = me.items.filter((r) => r._id !== item._id);
-  setMe({
-    _id: me._id,
-    name: me.name,
-    email: me.email,
-    items: [...me.items],
-    stock: me.stock,
-    extra: me.extra,
-  });
-  const body = { items: me.items };
-  await putItemsAxios(me._id, body);
 
-  setMe({
+  await setMe({
     _id: me._id,
     name: me.name,
     email: me.email,
@@ -71,27 +60,32 @@ export async function createRecipe(me, setMe, item) {
     extra: me.extra,
   });
   me.items.push(item);
+  console.log("create me.items");
+  console.log(me.items);
   const thebody = { items: me.items };
-  await putItemsAxios(me._id, thebody);
-}
+  console.log("thebody");
+  console.log(thebody);
 
-function putItemsAxios(id, body) {
-  axios.put(`${apiUrl}/users/items/${id}`, body);
+  await axios.put(`${apiUrl}/users/items/${me._id}`, thebody);
 }
-
-// doSave (Item > EditItem)
 
 export async function doSave(me, setMe, item) {
+  console.log("edit recipe");
+  console.log(item);
+  console.log(me.items);
   me.items = me.items.filter((r) => r._id !== item._id);
   setMe({
     _id: me._id,
     name: me.name,
     email: me.email,
+    items: me.items,
     items: [...me.items, item],
     stock: me.stock,
     extra: me.extra,
   });
   me.items.push(item);
+  console.log("edit me.items");
+  console.log(me.items);
   const body = { items: me.items };
   await doSaveAxios(me._id, body);
 }
@@ -104,7 +98,6 @@ function doSaveAxios(id, body) {
 
 export async function deleteRecipe(me, setMe, id) {
   var allMeItems = me.items.map((r) => r);
-  var myItem = allMeItems.find((item) => item._id === id);
   allMeItems = allMeItems.filter((f) => f._id !== id);
   setMe({
     _id: me._id,
@@ -120,7 +113,7 @@ export async function deleteRecipe(me, setMe, id) {
 
 // doPutMenu
 
-export function doPutMenu(me, setMe, item, dedate) {
+export async function doPutMenu(me, setMe, item, dedate) {
   console.log("doPutMenu");
   me.items = me.items.filter((r) => r._id !== item._id);
   setMe({
@@ -132,7 +125,7 @@ export function doPutMenu(me, setMe, item, dedate) {
     extra: me.extra,
   });
   const body = { items: me.items };
-  putAxios(me._id, body);
+  await putAxios(me._id, body);
   // item.date = item.date || [];
   item.date.push({ name: dedate });
   setMe({
@@ -145,7 +138,7 @@ export function doPutMenu(me, setMe, item, dedate) {
   });
   me.items.push(item);
   const thebody = { items: me.items };
-  putAxios(me._id, thebody);
+  await putAxios(me._id, thebody);
 }
 
 function putAxios(id, body) {
@@ -154,7 +147,7 @@ function putAxios(id, body) {
 
 // deleteFromMenu
 
-export function deleteFromMenu(me, setMe, id, dayall) {
+export async function deleteFromMenu(me, setMe, id, dayall) {
   console.log("deleteFromMenu");
   var allMeItems = me.items.map((r) => r);
   var myItem = allMeItems.find((item) => item._id === id);
@@ -168,7 +161,7 @@ export function deleteFromMenu(me, setMe, id, dayall) {
     extra: me.extra,
   });
   const body = { items: allMeItems };
-  updateAxios(me._id, body);
+  await updateAxios(me._id, body);
 }
 
 function updateAxios(id, body) {
@@ -177,7 +170,7 @@ function updateAxios(id, body) {
 
 // fresh
 
-export function toggleFresh(me, setMe, id, freshitem) {
+export async function toggleFresh(me, setMe, id, freshitem) {
   var allMeItems = me.items.map((r) => r);
   var myItem = allMeItems.find((item) => item._id === id);
   console.log(myItem);
@@ -194,11 +187,11 @@ export function toggleFresh(me, setMe, id, freshitem) {
     extra: me.extra,
   });
   const body = { items: allMeItems };
-  return axios.put(`${apiUrl}/users/items/${me._id}`, body);
+  await axios.put(`${apiUrl}/users/items/${me._id}`, body);
 }
 
 // stock
-export function toggleStock(me, setMe, item) {
+export async function toggleStock(me, setMe, item) {
   setMe({
     _id: me._id,
     name: me.name,
@@ -209,10 +202,10 @@ export function toggleStock(me, setMe, item) {
   });
   me.stock.push(item);
   const body = { stock: me.stock };
-  return axios.put(`${apiUrl}/users/stock/${me._id}`, body);
+  await axios.put(`${apiUrl}/users/stock/${me._id}`, body);
 }
 
-export function removeStock(me, setMe, item) {
+export async function removeStock(me, setMe, item) {
   let allItems = me.stock.map((s) => s);
   let newItems = allItems.filter((a) => a !== item);
   setMe({
@@ -224,12 +217,12 @@ export function removeStock(me, setMe, item) {
     extra: me.extra,
   });
   const body = { stock: newItems };
-  return axios.put(`${apiUrl}/users/stock/${me._id}`, body);
+  await axios.put(`${apiUrl}/users/stock/${me._id}`, body);
 }
 
 // extra
 
-export function toggleExtra(me, setMe, item) {
+export async function toggleExtra(me, setMe, item) {
   setMe({
     _id: me._id,
     name: me.name,
@@ -240,10 +233,10 @@ export function toggleExtra(me, setMe, item) {
   });
   me.extra.push(item);
   const body = { extra: me.extra };
-  return axios.put(`${apiUrl}/users/extra/${me._id}`, body);
+  await axios.put(`${apiUrl}/users/extra/${me._id}`, body);
 }
 
-export function removeExtra(me, setMe, item) {
+export async function removeExtra(me, setMe, item) {
   let allItems = me.extra.map((s) => s);
   let newItems = allItems.filter((a) => a !== item);
   setMe({
@@ -255,12 +248,12 @@ export function removeExtra(me, setMe, item) {
     extra: newItems,
   });
   const body = { extra: newItems };
-  return axios.put(`${apiUrl}/users/extra/${me._id}`, body);
+  await axios.put(`${apiUrl}/users/extra/${me._id}`, body);
 }
 
 // boodschappen
 
-export function deleteBoodschappen(me, setMe, title) {
+export async function deleteBoodschappen(me, setMe, title) {
   let allItems = me.items.map((r) => r);
   allItems = allItems.filter((element) => {
     let fresh = element.fresh.some(({ ingredient }) => ingredient === title);
@@ -284,5 +277,5 @@ export function deleteBoodschappen(me, setMe, title) {
     extra: me.extra,
   });
   const body = { items: me.items };
-  return axios.put(`${apiUrl}/users/items/${me._id}`, body);
+  await axios.put(`${apiUrl}/users/items/${me._id}`, body);
 }

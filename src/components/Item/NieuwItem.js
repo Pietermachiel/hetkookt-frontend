@@ -1,12 +1,12 @@
-import React, { useEffect, useState, Fragment } from "react";
-import { Redirect } from "react-router";
-import { uniq } from "../common/common";
-import { toast, ToastContainer } from "react-toastify";
-import tags from "../../data/tags.json";
-import thedishes from "../../data/dishes.json";
+import React, { useState, Fragment } from "react";
+// import { Redirect } from "react-router";
+// import { uniq } from "../common/common";
+import { toast } from "react-toastify";
+// import tags from "../../data/tags.json";
+// import thedishes from "../../data/dishes.json";
 import { createRecipe } from "../../services/userService";
 import { useForm, useFieldArray } from "react-hook-form";
-import _ from "lodash";
+// import _ from "lodash";
 
 // https://www.carlrippon.com/custom-validation-rules-in-react-hook-form/
 // https://www.carlrippon.com/master-detail-forms-with-react-form-hook/
@@ -19,23 +19,19 @@ const stockunits = [
   { unit: "el" },
 ];
 
-const NieuwItem = ({ me, setMe, ...props }) => {
+const NieuwItem = ({ me, setMe, tags, dish, ...props }) => {
   // const [routeRedirect, setRedirect] = useState("");
   const [err, setError] = useState("");
-  const { register, control, handleSubmit, watch, errors } = useForm({
+  const { register, control, handleSubmit, errors } = useForm({
     defaultValues: {
       _id: "",
       title: "",
-      dish: "",
+      dish: { name: "" },
       tags: [{ name: "" }],
-      basics: [{ name: "" }],
       related: [{ name: "" }],
       fresh: [{ quantity: null, unit: "", ingredient: "" }],
       stock: [{ quantity: null, unit: "", ingredient: "" }],
       directions: [{ name: "" }],
-      author: "",
-      source: "",
-      source_url: "",
       info: "",
       date: [{ name: "" }],
     },
@@ -46,11 +42,6 @@ const NieuwItem = ({ me, setMe, ...props }) => {
     append: tagsAppend,
     remove: tagsRemove,
   } = useFieldArray({ control, name: "tags" });
-  const {
-    fields: basicsFields,
-    append: basicsAppend,
-    remove: basicsRemove,
-  } = useFieldArray({ control, name: "basics" });
   const {
     fields: relatedFields,
     append: relatedAppend,
@@ -74,10 +65,12 @@ const NieuwItem = ({ me, setMe, ...props }) => {
   const { fields: dateFields } = useFieldArray({ control, name: "date" });
 
   const handleCreateRecipe = async (data) => {
+    console.log("NieuwItem: data");
+    console.log(data);
     try {
       // alert("create recipe");
       await createRecipe(me, setMe, data);
-      window.location = "/kookschrift";
+      window.location.pathname = "/kookschrift";
       // const { state } = props.location;
       // window.location = state ? state.from.pathname : "/kookschrift";
     } catch (ex) {
@@ -111,8 +104,8 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                 className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
                 ref={register({
                   required: true,
-                  maxLength: 30,
-                  pattern: /^[a-zA-Z]+$/,
+                  maxLength: 50,
+                  pattern: /^[a-zA-Z0-9 ]+$/,
                 })}
               />
               {errors.title?.type === "required" && (
@@ -122,7 +115,7 @@ const NieuwItem = ({ me, setMe, ...props }) => {
               )}
               {errors.title?.type === "maxLength" && (
                 <span className="block text-16 py-6 font-700 text-orange-500">
-                  Maximaal 30 lettertekens
+                  Maximaal 50 lettertekens
                 </span>
               )}
               {errors.title?.type === "pattern" && (
@@ -137,15 +130,15 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                 Collectie
               </label>
               <select
-                name="dish"
+                name="dish.name"
                 ref={register({ required: true })}
                 id="dish"
                 className="select h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
               >
                 <option value="" />
-                {thedishes.map((option, xid) => (
-                  <option key={xid} value={option}>
-                    {option}
+                {dish.map((option, xid) => (
+                  <option key={xid} value={option.name}>
+                    {option.name}
                   </option>
                 ))}
               </select>
@@ -172,8 +165,8 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                       >
                         <option value="" />
                         {tags.map((option, xid) => (
-                          <option key={xid} value={option}>
-                            {option}
+                          <option key={xid} value={option.name}>
+                            {option.name}
                           </option>
                         ))}
                       </select>
@@ -201,43 +194,6 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                   <img className="pt-6" src="/img/feather/plus.svg" alt="" />
                 </div>
                 tag
-              </div>
-            </div>
-            {/* Basics */}
-            <div className="formgroup__collectie">
-              <label className="text-16 text-gray-500" htmlFor="email">
-                Basics
-              </label>
-              <ul>
-                {basicsFields.map((item, index) => (
-                  <li key={index} className="relative mb-0">
-                    <input
-                      name={`basics[${index}].name`}
-                      className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
-                      ref={register()}
-                    />{" "}
-                    <button
-                      className="absolute top-0"
-                      style={{ right: "0" }}
-                      onClick={() => basicsRemove(index)}
-                    >
-                      <img
-                        className="w-20 h-20 mt-13 mr-15 opacity-50"
-                        src="/img/feather/trash.svg"
-                        alt=""
-                      />
-                    </button>
-                  </li>
-                ))}
-              </ul>
-              <div
-                className="relative w-full text-left pt-4 pl-30 text-indigo-600"
-                onClick={() => basicsAppend({ name: "" })}
-              >
-                <div className="absolute left-0 top-0">
-                  <img className="pt-6" src="/img/feather/plus.svg" alt="" />
-                </div>
-                titel basisrecept
               </div>
             </div>
             {/* Related */}
@@ -489,39 +445,6 @@ const NieuwItem = ({ me, setMe, ...props }) => {
                 stap
               </div>
             </div>
-            {/* author */}
-            <div className="">
-              <label className="text-16 text-gray-500" htmlFor="email">
-                Author
-              </label>
-              <input
-                name="author"
-                className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
-                ref={register()}
-              />
-            </div>{" "}
-            {/* source */}
-            <div className="">
-              <label className="text-16 text-gray-500" htmlFor="email">
-                Source
-              </label>
-              <input
-                name="source"
-                className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
-                ref={register()}
-              />
-            </div>{" "}
-            {/* url */}
-            <div className="">
-              <label className="text-16 text-gray-500" htmlFor="email">
-                Url
-              </label>
-              <input
-                name="source_url"
-                className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
-                ref={register()}
-              />
-            </div>{" "}
             {/* info */}
             <div className="">
               <label className="text-16 text-gray-500" htmlFor="email">

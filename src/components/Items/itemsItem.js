@@ -24,11 +24,11 @@ const ItemsItem = ({ cart, Link, recipe, thelength, me, setMe, ...props }) => {
             <h4 className={`text-18 break-words mb-15`}>{recipe.title}</h4>
           </Link>
           <ul className="mb-12">
-            {recipe.basics.map((b, id) => (
+            {/* {recipe.basics.map((b, id) => (
               <li key={id} className={`mb-0 font-700 text-15 md:text-16 `}>
                 {b.name}
               </li>
-            ))}
+            ))} */}
           </ul>
           <ul className={`leading-tight`}>
             {recipe.tags.map((t, id) => (
@@ -43,7 +43,7 @@ const ItemsItem = ({ cart, Link, recipe, thelength, me, setMe, ...props }) => {
         </div>
         <div className="h-72 relative overflow-hidden">
           <p className={`uppercase tracking-widest text-14 pl-15 mb-0`}>
-            {recipe.dish}
+            {recipe.dish.name}
           </p>
           <div
             className={`recipe-footer__box-delete ${

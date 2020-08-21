@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { slugify } from "../common/common";
 
 const Categories = ({ me, setMe, thecart, categories, recipes, ...props }) => {
-  console.log("categories");
-  console.log(categories);
+  // console.log("categories");
+  // console.log(categories);
   return (
     <Fragment>
       <div className="container-x">

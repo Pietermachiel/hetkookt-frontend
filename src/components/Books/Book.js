@@ -1,28 +1,28 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { recipeUrl } from "../../config.json";
+import { apiUrl, recipeUrl } from "../../config.json";
 import { slugify } from "../common/common";
 
 const Book = ({ books, recipes, ...props }) => {
   const [thebook, setTheBook] = useState([]);
   //   console.log(props);
 
-  const API = props.match.url;
-  //   console.log("API");
-  //   console.log(API);
+  const API = props.location.state;
+  // console.log("API");
+  // console.log(API);
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch(`${recipeUrl}${API}.json`);
+      const res = await fetch(`${apiUrl}/books/${API}`);
       res.json().then((res) => setTheBook(res));
     }
     getData();
   }, [API]);
 
-  if (thebook.title === undefined) return [];
+  if (thebook.name === undefined) return [];
 
-  //   console.log("recipeUrl");
-  //   console.log(recipeUrl);
+  // console.log("recipeUrl");
+  // console.log(recipeUrl);
   // console.log("thebook");
   // console.log(thebook);
   // console.log("recipes");
@@ -35,19 +35,19 @@ const Book = ({ books, recipes, ...props }) => {
           <div className="lg:w-50 p-36 pb-0 lg:pb-36">
             <div className="koo-box-boek">
               <img
-                src={`/img/books/${slugify(thebook.title)}_cover.jpg`}
-                alt={thebook.title}
+                src={`/img/books/${slugify(thebook.name)}_cover.jpg`}
+                alt={thebook.name}
               />
             </div>
           </div>
           <div className="lg:w-50 p-36 pt-0 lg:pt-72">
             <div className="mb-48">
-              <h1>{thebook.title}</h1>
+              <h1>{thebook.name}</h1>
               <h4 className="my-18">{thebook.author}</h4>
               <p>
                 {thebook.publisher} {thebook.year}
               </p>
-              <p>keuken: {thebook.kitchen}</p>
+              <p>keuken: {thebook.kitchen.name}</p>
             </div>{" "}
             <Link className="text-indigo-600 font-700" to="/books">
               Boeken top 100 >
@@ -88,15 +88,23 @@ const Book = ({ books, recipes, ...props }) => {
           </div>
 
           <div className="koo-box-footer pt-12">
-            {/* {% include recepten.html %} */}
             {recipes.map((r) => {
-              if (slugify(r.source) === thebook.bookId)
+              // console.log("recipe");
+              // console.log(slugify(r.book.name));
+              // console.log("book");
+              // console.log(slugify(thebook.name));
+              if (slugify(r.book.name) === slugify(thebook.name))
                 return (
                   <p key={r._id}>
-                    <Link to={`/recipe/${slugify(r.title)}`}>
+                    <Link
+                      to={{
+                        pathname: `/recipes/${slugify(r.title)}`,
+                        state: r._id,
+                      }}
+                    >
                       <strong className="text-indigo-600">{r.title}</strong>
                     </Link>{" "}
-                    – {r.dish}
+                    – {r.dish.name}
                   </p>
                 );
             })}

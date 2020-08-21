@@ -19,7 +19,7 @@ const AccordionWeekMenu = ({ title, children, me, setMe, id, dayall }) => {
           >
             &nbsp;
             <span className="text-19">
-              <span className="ml-5 text-16 font-300">verwijder</span> x
+              <span className="ml-5 text-16 font-300">verwijder recept</span> x
             </span>
           </span>
         </div>

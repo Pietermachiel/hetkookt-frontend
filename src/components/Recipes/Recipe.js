@@ -2,19 +2,38 @@ import React, { Fragment, useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { Link, NavLink } from "react-router-dom";
 import { slugify, slugifyu, kalender } from "../common/common.js";
-import { recipeUrl } from "../../config.json";
+import { apiUrl, recipeUrl } from "../../config.json";
 import { createRecipe } from "../../services/userService";
 
 const Recipe = ({ user, me, setMe, thecart, sorts, ...props }) => {
   var [therecipe, setTheRecipe] = useState([]);
 
-  const API = props.match.url;
+  // console.log("recipe props");
+  // console.log(props);
+  // console.log("therecipe");
+  // console.log(therecipe);
+
+  const API = props.location.state;
 
   const handleCreateRecipe = async (me, setMe, therecipe) => {
-    // console.log("therecipe index");
-    // console.log(therecipe);
+    console.log("therecipe");
+    console.log(therecipe);
+    const newrecipe = {
+      _id: therecipe._id,
+      title: therecipe.title,
+      dish: therecipe.dish,
+      tags: therecipe.tags,
+      related: therecipe.related,
+      fresh: therecipe.fresh,
+      stock: therecipe.stock,
+      directions: therecipe.directions,
+      info: therecipe.info,
+      date: therecipe.date,
+    };
+    console.log("newrecipe");
+    console.log(newrecipe);
     try {
-      await createRecipe(me, setMe, therecipe);
+      await createRecipe(me, setMe, newrecipe);
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         toast.error("foutje");
@@ -22,7 +41,7 @@ const Recipe = ({ user, me, setMe, thecart, sorts, ...props }) => {
         // setError(theerr);
       }
     }
-    window.location = `/kookschrift`;
+    // window.location = `/kookschrift`;
     // window.location = `/kookschrift/${slugify(therecipe.title)}`;
     // const { state } = props.location;
     // window.location = state ? state.from.pathname : "/kookschrift";
@@ -30,16 +49,16 @@ const Recipe = ({ user, me, setMe, thecart, sorts, ...props }) => {
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch(`${recipeUrl}${API}.json`);
+      const res = await fetch(`${apiUrl}/recipes/${API}`);
       res.json().then((res) => setTheRecipe(res));
     }
     getData();
   }, [API]);
 
-  console.log("therecipe");
-  console.log(therecipe);
-  console.log("API");
-  console.log(API);
+  // console.log("therecipe");
+  // console.log(therecipe);
+  // console.log("API");
+  // console.log(API);
 
   if (therecipe.tags === undefined) return [];
   // const thelength = props.tags.length - 1;
@@ -64,8 +83,11 @@ const Recipe = ({ user, me, setMe, thecart, sorts, ...props }) => {
         <h1 className="recepten-title text-green-600 mb-18 lg:mb-0 ">
           {therecipe.title}
           {/* <span className="text-21 lg:pl-10">bladgroenten</span> */}
-          <Link className="leading-none" to={`/collections/${therecipe.dish}`}>
-            <span className="text-21 pl-10">{therecipe.dish}</span>
+          <Link
+            className="leading-none"
+            to={`/collections/${therecipe.dish.name}`}
+          >
+            <span className="text-21 pl-10">{therecipe.dish.name}</span>
           </Link>
         </h1>
         <div className="lg:flex align-baseline mb-36 unvisable slide work-grid-item">
@@ -115,6 +137,21 @@ const Recipe = ({ user, me, setMe, thecart, sorts, ...props }) => {
               </Link>
             </Fragment>
           )}
+          <Link
+            to={{
+              pathname: `/editrecipe/${slugify(therecipe.title)}`,
+              state: therecipe._id,
+            }}
+          >
+            <button className="mb-5 lg:pr-18 btn-add mr-10 text-19 font-600 text-indigo-700 flex item-center hover:text-red-500">
+              <img
+                className="w-25 h-25 mr-10"
+                src="/img/feather/edit.svg"
+                alt=""
+              />
+              edit
+            </button>
+          </Link>
         </div>
         <div className="recepten">
           <div className="recepten-box">
@@ -160,14 +197,14 @@ const Recipe = ({ user, me, setMe, thecart, sorts, ...props }) => {
                   );
                 })}
               </div>
-              {therecipe.basics.length > 0 ? <p>basisrecepten</p> : null}
+              {/* {therecipe.basics.length > 0 ? <p>basisrecepten</p> : null}
               <div className="ingredienten-box">
                 {therecipe.basics.map((b, xid) => (
                   <Link key={xid} to={`/recipe/${slugify(b.name)}`}>
                     <span className="font-600">{b.name}</span>
                   </Link>
                 ))}
-              </div>
+              </div> */}
               {therecipe.related.length > 0 ? <p>gerelateerd</p> : null}
               <div className="ingredienten-box">
                 {therecipe.related.map((b, xid) => (
@@ -199,10 +236,15 @@ const Recipe = ({ user, me, setMe, thecart, sorts, ...props }) => {
           </div>
         </div>
         <div className="recepten-source">
-          <Link to={`/book/${slugify(therecipe.source)}`}>
+          <Link
+            to={{
+              pathname: `/books/${slugify(therecipe.book.name)}`,
+              state: therecipe.book._id,
+            }}
+          >
             <div className="flex mt-72 pb-20">
               <img className="w-25" src="/img/feather/book.svg" alt="" />
-              &nbsp;<span className="pl-5">Bron: {therecipe.source}</span>
+              &nbsp;<span className="pl-5">Bron: {therecipe.book.name} </span>
             </div>
           </Link>
         </div>

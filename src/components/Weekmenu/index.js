@@ -105,8 +105,8 @@ const Menu = ({ me, setMe, user, thecart, recipes, about, ...props }) => {
                                   return (
                                     <Fragment key={xid}>
                                       {f.to_buy === true ? (
-                                        <div className="my-18 flex lg:block">
-                                          <div className="flex w-50">
+                                        <div className="my-18 flex lg:block justify-between pr-9">
+                                          <div className="flex">
                                             <div className="w-70 text-right">
                                               {f.quantity} {f.unit}
                                             </div>
@@ -143,9 +143,18 @@ const Menu = ({ me, setMe, user, thecart, recipes, about, ...props }) => {
                                           </span>
                                         </div>
                                       ) : (
-                                        <div className="ml-18 text-gray-500">
-                                          {f.quantity} {f.unit}
-                                          <strong>{f.ingredient}</strong>
+                                        <div className="my-18 flex lg:block text-gray-500 justify-between">
+                                          <div className="flex">
+                                            <div className="w-70 text-right">
+                                              {f.quantity} {f.unit}
+                                            </div>
+
+                                            <div className="items-product">
+                                              <strong>
+                                                &nbsp;{f.ingredient}
+                                              </strong>
+                                            </div>
+                                          </div>
                                           <span
                                             onClick={() =>
                                               toggleFresh(
@@ -158,7 +167,15 @@ const Menu = ({ me, setMe, user, thecart, recipes, about, ...props }) => {
                                             }
                                             className="mr-10"
                                           >
-                                            +
+                                            <span className="font-300 text-14 lg:text-16 text-green-600">
+                                              voeg weer toe
+                                            </span>
+                                            &nbsp;
+                                            <img
+                                              className="w-20 h-20 inline"
+                                              src="/img/feather/plus-green.svg"
+                                              alt=""
+                                            />
                                           </span>
                                         </div>
                                       )}

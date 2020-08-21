@@ -1,35 +1,32 @@
 import React, { useState, Fragment } from "react";
-import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { slugify } from "../common/common";
-// import thedishes from "../../data/dishes.json";
-import { doSave } from "../../services/userService";
+import { saveRecipe } from "../../services/recipeService";
 import { useForm, useFieldArray } from "react-hook-form";
 
-const theunits = [{ unit: "" }, { unit: "g" }, { unit: "ml" }];
+const theunits = [{ unit: "g" }, { unit: "ml" }];
 const stockunits = [
-  { unit: "" },
   { unit: "g" },
   { unit: "ml" },
   { unit: "tl" },
   { unit: "el" },
 ];
 
-const EditItem = ({ me, tags, dish, setMe, therecipe, ...props }) => {
-  const [routeRedirect, setRedirect] = useState("");
-  const [error, setError] = useState("");
+const NewRecipe = ({ tags, dish, books, ...props }) => {
+  // const [routeRedirect, setRedirect] = useState("");
+  const [err, setError] = useState("");
   const { register, control, handleSubmit, errors } = useForm({
     defaultValues: {
-      _id: therecipe._id,
-      title: therecipe.title,
-      dish: therecipe.dish,
-      tags: therecipe.tags,
-      related: therecipe.related,
-      fresh: therecipe.fresh,
-      stock: therecipe.stock,
-      directions: therecipe.directions,
-      info: therecipe.info,
-      date: therecipe.date,
+      _id: "",
+      title: "",
+      dish: { name: "" },
+      tags: [{ name: "" }],
+      related: [{ name: "" }],
+      fresh: [{ quantity: null, unit: "", ingredient: "" }],
+      stock: [{ quantity: null, unit: "", ingredient: "" }],
+      directions: [{ name: "" }],
+      book: { name: " " },
+      info: "",
+      date: [{ name: "" }],
     },
   });
 
@@ -58,62 +55,39 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, ...props }) => {
     append: directionsAppend,
     remove: directionsRemove,
   } = useFieldArray({ control, name: "directions" });
-  // const { fields: dateFields } = useFieldArray({ control, name: "date" });
+  const { fields: dateFields } = useFieldArray({ control, name: "date" });
 
-  console.log("edit therecipe");
-  console.log(therecipe);
-  // console.log("props");
-  // console.log(props);
-  console.log(window.location);
-
-  const handleDoSave = async (data) => {
-    const thedata = { ...data, _id: therecipe._id, date: therecipe.date };
-    console.log("data");
+  const handleSaveRecipe = async (data) => {
+    console.log("NewRecipe: data");
     console.log(data);
-    console.log("thedata");
-    console.log(thedata);
     try {
-      // throw new Error("Whoops!");
-      await doSave(me, setMe, thedata);
+      // alert("create recipe");
+      await saveRecipe(data);
+      window.location = "/recipes";
       // const { state } = props.location;
       // window.location = state ? state.from.pathname : "/kookschrift";
-      window.location = "/kookschrift";
     } catch (ex) {
-      // console.log(ex.message);
-      // if (ex.response && ex.response.status === 400) {
-      //   const theerr = ex.response.data;
-      //   setError(theerr);
-      // }
+      // alert("catch error");
       if (ex.response && ex.response.status === 400) {
         toast.error("foutje");
+        // const theerr = ex.response.data;
+        // setError(theerr);
       }
     }
   };
 
-  // console.log("edititem dish");
-  // console.log(dish);
-  // const redirect = routeRedirect;
-  // if (redirect) {
-  //   return <Redirect to="/kookschrift" />;
-  // }
-
-  // console.log("EditItem: me.items");
-  // console.log(me.items);
-  // console.log(therecipe);
+  // console.log("error");
+  // console.log(err);
+  // console.log("books");
+  // console.log(books);
 
   return (
     <React.Fragment>
       <div className="container-y bg-rose-100">
         <div className="md:w-550 m-auto relative">
-          <h1 className="favorieten-title text-36 text-green-600">
-            {therecipe.title}{" "}
-            <Link to={`/kookschrift/${slugify(therecipe.title)}`}>
-              <span className="ml-18 py-18 px-36 bg-indigo-500 uppercase tracking-widest text-16 text-white">
-                terug
-              </span>
-            </Link>
-          </h1>
-          <form onSubmit={handleSubmit(handleDoSave)}>
+          <h1 className="favorieten-title text-36">Nieuw recept</h1>
+          <form onSubmit={handleSubmit(handleSaveRecipe)}>
+            {/* titel */}
             <div className="formgroup__collectie">
               <label className="text-16 text-gray-500" htmlFor="email">
                 Titel
@@ -132,11 +106,6 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, ...props }) => {
                   Dit veld is verplicht
                 </span>
               )}
-              {errors.title?.type === "minLength" && (
-                <span className="block text-16 py-6 font-700 text-orange-500">
-                  Minimaal 5 lettertekens
-                </span>
-              )}
               {errors.title?.type === "maxLength" && (
                 <span className="block text-16 py-6 font-700 text-orange-500">
                   Maximaal 50 lettertekens
@@ -148,19 +117,20 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, ...props }) => {
                 </span>
               )}
             </div>
-            {/* collectie = dish */}
+            {/* collectie */}
             <div className="formgroup__collectie">
               <label htmlFor="collectie" className="text-16 text-gray-500">
                 Collectie
               </label>
               <select
-                name="dish.name"
+                name="dish._id"
                 ref={register({ required: true })}
+                id="dish"
                 className="select h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
               >
                 <option value="" />
                 {dish.map((option, xid) => (
-                  <option key={xid} value={option.name}>
+                  <option key={xid} value={option._id}>
                     {option.name}
                   </option>
                 ))}
@@ -179,21 +149,24 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, ...props }) => {
               <ul>
                 {tagsFields.map((item, index) => (
                   <Fragment key={index}>
-                    <li className="relative mb-0" key={item.id}>
+                    <li className="relative mb-0">
                       <select
-                        name={`tags[${index}].name`}
+                        name={`tags[${index}]._id`}
                         className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
-                        // defaultValue={item.name}
-                        ref={register()}
-                        // ref={register({ required: true })}
+                        ref={register({ required: true })}
                       >
                         <option value="" />
                         {tags.map((option, xid) => (
-                          <option key={xid} value={option.name}>
+                          <option key={xid} value={option._id}>
                             {option.name}
                           </option>
                         ))}
                       </select>
+                      {errors.tags?.type === "required" && (
+                        <span className="block text-16 py-6 font-700 text-orange-500">
+                          Dit veld is verplicht
+                        </span>
+                      )}
 
                       <button
                         className="absolute top-0"
@@ -345,7 +318,7 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, ...props }) => {
                 vers ingredient
               </div>
             </div>
-            {/* houdbaar = stock */}
+            {/* houdbaar */}
             <div className="formgroup__collectie">
               <label className="text-16 text-gray-500" htmlFor="email">
                 Houdbaar
@@ -440,6 +413,11 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, ...props }) => {
                       className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
                       ref={register()}
                     />
+                    {/* {errors.directions?.type === "maxLength" && (
+                      <span className="block text-16 py-6 font-700 text-orange-500">
+                        Maximaal 30 lettertekens
+                      </span>
+                    )} */}
                     <button
                       className="absolute top-0"
                       style={{ right: "0" }}
@@ -464,6 +442,30 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, ...props }) => {
                 stap
               </div>
             </div>
+            {/* book */}
+            <div className="formgroup__collectie">
+              <label htmlFor="collectie" className="text-16 text-gray-500">
+                Boek
+              </label>
+              <select
+                name="book._id"
+                ref={register({ required: true })}
+                id="book"
+                className="select h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
+              >
+                <option value="" />
+                {books.map((option, xid) => (
+                  <option key={xid} value={option._id}>
+                    {option.name}
+                  </option>
+                ))}
+              </select>
+              {errors.book?.type === "required" && (
+                <span className="block text-16 py-6 font-700 text-orange-500">
+                  Dit veld is verplicht
+                </span>
+              )}
+            </div>
             {/* info */}
             <div className="">
               <label className="text-16 text-gray-500" htmlFor="email">
@@ -475,8 +477,20 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, ...props }) => {
                 ref={register()}
               />
             </div>
-            <button className="uppercase text-16 bg-indigo-500 mt-36 mb-36 px-36 py-10 text-white tracking-widest">
-              aanpassen
+            {err && (
+              <p className="font-700 text-16 text-orange-500 mb-0 mt-6">
+                {err}
+              </p>
+            )}
+            <div className="hidden invisible">
+              {dateFields.map((item, index) => (
+                <li key={index}>
+                  <input name={`date[${index}].name`} ref={register()} />
+                </li>
+              ))}
+            </div>
+            <button className="mb-36 uppercase text-16 bg-indigo-500 mt-36 px-36 py-10 text-white tracking-widest">
+              nieuw
             </button>
           </form>
         </div>
@@ -485,4 +499,4 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, ...props }) => {
   );
 };
 
-export default EditItem;
+export default NewRecipe;

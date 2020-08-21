@@ -18,6 +18,8 @@
 }
 
 .accordion-title {
+  display: flex;
+  flex-flow: column;
   font-weight: 600;
   cursor: pointer;
   color: #666;
@@ -31,6 +33,10 @@
   &:hover,
   &.open {
     color: black;
+  }
+  @media screen and (min-width: 768px) {
+    // display: block;
+    flex-flow: row;
   }
 }
 

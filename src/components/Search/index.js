@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import parseHtml from "html-react-parser";
 import { slugify } from "../common/common";
@@ -56,7 +56,7 @@ const Search = ({
                         // value="Zoek recept..."
                         onClick={() => handleClick("")}
                       >
-                        {result}/<b>{recipe.dish}</b>
+                        {result}/<b>{recipe.dish.name}</b>
                       </Link>
                     </li>
                   );

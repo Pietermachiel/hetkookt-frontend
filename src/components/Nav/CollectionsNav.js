@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // https://codepen.io/davidmunro/pen/xxxeoOo
-const AccordionNav = ({ handleColOpen, isColOpen, setColOpen, dishes }) => {
-  //   console.log(dishes);
+const AccordionNav = ({ handleColOpen, isColOpen, setColOpen, dish }) => {
+  //   console.log(dish);
   return (
     <div className="accordion-nav-wrapper">
       <div
@@ -15,16 +15,16 @@ const AccordionNav = ({ handleColOpen, isColOpen, setColOpen, dishes }) => {
       </div>
       <div className={`accordion-nav-item ${!isColOpen ? "collapsed" : ""}`}>
         <div className="accordion-nav-content">
-          {dishes.map((c, xid) => (
+          {dish.map((c, xid) => (
             <div key={xid}>
               <ul className="item-links">
                 <li>
                   <Link
                     onClick={handleColOpen}
                     className=""
-                    to={`/collections/${c}`}
+                    to={`/collections/${c.name}`}
                   >
-                    {c}
+                    {c.name}
                   </Link>
                 </li>
               </ul>

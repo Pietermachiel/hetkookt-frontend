@@ -89,6 +89,9 @@ const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
             </Link>
           </span>
         </h1>
+        <div className="mb-18">
+          Dit zijn de ingrediënten die op voorraad moeten zijn:
+        </div>
         <div className=" grid-box unvisable slide work-grid-item pb-10">
           <Fragment>
             {devoorraad.map((dv, xid) => {
@@ -106,13 +109,13 @@ const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
                           return (
                             <Fragment key={xid}>
                               {me.stock.includes(v.ingredient) ? (
-                                <li className="mb-0 py-9 px-24 font-500 bg-orange-400">
-                                  {v.ingredient}
+                                <li className="mb-0 py-9 px-24 font-500 bg-orange-400 flex justify-between">
+                                  {v.ingredient}{" "}
                                   <span
                                     className="text-red-600 font-500"
                                     onClick={() => removeItem(v.ingredient)}
                                   >
-                                    x
+                                    verwijder x
                                   </span>
                                 </li>
                               ) : (
@@ -120,9 +123,12 @@ const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
                                   onClick={() =>
                                     toggleStock(me, setMe, v.ingredient)
                                   }
-                                  className="mb-0 py-9 px-24 bg-orange-200"
+                                  className="mb-0 py-9 px-24 bg-orange-200 flex justify-between"
                                 >
-                                  {v.ingredient} <span className="">+</span>
+                                  {v.ingredient}{" "}
+                                  <span className="text-green-500">
+                                    voeg toe +
+                                  </span>
                                 </li>
                               )}
                             </Fragment>

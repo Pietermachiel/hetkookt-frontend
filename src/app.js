@@ -1,10 +1,10 @@
 import React, { Fragment, useState, useEffect } from "react";
+import { Switch, Route } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 import auth from "./services/authService";
 import http from "./services/httpService";
-import { Switch, Route } from "react-router-dom";
 import Login from "./components/login";
 import Register from "./components/register";
 import inschrijven from "./components/inschrijven";
@@ -13,7 +13,10 @@ import logout from "./components/logout";
 import Welkom from "./components/welkom";
 import Test from "./components/Test";
 import Home from "./components/Home";
+import Recipes from "./components/Recipes";
 import Recipe from "./components/Recipes/Recipe";
+import NewRecipe from "./components/Recipes/NewRecipe";
+import EditRecipe from "./components/Recipes/EditRecipe";
 import Sorts from "./components/Sorts";
 import CategoriesItems from "./components/Categories/CategoriesItems";
 import Categories from "./components/Categories";
@@ -42,13 +45,14 @@ const App = () => {
   const [recipes, setRecipes] = useState([]);
   const [sorts, setSorts] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [dishes, setDishes] = useState([]);
+  const [dish, setDish] = useState([]);
   const [stock, setStock] = useState([]);
   const [user, setUser] = useState([]);
   const [me, setMe] = useState([]);
   const [about, setAbout] = useState([]);
-  let [books, setBooks] = useState([]);
-  let [tags, setTags] = useState([]);
+  const [kitchens, setKitchens] = useState([]);
+  const [books, setBooks] = useState([]);
+  const [tags, setTags] = useState([]);
   const [isOn, setIsOn] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isCatOpen, setCatOpen] = useState(false);
@@ -116,8 +120,8 @@ const App = () => {
   // console.log(sorts);
   // console.log("categories");
   // console.log(categories);
-  // console.log("dishes");
-  // console.log(dishes);
+  // console.log("dish");
+  // console.log(dish);
   // console.log("user");
   // console.log(user);
   // console.log("me");
@@ -125,10 +129,12 @@ const App = () => {
   // console.log(stock);
   // console.log("books");
   // console.log(books);
+  // console.log("tags");
+  // console.log(tags);
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch(`${recipeUrl}/recipes.json`);
+      const res = await fetch(`${apiUrl}/recipes`);
       res.json().then((res) => setRecipes(res));
     }
     getData();
@@ -152,8 +158,8 @@ const App = () => {
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch(`${recipeUrl}/dishes.json`);
-      res.json().then((res) => setDishes(res));
+      const res = await fetch(`${apiUrl}/dishes`);
+      res.json().then((res) => setDish(res));
     }
     getData();
   }, []);
@@ -194,7 +200,15 @@ const App = () => {
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch(`${recipeUrl}/books.json`);
+      const res = await fetch(`${apiUrl}/kitchens`);
+      res.json().then((res) => setKitchens(res));
+    }
+    getData();
+  }, []);
+
+  useEffect(() => {
+    async function getData() {
+      const res = await fetch(`${apiUrl}/books`);
       res.json().then((res) => setBooks(res));
     }
     getData();
@@ -202,14 +216,15 @@ const App = () => {
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch(`${recipeUrl}/tags.json`);
+      const res = await fetch(`${apiUrl}/tags`);
       res.json().then((res) => setTags(res));
     }
     getData();
   }, []);
 
-  tags = _.orderBy(tags, ["title"]); // Use Lodash to sort array by 'name'
-  books = _.orderBy(books, ["year", "title"], ["desc"]); // Use Lodash to sort array by 'name'
+  // tags = _.orderBy(tags, ["title"]); // Use Lodash to sort array by 'name'
+  // books = _.orderBy(books, ["year", "title"], ["desc"]); // Use Lodash to sort array by 'name'
+  // books = _.orderBy(books, ["_id"]); // Use Lodash to sort array by 'name'
 
   // console.log("recipes");
   // console.log(recipes);
@@ -261,7 +276,7 @@ const App = () => {
             recipes={recipes}
             categories={categories}
             sorts={sorts}
-            dishes={dishes}
+            dish={dish}
           />
         </header>
         <LogoBox me={me} user={user} />
@@ -277,7 +292,7 @@ const App = () => {
                 recipes={recipes}
                 categories={categories}
                 sorts={sorts}
-                dishes={dishes}
+                dish={dish}
                 thecart={thecart}
                 about={about}
                 recipes={recipes}
@@ -286,7 +301,21 @@ const App = () => {
             )}
           />
           <Route
-            path="/recipe/:id"
+            exact
+            path="/recipes"
+            render={(props) => {
+              return (
+                <Recipes
+                  recipes={recipes}
+                  setRecipes={setRecipes}
+                  me={me}
+                  {...props}
+                />
+              );
+            }}
+          />
+          <Route
+            path="/recipes/:id"
             render={(props) => {
               return (
                 <Recipe
@@ -296,6 +325,44 @@ const App = () => {
                   categories={categories}
                   sorts={sorts}
                   thecart={thecart}
+                  {...props}
+                />
+              );
+            }}
+          />
+          <Route
+            path="/nieuwrecept"
+            render={(props) => {
+              return (
+                <NewRecipe
+                  me={me}
+                  setMe={setMe}
+                  dish={dish}
+                  tags={tags}
+                  books={books}
+                />
+              );
+            }}
+          />
+          <Route
+            path="/editrecipe/:id"
+            render={(props) => {
+              if (recipes === undefined) return [];
+              const therecipe = recipes.find(
+                (i) => slugify(i._id) === props.location.state
+              );
+              if (therecipe === undefined) return [];
+
+              return (
+                <EditRecipe
+                  me={me}
+                  setMe={setMe}
+                  tags={tags}
+                  dish={dish}
+                  books={books}
+                  // recipes={recipes}
+                  // setRecipes={setRecipes}
+                  therecipe={therecipe}
                   {...props}
                 />
               );
@@ -322,7 +389,7 @@ const App = () => {
                 {...props}
                 thecart={thecart}
                 recipes={recipes}
-                dishes={dishes}
+                dish={dish}
                 me={me}
                 setMe={setMe}
               />
@@ -335,7 +402,7 @@ const App = () => {
                 {...props}
                 recipes={recipes}
                 sorts={sorts}
-                dishes={dishes}
+                dish={dish}
                 user={user}
                 me={me}
                 setMe={setMe}
@@ -343,9 +410,17 @@ const App = () => {
             )}
           />
           <Route
-            path="/nieuwrecept"
+            path="/nieuwitem"
             render={(props) => {
-              return <NieuwItem tags={tags} me={me} setMe={setMe} {...props} />;
+              return (
+                <NieuwItem
+                  tags={tags}
+                  dish={dish}
+                  me={me}
+                  setMe={setMe}
+                  {...props}
+                />
+              );
             }}
           />
           <Route
@@ -362,6 +437,7 @@ const App = () => {
                   me={me}
                   setMe={setMe}
                   tags={tags}
+                  dish={dish}
                   therecipe={therecipe}
                   {...props}
                 />
@@ -373,7 +449,7 @@ const App = () => {
             render={(props) => (
               <Weekmenu
                 {...props}
-                dishes={dishes}
+                dish={dish}
                 user={user}
                 thecart={thecart} //  [ _id, _id, ... ]
                 recipes={recipes}
@@ -432,7 +508,7 @@ const App = () => {
               return (
                 <Collections
                   thecart={thecart}
-                  dishes={dishes}
+                  dish={dish}
                   recipes={recipes}
                   {...props}
                 />
@@ -447,7 +523,7 @@ const App = () => {
                   me={me}
                   setMe={setMe}
                   thecart={thecart}
-                  dishes={dishes}
+                  dish={dish}
                   recipes={recipes}
                   {...props}
                 />
@@ -480,11 +556,11 @@ const App = () => {
             exact
             path="/books"
             render={(props) => {
-              return <Books books={books} {...props} />;
+              return <Books kitchens={kitchens} books={books} {...props} />;
             }}
           />
           <Route
-            path="/book/:id"
+            path="/books/:id"
             render={(props) => {
               return <Book books={books} recipes={recipes} {...props} />;
             }}

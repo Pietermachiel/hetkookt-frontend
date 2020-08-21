@@ -2,12 +2,20 @@ import React, { useState } from "react";
 import { kalender, heledag, theweek } from "../common/common";
 import { doPutMenu } from "../../services/userService";
 
-const AddpanelWeekmenu = ({ isOpen, therecipe, me, setMe, handleIsOpen }) => {
-  const [routeRedirect, setRedirect] = useState("");
+const AddpanelWeekmenu = ({
+  isOpen,
+  therecipe,
+  me,
+  setMe,
+  handleIsOpen,
+  setRedirect,
+}) => {
+  // const [routeRedirect, setRedirect] = useState("");
 
   const handleSave = (me, setMe, therecipe, dedate) => {
     doPutMenu(me, setMe, therecipe, dedate);
     handleIsOpen(!isOpen);
+    setRedirect(true);
   };
 
   return (
