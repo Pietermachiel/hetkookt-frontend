@@ -34,7 +34,7 @@ const Books = ({ kitchens, books, ...props }) => {
   return (
     <Fragment>
       <div className="container-x">
-        <h1 className="favorieten-title">Boeken top 100</h1>
+        <h1 className="favorieten-title">De kookboeken</h1>
         <ul className="lg:w-550 m-auto text-center mb-36">
           {kitchens.map((c, xid) => (
             <li

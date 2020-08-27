@@ -23,10 +23,10 @@ const Book = ({ books, recipes, ...props }) => {
 
   // console.log("recipeUrl");
   // console.log(recipeUrl);
-  // console.log("thebook");
-  // console.log(thebook);
-  // console.log("recipes");
-  // console.log(recipes);
+  console.log("thebook");
+  console.log(thebook);
+  console.log("recipes");
+  console.log(recipes);
 
   return (
     <Fragment>
@@ -89,6 +89,7 @@ const Book = ({ books, recipes, ...props }) => {
 
           <div className="koo-box-footer pt-12">
             {recipes.map((r) => {
+              if (r.book === null) return console.log(r.title);
               // console.log("recipe");
               // console.log(slugify(r.book.name));
               // console.log("book");

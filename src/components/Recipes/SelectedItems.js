@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import { slugify, kalender } from "../common/common";
 import { deleteRecipe } from "../../services/recipeService";
 
-const FavoriteItems = ({
+const SelectedItems = ({
   recipes,
   setRecipes,
   recipe,
@@ -23,7 +23,12 @@ const FavoriteItems = ({
 
   return (
     <Fragment>
-      <div key={recipe._id} className="recipe-box bg-rose-200">
+      <div
+        key={recipe._id}
+        className={`recipe-box ${
+          recipe.item === "true" ? "bg-rose-200" : "bg-badge"
+        } grid-box unvisable slide work-grid-item grid-box__black `}
+      >
         <div className={`min-h-full70 p-12 md:p-15`}>
           <Link
             to={{
@@ -80,4 +85,4 @@ const FavoriteItems = ({
   );
 };
 
-export default FavoriteItems;
+export default SelectedItems;

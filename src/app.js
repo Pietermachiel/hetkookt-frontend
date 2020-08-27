@@ -150,7 +150,7 @@ const App = () => {
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch(`${recipeUrl}/categories.json`);
+      const res = await fetch(`${apiUrl}/categories`);
       res.json().then((res) => setCategories(res));
     }
     getData();
@@ -300,7 +300,7 @@ const App = () => {
               />
             )}
           />
-          <Route
+          <ProtectedRoute
             exact
             path="/recipes"
             render={(props) => {

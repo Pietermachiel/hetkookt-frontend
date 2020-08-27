@@ -15,7 +15,7 @@ const Recipes = ({ recipes, setRecipes, ...props }) => {
         </div>
       )}
       <h1 className="favorieten-title">
-        Favorieten
+        Recepten
         <Link to={`/nieuwrecept`}>
           <button className="bg-indigo-500 text-16 p-16 px-30 mt-18 md:mt-0 md:ml-18 align-bottom text-white uppercase tracking-widest">
             nieuw recept

@@ -102,7 +102,7 @@ const Recipe = ({ user, me, setMe, thecart, sorts, ...props }) => {
                         src="/img/feather/bookmark-red-stroke.svg"
                         alt="bookmark red"
                       />
-                      <span className="ml-10">zet in favorieten ></span>
+                      <span className="ml-10">staat in kookschrift ></span>
                     </div>
                   </Link>
                 </Fragment>
@@ -117,7 +117,7 @@ const Recipe = ({ user, me, setMe, thecart, sorts, ...props }) => {
                       src="/img/feather/bookmark.svg"
                       alt="bookmark"
                     />
-                    <span className="ml-10">zet in favorieten ></span>
+                    <span className="ml-10">zet in kookschrift ></span>
                   </div>
                 </Fragment>
               )}
@@ -133,7 +133,7 @@ const Recipe = ({ user, me, setMe, thecart, sorts, ...props }) => {
                   src="/img/feather/bookmark.svg"
                   alt="bookmark"
                 />
-                <span className="ml-10">zet in favorieten ></span>
+                <span className="ml-10">zet in kookschrift ></span>
               </Link>
             </Fragment>
           )}

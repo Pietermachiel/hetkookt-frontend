@@ -9,7 +9,7 @@ const AccordionNav = ({ handleCatOpen, isCatOpen, setCatOpen, categories }) => {
         onClick={() => setCatOpen(!isCatOpen)}
         className={`accordion-nav-title ${isCatOpen ? "open" : ""}`}
       >
-        Recepten
+        ingrediënten
         <div className="accordion-nav-arrow"></div>
       </div>
       <div className={`accordion-nav-item ${!isCatOpen ? "collapsed" : ""}`}>
@@ -21,9 +21,12 @@ const AccordionNav = ({ handleCatOpen, isCatOpen, setCatOpen, categories }) => {
                   <Link
                     onClick={handleCatOpen}
                     className=""
-                    to={`/categories/${c.title}`}
+                    to={{
+                      pathname: `/categories/${c.name}`,
+                      state: c._id,
+                    }}
                   >
-                    {c.title}
+                    {c.name}
                   </Link>
                 </li>
               </ul>

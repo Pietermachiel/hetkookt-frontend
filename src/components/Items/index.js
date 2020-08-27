@@ -14,9 +14,9 @@ const Items = ({ me, setMe, recipes, ...props }) => {
     .filter(uniq)
     .sort();
 
-  // console.log("items: me.items");
-  // console.log(me.items);
-  // console.log(favoritedish);
+  console.log("items: me.items");
+  console.log(me.items);
+  console.log(favoritedish);
 
   return (
     <Fragment>
@@ -29,7 +29,7 @@ const Items = ({ me, setMe, recipes, ...props }) => {
           </div>
         )}
         <h1 className="favorieten-title">
-          Favorieten
+          Recepten
           <Link to={`/nieuwitem`}>
             <button className="bg-indigo-500 text-16 p-16 px-30 mt-18 md:mt-0 md:ml-18 align-bottom text-white uppercase tracking-widest">
               nieuw recept

@@ -10,7 +10,7 @@ const AccordionNav = ({ handleColOpen, isColOpen, setColOpen, dish }) => {
         onClick={() => setColOpen(!isColOpen)}
         className={`accordion-nav-title ${isColOpen ? "open" : ""}`}
       >
-        Collecties
+        gerechten
         <div className="accordion-nav-arrow"></div>
       </div>
       <div className={`accordion-nav-item ${!isColOpen ? "collapsed" : ""}`}>
@@ -22,7 +22,10 @@ const AccordionNav = ({ handleColOpen, isColOpen, setColOpen, dish }) => {
                   <Link
                     onClick={handleColOpen}
                     className=""
-                    to={`/collections/${c.name}`}
+                    to={{
+                      pathname: `/collections/${c.name}`,
+                      state: c._id,
+                    }}
                   >
                     {c.name}
                   </Link>

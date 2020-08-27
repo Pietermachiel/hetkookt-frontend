@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useCurrentWidth from "../common/use-current-width";
 import useCurrentHeight from "../common/use-current-height";
 import { slugify, kalender } from "../common/common";
-import RecipeItems from "../Recipes/RecipeItems";
+import SelectedItems from "../Recipes/SelectedItems";
 import FavoriteItems from "../Recipes/FavoriteItems";
 
 const Sorts = ({
@@ -16,24 +16,33 @@ const Sorts = ({
   categories,
   ...props
 }) => {
-  // console.log(props);
+  console.log("sorts: thecart");
+  console.log(thecart);
 
-  const width = useCurrentWidth();
-  const height = useCurrentHeight();
+  // const width = useCurrentWidth();
+  // const height = useCurrentHeight();
 
   const sort = sorts.find(
     (s) => s.title.replace(" ", "-") === props.match.params.id
   );
   if (sort === undefined) return [];
 
-  const recipeItem = recipes.filter((element) => {
+  const recipeItems = recipes.filter((element) => {
     let fresh = element.fresh.some(
       ({ ingredient }) => ingredient.replace(" ", "-") === props.match.params.id
     );
     return fresh;
   });
-  console.log("recipeItem");
-  console.log(recipeItem);
+
+  const cartItems = thecart.filter((element) => {
+    let fresh = element.fresh.some(
+      ({ ingredient }) => ingredient.replace(" ", "-") === props.match.params.id
+    );
+    return fresh;
+  });
+
+  console.log("recipeItems");
+  console.log(recipeItems);
 
   console.log("sort");
   console.log(sort);
@@ -64,30 +73,17 @@ const Sorts = ({
               </p>
             </div>
           </div>
-
-          {recipeItem.map((recipe, index) => {
-            let cart = thecart.find((c) => c._id === recipe._id);
-            if (cart === undefined) cart = [];
-            // const thelength = recipe.tags.length - 1;
-            if (recipe.basics === undefined) return (recipe.basics = []);
+          {recipeItems.map((recipe, index) => {
             return (
               <Fragment key={index}>
-                {user && recipe._id === cart._id ? (
-                  <Fragment>
-                    <FavoriteItems
-                      recipe={recipe}
-                      cart={cart}
-                      Link={Link}
-                      me={me}
-                      setMe={setMe}
-                      {...props}
-                    />
-                  </Fragment>
-                ) : (
-                  <Fragment>
-                    <RecipeItems recipe={recipe} {...props} />
-                  </Fragment>
-                )}
+                <SelectedItems recipe={recipe} {...props} />
+              </Fragment>
+            );
+          })}
+          {cartItems.map((recipe, index) => {
+            return (
+              <Fragment>
+                <FavoriteItems recipe={recipe} {...props} />
               </Fragment>
             );
           })}

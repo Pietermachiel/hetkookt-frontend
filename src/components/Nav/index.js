@@ -51,6 +51,9 @@ const Nav = ({
   const width = useCurrentWitdh();
   // console.log(width);
 
+  // console.log("user");
+  // console.log(user);
+
   return (
     <Fragment>
       <div
@@ -94,9 +97,13 @@ const Nav = ({
                       </NavLink>
                     </div>
                   </li>
-                  {/* <p className="font-500 tracking-widest text-center mb-0 mt-18">
-                      recepten
-                    </p> */}
+                  <li>
+                    <div className="">
+                      <div className="text-white font-700 p-12">
+                        De recepten
+                      </div>
+                    </div>
+                  </li>
                   <CategoriesNav
                     categories={categories}
                     handleCatOpen={handleCatOpen}
@@ -112,18 +119,7 @@ const Nav = ({
                   <li>
                     <div className="list-links__link">
                       <NavLink onClick={handleIsOpen} className="" to="/books">
-                        Boekentop100
-                      </NavLink>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="list-links__link">
-                      <NavLink
-                        onClick={handleIsOpen}
-                        className=""
-                        to="/recipes"
-                      >
-                        Recipes
+                        De kookboeken
                       </NavLink>
                     </div>
                   </li>
@@ -139,7 +135,6 @@ const Nav = ({
                       {/* </NavLink> */}
                     </li>
                   )}
-
                   {user && (
                     <Fragment>
                       <li>
@@ -165,6 +160,19 @@ const Nav = ({
                         </div>
                       </li>
                     </Fragment>
+                  )}
+                  {user && user.isAdmin && (
+                    <li>
+                      <div className="list-links__link">
+                        <NavLink
+                          onClick={handleIsOpen}
+                          className=""
+                          to="/recipes"
+                        >
+                          Recipes
+                        </NavLink>
+                      </div>
+                    </li>
                   )}
                 </div>
               </div>

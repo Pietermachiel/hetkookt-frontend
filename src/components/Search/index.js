@@ -52,7 +52,10 @@ const Search = ({
                       key={recipe._id}
                     >
                       <Link
-                        to={`/recipe/${slugify(recipe.title)}`}
+                        to={{
+                          pathname: `/recipes/${slugify(recipe.title)}`,
+                          state: recipe._id,
+                        }}
                         // value="Zoek recept..."
                         onClick={() => handleClick("")}
                       >

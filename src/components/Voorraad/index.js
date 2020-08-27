@@ -90,7 +90,8 @@ const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
           </span>
         </h1>
         <div className="mb-18">
-          Dit zijn de ingrediënten die op voorraad moeten zijn:
+          Dit zijn de ingrediënten die op voorraad moeten zijn voor het
+          weekmenu:
         </div>
         <div className=" grid-box unvisable slide work-grid-item pb-10">
           <Fragment>

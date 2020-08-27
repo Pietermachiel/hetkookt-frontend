@@ -27,7 +27,7 @@ const FavoriteItems = ({
         <div className={`min-h-full70 p-12 md:p-15`}>
           <Link
             to={{
-              pathname: `/recipes/${slugify(recipe.title)}`,
+              pathname: `/kookschrift/${slugify(recipe.title)}`,
               state: recipe._id,
             }}
           >
