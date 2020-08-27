@@ -52,7 +52,12 @@ const Sorts = ({
       <div className="container-x">
         <h1 className={`favorieten-title ${sort.sorts}`}>
           {sort.title}{" "}
-          <Link to={`/categories/${sort.sorts}`}>
+          <Link
+            to={{
+              pathname: `/categories/${sort.sorts}`,
+              state: sort._id,
+            }}
+          >
             <span className="text-21 ml-10">{sort.sorts}</span>
           </Link>
         </h1>

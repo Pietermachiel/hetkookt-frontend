@@ -1,9 +1,10 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { slugify } from "../common/common";
 import SelectedItems from "../Collections/SelectedItems";
 import FavoriteItems from "../Collections/FavoriteItems";
 import { includes } from "lodash";
+import { apiUrl } from "../../config.json";
 // import { handleDeleteFavorite } from "../../services/userService";
 
 const CategoriesItems = ({
@@ -14,6 +15,7 @@ const CategoriesItems = ({
   recipes,
   ...props
 }) => {
+  const [tags, setTags] = useState([]);
   // console.log(recipes);
   console.log("categories");
   console.log(categories);
@@ -22,10 +24,85 @@ const CategoriesItems = ({
 
   console.log(props.location.state);
 
+  useEffect(() => {
+    async function getData() {
+      const res = await fetch(`${apiUrl}/categories/${props.location.state}`);
+      res.json().then((res) => setTags(res));
+    }
+    getData();
+  }, [props.location.state]);
+
+  const thetags = recipes.map((r) => r.tags[0]);
+
+  console.log(tags);
+  console.log(thetags);
+
   return (
     <>
       <div className="container-x">
         <h1 className="favorieten-title">{props.match.params.id}</h1>
+        {tags.map((s, xid) => {
+          let recipeItems = recipes.filter(
+            (element) => element.tags[0].name === s.name
+          );
+          console.log("recipeItems");
+          console.log(recipeItems);
+          if (recipeItems.length !== 0)
+            return (
+              <div key={xid} className="flexbox flexbox-margin">
+                <Link
+                  className="recipe-box recipe-box_sorts"
+                  to={`/sorts/${slugify(s.name)}`}
+                >
+                  <div>
+                    <img
+                      src={`/img/products/product_${slugify(s.name)}.jpg`}
+                      alt=""
+                    />
+                    <div className="recipe-box-footer">
+                      <p>
+                        <span>{s.name}</span>
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+
+                {recipeItems.map((recipe, index) => {
+                  return (
+                    <Fragment key={recipe._id}>
+                      <SelectedItems
+                        recipe={recipe}
+                        Link={Link}
+                        me={me}
+                        setMe={setMe}
+                        {...props}
+                      />
+                    </Fragment>
+                  );
+                })}
+                {thecart.map((recipe, index) => {
+                  let recipeTags = recipe.tags.map((element) => {
+                    let name = element.name;
+                    return name;
+                  });
+                  console.log(recipeTags);
+                  console.log("s.name");
+                  console.log(s.name);
+                  if (recipeTags.includes(s.name))
+                    return (
+                      <FavoriteItems
+                        key={recipe._id}
+                        recipe={recipe}
+                        Link={Link}
+                        me={me}
+                        setMe={setMe}
+                        {...props}
+                      />
+                    );
+                })}
+              </div>
+            );
+        })}
 
         {/* {categories.map((category, index) => {
           if (category.title === props.match.params.id)
