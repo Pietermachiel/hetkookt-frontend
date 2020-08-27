@@ -47,16 +47,16 @@ const CollectionsItems = ({
   // filter uniq tags
   selectedtags = selectedtags.map((ss) => ss.name).filter(uniq);
 
-  console.log("selectedtags");
-  console.log(selectedtags);
-  console.log("props.match.params.id");
-  console.log(props.match.params.id);
-  console.log("therecipes");
-  console.log(therecipes);
-  console.log("dishrecipes");
-  console.log(dishrecipes);
-  console.log("dish");
-  console.log(dish);
+  // console.log("selectedtags");
+  // console.log(selectedtags);
+  // console.log("props.match.params.id");
+  // console.log(props.match.params.id);
+  // console.log("therecipes");
+  // console.log(therecipes);
+  // console.log("dishrecipes");
+  // console.log(dishrecipes);
+  // console.log("dish");
+  // console.log(dish);
 
   return (
     <>
@@ -79,15 +79,15 @@ const CollectionsItems = ({
                         src={`/img/products/product_${slugify(s)}.jpg`}
                         alt=""
                       />
+                    </div>{" "}
+                    <div className="relative h-60">
+                      <p
+                        className={`mt-10 uppercase absolute tracking-widest top-0 left-0 text-14`}
+                      >
+                        <span className="pl-15">{s}</span>
+                      </p>
                     </div>
                   </Link>
-                  <div className="relative h-60">
-                    <p
-                      className={`mt-10 uppercase absolute tracking-widest top-0 left-0 text-14`}
-                    >
-                      <span className="pl-15">{s}</span>
-                    </p>
-                  </div>
                 </div>
                 {therecipes.map((recipe, index) => {
                   if (recipe.tags[0].name === s)
