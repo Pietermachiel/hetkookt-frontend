@@ -26,6 +26,8 @@ const CollectionsItems = ({
   // filter uniq tags
   selectedtags = selectedtags.map((ss) => ss.name).filter(uniq);
 
+  console.log(selectedtags);
+
   return (
     <>
       <div className="container-x">
@@ -58,7 +60,7 @@ const CollectionsItems = ({
                       </div>
                     </Link>
                   </div>
-                  {recipes.map((recipe, index) => {
+                  {dishrecipes.map((recipe, index) => {
                     if (recipe.tags[0].name === s)
                       return (
                         <Fragment key={index}>
@@ -73,10 +75,7 @@ const CollectionsItems = ({
                       );
                   })}
                   {thecart.map((recipe, index) => {
-                    if (
-                      recipe.dish.name === props.match.params.id &&
-                      recipe.tags[0].name === s
-                    )
+                    if (recipe.tags[0].name === s)
                       return (
                         <Fragment key={index}>
                           <FavoriteItems

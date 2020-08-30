@@ -12,18 +12,6 @@ const Collections = ({ me, setMe, thecart, dish, recipes, ...props }) => {
   console.log("dish");
   console.log(dish);
 
-  // {categories.map((c) => {
-  //   if (c.name.indexOf(cat) < 0 && cat !== "allCats") return null;
-  //   return (
-  //     <div key={c._id} className="cat-box mb-36">
-  //       <h1 className="favorieten-title">{c.name}</h1>
-  //       <div className="flexbox flexbox-margin unvisable slide work-grid-item">
-  //         {tags.map((s, xid) => {
-  //           if (c._id === s.category)
-  //             return (
-  //               <div key={s.category} class="recipe-box recipe-box_sorts">
-  //                 <Link to={`/sorts/${s.name}`}>
-
   return (
     <Fragment>
       <div className="container-x">
@@ -46,12 +34,14 @@ const Collections = ({ me, setMe, thecart, dish, recipes, ...props }) => {
           let therecipes = recipes.filter((r) => r.dish._id === d._id);
           let thetags = therecipes.map((t) => t.tags[0]);
           thetags = thetags.map((m) => m.name).filter(uniq);
+          console.log(thetags);
           return (
             <Fragment>
               <div className="cat-box mb-36">
                 <h1 className="mb-18">{d.name}</h1>
                 <div className="flexbox flexbox-margin unvisable slide work-grid-item">
                   {thetags.map((s, xid) => {
+                    // if (s.dish._id === d._id)
                     return (
                       <Fragment key={xid}>
                         <div className="recipe-box recipe-box_sorts">

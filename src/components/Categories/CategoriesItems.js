@@ -31,8 +31,8 @@ const CategoriesItems = ({
           let recipeItems = recipes.filter(
             (element) => element.tags[0].name === s.name
           );
-          console.log("recipeItems");
-          console.log(recipeItems);
+          // console.log("recipeItems");
+          // console.log(recipeItems);
           if (recipeItems.length !== 0)
             return (
               <div key={xid} className="flexbox flexbox-margin">
@@ -71,9 +71,9 @@ const CategoriesItems = ({
                     let name = element.name;
                     return name;
                   });
-                  console.log(recipeTags);
-                  console.log("s.name");
-                  console.log(s.name);
+                  // console.log(recipeTags);
+                  // console.log("s.name");
+                  // console.log(s.name);
                   if (recipeTags.includes(s.name))
                     return (
                       <FavoriteItems

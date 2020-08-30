@@ -21,9 +21,9 @@ import Categories from "./components/Categories";
 import CollectionsItems from "./components/Collections/CollectionsItems";
 import Collections from "./components/Collections";
 import Items from "./components/Items";
-import Item from "./components/Item";
-import NieuwItem from "./components/Item/NieuwItem";
-import EditItem from "./components/Item/EditItem";
+import Item from "./components/Items/item";
+import NieuwItem from "./components/Items/NieuwItem";
+import EditItem from "./components/Items/EditItem";
 import Boodschappen from "./components/Boodschappen";
 import Voorraad from "./components/Voorraad";
 import Books from "./components/Books";
@@ -271,7 +271,6 @@ const App = () => {
             user={user}
             recipes={recipes}
             categories={categories}
-            sorts={sorts}
             dish={dish}
           />
         </header>
@@ -281,18 +280,7 @@ const App = () => {
             exact
             path="/"
             render={(props) => (
-              <Home
-                me={me}
-                setMe={setMe}
-                user={user}
-                recipes={recipes}
-                categories={categories}
-                sorts={sorts}
-                dish={dish}
-                thecart={thecart}
-                about={about}
-                {...props}
-              />
+              <Home user={user} recipes={recipes} {...props} />
             )}
           />
           <ProtectedRoute
@@ -302,9 +290,8 @@ const App = () => {
               return (
                 <Recipes
                   recipes={recipes}
-                  books={books}
                   setRecipes={setRecipes}
-                  me={me}
+                  books={books}
                   {...props}
                 />
               );
@@ -319,7 +306,7 @@ const App = () => {
                   me={me}
                   setMe={setMe}
                   categories={categories}
-                  sorts={sorts}
+                  tags={tags}
                   thecart={thecart}
                   {...props}
                 />
@@ -356,8 +343,6 @@ const App = () => {
                   tags={tags}
                   dish={dish}
                   books={books}
-                  // recipes={recipes}
-                  // setRecipes={setRecipes}
                   therecipe={therecipe}
                   {...props}
                 />
@@ -397,7 +382,7 @@ const App = () => {
               <Item
                 {...props}
                 recipes={recipes}
-                sorts={sorts}
+                tags={tags}
                 dish={dish}
                 user={user}
                 me={me}
@@ -447,7 +432,7 @@ const App = () => {
                 {...props}
                 dish={dish}
                 user={user}
-                thecart={thecart} //  [ _id, _id, ... ]
+                thecart={thecart}
                 recipes={recipes}
                 me={me}
                 setMe={setMe}
@@ -464,7 +449,7 @@ const App = () => {
                   user={user}
                   recipes={recipes}
                   categories={categories}
-                  sorts={sorts}
+                  tags={tags}
                   {...props}
                 />
               );

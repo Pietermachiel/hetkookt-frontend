@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import { slugify, slugifyu, kalender } from "../common/common.js";
 import AddpanelWeekmenu from "./AddpanelWeekmenu.js";
 
-const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
+const Item = ({ user, me, setMe, doSave, tags, ...props }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [routeRedirect, setRedirect] = useState("");
 
@@ -106,9 +106,9 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
               <p>vers</p>
               <div className="ingredienten-box">
                 {therecipe.fresh.map((f, xid) => {
-                  const category = sorts.find((s) => s.title === f.ingredient);
-                  if (category === undefined) return [];
-                  const catcolor = category.sorts;
+                  const thetag = tags.find((s) => s.name === f.ingredient);
+                  if (thetag === undefined) return [];
+                  const catcolor = thetag.category.name;
                   return (
                     <li key={xid}>
                       <div className="items-quantity">

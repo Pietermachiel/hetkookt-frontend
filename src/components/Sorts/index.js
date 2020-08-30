@@ -10,15 +10,15 @@ const Sorts = ({
   user,
   thecart,
   recipes,
-  sorts,
+  tags,
   categories,
   ...props
 }) => {
   console.log("sorts: thecart");
-  console.log(thecart);
+  console.log(tags);
 
-  const sort = sorts.find(
-    (s) => s.title.replace(" ", "-") === props.match.params.id
+  const sort = tags.find(
+    (s) => s.name.replace(" ", "-") === props.match.params.id
   );
   if (sort === undefined) return [];
 
@@ -46,7 +46,7 @@ const Sorts = ({
     <>
       <div className="container-x">
         <h1 className={`favorieten-title ${sort.sorts}`}>
-          {sort.title}{" "}
+          {sort.name}{" "}
           <Link
             to={{
               pathname: `/categories/${sort.sorts}`,
@@ -59,17 +59,17 @@ const Sorts = ({
 
         <div className="flexbox flexbox-margin">
           <div className="recipe-box recipe-box_sorts">
-            <Link to={`/sorts/${slugify(sort.title)}`}>
+            <Link to={`/sorts/${slugify(sort.name)}`}>
               <div className="">
                 <img
-                  src={`/img/products/product_${slugify(sort.title)}.jpg`}
+                  src={`/img/products/product_${slugify(sort.name)}.jpg`}
                   alt=""
                 />
               </div>
             </Link>
             <div className="recipe-box-footer">
               <p className={``}>
-                <span className="">{sort.title}</span>
+                <span className="">{sort.name}</span>
               </p>
             </div>
           </div>

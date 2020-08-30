@@ -9,10 +9,10 @@ const Categories = ({ categories, tags, ...props }) => {
     setCat(c);
   };
 
-  console.log("categories");
-  console.log(categories);
-  console.log(tags);
-  console.log(cat);
+  // console.log("categories");
+  // console.log(categories);
+  // console.log(tags);
+  // console.log(cat);
 
   return (
     <Fragment>

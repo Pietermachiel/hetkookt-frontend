@@ -12,7 +12,7 @@ const Items = ({ me, setMe, recipes, ...props }) => {
     .filter(uniq)
     .sort();
 
-  console.log("items: me.items");
+  console.log("me.items");
   console.log(me.items);
   console.log(favoritedish);
 

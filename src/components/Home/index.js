@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 
-const Home = ({ me, setMe, user, recipes, about, ...props }) => {
+const Home = ({ user, recipes, ...props }) => {
   if (recipes.length === 0)
     return (
       <div className="container-x">

@@ -5,9 +5,9 @@ import { slugify, slugifyu } from "../common/common.js";
 import { apiUrl } from "../../config.json";
 import { createRecipe } from "../../services/userService";
 
-const Recipe = ({ user, me, setMe, thecart, sorts, ...props }) => {
+const Recipe = ({ user, me, setMe, thecart, tags, ...props }) => {
   var [therecipe, setTheRecipe] = useState([]);
-
+  // console.log(tags);
   const API = props.location.state;
 
   const handleCreateRecipe = async (me, setMe, therecipe) => {
@@ -155,11 +155,11 @@ const Recipe = ({ user, me, setMe, thecart, sorts, ...props }) => {
               <p>vers</p>
               <div className="ingredienten-box">
                 {therecipe.fresh.map((f, xid) => {
-                  const category = sorts.find((s) => s.title === f.ingredient);
-                  // console.log("category");
-                  // console.log(category);
-                  if (category === undefined) return [];
-                  const catcolor = category.sorts;
+                  const thetag = tags.find((s) => s.name === f.ingredient);
+                  console.log("thetag");
+                  console.log(thetag);
+                  if (thetag === undefined) return [];
+                  const catcolor = thetag.category.name;
                   return (
                     <li key={xid}>
                       <div className="items-quantity">

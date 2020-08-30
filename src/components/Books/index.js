@@ -6,25 +6,6 @@ import { slugify } from "../common/common";
 const Books = ({ kitchens, books, ...props }) => {
   const [kitchen, setKitchen] = useState("allKitchens");
 
-  // const countries = [
-  //   "nederlands",
-  //   "frans",
-  //   "duits",
-  //   "engels",
-  //   "vs",
-  //   "italiaans",
-  //   "spaans",
-  //   "oosters",
-  //   "vegetarisch",
-  //   "geschiedenis",
-  // ];
-
-  console.log("books");
-  console.log(books);
-  console.log("kitchens");
-  console.log(kitchens);
-  console.log("kitchen");
-  console.log(kitchen);
   books = books.filter((f) => f.kitchen !== undefined);
 
   const handleKitchens = (c) => {
@@ -51,8 +32,6 @@ const Books = ({ kitchens, books, ...props }) => {
         <div className="ko-box">
           <div className="ko-box-inner">
             {books.map((b) => {
-              console.log("b.kitchen.indexOf(kitchen)");
-              console.log(b.kitchen.name.indexOf(kitchen));
               if (
                 b.kitchen.name.indexOf(kitchen) < 0 &&
                 kitchen !== "allKitchens"
