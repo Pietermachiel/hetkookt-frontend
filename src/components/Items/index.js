@@ -1,9 +1,7 @@
 import React, { Fragment } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { uniq } from "../common/common";
-// import { handleDeleteFavorite } from "../../services/userService";
 import ItemsItem from "./itemsItem";
-import { slugify, kalender } from "../common/common";
 
 const Items = ({ me, setMe, recipes, ...props }) => {
   if (me.items === undefined) me.items = [];
@@ -37,33 +35,35 @@ const Items = ({ me, setMe, recipes, ...props }) => {
           </Link>
         </h1>
 
+        <div className="">
+          <p className="w-full md:w-75">
+            Zoek een recept in het menu (
+            <Link
+              className="font-700 text-indigo-600 hover:text-red-500"
+              to="categories"
+            >
+              labels
+            </Link>{" "}
+            of{" "}
+            <Link
+              className="font-700 text-indigo-600 hover:text-red-500"
+              to="/collections"
+            >
+              collecties
+            </Link>
+            ) en zet in het kookschrift, of maak zelf een{" "}
+            <Link
+              className="font-700 text-indigo-600 hover:text-red-500"
+              to="/nieuwrecept"
+            >
+              nieuw kookschriftrecept
+            </Link>{" "}
+            aan.
+          </p>
+        </div>
         {me.items.length === 0 && (
           <div className="">
             <p className="font-600">Er staat nog niets in het kookschrift.</p>
-            <p className="w-full md:w-50">
-              Zoek een recept in{" "}
-              <Link
-                className="font-700 text-indigo-600 hover:text-red-500"
-                to="categories"
-              >
-                recepten
-              </Link>{" "}
-              of{" "}
-              <Link
-                className="font-700 text-indigo-600 hover:text-red-500"
-                to="/collections"
-              >
-                collecties
-              </Link>{" "}
-              of maak zelf een{" "}
-              <Link
-                className="font-700 text-indigo-600 hover:text-red-500"
-                to="/nieuwrecept"
-              >
-                nieuw recept
-              </Link>{" "}
-              aan.
-            </p>
           </div>
         )}
         {favoritedish.map((d, xid) => {

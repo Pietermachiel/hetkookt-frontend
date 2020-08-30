@@ -1,7 +1,6 @@
-import React from "react";
 import axios from "axios"; // the only place we call axios, so here modify if change do different module
 import logger from "./logService";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 // axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 

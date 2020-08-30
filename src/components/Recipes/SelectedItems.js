@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Fragment } from "react";
-import { slugify, kalender } from "../common/common";
-import { deleteRecipe } from "../../services/recipeService";
+import { slugify } from "../common/common";
 
 const SelectedItems = ({
   recipes,
@@ -11,16 +10,6 @@ const SelectedItems = ({
   thelength,
   ...props
 }) => {
-  // const [isOpen, setIsOpen] = useState(false);
-  // console.log("cart");
-  // console.log(cart);
-  // console.log("kalender");
-  // console.log(kalender);
-
-  // const handleDeleteRecipe = (id) => {
-  //   deleteRecipe(recipes, setRecipes, id);
-  // };
-
   return (
     <Fragment>
       <div
@@ -54,31 +43,6 @@ const SelectedItems = ({
           <p className={`uppercase tracking-widest text-14 pl-15 mb-0`}>
             {recipe.dish.name}
           </p>
-          {/* <div
-            className={`recipe-footer__box-delete ${
-              isOpen ? "box-delete__open" : null
-            }`}
-          >
-            <div className="flex items-center">
-              <button
-                className="btn-delete"
-                // onClick={() => handleUpdate(recipe._id)}
-                onClick={() => setIsOpen(!isOpen)}
-              >
-                <img
-                  className="w-32 h32 -mt-3"
-                  src="/img/icons/btn-remove.svg"
-                  alt=""
-                />
-              </button>
-              <button
-                onClick={() => handleDeleteRecipe(recipe._id)}
-                className="btn-weg"
-              >
-                Wegdoen
-              </button>
-            </div>
-          </div> */}
         </div>
       </div>
     </Fragment>

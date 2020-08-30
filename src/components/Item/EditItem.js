@@ -1,8 +1,7 @@
-import React, { useState, Fragment } from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { slugify } from "../common/common";
-// import thedishes from "../../data/dishes.json";
 import { doSave } from "../../services/userService";
 import { useForm, useFieldArray } from "react-hook-form";
 
@@ -16,8 +15,6 @@ const stockunits = [
 ];
 
 const EditItem = ({ me, tags, dish, setMe, therecipe, ...props }) => {
-  const [routeRedirect, setRedirect] = useState("");
-  const [error, setError] = useState("");
   const { register, control, handleSubmit, errors } = useForm({
     defaultValues: {
       _id: therecipe._id,
@@ -58,13 +55,6 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, ...props }) => {
     append: directionsAppend,
     remove: directionsRemove,
   } = useFieldArray({ control, name: "directions" });
-  // const { fields: dateFields } = useFieldArray({ control, name: "date" });
-
-  console.log("edit therecipe");
-  console.log(therecipe);
-  // console.log("props");
-  // console.log(props);
-  console.log(window.location);
 
   const handleDoSave = async (data) => {
     const thedata = { ...data, _id: therecipe._id, date: therecipe.date };
@@ -73,33 +63,14 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, ...props }) => {
     console.log("thedata");
     console.log(thedata);
     try {
-      // throw new Error("Whoops!");
       await doSave(me, setMe, thedata);
-      // const { state } = props.location;
-      // window.location = state ? state.from.pathname : "/kookschrift";
       window.location = "/kookschrift";
     } catch (ex) {
-      // console.log(ex.message);
-      // if (ex.response && ex.response.status === 400) {
-      //   const theerr = ex.response.data;
-      //   setError(theerr);
-      // }
       if (ex.response && ex.response.status === 400) {
         toast.error("foutje");
       }
     }
   };
-
-  // console.log("edititem dish");
-  // console.log(dish);
-  // const redirect = routeRedirect;
-  // if (redirect) {
-  //   return <Redirect to="/kookschrift" />;
-  // }
-
-  // console.log("EditItem: me.items");
-  // console.log(me.items);
-  // console.log(therecipe);
 
   return (
     <React.Fragment>
@@ -183,9 +154,7 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, ...props }) => {
                       <select
                         name={`tags[${index}].name`}
                         className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
-                        // defaultValue={item.name}
                         ref={register()}
-                        // ref={register({ required: true })}
                       >
                         <option value="" />
                         {tags.map((option, xid) => (
@@ -393,13 +362,6 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, ...props }) => {
                         />
                       </button>
                     </li>
-                    {/* {errors.stock &&
-                      errors.stock[index] &&
-                      errors.stock[index].quantity?.type === "pattern" && (
-                        <span className="block text-16 py-6 font-700 text-orange-500">
-                          Alleen cijfers
-                        </span>
-                      )} */}
                     {errors.stock &&
                       errors.stock[index] &&
                       errors.stock[index].quantity?.type === "maxLength" && (

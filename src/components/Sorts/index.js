@@ -1,8 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import useCurrentWidth from "../common/use-current-width";
-import useCurrentHeight from "../common/use-current-height";
-import { slugify, kalender } from "../common/common";
+import { slugify } from "../common/common";
 import SelectedItems from "../Recipes/SelectedItems";
 import FavoriteItems from "../Recipes/FavoriteItems";
 
@@ -18,9 +16,6 @@ const Sorts = ({
 }) => {
   console.log("sorts: thecart");
   console.log(thecart);
-
-  // const width = useCurrentWidth();
-  // const height = useCurrentHeight();
 
   const sort = sorts.find(
     (s) => s.title.replace(" ", "-") === props.match.params.id

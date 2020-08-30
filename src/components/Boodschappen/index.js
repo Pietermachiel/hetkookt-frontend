@@ -21,20 +21,12 @@ const Boodschappen = ({ me, setMe }) => {
     getData();
   }, []);
 
-  // console.log(groceries);
-  // console.log(me);
   if (me.items === undefined) return [];
 
   const themenu = me.items.filter((r) => {
-    const item = kalender.find((k) =>
-      // r.date ? r.date.includes(k.dayall) : null
-      r.date.find((d) => d.name === k.dayall)
-    );
+    const item = kalender.find((k) => r.date.find((d) => d.name === k.dayall));
     return item;
   });
-
-  // console.log("themenu");
-  // console.log(themenu);
 
   const handleExtra = (value) => {
     const trimmedText = value.trim();
@@ -48,11 +40,8 @@ const Boodschappen = ({ me, setMe }) => {
   let allfresh = themenu.reduce(function (accumulator, currentValue) {
     return [...accumulator, ...currentValue.fresh];
   }, []);
-  // console.log("allfresh");
-  // console.log(allfresh);
 
   allfresh = allfresh.filter((f) => f.to_buy === true);
-  // console.log(allfresh);
 
   // https://stackoverflow.com/questions/44332180/merge-objects-with-the-same-id-but-sum-values-of-the-objects
   // For a version with Array#reduce, you could use a hash table as reference to the same company with a closure over the hash table.
@@ -89,9 +78,6 @@ const Boodschappen = ({ me, setMe }) => {
   const myBoodschappen = boodschappen.map(
     (b) => "%0D%0A" + " " + b.quantity + " " + b.unit + " " + b.ingredient
   );
-
-  console.log("myBoodschappen");
-  console.log(myBoodschappen.length);
 
   return (
     <Fragment>
@@ -202,8 +188,6 @@ const Boodschappen = ({ me, setMe }) => {
                     const deboodschappen = boodschappen.filter((b) =>
                       g.sort.includes(b.ingredient)
                     );
-                    // console.log("deboodschappen");
-                    // console.log(deboodschappen);
                     if (deboodschappen.length !== 0)
                       return (
                         <Fragment key={xid}>
@@ -212,8 +196,6 @@ const Boodschappen = ({ me, setMe }) => {
                           </h2>
                           <ul className="mb-18">
                             {deboodschappen.map((b, xid) =>
-                              // console.log(g.sort);
-                              // if (g.sort.includes(b.ingredient))
                               deboodschappen.length !== 0 ? (
                                 <li
                                   key={xid}
@@ -300,11 +282,7 @@ const Boodschappen = ({ me, setMe }) => {
                     placeholder="Zet dit extra op de lijst..."
                   />
                   &nbsp;
-                  <button
-                    // className="mb-36 uppercase text-16 bg-indigo-500 mt-36 px-36 py-10 text-white tracking-widest"
-                    // className="btn btn-small  btn-small__green"
-                    type="submit"
-                  >
+                  <button type="submit">
                     <img src="/img/feather/plus.svg" alt="" />
                   </button>
                 </form>

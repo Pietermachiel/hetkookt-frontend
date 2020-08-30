@@ -1,13 +1,9 @@
 import React, { Fragment, useState } from "react";
-import { slugify, kalender } from "../common/common";
+import { slugify } from "../common/common";
 import { deleteRecipe } from "../../services/userService";
 
 const ItemsItem = ({ cart, Link, recipe, thelength, me, setMe, ...props }) => {
   const [isOpen, setIsOpen] = useState(false);
-  // console.log("cart");
-  // console.log(cart);
-  // console.log("kalender");
-  // console.log(kalender);
 
   const handleDeleteRecipe = (id) => {
     deleteRecipe(me, setMe, id);

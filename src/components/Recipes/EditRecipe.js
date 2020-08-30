@@ -1,8 +1,7 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import { toast } from "react-toastify";
 import { saveRecipe } from "../../services/recipeService";
 import { useForm, useFieldArray } from "react-hook-form";
-import { apiUrl } from "../../config.json";
 
 const theunits = [{ unit: "g" }, { unit: "ml" }];
 const stockunits = [
@@ -12,18 +11,8 @@ const stockunits = [
   { unit: "el" },
 ];
 
-const EditRecipe = ({
-  tags,
-  dish,
-  books,
-  // recipes,
-  // setRecipes,
-  therecipe,
-  ...props
-}) => {
-  // const [routeRedirect, setRedirect] = useState("");
+const EditRecipe = ({ tags, dish, books, therecipe, ...props }) => {
   const [err, setError] = useState("");
-  // const [therecipe, setTheRecipe] = useState([]);
   const { register, control, handleSubmit, reset, errors } = useForm({
     defaultValues: {
       _id: therecipe._id,
@@ -93,25 +82,14 @@ const EditRecipe = ({
     console.log("EditRecipe: thedata");
     console.log(thedata);
     try {
-      // alert("create recipe");
       await saveRecipe(thedata);
-      window.location = "/recipes";
-      // const { state } = props.location;
-      // window.location = state ? state.from.pathname : "/kookschrift";
+      window.location = `/recipes`;
     } catch (ex) {
-      // alert("catch error");
       if (ex.response && ex.response.status === 400) {
         toast.error("foutje");
-        // const theerr = ex.response.data;
-        // setError(theerr);
       }
     }
   };
-
-  // console.log("error");
-  // console.log(err);
-  // console.log("books");
-  // console.log(books);
 
   return (
     <React.Fragment>
@@ -132,7 +110,7 @@ const EditRecipe = ({
                 ref={register({
                   required: true,
                   maxLength: 50,
-                  pattern: /^[a-zA-Z0-9 ]+$/,
+                  pattern: /^[a-zA-Z0-9 -]+$/,
                 })}
               />
               {errors.title?.type === "required" && (
@@ -396,13 +374,7 @@ const EditRecipe = ({
                         />
                       </button>
                     </li>
-                    {/* {errors.stock &&
-                      errors.stock[index] &&
-                      errors.stock[index].quantity?.type === "pattern" && (
-                        <span className="block text-16 py-6 font-700 text-orange-500">
-                          Alleen cijfers
-                        </span>
-                      )} */}
+
                     {errors.stock &&
                       errors.stock[index] &&
                       errors.stock[index].quantity?.type === "maxLength" && (
@@ -443,11 +415,7 @@ const EditRecipe = ({
                       className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
                       ref={register()}
                     />
-                    {/* {errors.directions?.type === "maxLength" && (
-                      <span className="block text-16 py-6 font-700 text-orange-500">
-                        Maximaal 30 lettertekens
-                      </span>
-                    )} */}
+
                     <button
                       className="absolute top-0"
                       style={{ right: "0" }}
@@ -490,11 +458,6 @@ const EditRecipe = ({
                   </option>
                 ))}
               </select>
-              {/* {errors.books?.type === "required" && (
-                <span className="block text-16 py-6 font-700 text-orange-500">
-                  Dit veld is verplicht
-                </span>
-              )} */}
             </div>
             {/* info */}
             <div className="">

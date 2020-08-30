@@ -1,11 +1,11 @@
 import React, { Fragment, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as userService from "../services/userService";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 const Register = (props) => {
-  const { register, handleSubmit, watch, errors } = useForm();
+  const { register, handleSubmit, errors } = useForm();
   const [err, setErr] = useState("");
 
   const doSubmit = async (data) => {
@@ -14,10 +14,6 @@ const Register = (props) => {
       window.location = "/inschrijven";
     } catch (ex) {
       toast.warning("Deze gebruiker bestaat al.");
-      // if (ex.response && ex.response.status === 400) {
-      //   const theerr = ex.response.data;
-      //   setErr(theerr);
-      // }
     }
   };
 

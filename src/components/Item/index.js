@@ -1,35 +1,21 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 import { Redirect } from "react-router";
 import { Link, NavLink } from "react-router-dom";
 import { slugify, slugifyu, kalender } from "../common/common.js";
 import AddpanelWeekmenu from "./AddpanelWeekmenu.js";
-// import { deleteRecipe } from "../../services/userService";
 
 const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
   const [isOpen, setIsOpen] = useState(false);
-  // const [item, setItem] = useState([]);
   const [routeRedirect, setRedirect] = useState("");
 
   if (me.items === undefined) return [];
   const therecipe = me.items.find(
     (i) => slugify(i.title) === props.match.params.id
   );
-  console.log("therecipe");
-  console.log(therecipe);
-
-  const API = props.match.url;
 
   const handleIsOpen = () => {
     setIsOpen(!isOpen);
   };
-
-  // const handleDeleteRecipe = (id) => {
-  //   // alert("Verwijder dit recept");
-  //   if (window.confirm("Weet je het zeker?")) deleteRecipe(me, setMe, id);
-  //   setRedirect(true);
-  //   // const { state } = props.location;
-  //   // window.location = state ? state.from.pathname : "/kookschrift";
-  // };
 
   const redirect = routeRedirect;
   if (redirect) {
@@ -101,17 +87,6 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
               edit
             </button>
           </Link>
-          {/* <button
-            onClick={() => handleDeleteRecipe(therecipe._id)}
-            className="mb-5 lg:pr-18 btn-add mr-10 text-19 font-600 text-red-700 flex item-center hover:text-red-500"
-          >
-            <img
-              className="w-25 h-25 mr-10"
-              src="/img/feather/x-square.svg"
-              alt=""
-            />
-            delete
-          </button> */}
         </div>
         {/* add panel */}
         <AddpanelWeekmenu
@@ -166,14 +141,7 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
                   );
                 })}
               </div>
-              {/* {therecipe.basics.length > 0 ? <p>basisrecepten</p> : null}
-              <div className="ingredienten-box">
-                {therecipe.basics.map((b, xid) => (
-                  <Link key={xid} to={`/recipe/${slugify(b)}`}>
-                    <span className="font-600">{b.name}</span>
-                  </Link>
-                ))}
-              </div> */}
+
               {therecipe.related.length > 0 ? <p>gerelateerd</p> : null}
               <div className="ingredienten-box">
                 {therecipe.related.map((b, xid) => (
@@ -205,12 +173,10 @@ const Item = ({ user, me, setMe, doSave, sorts, ...props }) => {
           </div>
         </div>
         <div className="recepten-source">
-          {/* <Link to={`/book/${slugify(therecipe.source)}`}> */}
           <div className="flex mt-72 pb-20">
             <img className="w-25" src="/img/feather/book.svg" alt="" />
             &nbsp;<span className="pl-5">Mijn kookschrift</span>
           </div>
-          {/* </Link> */}
         </div>
       </div>
     </Fragment>

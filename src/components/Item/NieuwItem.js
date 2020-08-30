@@ -70,7 +70,7 @@ const NieuwItem = ({ me, setMe, tags, dish, ...props }) => {
     try {
       // alert("create recipe");
       await createRecipe(me, setMe, data);
-      window.location.pathname = "/kookschrift";
+      // window.location.pathname = "/kookschrift";
       // const { state } = props.location;
       // window.location = state ? state.from.pathname : "/kookschrift";
     } catch (ex) {
@@ -92,7 +92,7 @@ const NieuwItem = ({ me, setMe, tags, dish, ...props }) => {
     <React.Fragment>
       <div className="container-y bg-rose-100">
         <div className="md:w-550 m-auto relative">
-          <h1 className="favorieten-title text-36">Nieuw recept</h1>
+          <h1 className="favorieten-title text-36">Nieuw kookschriftrecept</h1>
           <form onSubmit={handleSubmit(handleCreateRecipe)}>
             {/* titel */}
             <div className="formgroup__collectie">

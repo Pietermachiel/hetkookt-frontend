@@ -3,21 +3,14 @@ import { Link } from "react-router-dom";
 import { toggleStock, removeStock } from "../../services/userService";
 import AccordionVoorraad from "./AccordionVoorraad";
 import { kalender } from "../common/common";
-import Boodschappen from "../Boodschappen/index";
 
 const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
   if (me.stock === undefined) return (me.stock = []);
-  // console.log("me.stock");
-  // console.log(me.stock);
 
-  // console.log(me);
   if (me.items === undefined) return [];
 
   const themenu = me.items.filter((r) => {
-    const item = kalender.find((k) =>
-      // r.date ? r.date.includes(k.dayall) : null
-      r.date.find((d) => d.name === k.dayall)
-    );
+    const item = kalender.find((k) => r.date.find((d) => d.name === k.dayall));
     return item;
   });
 
@@ -58,9 +51,6 @@ const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
     []
   );
 
-  console.log("voorraad");
-  console.log(voorraad);
-
   const removeItem = (value) => {
     removeStock(me, setMe, value);
   };
@@ -71,9 +61,6 @@ const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
     );
     return item;
   });
-
-  console.log("devoorraad");
-  console.log(devoorraad);
 
   return (
     <Fragment>
@@ -145,16 +132,6 @@ const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
       </div>
     </Fragment>
   );
-  //   }
 };
 
 export default Voorraad;
-
-// {voorraad.map((v, xid) => {
-//   if (dv.stockitems.includes(v.item))
-//     return (
-//       <Fragment key={xid}>
-//         <div className="mb-10">{v.item}</div>
-//       </Fragment>
-//     );
-// })}

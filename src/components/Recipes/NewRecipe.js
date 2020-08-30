@@ -12,19 +12,18 @@ const stockunits = [
 ];
 
 const NewRecipe = ({ tags, dish, books, ...props }) => {
-  // const [routeRedirect, setRedirect] = useState("");
   const [err, setError] = useState("");
   const { register, control, handleSubmit, errors } = useForm({
     defaultValues: {
       _id: "",
       title: "",
-      dish: { name: "" },
+      dish: { _id: "" },
       tags: [{ name: "" }],
       related: [{ name: "" }],
       fresh: [{ quantity: null, unit: "", ingredient: "" }],
       stock: [{ quantity: null, unit: "", ingredient: "" }],
       directions: [{ name: "" }],
-      book: { name: " " },
+      book: { _id: " " },
       info: "",
       date: [{ name: "" }],
     },
@@ -123,7 +122,7 @@ const NewRecipe = ({ tags, dish, books, ...props }) => {
                 Collectie
               </label>
               <select
-                name="dish"
+                name="dish._id"
                 ref={register({ required: true })}
                 id="dish"
                 className="select h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
@@ -448,7 +447,7 @@ const NewRecipe = ({ tags, dish, books, ...props }) => {
                 Boek
               </label>
               <select
-                name="book"
+                name="book._id"
                 ref={register({
                   required: true,
                 })}

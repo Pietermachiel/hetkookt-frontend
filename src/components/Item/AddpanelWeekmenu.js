@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { kalender, heledag, theweek } from "../common/common";
 import { doPutMenu } from "../../services/userService";
 
@@ -10,8 +10,6 @@ const AddpanelWeekmenu = ({
   handleIsOpen,
   setRedirect,
 }) => {
-  // const [routeRedirect, setRedirect] = useState("");
-
   const handleSave = (me, setMe, therecipe, dedate) => {
     doPutMenu(me, setMe, therecipe, dedate);
     handleIsOpen(!isOpen);
@@ -51,7 +49,6 @@ const AddpanelWeekmenu = ({
                 </div>
                 <div className="absolute inset-0">
                   <span className="flex justify-center kalender-index">
-                    {/* {k.day !== "vandaag" ? k.index : null} */}
                     {k.day.slice(0, 2)}
                   </span>
                 </div>

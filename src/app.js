@@ -1,8 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
-import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
 import auth from "./services/authService";
 import http from "./services/httpService";
 import Login from "./components/login";
@@ -38,8 +36,6 @@ import ProtectedRoute from "./components/common/protectedRoute";
 import { apiUrl, recipeUrl } from "./config.json";
 import LogoBox from "./components/LogoBox";
 import { slugify } from "./components/common/common.js";
-import _ from "lodash";
-import { getUsersMe } from "./services/userService";
 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
@@ -295,7 +291,6 @@ const App = () => {
                 dish={dish}
                 thecart={thecart}
                 about={about}
-                recipes={recipes}
                 {...props}
               />
             )}
@@ -307,6 +302,7 @@ const App = () => {
               return (
                 <Recipes
                   recipes={recipes}
+                  books={books}
                   setRecipes={setRecipes}
                   me={me}
                   {...props}
@@ -481,6 +477,7 @@ const App = () => {
               return (
                 <Categories
                   thecart={thecart}
+                  tags={tags}
                   recipes={recipes}
                   {...props}
                   categories={categories}
@@ -509,6 +506,7 @@ const App = () => {
                 <Collections
                   thecart={thecart}
                   dish={dish}
+                  tags={tags}
                   recipes={recipes}
                   {...props}
                 />

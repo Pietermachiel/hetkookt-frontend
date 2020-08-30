@@ -1,7 +1,6 @@
-import React, { Fragment } from "react";
+import React from "react";
 import auth from "../../services/authService";
 import { deleteUser } from "../../services/userService";
-import { vandaag, kalender } from "../common/common";
 
 const User = ({ me, user, thecart, ...props }) => {
   function handleLogout() {
@@ -10,7 +9,6 @@ const User = ({ me, user, thecart, ...props }) => {
   }
 
   function handleDelete(userId) {
-    // alert("Weet je het zeker?");
     if (window.confirm("Weet je het zeker?")) deleteUser(userId);
     auth.logout();
     window.location = "/";

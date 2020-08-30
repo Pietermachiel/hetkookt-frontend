@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
-import { Link, NavLink } from "react-router-dom";
-import abouts from "../data/abouts";
+import { Link } from "react-router-dom";
 
 const Welkom = ({ user, ...props }) => {
   if (user === null)
@@ -16,9 +15,6 @@ const Welkom = ({ user, ...props }) => {
         <h1 className="favorieten-title">Kookschrift van {user.name}</h1>
 
         <div className=" unvisable slide work-grid-item">
-          {/* <p>
-            Een verzameling <strong>basisrecepten</strong> uit alle windstreken.
-          </p> */}
           <p className="w-full">
             Zoek een recept in{" "}
             <Link
@@ -68,7 +64,12 @@ const Welkom = ({ user, ...props }) => {
 
           <br />
 
-          <p>Pieter 🌹</p>
+          <p>
+            Pieter{" "}
+            <span role="img" aria-label="roos">
+              🌹
+            </span>
+          </p>
 
           <div className="clear-both"></div>
         </div>

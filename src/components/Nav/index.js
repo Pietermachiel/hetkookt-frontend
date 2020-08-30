@@ -97,13 +97,13 @@ const Nav = ({
                       </NavLink>
                     </div>
                   </li>
-                  <li>
+                  {/* <li>
                     <div className="">
                       <div className="text-white font-700 p-12">
                         De recepten
                       </div>
                     </div>
-                  </li>
+                  </li> */}
                   <CategoriesNav
                     categories={categories}
                     handleCatOpen={handleCatOpen}
@@ -119,7 +119,7 @@ const Nav = ({
                   <li>
                     <div className="list-links__link">
                       <NavLink onClick={handleIsOpen} className="" to="/books">
-                        De kookboeken
+                        Kookboeken
                       </NavLink>
                     </div>
                   </li>

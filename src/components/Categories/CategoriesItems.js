@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 import { slugify } from "../common/common";
 import SelectedItems from "../Collections/SelectedItems";
 import FavoriteItems from "../Collections/FavoriteItems";
-import { includes } from "lodash";
 import { apiUrl } from "../../config.json";
-// import { handleDeleteFavorite } from "../../services/userService";
 
 const CategoriesItems = ({
   me,
@@ -16,13 +14,6 @@ const CategoriesItems = ({
   ...props
 }) => {
   const [tags, setTags] = useState([]);
-  // console.log(recipes);
-  console.log("categories");
-  console.log(categories);
-  // console.log("thecart");
-  // console.log(thecart);
-
-  console.log(props.location.state);
 
   useEffect(() => {
     async function getData() {
@@ -31,11 +22,6 @@ const CategoriesItems = ({
     }
     getData();
   }, [props.location.state]);
-
-  const thetags = recipes.map((r) => r.tags[0]);
-
-  console.log(tags);
-  console.log(thetags);
 
   return (
     <>

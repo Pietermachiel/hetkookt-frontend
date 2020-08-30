@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import { slugify } from "../common/common";
 
 const Books = ({ kitchens, books, ...props }) => {
-  const [kitchen, setKitchen] = useState("allcountries");
+  const [kitchen, setKitchen] = useState("allKitchens");
 
   // const countries = [
   //   "nederlands",
@@ -51,16 +51,11 @@ const Books = ({ kitchens, books, ...props }) => {
         <div className="ko-box">
           <div className="ko-box-inner">
             {books.map((b) => {
-              // console.log("country2");
-              // console.log(country);
               console.log("b.kitchen.indexOf(kitchen)");
               console.log(b.kitchen.name.indexOf(kitchen));
-              // if (b.kitchen === country)
-              // if (country === "allcountries")
-
               if (
                 b.kitchen.name.indexOf(kitchen) < 0 &&
-                kitchen !== "allcountries"
+                kitchen !== "allKitchens"
               )
                 return null;
 

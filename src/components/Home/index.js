@@ -1,15 +1,7 @@
 import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
-import abouts from "../../data/abouts";
 
 const Home = ({ me, setMe, user, recipes, about, ...props }) => {
-  // console.log("me");
-  // console.log(me);
-  // console.log("user");
-  // console.log(user);
-  // console.log("recipes");
-  // console.log(recipes);
-
   if (recipes.length === 0)
     return (
       <div className="container-x">
@@ -119,20 +111,6 @@ const Home = ({ me, setMe, user, recipes, about, ...props }) => {
               {/* 🌹 */}
               <p>Pieter &#127801;</p>
 
-              {/* {abouts.map((a, xid) => {
-                return (
-                  <Fragment key={xid}>
-                    {!user && <Fragment></Fragment>}
-                    <div key={a.index} className="about-box mt-0">
-                      <div className="text-19 leading-loose">
-                        {a.lines.map((line, xid) => (
-                          <li key={xid}>{line} </li>
-                        ))}
-                      </div>
-                    </div>{" "}
-                  </Fragment>
-                );
-              })} */}
               <div className="clear-both"></div>
             </div>
           </div>

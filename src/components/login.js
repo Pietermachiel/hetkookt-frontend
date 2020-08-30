@@ -1,24 +1,18 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import auth from "../services/authService";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 const Login = (props) => {
-  const [routeRedirect, setRedirect] = useState("");
-  const [err, setErr] = useState("");
-  const { register, handleSubmit, watch, errors } = useForm();
+  const { register, handleSubmit, errors } = useForm();
 
   const doSubmit = async (data) => {
     try {
       await auth.login(data.email, data.password);
       window.location = "/welkom";
     } catch (ex) {
-      // if (ex.response && ex.response.status === 400) {
       toast.error("Ongeldige gebruikersnaam of password");
-      //   const theerr = ex.response.data;
-      //   setErr(theerr);
-      // }
     }
   };
 
@@ -91,11 +85,6 @@ const Login = (props) => {
                 </span>
               )}
             </div>
-            {/* {err && (
-              <p className="font-700 text-16 text-orange-500 mb-0 mt-6">
-                {err}
-              </p>
-            )} */}
             <button className="uppercase text-16 bg-indigo-600 mt-36 px-36 py-10 text-white tracking-widest">
               login
             </button>

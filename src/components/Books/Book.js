@@ -1,15 +1,12 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { apiUrl, recipeUrl } from "../../config.json";
+import { apiUrl } from "../../config.json";
 import { slugify } from "../common/common";
 
 const Book = ({ books, recipes, ...props }) => {
   const [thebook, setTheBook] = useState([]);
-  //   console.log(props);
 
   const API = props.location.state;
-  // console.log("API");
-  // console.log(API);
 
   useEffect(() => {
     async function getData() {
@@ -20,13 +17,6 @@ const Book = ({ books, recipes, ...props }) => {
   }, [API]);
 
   if (thebook.name === undefined) return [];
-
-  // console.log("recipeUrl");
-  // console.log(recipeUrl);
-  console.log("thebook");
-  console.log(thebook);
-  console.log("recipes");
-  console.log(recipes);
 
   return (
     <Fragment>
@@ -90,10 +80,7 @@ const Book = ({ books, recipes, ...props }) => {
           <div className="koo-box-footer pt-12">
             {recipes.map((r) => {
               if (r.book === null) return console.log(r.title);
-              // console.log("recipe");
-              // console.log(slugify(r.book.name));
-              // console.log("book");
-              // console.log(slugify(thebook.name));
+
               if (slugify(r.book.name) === slugify(thebook.name))
                 return (
                   <p key={r._id}>

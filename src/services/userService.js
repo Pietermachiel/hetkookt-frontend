@@ -78,7 +78,6 @@ export async function doSave(me, setMe, item) {
     _id: me._id,
     name: me.name,
     email: me.email,
-    items: me.items,
     items: [...me.items, item],
     stock: me.stock,
     extra: me.extra,

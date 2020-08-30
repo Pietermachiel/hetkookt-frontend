@@ -1,17 +1,12 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import { Link, NavLink } from "react-router-dom";
-import { slugify, slugifyu, kalender } from "../common/common.js";
-import { apiUrl, recipeUrl } from "../../config.json";
+import { Link } from "react-router-dom";
+import { slugify, slugifyu } from "../common/common.js";
+import { apiUrl } from "../../config.json";
 import { createRecipe } from "../../services/userService";
 
 const Recipe = ({ user, me, setMe, thecart, sorts, ...props }) => {
   var [therecipe, setTheRecipe] = useState([]);
-
-  // console.log("recipe props");
-  // console.log(props);
-  // console.log("therecipe");
-  // console.log(therecipe);
 
   const API = props.location.state;
 
