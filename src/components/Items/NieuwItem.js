@@ -70,7 +70,7 @@ const NieuwItem = ({ me, setMe, tags, dish, ...props }) => {
     try {
       // alert("create recipe");
       await createRecipe(me, setMe, data);
-      // window.location.pathname = "/kookschrift";
+      window.location.pathname = "/kookschrift";
       // const { state } = props.location;
       // window.location = state ? state.from.pathname : "/kookschrift";
     } catch (ex) {
