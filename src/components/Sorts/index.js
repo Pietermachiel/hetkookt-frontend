@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import { slugify } from "../common/common";
+import { slugify, slugifyu } from "../common/common";
 import SelectedItems from "../Recipes/SelectedItems";
 import FavoriteItems from "../Recipes/FavoriteItems";
 
@@ -14,8 +14,10 @@ const Sorts = ({
   categories,
   ...props
 }) => {
-  console.log("sorts: thecart");
+  console.log("sorts index");
   console.log(tags);
+  console.log("props.match.params.id");
+  console.log(props.match.params.id);
 
   const sort = tags.find(
     (s) => s.name.replace(" ", "-") === props.match.params.id
@@ -23,17 +25,17 @@ const Sorts = ({
   if (sort === undefined) return [];
 
   const recipeItems = recipes.filter((element) => {
-    let fresh = element.fresh.some(
-      ({ ingredient }) => ingredient.replace(" ", "-") === props.match.params.id
+    let tags = element.tags.some(
+      ({ name }) => name.replace(" ", "-") === props.match.params.id
     );
-    return fresh;
+    return tags;
   });
 
   const cartItems = thecart.filter((element) => {
-    let fresh = element.fresh.some(
-      ({ ingredient }) => ingredient.replace(" ", "-") === props.match.params.id
+    let tags = element.tags.some(
+      ({ name }) => name.replace(" ", "-") === props.match.params.id
     );
-    return fresh;
+    return tags;
   });
 
   console.log("recipeItems");
@@ -59,7 +61,7 @@ const Sorts = ({
 
         <div className="flexbox flexbox-margin">
           <div className="recipe-box recipe-box_sorts">
-            <Link to={`/sorts/${slugify(sort.name)}`}>
+            <Link to={`/sorts/${slugifyu(sort.name)}`}>
               <div className="">
                 <img
                   src={`/img/products/product_${slugify(sort.name)}.jpg`}
@@ -87,6 +89,11 @@ const Sorts = ({
               </Fragment>
             );
           })}
+          {recipeItems.length === 0 && cartItems.length === 0 ? (
+            <p className="ml-18 p-18">
+              geen recepten met <strong>{props.match.params.id}</strong>
+            </p>
+          ) : null}
         </div>
       </div>
     </>

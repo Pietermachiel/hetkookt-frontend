@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import { slugify } from "../common/common";
+import { slugify, slugifyu } from "../common/common";
 
 const Categories = ({ categories, tags, ...props }) => {
   const [cat, setCat] = useState("bladgroenten");
@@ -9,10 +9,10 @@ const Categories = ({ categories, tags, ...props }) => {
     setCat(c);
   };
 
-  // console.log("categories");
-  // console.log(categories);
-  // console.log(tags);
-  // console.log(cat);
+  console.log("categories");
+  console.log(categories);
+  console.log(tags);
+  console.log(cat);
 
   return (
     <Fragment>
@@ -40,11 +40,11 @@ const Categories = ({ categories, tags, ...props }) => {
               <h1 className="favorieten-title">{c.name}</h1>
               <div className="flexbox flexbox-margin unvisable slide work-grid-item">
                 {tags.map((s, xid) => {
-                  if (c._id === s.category)
+                  if (c._id === s.category._id)
                     return (
-                      <div key={s.category} class="recipe-box recipe-box_sorts">
-                        <Link to={`/sorts/${s.name}`}>
-                          <div class="">
+                      <div key={xid} className="recipe-box recipe-box_sorts">
+                        <Link to={`/sorts/${slugifyu(s.name)}`}>
+                          <div className="">
                             <img
                               src={`/img/products/product_${slugify(
                                 s.name
@@ -52,7 +52,7 @@ const Categories = ({ categories, tags, ...props }) => {
                               alt=""
                             />
                           </div>
-                          <div class="recipe-box-footer">
+                          <div className="recipe-box-footer">
                             <p>
                               <span>{s.name}</span>
                             </p>
