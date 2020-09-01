@@ -461,6 +461,8 @@ const App = () => {
             render={(props) => {
               return (
                 <Categories
+                  me={me}
+                  setMe={setMe}
                   thecart={thecart}
                   tags={tags}
                   recipes={recipes}

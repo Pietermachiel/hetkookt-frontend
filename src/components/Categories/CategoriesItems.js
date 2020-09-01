@@ -27,6 +27,7 @@ const CategoriesItems = ({
     <>
       <div className="container-x">
         <h1 className="favorieten-title">{props.match.params.id}</h1>
+
         {tags.map((s, xid) => {
           let recipeItems = recipes.filter(
             (element) => element.tags[0].name === s.name

@@ -1,16 +1,15 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { uniq, slugify } from "../common/common";
+import FavoriteItems from "./FavoriteItems";
+import SelectedItems from "./SelectedItems";
 
 const Collections = ({ me, setMe, thecart, dish, recipes, ...props }) => {
-  const [thedish, setTheDish] = useState("bladgroenten");
+  const [thedish, setTheDish] = useState("brood");
 
   const handleTheDish = (c) => {
     setTheDish(c);
   };
-
-  console.log("dish");
-  console.log(dish);
 
   return (
     <Fragment>
@@ -35,17 +34,21 @@ const Collections = ({ me, setMe, thecart, dish, recipes, ...props }) => {
           let thetags = therecipes.map((t) => t.tags[0]);
           thetags = thetags.map((m) => m.name).filter(uniq);
           console.log(thetags);
-          return (
-            <Fragment>
-              <div className="cat-box mb-36">
-                <h1 className="mb-18">{d.name}</h1>
-                <div className="flexbox flexbox-margin unvisable slide work-grid-item">
+          if (d.name === thedish)
+            return (
+              <Fragment>
+                <div className="cat-box mb-36">
+                  <h1 className="mb-18">{d.name}</h1>
+                  {/* <div className="flexbox flexbox-margin unvisable slide work-grid-item"> */}
                   {thetags.map((s, xid) => {
                     // if (s.dish._id === d._id)
                     return (
                       <Fragment key={xid}>
-                        <div className="recipe-box recipe-box_sorts">
-                          <Link to={`/sorts/${slugify(s)}`}>
+                        <div className="flexbox flexbox-margin">
+                          <Link
+                            className="recipe-box recipe-box_sorts"
+                            to={`/sorts/${slugify(s)}`}
+                          >
                             <div>
                               <img
                                 src={`/img/products/product_${slugify(s)}.jpg`}
@@ -60,14 +63,42 @@ const Collections = ({ me, setMe, thecart, dish, recipes, ...props }) => {
                               </p>
                             </div>
                           </Link>
+                          {therecipes.map((recipe, index) => {
+                            if (recipe.tags[0].name === s)
+                              return (
+                                <Fragment key={index}>
+                                  <SelectedItems
+                                    recipe={recipe}
+                                    Link={Link}
+                                    me={me}
+                                    setMe={setMe}
+                                    {...props}
+                                  />
+                                </Fragment>
+                              );
+                          })}
+                          {thecart.map((recipe, index) => {
+                            if (recipe.tags[0].name === s)
+                              return (
+                                <Fragment key={index}>
+                                  <FavoriteItems
+                                    recipe={recipe}
+                                    Link={Link}
+                                    me={me}
+                                    setMe={setMe}
+                                    {...props}
+                                  />
+                                </Fragment>
+                              );
+                          })}
                         </div>
                       </Fragment>
                     );
                   })}
+                  {/* </div> */}
                 </div>
-              </div>
-            </Fragment>
-          );
+              </Fragment>
+            );
         })}
       </div>
     </Fragment>

@@ -104,7 +104,29 @@ const Nav = ({
                       </div>
                     </div>
                   </li> */}
-                  <CategoriesNav
+                  <li>
+                    <div className="list-links__link">
+                      <NavLink
+                        onClick={handleIsOpen}
+                        className=""
+                        to="/categories"
+                      >
+                        Ingredienten
+                      </NavLink>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="list-links__link">
+                      <NavLink
+                        onClick={handleIsOpen}
+                        className=""
+                        to="/collections"
+                      >
+                        Gerechten
+                      </NavLink>
+                    </div>
+                  </li>
+                  {/* <CategoriesNav
                     categories={categories}
                     handleCatOpen={handleCatOpen}
                     isCatOpen={isCatOpen}
@@ -115,7 +137,7 @@ const Nav = ({
                     handleColOpen={handleColOpen}
                     isColOpen={isColOpen}
                     setColOpen={setColOpen}
-                  />
+                  /> */}
                   <li>
                     <div className="list-links__link">
                       <NavLink onClick={handleIsOpen} className="" to="/books">

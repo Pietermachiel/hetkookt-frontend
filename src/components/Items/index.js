@@ -27,7 +27,7 @@ const Items = ({ me, setMe, recipes, ...props }) => {
           </div>
         )}
         <h1 className="favorieten-title">
-          Recepten
+          Mijn recepten
           <Link to={`/nieuwitem`}>
             <button className="bg-indigo-500 text-16 p-16 px-30 mt-18 md:mt-0 md:ml-18 align-bottom text-white uppercase tracking-widest">
               nieuw recept
@@ -42,23 +42,23 @@ const Items = ({ me, setMe, recipes, ...props }) => {
               className="font-700 text-indigo-600 hover:text-red-500"
               to="categories"
             >
-              labels
+              ingredienten
             </Link>{" "}
             of{" "}
             <Link
               className="font-700 text-indigo-600 hover:text-red-500"
               to="/collections"
             >
-              collecties
+              gerechten
             </Link>
             ) en zet in het kookschrift, of maak zelf een{" "}
             <Link
               className="font-700 text-indigo-600 hover:text-red-500"
               to="/nieuwrecept"
             >
-              nieuw kookschriftrecept
+              nieuw recept
             </Link>{" "}
-            aan.
+            aan. Zet op het weekmenu en organiseer je boodschappen.
           </p>
         </div>
         {me.items.length === 0 && (

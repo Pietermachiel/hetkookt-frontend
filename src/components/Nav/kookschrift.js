@@ -39,13 +39,13 @@ const Kookschrift = ({ width, user, location }) => {
               </div>
               <ul className={`${kookschriftOpen ? "kookschrift-open" : ""}`}>
                 <Link onClick={() => handleClick()} to="/kookschrift">
-                  <li>recepten</li>
+                  <li>mijn recepten</li>
                 </Link>
                 <Link onClick={() => handleClick()} to="/weekmenu">
-                  <li>weekmenu</li>
+                  <li>&nbsp;weekmenu</li>
                 </Link>
                 <Link onClick={() => handleClick()} to="/boodschappen">
-                  <li>boodschappen</li>
+                  <li>&nbsp;boodschappen</li>
                 </Link>
               </ul>
             </Fragment>

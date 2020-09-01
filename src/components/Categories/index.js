@@ -1,8 +1,18 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import { slugify, slugifyu } from "../common/common";
+import { slugify, slugifyu, uniq } from "../common/common";
+import SelectedItems from "../Collections/SelectedItems";
+import FavoriteItems from "../Collections/FavoriteItems";
 
-const Categories = ({ categories, tags, ...props }) => {
+const Categories = ({
+  me,
+  setMe,
+  thecart,
+  recipes,
+  categories,
+  tags,
+  ...props
+}) => {
   const [cat, setCat] = useState("bladgroenten");
 
   const handleCat = (c) => {
@@ -13,6 +23,31 @@ const Categories = ({ categories, tags, ...props }) => {
   console.log(categories);
   console.log(tags);
   console.log(cat);
+
+  let thetags = recipes.map((r) => r.tags[0]);
+  console.log("thetags");
+  console.log(thetags);
+
+  // var unique = thetags.filter(function (x, i) {
+  //   return thetags[i]._id.indexOf(x._id) === i;
+  // });
+
+  // // thetags = thetags.map((m) => m.name).filter(uniq);
+  // console.log("thetags2");
+  // console.log(unique);
+
+  var uniqTags = [];
+  thetags.forEach(function (item) {
+    var i = uniqTags.findIndex((x) => x.name == item.name);
+    if (i <= -1) {
+      uniqTags.push({
+        _id: item._id,
+        name: item.name,
+        category: item.category,
+      });
+    }
+  });
+  console.log(uniqTags);
 
   return (
     <Fragment>
@@ -36,33 +71,68 @@ const Categories = ({ categories, tags, ...props }) => {
         {categories.map((c) => {
           if (c.name.indexOf(cat) < 0 && cat !== "allCats") return null;
           return (
-            <div key={c._id} className="cat-box mb-36">
+            <Fragment key={c._id}>
               <h1 className="favorieten-title">{c.name}</h1>
-              <div className="flexbox flexbox-margin unvisable slide work-grid-item">
-                {tags.map((s, xid) => {
-                  if (c._id === s.category._id)
-                    return (
-                      <div key={xid} className="recipe-box recipe-box_sorts">
-                        <Link to={`/sorts/${slugifyu(s.name)}`}>
-                          <div className="">
-                            <img
-                              src={`/img/products/product_${slugify(
-                                s.name
-                              )}.jpg`}
-                              alt=""
+              {uniqTags.map((s, xid) => {
+                let recipeItems = recipes.filter(
+                  (element) => element.tags[0].name === s.name
+                );
+                // console.log("recipeItems");
+                // console.log(s.name);
+                // console.log(recipeItems);
+                if (c._id === s.category)
+                  return (
+                    // <div key={xid} className="recipe-box recipe-box_sorts">
+                    <div key={xid} className="flexbox flexbox-margin">
+                      <Link
+                        className="recipe-box recipe-box_sorts"
+                        to={`/sorts/${slugifyu(s.name)}`}
+                      >
+                        <div className="">
+                          <img
+                            src={`/img/products/product_${slugify(s.name)}.jpg`}
+                            alt=""
+                          />
+                        </div>
+                        <div className="recipe-box-footer">
+                          <p>
+                            <span>{s.name}</span>
+                          </p>
+                        </div>
+                      </Link>
+
+                      {recipeItems.map((recipe, index) => {
+                        // if (recipe.tags[0].name === s)
+                        return (
+                          <Fragment key={index}>
+                            <SelectedItems
+                              recipe={recipe}
+                              Link={Link}
+                              me={me}
+                              setMe={setMe}
+                              {...props}
                             />
-                          </div>
-                          <div className="recipe-box-footer">
-                            <p>
-                              <span>{s.name}</span>
-                            </p>
-                          </div>
-                        </Link>
-                      </div>
-                    );
-                })}
-              </div>
-            </div>
+                          </Fragment>
+                        );
+                      })}
+                      {thecart.map((recipe, index) => {
+                        if (recipe.tags[0].name === s.name)
+                          return (
+                            <Fragment key={index}>
+                              <FavoriteItems
+                                recipe={recipe}
+                                Link={Link}
+                                me={me}
+                                setMe={setMe}
+                                {...props}
+                              />
+                            </Fragment>
+                          );
+                      })}
+                    </div>
+                  );
+              })}
+            </Fragment>
           );
         })}
       </div>

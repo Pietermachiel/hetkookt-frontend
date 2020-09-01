@@ -10,7 +10,7 @@ const AccordionNav = ({ handleColOpen, isColOpen, setColOpen, dish }) => {
         onClick={() => setColOpen(!isColOpen)}
         className={`accordion-nav-title ${isColOpen ? "open" : ""}`}
       >
-        Recepten/collecties
+        Gerechten
         <div className="accordion-nav-arrow"></div>
       </div>
       <div className={`accordion-nav-item ${!isColOpen ? "collapsed" : ""}`}>

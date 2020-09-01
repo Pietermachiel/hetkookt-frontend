@@ -82,7 +82,7 @@ const NewRecipe = ({ tags, dish, books, ...props }) => {
 
   return (
     <React.Fragment>
-      <div className="container-y bg-rose-100">
+      <div className="container-y">
         <div className="md:w-550 m-auto relative">
           <h1 className="favorieten-title text-36">Nieuw recept</h1>
           <form onSubmit={handleSubmit(handleSaveRecipe)}>

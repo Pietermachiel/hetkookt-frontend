@@ -9,7 +9,7 @@ const AccordionNav = ({ handleCatOpen, isCatOpen, setCatOpen, categories }) => {
         onClick={() => setCatOpen(!isCatOpen)}
         className={`accordion-nav-title ${isCatOpen ? "open" : ""}`}
       >
-        Recepten/labels
+        Ingredienten
         <div className="accordion-nav-arrow"></div>
       </div>
       <div className={`accordion-nav-item ${!isCatOpen ? "collapsed" : ""}`}>
