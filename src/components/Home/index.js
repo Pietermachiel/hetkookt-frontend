@@ -12,7 +12,7 @@ const Home = ({ user, recipes, ...props }) => {
         </div>{" "}
         <div className="m-auto">
           <p className="mt-18 text-36 text-center">
-            Sorry, geen verbinding met de server
+            Wacht even op verbinding met de server
           </p>
         </div>
       </div>

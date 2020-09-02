@@ -32,10 +32,11 @@ export function saveUser(user) {
   return http.post(apiEndpoint, user);
 }
 
-export function deleteUser(userId) {
+export async function deleteUser(userId) {
   console.log("userId");
   console.log(userId);
-  return http.delete(userUrl(userId));
+  await axios.delete(`${apiEndpoint}/${userId}`);
+  // return http.delete(userUrl(userId));
 }
 
 export function verifyUser(token) {
