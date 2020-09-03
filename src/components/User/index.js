@@ -8,11 +8,11 @@ const User = ({ me, user, thecart, ...props }) => {
     window.location = "/";
   }
 
-  function handleDelete(userId) {
+  async function handleDelete(userId) {
     // console.log("handledelete");
-    if (window.confirm("Weet je het zeker?")) deleteUser(userId);
+    if (window.confirm("Weet je het zeker?")) await deleteUser(userId);
     // console.log("window confirm");
-    auth.logout();
+    await auth.logout();
     // console.log("auth logout");
     window.location = "/";
     // console.log("window location");
@@ -29,16 +29,16 @@ const User = ({ me, user, thecart, ...props }) => {
 
   const newdates = thedates.reduce((acc, date) => acc + date, []);
 
-  console.log("props");
-  console.log(props);
-  console.log("user");
-  console.log(user);
-  console.log("props");
-  console.log(props);
-  console.log("thedates");
-  console.log(thedates);
-  console.log("newdates");
-  console.log(newdates);
+  // console.log("props");
+  // console.log(props);
+  // console.log("user");
+  // console.log(user);
+  // console.log("props");
+  // console.log(props);
+  // console.log("thedates");
+  // console.log(thedates);
+  // console.log("newdates");
+  // console.log(newdates);
 
   return (
     <div className="container-x">
