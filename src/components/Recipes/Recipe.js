@@ -132,21 +132,23 @@ const Recipe = ({ user, me, setMe, thecart, tags, ...props }) => {
               </Link>
             </Fragment>
           )}
-          <Link
-            to={{
-              pathname: `/editrecipe/${slugify(therecipe.title)}`,
-              state: therecipe._id,
-            }}
-          >
-            <button className="mb-5 lg:pr-18 btn-add mr-10 text-19 font-600 text-indigo-700 flex item-center hover:text-red-500">
-              <img
-                className="w-25 h-25 mr-10"
-                src="/img/feather/edit.svg"
-                alt=""
-              />
-              edit
-            </button>
-          </Link>
+          {user && user.isAdmin && (
+            <Link
+              to={{
+                pathname: `/editrecipe/${slugify(therecipe.title)}`,
+                state: therecipe._id,
+              }}
+            >
+              <button className="mb-5 lg:pr-18 btn-add mr-10 text-19 font-600 text-indigo-700 flex item-center hover:text-red-500">
+                <img
+                  className="w-25 h-25 mr-10"
+                  src="/img/feather/edit.svg"
+                  alt=""
+                />
+                edit
+              </button>
+            </Link>
+          )}
         </div>
         <div className="recepten">
           <div className="recepten-box">
