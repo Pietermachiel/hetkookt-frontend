@@ -9,9 +9,13 @@ const User = ({ me, user, thecart, ...props }) => {
   }
 
   function handleDelete(userId) {
+    // console.log("handledelete");
     if (window.confirm("Weet je het zeker?")) deleteUser(userId);
+    // console.log("window confirm");
     auth.logout();
+    // console.log("auth logout");
     window.location = "/";
+    // console.log("window location");
   }
 
   const thedates = thecart.map((dd) => {
