@@ -56,7 +56,6 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [search, setSearch] = useState(false);
-  // search
 
   useEffect(() => {
     const results = recipes.filter((recipe) => {
@@ -67,16 +66,13 @@ const App = () => {
   }, [searchTerm, recipes]);
 
   const handleChange = (e) => {
-    setSearchTerm(e.target.value);
+    const searchterm = e.target.value.toLowerCase();
+    setSearchTerm(searchterm);
     setSearch(true);
-    // console.log("search");
   };
 
   const handleClick = (e) => {
-    // console.log("handleClick");
-    // console.log(e);
     setSearchTerm(e);
-    // setSearchResults([]);
     setSearch(false);
     toggleSwitch();
     setIsOpen(!isOpen);
@@ -84,7 +80,6 @@ const App = () => {
 
   // menu
   const handleIsOpen = (e) => {
-    // toggleMenu();
     setSearchTerm([]);
     setSearch(false);
     toggleSwitch();
