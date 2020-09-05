@@ -9,9 +9,12 @@ const Recipe = ({ user, me, setMe, thecart, tags, ...props }) => {
   var [therecipe, setTheRecipe] = useState([]);
   // console.log(tags);
   const API = props.location.state;
+  console.log("therecipe");
+  console.log(therecipe);
+  console.log(props);
 
   const handleCreateRecipe = async (me, setMe, therecipe) => {
-    console.log("therecipe");
+    console.log("create therecipe");
     console.log(therecipe);
     const newrecipe = {
       _id: therecipe._id,
@@ -25,8 +28,8 @@ const Recipe = ({ user, me, setMe, thecart, tags, ...props }) => {
       info: therecipe.info,
       date: therecipe.date,
     };
-    console.log("newrecipe");
-    console.log(newrecipe);
+    // console.log("newrecipe");
+    // console.log(newrecipe);
     try {
       await createRecipe(me, setMe, newrecipe);
     } catch (ex) {
@@ -158,9 +161,9 @@ const Recipe = ({ user, me, setMe, thecart, tags, ...props }) => {
               <div className="ingredienten-box">
                 {therecipe.fresh.map((f, xid) => {
                   const thetag = tags.find((s) => s.name === f.ingredient);
-                  console.log("thetag");
-                  console.log(thetag);
-                  if (thetag === undefined) return [];
+                  // console.log("thetag");
+                  // console.log(thetag);
+                  if (thetag === undefined) return;
                   const catcolor = thetag.category.name;
                   return (
                     <li key={xid}>
@@ -177,6 +180,22 @@ const Recipe = ({ user, me, setMe, thecart, tags, ...props }) => {
                       </div>
                     </li>
                   );
+                })}
+                {therecipe.fresh.map((f, xid) => {
+                  const thetag = tags.find((s) => s.name === f.ingredient);
+                  // console.log("thetag");
+                  // console.log(thetag);
+                  if (thetag === undefined)
+                    return (
+                      <li key={xid}>
+                        <div className="items-quantity">
+                          {f.quantity} {f.unit}
+                        </div>
+                        <div className="items-product">
+                          &nbsp;{f.ingredient}
+                        </div>
+                      </li>
+                    );
                 })}
               </div>
               <p>voorraad</p>
@@ -205,8 +224,14 @@ const Recipe = ({ user, me, setMe, thecart, tags, ...props }) => {
               {therecipe.related.length > 0 ? <p>gerelateerd</p> : null}
               <div className="ingredienten-box">
                 {therecipe.related.map((b, xid) => (
-                  <Link key={xid} to={`/recipe/${slugify(b.name)}`}>
-                    <span className="font-600">{b.name}</span>
+                  <Link
+                    key={xid}
+                    to={{
+                      pathname: `/recipes/${slugify(b.title)}`,
+                      state: b._id,
+                    }}
+                  >
+                    <span className="font-600">{b.title}</span>
                   </Link>
                 ))}
               </div>

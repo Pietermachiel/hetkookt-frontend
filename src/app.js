@@ -39,13 +39,13 @@ import { slugify } from "./components/common/common.js";
 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
-  const [sorts, setSorts] = useState([]);
+  // const [sorts, setSorts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [dish, setDish] = useState([]);
   const [stock, setStock] = useState([]);
   const [user, setUser] = useState([]);
   const [me, setMe] = useState([]);
-  const [about, setAbout] = useState([]);
+  // const [about, setAbout] = useState([]);
   const [kitchens, setKitchens] = useState([]);
   const [books, setBooks] = useState([]);
   const [tags, setTags] = useState([]);
@@ -131,13 +131,13 @@ const App = () => {
     getData();
   }, []);
 
-  useEffect(() => {
-    async function getData() {
-      const res = await fetch(`${recipeUrl}/sorts.json`);
-      res.json().then((res) => setSorts(res));
-    }
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   async function getData() {
+  //     const res = await fetch(`${recipeUrl}/sorts.json`);
+  //     res.json().then((res) => setSorts(res));
+  //   }
+  //   getData();
+  // }, []);
 
   useEffect(() => {
     async function getData() {
@@ -181,13 +181,13 @@ const App = () => {
     getUsersMe();
   }, []);
 
-  useEffect(() => {
-    async function getData() {
-      const res = await fetch(`${recipeUrl}/about.json`);
-      res.json().then((res) => setAbout(res));
-    }
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   async function getData() {
+  //     const res = await fetch(`${recipeUrl}/about.json`);
+  //     res.json().then((res) => setAbout(res));
+  //   }
+  //   getData();
+  // }, []);
 
   useEffect(() => {
     async function getData() {
@@ -338,6 +338,7 @@ const App = () => {
                   tags={tags}
                   dish={dish}
                   books={books}
+                  recipes={recipes}
                   therecipe={therecipe}
                   {...props}
                 />

@@ -64,7 +64,12 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, ...props }) => {
     console.log(thedata);
     try {
       await doSave(me, setMe, thedata);
-      window.location = "/kookschrift";
+      // window.location = "/kookschrift";
+      window.location = `/recipes/${slugify(therecipe.title)}`;
+      props.history.replace({
+        pathname: `/recipes/${slugify(therecipe.title)}`,
+        state: therecipe._id,
+      });
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         toast.error("foutje");

@@ -4,7 +4,7 @@ import RecipeItems from "./RecipeItems";
 
 const Recipes = ({ recipes, books, setRecipes, ...props }) => {
   // console.log(props);
-  // console.log(recipes);
+  console.log(recipes);
   return (
     <div className="container-x">
       {!recipes && (

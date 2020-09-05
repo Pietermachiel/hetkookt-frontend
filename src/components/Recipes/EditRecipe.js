@@ -2,6 +2,7 @@ import React, { useState, Fragment } from "react";
 import { toast } from "react-toastify";
 import { saveRecipe } from "../../services/recipeService";
 import { useForm, useFieldArray } from "react-hook-form";
+import { slugify } from "../common/common";
 
 const theunits = [{ unit: "g" }, { unit: "ml" }];
 const stockunits = [
@@ -11,7 +12,7 @@ const stockunits = [
   { unit: "el" },
 ];
 
-const EditRecipe = ({ tags, dish, books, therecipe, ...props }) => {
+const EditRecipe = ({ tags, dish, books, recipes, therecipe, ...props }) => {
   const [err, setError] = useState("");
   const { register, control, handleSubmit, reset, errors } = useForm({
     defaultValues: {
@@ -83,7 +84,11 @@ const EditRecipe = ({ tags, dish, books, therecipe, ...props }) => {
     console.log(thedata);
     try {
       await saveRecipe(thedata);
-      window.location = `/recipes`;
+      window.location = `/recipes/${slugify(therecipe.title)}`;
+      props.history.replace({
+        pathname: `/recipes/${slugify(therecipe.title)}`,
+        state: therecipe._id,
+      });
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         toast.error("foutje");
@@ -209,14 +214,27 @@ const EditRecipe = ({ tags, dish, books, therecipe, ...props }) => {
               <ul>
                 {relatedFields.map((item, index) => (
                   <li key={index} className="relative mb-0">
-                    <input
+                    {/* <input
                       name={`related[${index}].name`}
                       className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
                       ref={register({ maxLength: 30 })}
-                    />
+                    /> */}
+                    <select
+                      name={`related[${index}]._id`}
+                      className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
+                      ref={register({ maxLength: 50 })}
+                      // ref={register({ required: true })}
+                    >
+                      <option value="" />
+                      {recipes.map((option, xid) => (
+                        <option key={xid} value={option._id}>
+                          {option.title}
+                        </option>
+                      ))}
+                    </select>
                     {errors.related?.type === "maxLength" && (
                       <span className="block text-16 py-6 font-700 text-orange-500">
-                        Maximaal 30 lettertekens
+                        Maximaal 50 lettertekens
                       </span>
                     )}
                     <button
