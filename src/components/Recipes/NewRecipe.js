@@ -2,6 +2,7 @@ import React, { useState, Fragment } from "react";
 import { toast } from "react-toastify";
 import { saveRecipe } from "../../services/recipeService";
 import { useForm, useFieldArray } from "react-hook-form";
+import mongoose from "mongoose";
 
 const theunits = [{ unit: "g" }, { unit: "ml" }];
 const stockunits = [
@@ -10,16 +11,17 @@ const stockunits = [
   { unit: "tl" },
   { unit: "el" },
 ];
+const recipeId = mongoose.Types.ObjectId().toHexString();
 
-const NewRecipe = ({ tags, dish, books, ...props }) => {
+const NewRecipe = ({ recipes, tags, dish, books, ...props }) => {
   const [err, setError] = useState("");
   const { register, control, handleSubmit, errors } = useForm({
     defaultValues: {
       _id: "",
       title: "",
       dish: { _id: "" },
-      tags: [{ name: "" }],
-      related: [{ name: "" }],
+      tags: [{ _id: "" }],
+      related: [{ _id: "" }],
       fresh: [{ quantity: null, unit: "", ingredient: "" }],
       stock: [{ quantity: null, unit: "", ingredient: "" }],
       directions: [{ name: "" }],
@@ -57,11 +59,19 @@ const NewRecipe = ({ tags, dish, books, ...props }) => {
   const { fields: dateFields } = useFieldArray({ control, name: "date" });
 
   const handleSaveRecipe = async (data) => {
+    const newdata = {
+      ...data,
+      related:
+        data.related === undefined || data.related[0]._id === ""
+          ? []
+          : data.related,
+    };
     console.log("NewRecipe: data");
     console.log(data);
+    console.log(newdata);
     try {
       // alert("create recipe");
-      await saveRecipe(data);
+      await saveRecipe(newdata);
       window.location.pathname = "/recipes";
       // const { state } = props.location;
       // window.location = state ? state.from.pathname : "/kookschrift";
@@ -200,14 +210,27 @@ const NewRecipe = ({ tags, dish, books, ...props }) => {
               <ul>
                 {relatedFields.map((item, index) => (
                   <li key={index} className="relative mb-0">
-                    <input
+                    {/* <input
                       name={`related[${index}].name`}
                       className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
                       ref={register({ maxLength: 30 })}
-                    />
+                    /> */}
+                    <select
+                      name={`related[${index}]._id`}
+                      className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
+                      ref={register({ maxLength: 100 })}
+                      // ref={register({ required: true })}
+                    >
+                      <option value="" />
+                      {recipes.map((option, xid) => (
+                        <option key={xid} value={option._id}>
+                          {option.title}
+                        </option>
+                      ))}
+                    </select>
                     {errors.related?.type === "maxLength" && (
                       <span className="block text-16 py-6 font-700 text-orange-500">
-                        Maximaal 30 lettertekens
+                        Maximaal 100 lettertekens.
                       </span>
                     )}
                     <button

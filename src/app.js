@@ -42,7 +42,7 @@ const App = () => {
   // const [sorts, setSorts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [dish, setDish] = useState([]);
-  const [stock, setStock] = useState([]);
+  // const [stock, setStock] = useState([]);
   const [user, setUser] = useState([]);
   const [me, setMe] = useState([]);
   // const [about, setAbout] = useState([]);
@@ -155,13 +155,13 @@ const App = () => {
     getData();
   }, []);
 
-  useEffect(() => {
-    async function getData() {
-      const res = await fetch(`${recipeUrl}/stock.json`);
-      res.json().then((res) => setStock(res));
-    }
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   async function getData() {
+  //     const res = await fetch(`${recipeUrl}/stock.json`);
+  //     res.json().then((res) => setStock(res));
+  //   }
+  //   getData();
+  // }, []);
 
   useEffect(() => {
     const user = auth.getCurrentUser();
@@ -295,8 +295,16 @@ const App = () => {
           <Route
             path="/recipes/:id"
             render={(props) => {
+              if (recipes === undefined) return [];
+              const therecipe = recipes.find(
+                // (i) => slugify(i._id) === props.location.state
+                (i) => slugify(i.title) === props.match.params.id
+              );
+              if (therecipe === undefined) return [];
+
               return (
                 <Recipe
+                  therecipe={therecipe}
                   user={user}
                   me={me}
                   setMe={setMe}
@@ -318,6 +326,7 @@ const App = () => {
                   dish={dish}
                   tags={tags}
                   books={books}
+                  recipes={recipes}
                 />
               );
             }}
@@ -327,7 +336,8 @@ const App = () => {
             render={(props) => {
               if (recipes === undefined) return [];
               const therecipe = recipes.find(
-                (i) => slugify(i._id) === props.location.state
+                // (i) => slugify(i._id) === props.location.state
+                (i) => slugify(i.title) === props.match.params.id
               );
               if (therecipe === undefined) return [];
 
@@ -374,17 +384,26 @@ const App = () => {
           />
           <Route
             path="/kookschrift/:id"
-            render={(props) => (
-              <Item
-                {...props}
-                recipes={recipes}
-                tags={tags}
-                dish={dish}
-                user={user}
-                me={me}
-                setMe={setMe}
-              />
-            )}
+            render={(props) => {
+              if (me.items === undefined) return [];
+              const therecipe = me.items.find(
+                (i) => slugify(i.title) === props.match.params.id
+              );
+              if (therecipe === undefined) return [];
+
+              return (
+                <Item
+                  {...props}
+                  recipes={recipes}
+                  therecipe={therecipe}
+                  tags={tags}
+                  dish={dish}
+                  user={user}
+                  me={me}
+                  setMe={setMe}
+                />
+              );
+            }}
           />
           <Route
             path="/nieuwitem"
@@ -416,6 +435,7 @@ const App = () => {
                   tags={tags}
                   dish={dish}
                   therecipe={therecipe}
+                  recipes={recipes}
                   {...props}
                 />
               );
@@ -514,22 +534,14 @@ const App = () => {
           <Route
             path="/boodschappen"
             render={(props) => {
-              return (
-                <Boodschappen me={me} setMe={setMe} stock={stock} {...props} />
-              );
+              return <Boodschappen me={me} setMe={setMe} {...props} />;
             }}
           />
           <Route
             path="/voorraad"
             render={(props) => {
               return (
-                <Voorraad
-                  me={me}
-                  setMe={setMe}
-                  recipes={recipes}
-                  stock={stock}
-                  {...props}
-                />
+                <Voorraad me={me} setMe={setMe} recipes={recipes} {...props} />
               );
             }}
           />

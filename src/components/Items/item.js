@@ -4,14 +4,19 @@ import { Link, NavLink } from "react-router-dom";
 import { slugify, slugifyu, kalender } from "../common/common.js";
 import AddpanelWeekmenu from "./AddpanelWeekmenu.js";
 
-const Item = ({ user, me, setMe, doSave, tags, ...props }) => {
+const Item = ({ therecipe, user, me, setMe, doSave, tags, ...props }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [routeRedirect, setRedirect] = useState("");
 
-  if (me.items === undefined) return [];
-  const therecipe = me.items.find(
-    (i) => slugify(i.title) === props.match.params.id
-  );
+  // if (me.items === undefined) return [];
+  // const therecipe = me.items.find(
+  //   (i) => slugify(i.title) === props.match.params.id
+  // );
+
+  console.log("me.items");
+  console.log(me.items);
+  console.log("therecipe");
+  console.log(therecipe);
 
   const handleIsOpen = () => {
     setIsOpen(!isOpen);
@@ -142,11 +147,28 @@ const Item = ({ user, me, setMe, doSave, tags, ...props }) => {
                 })}
               </div>
 
-              {therecipe.related.length > 0 ? <p>gerelateerd</p> : null}
+              {/* {therecipe.related.length > 0 ? <p>gerelateerd</p> : null}
               <div className="ingredienten-box">
                 {therecipe.related.map((b, xid) => (
                   <Link key={xid} to={`/recipe/${slugify(b)}`}>
-                    <span className="font-600">{b.name}</span>
+                    <span className="font-600">{b.title}</span>
+                  </Link>
+                ))}
+              </div> */}
+              {therecipe.related.length > 0 &&
+              therecipe.related[0].title !== "" ? (
+                <p>gerelateerd</p>
+              ) : null}
+              <div className="ingredienten-box">
+                {therecipe.related.map((b, xid) => (
+                  <Link
+                    key={xid}
+                    to={{
+                      pathname: `/recipes/${slugify(b.title)}`,
+                      state: b._id,
+                    }}
+                  >
+                    <span className="font-600">{b.title}</span>
                   </Link>
                 ))}
               </div>
@@ -173,10 +195,12 @@ const Item = ({ user, me, setMe, doSave, tags, ...props }) => {
           </div>
         </div>
         <div className="recepten-source">
-          <div className="flex mt-72 pb-20">
-            <img className="w-25" src="/img/feather/book.svg" alt="" />
-            &nbsp;<span className="pl-5">Mijn kookschrift</span>
-          </div>
+          <Link to="/kookschrift">
+            <div className="flex mt-72 pb-20">
+              <img className="w-25" src="/img/feather/book.svg" alt="" />
+              &nbsp;<span className="pl-5">Mijn recepten</span>
+            </div>
+          </Link>
         </div>
       </div>
     </Fragment>

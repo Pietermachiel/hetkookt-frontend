@@ -15,10 +15,10 @@ const Recipes = ({ recipes, books, setRecipes, ...props }) => {
         </div>
       )}
       <h1 className="favorieten-title">
-        Recepten
+        Recipes
         <Link to={`/nieuwrecept`}>
           <button className="bg-indigo-500 text-16 p-16 px-30 mt-18 md:mt-0 md:ml-18 align-bottom text-white uppercase tracking-widest">
-            nieuw recept
+            new recipe
           </button>
         </Link>
       </h1>

@@ -5,13 +5,13 @@ import { slugify, slugifyu } from "../common/common.js";
 import { apiUrl } from "../../config.json";
 import { createRecipe } from "../../services/userService";
 
-const Recipe = ({ user, me, setMe, thecart, tags, ...props }) => {
-  var [therecipe, setTheRecipe] = useState([]);
+const Recipe = ({ therecipe, user, me, setMe, thecart, tags, ...props }) => {
+  // var [therecipe, setTheRecipe] = useState([]);
   // console.log(tags);
   const API = props.location.state;
-  console.log("therecipe");
-  console.log(therecipe);
-  console.log(props);
+  // console.log("therecipe");
+  // console.log(therecipe);
+  // console.log(props);
 
   const handleCreateRecipe = async (me, setMe, therecipe) => {
     console.log("create therecipe");
@@ -45,16 +45,16 @@ const Recipe = ({ user, me, setMe, thecart, tags, ...props }) => {
     // window.location = state ? state.from.pathname : "/kookschrift";
   };
 
-  useEffect(() => {
-    async function getData() {
-      const res = await fetch(`${apiUrl}/recipes/${API}`);
-      res.json().then((res) => setTheRecipe(res));
-    }
-    getData();
-  }, [API]);
+  // useEffect(() => {
+  //   async function getData() {
+  //     const res = await fetch(`${apiUrl}/recipes/${API}`);
+  //     res.json().then((res) => setTheRecipe(res));
+  //   }
+  //   getData();
+  // }, [API]);
 
-  // console.log("therecipe");
-  // console.log(therecipe);
+  console.log("therecipe");
+  console.log(therecipe);
   // console.log("API");
   // console.log(API);
 
@@ -137,10 +137,11 @@ const Recipe = ({ user, me, setMe, thecart, tags, ...props }) => {
           )}
           {user && user.isAdmin && (
             <Link
-              to={{
-                pathname: `/editrecipe/${slugify(therecipe.title)}`,
-                state: therecipe._id,
-              }}
+              to={`/editrecipe/${slugify(therecipe.title)}`}
+              // to={{
+              //   pathname: `/editrecipe/${slugify(therecipe.title)}`,
+              //   state: therecipe._id,
+              // }}
             >
               <button className="mb-5 lg:pr-18 btn-add mr-10 text-19 font-600 text-indigo-700 flex item-center hover:text-red-500">
                 <img

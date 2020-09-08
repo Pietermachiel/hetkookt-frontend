@@ -14,7 +14,7 @@ const stockunits = [
   { unit: "el" },
 ];
 
-const EditItem = ({ me, tags, dish, setMe, therecipe, ...props }) => {
+const EditItem = ({ me, tags, dish, setMe, therecipe, recipes, ...props }) => {
   const { register, control, handleSubmit, errors } = useForm({
     defaultValues: {
       _id: therecipe._id,
@@ -64,12 +64,11 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, ...props }) => {
     console.log(thedata);
     try {
       await doSave(me, setMe, thedata);
-      // window.location = "/kookschrift";
-      window.location = `/recipes/${slugify(therecipe.title)}`;
-      props.history.replace({
-        pathname: `/recipes/${slugify(therecipe.title)}`,
-        state: therecipe._id,
-      });
+      window.location = `/kookschrift/${slugify(thedata.title)}`;
+      // props.history.replace({
+      //   pathname: `/kookschrift/${slugify(therecipe.title)}`,
+      //   state: therecipe._id,
+      // });
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         toast.error("foutje");
@@ -100,7 +99,7 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, ...props }) => {
                 ref={register({
                   required: true,
                   maxLength: 50,
-                  pattern: /^[a-zA-Z0-9 ]+$/,
+                  pattern: /^[a-zA-Z0-9 -]+$/,
                 })}
               />
               {errors.title?.type === "required" && (
@@ -202,16 +201,34 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, ...props }) => {
               <ul>
                 {relatedFields.map((item, index) => (
                   <li key={index} className="relative mb-0">
-                    <input
+                    {/* <input
                       name={`related[${index}].name`}
                       className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
                       ref={register({ maxLength: 30 })}
-                    />
+                    /> */}
+                    <select
+                      name={`related[${index}].title`}
+                      className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
+                      ref={register({ maxLength: 100 })}
+                      // ref={register({ required: true })}
+                    >
+                      <option value="" />
+                      {recipes.map((option, xid) => (
+                        <option key={xid} value={option.title}>
+                          {option.title}
+                        </option>
+                      ))}
+                    </select>
                     {errors.related?.type === "maxLength" && (
                       <span className="block text-16 py-6 font-700 text-orange-500">
-                        Maximaal 30 lettertekens
+                        Maximaal 100 lettertekens.
                       </span>
                     )}
+                    {/* {errors.related?.type === "required" && (
+                      <span className="block text-16 font-700 text-orange-500">
+                        Dit veld is verplicht.
+                      </span>
+                    )} */}
                     <button
                       className="absolute top-0"
                       style={{ right: "0" }}

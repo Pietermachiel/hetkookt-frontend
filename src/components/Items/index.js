@@ -12,9 +12,9 @@ const Items = ({ me, setMe, recipes, ...props }) => {
     .filter(uniq)
     .sort();
 
-  console.log("me.items");
-  console.log(me.items);
-  console.log(favoritedish);
+  // console.log("me.items");
+  // console.log(me.items);
+  // console.log(favoritedish);
 
   return (
     <Fragment>

@@ -6,20 +6,21 @@ import {
   removeExtra,
   deleteBoodschappen,
 } from "../../services/userService";
-import { recipeUrl } from "../../config.json";
+import groceries from "../../data/groceries.json";
+// import { recipeUrl } from "../../config.json";
 import { kalender } from "../common/common";
 
 const Boodschappen = ({ me, setMe }) => {
   const [value, setValue] = useState("");
-  const [groceries, setGroceries] = useState([]);
+  // const [groceries, setGroceries] = useState([]);
 
-  useEffect(() => {
-    async function getData() {
-      const res = await fetch(`${recipeUrl}/groceries.json`);
-      res.json().then((res) => setGroceries(res));
-    }
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   async function getData() {
+  //     const res = await fetch(`${recipeUrl}/groceries.json`);
+  //     res.json().then((res) => setGroceries(res));
+  //   }
+  //   getData();
+  // }, []);
 
   if (me.items === undefined) return [];
 
@@ -65,19 +66,30 @@ const Boodschappen = ({ me, setMe }) => {
     []
   );
   console.log(boodschappen);
+  // console.log(me.stock);
+  // console.log(me.extra);
 
   const theemail = {
-    subject: "bestelling",
-    body:
-      "Hallo Studio Roozen, %0D%0A%0D%0AIk wil graag de volgende bestelling doen:%0D%0A  ",
-    adres: "%0D%0A%0D%0AMijn adres is: ",
-    afzender: "%0D%0A%0D%0AMijn afzender is: ",
-    email: me.email,
+    subject: "boodschappen",
+    // body: "Boodschappen:%0D%0A  ",
+    fresh: "%0D%0Avers:  ",
+    stock: "%0D%0A%0D%0Ahoudbaar: ",
+    extra: "%0D%0A%0D%0Aextra: ",
+    // adres: "%0D%0A%0D%0AMijn adres is: ",
+    // afzender: "%0D%0A%0D%0AMijn afzender is: ",
+    // email: me.email,
   };
 
   const myBoodschappen = boodschappen.map(
-    (b) => "%0D%0A" + " " + b.quantity + " " + b.unit + " " + b.ingredient
+    (b) => "%0D%0A" + "– " + b.quantity + " " + b.unit + " " + b.ingredient
   );
+  const meStock = me.stock.map((s) => "%0D%0A" + "– " + s);
+  const meExtra = me.extra.map((e) => "%0E%0A" + "– " + e);
+  // console.log(myBoodschappen);
+  // console.log(meStock);
+  // console.log("meStock.map((m) => m)");
+  // console.log(meStock.map((m) => m));
+  // console.log(meExtra);
 
   return (
     <Fragment>
@@ -155,17 +167,22 @@ const Boodschappen = ({ me, setMe }) => {
         ) : (
           <Fragment>
             <a
-              href={`mailto:studio@roozen.nl?SUBJECT=${theemail.subject}&BODY=${
-                theemail.body +
+              href={`mailto:${me.email}?SUBJECT=${theemail.subject}&BODY=${
+                // theemail.body +
+                theemail.fresh +
                 myBoodschappen +
-                theemail.adres +
-                theemail.afzender +
-                theemail.email
+                theemail.stock +
+                meStock +
+                theemail.extra +
+                meExtra
+                // + theemail.adres
+                // + theemail.afzender
+                // + theemail.email
               }`}
             >
-              Bestel boodschappen per email bij Studio Roozen:
+              Stuur jezelf een email met de boodschappenlijst:
               <span className="table md:inline mt-18 md:mt-0 ml-0 md:ml-18 py-18 px-36 bg-indigo-500 text-white uppercase text-16 tracking-widest">
-                bestel
+                Stuur email
               </span>
             </a>
 

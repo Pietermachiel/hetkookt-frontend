@@ -26,9 +26,9 @@ const NieuwItem = ({ me, setMe, tags, dish, ...props }) => {
     defaultValues: {
       _id: "",
       title: "",
-      dish: { name: "" },
-      tags: [{ name: "" }],
-      related: [{ name: "" }],
+      dish: { _id: "" },
+      tags: [{ _id: "" }],
+      related: [{ _id: "" }],
       fresh: [{ quantity: null, unit: "", ingredient: "" }],
       stock: [{ quantity: null, unit: "", ingredient: "" }],
       directions: [{ name: "" }],

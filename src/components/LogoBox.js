@@ -19,6 +19,11 @@ const LogoBox = ({ user, me }) => {
           <button className="button-loginmenu">login</button>
         </NavLink>
       )}
+      {user && user.isAdmin && (
+        <NavLink className="button-recepten text-indigo-600" to="/recipes">
+          Recipes
+        </NavLink>
+      )}
       {/* <NavLink aria-label="to loginreact" className="" to="/loginreact">
         <button className="button-loginreact">loginreact</button>
       </NavLink> */}

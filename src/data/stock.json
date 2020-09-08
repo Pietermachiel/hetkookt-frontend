@@ -1,0 +1,201 @@
+[
+  {
+    "title": "olie",
+    "stockitems": [
+      "arachideolie",
+      "hazelnootolie",
+      "olijfolie",
+      "sesamolie",
+      "walnootolie",
+      "zonnebloemolie"
+    ]
+  },
+  {
+    "title": "azijn",
+    "stockitems": [
+      "Balsamico azijn",
+      "appelciderazijn",
+      "rode wijnazijn",
+      "sherryazijn",
+      "witte wijnazijn"
+    ]
+  },
+  {
+    "title": "smaakmakers",
+    "stockitems": [
+      "Dijonmosterd",
+      "Worcestersaus",
+      "currypasta",
+      "groentebouillon",
+      "grove mosterd",
+      "harissa",
+      "ketjap manis",
+      "kippenbouillon",
+      "mayonaise",
+      "mierikswortelpasta",
+      "oestersaus",
+      "oranjebloesemwater",
+      "rode misopasta",
+      "sambal oelek",
+      "sojasaus",
+      "tamarindewater",
+      "tomatenketchup",
+      "tomatenpuree",
+      "trassi",
+      "vissaus"
+    ]
+  },
+  {
+    "title": "kruiden",
+    "stockitems": [
+      "kardemompoeder",
+      "kardemomzaad",
+      "karwijzaad",
+      "komijnpoeder",
+      "komijnzaad",
+      "korianderpoeder",
+      "korianderzaad",
+      "mosterdpoeder",
+      "mosterdzaad",
+      "venkelzaad"
+    ]
+  },
+  {
+    "title": "specerijen",
+    "stockitems": [
+      "Shichimi Togarashi",
+      "baharat",
+      "chilipoeder",
+      "chilivlokken",
+      "dashipoeder",
+      "garam masala",
+      "gemberpoeder",
+      "kaneelpoeder",
+      "kaneelstokje",
+      "kerriepoeder",
+      "koekkruiden",
+      "kruidnagel",
+      "kurkuma",
+      "nootmuskaat",
+      "paprikapoeder",
+      "peper",
+      "piment",
+      "pimentpoeder",
+      "safraan",
+      "steranijs",
+      "vanillestokje",
+      "zout",
+      "zwarte peper"
+    ]
+  },
+  {
+    "title": "bakproducten",
+    "stockitems": [
+      "amandelextract",
+      "amandelmeel",
+      "backing soda",
+      "bakpoeder",
+      "bloem",
+      "cacaopoeder",
+      "droge gist",
+      "gelatineblaadjes",
+      "gist",
+      "maizena",
+      "paneermeel",
+      "patentbloem",
+      "roggevolkoren",
+      "semolina",
+      "tarwebloem",
+      "tarwevolkoren",
+      "volkorenbescuit",
+      "witte chocolade"
+    ]
+  },
+  {
+    "title": "droog fruit",
+    "stockitems": ["dadels", "krenten", "pruimen", "rozijnen"]
+  },
+  {
+    "title": "zoet",
+    "stockitems": [
+      "ahornsiroop",
+      "bruine basterdsuiker",
+      "honing",
+      "keukenstroop",
+      "palmsuiker",
+      "poedersuiker",
+      "rietsuiker",
+      "suiker"
+    ]
+  },
+  {
+    "title": "peulvruchten",
+    "stockitems": ["kidneybonen", "kikkererwten", "urad dal"]
+  },
+  {
+    "title": "granen",
+    "stockitems": [
+      "arboriorijst",
+      "basmatirijst",
+      "bulgur",
+      "instant polenta",
+      "polenta",
+      "wilde rijst"
+    ]
+  },
+  {
+    "title": "noten en zaden",
+    "stockitems": [
+      "amandelen",
+      "hazelnoten",
+      "macadamianoten",
+      "pijnboompitten",
+      "pinda's",
+      "sesamzaad",
+      "walnoten"
+    ]
+  },
+  {
+    "title": "blik pak of glas",
+    "stockitems": [
+      "Frankfurters",
+      "ansjovis",
+      "augurken",
+      "cassavechips",
+      "groene olijven",
+      "kappertjes",
+      "kokoscrème",
+      "marmalade",
+      "shiitake",
+      "tahinpasta",
+      "tomaten"
+    ]
+  },
+  {
+    "title": "alcohol",
+    "stockitems": [
+      "Madeira",
+      "Shaoxingwijn",
+      "droge witte wijn",
+      "rode wijn",
+      "witte rum"
+    ]
+  },
+  {
+    "title": "pasta",
+    "stockitems": [
+      "canneloni",
+      "eiernoedels",
+      "farfalle",
+      "lasagnavellen",
+      "linguine",
+      "rigatoni",
+      "spagetti",
+      "tagliatelle"
+    ]
+  },
+  {
+    "title": "diepvries",
+    "stockitems": ["doperwten"]
+  }
+]

@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import { toggleStock, removeStock } from "../../services/userService";
 import AccordionVoorraad from "./AccordionVoorraad";
 import { kalender } from "../common/common";
+import stock from "../../data/stock.json";
 
-const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
+const Voorraad = ({ me, setMe, recipes, ...props }) => {
   if (me.stock === undefined) return (me.stock = []);
 
   if (me.items === undefined) return [];
@@ -14,19 +15,19 @@ const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
     return item;
   });
 
-  console.log("themenu");
-  console.log(stock);
+  // console.log("themenu");
+  // console.log(stock);
 
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
   let allstock = themenu.reduce(function (accumulator, currentValue) {
     return [...accumulator, ...currentValue.stock];
   }, []);
-  console.log("allstock1");
-  console.log(allstock);
+  // console.log("allstock1");
+  // console.log(allstock);
 
   allstock = allstock.filter((f) => f.to_buy === true);
-  console.log("allstock2");
-  console.log(allstock);
+  // console.log("allstock2");
+  // console.log(allstock);
 
   // https://stackoverflow.com/questions/44332180/merge-objects-with-the-same-id-but-sum-values-of-the-objects
   // For a version with Array#reduce, you could use a hash table as reference to the same company with a closure over the hash table.
@@ -83,8 +84,8 @@ const Voorraad = ({ me, setMe, recipes, stock, ...props }) => {
         <div className=" grid-box unvisable slide work-grid-item pb-10">
           <Fragment>
             {devoorraad.map((dv, xid) => {
-              console.log("dv");
-              console.log(dv.title);
+              // console.log("dv");
+              // console.log(dv.title);
               if (dv === undefined) return [];
               return (
                 <Fragment key={xid}>

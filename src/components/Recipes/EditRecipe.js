@@ -3,6 +3,9 @@ import { toast } from "react-toastify";
 import { saveRecipe } from "../../services/recipeService";
 import { useForm, useFieldArray } from "react-hook-form";
 import { slugify } from "../common/common";
+import mongoose from "mongoose";
+
+const recipeId = mongoose.Types.ObjectId().toHexString();
 
 const theunits = [{ unit: "g" }, { unit: "ml" }];
 const stockunits = [
@@ -79,16 +82,27 @@ const EditRecipe = ({ tags, dish, books, recipes, therecipe, ...props }) => {
   const { fields: dateFields } = useFieldArray({ control, name: "date" });
 
   const handleEditRecipe = async (data) => {
-    const thedata = { ...data, _id: therecipe._id, date: therecipe.date };
+    console.log(data);
+    const thedata = {
+      ...data,
+      _id: therecipe._id,
+      date: therecipe.date,
+      related:
+        data.related === undefined || data.related[0]._id === ""
+          ? []
+          : data.related,
+      fresh: data.fresh === undefined ? [{ _id: recipeId }] : data.fresh,
+      stock: data.stock === undefined ? [{ _id: recipeId }] : data.stock,
+    };
     console.log("EditRecipe: thedata");
     console.log(thedata);
     try {
       await saveRecipe(thedata);
-      window.location = `/recipes/${slugify(therecipe.title)}`;
-      props.history.replace({
-        pathname: `/recipes/${slugify(therecipe.title)}`,
-        state: therecipe._id,
-      });
+      window.location = `/recipes/${slugify(thedata.title)}`;
+      // props.history.replace({
+      //   pathname: `/recipes/${slugify(therecipe.title)}`,
+      //   state: therecipe._id,
+      // });
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         toast.error("foutje");
@@ -98,7 +112,7 @@ const EditRecipe = ({ tags, dish, books, recipes, therecipe, ...props }) => {
 
   return (
     <React.Fragment>
-      <div className="container-y bg-rose-100">
+      <div className="container-y">
         <div className="md:w-550 m-auto relative">
           <h1 className="favorieten-title text-36">
             Edit recept: {therecipe.title}
@@ -115,22 +129,22 @@ const EditRecipe = ({ tags, dish, books, recipes, therecipe, ...props }) => {
                 ref={register({
                   required: true,
                   maxLength: 50,
-                  pattern: /^[a-zA-Z0-9 -]+$/,
+                  pattern: /^[a-zA-Z0-9' -]+$/,
                 })}
               />
               {errors.title?.type === "required" && (
                 <span className="block text-16 py-6 font-700 text-orange-500">
-                  Dit veld is verplicht
+                  Dit veld is verplicht.
                 </span>
               )}
               {errors.title?.type === "maxLength" && (
                 <span className="block text-16 py-6 font-700 text-orange-500">
-                  Maximaal 50 lettertekens
+                  Maximaal 50 lettertekens.
                 </span>
               )}
               {errors.title?.type === "pattern" && (
                 <span className="block text-16 py-6 font-700 text-orange-500">
-                  Ongeldig teken
+                  Ongeldig teken.
                 </span>
               )}
             </div>
@@ -154,7 +168,7 @@ const EditRecipe = ({ tags, dish, books, recipes, therecipe, ...props }) => {
               </select>
               {errors.dish?.type === "required" && (
                 <span className="block text-16 py-6 font-700 text-orange-500">
-                  Dit veld is verplicht
+                  Dit veld is verplicht.
                 </span>
               )}
             </div>
@@ -170,8 +184,8 @@ const EditRecipe = ({ tags, dish, books, recipes, therecipe, ...props }) => {
                       <select
                         name={`tags[${index}]._id`}
                         className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
-                        ref={register()}
-                        // ref={register({ required: true })}
+                        // ref={register()}
+                        ref={register({ required: true })}
                       >
                         <option value="" />
                         {tags.map((option, xid) => (
@@ -180,6 +194,11 @@ const EditRecipe = ({ tags, dish, books, recipes, therecipe, ...props }) => {
                           </option>
                         ))}
                       </select>
+                      {errors.tags?.type === "required" && (
+                        <span className="block text-16 py-6 font-700 text-orange-500">
+                          Dit veld is verplicht
+                        </span>
+                      )}
 
                       <button
                         className="absolute top-0"
@@ -222,7 +241,7 @@ const EditRecipe = ({ tags, dish, books, recipes, therecipe, ...props }) => {
                     <select
                       name={`related[${index}]._id`}
                       className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
-                      ref={register({ maxLength: 50 })}
+                      ref={register({ maxLength: 100 })}
                       // ref={register({ required: true })}
                     >
                       <option value="" />
@@ -234,9 +253,14 @@ const EditRecipe = ({ tags, dish, books, recipes, therecipe, ...props }) => {
                     </select>
                     {errors.related?.type === "maxLength" && (
                       <span className="block text-16 py-6 font-700 text-orange-500">
-                        Maximaal 50 lettertekens
+                        Maximaal 100 lettertekens.
                       </span>
                     )}
+                    {/* {errors.related?.type === "required" && (
+                      <span className="block text-16 font-700 text-orange-500">
+                        Dit veld is verplicht.
+                      </span>
+                    )} */}
                     <button
                       className="absolute top-0"
                       style={{ right: "0" }}
@@ -358,7 +382,7 @@ const EditRecipe = ({ tags, dish, books, recipes, therecipe, ...props }) => {
                         placeholder="hoeveel"
                         className="form-input__quantity h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
                         defaultValue={item.quantity}
-                        ref={register({ maxLength: 4 })}
+                        ref={register({ maxLength: 5 })}
                       />
                       <select
                         name={`stock[${index}].unit`}
@@ -397,7 +421,7 @@ const EditRecipe = ({ tags, dish, books, recipes, therecipe, ...props }) => {
                       errors.stock[index] &&
                       errors.stock[index].quantity?.type === "maxLength" && (
                         <span className="block text-16 py-6 font-700 text-orange-500">
-                          Hoeveelheid maximaal 4 lettertekens
+                          Hoeveelheid maximaal 5 lettertekens
                         </span>
                       )}
                     {errors.stock &&
@@ -501,7 +525,7 @@ const EditRecipe = ({ tags, dish, books, recipes, therecipe, ...props }) => {
               ))}
             </div>
             <button className="mb-36 uppercase text-16 bg-indigo-500 mt-36 px-36 py-10 text-white tracking-widest">
-              edit
+              bewaar
             </button>
           </form>
         </div>
