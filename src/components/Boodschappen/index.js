@@ -180,7 +180,8 @@ const Boodschappen = ({ me, setMe }) => {
                 // + theemail.email
               }`}
             >
-              Stuur jezelf een email met de boodschappenlijst:
+              Stuur jezelf of een leverancier een email met de
+              boodschappenlijst:
               <span className="table md:inline mt-18 md:mt-0 ml-0 md:ml-18 py-18 px-36 bg-indigo-500 text-white uppercase text-16 tracking-widest">
                 Stuur email
               </span>
