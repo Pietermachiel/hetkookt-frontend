@@ -90,6 +90,9 @@ const NewRecipe = ({ recipes, tags, dish, books, ...props }) => {
   // console.log("books");
   // console.log(books);
 
+  var accentedCharacters =
+    "àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ";
+
   return (
     <React.Fragment>
       <div className="container-y">
@@ -107,7 +110,8 @@ const NewRecipe = ({ recipes, tags, dish, books, ...props }) => {
                 ref={register({
                   required: true,
                   maxLength: 50,
-                  pattern: /^[a-zA-Z0-9 ]+$/,
+                  // pattern: /^[a-zA-Z0-9 ]+$/,
+                  pattern: /^[a-zA-Z0-9 ]+$/ + accentedCharacters,
                 })}
               />
               {errors.title?.type === "required" && (
