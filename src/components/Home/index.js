@@ -63,8 +63,8 @@ const Home = ({ user, recipes, ...props }) => {
                     <strong>voorraadkast</strong> op peil.
                   </li>
                   <li className="list-inside list-disc">
-                    <strong>Bestel de boodschappen</strong> met één druk op de
-                    knop bij je favoriete leverancier.
+                    Stuur jezelf een <strong>email</strong> met de
+                    boodschappenlijst.
                   </li>
                 </ul>
 
