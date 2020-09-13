@@ -1,14 +1,12 @@
 export function slugify(text) {
-  return (
-    text
-      .toString()
-      .toLowerCase()
-      .replace(/\s+/g, "-")
-      .replace(/\.+/g, "")
-      .replace(/’+/g, "-")
-      // .replace(/é+/g, "e")
-      .replace(/'+/g, "-")
-  );
+  return text
+    .toString()
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/\.+/g, "")
+    .replace(/’+/g, "-")
+    .replace(/â+/g, "a")
+    .replace(/'+/g, "-");
 }
 
 // slugify met uppercase
