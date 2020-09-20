@@ -12,10 +12,6 @@ const Items = ({ me, setMe, recipes, ...props }) => {
     .filter(uniq)
     .sort();
 
-  // console.log("me.items");
-  // console.log(me.items);
-  // console.log(favoritedish);
-
   return (
     <Fragment>
       <div className="container-y bg-rose-100">

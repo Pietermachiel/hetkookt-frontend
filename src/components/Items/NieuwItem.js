@@ -1,12 +1,7 @@
 import React, { useState, Fragment } from "react";
-// import { Redirect } from "react-router";
-// import { uniq } from "../common/common";
 import { toast } from "react-toastify";
-// import tags from "../../data/tags.json";
-// import thedishes from "../../data/dishes.json";
 import { createRecipe } from "../../services/userService";
 import { useForm, useFieldArray } from "react-hook-form";
-// import _ from "lodash";
 
 // https://www.carlrippon.com/custom-validation-rules-in-react-hook-form/
 // https://www.carlrippon.com/master-detail-forms-with-react-form-hook/
@@ -20,8 +15,7 @@ const stockunits = [
 ];
 
 const NieuwItem = ({ me, setMe, tags, dish, ...props }) => {
-  // const [routeRedirect, setRedirect] = useState("");
-  const [err, setError] = useState("");
+  const [err] = useState("");
   const { register, control, handleSubmit, errors } = useForm({
     defaultValues: {
       _id: "",
@@ -65,8 +59,6 @@ const NieuwItem = ({ me, setMe, tags, dish, ...props }) => {
   const { fields: dateFields } = useFieldArray({ control, name: "date" });
 
   const handleCreateRecipe = async (data) => {
-    console.log("NieuwItem: data");
-    console.log(data);
     try {
       // alert("create recipe");
       await createRecipe(me, setMe, data);
@@ -82,11 +74,6 @@ const NieuwItem = ({ me, setMe, tags, dish, ...props }) => {
       }
     }
   };
-
-  console.log("error");
-  console.log(err);
-  console.log("tags");
-  console.log(tags);
 
   return (
     <React.Fragment>

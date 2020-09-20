@@ -108,8 +108,15 @@ const Home = ({ user, recipes, ...props }) => {
 
               <br />
 
-              {/* 🌹 */}
-              <p>Pieter &#127801;</p>
+              {/* <span role="img" aria-label="rose">
+                🌹
+              </span> */}
+              <p>
+                Pieter{" "}
+                <span role="img" aria-label="rose">
+                  &#127801;
+                </span>
+              </p>
 
               <div className="clear-both"></div>
             </div>

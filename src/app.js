@@ -33,7 +33,7 @@ import User from "./components/User";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import ProtectedRoute from "./components/common/protectedRoute";
-import { apiUrl, recipeUrl } from "./config.json";
+import { apiUrl } from "./config.json";
 import LogoBox from "./components/LogoBox";
 import { slugify } from "./components/common/common.js";
 

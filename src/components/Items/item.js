@@ -13,11 +13,6 @@ const Item = ({ therecipe, user, me, setMe, doSave, tags, ...props }) => {
   //   (i) => slugify(i.title) === props.match.params.id
   // );
 
-  console.log("me.items");
-  console.log(me.items);
-  console.log("therecipe");
-  console.log(therecipe);
-
   const handleIsOpen = () => {
     setIsOpen(!isOpen);
   };

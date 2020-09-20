@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   removeStock,
@@ -7,20 +7,10 @@ import {
   deleteBoodschappen,
 } from "../../services/userService";
 import groceries from "../../data/groceries.json";
-// import { recipeUrl } from "../../config.json";
 import { kalender } from "../common/common";
 
 const Boodschappen = ({ me, setMe }) => {
   const [value, setValue] = useState("");
-  // const [groceries, setGroceries] = useState([]);
-
-  // useEffect(() => {
-  //   async function getData() {
-  //     const res = await fetch(`${recipeUrl}/groceries.json`);
-  //     res.json().then((res) => setGroceries(res));
-  //   }
-  //   getData();
-  // }, []);
 
   if (me.items === undefined) return [];
 
@@ -65,9 +55,6 @@ const Boodschappen = ({ me, setMe }) => {
     })(Object.create(null)),
     []
   );
-  console.log(boodschappen);
-  // console.log(me.stock);
-  // console.log(me.extra);
 
   const theemail = {
     subject: "boodschappen",

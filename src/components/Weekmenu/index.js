@@ -6,15 +6,6 @@ import { toggleFresh } from "../../services/userService";
 import KalenderWeekmenu from "./KalenderWeekmenu";
 
 const Menu = ({ me, setMe, user, thecart, recipes, about, ...props }) => {
-  // console.log("me");
-  // console.log(me.items);
-  // console.log("user");
-  // console.log(user);
-  // console.log("recipes");
-  // console.log(recipes);
-  console.log("kalender");
-  console.log(kalender);
-
   if (me.stock === undefined) return [];
   if (me.extra === undefined) return [];
 
@@ -30,8 +21,6 @@ const Menu = ({ me, setMe, user, thecart, recipes, about, ...props }) => {
     return item;
   });
   // thedates = thedates.map((t) => t.dayall);
-
-  // console.log(thedates);
 
   return (
     <Fragment>

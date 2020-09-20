@@ -21,8 +21,6 @@ export function register(user) {
 }
 
 export function saveUser(user) {
-  console.log("user");
-  console.log(user);
   if (user._id) {
     const body = { ...user };
     delete body._id;
@@ -33,8 +31,6 @@ export function saveUser(user) {
 }
 
 export async function deleteUser(userId) {
-  console.log("userId");
-  console.log(userId);
   await axios.delete(`${apiEndpoint}/${userId}`);
   // return http.delete(userUrl(userId));
 }
@@ -50,8 +46,6 @@ export function verifyUser(token) {
 // createRecipe (Item > NieuwItem en Recipes > Recipe)
 
 export async function createRecipe(me, setMe, item) {
-  console.log("create recipe");
-
   await setMe({
     _id: me._id,
     name: me.name,
@@ -61,19 +55,11 @@ export async function createRecipe(me, setMe, item) {
     extra: me.extra,
   });
   me.items.push(item);
-  console.log("create me.items");
-  console.log(me.items);
   const thebody = { items: me.items };
-  console.log("thebody");
-  console.log(thebody);
-
   await axios.put(`${apiUrl}/users/items/${me._id}`, thebody);
 }
 
 export async function doSave(me, setMe, item) {
-  console.log("edit recipe");
-  console.log(item);
-  console.log(me.items);
   me.items = me.items.filter((r) => r._id !== item._id);
   setMe({
     _id: me._id,
@@ -84,8 +70,6 @@ export async function doSave(me, setMe, item) {
     extra: me.extra,
   });
   me.items.push(item);
-  console.log("edit me.items");
-  console.log(me.items);
   const body = { items: me.items };
   await doSaveAxios(me._id, body);
 }
@@ -114,7 +98,6 @@ export async function deleteRecipe(me, setMe, id) {
 // doPutMenu
 
 export async function doPutMenu(me, setMe, item, dedate) {
-  console.log("doPutMenu");
   me.items = me.items.filter((r) => r._id !== item._id);
   setMe({
     _id: me._id,
@@ -148,7 +131,6 @@ function putAxios(id, body) {
 // deleteFromMenu
 
 export async function deleteFromMenu(me, setMe, id, dayall) {
-  console.log("deleteFromMenu");
   var allMeItems = me.items.map((r) => r);
   var myItem = allMeItems.find((item) => item._id === id);
   myItem.date = myItem.date.filter((d) => d.name !== dayall);
@@ -173,7 +155,6 @@ function updateAxios(id, body) {
 export async function toggleFresh(me, setMe, id, freshitem) {
   var allMeItems = me.items.map((r) => r);
   var myItem = allMeItems.find((item) => item._id === id);
-  console.log(myItem);
   var donotbuy = myItem.fresh.find((e) => e.ingredient === freshitem);
   donotbuy.to_buy = !donotbuy.to_buy;
   setMe({

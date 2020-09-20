@@ -5,13 +5,9 @@ import { slugify, slugifyu } from "../common/common.js";
 import { apiUrl } from "../../config.json";
 import { createRecipe } from "../../services/userService";
 
-const Recipe = ({ therecipe, user, me, setMe, thecart, tags, ...props }) => {
-  // var [therecipe, setTheRecipe] = useState([]);
-  // console.log(tags);
+const Recipe = ({ user, me, setMe, thecart, tags, ...props }) => {
+  var [therecipe, setTheRecipe] = useState([]);
   const API = props.location.state;
-  // console.log("therecipe");
-  // console.log(therecipe);
-  // console.log(props);
 
   const handleCreateRecipe = async (me, setMe, therecipe) => {
     console.log("create therecipe");
@@ -28,8 +24,7 @@ const Recipe = ({ therecipe, user, me, setMe, thecart, tags, ...props }) => {
       info: therecipe.info,
       date: therecipe.date,
     };
-    // console.log("newrecipe");
-    // console.log(newrecipe);
+
     try {
       await createRecipe(me, setMe, newrecipe);
     } catch (ex) {
@@ -45,18 +40,13 @@ const Recipe = ({ therecipe, user, me, setMe, thecart, tags, ...props }) => {
     // window.location = state ? state.from.pathname : "/kookschrift";
   };
 
-  // useEffect(() => {
-  //   async function getData() {
-  //     const res = await fetch(`${apiUrl}/recipes/${API}`);
-  //     res.json().then((res) => setTheRecipe(res));
-  //   }
-  //   getData();
-  // }, [API]);
-
-  console.log("therecipe");
-  console.log(therecipe);
-  // console.log("API");
-  // console.log(API);
+  useEffect(() => {
+    async function getData() {
+      const res = await fetch(`${apiUrl}/recipes/${API}`);
+      res.json().then((res) => setTheRecipe(res));
+    }
+    getData();
+  }, [API]);
 
   if (therecipe.tags === undefined) return [];
   // const thelength = props.tags.length - 1;
@@ -65,8 +55,6 @@ const Recipe = ({ therecipe, user, me, setMe, thecart, tags, ...props }) => {
   // therecipe = newrecipe || therecipe;
 
   const myrecipes = thecart.map((m) => m._id);
-  // console.log("myrecipes");
-  // console.log(myrecipes);
 
   return (
     <Fragment>
@@ -137,11 +125,11 @@ const Recipe = ({ therecipe, user, me, setMe, thecart, tags, ...props }) => {
           )}
           {user && user.isAdmin && (
             <Link
-              to={`/editrecipe/${slugify(therecipe.title)}`}
-              // to={{
-              //   pathname: `/editrecipe/${slugify(therecipe.title)}`,
-              //   state: therecipe._id,
-              // }}
+              // to={`/editrecipe/${slugify(therecipe.title)}`}
+              to={{
+                pathname: `/editrecipe/${slugify(therecipe.title)}`,
+                state: therecipe._id,
+              }}
             >
               <button className="mb-5 lg:pr-18 btn-add mr-10 text-19 font-600 text-indigo-700 flex item-center hover:text-red-500">
                 <img
@@ -164,7 +152,7 @@ const Recipe = ({ therecipe, user, me, setMe, thecart, tags, ...props }) => {
                   const thetag = tags.find((s) => s.name === f.ingredient);
                   // console.log("thetag");
                   // console.log(thetag);
-                  if (thetag === undefined) return;
+                  if (thetag === undefined) return [];
                   const catcolor = thetag.category.name;
                   return (
                     <li key={xid}>

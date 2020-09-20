@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 const Register = (props) => {
   const { register, handleSubmit, errors } = useForm();
-  const [err, setErr] = useState("");
+  const [err] = useState("");
 
   const history = useHistory();
 

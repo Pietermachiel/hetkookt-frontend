@@ -1,9 +1,10 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { toast } from "react-toastify";
 import { saveRecipe } from "../../services/recipeService";
 import { useForm, useFieldArray } from "react-hook-form";
 import { slugify } from "../common/common";
 import mongoose from "mongoose";
+import { apiUrl } from "../../config.json";
 
 const recipeId = mongoose.Types.ObjectId().toHexString();
 
@@ -15,8 +16,9 @@ const stockunits = [
   { unit: "el" },
 ];
 
-const EditRecipe = ({ tags, dish, books, recipes, therecipe, ...props }) => {
-  const [err, setError] = useState("");
+const EditRecipe = ({ tags, dish, books, recipes, ...props }) => {
+  const [therecipe, setTheRecipe] = useState([]);
+  const [err] = useState("");
   const { register, control, handleSubmit, reset, errors } = useForm({
     defaultValues: {
       _id: therecipe._id,
@@ -33,26 +35,28 @@ const EditRecipe = ({ tags, dish, books, recipes, therecipe, ...props }) => {
     },
   });
 
-  // const API = props.location.state;
+  const API = props.location.state;
 
-  // useEffect(() => {
-  //   async function getData() {
-  //     const res = await fetch(`${apiUrl}/recipes/${API}`);
-  //     res.json().then((res) => setTheRecipe(res));
-  //   }
-  //   getData();
-  // }, [API]);
+  useEffect(() => {
+    async function getData() {
+      const res = await fetch(`${apiUrl}/recipes/${API}`);
+      res.json().then((res) => setTheRecipe(res));
+    }
+    getData();
+  }, [API]);
 
-  // useEffect(() => {
-  //   async function getData() {
-  //     const res = await fetch(`${apiUrl}/recipes/${API}`);
-  //     res.json().then((res) => reset(therecipe));
-  //   }
-  //   getData();
-  // }, [API]);
+  useEffect(() => {
+    async function getData() {
+      const res = await fetch(`${apiUrl}/recipes/${API}`);
+      res.json().then((res) => reset(therecipe));
+    }
+    getData();
+  }, [API, therecipe, reset]);
 
-  console.log("therecipe");
-  console.log(therecipe);
+  // console.log("therecipe");
+  // console.log(therecipe);
+  // console.log("recipes");
+  // console.log(recipes);
 
   const {
     fields: tagsFields,
@@ -186,14 +190,15 @@ const EditRecipe = ({ tags, dish, books, recipes, therecipe, ...props }) => {
                   <Fragment key={index}>
                     <li className="relative mb-0">
                       <select
-                        name={`tags[${index}]._id`}
+                        name={`tags[${index}].name`}
+                        defaultValue={item.name}
                         className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
                         // ref={register()}
                         ref={register({ required: true })}
                       >
                         <option value="" />
                         {tags.map((option, xid) => (
-                          <option key={xid} value={option._id}>
+                          <option key={xid} value={option.name}>
                             {option.name}
                           </option>
                         ))}
@@ -243,14 +248,15 @@ const EditRecipe = ({ tags, dish, books, recipes, therecipe, ...props }) => {
                       ref={register({ maxLength: 30 })}
                     /> */}
                     <select
-                      name={`related[${index}]._id`}
+                      name={`related[${index}].title`}
+                      defaultValue={item.title}
                       className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
                       ref={register({ maxLength: 100 })}
                       // ref={register({ required: true })}
                     >
                       <option value="" />
                       {recipes.map((option, xid) => (
-                        <option key={xid} value={option._id}>
+                        <option key={xid} value={option.title}>
                           {option.title}
                         </option>
                       ))}
@@ -297,7 +303,7 @@ const EditRecipe = ({ tags, dish, books, recipes, therecipe, ...props }) => {
               <ul>
                 {freshFields.map((item, index) => (
                   <Fragment key={index}>
-                    <li className="relative mb-0" key={item.id}>
+                    <li className="relative mb-0">
                       <input
                         name={`fresh[${index}].quantity`}
                         placeholder="hoeveel"
@@ -458,6 +464,7 @@ const EditRecipe = ({ tags, dish, books, recipes, therecipe, ...props }) => {
                   <li key={index} className="relative mb-0">
                     <input
                       name={`directions[${index}].name`}
+                      defaultValue={item.name}
                       className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
                       ref={register()}
                     />

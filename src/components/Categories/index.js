@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import { slugify, slugifyu, uniq } from "../common/common";
+import { slugify, slugifyu } from "../common/common";
 import SelectedItems from "../Collections/SelectedItems";
 import FavoriteItems from "../Collections/FavoriteItems";
 
@@ -19,26 +19,17 @@ const Categories = ({
     setCat(c);
   };
 
-  console.log("categories");
-  console.log(categories);
-  console.log(tags);
-  console.log(cat);
-
   let thetags = recipes.map((r) => r.tags[0]);
-  console.log("thetags");
-  console.log(thetags);
 
   // var unique = thetags.filter(function (x, i) {
   //   return thetags[i]._id.indexOf(x._id) === i;
   // });
 
   // // thetags = thetags.map((m) => m.name).filter(uniq);
-  // console.log("thetags2");
-  // console.log(unique);
 
   var uniqTags = [];
   thetags.forEach(function (item) {
-    var i = uniqTags.findIndex((x) => x.name == item.name);
+    var i = uniqTags.findIndex((x) => x.name === item.name);
     if (i <= -1) {
       uniqTags.push({
         _id: item._id,

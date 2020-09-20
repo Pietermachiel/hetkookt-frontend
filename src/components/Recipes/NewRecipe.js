@@ -2,7 +2,7 @@ import React, { useState, Fragment } from "react";
 import { toast } from "react-toastify";
 import { saveRecipe } from "../../services/recipeService";
 import { useForm, useFieldArray } from "react-hook-form";
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 
 const theunits = [{ unit: "g" }, { unit: "ml" }];
 const stockunits = [
@@ -11,10 +11,10 @@ const stockunits = [
   { unit: "tl" },
   { unit: "el" },
 ];
-const recipeId = mongoose.Types.ObjectId().toHexString();
+// const recipeId = mongoose.Types.ObjectId().toHexString();
 
 const NewRecipe = ({ recipes, tags, dish, books, ...props }) => {
-  const [err, setError] = useState("");
+  const [err] = useState("");
   const { register, control, handleSubmit, errors } = useForm({
     defaultValues: {
       _id: "",

@@ -19,7 +19,7 @@ const CollectionsItems = ({
   );
   // add 'thecart' recipes with recipe.dish
   thecart.map((tc) => {
-    if (tc.dish.name === props.match.params.id) dishrecipes.push(tc);
+    if (tc.dish.name === props.match.params.id) return dishrecipes.push(tc);
   });
   // select the first tag from each dishrecipes
   var selectedtags = dishrecipes.map((s) => s.tags[0]);

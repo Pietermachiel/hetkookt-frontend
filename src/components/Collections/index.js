@@ -29,14 +29,13 @@ const Collections = ({ me, setMe, thecart, dish, recipes, ...props }) => {
             </li>
           ))}
         </ul>
-        {dish.map((d) => {
+        {dish.map((d, xid) => {
           let therecipes = recipes.filter((r) => r.dish._id === d._id);
           let thetags = therecipes.map((t) => t.tags[0]);
           thetags = thetags.map((m) => m.name).filter(uniq);
-          console.log(thetags);
           if (d.name === thedish)
             return (
-              <Fragment>
+              <Fragment key={xid}>
                 <div className="cat-box mb-36">
                   <h1 className="mb-18">{d.name}</h1>
                   {/* <div className="flexbox flexbox-margin unvisable slide work-grid-item"> */}

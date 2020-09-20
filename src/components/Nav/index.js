@@ -1,7 +1,5 @@
 import React, { Fragment } from "react";
 import { NavLink, withRouter } from "react-router-dom";
-import CategoriesNav from "./CategoriesNav";
-import CollectionsNav from "./CollectionsNav";
 import auth from "../../services/authService";
 import { deleteUser } from "../../services/userService";
 import Kookschrift from "./kookschrift";
