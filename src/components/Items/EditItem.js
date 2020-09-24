@@ -91,7 +91,7 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, recipes, ...props }) => {
           <form onSubmit={handleSubmit(handleDoSave)}>
             <div className="formgroup__collectie">
               <label className="text-16 text-gray-500" htmlFor="email">
-                Titel
+                Titel <span className="verplicht">*</span>
               </label>
               <input
                 name="title"
@@ -126,7 +126,7 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, recipes, ...props }) => {
             {/* collectie = dish */}
             <div className="formgroup__collectie">
               <label htmlFor="collectie" className="text-16 text-gray-500">
-                Collectie
+                Collectie <span className="verplicht">*</span>
               </label>
               <select
                 name="dish.name"
@@ -149,7 +149,7 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, recipes, ...props }) => {
             {/* Tags */}
             <div className="formgroup__collectie">
               <label className="text-16 text-gray-500" htmlFor="email">
-                Tags
+                Tags <span className="verplicht">*</span>
               </label>
               <ul>
                 {tagsFields.map((item, index) => (

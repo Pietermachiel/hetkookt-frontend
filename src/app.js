@@ -410,6 +410,7 @@ const App = () => {
             render={(props) => {
               return (
                 <NieuwItem
+                  recipes={recipes}
                   tags={tags}
                   dish={dish}
                   me={me}

@@ -14,8 +14,8 @@ const stockunits = [
   { unit: "el" },
 ];
 
-const NieuwItem = ({ me, setMe, tags, dish, ...props }) => {
-  const [err] = useState("");
+const NieuwItem = ({ me, setMe, recipes, tags, dish, ...props }) => {
+  // const [err] = useState("");
   const { register, control, handleSubmit, errors } = useForm({
     defaultValues: {
       _id: "",
@@ -59,9 +59,16 @@ const NieuwItem = ({ me, setMe, tags, dish, ...props }) => {
   const { fields: dateFields } = useFieldArray({ control, name: "date" });
 
   const handleCreateRecipe = async (data) => {
+    const newdata = {
+      ...data,
+      related:
+        data.related === undefined || data.related[0]._id === ""
+          ? []
+          : data.related,
+    };
     try {
       // alert("create recipe");
-      await createRecipe(me, setMe, data);
+      await createRecipe(me, setMe, newdata);
       window.location.pathname = "/kookschrift";
       // const { state } = props.location;
       // window.location = state ? state.from.pathname : "/kookschrift";
@@ -84,7 +91,7 @@ const NieuwItem = ({ me, setMe, tags, dish, ...props }) => {
             {/* titel */}
             <div className="formgroup__collectie">
               <label className="text-16 text-gray-500" htmlFor="email">
-                Titel
+                Titel <span className="verplicht">*</span>
               </label>
               <input
                 name="title"
@@ -105,7 +112,7 @@ const NieuwItem = ({ me, setMe, tags, dish, ...props }) => {
                   Maximaal 50 lettertekens
                 </span>
               )}
-              {errors.title?.type === "pattern" && (
+              {errors.title && errors.title?.type === "pattern" && (
                 <span className="block text-16 py-6 font-700 text-orange-500">
                   Ongeldig teken
                 </span>
@@ -114,12 +121,12 @@ const NieuwItem = ({ me, setMe, tags, dish, ...props }) => {
             {/* collectie */}
             <div className="formgroup__collectie">
               <label htmlFor="collectie" className="text-16 text-gray-500">
-                Collectie
+                Collectie <span className="verplicht">*</span>
               </label>
               <select
                 name="dish.name"
                 ref={register({ required: true })}
-                id="dish"
+                // id="dish"
                 className="select h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
               >
                 <option value="" />
@@ -129,7 +136,7 @@ const NieuwItem = ({ me, setMe, tags, dish, ...props }) => {
                   </option>
                 ))}
               </select>
-              {errors.dish?.type === "required" && (
+              {errors.dish && errors.dish?.type === "required" && (
                 <span className="block text-16 py-6 font-700 text-orange-500">
                   Dit veld is verplicht
                 </span>
@@ -138,7 +145,7 @@ const NieuwItem = ({ me, setMe, tags, dish, ...props }) => {
             {/* Tags */}
             <div className="formgroup__collectie">
               <label className="text-16 text-gray-500" htmlFor="email">
-                Tags
+                Tags <span className="verplicht">*</span>
               </label>
               <ul>
                 {tagsFields.map((item, index) => (
@@ -148,7 +155,7 @@ const NieuwItem = ({ me, setMe, tags, dish, ...props }) => {
                         name={`tags[${index}].name`}
                         className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
                         ref={register()}
-                        // ref={register({ required: true })}
+                        ref={register({ required: true })}
                       >
                         <option value="" />
                         {tags.map((option, xid) => (
@@ -157,6 +164,11 @@ const NieuwItem = ({ me, setMe, tags, dish, ...props }) => {
                           </option>
                         ))}
                       </select>
+                      {errors.name?.type === "required" && (
+                        <span className="block text-16 py-6 font-700 text-orange-500">
+                          Dit veld is verplicht
+                        </span>
+                      )}
 
                       <button
                         className="absolute top-0"
@@ -191,11 +203,24 @@ const NieuwItem = ({ me, setMe, tags, dish, ...props }) => {
               <ul>
                 {relatedFields.map((item, index) => (
                   <li key={index} className="relative mb-0">
-                    <input
+                    {/* <input
                       name={`related[${index}].name`}
                       className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
                       ref={register({ maxLength: 30 })}
-                    />
+                    /> */}
+                    <select
+                      name={`related[${index}]._id`}
+                      className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
+                      ref={register({ maxLength: 100 })}
+                      // ref={register({ required: true })}
+                    >
+                      <option value="" />
+                      {recipes.map((option, xid) => (
+                        <option key={xid} value={option._id}>
+                          {option.title}
+                        </option>
+                      ))}
+                    </select>
                     {errors.related?.type === "maxLength" && (
                       <span className="block text-16 py-6 font-700 text-orange-500">
                         Maximaal 30 lettertekens
@@ -443,11 +468,6 @@ const NieuwItem = ({ me, setMe, tags, dish, ...props }) => {
                 ref={register()}
               />
             </div>
-            {err && (
-              <p className="font-700 text-16 text-orange-500 mb-0 mt-6">
-                {err}
-              </p>
-            )}
             <div className="hidden invisible">
               {dateFields.map((item, index) => (
                 <li key={index}>
