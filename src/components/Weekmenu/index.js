@@ -117,7 +117,7 @@ const Menu = ({ me, setMe, user, thecart, recipes, about, ...props }) => {
                                                 f.do_buy
                                               )
                                             }
-                                            className="text-red-600"
+                                            className="text-verwijder"
                                           >
                                             {" "}
                                             <span className="font-300 text-14 lg:text-16">
@@ -126,7 +126,7 @@ const Menu = ({ me, setMe, user, thecart, recipes, about, ...props }) => {
                                             &nbsp;
                                             <img
                                               className="w-20 h-20 inline"
-                                              src="/img/feather/x-red.svg"
+                                              src="/img/feather/x-verwijder.svg"
                                               alt=""
                                             />
                                           </span>

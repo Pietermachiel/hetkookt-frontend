@@ -14,7 +14,7 @@ const AccordionWeekMenu = ({ title, children, me, setMe, id, dayall }) => {
         <div className="">
           <Link to={`/kookschrift/${slugify(title)}`}>{title} </Link>{" "}
           <span
-            className="text-red-500"
+            className="text-verwijder"
             onClick={() => deleteFromMenu(me, setMe, id, dayall)}
           >
             &nbsp;
