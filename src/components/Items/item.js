@@ -125,6 +125,22 @@ const Item = ({ therecipe, user, me, setMe, doSave, tags, ...props }) => {
                     </li>
                   );
                 })}
+                {therecipe.fresh.map((f, xid) => {
+                  const thetag = tags.find((s) => s.name === f.ingredient);
+                  // console.log("thetag");
+                  // console.log(thetag);
+                  if (thetag === undefined)
+                    return (
+                      <li key={xid}>
+                        <div className="items-quantity">
+                          {f.quantity} {f.unit}
+                        </div>
+                        <div className="items-product">
+                          &nbsp;{f.ingredient}
+                        </div>
+                      </li>
+                    );
+                })}
               </div>
               <p>voorraad</p>
               <div className="ingredienten-box">

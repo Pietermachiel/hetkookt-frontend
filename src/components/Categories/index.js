@@ -38,7 +38,7 @@ const Categories = ({
       });
     }
   });
-  console.log(uniqTags);
+  // console.log(uniqTags);
 
   return (
     <Fragment>

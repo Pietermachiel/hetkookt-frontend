@@ -18,15 +18,17 @@ const CollectionsItems = ({
     (recipe) => recipe.dish.name === props.match.params.id
   );
   // add 'thecart' recipes with recipe.dish
-  thecart.map((tc) => {
-    if (tc.dish.name === props.match.params.id) return dishrecipes.push(tc);
-  });
+  thecart
+    .filter((tc) => tc.dish.name === props.match.params.id)
+    .map((tc) => {
+      return dishrecipes.push(tc);
+    });
   // select the first tag from each dishrecipes
   var selectedtags = dishrecipes.map((s) => s.tags[0]);
   // filter uniq tags
   selectedtags = selectedtags.map((ss) => ss.name).filter(uniq);
 
-  console.log(selectedtags);
+  // console.log(selectedtags);
 
   return (
     <>

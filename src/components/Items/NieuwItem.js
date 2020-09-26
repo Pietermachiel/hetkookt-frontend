@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { Fragment } from "react";
 import { toast } from "react-toastify";
 import { createRecipe } from "../../services/userService";
 import { useForm, useFieldArray } from "react-hook-form";
@@ -15,7 +15,6 @@ const stockunits = [
 ];
 
 const NieuwItem = ({ me, setMe, recipes, tags, dish, ...props }) => {
-  // const [err] = useState("");
   const { register, control, handleSubmit, errors } = useForm({
     defaultValues: {
       _id: "",
@@ -154,7 +153,6 @@ const NieuwItem = ({ me, setMe, recipes, tags, dish, ...props }) => {
                       <select
                         name={`tags[${index}].name`}
                         className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
-                        ref={register()}
                         ref={register({ required: true })}
                       >
                         <option value="" />

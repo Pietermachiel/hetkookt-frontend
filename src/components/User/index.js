@@ -18,16 +18,16 @@ const User = ({ me, user, thecart, ...props }) => {
     // console.log("window location");
   }
 
-  const thedates = thecart.map((dd) => {
-    const dedates = dd.date.map((d) => {
-      const x = [];
-      var totaldates = x.concat(d);
-      return totaldates[0];
-    });
-    return dedates;
-  });
+  // const thedates = thecart.map((dd) => {
+  //   const dedates = dd.date.map((d) => {
+  //     const x = [];
+  //     var totaldates = x.concat(d);
+  //     return totaldates[0];
+  //   });
+  //   return dedates;
+  // });
 
-  const newdates = thedates.reduce((acc, date) => acc + date, []);
+  // const newdates = thedates.reduce((acc, date) => acc + date, []);
 
   // console.log("props");
   // console.log(props);

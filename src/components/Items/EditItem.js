@@ -30,6 +30,9 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, recipes, ...props }) => {
     },
   });
 
+  console.log("therecipe");
+  console.log(therecipe);
+
   const {
     fields: tagsFields,
     append: tagsAppend,
@@ -158,7 +161,7 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, recipes, ...props }) => {
                       <select
                         name={`tags[${index}].name`}
                         className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
-                        ref={register()}
+                        ref={register({ required: true })}
                       >
                         <option value="" />
                         {tags.map((option, xid) => (
@@ -167,6 +170,11 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, recipes, ...props }) => {
                           </option>
                         ))}
                       </select>
+                      {errors.tags?.type === "required" && (
+                        <span className="block text-16 py-6 font-700 text-orange-500">
+                          Dit veld is verplicht
+                        </span>
+                      )}
 
                       <button
                         className="absolute top-0"

@@ -16,10 +16,10 @@ const stockunits = [
   { unit: "el" },
 ];
 
-const EditRecipe = ({ tags, dish, books, recipes, ...props }) => {
-  const [therecipe, setTheRecipe] = useState([]);
+const EditRecipe = ({ tags, dish, books, therecipe, recipes, ...props }) => {
+  // const [therecipe, setTheRecipe] = useState([]);
   const [err] = useState("");
-  const { register, control, handleSubmit, reset, errors } = useForm({
+  const { register, control, handleSubmit, errors } = useForm({
     defaultValues: {
       _id: therecipe._id,
       title: therecipe.title,
@@ -34,27 +34,26 @@ const EditRecipe = ({ tags, dish, books, recipes, ...props }) => {
       date: therecipe.date,
     },
   });
-
   const API = props.location.state;
 
-  useEffect(() => {
-    async function getData() {
-      const res = await fetch(`${apiUrl}/recipes/${API}`);
-      res.json().then((res) => setTheRecipe(res));
-    }
-    getData();
-  }, [API]);
+  // useEffect(() => {
+  //   async function getData() {
+  //     const res = await fetch(`${apiUrl}/recipes/${API}`);
+  //     res.json().then((res) => setTheRecipe(res));
+  //   }
+  //   getData();
+  // }, [API]);
 
-  useEffect(() => {
-    async function getData() {
-      const res = await fetch(`${apiUrl}/recipes/${API}`);
-      res.json().then((res) => reset(therecipe));
-    }
-    getData();
-  }, [API, therecipe, reset]);
+  // useEffect(() => {
+  //   async function getData() {
+  //     const res = await fetch(`${apiUrl}/recipes/${API}`);
+  //     res.json().then((res) => reset(therecipe));
+  //   }
+  //   getData();
+  // }, [API, therecipe, reset]);
 
-  // console.log("therecipe");
-  // console.log(therecipe);
+  console.log("therecipe");
+  console.log(therecipe);
   // console.log("recipes");
   // console.log(recipes);
 
@@ -190,15 +189,14 @@ const EditRecipe = ({ tags, dish, books, recipes, ...props }) => {
                   <Fragment key={index}>
                     <li className="relative mb-0">
                       <select
-                        name={`tags[${index}].name`}
-                        defaultValue={item.name}
+                        name={`tags[${index}]._id`}
+                        // defaultValue={item.name}
                         className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
-                        // ref={register()}
                         ref={register({ required: true })}
                       >
                         <option value="" />
                         {tags.map((option, xid) => (
-                          <option key={xid} value={option.name}>
+                          <option key={xid} value={option._id}>
                             {option.name}
                           </option>
                         ))}
@@ -248,7 +246,7 @@ const EditRecipe = ({ tags, dish, books, recipes, ...props }) => {
                       ref={register({ maxLength: 30 })}
                     /> */}
                     <select
-                      name={`related[${index}].title`}
+                      name={`related[${index}]._id`}
                       defaultValue={item.title}
                       className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
                       ref={register({ maxLength: 100 })}
@@ -256,7 +254,7 @@ const EditRecipe = ({ tags, dish, books, recipes, ...props }) => {
                     >
                       <option value="" />
                       {recipes.map((option, xid) => (
-                        <option key={xid} value={option.title}>
+                        <option key={xid} value={option._id}>
                           {option.title}
                         </option>
                       ))}
@@ -501,7 +499,7 @@ const EditRecipe = ({ tags, dish, books, recipes, ...props }) => {
               <select
                 name="book._id"
                 ref={register()}
-                id="book"
+                // id="book"
                 className="select h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-36"
               >
                 <option value="" />

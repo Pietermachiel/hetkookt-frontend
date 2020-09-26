@@ -102,7 +102,7 @@ const NewRecipe = ({ recipes, tags, dish, books, ...props }) => {
             {/* titel */}
             <div className="formgroup__collectie">
               <label className="text-16 text-gray-500" htmlFor="email">
-                Titel
+                Titel <span className="verplicht">*</span>
               </label>
               <input
                 name="title"
@@ -133,7 +133,7 @@ const NewRecipe = ({ recipes, tags, dish, books, ...props }) => {
             {/* collectie */}
             <div className="formgroup__collectie">
               <label htmlFor="collectie" className="text-16 text-gray-500">
-                Collectie
+                Collectie <span className="verplicht">*</span>
               </label>
               <select
                 name="dish._id"
@@ -157,7 +157,7 @@ const NewRecipe = ({ recipes, tags, dish, books, ...props }) => {
             {/* Tags */}
             <div className="formgroup__collectie">
               <label className="text-16 text-gray-500" htmlFor="email">
-                Tags
+                Tags <span className="verplicht">*</span>
               </label>
               <ul>
                 {tagsFields.map((item, index) => (
@@ -471,7 +471,7 @@ const NewRecipe = ({ recipes, tags, dish, books, ...props }) => {
             {/* book */}
             <div className="formgroup__collectie">
               <label htmlFor="collectie" className="text-16 text-gray-500">
-                Boek
+                Boek <span className="verplicht">*</span>
               </label>
               <select
                 name="book._id"
