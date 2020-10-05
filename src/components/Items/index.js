@@ -50,7 +50,7 @@ const Items = ({ me, setMe, recipes, ...props }) => {
             ) en zet in het kookschrift, of maak zelf een{" "}
             <Link
               className="font-700 text-indigo-600 hover:text-red-500"
-              to="/nieuwrecept"
+              to="/nieuwitem"
             >
               nieuw recept
             </Link>{" "}
