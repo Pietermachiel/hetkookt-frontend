@@ -13,7 +13,9 @@ const LogoBox = ({ user, me }) => {
 
   return (
     <div
-      className={`lg:ml-150 ${width < 768 ? "mt-14 ml-100 pl-18" : "ml-125"}`}
+      className={`lg:ml-150 ${
+        width < 768 ? "mt-14 ml-100 pl-18" : "mt-14 ml-125"
+      }`}
     >
       {user && (
         <div className="flex items-center">
