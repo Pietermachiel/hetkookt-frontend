@@ -1,7 +1,10 @@
 import React, { Fragment } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import useCurrentWitdh from "../common/use-current-width2";
 
 const Home = ({ user, recipes, ...props }) => {
+  const width = useCurrentWitdh();
+
   if (recipes.length === 0)
     return (
       <div className="container-x">
@@ -20,17 +23,21 @@ const Home = ({ user, recipes, ...props }) => {
 
   return (
     <Fragment>
-      <div className={`container-y ${user && "bg-rose-100"}`}>
+      <div className={`container-y `}>
+        {/* ${user && "bg-rose-100"} */}
         <Fragment>
           <div className="mb-48">
-            <h1 className="favorieten-title">
-              hetkookt!
+            <p className="hetkookt-title">
+              <Link className="text-red-600 font-700 text-18" to="/books">
+                HetKookt! &nbsp;
+              </Link>
               {!user && (
                 <button className="bg-indigo-600 text-16 p-16 px-30 mt-18 md:mt-0 md:ml-18 align-bottom text-white uppercase tracking-widest">
                   <NavLink to="/register">inschrijven</NavLink>
                 </button>
-              )}
-            </h1>
+              )}{" "}
+            </p>
+
             {!user && (
               <div className=" unvisable slide work-grid-item">
                 <p>

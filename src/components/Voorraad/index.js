@@ -65,8 +65,8 @@ const Voorraad = ({ me, setMe, recipes, ...props }) => {
 
   return (
     <Fragment>
-      <div className="container-y bg-rose-100">
-        <h1 className="favorieten-title">
+      <div className="container-y">
+        <h1 className="mt-70 lg:mt-48">
           Voorraad{" "}
           <span>
             <Link

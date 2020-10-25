@@ -30,8 +30,8 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, recipes, ...props }) => {
     },
   });
 
-  console.log("therecipe");
-  console.log(therecipe);
+  // console.log("therecipe");
+  // console.log(therecipe);
 
   const {
     fields: tagsFields,
@@ -67,9 +67,9 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, recipes, ...props }) => {
     console.log(thedata);
     try {
       await doSave(me, setMe, thedata);
-      window.location = `/kookschrift/${slugify(thedata.title)}`;
+      window.location = `/mijnrecepten/${slugify(thedata.title)}`;
       // props.history.replace({
-      //   pathname: `/kookschrift/${slugify(therecipe.title)}`,
+      //   pathname: `/mijnrecepten/${slugify(therecipe.title)}`,
       //   state: therecipe._id,
       // });
     } catch (ex) {
@@ -85,7 +85,7 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, recipes, ...props }) => {
         <div className="md:w-550 m-auto relative">
           <h1 className="favorieten-title text-36 text-green-600">
             {therecipe.title}{" "}
-            <Link to={`/kookschrift/${slugify(therecipe.title)}`}>
+            <Link to={`/mijnrecepten/${slugify(therecipe.title)}`}>
               <span className="ml-18 py-18 px-36 bg-indigo-500 uppercase tracking-widest text-16 text-white">
                 terug
               </span>

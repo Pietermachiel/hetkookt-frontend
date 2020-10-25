@@ -6,7 +6,7 @@ const Recipes = ({ recipes, books, setRecipes, ...props }) => {
   // console.log(props);
   // console.log(recipes);
   return (
-    <div className="container-x">
+    <div className="container-x mt-48">
       {!recipes && (
         <div className="hollow-dots-spinner pt-36 m-auto">
           <div className="dot"></div>
@@ -14,10 +14,10 @@ const Recipes = ({ recipes, books, setRecipes, ...props }) => {
           <div className="dot"></div>
         </div>
       )}
-      <h1 className="favorieten-title">
+      <h1 className="recepten-title mb-18 lg:mb-0 ">
         Recipes
         <Link to={`/nieuwrecept`}>
-          <button className="bg-indigo-500 text-16 p-16 px-30 mt-18 md:mt-0 md:ml-18 align-bottom text-white uppercase tracking-widest">
+          <button className="bg-indigo-600 text-14 p-14 px-30 mt-0 md:mt-0 ml-18 align-bottom text-white uppercase tracking-widest">
             new recipe
           </button>
         </Link>

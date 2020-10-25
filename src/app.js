@@ -20,10 +20,11 @@ import CategoriesItems from "./components/Categories/CategoriesItems";
 import Categories from "./components/Categories";
 import CollectionsItems from "./components/Collections/CollectionsItems";
 import Collections from "./components/Collections";
-import Items from "./components/Items";
-import Item from "./components/Items/item";
-import NieuwItem from "./components/Items/NieuwItem";
-import EditItem from "./components/Items/EditItem";
+import Kookschrift from "./components/Kookschrift";
+import MijnRecepten from "./components/Kookschrift/MijnRecepten";
+import MijnRecept from "./components/Kookschrift/MijnRecept";
+import NieuwItem from "./components/Kookschrift/NieuwItem";
+import EditItem from "./components/Kookschrift/EditItem";
 import Boodschappen from "./components/Boodschappen";
 import Voorraad from "./components/Voorraad";
 import Books from "./components/Books";
@@ -220,6 +221,8 @@ const App = () => {
   // console.log("recipes");
   // console.log(recipes);
 
+  // console.log(window.location.pathname);
+
   var thecart = me.items;
   if (thecart === undefined) thecart = [];
 
@@ -370,11 +373,12 @@ const App = () => {
           />
           <ProtectedRoute
             exact
-            path="/kookschrift"
+            path="/mijnrecepten"
             render={(props) => (
-              <Items
+              <MijnRecepten
                 {...props}
                 thecart={thecart}
+                dish={dish}
                 recipes={recipes}
                 dish={dish}
                 me={me}
@@ -383,7 +387,7 @@ const App = () => {
             )}
           />
           <Route
-            path="/kookschrift/:id"
+            path="/mijnrecepten/:id"
             render={(props) => {
               if (me.items === undefined) return [];
               const therecipe = me.items.find(
@@ -392,7 +396,7 @@ const App = () => {
               if (therecipe === undefined) return [];
 
               return (
-                <Item
+                <MijnRecept
                   {...props}
                   recipes={recipes}
                   therecipe={therecipe}
@@ -560,8 +564,8 @@ const App = () => {
             }}
           />
           <Route
-            path="/welkom"
-            render={(props) => <Welkom user={user} {...props} />}
+            path="/kookschrift"
+            render={(props) => <Kookschrift user={user} {...props} />}
           />
           <Route
             path="/test"

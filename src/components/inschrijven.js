@@ -3,7 +3,7 @@ import React from "react";
 const Inschrijven = () => {
   return (
     <div className="container-x">
-      <div className="login-box__inner">
+      <div className="login-box__inner mt-125">
         <p className="font-700">Bedankt voor je inschrijving.</p>
         <p>Er is een email naar je onderweg.</p>
         <p>

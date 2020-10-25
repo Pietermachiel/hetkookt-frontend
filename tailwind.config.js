@@ -19,7 +19,8 @@ module.exports = {
         papier: "#f9f3dc",
         rood: "red",
         background: "#eff2f5",
-        kookschrift: "#d8d1ce",
+        bgkookschrift: "#d8d1ce",
+        kookschrift: "#f31800",
         footer: "#b3b5bb",
         voorraad: "#b57602",
         red: {

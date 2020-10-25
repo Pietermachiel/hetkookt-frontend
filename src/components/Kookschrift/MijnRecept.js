@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import { slugify, slugifyu, kalender } from "../common/common.js";
 import AddpanelWeekmenu from "./AddpanelWeekmenu.js";
 
-const Item = ({ therecipe, user, me, setMe, doSave, tags, ...props }) => {
+const MijnRecept = ({ therecipe, user, me, setMe, doSave, tags, ...props }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [routeRedirect, setRedirect] = useState("");
 
@@ -24,14 +24,14 @@ const Item = ({ therecipe, user, me, setMe, doSave, tags, ...props }) => {
 
   return (
     <Fragment>
-      <div className="container-y bg-rose-100 unvisable slide work-grid-item">
-        <h1 className="recepten-title mb-5 lg:text-36 text-green-600">
+      <div className="container-y unvisable slide work-grid-item">
+        <h1 className="mt-24 pt-24 mb-5 lg:text-42 text-indigo-600">
           {therecipe.title}
           <Link
             className="leading-none"
             to={`/collections/${therecipe.dish.name}`}
           >
-            <span className="text-21 pl-10">{therecipe.dish.name}</span>
+            <span className="text-24 pl-10">{therecipe.dish.name}</span>
           </Link>
         </h1>
         <div className="lg:flex align-baseline mb-36 ">
@@ -206,7 +206,7 @@ const Item = ({ therecipe, user, me, setMe, doSave, tags, ...props }) => {
           </div>
         </div>
         <div className="recepten-source">
-          <Link to="/kookschrift">
+          <Link to="/mijnrecepten">
             <div className="flex mt-72 pb-20">
               <img className="w-25" src="/img/feather/book.svg" alt="" />
               &nbsp;<span className="pl-5">Mijn recepten</span>
@@ -218,4 +218,4 @@ const Item = ({ therecipe, user, me, setMe, doSave, tags, ...props }) => {
   );
 };
 
-export default Item;
+export default MijnRecept;

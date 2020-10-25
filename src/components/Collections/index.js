@@ -5,7 +5,7 @@ import FavoriteItems from "./FavoriteItems";
 import SelectedItems from "./SelectedItems";
 
 const Collections = ({ me, setMe, thecart, dish, recipes, ...props }) => {
-  const [thedish, setTheDish] = useState("brood");
+  const [thedish, setTheDish] = useState(props.location.state);
 
   const handleTheDish = (c) => {
     setTheDish(c);
@@ -14,7 +14,27 @@ const Collections = ({ me, setMe, thecart, dish, recipes, ...props }) => {
   return (
     <Fragment>
       <div className="container-x">
-        <ul className="lg:w-550 m-auto text-center mt-36 mb-18">
+        <p className="hetkookt-title">
+          <Link
+            className="text-red-600 font-700"
+            to={{ pathname: "/collections", state: "brood" }}
+          >
+            Gerechten &nbsp;
+          </Link>
+          / &nbsp;
+          <Link
+            className="hover:text-red-600"
+            to={{ pathname: "/categories", state: "bladgroenten" }}
+          >
+            Ingrediëten
+          </Link>
+          {/* <Link className="leading-none" to={`/nieuwitem`}>
+            <button className="bg-indigo-600 text-14 p-14 px-30 mt-0 md:mt-0 md:ml-18 align-bottom text-white uppercase tracking-widest">
+              nieuw recept
+            </button>
+          </Link> */}
+        </p>
+        <ul className="lg:w-550 m-auto text-center mt-18 mb-18">
           {dish.map((c, xid) => (
             <li
               key={xid}
@@ -56,7 +76,7 @@ const Collections = ({ me, setMe, thecart, dish, recipes, ...props }) => {
                             </div>{" "}
                             <div className="relative h-60">
                               <p
-                                className={`mt-10 uppercase absolute tracking-widest top-0 left-0 text-14`}
+                                className={`text-black mt-10 uppercase absolute tracking-widest top-0 left-0 text-14`}
                               >
                                 <span className="pl-15">{s}</span>
                               </p>
@@ -66,21 +86,46 @@ const Collections = ({ me, setMe, thecart, dish, recipes, ...props }) => {
                             if (recipe.tags[0].name === s)
                               return (
                                 <Fragment key={index}>
-                                  <SelectedItems
-                                    recipe={recipe}
-                                    Link={Link}
-                                    me={me}
-                                    setMe={setMe}
-                                    {...props}
-                                  />
+                                  {thecart.map((cart, index) => {
+                                    const cartundefined = thecart.find(
+                                      (t) => t._id === recipe._id
+                                    );
+                                    // console.log(
+                                    //   thecart.find((t) => t._id === recipe._id)
+                                    // );
+                                    if (
+                                      cart.tags[0].name === s &&
+                                      cart.dish.name === thedish &&
+                                      cartundefined !== undefined
+                                      // thecart.find((t) => t._id === recipe._id)
+                                    )
+                                      return (
+                                        <Fragment key={index}>
+                                          <FavoriteItems
+                                            recipe={recipe}
+                                            recipes={recipes}
+                                            therecipes={therecipes}
+                                            thecart={thecart}
+                                            cart={cart}
+                                            Link={Link}
+                                            me={me}
+                                            setMe={setMe}
+                                            {...props}
+                                          />
+                                        </Fragment>
+                                      );
+                                  })}
                                 </Fragment>
                               );
                           })}
-                          {thecart.map((recipe, index) => {
-                            if (recipe.tags[0].name === s)
+                          {therecipes.map((recipe, index) => {
+                            if (
+                              recipe.tags[0].name === s &&
+                              !thecart.find((t) => t._id === recipe._id)
+                            )
                               return (
                                 <Fragment key={index}>
-                                  <FavoriteItems
+                                  <SelectedItems
                                     recipe={recipe}
                                     Link={Link}
                                     me={me}

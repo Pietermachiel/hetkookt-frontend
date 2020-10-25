@@ -2,7 +2,17 @@ import React, { Fragment, useState } from "react";
 import { slugify } from "../common/common";
 import { deleteRecipe } from "../../services/userService";
 
-const ItemsItem = ({ cart, Link, recipe, thelength, me, setMe, ...props }) => {
+const ItemsItem = ({
+  cart,
+  Link,
+  thecart,
+  recipe,
+  recipes,
+  thelength,
+  me,
+  setMe,
+  ...props
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleDeleteRecipe = (id) => {
@@ -13,10 +23,15 @@ const ItemsItem = ({ cart, Link, recipe, thelength, me, setMe, ...props }) => {
     <Fragment>
       <div
         key={recipe._id}
-        className={`recipe-box bg-rose-200 grid-box unvisable slide work-grid-item grid-box__black `}
+        // className={`recipe-box bg-black text-white grid-box unvisable slide work-grid-item grid-box__black `}
+        className={`recipe-box text-white grid-box unvisable slide work-grid-item grid-box__black ${
+          !recipes.find((t) => t._id === recipe._id)
+            ? "bg-indigo-600"
+            : "bg-black"
+        }`}
       >
         <div className={`min-h-full70 p-12 md:p-15`}>
-          <Link to={`/kookschrift/${slugify(recipe.title)}`}>
+          <Link to={`/mijnrecepten/${slugify(recipe.title)}`}>
             <h4 className={`text-18 break-words mb-15`}>{recipe.title}</h4>
           </Link>
           <ul className="mb-12">
@@ -54,7 +69,7 @@ const ItemsItem = ({ cart, Link, recipe, thelength, me, setMe, ...props }) => {
               >
                 <img
                   className="w-32 h32 -mt-3"
-                  src="/img/icons/btn-remove.svg"
+                  src="/img/icons/btn-remove-red.svg"
                   alt=""
                 />
               </button>

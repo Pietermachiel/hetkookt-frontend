@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { slugify, uniq } from "../common/common";
 import FavoriteItems from "./FavoriteItems";
@@ -13,13 +13,23 @@ const CollectionsItems = ({
   recipes,
   ...props
 }) => {
+  const [thecollection, setTheCollection] = useState(props.match.params.id);
+  // console.log("collectionsitems: props.match.params.id");
+  // console.log(props.match.params.id);
+  // console.log(thecollection);
+
+  const handleTheCollection = (e) => {
+    setTheCollection(e);
+    // window.location = `/collections/${e}`;
+  };
+
   // select 'recipes' recipes with recipe.dish
   let dishrecipes = recipes.filter(
-    (recipe) => recipe.dish.name === props.match.params.id
+    (recipe) => recipe.dish.name === thecollection
   );
   // add 'thecart' recipes with recipe.dish
   thecart
-    .filter((tc) => tc.dish.name === props.match.params.id)
+    .filter((tc) => tc.dish.name === thecollection)
     .map((tc) => {
       return dishrecipes.push(tc);
     });
@@ -34,9 +44,22 @@ const CollectionsItems = ({
     <>
       <div className="container-x">
         <div className="cat-box mb-36">
-          <h1 className="favorieten-title text-indigo-600 ">
-            {props.match.params.id}
-          </h1>
+          <ul className="lg:w-550 m-auto text-center mt-90 mb-18">
+            {dish.map((c, xid) => (
+              <li
+                key={xid}
+                value={c}
+                name={c}
+                onClick={() => handleTheCollection(c.name)}
+                className={`inline-block mb-0 font-500 hover:text-red-500 ${
+                  thecollection === c.name ? "text-red-500" : null
+                }`}
+              >
+                {c.name}&nbsp;&nbsp;
+              </li>
+            ))}
+          </ul>
+          <h1 className="favorieten-title text-indigo-600 ">{thecollection}</h1>
 
           {selectedtags.map((s, xid) => {
             return (
@@ -62,11 +85,11 @@ const CollectionsItems = ({
                       </div>
                     </Link>
                   </div>
-                  {dishrecipes.map((recipe, index) => {
+                  {thecart.map((recipe, index) => {
                     if (recipe.tags[0].name === s)
                       return (
                         <Fragment key={index}>
-                          <SelectedItems
+                          <FavoriteItems
                             recipe={recipe}
                             Link={Link}
                             me={me}
@@ -76,11 +99,14 @@ const CollectionsItems = ({
                         </Fragment>
                       );
                   })}
-                  {thecart.map((recipe, index) => {
-                    if (recipe.tags[0].name === s)
+                  {dishrecipes.map((recipe, index) => {
+                    if (
+                      recipe.tags[0].name === s &&
+                      !thecart.find((t) => t._id === recipe._id)
+                    )
                       return (
                         <Fragment key={index}>
-                          <FavoriteItems
+                          <SelectedItems
                             recipe={recipe}
                             Link={Link}
                             me={me}

@@ -15,12 +15,21 @@ const Books = ({ kitchens, books, ...props }) => {
   return (
     <Fragment>
       <div className="container-x">
-        <h1
+        {/* <h1
           className="favorieten-title hover:text-red-600"
-          onClick={() => handleKitchens("allKitchens")}
+          
         >
           De kookboeken
-        </h1>
+        </h1> */}
+        <p className="hetkookt-title">
+          <Link
+            className="text-red-600 font-700"
+            to="/books"
+            onClick={() => handleKitchens("allKitchens")}
+          >
+            De Kookboeken &nbsp;
+          </Link>
+        </p>
         <ul className="lg:w-550 m-auto text-center mb-36">
           {kitchens.map((c, xid) => (
             <li

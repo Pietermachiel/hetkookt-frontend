@@ -9,6 +9,8 @@ const Recipe = ({ user, me, setMe, therecipe, thecart, tags, ...props }) => {
   // var [therecipe, setTheRecipe] = useState([]);
   const API = props.location.state;
 
+  // console.log(therecipe.tags[0].category.name);
+
   const handleCreateRecipe = async (me, setMe, therecipe) => {
     console.log("create therecipe");
     console.log(therecipe);
@@ -34,10 +36,6 @@ const Recipe = ({ user, me, setMe, therecipe, thecart, tags, ...props }) => {
         // setError(theerr);
       }
     }
-    // window.location = `/kookschrift`;
-    // window.location = `/kookschrift/${slugify(therecipe.title)}`;
-    // const { state } = props.location;
-    // window.location = state ? state.from.pathname : "/kookschrift";
   };
 
   // useEffect(() => {
@@ -58,7 +56,7 @@ const Recipe = ({ user, me, setMe, therecipe, thecart, tags, ...props }) => {
 
   return (
     <Fragment>
-      <div className="container-x">
+      <div className="container-x mt-48">
         {!therecipe && (
           <div className="hollow-dots-spinner mt-36 m-auto">
             <div class="dot"></div>
@@ -66,12 +64,12 @@ const Recipe = ({ user, me, setMe, therecipe, thecart, tags, ...props }) => {
             <div class="dot"></div>
           </div>
         )}
-        <h1 className="recepten-title text-green-600 mb-18 lg:mb-0 ">
+        <h1 className="recepten-title mb-18 lg:mb-0 ">
           {therecipe.title}
           {/* <span className="text-21 lg:pl-10">bladgroenten</span> */}
           <Link
             className="leading-none"
-            to={`/collections/${therecipe.dish.name}`}
+            to={{ pathname: `/collections`, state: therecipe.dish.name }}
           >
             <span className="text-21 pl-10">{therecipe.dish.name}</span>
           </Link>
@@ -81,7 +79,7 @@ const Recipe = ({ user, me, setMe, therecipe, thecart, tags, ...props }) => {
             <div className="mr-15">
               {myrecipes.includes(therecipe._id) ? (
                 <Fragment>
-                  <Link to="/kookschrift">
+                  <Link to="/mijnrecepten">
                     <div className="mt-5 mb-5 lg:pr-18 btn-add mr-10 text-18 font-600 text-red-200 hover:text-red-500 flex item-center">
                       <img
                         className="w-25"

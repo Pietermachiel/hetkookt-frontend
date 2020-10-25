@@ -47,7 +47,7 @@ const Sorts = ({
   return (
     <>
       <div className="container-x">
-        <h1 className={`favorieten-title ${sort.sorts}`}>
+        <h1 className={`mt-24 py-18 ${sort.sorts}`}>
           {sort.name}{" "}
           <Link
             to={{
@@ -75,17 +75,17 @@ const Sorts = ({
               </p>
             </div>
           </div>
+          {cartItems.map((cart, index) => {
+            return (
+              <Fragment>
+                <FavoriteItems cart={cart} recipes={recipes} {...props} />
+              </Fragment>
+            );
+          })}{" "}
           {recipeItems.map((recipe, index) => {
             return (
               <Fragment key={index}>
                 <SelectedItems recipe={recipe} {...props} />
-              </Fragment>
-            );
-          })}
-          {cartItems.map((recipe, index) => {
-            return (
-              <Fragment>
-                <FavoriteItems recipe={recipe} {...props} />
               </Fragment>
             );
           })}

@@ -1,23 +1,17 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 
-const Kookschrift = ({ width, user, location }) => {
+const KookschriftNav = ({ width, user, location }) => {
   const [kookschriftOpen, setKookschriftOpen] = useState(false);
-  // const [kookschriftItem, setKookschriftItem] = useState("weekmenu");
-
-  // console.log("props-kookschrift");
-  // console.log(location);
 
   const handleClick = () => {
     setKookschriftOpen(!kookschriftOpen);
   };
 
-  // console.log("width2");
-  // console.log(width);
-
   return (
     <Fragment>
-      <div className={`pl-20 ${user && "bg-kookschrift"}`}>
+      <div className={`pl-20 ${user && "bg-bgkookschrift"}`}>
+        {/* ${user && "bg-kookschrift"} */}
         <div className={`${user ? "kookschrift-user" : "kookschrift-user"}`}>
           {user ? (
             <Fragment>
@@ -27,25 +21,34 @@ const Kookschrift = ({ width, user, location }) => {
                 }
                 className="kookschrift-title"
               >
-                <div className="flex items-center">
-                  <img
-                    className="h-25"
-                    src="/img/feather/bookmark-red.svg"
-                    alt=""
-                  />
-                  <span className="ml-5 text-white">Kookschrift</span>
-                </div>
-                <span className="kookschrift-arrow text-white"></span>
+                <Link to="/kookschrift">
+                  <div className="flex items-center">
+                    <img
+                      className="h-25"
+                      src="/img/feather/bookmark-red.svg"
+                      alt=""
+                    />
+                    {width < 768 && (
+                      <span className="ml-5 text-white">Kookschrift</span>
+                    )}
+                  </div>{" "}
+                </Link>
+
+                {/* <span className="kookschrift-arrow text-white"></span> */}
               </div>
-              <ul className={`${kookschriftOpen ? "kookschrift-open" : ""}`}>
-                <Link onClick={() => handleClick()} to="/kookschrift">
-                  <li>mijn recepten</li>
+              <ul
+                className={`text-white ${
+                  kookschriftOpen ? "kookschrift-open" : ""
+                }`}
+              >
+                <Link onClick={() => handleClick()} to="/mijnrecepten">
+                  <li>Mijn recepten</li>
                 </Link>
                 <Link onClick={() => handleClick()} to="/weekmenu">
-                  <li>&nbsp;weekmenu</li>
+                  <li>&nbsp;Weekmenu</li>
                 </Link>
                 <Link onClick={() => handleClick()} to="/boodschappen">
-                  <li>&nbsp;boodschappen</li>
+                  <li>&nbsp;Boodschappen</li>
                 </Link>
               </ul>
             </Fragment>
@@ -81,4 +84,4 @@ const Kookschrift = ({ width, user, location }) => {
   );
 };
 
-export default Kookschrift;
+export default KookschriftNav;

@@ -1,5 +1,25 @@
 .favorieten-title {
-  margin-top: 0;
+  margin-top: 70px;
   padding-top: 18px;
   padding-bottom: 18px;
+}
+
+.kookschrift-title {
+  margin-top: 54px;
+  color: #3b4de2; //#667eea;
+  @media screen and (min-width: 768px) {
+    margin-top: 21px;
+  }
+}
+
+.hetkookt-title {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 60px;
+  margin-bottom: 18px;
+  @media screen and (min-width: 768px) {
+    margin-top: 28px;
+    width: 550px;
+  }
 }

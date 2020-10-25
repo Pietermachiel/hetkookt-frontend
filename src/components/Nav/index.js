@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import auth from "../../services/authService";
 import { deleteUser } from "../../services/userService";
-import Kookschrift from "./kookschrift";
+import KookschriftNav from "./KookschriftNav";
 import Search from "../Search";
 import useCurrentWitdh from "../common/use-current-width";
 
@@ -51,6 +51,8 @@ const Nav = ({
 
   // console.log("user");
   // console.log(user);
+
+  // console.log(window.location.pathname);
 
   return (
     <Fragment>
@@ -102,7 +104,7 @@ const Nav = ({
                       </div>
                     </div>
                   </li> */}
-                  <li>
+                  {/* <li>
                     <div className="list-links__link">
                       <NavLink
                         onClick={handleIsOpen}
@@ -112,15 +114,15 @@ const Nav = ({
                         Ingredienten
                       </NavLink>
                     </div>
-                  </li>
+                  </li> */}
                   <li>
                     <div className="list-links__link">
                       <NavLink
                         onClick={handleIsOpen}
                         className=""
-                        to="/collections"
+                        to={{ pathname: `/collections`, state: "brood" }}
                       >
-                        Gerechten
+                        Recepten
                       </NavLink>
                     </div>
                   </li>
@@ -143,6 +145,24 @@ const Nav = ({
                       </NavLink>
                     </div>
                   </li>
+                  <li>
+                    <div className="list-links__link">
+                      <NavLink onClick={handleIsOpen} className="" to="/about">
+                        About
+                      </NavLink>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="list-links__link">
+                      <NavLink
+                        onClick={handleIsOpen}
+                        className=""
+                        to="/tipstools"
+                      >
+                        Tips & tools
+                      </NavLink>
+                    </div>
+                  </li>
                   {!user && (
                     <li>
                       {/* <NavLink to="/login"> */}
@@ -155,7 +175,7 @@ const Nav = ({
                       {/* </NavLink> */}
                     </li>
                   )}
-                  {user && (
+                  {/* {user && (
                     <Fragment>
                       <li>
                         <div className="list-links__link">
@@ -180,16 +200,16 @@ const Nav = ({
                         </div>
                       </li>
                     </Fragment>
-                  )}
+                  )} */}
                   {user && user.isAdmin && (
                     <li>
                       <div className="list-links__link">
                         <NavLink
                           onClick={handleIsOpen}
-                          className=""
+                          className="font-300"
                           to="/recipes"
                         >
-                          Recipes
+                          (Recipes)
                         </NavLink>
                       </div>
                     </li>
@@ -204,7 +224,14 @@ const Nav = ({
           ></div> */}
         </div>
       </div>
-      <Kookschrift width={width} user={user} location={location} />
+      {/* {window.location.pathname === "/kookschrift" ||
+      window.location.href.indexOf("/mijnrecepten") > -1 ||
+      window.location.href.indexOf("/edit") > -1 ||
+      window.location.pathname === "/nieuwitem" ||
+      window.location.pathname === "/weekmenu" ||
+      window.location.pathname === "/boodschappen" ? (
+        <KookschriftNav width={width} user={user} location={location} />
+      ) : null} */}
     </Fragment>
   );
 };

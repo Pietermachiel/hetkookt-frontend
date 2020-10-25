@@ -21,7 +21,7 @@
 //     margin-bottom: 0;
 //   }
 // }
-.kookschrift-user {
+.logo-box {
   display: block;
   align-items: baseline;
   margin-top: 52px;
@@ -30,12 +30,12 @@
   padding-left: 0;
   width: calc(100vw - 119px);
   // color: white;
-  @media screen and (min-width: 768px) {
-    display: flex;
-    align-items: center;
-    margin-top: 62px;
-    margin-bottom: 0;
-  }
+  // @media screen and (min-width: 768px) {
+  //   display: flex;
+  //   align-items: center;
+  //   margin-top: 62px;
+  //   margin-bottom: 0;
+  // }
   .kookschrift-title {
     display: flex;
     align-items: center;
@@ -97,11 +97,11 @@
       }
     }
   }
-  @media screen and (max-width: 767px) {
-    ul.kookschrift-open {
-      display: block;
-    }
+  // @media screen and (max-width: 767px) {
+  ul.kookschrift-open {
+    display: block;
   }
+  // }
 }
 .kookschrift-arrow {
   width: 0;
@@ -125,18 +125,16 @@
 }
 // logo-box
 
-.logo-box {
-  .hetkookt-logo {
-    position: absolute;
-    top: 0;
-    right: 0;
-    img {
-      height: 140px;
-      width: 140px;
-      @media screen and (max-width: 767px) {
-        height: 100px;
-        width: 100px;
-      }
+.hetkookt-logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  img {
+    height: 140px;
+    width: 140px;
+    @media screen and (max-width: 767px) {
+      height: 100px;
+      width: 100px;
     }
   }
 }
@@ -438,10 +436,25 @@
   }
 }
 
+.button-kookschrift {
+  position: absolute;
+  top: 17px;
+  left: 295px;
+  font-family: "MuseoSans";
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.03em;
+  // color: blue;
+  z-index: 0;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
+
 .button-recepten {
   position: absolute;
   top: 17px;
-  left: 303px;
+  left: 403px;
   font-family: "MuseoSans";
   font-weight: 500;
   font-size: 16px;

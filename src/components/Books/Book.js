@@ -21,7 +21,7 @@ const Book = ({ books, recipes, ...props }) => {
   return (
     <Fragment>
       <div className="container-x">
-        <div className="flexbox-lg mt-20">
+        <div className="flexbox-lg mt-90">
           <div className="lg:w-50 p-36 pb-0 lg:pb-36">
             <div className="koo-box-boek">
               <img

@@ -1,8 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import auth from "../../services/authService";
 import { deleteUser } from "../../services/userService";
+import useCurrentWitdh from "../common/use-current-width";
+import KookschriftNav from "../Nav/KookschriftNav";
 
 const User = ({ me, user, thecart, ...props }) => {
+  const width = useCurrentWitdh();
+
   function handleLogout() {
     auth.logout();
     window.location = "/";
@@ -42,10 +47,21 @@ const User = ({ me, user, thecart, ...props }) => {
 
   return (
     <div className="container-x">
-      <h1 className="favorieten-title">{me.name}</h1>
+      {/* <p className="mt-70 lg:mt-48">
+        {width < 768 ? (
+          <Link className="font-700 text-red-600" to="/kookschrift">
+            Kookschrift >
+          </Link>
+        ) : null}
+      </p>{" "} */}
+      <div className="flex justify-center ">
+        <h1 className="kookschrift-title mb-18 ">{me.name}</h1>
+      </div>
+
       <div className="unvisable slide work-grid-item -mt-18">
         {/* <p>Name: {me.name}</p> */}
-        <p>Username: {me.email}</p>
+        <p className="pt-18">Username: {me.email}</p>
+
         <button
           className="w-150 uppercase text-16 bg-indigo-500 mt-36 px-36 py-10 text-white tracking-widest"
           onClick={() => handleLogout()}

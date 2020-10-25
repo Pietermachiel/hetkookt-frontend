@@ -12,7 +12,7 @@ const AccordionWeekMenu = ({ title, children, me, setMe, id, dayall }) => {
     <div className="accordion-wrapper">
       <div className={`accordion-title ${isOpen ? "open" : ""}`}>
         <div className="">
-          <Link to={`/kookschrift/${slugify(title)}`}>{title} </Link>{" "}
+          <Link to={`/mijnrecepten/${slugify(title)}`}>{title} </Link>{" "}
           <span
             className="text-verwijder"
             onClick={() => deleteFromMenu(me, setMe, id, dayall)}

@@ -4,6 +4,7 @@ import AccordionWeekMenu from "./AccordionWeekMenu";
 import { vandaag, kalender, theweek } from "../common/common";
 import { toggleFresh } from "../../services/userService";
 import KalenderWeekmenu from "./KalenderWeekmenu";
+import Kookschrift from "../Kookschrift/index";
 
 const Menu = ({ me, setMe, user, thecart, recipes, about, ...props }) => {
   if (me.stock === undefined) return [];
@@ -24,31 +25,35 @@ const Menu = ({ me, setMe, user, thecart, recipes, about, ...props }) => {
 
   return (
     <Fragment>
-      <div className="container-y bg-rose-100">
-        <h1 className="favorieten-title">
-          Weekmenu <span className="text-24 ml-10">week {theweek()}</span>
-          {thedates.length !== 0 && (
-            <span>
-              <Link
-                className="block lg:inline mt-10 lg:mt-0 lg:ml-18 text-18 text-indigo-600 hover:text-red-500"
-                to="/boodschappen"
-              >
-                Boodschappen >
-              </Link>
-            </span>
-          )}
-        </h1>
+      <div className="container-y">
+        <div className="flex justify-center">
+          <h1 className="kookschrift-title">
+            Weekmenu <span className="text-24 ml-10">week {theweek()}</span>
+            {thedates.length !== 0 && (
+              <span>
+                <Link
+                  className="block lg:inline mt-10 mb-18 lg:mb-0 lg:mt-0 lg:ml-18 text-18 text-indigo-600 hover:text-red-500"
+                  to="/boodschappen"
+                >
+                  Boodschappen >
+                </Link>
+              </span>
+            )}
+          </h1>
+        </div>
         <KalenderWeekmenu props={props} thecart={thecart} user={user} />
         {thedates.length === 0 ? (
           <div className="">
-            <p className="font-600 mt-21">Er staat nog niets op het menu.</p>
+            <p className="font-600 mt-21">
+              Er staat nog niets op het weekmenu.
+            </p>
             <div>
-              <br /> Kies een recept in{" "}
+              <br /> Selecteer een recept in{" "}
               <Link
                 className="font-700 text-indigo-600 hover:text-red-500"
-                to="/kookschrift"
+                to="/mijnrecepten"
               >
-                favorieten
+                Kookschrift
               </Link>{" "}
               en zet op het weekmenu.{" "}
             </div>

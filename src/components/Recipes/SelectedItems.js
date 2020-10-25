@@ -15,7 +15,7 @@ const SelectedItems = ({
       <div
         key={recipe._id}
         className={`recipe-box ${
-          recipe.item === "true" ? "bg-rose-200" : "bg-badge"
+          recipe.item === "true" ? "bg-offblack" : "bg-badge"
         } grid-box unvisable slide work-grid-item grid-box__black `}
       >
         <div className={`min-h-full70 p-12 md:p-15`}>

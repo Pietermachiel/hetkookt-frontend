@@ -8,6 +8,7 @@ import {
 } from "../../services/userService";
 import groceries from "../../data/groceries.json";
 import { kalender } from "../common/common";
+import Kookschrift from "../Kookschrift/index";
 
 const Boodschappen = ({ me, setMe }) => {
   const [value, setValue] = useState("");
@@ -80,20 +81,23 @@ const Boodschappen = ({ me, setMe }) => {
 
   return (
     <Fragment>
-      <div className="container-y bg-rose-100 boodschappen">
-        <h1 className="favorieten-title">
-          Boodschappen{" "}
-          {myBoodschappen.length !== 0 && (
-            <span>
-              <Link
-                className="block lg:inline mt-10 lg:mt-0 lg:ml-10 text-18 text-indigo-600 hover:text-red-500"
-                to="/voorraad"
-              >
-                Is alles op voorraad? >
-              </Link>
-            </span>
-          )}
-        </h1>
+      <div className="container-y boodschappen">
+        <div className="flex justify-center">
+          <h1 className="kookschrift-title lg:mb-36">
+            Boodschappen{" "}
+            {myBoodschappen.length !== 0 && (
+              <span>
+                <Link
+                  className="block lg:inline mb-18 mt-10 lg:mt-18 lg:ml-10 text-18 text-indigo-600 hover:text-red-500"
+                  to="/voorraad"
+                >
+                  Is alles op voorraad? >
+                </Link>
+              </span>
+            )}
+          </h1>
+        </div>
+
         {myBoodschappen.length === 0 ? (
           <Fragment>
             <p className="font-600 mt-21">
@@ -103,9 +107,9 @@ const Boodschappen = ({ me, setMe }) => {
               Selecteer een recept in{" "}
               <Link
                 className="font-700 text-indigo-600 hover:text-red-500"
-                to="/kookschrift"
+                to="/mijnrecepten"
               >
-                favorieten
+                Kookschrift
               </Link>{" "}
               en zet op het weekmenu.
             </p>
