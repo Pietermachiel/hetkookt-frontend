@@ -83,7 +83,7 @@ const Boodschappen = ({ me, setMe }) => {
     <Fragment>
       <div className="container-y boodschappen">
         <div className="flex justify-center">
-          <h1 className="kookschrift-title lg:mb-36">
+          <h1 className="kookschrift-title lg:mb-42">
             Boodschappen{" "}
             {myBoodschappen.length !== 0 && (
               <span>

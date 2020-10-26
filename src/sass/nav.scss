@@ -2,6 +2,39 @@
 //   #NAVIGATION-NAV
 // \*------------------------------------*/
 
+.tooltip-box {
+  width: 25px;
+  height: 25px;
+  position: relative;
+}
+.tooltip {
+  position: absolute;
+  top: 50px;
+  left: 13%;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  visibility: hidden;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.tooltip-arrow {
+  // position: absolute;
+  // top: 100%;
+  // left: 50%;
+  // border-width: 5px;
+  // border-style: solid;
+  // border-color: rgba(0, 0, 0, 0.7) transparent transparent;
+}
+
+.container-t {
+  position: relative;
+  display: inline-flex;
+  user-select: none;
+  cursor: pointer;
+  margin: 0 10px;
+  -webkit-tap-highlight-color: transparent;
+}
+
 // .content.menu-open {
 //   position: fixed;
 //   top: 0;

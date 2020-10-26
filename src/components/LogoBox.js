@@ -1,13 +1,14 @@
 import React, { Fragment, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import useCurrentWitdh from "./common/use-current-width2";
+import Tooltip from "./Tooltip";
 
 const LogoBox = ({ user, me }) => {
   const [kookschriftOpen, setKookschriftOpen] = useState(false);
 
-  const handleClick = () => {
-    setKookschriftOpen(!kookschriftOpen);
-  };
+  // const handleClick = () => {
+  //   setKookschriftOpen(!kookschriftOpen);
+  // };
 
   const width = useCurrentWitdh();
 
@@ -17,6 +18,10 @@ const LogoBox = ({ user, me }) => {
         width < 768 ? "mt-14 ml-100 pl-18" : "mt-14 ml-125"
       }`}
     >
+      {/* <Tooltip text="Simple tooltip">
+        <button>Hover me!</button>
+      </Tooltip> */}
+
       {user && (
         <div className="flex items-center">
           <div aria-label="to user" className="">
@@ -29,13 +34,14 @@ const LogoBox = ({ user, me }) => {
           </div>{" "}
           <div className="ml-10">
             <Link to="/mijnrecepten">
+              {" "}
               <img
                 className="h-25"
                 src="/img/feather/bookmark-red.svg"
                 alt=""
               />
             </Link>
-          </div>{" "}
+          </div>
           <div className="ml-10">
             <Link to="/weekmenu" className="font-700 text-24">
               <img className="h-25" src="/img/feather/list.svg" alt="" />

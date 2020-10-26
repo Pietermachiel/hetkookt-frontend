@@ -31,6 +31,8 @@ import Books from "./components/Books";
 import Book from "./components/Books/Book";
 import Weekmenu from "./components/Weekmenu";
 import User from "./components/User";
+import About from "./components/About";
+import TipsTools from "./components/TipsTools";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import ProtectedRoute from "./components/common/protectedRoute";
@@ -364,6 +366,8 @@ const App = () => {
           <Route path="/inschrijven" component={inschrijven} />
           <Route path="/verify/:id" component={Verify} />
           <Route path="/logout" component={logout} />
+          <Route path="/about" component={About} />
+          <Route path="/tipstools" component={TipsTools} />
           <ProtectedRoute
             path="/user"
             // component={User}
