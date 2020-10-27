@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import ReactMarkdown from "react-markdown";
+import gfm from "remark-gfm";
 
 const About = () => {
   const markdown = `
@@ -36,6 +37,8 @@ const About = () => {
   ###### An h6 header 
   
   <br>
+
+  <p class="vis">vis<p/>
   
   ---
   
@@ -78,7 +81,7 @@ const About = () => {
   
   1. ~~linethrough~~
   
-  2. *italic kleur*{:.oranje} 
+  2. *italic kleur*{:.vis} 
   
   3. *italic lighter*{:.lighter}
   
@@ -92,7 +95,7 @@ const About = () => {
   
   6. ~~linethrough~~
   
-  7. *kleur*{:.oranje} 
+  7. *kleur*{:.vis} 
   
   8. *italic lighter*{:.lighter} 
   
@@ -195,11 +198,11 @@ const About = () => {
   
   ~~~
   
-  ![alt text](../img/stencyl/step9-1.png "No More Lives Triggered?")
+  ![alt text](/img/books/pizzabijbel_title.jpg "No More Lives Triggered?")
   
   ~~~
   
-  ![alt text](../img/stencyl/step9-1.png "No More Lives Triggered?")
+  ![alt text](/img/books/pizzabijbel_title.jpg "No More Lives Triggered?")
   
   
   <br>
@@ -217,7 +220,11 @@ const About = () => {
       <div className="container-x">
         <h1 className="hetkookt-title">About</h1>
 
-        <ReactMarkdown className="kramdown" children={markdown} />
+        <ReactMarkdown
+          plugins={[gfm]}
+          className="kramdown"
+          children={markdown}
+        />
 
         <p>
           <strong>hetkookt</strong> is een digitaal kookschrift met een bonte

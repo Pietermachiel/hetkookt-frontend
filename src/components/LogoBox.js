@@ -62,9 +62,9 @@ const LogoBox = ({ user, me }) => {
             </NavLink>
           )}
           {user && !user.isAdmin && width > 768 && (
-            <p className="font-500 text-18 mt-21 ml-36 text-gray-500">
+            <span className="ml-36 font-500 text-18 text-gray-500">
               De kunst van lekker eten
-            </p>
+            </span>
           )}
           {/* <ul className={`${kookschriftOpen ? "kookschrift-open" : null}`}>
             <Link onClick={() => handleClick()} to="/mijnrecepten">
