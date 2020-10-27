@@ -52,7 +52,7 @@ const ItemsItem = ({
             ))}
           </ul>
         </div>
-        <div className="h-72 relative overflow-hidden">
+        <div className="h-72 relative overflow-hidden pt-18">
           <p className={`uppercase tracking-widest text-14 pl-15 mb-0`}>
             {recipe.dish.name}
           </p>

@@ -27,12 +27,12 @@ const Home = ({ user, recipes, ...props }) => {
         {/* ${user && "bg-rose-100"} */}
         <Fragment>
           <div className="mb-48">
-            <p className="hetkookt-title">
+            <p className="hetkookt-title flex items-center">
               <Link className="text-red-600 font-700 text-18" to="/books">
                 HetKookt! &nbsp;
               </Link>
               {!user && (
-                <button className="bg-indigo-600 text-16 p-16 px-30 mt-18 md:mt-0 md:ml-18 align-bottom text-white uppercase tracking-widest">
+                <button className="bg-indigo-600 text-14 p-14 px-30 mt-18 md:mt-0 md:ml-18 align-bottom text-white uppercase tracking-widest">
                   <NavLink to="/register">inschrijven</NavLink>
                 </button>
               )}{" "}
