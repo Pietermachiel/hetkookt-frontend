@@ -5,7 +5,7 @@ import gfm from "remark-gfm";
 const About = () => {
   const markdown = `
 
-**HetKookt is een digitaal kookschrift en uniek in zijn soort. Bedoeld om zelf recepten te maken en die naar eigen inzicht te verfijnen in de eigen keuken thuis. Het is een [Progressive Web App](https://en.wikipedia.org/wiki/Progressive_web_application), die tevens een uitgelezen verzameling basisrecepten uit alle windstreken bevat. En ook nog een paar handige functies, zoals een weekmenu en boodschappenlijst.**
+**HetKookt is een digitaal kookschrift en uniek in zijn soort. Bedoeld om zelf recepten te maken en die naar eigen inzicht te verfijnen in de eigen keuken thuis. Het is een [Progressive Web App](https://en.wikipedia.org/wiki/Progressive_web_application), die tevens een uitgelezen verzameling basisrecepten uit alle windstreken bevat. En ook nog een paar handige functies, zoals een weekmenu en boodschappenlijst en vele zoekmogelijkheden.**
 
 ## wat de serieuze thuiskok mist
 
@@ -81,9 +81,10 @@ Maak eerst een account aan, het is [safe and secure](https://en.wikipedia.org/wi
 - Beschrijvingen in telegramstijl en zonder franje maar wel, en op advies van [Heston Blumenthal](/books/heston-blumenthal-at-home), heel precies.
 - Recepten zijn gedeconstrueerd, zodat de onderdelen ook elders bruikbaar zijn.
 - Alle recepten zijn aan te passen naar eigen smaak en voorkeuren.
+- Verwante recepten hebben een link en in het Kookschrift kunnen nieuwe relaties worden aangebracht.
 - Je kan een weekmenu samenstellen en daar een boodschappenlijst mee genereren
 - Van de ingrediënten zijn vers en voorraad gescheiden, dat is handig en logisch.
-- De lijst kan je emailen naar jezelf of naar een bezorgservice.
+- De boodschappenlijst kan je emailen naar jezelf of naar een bezorgservice.
 
 ## aanvullingen en suggesties
 
@@ -93,7 +94,7 @@ Suggesties voor nieuwe recepten graag mailen naar <studio@roozen.nl>:
 
 - Een aanvulling, verbetering of wezenlijke variant.
 - Altijd uit een bestaand kookboek van een gerenommeerde kok met bronvermelding.
-- Een basisrecept of klassieker of andere manier om met een ingrediënt te koken.
+- Een basisrecept of klassieker of andere/betere manier om met een ingrediënt te koken.
 
 ## het begin
 
