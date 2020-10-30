@@ -10,7 +10,7 @@ const About = () => {
 ## wat de serieuze thuiskok mist
 
 Een serieuze thuiskok heeft drie problemen:
-- Hoe vind ik een goed recept in het open riool van het internet.
+- Hoe vind ik een goed recept in de chaos van het internet.
 - Waar bewaar ik mijn recepten en kooknotities. 
 - Hoe houd ik mijn voorraad op peil en hoe doe ik efficiënt boodschappen.
 
@@ -21,22 +21,22 @@ Er bestaat een overvloed aan blogs waar enthousiaste thuiskoks hun persoonlijke 
 
 Voorbeeldige kookaps zijn van [NYT](https://cooking.nytimes.com), [BBC](https://www.bbc.co.uk/food), [The Guardian](https://www.theguardian.com/tone/recipes) en [BRT](https://dagelijksekost.een.be/) compleet met videouitleg, tips en tools en uitgebreide zoekfuncties. 
 
-Toch blijkt al snel, dat ondanks hun onuitputtelijke diversiteit, de kookstijl, terminologie en ingrediënten veelal niet aansluiten bij de routines van een Nederlandse thuiskok. En je kan die recepten dan wel bewaren, maar weer niet aanpassen. 
+Toch blijkt al snel, dat ondanks hun onuitputtelijke diversiteit, de kookstijl, terminologie en ingrediënten veelal niet aansluiten bij de routines van een Nederlandse thuiskok. En je kan die recepten misschien dan wel bewaren, maar zeker niet aanpassen. 
 
-Aanpassen kan wel in bijvoorbeeld het kookschrift van [Albert Heyn](https://www.ah.nl/kookschrift), om persoonlijke recepten met elkaar te delen, maar je eindigt daar altijd weer met een te veel aan (voorgekookte!) boodschappen in je AH-mandje. 
+Aanpassen kan wel in bijvoorbeeld het kookschrift van [Albert Heyn](https://www.ah.nl/kookschrift), waar je persoonlijke recepten met elkaar kunt delen, maar je eindigt daar altijd weer met een te veel aan (voorgekookte!) boodschappen in je AH-mandje. 
 
-Persoonlijke recepten delen is dus onzin. Ga uit van een goede basis en leef je uit in eigen keuken. Dat is het streven van **HetKookt** en zo is alles bedoeld.
+Persoonlijke recepten delen is eigenlijk onzinnig. Ga liever uit van een goede basis en leef je uit in eigen keuken. Dat is het streven van **HetKookt** en zo is alles bedoeld.
 
 
 ## recepten zijn geen gebruiksaanwijzing
 
 Recepten zijn in principe slechts een lijstje met ingrediënten, de ervaren kok weet dan wel wat te doen.
 
-We zijn echter zo gewend geraakt aan het industriëel vervaardigde gemaks-eten van de supermarkt dat we een recept zien als een product met een gebruiksaanwijzing die letterlijk wordt opgevat. 
+We zijn echter zo gewend geraakt aan het industriëel vervaardigde gemaks-eten van de supermarkt dat we een recept eerder zien als een product met een gebruiksaanwijzing die letterlijk wordt opgevat. 
 
 Maar zo werkt het eigenlijk niet, want keukens, apparatuur, oventemperaturen, ingrediënten, niet te vergeten smaken en wat dies meer zij, kunnen verschillen. Een recept is dus eigenlijk eerder een uitgangspunt dat getest moet worden in de eigen keukensituatie. 
 
-Als je dan niet zoals in de vorige eeuw dagelijks twee uur in de keuken staat en dus zo vaak kookt dat je alles uit je hoofd kan maken is het handig om het op te schrijven voor de volgende keer. Iedere serieuze thuiskok heeft wel zo’n kookschrift en de kookapp **HetKookt** is precies op die manier bedoeld. **De serieuze thuiskok met een kookschrift is de doelgroep**.
+Als je dan niet zoals in de vorige eeuw dagelijks twee uur in de keuken staat en dus zo vaak kookt dat je alles uit je hoofd kan maken, is het handig om het op te schrijven voor de volgende keer. Iedere serieuze thuiskok heeft wel zo’n kookschrift en de kookapp **HetKookt** is precies op die manier bedoeld. **De serieuze thuiskok met een kookschrift is de doelgroep**.
 
 
 ## de recepten van HetKookt
@@ -53,7 +53,7 @@ Er bestaat een lange traditie, teruggaand tot [La scienza in cucina e l'arte di 
 
 ## de selectie
 
-Voor ieder kookboek zal de redactie van de recepten min of meer uniek zijn en onvergelijkbaar met andere. Ook zal ieder boek zich op een unieke manier willen onderscheiden. Er is echter eerder naar de overeenkomsten gekeken en naar de meest gangbare recepten. Het zijn veelal klassiekers en basisrecepten en zoveel mogelijk gespreid over de gehanteerde categorieën. Hoeveelheden zijn teruggebracht tot voor 3-4 personen. De instructies zijn geredigeerd en in telegramstijl, dus voor de goede verstaander. Ook geen foto's van het eindresultaat. Alles ten faveure van het persoonlijke initiatief en stijlgevoel! De referentie van het boek leidt naar de uitgever van de originele uitgave.
+Voor ieder kookboek zal de redactie van de recepten min of meer uniek zijn en onvergelijkbaar met andere. Ook zal ieder boek zich op een unieke manier willen onderscheiden. Bij **HetKookt** is echter eerder naar de overeenkomsten tussen die kookboeken gekeken en naar de meest gangbare recepten. Het zijn veelal klassiekers en basisrecepten en zoveel mogelijk gespreid over de gehanteerde categorieën. Hoeveelheden zijn teruggebracht tot voor 3-4 personen. De instructies zijn geredigeerd en in telegramstijl, dus voor de goede verstaander. Ook geen foto's van het eindresultaat. Alles ten faveure van het persoonlijke initiatief en stijlgevoel! De referentie van een kookboek leidt naar de uitgever van de originele uitgave. Die krijgt daarmee gratis aandacht, een kookboek uitgeven is al moeilijk genoeg!
 
 
 ## lokaal en seizoensgebonden koken
@@ -64,17 +64,18 @@ Voor ieder kookboek zal de redactie van de recepten min of meer uniek zijn en on
 ## hoe **HetKookt** werkt
 
 Maak eerst een account aan, het is [safe and secure](https://en.wikipedia.org/wiki/Multi-factor_authentication) en op ieder moment weer te verwijderen.
-1. Ga naar de [Recepten](/collections) van **HetKookt** en kies een recept. Je kan zoeken op **Gerechten** of op **Ingrediënten**.
-2. Of open je eigen [Kookschrift](/mijnrecepten) en maak zelf een nieuw recept.
+1. Ga naar de [Recepten](/collections) van **HetKookt** en kies een recept, klik op de titel en zet in je kookschrift. Je kan zoeken op **Gerechten** of op **Ingrediënten**. Het is gesorteerd op het belangrijkste ingrediënt.
+2. Of open meteen je [Kookschrift](/mijnrecepten) en maak zelf een nieuw recept.
 
 ![alt text](/img/schema.png "Hoe HetKookt werkt")
 
 3. Het gekozen of zelfgemaakte recept staat nu in je **Kookschrift**. Hier kan je het ook weer verwijderen.
-4. Klik in het [Kookschrift](/mijnrecepten) op de titel van een recept en je kunt aan de slag. Hier kan je het recept ook in het weekmenu zetten of aanpassen naar eigen inzicht.
-5. Het weekmenu loopt telkens van de huidige dag tot en met de dagen van de komende week. Dus het recept dat je voor vandaag op het menu zet is morgen verdwenen, al blijft het wel op datum geregistreerd in je account. Als je op de datum klikt kom je in het **Weekmenu** terecht. Je kan een recept meerdere dagen op het menu zetten en ook meerdere recepten op een dag.
+4. Klik in het [Kookschrift](/mijnrecepten) op de titel van een recept en je kunt aan de slag. Nu kan je het recept ook in het weekmenu zetten of aanpassen naar eigen inzicht.
+5. Het weekmenu loopt telkens van de huidige dag tot en met de dagen van de komende week. Totaal steeds acht dagen, genoeg voor een week verse boodschappen. Dus het recept dat je voor vandaag op het menu zet is morgen verdwenen, al blijft het wel op datum geregistreerd in je account. Als je op de datum klikt kom je in het **Weekmenu** terecht. Je kan een recept meerdere dagen op het menu zetten en ook meerdere recepten op een dag.
 6. De verse ingrediënten worden in het weekmenu getoond omdat ze automatisch bij de **Boodschappen** komen te staan. Hier kan je ze ook stuk voor stuk verwijderen mocht je het ingrediënt al in huis hebben.
-7. In Boodschappen worden de hoeveelheden van gelijke ingrediënten bij elkaar opgeteld en heb je nogmaals de kans om ze te verwijderen. In **Weekmenu** zijn ze nu ook overal verwijderd. Nu heb je de mogelijkheid om per recept een vergissing te herstellen en het ingrediënt weer op de boodschappenlijst te zetten.
-8. Als je op zoek gaat naar een nieuw recept zal je zien dat de reeds geselecteerde recepten voor de overzichtelijkheid nu zwart zijn met een rode bookmark. Zo kan je een recept maar een keer selecteren voor het **Kookschrift**.
+7. In **Boodschappen** worden de hoeveelheden van gelijke ingrediënten bij elkaar opgeteld en heb je nogmaals de kans om ze te verwijderen. In **Weekmenu** zijn ze nu ook overal verwijderd. Daar heb je dan weer de mogelijkheid om per recept een vergissing te herstellen en het ingrediënt weer op de boodschappenlijst te zetten.
+8. In **Boodschappen** wordt de vraag gesteld "Is alles op voorraad?". We gaan er van uit dat bij jouw alles op voorraad is, maar in **Voorraad** kan je controleren of dat voor de benodigde houdbare ingrediënten ook zo is.
+9. Als je op zoek gaat naar een nieuw recept zal je zien dat de reeds geselecteerde recepten in het zoekresultaat voor de overzichtelijkheid nu zwart zijn met een rode bookmark. Zo kan je een recept maar een keer selecteren voor het **Kookschrift**. Je eigen recepten zijn blauw.
 
 ## wat is nu uniek?
 
@@ -84,7 +85,7 @@ Maak eerst een account aan, het is [safe and secure](https://en.wikipedia.org/wi
 - Verwante recepten hebben een link en in het Kookschrift kunnen nieuwe relaties worden aangebracht.
 - Je kan een weekmenu samenstellen en daar een boodschappenlijst mee genereren
 - Van de ingrediënten zijn vers en voorraad gescheiden, dat is handig en logisch.
-- De boodschappenlijst kan je emailen naar jezelf of naar een bezorgservice.
+- De boodschappenlijst kan je emailen met een druk op de knop.
 
 ## aanvullingen en suggesties
 
@@ -93,8 +94,8 @@ Deze app is bedoeld om een soort kookclub mee te vormen waar de deelnemers, inpl
 Suggesties voor nieuwe recepten graag mailen naar <studio@roozen.nl>:
 
 - Een aanvulling, verbetering of wezenlijke variant.
-- Altijd uit een bestaand kookboek van een gerenommeerde kok met bronvermelding.
 - Een basisrecept of klassieker of andere/betere manier om met een ingrediënt te koken.
+- Liefst uit een bestaand kookboek van een gerenommeerde kok met bronvermelding. Ere wie ere toekomt!
 
 ## het begin
 
