@@ -159,6 +159,7 @@ module.exports = {
         50: "50%",
         70: "70px",
         550: "550px",
+        750: "750px",
       }),
       zIndex: {
         auto: "auto",

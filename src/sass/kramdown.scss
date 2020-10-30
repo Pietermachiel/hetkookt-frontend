@@ -3,6 +3,7 @@
 \*------------------------------------*/
 
 .kramdown {
+  max-width: 750px;
   a {
     display: inline;
     line-height: 1em;
@@ -10,7 +11,7 @@
     border-bottom: 1px solid rgba(90, 90, 90, 0.2);
     padding-bottom: 0px;
     text-decoration: none;
-    color: $blauw;
+    color: #3b4de2;
   }
 
   a.absent {
@@ -95,24 +96,24 @@
   }
 
   h1 {
-    font-size: 32px;
-    font-weight: 600;
+    font-size: 42px;
+    font-weight: 500;
   }
 
   h2 {
-    font-size: 26px;
-    font-weight: 600;
-    border-bottom: 1px solid $blauw; // #cccccc
+    font-size: 36px;
+    font-weight: 500;
+    border-bottom: 1px solid #3b4de2; // #cccccc
   }
 
   h3 {
-    font-size: 26px;
-    font-weight: 600;
+    font-size: 28px;
+    font-weight: 500;
   }
 
   h4 {
-    font-size: 21px;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: 500;
     margin-bottom: 21px;
   }
 
@@ -123,7 +124,7 @@
 
   h6 {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
   }
 
   p,
@@ -136,6 +137,20 @@
   pre {
     // margin: 15px 0;
     color: $text-color;
+    font-size: 21px;
+    line-height: 36px;
+  }
+
+  ul {
+    li {
+      list-style: disc;
+    }
+  }
+
+  ol {
+    li {
+      list-style: decimal;
+    }
   }
 
   body > h2:first-child {
@@ -247,14 +262,14 @@
   }
 
   blockquote {
-    border-left: 4px solid $blauw;
+    border-left: 4px solid #3b4de2;
     font-weight: bolder;
-    padding: 15px;
+    padding: 24px;
     color: #777777;
     background: #f8f8f8;
-    li {
-      list-style: none;
-    }
+    // li {
+    //   list-style: none;
+    // }
   }
 
   blockquote > :first-child {
@@ -475,7 +490,7 @@
   }
 
   b {
-    font-weight: 600;
+    font-weight: 500;
   }
 
   u {
@@ -516,44 +531,5 @@
 
   mark {
     background-color: #fff8d7;
-  }
-
-  .home-img_pieter {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    align-items: center;
-    margin-bottom: 2em;
-    img {
-      width: 200px;
-      border-radius: 50%;
-    }
-  }
-  .home-img_vangogh {
-    @media screen and (min-width: $on-palm) {
-      margin-left: -100px;
-      margin-right: -100px;
-      margin-bottom: 2em;
-      img {
-        width: 100%;
-      }
-    }
-  }
-  .home-img_websites {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 2em;
-    img {
-      width: calc(50% - 20px);
-      border: 1px solid gray;
-    }
-    @media screen and (min-width: $on-palm) {
-      margin-left: -100px;
-      margin-right: -100px;
-      margin-top: 2em;
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-between;
-    }
   }
 }

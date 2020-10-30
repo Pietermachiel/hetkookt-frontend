@@ -40,7 +40,7 @@ const Home = ({ user, recipes, ...props }) => {
 
             {!user && (
               <div className=" unvisable slide work-grid-item">
-                <p>
+                {/* <p>
                   Een bonte verzameling <strong>basisrecepten</strong> uit alle
                   windstreken.
                 </p>
@@ -77,11 +77,11 @@ const Home = ({ user, recipes, ...props }) => {
 
                 <br />
 
-                <p className="text-19 font-700 text-indigo-600">Voordelen</p>
+                <p className="text-19 font-700 text-indigo-600">Voordelen</p> */}
               </div>
             )}
             <div>
-              <ul>
+              {/* <ul>
                 <li className="list-inside list-disc">
                   Basisrecepten met bronvermelding.
                 </li>
@@ -114,21 +114,17 @@ const Home = ({ user, recipes, ...props }) => {
               </p>
 
               <br />
-
-              {/* <span role="img" aria-label="rose">
-                🌹
-              </span> */}
               <p>
                 Pieter{" "}
                 <span role="img" aria-label="rose">
                   &#127801;
                 </span>
-              </p>
+              </p> */}
 
               <div className="clear-both"></div>
             </div>
           </div>
-        </Fragment>{" "}
+        </Fragment>
       </div>
     </Fragment>
   );

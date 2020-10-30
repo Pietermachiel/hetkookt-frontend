@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import useCurrentWitdh from "./common/use-current-width2";
-import Tooltip from "./Tooltip";
 
 const LogoBox = ({ user, me }) => {
   const [kookschriftOpen, setKookschriftOpen] = useState(false);
@@ -14,14 +13,10 @@ const LogoBox = ({ user, me }) => {
 
   return (
     <div
-      className={`lg:ml-150 ${
-        width < 768 ? "mt-14 ml-100 pl-18" : "mt-14 ml-125"
+      className={`lg:ml-150 ${user ? "mt-16" : "mt-48"} ${
+        width < 768 ? "ml-100 pl-18" : "ml-125"
       }`}
     >
-      {/* <Tooltip text="Simple tooltip">
-        <button>Hover me!</button>
-      </Tooltip> */}
-
       {user && (
         <div className="flex items-center">
           <div aria-label="to user" className="">
@@ -56,12 +51,25 @@ const LogoBox = ({ user, me }) => {
               />
             </Link>
           </div>{" "}
-          {user && user.isAdmin && (
-            <NavLink className="ml-36 text-indigo-600" to="/recipes">
-              (Recipes)
+          <div className="ml-10">
+            <NavLink className="ml-36 text-indigo-600" to="/collections">
+              Recepten
             </NavLink>
+            <NavLink className="ml-36 text-indigo-600" to="/about">
+              About
+            </NavLink>
+          </div>{" "}
+          {user && user.isAdmin && (
+            <Fragment>
+              <NavLink className="ml-36 text-indigo-600" to="/recipes">
+                (Recipes)
+              </NavLink>
+              <NavLink className="ml-36 text-indigo-600" to="/markdown">
+                (Markdown)
+              </NavLink>
+            </Fragment>
           )}
-          {user && !user.isAdmin && width > 768 && (
+          {!user && !user.isAdmin && width > 768 && (
             <span className="ml-36 font-500 text-18 text-gray-500">
               De kunst van lekker eten
             </span>
@@ -80,9 +88,21 @@ const LogoBox = ({ user, me }) => {
         </div>
       )}
       {!user && (
-        <NavLink aria-label="to login" className="" to="/login">
-          <button className="button-loginmenu">login</button>
-        </NavLink>
+        <div className="button-loginmenu flex items-center">
+          <NavLink aria-label="to login" className="" to="/login">
+            <button className="">login</button>
+          </NavLink>
+          {width > 768 && (
+            <Fragment>
+              <NavLink className="ml-36 text-indigo-600" to="/collections">
+                Recepten
+              </NavLink>
+              <NavLink className="ml-36 text-indigo-600" to="/about">
+                About
+              </NavLink>
+            </Fragment>
+          )}
+        </div>
       )}
       {/* {user && (
         <NavLink

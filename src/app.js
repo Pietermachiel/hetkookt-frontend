@@ -32,6 +32,7 @@ import Book from "./components/Books/Book";
 import Weekmenu from "./components/Weekmenu";
 import User from "./components/User";
 import About from "./components/About";
+import Markdown from "./components/markdown";
 import TipsTools from "./components/TipsTools";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
@@ -367,6 +368,7 @@ const App = () => {
           <Route path="/verify/:id" component={Verify} />
           <Route path="/logout" component={logout} />
           <Route path="/about" component={About} />
+          <Route path="/markdown" component={Markdown} />
           <Route path="/tipstools" component={TipsTools} />
           <ProtectedRoute
             path="/user"
@@ -563,8 +565,17 @@ const App = () => {
           />
           <Route
             path="/books/:id"
+            // render={(props) => {
+            //   return <Book books={books} recipes={recipes} {...props} />;
+            // }}
             render={(props) => {
-              return <Book books={books} recipes={recipes} {...props} />;
+              if (books === undefined) return [];
+              const thebook = books.find(
+                // (i) => i._id === props.location.state
+                (i) => slugify(i.name) === props.match.params.id
+              );
+              if (thebook === undefined) return [];
+              return <Book thebook={thebook} recipes={recipes} {...props} />;
             }}
           />
           <Route

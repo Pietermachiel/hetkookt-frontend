@@ -3,18 +3,20 @@ import { Link } from "react-router-dom";
 import { apiUrl } from "../../config.json";
 import { slugify } from "../common/common";
 
-const Book = ({ books, recipes, ...props }) => {
-  const [thebook, setTheBook] = useState([]);
+const Book = ({ thebook, books, recipes, ...props }) => {
+  // const [thebook, setTheBook] = useState([]);
 
-  const API = props.location.state;
+  // const API = props.location.state;
 
-  useEffect(() => {
-    async function getData() {
-      const res = await fetch(`${apiUrl}/books/${API}`);
-      res.json().then((res) => setTheBook(res));
-    }
-    getData();
-  }, [API]);
+  // console.log(API);
+
+  // useEffect(() => {
+  //   async function getData() {
+  //     const res = await fetch(`${apiUrl}/books/${API}`);
+  //     res.json().then((res) => setTheBook(res));
+  //   }
+  //   getData();
+  // }, [API]);
 
   if (thebook.name === undefined) return [];
 
