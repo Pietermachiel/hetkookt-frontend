@@ -51,15 +51,19 @@ const LogoBox = ({ user, me }) => {
               />
             </Link>
           </div>{" "}
-          <div className="ml-10">
-            <NavLink className="ml-36 text-indigo-600" to="/collections">
-              Recepten
-            </NavLink>
-            <NavLink className="ml-36 text-indigo-600" to="/about">
-              About
-            </NavLink>
-          </div>{" "}
-          {user && user.isAdmin && (
+          {width > 768 && (
+            <Fragment>
+              <div className="ml-10">
+                <NavLink className="ml-36 text-indigo-600" to="/collections">
+                  Recepten
+                </NavLink>
+                <NavLink className="ml-36 text-indigo-600" to="/about">
+                  About
+                </NavLink>
+              </div>
+            </Fragment>
+          )}
+          {user && user.isAdmin && width > 768 && (
             <Fragment>
               <NavLink className="ml-36 text-indigo-600" to="/recipes">
                 (Recipes)
