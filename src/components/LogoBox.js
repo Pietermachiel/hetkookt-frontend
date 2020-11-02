@@ -61,6 +61,9 @@ const LogoBox = ({ user, me }) => {
                   About
                 </NavLink>
               </div>
+              <span className="ml-36 font-500 text-18 text-gray-500">
+                De kunst van lekker eten
+              </span>
             </Fragment>
           )}
           {user && user.isAdmin && width > 768 && (
@@ -94,7 +97,7 @@ const LogoBox = ({ user, me }) => {
       {!user && (
         <div className="button-loginmenu flex items-center">
           <NavLink aria-label="to login" className="" to="/login">
-            <button className="">login</button>
+            <button className="">Login</button>
           </NavLink>
           {width > 768 && (
             <Fragment>
@@ -104,6 +107,9 @@ const LogoBox = ({ user, me }) => {
               <NavLink className="ml-36 text-indigo-600" to="/about">
                 About
               </NavLink>
+              <span className="ml-36 font-500 text-18 text-gray-500">
+                De kunst van lekker eten
+              </span>
             </Fragment>
           )}
         </div>
