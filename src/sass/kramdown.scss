@@ -101,9 +101,12 @@
   }
 
   h2 {
-    font-size: 36px;
+    font-size: 30px;
     font-weight: 500;
     border-bottom: 1px solid #3b4de2; // #cccccc
+    @media screen and (min-width: $on-tablet) {
+      font-size: 36px;
+    }
   }
 
   h3 {
@@ -137,8 +140,12 @@
   pre {
     // margin: 15px 0;
     color: $text-color;
-    font-size: 21px;
-    line-height: 36px;
+    font-size: 18px;
+    line-height: 30px;
+    @media screen and (min-width: $on-tablet) {
+      font-size: 21px;
+      line-height: 36px;
+    }
   }
 
   ul {

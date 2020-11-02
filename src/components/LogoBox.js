@@ -53,17 +53,20 @@ const LogoBox = ({ user, me }) => {
           </div>{" "}
           {width > 768 && (
             <Fragment>
-              <div className="ml-10">
+              {/* <div className="ml-10">
                 <NavLink className="ml-36 text-indigo-600" to="/collections">
                   Recepten
                 </NavLink>
                 <NavLink className="ml-36 text-indigo-600" to="/about">
                   About
                 </NavLink>
-              </div>
-              <span className="ml-36 font-500 text-18 text-gray-500">
+              </div> */}
+              <NavLink
+                className="ml-36 font-500 text-18 text-gray-500"
+                to="/about"
+              >
                 De kunst van lekker eten
-              </span>
+              </NavLink>
             </Fragment>
           )}
           {user && user.isAdmin && width > 768 && (
@@ -101,15 +104,19 @@ const LogoBox = ({ user, me }) => {
           </NavLink>
           {width > 768 && (
             <Fragment>
-              <NavLink className="ml-36 text-indigo-600" to="/collections">
+              {/* <NavLink className="ml-36 text-indigo-600" to="/collections">
                 Recepten
               </NavLink>
               <NavLink className="ml-36 text-indigo-600" to="/about">
                 About
-              </NavLink>
-              <span className="ml-36 font-500 text-18 text-gray-500">
+              </NavLink> */}
+
+              <NavLink
+                className="ml-36 font-500 text-18 text-gray-500"
+                to="/about"
+              >
                 De kunst van lekker eten
-              </span>
+              </NavLink>
             </Fragment>
           )}
         </div>
