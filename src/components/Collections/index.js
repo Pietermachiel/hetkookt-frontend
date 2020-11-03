@@ -53,96 +53,96 @@ const Collections = ({ me, setMe, thecart, dish, recipes, ...props }) => {
           let therecipes = recipes.filter((r) => r.dish._id === d._id);
           let thetags = therecipes.map((t) => t.tags[0]);
           thetags = thetags.map((m) => m.name).filter(uniq);
-          if (d.name === thedish)
-            return (
-              <Fragment key={xid}>
-                <div className="cat-box mb-36">
-                  <h1 className="mb-18">{d.name}</h1>
-                  {/* <div className="flexbox flexbox-margin unvisable slide work-grid-item"> */}
-                  {thetags.map((s, xid) => {
-                    // if (s.dish._id === d._id)
-                    return (
-                      <Fragment key={xid}>
-                        <div className="flexbox flexbox-margin">
-                          <Link
-                            className="recipe-box recipe-box_sorts"
-                            to={`/sorts/${slugify(s)}`}
-                          >
-                            <div>
-                              <img
-                                src={`/img/products/product_${slugify(s)}.jpg`}
-                                alt=""
-                              />
-                            </div>{" "}
-                            <div className="relative h-60">
-                              <p
-                                className={`text-black mt-10 uppercase absolute tracking-widest top-0 left-0 text-14`}
-                              >
-                                <span className="pl-15">{s}</span>
-                              </p>
-                            </div>
-                          </Link>
-                          {therecipes.map((recipe, index) => {
-                            if (recipe.tags[0].name === s)
-                              return (
-                                <Fragment key={index}>
-                                  {thecart.map((cart, index) => {
-                                    const cartundefined = thecart.find(
-                                      (t) => t._id === recipe._id
+          if (d.name !== thedish && thedish) return null;
+          return (
+            <Fragment key={xid}>
+              <div className="cat-box mb-36">
+                <h1 className="mb-18">{d.name}</h1>
+                {/* <div className="flexbox flexbox-margin unvisable slide work-grid-item"> */}
+                {thetags.map((s, xid) => {
+                  // if (s.dish._id === d._id)
+                  return (
+                    <Fragment key={xid}>
+                      <div className="flexbox flexbox-margin">
+                        <Link
+                          className="recipe-box recipe-box_sorts"
+                          to={`/sorts/${slugify(s)}`}
+                        >
+                          <div>
+                            <img
+                              src={`/img/products/product_${slugify(s)}.jpg`}
+                              alt=""
+                            />
+                          </div>{" "}
+                          <div className="relative h-60">
+                            <p
+                              className={`text-black mt-10 uppercase absolute tracking-widest top-0 left-0 text-14`}
+                            >
+                              <span className="pl-15">{s}</span>
+                            </p>
+                          </div>
+                        </Link>
+                        {therecipes.map((recipe, index) => {
+                          if (recipe.tags[0].name === s)
+                            return (
+                              <Fragment key={index}>
+                                {thecart.map((cart, index) => {
+                                  const cartundefined = thecart.find(
+                                    (t) => t._id === recipe._id
+                                  );
+                                  // console.log(
+                                  //   thecart.find((t) => t._id === recipe._id)
+                                  // );
+                                  if (
+                                    cart.tags[0].name === s &&
+                                    cart.dish.name === thedish &&
+                                    cartundefined !== undefined
+                                    // thecart.find((t) => t._id === recipe._id)
+                                  )
+                                    return (
+                                      <Fragment key={index}>
+                                        <FavoriteItems
+                                          recipe={recipe}
+                                          recipes={recipes}
+                                          therecipes={therecipes}
+                                          thecart={thecart}
+                                          cart={cart}
+                                          Link={Link}
+                                          me={me}
+                                          setMe={setMe}
+                                          {...props}
+                                        />
+                                      </Fragment>
                                     );
-                                    // console.log(
-                                    //   thecart.find((t) => t._id === recipe._id)
-                                    // );
-                                    if (
-                                      cart.tags[0].name === s &&
-                                      cart.dish.name === thedish &&
-                                      cartundefined !== undefined
-                                      // thecart.find((t) => t._id === recipe._id)
-                                    )
-                                      return (
-                                        <Fragment key={index}>
-                                          <FavoriteItems
-                                            recipe={recipe}
-                                            recipes={recipes}
-                                            therecipes={therecipes}
-                                            thecart={thecart}
-                                            cart={cart}
-                                            Link={Link}
-                                            me={me}
-                                            setMe={setMe}
-                                            {...props}
-                                          />
-                                        </Fragment>
-                                      );
-                                  })}
-                                </Fragment>
-                              );
-                          })}
-                          {therecipes.map((recipe, index) => {
-                            if (
-                              recipe.tags[0].name === s &&
-                              !thecart.find((t) => t._id === recipe._id)
-                            )
-                              return (
-                                <Fragment key={index}>
-                                  <SelectedItems
-                                    recipe={recipe}
-                                    Link={Link}
-                                    me={me}
-                                    setMe={setMe}
-                                    {...props}
-                                  />
-                                </Fragment>
-                              );
-                          })}
-                        </div>
-                      </Fragment>
-                    );
-                  })}
-                  {/* </div> */}
-                </div>
-              </Fragment>
-            );
+                                })}
+                              </Fragment>
+                            );
+                        })}
+                        {therecipes.map((recipe, index) => {
+                          if (
+                            recipe.tags[0].name === s &&
+                            !thecart.find((t) => t._id === recipe._id)
+                          )
+                            return (
+                              <Fragment key={index}>
+                                <SelectedItems
+                                  recipe={recipe}
+                                  Link={Link}
+                                  me={me}
+                                  setMe={setMe}
+                                  {...props}
+                                />
+                              </Fragment>
+                            );
+                        })}
+                      </div>
+                    </Fragment>
+                  );
+                })}
+                {/* </div> */}
+              </div>
+            </Fragment>
+          );
         })}
       </div>
     </Fragment>

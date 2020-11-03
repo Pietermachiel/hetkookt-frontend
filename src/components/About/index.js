@@ -21,7 +21,7 @@ Er bestaat een overvloed aan blogs waar enthousiaste thuiskoks hun persoonlijke 
 
 Voorbeeldige kookaps zijn er wel bijvoorbeeld van [NYT](https://cooking.nytimes.com), [BBC](https://www.bbc.co.uk/food), [The Guardian](https://www.theguardian.com/tone/recipes) en [BRT](https://dagelijksekost.een.be/) compleet met professionele videouitleg, tips en tools en uitgebreide zoekfuncties. 
 
-Toch blijkt al snel, dat ondanks hun onuitputtelijke diversiteit, de kookstijl, terminologie en ingrediënten veelal niet aansluiten bij de routines van een individuele thuiskok. En je kan die recepten misschien wel bewaren, maar zeker niet aanpassen. 
+Toch blijkt al snel, dat ondanks hun onuitputtelijke diversiteit, de kookstijl, terminologie en ingrediënten niet zomaar aansluiten bij de routines van een individuele thuiskok. En je kan die recepten misschien wel bewaren, maar zeker niet aanpassen. 
 
 Aanpassen kan wel in bijvoorbeeld het kookschrift van [Albert Heyn](https://www.ah.nl/kookschrift), waar je persoonlijke recepten met elkaar kunt delen, maar je eindigt daar altijd weer met een te veel aan (voorgekookte!) boodschappen in je AH-mandje. 
 
@@ -46,9 +46,9 @@ Recepten zijn in principe slechts een lijstje met ingrediënten, de ervaren kok 
 
 We zijn echter zo gewend geraakt aan het industriëel vervaardigde gemaks-eten van de supermarkt dat we een recept eerder zien als een product met een gebruiksaanwijzing die letterlijk wordt opgevat. 
 
-Maar zo werkt het eigenlijk niet, want keukens, apparatuur, oventemperaturen, ingrediënten, niet te vergeten smaken en wat dies meer zij, kunnen verschillen. Een recept is dus eigenlijk eerder een uitgangspunt dat getest moet worden in de eigen keukensituatie. Net als de professionele koks zal de thuiskok een recept pas na heel veel uitproberen eigen maken. 
+Maar zo werkt het eigenlijk niet, want keukens, apparatuur, oventemperaturen, ingrediënten, niet te vergeten smaken en wat dies meer zij, kunnen verschillen. Een recept is dus eigenlijk eerder een uitgangspunt dat getest moet worden in de eigen keukensituatie. Net als de professionele koks zal de thuiskok een recept pas na zelf uitproberen eigen maken. 
 
-Als je dan niet zoals in de vorige eeuw dagelijks twee uur in de keuken staat en dus zo vaak kookt dat je alles uit je hoofd kan maken, is het handig om het op te schrijven voor de volgende keer. Iedere serieuze thuiskok heeft wel zo’n kookschrift en de kookapp **HetKookt** is precies op die manier bedoeld. **De serieuze thuiskok met een kookschrift is de doelgroep**.
+Als je dan niet zoals in de vorige eeuw dagelijks twee uur in de keuken staat (af als een professionele kok) en dus zo vaak kookt dat je alles uit je hoofd kan maken, is het handig om het op te schrijven voor de volgende keer. Iedere serieuze thuiskok heeft wel zo’n kookschrift en de kookapp **HetKookt** is precies op die manier bedoeld. **De serieuze thuiskok met een kookschrift is de doelgroep**.
 
 
 ## de recepten
