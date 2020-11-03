@@ -46,7 +46,7 @@ Recepten zijn in principe slechts een lijstje met ingrediënten, de ervaren kok 
 
 We zijn echter zo gewend geraakt aan het industriëel vervaardigde gemaks-eten van de supermarkt dat we een recept eerder zien als een product met een gebruiksaanwijzing die letterlijk wordt opgevat. 
 
-Maar zo werkt het eigenlijk niet, want keukens, apparatuur, oventemperaturen, ingrediënten, niet te vergeten smaken en wat dies meer zij, kunnen verschillen. Een recept is dus eigenlijk eerder een uitgangspunt dat getest moet worden in de eigen keukensituatie. Net als de professionele koks zal de thuiskok een recepten pas na heel veel uitproberen eigen maken. 
+Maar zo werkt het eigenlijk niet, want keukens, apparatuur, oventemperaturen, ingrediënten, niet te vergeten smaken en wat dies meer zij, kunnen verschillen. Een recept is dus eigenlijk eerder een uitgangspunt dat getest moet worden in de eigen keukensituatie. Net als de professionele koks zal de thuiskok een recept pas na heel veel uitproberen eigen maken. 
 
 Als je dan niet zoals in de vorige eeuw dagelijks twee uur in de keuken staat en dus zo vaak kookt dat je alles uit je hoofd kan maken, is het handig om het op te schrijven voor de volgende keer. Iedere serieuze thuiskok heeft wel zo’n kookschrift en de kookapp **HetKookt** is precies op die manier bedoeld. **De serieuze thuiskok met een kookschrift is de doelgroep**.
 
