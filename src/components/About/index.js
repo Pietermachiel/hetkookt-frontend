@@ -7,27 +7,6 @@ const About = () => {
 
 **HetKookt is een digitaal kookschrift voor kookboekrecepten. Bedoeld om die recepten zelf naar eigen inzicht aan te passen of zelf recepten te maken in de eigen keuken thuis. Het is een [Progressive Web App](https://en.wikipedia.org/wiki/Progressive_web_application) met handige functies, zoals relaties tussen recepten, een weekmenu en boodschappenlijst, voorraadbeheer en vele zoekmogelijkheden.**
 
-## wat de serieuze thuiskok mist
-
-Een serieuze thuiskok heeft drie problemen:
-- Hoe bewaar en orden ik mijn kookboekrecepten en kooknotities. 
-- Hoe vind ik een goed recept in de chaos op het internet.
-- Hoe houd ik mijn voorraad op peil en hoe doe ik efficiënt boodschappen.
-
-## wat er schort aan de meeste kookblogs
-Er bestaat een overvloed aan blogs waar enthousiaste thuiskoks hun persoonlijke smaak en opvattingen willen delen met anderen, meestal vergezeld van een verdienmodel. Om een zo groot mogelijk publiek te bereiken zijn de meest voorkomende termen: **ik**, **leuk**, **lekker**, **gemakkelijk** en **snel klaar**. En iedereen kopiëert er lustig op los en schrijft dat weer van elkaar over. 
-
-## exelente kookapps zijn er ook, maar...
-
-Voorbeeldige kookaps zijn er wel bijvoorbeeld van [NYT](https://cooking.nytimes.com), [BBC](https://www.bbc.co.uk/food), [The Guardian](https://www.theguardian.com/tone/recipes) en [BRT](https://dagelijksekost.een.be/) compleet met professionele videouitleg, tips en tools en uitgebreide zoekfuncties. 
-
-Toch blijkt al snel, dat ondanks hun onuitputtelijke diversiteit, de kookstijl, terminologie en ingrediënten niet zomaar aansluiten bij de routines van een individuele thuiskok. En je kan die recepten misschien wel bewaren, maar zeker niet aanpassen. 
-
-Aanpassen kan wel in bijvoorbeeld het kookschrift van [Albert Heyn](https://www.ah.nl/kookschrift), waar je persoonlijke recepten met elkaar kunt delen, maar je eindigt daar altijd weer met een te veel aan (voorgekookte!) boodschappen in je AH-mandje. 
-
-Persoonlijke recepten delen is eigenlijk helemaal onzinnig. Ga liever uit van een goed kookboekrecept en experimenteer hoe je dat in eigen keuken zelf kunt maken. Dat is het streven van **HetKookt** en zo is alles bedoeld.
-
-
 ## een ode aan kookboeken voor thuis koken
 
 Er bestaat een lange traditie, teruggaand tot [La scienza in cucina e l'arte di mangiar bene](/books/la-scienza-in-cucina-e-l-arte-di-mangiar-bene) van Pellegrino Artusi in 1891 en wellicht nog veel verder terug, van vermaarde koks die hun kunsten delen met de thuiskok. Dat zijn de kookboeken waaruit **HetKookt** de recepten heeft geselecteerd. Ze zijn van de zogenaamde categorie ‘De Eerlijke Keuken’, met slow cooking, pure ingrediënten en alles thuis zelf maken. De koks in deze categorie zijn vrijwel zonder uitzondering autodidact en hebben het koken voor zichzelf opnieuw uitgevonden. En dan is het maken van een goed kookboek voor thuiskoks nog weer een kunst apart.
@@ -39,33 +18,17 @@ Er bestaat een lange traditie, teruggaand tot [La scienza in cucina e l'arte di 
 
 > **Pellegrino Artusi** [La scienza in cucina e l'arte di mangiar bene](/books/la-scienza-in-cucina-e-l-arte-di-mangiar-bene)
 
-
-## recepten zijn geen gebruiksaanwijzing
-
-Recepten zijn in principe slechts een lijstje met ingrediënten, de ervaren kok weet dan wel wat te doen.
-
-We zijn echter zo gewend geraakt aan het industriëel vervaardigde gemaks-eten van de supermarkt dat we een recept eerder zien als een product met een gebruiksaanwijzing die letterlijk wordt opgevat. 
-
-Maar zo werkt het eigenlijk niet, want keukens, apparatuur, oventemperaturen, ingrediënten, niet te vergeten smaken en wat dies meer zij, kunnen verschillen. Een recept is dus eigenlijk eerder een uitgangspunt dat getest moet worden in de eigen keukensituatie. Net als de professionele koks zal de thuiskok een recept pas na zelf uitproberen eigen maken. 
-
-Als je dan niet zoals in de vorige eeuw dagelijks twee uur in de keuken staat (af als een professionele kok) en dus zo vaak kookt dat je alles uit je hoofd kan maken, is het handig om het op te schrijven voor de volgende keer. Iedere serieuze thuiskok heeft wel zo’n kookschrift en de kookapp **HetKookt** is precies op die manier bedoeld. **De serieuze thuiskok met een kookschrift is de doelgroep**.
-
-
 ## de recepten
 
 **HetKookt** is om te beginnen een leeg digitaal kookschrift dat gevuld kan worden. De recepten van **HetKookt** vinden hun oorspong in bestaande kookboeken en zijn bewerkt tot een onderling samenhangend geheel. Ze dienen als voorbeeld hoe je een kookboekrecept samenhangend met andere recepten in je kookschrift kunt invoeren. Als je een account aanmaakt kan je ze stuk voor stuk, en zo nodig steeds opnieuw, naar eigen smaak aanpassen. Zo wordt je aangespoord om die kookboeken, maar ook andere kookboeken, zelf aan te schaffen en nog meer recepten op dezelfde manier in je kookschrift op te nemen.
 
-
 ## de selectie
 
-Voor ieder kookboek zal de redactie van de recepten min of meer uniek zijn en onvergelijkbaar met andere. Ook zal ieder boek zich op een unieke manier willen onderscheiden. Bij **HetKookt** is echter eerder naar de overeenkomsten tussen die kookboeken gekeken en de meest gangbare recepten zijn uitgekozen. Het zijn veelal klassiekers en basisrecepten en zoveel mogelijk gespreid over de gehanteerde categorieën. Hoeveelheden zijn teruggebracht tot voor 3-4 personen. De instructies zijn geredigeerd en in telegramstijl, dus voor de goede verstaander. Ook geen foto's van het eindresultaat. Alles ten faveure van het persoonlijke initiatief en stijlgevoel! De referentie van een kookboek leidt naar de uitgever van de originele uitgave. Die daarmee de aandacht krijgt die het verdient. Een kookboek uitgeven is ook een kunst!
+De recepten die 'HetKookt' biedt vinden hun oorsprong in bestaande kookboeken. De beschrijving is een parafrase van die recepten, zodanig dat een consequent en eenvormig systeem ontstaat ondanks de inhoudelijke en redactionele verschillen tussen die kookboeken onderling. Zowel de lijst met ingredienten als de beschrijving van de werkwijze zijn dus geen letterlijke weergave van die recepten. Voor de werkelijke inhoud wordt verwezen naar de respectievelijke kookboeken zelf, met een bronvermelding, een boekbeschrijving en met een link naar de uitgever. Die daarmee de aandacht krijgt die het verdient. Een kookboek uitgeven is ook een kunst!
 
+## de redactie
 
-## lokaal en seizoensgebonden koken
-
-HetKookt is ook een lokaal kookschrift, want **de kunst van lekker eten** is na de taal het eerste wat jouw identiteit bepaalt. Volgens het bekende gezegde: 'Je bent wat je eet en je eet wat je eten eet'. En al zijn de technieken universeel, koken is ook vanwege de verkrijgbaarheid van de (verse!) ingrediënten vooral een lokale en seizoensgebonden bezigheid. 
-
-
+De beschijving van de recepten is zo bondig mogelijk, maar tegelijkertijd heel precies. Zo veel mogelijk worden alle hoeveelheden aangegeven in milliliter en gram van de schone ingredienten. Bij de boodschappenlijst dient met dit gegeven rekening gehouden te worden.
 ## hoe **HetKookt** werkt
 
 Maak eerst een account aan, het is [safe and secure](https://en.wikipedia.org/wiki/Multi-factor_authentication) en op ieder moment weer te verwijderen.
@@ -82,19 +45,7 @@ Maak eerst een account aan, het is [safe and secure](https://en.wikipedia.org/wi
 8. In **Boodschappen** wordt de vraag gesteld "Is alles op voorraad?". We gaan er van uit dat bij jou alles op voorraad is, maar in **Voorraad** kan je controleren of dat voor de benodigde houdbare ingrediënten ook zo is.
 9. Als je op zoek gaat naar een nieuw recept zal je zien dat de reeds geselecteerde recepten in het zoekresultaat voor de overzichtelijkheid nu zwart zijn met een rode bookmark. Zo kan je een recept maar een keer selecteren voor het **Kookschrift**. Je eigen recepten zijn blauw.
 
-## wat is nu uniek?
-
-- Beschrijvingen in telegramstijl en zonder franje maar wel, en op advies van [Heston Blumenthal](/books/heston-blumenthal-at-home), heel precies.
-- Recepten zijn gedeconstrueerd, zodat de onderdelen ook elders bruikbaar zijn.
-- Alle recepten zijn aan te passen naar eigen smaak en voorkeuren.
-- Verwante recepten hebben een link en in het Kookschrift kunnen nieuwe relaties worden aangebracht.
-- Je kan een weekmenu samenstellen en daar een boodschappenlijst mee genereren
-- Van de ingrediënten zijn vers en voorraad gescheiden, dat is handig en logisch.
-- De boodschappenlijst kan je emailen met een druk op de knop.
-
 ## aanvullingen en suggesties
-
-Deze app is bedoeld om een soort kookclub mee te vormen waar de deelnemers, in plaats van persoonlijke voorkeuren te delen, samen een basis opbouwen voor de ultieme keuken thuis. In het begin nog gratis maar later tegen een redelijk bedrag per maand.
 
 Suggesties voor nieuwe recepten/kookboeken graag mailen naar <studio@roozen.nl>:
 
@@ -102,17 +53,6 @@ Suggesties voor nieuwe recepten/kookboeken graag mailen naar <studio@roozen.nl>:
 - Een basisrecept of klassieker of andere/betere manier om met een ingrediënt te koken.
 - Uit een bestaand kookboek van een gerenommeerde kok met bronvermelding. Ere wie ere toekomt!
 
-## het begin
-
-Anders dan bij het maken van een kookboek is publicatie van een app pas het begin. Er zullen nog heel wat fouten, bugs en onvolkomenheden naar boven komen.
-
-Ik hoop daarom op je onverbiddelijke commentaar en op suggesties voor nieuwe recepten.
-
-**HetKookt**! versie 1.0.0
-
-🌹 Pieter
-
-PS: versie 1.0.X is een schrijf- of taalfout of een technische bug, versie 1.X.0 is een inhoudelijke correctie of aanvulling, X.0.0 is een functionele correctie of aanvulling.
 
   
 
@@ -125,7 +65,7 @@ PS: versie 1.0.X is een schrijf- of taalfout of een technische bug, versie 1.X.0
 
         <ReactMarkdown
           plugins={[gfm]}
-          className="kramdown m-auto"
+          className="kramdown m-auto mb-36"
           children={markdown}
         />
       </div>

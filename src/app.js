@@ -33,6 +33,7 @@ import Weekmenu from "./components/Weekmenu";
 import User from "./components/User";
 import About from "./components/About";
 import Markdown from "./components/markdown";
+import Proclaimer from "./components/proclaimer";
 import TipsTools from "./components/TipsTools";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
@@ -369,6 +370,7 @@ const App = () => {
           <Route path="/logout" component={logout} />
           <Route path="/about" component={About} />
           <Route path="/markdown" component={Markdown} />
+          <Route path="/proclaimer" component={Proclaimer} />
           <Route path="/tipstools" component={TipsTools} />
           <ProtectedRoute
             path="/user"

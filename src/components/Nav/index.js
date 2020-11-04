@@ -163,6 +163,17 @@ const Nav = ({
                       </NavLink>
                     </div>
                   </li>
+                  <li>
+                    <div className="list-links__link">
+                      <NavLink
+                        onClick={handleIsOpen}
+                        className="font-300"
+                        to="/proclaimer"
+                      >
+                        Proclaimer
+                      </NavLink>
+                    </div>
+                  </li>
                   {!user && (
                     <li>
                       {/* <NavLink to="/login"> */}

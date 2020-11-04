@@ -1,12 +1,25 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import auth from "../../services/authService";
 import { deleteUser } from "../../services/userService";
 import useCurrentWitdh from "../common/use-current-width";
 import KookschriftNav from "../Nav/KookschriftNav";
+import { uniq } from "../common/common";
 
 const User = ({ me, user, thecart, ...props }) => {
   const width = useCurrentWitdh();
+
+  console.log("thecart");
+  console.log(thecart);
+
+  const thedates = thecart.map((c) => c.date.map((d) => d.name));
+  console.log("thedates");
+  console.log(thedates);
+
+  var uniqDates = [].concat.apply([], thedates).filter(uniq);
+
+  console.log("uniqDates");
+  console.log(uniqDates);
 
   function handleLogout() {
     auth.logout();
@@ -75,6 +88,31 @@ const User = ({ me, user, thecart, ...props }) => {
         >
           Delete
         </button>
+      </div>
+      <div className="my-36">
+        {uniqDates.map((u) => (
+          <Fragment>
+            <div className="">{u}</div>
+            {/* {thecart.map((t) => {
+              console.log(t.date.map((m) => m.name === u));
+              // if (t.date.map((m) => m.name === u))
+              return <div className="font-700">{t.title}</div>;
+            })} */}
+            {thecart.map((t, xid) => (
+              <Fragment key={xid}>
+                {t.date.map(
+                  (d, xid) =>
+                    d.name === u && (
+                      <div key={xid} className="font-700">
+                        {t.title}{" "}
+                        <span className="font-300"> – {t.dish.name}</span>
+                      </div>
+                    )
+                )}
+              </Fragment>
+            ))}
+          </Fragment>
+        ))}
       </div>
     </div>
   );
