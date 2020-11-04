@@ -24,7 +24,7 @@ Er bestaat een lange traditie, teruggaand tot [La scienza in cucina e l'arte di 
 
 ## de selectie
 
-De recepten die 'HetKookt' biedt vinden hun oorsprong in bestaande kookboeken. De beschrijving is een parafrase van die recepten, zodanig dat een consequent en eenvormig systeem ontstaat ondanks de inhoudelijke en redactionele verschillen tussen die kookboeken onderling. Zowel de lijst met ingredienten als de beschrijving van de werkwijze zijn dus geen letterlijke weergave van die recepten. Voor de werkelijke inhoud wordt verwezen naar de respectievelijke kookboeken zelf, met een bronvermelding, een boekbeschrijving en met een link naar de uitgever. Die daarmee de aandacht krijgt die het verdient. Een kookboek uitgeven is ook een kunst!
+De recepten die **HetKookt** biedt vinden hun oorsprong in bestaande kookboeken. De beschrijving is een parafrase van die recepten, zodanig dat een consequent en eenvormig systeem ontstaat ondanks de inhoudelijke en redactionele verschillen tussen die kookboeken onderling. Zowel de lijst met ingredienten als de beschrijving van de werkwijze zijn dus geen letterlijke weergave van die recepten. Voor de werkelijke inhoud wordt verwezen naar de respectievelijke kookboeken zelf, met een bronvermelding, een boekbeschrijving en met een link naar de uitgever. Die daarmee de aandacht krijgt die het verdient. Een kookboek uitgeven is ook een kunst!
 
 ## de redactie
 
