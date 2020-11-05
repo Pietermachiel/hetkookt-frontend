@@ -5,7 +5,7 @@ import gfm from "remark-gfm";
 const Proclaimer = () => {
   const markdown = `
 
-  Deze webapplicatie 'HetKookt' is bedoeld om zelf gevonden kookrecepten op een georganiseerde manier op te slaan in een kookschrift en te bewaren voor eigen gebruik. HetKookt hanteert daarvoor een eigen manier van beschrijven waardoor recepten onderling gerelateerd kunnen worden en daardoor ook in verschillende samenstelling kunnen worden gebruikt. 
+  **Deze webapplicatie 'HetKookt' is bedoeld om zelf gevonden kookrecepten op een georganiseerde manier op te slaan in een kookschrift en te bewaren voor eigen gebruik. HetKookt hanteert daarvoor een eigen manier van beschrijven waardoor recepten onderling gerelateerd kunnen worden en daardoor ook in verschillende samenstelling kunnen worden gebruikt.**
 
   Met de recepten die in het kookschrift staan, hetzij door recepten van HetKookt te kiezen, danwel door eigen recepten nieuw in te voeren, kan een weekmenu worden opgesteld. Van de ingredientenlijst zijn vers en voorraad van elkaar gescheiden. Staan de recepten eenmaal op het weekmenu dan worden de benodigde verse ingredienten automatisch op de boodschappenlijst gezet. Indien niet meer voorradig kunnen houdbare ingredienten daarna afzonderlijk worden toegevoegd.
 

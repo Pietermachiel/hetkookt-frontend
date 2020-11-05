@@ -10,7 +10,7 @@ const Login = (props) => {
   const doSubmit = async (data) => {
     try {
       await auth.login(data.email, data.password);
-      window.location = "/";
+      window.location = "/mijnrecepten";
     } catch (ex) {
       toast.error("Ongeldige gebruikersnaam of password");
     }

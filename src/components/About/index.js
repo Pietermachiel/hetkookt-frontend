@@ -9,7 +9,7 @@ const About = () => {
 
 ## een ode aan kookboeken voor thuis koken
 
-Er bestaat een lange traditie, teruggaand tot [La scienza in cucina e l'arte di mangiar bene](/books/la-scienza-in-cucina-e-l-arte-di-mangiar-bene) van Pellegrino Artusi in 1891 en wellicht nog veel verder terug, van vermaarde koks en culinaire specialisten die hun kunsten delen met de thuiskok. **HetKookt** heeft een aantal van hun recepten voor je geselecteerd om als voorbeeld te dienen. Ze zijn van de zogenaamde categorie ‘De Eerlijke Keuken’, met slow cooking, pure ingrediënten en alles thuis zelf maken. 
+Er bestaat een lange traditie, teruggaand tot [La scienza in cucina e l'arte di mangiar bene](/books/la-scienza-in-cucina-e-l-arte-di-mangiar-bene) van Pellegrino Artusi in 1891 en wellicht nog veel verder terug, van vermaarde koks en culinaire specialisten die hun kennis en kunsten delen met de thuiskok. **HetKookt** heeft een aantal van hun recepten voor je geselecteerd om als voorbeeld te dienen. Ze zijn van de zogenaamde categorie ‘De Eerlijke Keuken’, met slow cooking, pure ingrediënten en alles thuis zelf maken. 
 
 
 > Cooking is a troublesome sprite. Often it may drive you to despair. Yet it is also very rewarding, for when you do succeed, or overcome a difficulty in doing so, you feel the satisfaction of a great triumph.

@@ -28,7 +28,7 @@ const Home = ({ user, recipes, ...props }) => {
         <Fragment>
           <div className="mb-48">
             <p className="hetkookt-title flex items-center">
-              <Link className="text-red-600 font-700 text-18" to="/books">
+              <Link className="text-red-600 font-700 text-18" to="/about">
                 HetKookt! &nbsp;
               </Link>
               {!user && (

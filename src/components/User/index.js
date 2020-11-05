@@ -89,7 +89,10 @@ const User = ({ me, user, thecart, ...props }) => {
           Delete
         </button>
       </div>
-      <div className="my-36">
+
+      <h3 className="mt-36 mb-18">Menu geschiedenis</h3>
+      <p className="mb-18">Wat stond er eerder op het menu?</p>
+      <div className="mb-36">
         {uniqDates.map((u) => (
           <Fragment>
             <div className="">{u}</div>
