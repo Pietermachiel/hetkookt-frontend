@@ -5,11 +5,11 @@ import gfm from "remark-gfm";
 const About = () => {
   const markdown = `
 
-**HetKookt is een digitaal kookschrift voor kookboekrecepten. Bedoeld om die recepten zelf naar eigen inzicht aan te passen of zelf recepten te maken in de eigen keuken thuis. Het is een [Progressive Web App](https://en.wikipedia.org/wiki/Progressive_web_application) met handige functies, zoals relaties tussen recepten, een weekmenu en boodschappenlijst, voorraadbeheer en vele zoekmogelijkheden.**
+**Met **HetKookt** kan je kookrecepten op een georganiseerde manier opslaan in een kookschrift en bewaren voor eigen gebruik, met handige functies, zoals relaties tussen recepten, een weekmenu en boodschappenlijst, voorraadbeheer en vele zoekmogelijkheden.**
 
 ## een ode aan kookboeken voor thuis koken
 
-Er bestaat een lange traditie, teruggaand tot [La scienza in cucina e l'arte di mangiar bene](/books/la-scienza-in-cucina-e-l-arte-di-mangiar-bene) van Pellegrino Artusi in 1891 en wellicht nog veel verder terug, van vermaarde koks die hun kunsten delen met de thuiskok. Dat zijn de kookboeken waaruit **HetKookt** de recepten heeft geselecteerd. Ze zijn van de zogenaamde categorie ‘De Eerlijke Keuken’, met slow cooking, pure ingrediënten en alles thuis zelf maken. De koks in deze categorie zijn vrijwel zonder uitzondering autodidact en hebben het koken voor zichzelf opnieuw uitgevonden. En dan is het maken van een goed kookboek voor thuiskoks nog weer een kunst apart.
+Er bestaat een lange traditie, teruggaand tot [La scienza in cucina e l'arte di mangiar bene](/books/la-scienza-in-cucina-e-l-arte-di-mangiar-bene) van Pellegrino Artusi in 1891 en wellicht nog veel verder terug, van vermaarde koks en culinaire specialisten die hun kunsten delen met de thuiskok. **HetKookt** heeft een aantal van hun recepten voor je geselecteerd om als voorbeeld te dienen. Ze zijn van de zogenaamde categorie ‘De Eerlijke Keuken’, met slow cooking, pure ingrediënten en alles thuis zelf maken. 
 
 
 > Cooking is a troublesome sprite. Often it may drive you to despair. Yet it is also very rewarding, for when you do succeed, or overcome a difficulty in doing so, you feel the satisfaction of a great triumph.
@@ -20,18 +20,14 @@ Er bestaat een lange traditie, teruggaand tot [La scienza in cucina e l'arte di 
 
 ## de recepten
 
-**HetKookt** is om te beginnen een leeg digitaal kookschrift dat gevuld kan worden. De recepten van **HetKookt** vinden hun oorspong in bestaande kookboeken en zijn bewerkt tot een onderling samenhangend geheel. Ze dienen als voorbeeld hoe je een kookboekrecept samenhangend met andere recepten in je kookschrift kunt invoeren. Als je een account aanmaakt kan je ze stuk voor stuk, en zo nodig steeds opnieuw, naar eigen smaak aanpassen. Zo wordt je aangespoord om die kookboeken, maar ook andere kookboeken, zelf aan te schaffen en nog meer recepten op dezelfde manier in je kookschrift op te nemen.
-
-## de selectie
-
-De recepten die **HetKookt** biedt vinden hun oorsprong in bestaande kookboeken. De beschrijving is een parafrase van die recepten, zodanig dat een consequent en eenvormig systeem ontstaat ondanks de inhoudelijke en redactionele verschillen tussen die kookboeken onderling. Zowel de lijst met ingredienten als de beschrijving van de werkwijze zijn dus geen letterlijke weergave van die recepten. Voor de werkelijke inhoud wordt verwezen naar de respectievelijke kookboeken zelf, met een bronvermelding, een boekbeschrijving en met een link naar de uitgever. Die daarmee de aandacht krijgt die het verdient. Een kookboek uitgeven is ook een kunst!
+**HetKookt** is om te beginnen een leeg digitaal kookschrift dat gevuld kan worden. De recepten die **HetKookt** biedt vinden hun oorsprong in bestaande kookboeken. Ze zijn zodanig bewerkt dat je ze samen kunt gebruiken, ondanks de inhoudelijke en redactionele verschillen tussen die kookboeken onderling. Zowel de lijst met ingrediënten als de beschrijving van de werkwijze zijn dus geen letterlijke weergave van die recepten. Voor de werkelijke inhoud wordt verwezen naar de respectievelijke kookboeken zelf, met een bronvermelding, een boekbeschrijving en met een link naar de uitgever. Die daarmee de aandacht krijgt die het verdient. Een kookboek uitgeven is ook een kunst!
 
 ## de redactie
 
-De beschijving van de recepten is zo bondig mogelijk, maar tegelijkertijd heel precies. Zo veel mogelijk worden alle hoeveelheden aangegeven in milliliter en gram van de schone ingredienten. Bij de boodschappenlijst dient met dit gegeven rekening gehouden te worden.
+De beschijving van de recepten is zo bondig mogelijk, maar tegelijkertijd heel precies. Zo veel mogelijk worden alle hoeveelheden aangegeven in milliliter en gram van de schone ingrediënten. Bij de boodschappenlijst dient met dit gegeven rekening gehouden te worden.
 ## hoe **HetKookt** werkt
 
-Maak eerst een account aan, het is [safe and secure](https://en.wikipedia.org/wiki/Multi-factor_authentication) en op ieder moment weer te verwijderen.
+Maak eerst een [account](/register) aan (je kan het op ieder moment weer verwijderen).
 1. Ga naar de [Recepten](/collections) van **HetKookt** en kies een recept, klik op de titel en zet in je kookschrift. Je kan zoeken op **Gerechten** of op **Ingrediënten**. Het is gesorteerd op het belangrijkste ingrediënt.
 2. Of open meteen je [Kookschrift](/mijnrecepten) en maak zelf een nieuw recept.
 
