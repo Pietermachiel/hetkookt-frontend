@@ -66,17 +66,20 @@ const Voorraad = ({ me, setMe, recipes, ...props }) => {
   return (
     <Fragment>
       <div className="container-y">
-        <h1 className="mt-70 lg:mt-48">
-          Voorraad{" "}
-          <span>
-            <Link
-              className="block lg:inline mt-10 lg:mt-0 lg:ml-10 text-18 text-indigo-600 hover:text-red-500"
-              to="/boodschappen"
-            >
-              Boodschappen >
-            </Link>
-          </span>
-        </h1>
+        <div className="flex justify-center">
+          <h1 className="kookschrift-title mb-36">
+            Voorraad{" "}
+            <span>
+              <Link
+                className="block lg:inline mt-10 lg:mt-0 lg:ml-10 text-18 text-indigo-600 hover:text-red-500"
+                to="/boodschappen"
+              >
+                Boodschappen >
+              </Link>
+            </span>
+          </h1>
+        </div>
+
         <div className="mb-18">
           Dit zijn de ingrediënten die op voorraad moeten zijn voor het
           weekmenu:
