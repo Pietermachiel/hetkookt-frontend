@@ -1,7 +1,29 @@
 import React, { Fragment } from "react";
 import { Link, NavLink } from "react-router-dom";
 import useCurrentWitdh from "../common/use-current-width2";
+import ReactMarkdown from "react-markdown";
+import gfm from "remark-gfm";
 
+const markdown = `
+
+## hoe **HetKookt** werkt
+
+Maak eerst een [account](/register) aan (je kan het op ieder moment weer verwijderen).
+1. Ga naar de [Recepten](/collections) van **HetKookt** en kies een recept, klik op de titel en zet in je kookschrift. Je kan zoeken op **Gerechten** of op **Ingrediënten**. 
+2. Of open meteen je [Kookschrift](/mijnrecepten) en maak zelf een nieuw recept.
+
+![alt text](/img/schema.png "Hoe HetKookt werkt")
+
+3. Het gekozen of zelfgemaakte recept staat nu in je [Kookschrift](/mijnrecepten). Hier kan je het ook weer verwijderen.
+4. Klik in het [Kookschrift](/mijnrecepten) op de titel van een recept en je kunt aan de slag. Nu kan je het recept ook in het [Weekmenu](/weekmenu) zetten of aanpassen naar eigen inzicht.
+5. Het [Weekmenu](/weekmenu) loopt telkens van de huidige dag tot en met de dagen van de komende week. Totaal steeds acht dagen, genoeg voor een week verse boodschappen. Dus het recept dat je voor vandaag op het menu zet is morgen verdwenen, al blijft het wel op datum geregistreerd in je account. Als je op de datum klikt kom je in het **Weekmenu** terecht. Je kan een recept meerdere dagen op het menu zetten en ook meerdere recepten op een dag.
+6. De verse ingrediënten worden in het [Weekmenu](/weekmenu) getoond omdat ze automatisch bij de [Boodschappen](/boodschappen) komen te staan. Hier kan je ze ook stuk voor stuk verwijderen mocht je het ingrediënt al in huis hebben.
+7. In [Boodschappen](/boodschappen) worden de hoeveelheden van gelijke ingrediënten bij elkaar opgeteld en heb je nogmaals de kans om ze te verwijderen. In [Weekmenu](/weekmenu) zijn ze op dat moment ook overal verwijderd. Daar heb je dan weer de mogelijkheid om per recept een vergissing te herstellen en het ingrediënt weer op de boodschappenlijst te zetten.
+8. In [Boodschappen](/boodschappen) wordt de vraag gesteld "Is alles op voorraad?". We gaan er van uit dat bij jou alles op voorraad is, maar in [Voorraad](/voorraad) kan je controleren of dat voor de benodigde houdbare ingrediënten ook zo is.
+9. Als je op zoek gaat naar een nieuw recept zal je zien dat de reeds geselecteerde recepten in het zoekresultaat voor de overzichtelijkheid nu zwart zijn met een rode bookmark. Zo kan je een recept maar een keer selecteren voor het [Kookschrift](/mijnrecepten). Je eigen recepten zijn blauw.
+
+
+`;
 const Home = ({ user, recipes, ...props }) => {
   const width = useCurrentWitdh();
 
@@ -37,91 +59,12 @@ const Home = ({ user, recipes, ...props }) => {
                 </button>
               )}{" "}
             </p>
-
-            {!user && (
-              <div className=" unvisable slide work-grid-item">
-                {/* <p>
-                  Een bonte verzameling <strong>basisrecepten</strong> uit alle
-                  windstreken.
-                </p>
-                <br />
-                <p className="text-19 font-700 text-indigo-600">
-                  Schrijf je in en...
-                </p>
-                <ul>
-                  <li className="list-inside list-disc">
-                    Maak een kookschrift met je eigen{" "}
-                    <strong>favoriete </strong>
-                    recepten.
-                  </li>{" "}
-                  <li className="list-inside list-disc">
-                    Pas alle recepten naar eigen inzicht aan.
-                  </li>
-                  <li className="list-inside list-disc">
-                    Maak een <strong>weekmenu</strong> en{" "}
-                    <strong>boodschappenlijst</strong>.
-                  </li>
-                  <li className="list-inside list-disc">
-                    Kies uit de collectie recepten of maak zelf een{" "}
-                    <strong>nieuw recept</strong> aan.
-                  </li>
-                  <li className="list-inside list-disc">
-                    Maak de boodschappenlijst compleet en houd de{" "}
-                    <strong>voorraadkast</strong> op peil.
-                  </li>
-                  <li className="list-inside list-disc">
-                    Stuur jezelf of een leverancier een <strong>email</strong>{" "}
-                    met de boodschappenlijst.
-                  </li>
-                </ul>
-
-                <br />
-
-                <p className="text-19 font-700 text-indigo-600">Voordelen</p> */}
-              </div>
-            )}
             <div>
-              {/* <ul>
-                <li className="list-inside list-disc">
-                  Basisrecepten met bronvermelding.
-                </li>
-                <li className="list-inside list-disc">
-                  Maak zelf favoriete recepten in een kookschrift of pas de
-                  basisrecepten aan naar eigen inzicht en hoeveelheden.
-                </li>
-                <li className="list-inside list-disc">
-                  Maak een weekmenu en doe efficiënt boodschappen.
-                </li>
-                <li className="list-inside list-disc">
-                  Vers en voorraad gescheiden.
-                </li>
-                <li className="list-inside list-disc">
-                  Werk met exacte maten.
-                </li>
-                <li className="list-inside list-disc">
-                  Je boodschappenlijst altijd en overal bij de hand.
-                </li>
-                <li className="list-inside list-disc">
-                  Koop niet meer dan je nodig hebt.
-                </li>
-              </ul>
-
-              <br />
-              <p>
-                Inschrijven is <strong>safe</strong> en <strong>secure</strong>{" "}
-                met <strong>two factor authorisation </strong>
-                (2FA).
-              </p>
-
-              <br />
-              <p>
-                Pieter{" "}
-                <span role="img" aria-label="rose">
-                  &#127801;
-                </span>
-              </p> */}
-
-              <div className="clear-both"></div>
+              <ReactMarkdown
+                plugins={[gfm]}
+                className="kramdown m-auto mb-36"
+                children={markdown}
+              />
             </div>
           </div>
         </Fragment>

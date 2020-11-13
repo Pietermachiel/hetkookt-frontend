@@ -16,7 +16,11 @@ const User = ({ me, user, thecart, ...props }) => {
   console.log("thedates");
   console.log(thedates);
 
-  var uniqDates = [].concat.apply([], thedates).filter(uniq);
+  var uniqDates = [].concat
+    .apply([], thedates)
+    .filter(uniq)
+    .filter((x) => x !== undefined)
+    .reverse();
 
   console.log("uniqDates");
   console.log(uniqDates);
@@ -93,8 +97,8 @@ const User = ({ me, user, thecart, ...props }) => {
       <h3 className="mt-36 mb-18">Menu geschiedenis</h3>
       <p className="mb-18">Wat stond er eerder op het menu?</p>
       <div className="mb-36">
-        {uniqDates.map((u) => (
-          <Fragment>
+        {uniqDates.map((u, xid) => (
+          <Fragment key={xid}>
             <div className="">{u}</div>
             {/* {thecart.map((t) => {
               console.log(t.date.map((m) => m.name === u));

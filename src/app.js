@@ -544,13 +544,13 @@ const App = () => {
               );
             }}
           />
-          <Route
+          <ProtectedRoute
             path="/boodschappen"
             render={(props) => {
               return <Boodschappen me={me} setMe={setMe} {...props} />;
             }}
           />
-          <Route
+          <ProtectedRoute
             path="/voorraad"
             render={(props) => {
               return (
