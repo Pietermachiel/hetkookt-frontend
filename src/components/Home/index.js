@@ -6,6 +6,12 @@ import gfm from "remark-gfm";
 
 const markdown = `
 
+**Met **HetKookt** kan je kookrecepten op een georganiseerde manier opslaan in een persoonlijk kookschrift en bewaren voor eigen gebruik, met handige functies, zoals relaties tussen recepten, een weekmenu en boodschappenlijst, voorraadbeheer en vele zoekmogelijkheden.**
+
+Ook met voorbeeldrecepten die je zelf kunt aanpassen in je eigen kookschrift. Kook met verse, lokale ingrediënten. Koop geen gemaksproducten maar maak alle sauzen en smaakmakers zelf. Bak je eigen brood.
+
+Maak je eigen [Kookschrift](/mijnrecepten)!
+
 ## hoe **HetKookt** werkt
 
 Maak eerst een [account](/register) aan (je kan het op ieder moment weer verwijderen).

@@ -22,6 +22,34 @@ const MijnRecept = ({ therecipe, user, me, setMe, doSave, tags, ...props }) => {
     return <Redirect to="/weekmenu" />;
   }
 
+  const theemail = {
+    subject: "een recept van mijn hetkooktschrift",
+    body:
+      "%0D%0ADit recept komt uit mijn kookschrift op https://hetkookt.netlify.app.%0D%0A%0D%0A–––%0D%0A%0D%0A",
+    fresh: "%0D%0A%0D%0Avers:%0D%0A",
+    stock: "%0D%0A%0D%0Ahoudbaar:%0D%0A",
+    directions: "%0D%0A%0D%0Awerkwijze:%0D%0A",
+    // adres: "%0D%0A%0D%0AMijn adres is: ",
+    // afzender: "%0D%0A%0D%0AMijn afzender is: ",
+    // email: me.email,
+  };
+
+  var myTitle = therecipe.title + "\r\n\r\n---";
+  myTitle = encodeURIComponent(myTitle);
+
+  var myFresh = therecipe.fresh.map(
+    (f) => "\r\n" + f.quantity + " " + f.unit + " " + f.ingredient
+  );
+  myFresh = encodeURIComponent(myFresh);
+
+  var myStock = therecipe.stock.map(
+    (f) => "\r\n" + f.quantity + " " + f.unit + " " + f.ingredient
+  );
+  myStock = encodeURIComponent(myStock);
+
+  var myDirections = therecipe.directions.map((f) => "\r\n" + "– " + f.name);
+  myDirections = encodeURIComponent(myDirections);
+
   return (
     <Fragment>
       <div className="container-y unvisable slide work-grid-item">
@@ -206,12 +234,34 @@ const MijnRecept = ({ therecipe, user, me, setMe, doSave, tags, ...props }) => {
           </div>
         </div>
         <div className="recepten-source">
-          <Link to="/mijnrecepten">
+          {/* <Link to="/mijnrecepten">
             <div className="flex mt-72 pb-20">
               <img className="w-25" src="/img/feather/book.svg" alt="" />
               &nbsp;<span className="pl-5">Mijn recepten</span>
             </div>
-          </Link>
+          </Link> */}
+          <a
+            href={`mailto:?SUBJECT=${theemail.subject}&BODY=${
+              theemail.body +
+              myTitle +
+              theemail.fresh +
+              myFresh +
+              theemail.stock +
+              myStock +
+              theemail.directions +
+              myDirections
+              // + theemail.adres
+              // + theemail.afzender
+              // + theemail.email
+            }`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Stuur je recept naar een vriend:
+            <span className="table md:inline mt-18 md:mt-0 ml-0 md:ml-18 py-18 px-36 bg-indigo-500 text-white uppercase text-16 tracking-widest">
+              Stuur email
+            </span>
+          </a>
         </div>
       </div>
     </Fragment>

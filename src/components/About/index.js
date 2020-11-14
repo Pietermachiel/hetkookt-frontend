@@ -5,7 +5,7 @@ import gfm from "remark-gfm";
 const About = () => {
   const markdown = `
 
-**Met **HetKookt** kan je kookrecepten op een georganiseerde manier opslaan in een kookschrift en bewaren voor eigen gebruik, met handige functies, zoals relaties tussen recepten, een weekmenu en boodschappenlijst, voorraadbeheer en vele zoekmogelijkheden.**
+**Met **HetKookt** kan je kookrecepten op een georganiseerde manier opslaan in een persoonlijk kookschrift en bewaren voor eigen gebruik, met handige functies, zoals relaties tussen recepten, een weekmenu en boodschappenlijst, voorraadbeheer en vele zoekmogelijkheden.**
 
 ## een ode aan kookboeken voor thuis koken
 
@@ -13,12 +13,11 @@ Er bestaat een lange traditie, teruggaand tot [La scienza in cucina e l'arte di 
 
 ## de recepten
 
-**HetKookt** is om te beginnen een leeg digitaal kookschrift dat gevuld kan worden. De recepten die **HetKookt** biedt vinden hun oorsprong in bestaande kookboeken. Ze zijn zodanig bewerkt dat je ze samen kunt gebruiken, ondanks de inhoudelijke en redactionele verschillen tussen die kookboeken onderling. Zowel de lijst met ingrediënten als de beschrijving van de werkwijze zijn dus geen letterlijke weergave van die recepten. Voor de werkelijke inhoud wordt verwezen naar de respectievelijke kookboeken zelf, met een bronvermelding, een boekbeschrijving en met een link naar de uitgever. Die daarmee de aandacht krijgt die het verdient. Een kookboek uitgeven is ook een kunst!
+**HetKookt** is om te beginnen een leeg digitaal kookschrift dat gevuld kan worden. De recepten die **HetKookt** biedt vinden hun oorsprong in bestaande kookboeken. Ze zijn zodanig bewerkt dat je ze samen kunt gebruiken, ondanks de inhoudelijke en redactionele verschillen tussen die kookboeken onderling. Zowel de lijst met ingrediënten als de beschrijving van de werkwijze zijn dus geen letterlijke weergave van die recepten. De beschijving van de recepten is zo bondig mogelijk, maar tegelijkertijd heel precies (milliliter en gram). Voor de werkelijke inhoud wordt verwezen naar de respectievelijke kookboeken zelf, met een bronvermelding, een boekbeschrijving en met een link naar de uitgever. Die daarmee de aandacht krijgt die het verdient. Een kookboek uitgeven is ook een kunst!
 
-## de redactie
+## persoonlijk, lokaal en seizoensgebonden koken
 
-De beschijving van de recepten is zo bondig mogelijk, maar tegelijkertijd heel precies. Zo veel mogelijk worden alle hoeveelheden aangegeven in milliliter en gram van de schone ingrediënten. Bij de boodschappenlijst dient met dit gegeven rekening gehouden te worden.
-
+De kunst van lekker eten is na de taal het eerste wat jouw identiteit bepaalt. Volgens het bekende gezegde: 'Je bent wat je eet en je eet wat je eten eet'. De technieken zijn universeel toepasbaar, overgewaaid uit alle windstreken, maar koken is ook vanwege de verkrijgbaarheid van de (verse!) ingrediënten vooral een lokale en seizoensgebonden bezigheid. HetKookt is dus een persoonlijk kookschrift. De recepten uit jouw kookschrift kan je emailen naar een vriend.
 
 ## aanvullingen en suggesties
 
