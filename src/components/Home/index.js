@@ -6,19 +6,21 @@ import gfm from "remark-gfm";
 
 const markdown = `
 
-**Met **HetKookt** kan je kookrecepten op een georganiseerde manier opslaan in een persoonlijk kookschrift en bewaren voor eigen gebruik, met handige functies, zoals relaties tussen recepten, een weekmenu en boodschappenlijst, voorraadbeheer en vele zoekmogelijkheden.**
+Met **hetkookt** kan je kookrecepten op een georganiseerde manier opslaan in een persoonlijk kookschrift en bewaren voor eigen gebruik, met handige functies, zoals relaties tussen recepten, een weekmenu en boodschappenlijst, voorraadbeheer en vele zoekmogelijkheden.
 
 Ook met voorbeeldrecepten die je zelf kunt aanpassen in je eigen kookschrift. Kook met verse, lokale ingrediënten. Koop geen gemaksproducten maar maak alle sauzen en smaakmakers zelf. Bak je eigen brood.
 
+## je moet er wel wat voor doen
+
 Maak je eigen [Kookschrift](/mijnrecepten)!
 
-## hoe **HetKookt** werkt
+## hoe het werkt
 
 Maak eerst een [account](/register) aan (je kan het op ieder moment weer verwijderen).
-1. Ga naar de [Recepten](/collections) van **HetKookt** en kies een recept, klik op de titel en zet in je kookschrift. Je kan zoeken op **Gerechten** of op **Ingrediënten**. 
+1. Ga naar de [Recepten](/collections) van **hetkookt** en kies een recept, klik op de titel en zet in je kookschrift. Je kan zoeken op **Gerechten** of op **Ingrediënten**. 
 2. Of open meteen je [Kookschrift](/mijnrecepten) en maak zelf een nieuw recept.
 
-![alt text](/img/schema.png "Hoe HetKookt werkt")
+![alt text](/img/schema.png "Hoe hetkookt werkt")
 
 3. Het gekozen of zelfgemaakte recept staat nu in je [Kookschrift](/mijnrecepten). Hier kan je het ook weer verwijderen.
 4. Klik in het [Kookschrift](/mijnrecepten) op de titel van een recept en je kunt aan de slag. Nu kan je het recept ook in het [Weekmenu](/weekmenu) zetten of aanpassen naar eigen inzicht.
@@ -57,7 +59,7 @@ const Home = ({ user, recipes, ...props }) => {
           <div className="mb-48">
             <p className="hetkookt-title flex items-center">
               <Link className="text-red-600 font-700 text-18" to="/about">
-                HetKookt! &nbsp;
+                hetkookt! &nbsp;
               </Link>
               {!user && (
                 <button className="bg-indigo-600 text-14 p-14 px-30 mt-18 md:mt-0 md:ml-18 align-bottom text-white uppercase tracking-widest">
