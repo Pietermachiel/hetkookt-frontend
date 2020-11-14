@@ -81,9 +81,9 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, recipes, ...props }) => {
 
   return (
     <React.Fragment>
-      <div className="container-y bg-rose-100">
+      <div className="container-y">
         <div className="md:w-550 m-auto relative">
-          <h1 className="favorieten-title text-36 text-green-600">
+          <h1 className="favorieten-title text-36 text-indigo-600">
             {therecipe.title}{" "}
             <Link to={`/mijnrecepten/${slugify(therecipe.title)}`}>
               <span className="ml-18 py-18 px-36 bg-indigo-500 uppercase tracking-widest text-16 text-white">
