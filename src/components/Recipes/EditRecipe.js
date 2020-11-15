@@ -322,13 +322,26 @@ const EditRecipe = ({ tags, dish, books, therecipe, recipes, ...props }) => {
                           </option>
                         ))}
                       </select>
-                      <input
+                      <select
+                        name={`fresh[${index}].ingredient`}
+                        className="form-input__ingredient h-48 font-300 text-14 border-solid border border-gray-400 pl-36"
+                        defaultValue={item.ingredient}
+                        ref={register()}
+                      >
+                        <option value="" />
+                        {tags.map((option, xid) => (
+                          <option key={xid} value={option.ingredient}>
+                            {option.name}
+                          </option>
+                        ))}
+                      </select>
+                      {/* <input
                         name={`fresh[${index}].ingredient`}
                         placeholder="ingredient"
                         className="form-input__ingredient h-48 font-300 text-14 border-solid border border-gray-400 pl-18"
                         defaultValue={item.ingredient}
                         ref={register({ maxLength: 30 })}
-                      />
+                      /> */}
                       <button
                         className="absolute top-0"
                         style={{ right: "0" }}

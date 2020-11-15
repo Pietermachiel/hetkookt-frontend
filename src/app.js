@@ -587,7 +587,7 @@ const App = () => {
           <Route
             path="/test"
             render={(props) => (
-              <Test user={user} recipes={recipes} {...props} />
+              <Test user={user} tags={tags} recipes={recipes} {...props} />
             )}
           />
         </Switch>

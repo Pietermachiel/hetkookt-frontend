@@ -51,8 +51,13 @@ const Collections = ({ me, setMe, thecart, dish, recipes, ...props }) => {
         </ul>
         {dish.map((d, xid) => {
           let therecipes = recipes.filter((r) => r.dish._id === d._id);
+          console.log("therecipes");
+          console.log(therecipes);
           let thetags = therecipes.map((t) => t.tags[0]);
-          thetags = thetags.map((m) => m.name).filter(uniq);
+          thetags = thetags
+            .filter((t) => t !== undefined)
+            .map((m) => m.name)
+            .filter(uniq);
           if (d.name !== thedish && thedish) return null;
           return (
             <Fragment key={xid}>
@@ -83,7 +88,10 @@ const Collections = ({ me, setMe, thecart, dish, recipes, ...props }) => {
                           </div>
                         </Link>
                         {therecipes.map((recipe, index) => {
-                          if (recipe.tags[0].name === s)
+                          if (
+                            // recipe.tags[0].name !== undefined &&
+                            recipe.tags[0].name === s
+                          )
                             return (
                               <Fragment key={index}>
                                 {thecart.map((cart, index) => {

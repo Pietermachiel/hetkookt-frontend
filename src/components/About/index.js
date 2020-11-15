@@ -21,14 +21,12 @@ De kunst van lekker eten is na de taal het eerste wat jouw identiteit bepaalt. 
 
 ## aanvullingen en suggesties
 
-Suggesties voor nieuwe recepten/kookboeken graag mailen naar <studio@roozen.nl>:
+Suggesties voor nieuwe recepten/kookboeken graag mailen naar <studio@roozen.nl>. Dit kan ook middels de functie 'Stuur het recept naar een vriend' in een zelf aangemaakt kookschriftrecept.
 
 - Een aanvulling, verbetering of wezenlijke variant.
 - Een basisrecept of klassieker of andere/betere manier om met een ingrediënt te koken.
 - Uit een bestaand kookboek van een gerenommeerde kok met bronvermelding. Ere wie ere toekomt!
 
-
-  
 
 `;
 

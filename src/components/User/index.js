@@ -100,11 +100,6 @@ const User = ({ me, user, thecart, ...props }) => {
         {uniqDates.map((u, xid) => (
           <Fragment key={xid}>
             <div className="">{u}</div>
-            {/* {thecart.map((t) => {
-              console.log(t.date.map((m) => m.name === u));
-              // if (t.date.map((m) => m.name === u))
-              return <div className="font-700">{t.title}</div>;
-            })} */}
             {thecart.map((t, xid) => (
               <Fragment key={xid}>
                 {t.date.map(

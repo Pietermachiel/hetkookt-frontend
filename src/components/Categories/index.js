@@ -19,7 +19,9 @@ const Categories = ({
     setCat(c);
   };
 
-  let thetags = recipes.map((r) => r.tags[0]);
+  let thetags = recipes
+    .filter((r) => r.tags[0] !== undefined)
+    .map((r) => r.tags[0]);
 
   // var unique = thetags.filter(function (x, i) {
   //   return thetags[i]._id.indexOf(x._id) === i;
@@ -85,9 +87,9 @@ const Categories = ({
             <Fragment key={c._id}>
               <h1 className="mb-18">{c.name}</h1>
               {uniqTags.map((s, xid) => {
-                let recipeItems = recipes.filter(
-                  (element) => element.tags[0].name === s.name
-                );
+                let recipeItems = recipes
+                  .filter((r) => r.tags[0] !== undefined)
+                  .filter((element) => element.tags[0].name === s.name);
                 // console.log("recipeItems");
                 // console.log(s.name);
                 // console.log(recipeItems);
