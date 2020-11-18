@@ -1,3 +1,6 @@
+// https://github.com/you-dont-need/You-Dont-Need-Momentjs/blob/master/README.md
+// https://www.epochconverter.com/
+
 export function slugify(text) {
   return text
     .toString()
@@ -93,6 +96,7 @@ export function heledag(e) {
 
   const heledag = theday.toLocaleDateString("nl-NL", options);
   return heledag; // heledag(0) = woensdag 22 april 2020
+  // return theday; // heledag(0) = Tue Nov 17 2020 11:37:19 GMT+0100 (Midden-Europese standaardtijd)
 }
 
 export const kalender = [

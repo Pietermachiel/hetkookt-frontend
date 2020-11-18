@@ -29,6 +29,7 @@ const MijnRecept = ({ therecipe, user, me, setMe, doSave, tags, ...props }) => {
     fresh: "%0D%0A%0D%0Avers:%0D%0A",
     stock: "%0D%0A%0D%0Ahoudbaar:%0D%0A",
     directions: "%0D%0A%0D%0Awerkwijze:%0D%0A",
+    info: "%0D%0A%0D%0Ainfo:%0D%0A",
     // adres: "%0D%0A%0D%0AMijn adres is: ",
     // afzender: "%0D%0A%0D%0AMijn afzender is: ",
     // email: me.email,
@@ -49,6 +50,9 @@ const MijnRecept = ({ therecipe, user, me, setMe, doSave, tags, ...props }) => {
 
   var myDirections = therecipe.directions.map((f) => "\r\n" + "– " + f.name);
   myDirections = encodeURIComponent(myDirections);
+
+  var myInfo = therecipe.info + "\r\n\r\n---";
+  myInfo = encodeURIComponent(myInfo);
 
   return (
     <Fragment>
@@ -233,7 +237,7 @@ const MijnRecept = ({ therecipe, user, me, setMe, doSave, tags, ...props }) => {
             </div>
           </div>
         </div>
-        <div className="recepten-source">
+        <div className="recepten-source mb-36">
           {/* <Link to="/mijnrecepten">
             <div className="flex mt-72 pb-20">
               <img className="w-25" src="/img/feather/book.svg" alt="" />
@@ -249,7 +253,9 @@ const MijnRecept = ({ therecipe, user, me, setMe, doSave, tags, ...props }) => {
               theemail.stock +
               myStock +
               theemail.directions +
-              myDirections
+              myDirections +
+              theemail.info +
+              myInfo
               // + theemail.adres
               // + theemail.afzender
               // + theemail.email

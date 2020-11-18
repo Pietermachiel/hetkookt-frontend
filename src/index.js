@@ -6,7 +6,6 @@ import ScrollToTop from "react-router-scroll-top";
 import "./assets/main.css";
 import "./style.scss";
 import * as ServiceWorker from "./serviceWorker";
-
 import App from "./app";
 
 if (process.env.NODE_ENV === "production") {

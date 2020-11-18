@@ -14,7 +14,7 @@ const Sorts = ({
   categories,
   ...props
 }) => {
-  console.log("sorts index");
+  console.log("tags");
   console.log(tags);
   console.log("props.match.params.id");
   console.log(props.match.params.id);
@@ -40,6 +40,9 @@ const Sorts = ({
 
   console.log("recipeItems");
   console.log(recipeItems);
+
+  console.log("cartItems");
+  console.log(cartItems);
 
   console.log("sort");
   console.log(sort);
@@ -77,17 +80,18 @@ const Sorts = ({
           </div>
           {cartItems.map((cart, index) => {
             return (
-              <Fragment>
+              <Fragment key={index}>
                 <FavoriteItems cart={cart} recipes={recipes} {...props} />
               </Fragment>
             );
           })}{" "}
           {recipeItems.map((recipe, index) => {
-            return (
-              <Fragment key={index}>
-                <SelectedItems recipe={recipe} {...props} />
-              </Fragment>
-            );
+            if (!cartItems.find((r) => r._id === recipe._id))
+              return (
+                <Fragment key={index}>
+                  <SelectedItems recipe={recipe} {...props} />
+                </Fragment>
+              );
           })}
           {recipeItems.length === 0 && cartItems.length === 0 ? (
             <p className="ml-18 p-18">

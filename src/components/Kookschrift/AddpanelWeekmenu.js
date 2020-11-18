@@ -15,6 +15,10 @@ const AddpanelWeekmenu = ({
     handleIsOpen(!isOpen);
     setRedirect(true);
   };
+  // console.log("kalender");
+  // console.log(kalender);
+  // console.log("heledag(1)");
+  // console.log(heledag(1));
 
   return (
     <div className="add">

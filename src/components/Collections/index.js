@@ -50,7 +50,9 @@ const Collections = ({ me, setMe, thecart, dish, recipes, ...props }) => {
           ))}
         </ul>
         {dish.map((d, xid) => {
-          let therecipes = recipes.filter((r) => r.dish._id === d._id);
+          let therecipes = recipes
+            .filter((r) => r.tags[0] !== undefined)
+            .filter((r) => r.dish._id === d._id);
           console.log("therecipes");
           console.log(therecipes);
           let thetags = therecipes.map((t) => t.tags[0]);
@@ -89,7 +91,7 @@ const Collections = ({ me, setMe, thecart, dish, recipes, ...props }) => {
                         </Link>
                         {therecipes.map((recipe, index) => {
                           if (
-                            // recipe.tags[0].name !== undefined &&
+                            recipe.tags[0].name !== undefined &&
                             recipe.tags[0].name === s
                           )
                             return (
