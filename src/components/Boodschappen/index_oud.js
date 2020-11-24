@@ -4,22 +4,20 @@ import {
   removeStock,
   toggleExtra,
   removeExtra,
-  deleteGroceries,
+  deleteBoodschappen,
 } from "../../services/userService";
 import groceries from "../../data/groceries.json";
 import { kalender } from "../common/common";
-import AccordionBoodschappen from "./accordionBoodschappen";
-import { toggleFreshGrocery } from "../../services/userService";
 
 const Boodschappen = ({ me, setMe }) => {
   const [value, setValue] = useState("");
 
   if (me.items === undefined) return [];
 
-  // const me.groceries = me.items.filter((r) => {
-  //   const item = kalender.find((k) => r.date.find((d) => d.name === k.dayall));
-  //   return item;
-  // });
+  const themenu = me.items.filter((r) => {
+    const item = kalender.find((k) => r.date.find((d) => d.name === k.dayall));
+    return item;
+  });
 
   const handleExtra = (value) => {
     const trimmedText = value.trim();
@@ -30,16 +28,11 @@ const Boodschappen = ({ me, setMe }) => {
   };
 
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
-  let allfresh = me.groceries.reduce(function (accumulator, currentValue) {
+  let allfresh = themenu.reduce(function (accumulator, currentValue) {
     return [...accumulator, ...currentValue.fresh];
   }, []);
 
   allfresh = allfresh.filter((f) => f.to_buy === true);
-
-  const myGroceries = me.groceries;
-
-  console.log("myGroceries");
-  console.log(myGroceries);
 
   // https://stackoverflow.com/questions/44332180/merge-objects-with-the-same-id-but-sum-values-of-the-objects
   // For a version with Array#reduce, you could use a hash table as reference to the same company with a closure over the hash table.
@@ -64,9 +57,9 @@ const Boodschappen = ({ me, setMe }) => {
   );
 
   const theemail = {
-    subject: "boodschappen voor HetKookt",
-    body: "Boodschappen voor de volgende recepten:%0D%0A%0D%0A  ",
-    fresh: "%0D%0A–––%0D%0A%0D%0Avers:  ",
+    subject: "boodschappen",
+    // body: "Boodschappen:%0D%0A  ",
+    fresh: "%0D%0Avers:  ",
     stock: "%0D%0A%0D%0Ahoudbaar: ",
     extra: "%0D%0A%0D%0Aextra: ",
     // adres: "%0D%0A%0D%0AMijn adres is: ",
@@ -79,20 +72,12 @@ const Boodschappen = ({ me, setMe }) => {
   );
   const meStock = me.stock.map((s) => "%0D%0A" + "– " + s);
   const meExtra = me.extra.map((e) => "%0E%0A" + "– " + e);
-  var myRecipe = myGroceries.map(
-    (therecipe) =>
-      "- Recept uit '" +
-      therecipe.book.name +
-      "' van " +
-      therecipe.book.author +
-      " bewerkt door HetKookt" +
-      "\r\n"
-  );
+  // console.log(myBoodschappen);
+  // console.log(meStock);
+  // console.log("meStock.map((m) => m)");
+  // console.log(meStock.map((m) => m));
+  // console.log(meExtra);
 
-  myRecipe = encodeURIComponent(myRecipe);
-
-  // var myTitle = therecipe.title + "\r\n\r\n---";
-  // myTitle = encodeURIComponent(myTitle);
   return (
     <Fragment>
       <div className="container-y boodschappen">
@@ -114,8 +99,10 @@ const Boodschappen = ({ me, setMe }) => {
 
         {myBoodschappen.length === 0 ? (
           <Fragment>
-            <p className="font-600 mt-21">Er zijn geen boodschappen.</p>
-            {/* <p>
+            <p className="font-600 mt-21">
+              Er zijn geen boodschappen want er staat nog niets op het menu.
+            </p>
+            <p>
               Selecteer een recept in{" "}
               <Link
                 className="font-700 text-indigo-600 hover:text-red-500"
@@ -124,7 +111,7 @@ const Boodschappen = ({ me, setMe }) => {
                 Kookschrift
               </Link>{" "}
               en zet op het weekmenu.
-            </p> */}
+            </p>
             <h2 className="mb-24 mt-48">Extra</h2>
             <form
               className="form"
@@ -171,8 +158,7 @@ const Boodschappen = ({ me, setMe }) => {
           <Fragment>
             <a
               href={`mailto:${me.email}?SUBJECT=${theemail.subject}&BODY=${
-                theemail.body +
-                myRecipe +
+                // theemail.body +
                 theemail.fresh +
                 myBoodschappen +
                 theemail.stock +
@@ -191,97 +177,9 @@ const Boodschappen = ({ me, setMe }) => {
               </span>
             </a>
 
-            {/* <div className="-mb-18 mt-36">
-            Dit zijn de boodschappen voor het weekmenu:
-          </div> */}
-            {me.groceries.map((c) => {
-              return (
-                <Fragment key={c._id}>
-                  <AccordionBoodschappen
-                    title={c.title}
-                    id={c._id}
-                    // dayall={k.dayall}
-                    me={me}
-                    setMe={setMe}
-                  >
-                    <div
-                      className={`specs-box sm:grid sm:grid-cols-2 lg:grid lg:grid-cols-4 pb-15`}
-                    >
-                      {c.fresh.map((f, xid) => {
-                        return (
-                          <Fragment key={xid}>
-                            {f.to_buy === true ? (
-                              <div className="my-18 flex lg:block justify-between pr-9">
-                                <div className="flex items-center">
-                                  <div className="w-70 text-right">
-                                    {f.quantity} {f.unit}
-                                  </div>
-                                  <div className="items-product">
-                                    <strong>&nbsp;{f.ingredient}</strong>
-                                  </div>{" "}
-                                  <span
-                                    onClick={() =>
-                                      toggleFreshGrocery(
-                                        me,
-                                        setMe,
-                                        c._id,
-                                        f.ingredient,
-                                        f.do_buy
-                                      )
-                                    }
-                                    className="text-verwijder pl-9"
-                                  >
-                                    <img
-                                      className="w-20 h-20"
-                                      src="/img/feather/x-verwijder.svg"
-                                      alt=""
-                                    />
-                                  </span>
-                                </div>
-                              </div>
-                            ) : (
-                              <div className="my-18 flex lg:block text-gray-500 justify-between">
-                                <div className="flex">
-                                  <div className="w-70 text-right">
-                                    {f.quantity} {f.unit}
-                                  </div>
-
-                                  <div className="items-product">
-                                    <strong>&nbsp;{f.ingredient}</strong>
-                                  </div>
-                                </div>
-                                <span
-                                  onClick={() =>
-                                    toggleFreshGrocery(
-                                      me,
-                                      setMe,
-                                      c._id,
-                                      f.ingredient,
-                                      f.do_buy
-                                    )
-                                  }
-                                  className="mr-10"
-                                >
-                                  <span className="font-300 text-14 lg:text-16 text-green-600">
-                                    voeg weer toe
-                                  </span>
-                                  &nbsp;
-                                  <img
-                                    className="w-20 h-20 inline"
-                                    src="/img/feather/plus-green.svg"
-                                    alt=""
-                                  />
-                                </span>
-                              </div>
-                            )}
-                          </Fragment>
-                        );
-                      })}
-                    </div>
-                  </AccordionBoodschappen>
-                </Fragment>
-              );
-            })}
+            <div className="-mb-18 mt-36">
+              Dit zijn de boodschappen voor het weekmenu:
+            </div>
 
             <div className=" mt-36 mb-18 unvisable slide work-grid-item">
               <div className="ingredienten w-full">
@@ -322,7 +220,11 @@ const Boodschappen = ({ me, setMe }) => {
 
                                   <span
                                     onClick={() =>
-                                      deleteGroceries(me, setMe, b.ingredient)
+                                      deleteBoodschappen(
+                                        me,
+                                        setMe,
+                                        b.ingredient
+                                      )
                                     }
                                     className="text-red-600 mr-10 font-500"
                                   >

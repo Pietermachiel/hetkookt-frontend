@@ -4,8 +4,16 @@ import AccordionWeekMenu from "./AccordionWeekMenu";
 import { vandaag, kalender, theweek } from "../common/common";
 import { toggleFresh } from "../../services/userService";
 import KalenderWeekmenu from "./KalenderWeekmenu";
-import Kookschrift from "../Kookschrift/index";
+import ReactMarkdown from "react-markdown";
+import gfm from "remark-gfm";
 
+const markdown = `
+
+**Er staat nog niets op het weekmenu.**
+
+Selecteer een recept in [Kookschrift](/mijnrecepten) en zet op het [Weekmenu](/weekmenu).
+
+`;
 const Menu = ({ me, setMe, user, thecart, recipes, about, ...props }) => {
   if (me.stock === undefined) return [];
   if (me.extra === undefined) return [];
@@ -43,21 +51,11 @@ const Menu = ({ me, setMe, user, thecart, recipes, about, ...props }) => {
         </div>
         <KalenderWeekmenu props={props} thecart={thecart} user={user} />
         {thedates.length === 0 ? (
-          <div className="">
-            <p className="font-600 mt-21">
-              Er staat nog niets op het weekmenu.
-            </p>
-            <div>
-              <br /> Selecteer een recept in{" "}
-              <Link
-                className="font-700 text-indigo-600 hover:text-red-500"
-                to="/mijnrecepten"
-              >
-                Kookschrift
-              </Link>{" "}
-              en zet op het weekmenu.{" "}
-            </div>
-          </div>
+          <ReactMarkdown
+            plugins={[gfm]}
+            className="kramdown m-auto mb-36 mt-36"
+            children={markdown}
+          />
         ) : null}
 
         <div className="mt-18 mb-36 unvisable slide work-grid-item ">

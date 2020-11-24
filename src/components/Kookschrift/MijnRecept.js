@@ -1,10 +1,26 @@
 import React, { Fragment, useState } from "react";
 import { Redirect } from "react-router";
+import { toast } from "react-toastify";
 import { Link, NavLink } from "react-router-dom";
 import { slugify, slugifyu, kalender } from "../common/common.js";
 import AddpanelWeekmenu from "./AddpanelWeekmenu.js";
+import {
+  doPutGroceries,
+  deleteFromGroceries,
+  deleteItem,
+} from "../../services/userService";
 
-const MijnRecept = ({ therecipe, user, me, setMe, doSave, tags, ...props }) => {
+const MijnRecept = ({
+  therecipe,
+  thegroceries,
+  thecart,
+  user,
+  me,
+  setMe,
+  doSave,
+  tags,
+  ...props
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [routeRedirect, setRedirect] = useState("");
 
@@ -12,6 +28,35 @@ const MijnRecept = ({ therecipe, user, me, setMe, doSave, tags, ...props }) => {
   // const therecipe = me.items.find(
   //   (i) => slugify(i.title) === props.match.params.id
   // );
+
+  const myrecipes = thecart.map((m) => m._id);
+
+  console.log("therecipe");
+  console.log(therecipe);
+  console.log(therecipe.myrecipe);
+  console.log(me);
+
+  const handleCreateGroceries = (me, setMe, therecipe) => {
+    doPutGroceries(me, setMe, therecipe);
+  };
+
+  const handleDeleteGroceries = (me, setMe, id) => {
+    console.log("delete groceries");
+    deleteFromGroceries(me, setMe, id);
+  };
+
+  const handleDeleteItem = (me, setMe, id) => {
+    console.log("id");
+    console.log(id);
+    try {
+      deleteItem(me, setMe, id);
+      window.location = `/recipes/${slugify(therecipe.title)}`;
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        toast.error("foutje");
+      }
+    }
+  };
 
   const handleIsOpen = () => {
     setIsOpen(!isOpen);
@@ -23,9 +68,9 @@ const MijnRecept = ({ therecipe, user, me, setMe, doSave, tags, ...props }) => {
   }
 
   const theemail = {
-    subject: "een recept van mijn hetkooktschrift",
+    subject: "een recept uit mijn kookschrift",
     body:
-      "%0D%0ADit recept komt uit mijn kookschrift op https://hetkookt.netlify.app.%0D%0A%0D%0A–––%0D%0A%0D%0A",
+      "%0D%0AMaak zelf ook een kookschrift op: https://hetkookt.netlify.app.%0D%0A%0D%0A–––%0D%0A%0D%0A",
     fresh: "%0D%0A%0D%0Avers:%0D%0A",
     stock: "%0D%0A%0D%0Ahoudbaar:%0D%0A",
     directions: "%0D%0A%0D%0Awerkwijze:%0D%0A",
@@ -37,6 +82,16 @@ const MijnRecept = ({ therecipe, user, me, setMe, doSave, tags, ...props }) => {
 
   var myTitle = therecipe.title + "\r\n\r\n---";
   myTitle = encodeURIComponent(myTitle);
+
+  var myRecipe =
+    "Recept uit '" +
+    therecipe.book.name +
+    "' van " +
+    therecipe.book.author +
+    " bewerkt door " +
+    user.name +
+    "\r\n";
+  myRecipe = encodeURIComponent(myRecipe);
 
   var myFresh = therecipe.fresh.map(
     (f) => "\r\n" + f.quantity + " " + f.unit + " " + f.ingredient
@@ -57,68 +112,142 @@ const MijnRecept = ({ therecipe, user, me, setMe, doSave, tags, ...props }) => {
   return (
     <Fragment>
       <div className="container-y unvisable slide work-grid-item">
-        <h1 className="mt-24 pt-24 mb-5 lg:text-42 text-indigo-600">
+        <h1 className="flex mt-24 pt-24 mb-5 lg:text-42">
           {therecipe.title}
           <Link
             className="leading-none"
-            to={`/collections/${therecipe.dish.name}`}
+            to={`/edititem/${slugify(therecipe.title)}`}
           >
-            <span className="text-24 pl-10">{therecipe.dish.name}</span>
-          </Link>
-        </h1>
-        <div className="lg:flex align-baseline mb-36 ">
-          {user && (
-            <button
-              className="mb-5 lg:pr-18 btn-add mr-10 text-19 font-600 text-indigo-700 flex item-center hover:text-red-500"
-              onClick={handleIsOpen}
-            >
-              <img
-                className="w-25 h-25 mr-10"
-                src="/img/feather/list.svg"
-                alt=""
-              />
-              zet op weekmenu >
-              <div className="flex">
-                {kalender.map((k) => {
-                  var cart = me.items.filter((c) =>
-                    // c.date ? c.date.includes(k.dayall) : null
-                    c.date.find((d) => d.name === k.dayall)
-                  );
-                  return cart.map((c) =>
-                    c._id === therecipe._id ? (
-                      <NavLink className="ml-10" key={c._id} to={`/weekmenu`}>
-                        <div className={`relative`}>
-                          <img
-                            className="w-30 h-30"
-                            src="/img/feather/circle-orange.svg"
-                            alt=""
-                          />
-                          <div className="absolute inset-0">
-                            <span
-                              key={k.index}
-                              className={`flex justify-center pt-6 text-12`}
-                            >
-                              {k.index}
-                            </span>
-                          </div>
-                        </div>
-                      </NavLink>
-                    ) : null
-                  );
-                })}
-              </div>
-            </button>
-          )}
-          <Link to={`/edit/${slugify(therecipe.title)}`}>
-            <button className="mb-5 lg:pr-18 btn-add mr-10 text-19 font-600 text-indigo-700 flex item-center hover:text-red-500">
+            <button className="mb-5 lg:pr-18 btn-add mr-10 ml-12 text-16 font-100 flex item-center">
               <img
                 className="w-25 h-25 mr-10"
                 src="/img/feather/edit.svg"
+                onMouseOver={(e) =>
+                  (e.currentTarget.src = "/img/feather/edit-red.svg")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.src = "/img/feather/edit.svg")
+                }
                 alt=""
               />
               edit
             </button>
           </Link>
+        </h1>
+        <div className="mb-36 ">
+          {therecipe.myrecipe === true && (
+            <p className="font-700 text-16 mt-9">Recept van {me.name}</p>
+          )}
+
+          {therecipe.myrecipe === false && (
+            <p className="font-700 text-16 mt-9">
+              Recept van&nbsp;
+              <Link
+                to={{
+                  pathname: `/books/${slugify(therecipe.book.name)}`,
+                  state: therecipe.book._id,
+                }}
+                className="recept-by"
+              >
+                {therecipe.book.author}
+              </Link>{" "}
+              bewerkt door&nbsp;
+              <Link
+                to={{
+                  pathname: `/books/hetkookt`,
+                  state: therecipe.book._id,
+                }}
+                className="recept-by"
+              >
+                {me.name}
+              </Link>
+            </p>
+          )}
+          <div className="md:flex my-18">
+            {user ? (
+              <div className="">
+                {myrecipes.includes(therecipe._id) && (
+                  <Fragment>
+                    <button
+                      onClick={() => handleDeleteItem(me, setMe, therecipe._id)}
+                      className="flex items-center  bg-white text-14 p-14 px-24 mt-0 md:mt-0 text-red-500 uppercase tracking-widest"
+                    >
+                      <img
+                        className="w-25"
+                        src="/img/feather/bookmark-red.svg"
+                        alt="bookmark red"
+                      />
+                      <span className="pl-9">staat in kookschrift</span>
+                    </button>
+                  </Fragment>
+                )}
+              </div>
+            ) : (
+              <Fragment>
+                <Link
+                  to="/login"
+                  className="w-265 mb-5 lg:pr-18 btn-add mr-10 text-18 font-600 text-indigo-700 flex item-center hover:text-red-500"
+                >
+                  <img
+                    className="w-25"
+                    src="/img/feather/bookmark.svg"
+                    alt="bookmark"
+                  />
+                  <span className="ml-10">zet in kookschrift ></span>
+                </Link>
+              </Fragment>
+            )}
+            <div className="md:ml-15">
+              {user && (
+                <button
+                  className={`flex items-center w-265 ${
+                    therecipe.date < 1 ? "bg-gray-400 bg-orange-400" : null
+                  } border-silver text-14 p-12 px-20 mt-0 md:mt-0 align-bottom uppercase tracking-widest`}
+                  onClick={handleIsOpen}
+                >
+                  <img
+                    className="w-25 h-25 mr-10"
+                    src="/img/feather/list.svg"
+                    alt=""
+                  />
+                  weekmenu
+                  <div className="flex">
+                    {kalender.map((k) => {
+                      var cart = me.items.filter((c) =>
+                        // c.date ? c.date.includes(k.dayall) : null
+                        c.date.find((d) => d.name === k.dayall)
+                      );
+                      return cart.map((c) =>
+                        c._id === therecipe._id ? (
+                          <NavLink
+                            className="ml-10"
+                            key={c._id}
+                            to={`/weekmenu`}
+                          >
+                            <div className={`relative`}>
+                              <img
+                                className="w-30 h-30"
+                                src="/img/feather/circle-orange.svg"
+                                alt=""
+                              />
+                              <div className="absolute inset-0">
+                                <span
+                                  key={k.index}
+                                  className={`flex justify-center pt-6 text-12`}
+                                >
+                                  {k.index}
+                                </span>
+                              </div>
+                            </div>
+                          </NavLink>
+                        ) : null
+                      );
+                    })}
+                  </div>
+                </button>
+              )}
+            </div>
+          </div>
         </div>
         {/* add panel */}
         <AddpanelWeekmenu
@@ -190,14 +319,42 @@ const MijnRecept = ({ therecipe, user, me, setMe, doSave, tags, ...props }) => {
                 })}
               </div>
 
-              {/* {therecipe.related.length > 0 ? <p>gerelateerd</p> : null}
-              <div className="ingredienten-box">
-                {therecipe.related.map((b, xid) => (
-                  <Link key={xid} to={`/recipe/${slugify(b)}`}>
-                    <span className="font-600">{b.title}</span>
-                  </Link>
-                ))}
-              </div> */}
+              <div className="mb-36">
+                {thegroceries.find((g) => g._id === therecipe._id) ? (
+                  <Fragment>
+                    <button
+                      onClick={() =>
+                        handleDeleteGroceries(me, setMe, therecipe._id)
+                      }
+                      className="flex items-center w-265 bg-background border-silver text-14 p-12 px-20 mt-0 md:mt-0 align-bottom uppercase tracking-widest"
+                    >
+                      <img
+                        className="w-25"
+                        src="/img/feather/shopping-cart_black.svg"
+                        alt="list mark"
+                      />
+                      <span className="pl-9">toegevoegd</span>
+                    </button>
+                  </Fragment>
+                ) : (
+                  <Fragment>
+                    <button
+                      onClick={() =>
+                        handleCreateGroceries(me, setMe, therecipe)
+                      }
+                      className="flex items-center w-265 border-silver text-14 p-12 px-20 mt-0 md:mt-0 align-bottom uppercase tracking-widest"
+                    >
+                      <img
+                        className="w-25"
+                        src="/img/feather/shopping-cart.svg"
+                        alt="list mark"
+                      />
+                      <span className="pl-9">boodschappen</span>
+                    </button>
+                  </Fragment>
+                )}
+              </div>
+
               {therecipe.related.length > 0 &&
               therecipe.related[0].title !== "" ? (
                 <p>gerelateerd</p>
@@ -246,6 +403,7 @@ const MijnRecept = ({ therecipe, user, me, setMe, doSave, tags, ...props }) => {
           </Link> */}
           <a
             href={`mailto:?SUBJECT=${theemail.subject}&BODY=${
+              myRecipe +
               theemail.body +
               myTitle +
               theemail.fresh +
@@ -269,6 +427,19 @@ const MijnRecept = ({ therecipe, user, me, setMe, doSave, tags, ...props }) => {
             </span>
           </a>
         </div>
+      </div>
+      <div className="recepten-source">
+        <Link
+          to={{
+            pathname: `/books/${slugify(therecipe.book.name)}`,
+            state: therecipe.book._id,
+          }}
+        >
+          <div className="flex mt-72 pb-20">
+            <img className="w-25" src="/img/feather/book.svg" alt="" />
+            &nbsp;<span className="pl-5">Bron: {therecipe.book.name} </span>
+          </div>
+        </Link>
       </div>
     </Fragment>
   );

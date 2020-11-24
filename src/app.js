@@ -8,7 +8,7 @@ import Register from "./components/register";
 import inschrijven from "./components/inschrijven";
 import Verify from "./components/verify";
 import logout from "./components/logout";
-import Welkom from "./components/welkom";
+// import Welkom from "./components/welkom";
 import Test from "./components/Test";
 import Home from "./components/Home";
 import Recipes from "./components/Recipes";
@@ -230,6 +230,9 @@ const App = () => {
   var thecart = me.items;
   if (thecart === undefined) thecart = [];
 
+  var thegroceries = me.groceries;
+  if (thegroceries === undefined) thegroceries = [];
+
   return (
     <Fragment>
       <ToastContainer
@@ -276,7 +279,12 @@ const App = () => {
             dish={dish}
           />
         </header>
-        <LogoBox me={me} user={user} />
+        <LogoBox
+          me={me}
+          user={user}
+          thegroceries={thegroceries}
+          thecart={thecart}
+        />
         <Switch>
           <Route
             exact
@@ -302,11 +310,13 @@ const App = () => {
           <Route
             path="/recipes/:id"
             render={(props) => {
-              if (recipes === undefined) return [];
-              const therecipe = recipes.find(
-                // (i) => slugify(i._id) === props.location.state
-                (i) => slugify(i.title) === props.match.params.id
-              );
+              // if (recipes === undefined) return [];
+              const therecipe = recipes
+                .filter((t) => t.title !== undefined)
+                .find(
+                  // (i) => slugify(i._id) === props.location.state
+                  (i) => slugify(i.title) === props.match.params.id
+                );
               if (therecipe === undefined) return [];
 
               return (
@@ -318,6 +328,7 @@ const App = () => {
                   categories={categories}
                   tags={tags}
                   thecart={thecart}
+                  thegroceries={thegroceries}
                   {...props}
                 />
               );
@@ -388,7 +399,6 @@ const App = () => {
                 thecart={thecart}
                 dish={dish}
                 recipes={recipes}
-                dish={dish}
                 me={me}
                 setMe={setMe}
               />
@@ -408,6 +418,8 @@ const App = () => {
                   {...props}
                   recipes={recipes}
                   therecipe={therecipe}
+                  thegroceries={thegroceries}
+                  thecart={thecart}
                   tags={tags}
                   dish={dish}
                   user={user}
@@ -433,7 +445,7 @@ const App = () => {
             }}
           />
           <Route
-            path="/edit/:id"
+            path="/edititem/:id"
             render={(props) => {
               if (me.items === undefined) return [];
               const therecipe = me.items.find(
@@ -554,7 +566,13 @@ const App = () => {
             path="/voorraad"
             render={(props) => {
               return (
-                <Voorraad me={me} setMe={setMe} recipes={recipes} {...props} />
+                <Voorraad
+                  me={me}
+                  setMe={setMe}
+                  recipes={recipes}
+                  thegroceries={thegroceries}
+                  {...props}
+                />
               );
             }}
           />

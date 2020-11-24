@@ -2,13 +2,25 @@ import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { uniq, slugify } from "../common/common";
 import ItemsItem from "./itemsItem";
+import ReactMarkdown from "react-markdown";
+import gfm from "remark-gfm";
 
+const markdown = `
+
+**Er staan nog geen recepten in het kookschrift.**
+
+Ga naar [Recepten](/collections) of maak [een eigen recept](/nieuwitem).
+
+`;
 const MijnRecepten = ({ dish, me, setMe, recipes, ...props }) => {
   const [thedish, setTheDish] = useState("all");
 
   const handleTheDish = (c) => {
     setTheDish(c);
   };
+
+  // console.log("me");
+  // console.log(me);
 
   if (me.items === undefined) me.items = [];
 
@@ -38,7 +50,7 @@ const MijnRecepten = ({ dish, me, setMe, recipes, ...props }) => {
           </Link>
           <Link className="pt-10 lg:pt-5 leading-none" to={`/nieuwitem`}>
             <button className="bg-indigo-600 text-14 p-14 px-30 mt-0 md:mt-0 md:ml-18 align-bottom text-white uppercase tracking-widest">
-              nieuw recept
+              nieuw eigen recept
             </button>
           </Link>
         </h1>
@@ -64,11 +76,11 @@ const MijnRecepten = ({ dish, me, setMe, recipes, ...props }) => {
 
         <div className=""></div>
         {me.items.length === 0 && (
-          <div className="">
-            <p className="font-600">
-              Er staat nog geen recepten in het kookschrift.
-            </p>
-          </div>
+          <ReactMarkdown
+            plugins={[gfm]}
+            className="kramdown m-auto mb-36 mt-36"
+            children={markdown}
+          />
         )}
         {favoritedish.map((d, xid) => {
           let thetags = me.items
@@ -105,7 +117,7 @@ const MijnRecepten = ({ dish, me, setMe, recipes, ...props }) => {
                           </div>
                         </Link>
                         {me.items.map((recipe) => {
-                          console.log(recipe);
+                          // console.log(recipe);
                           let cart = me.items.find((c) => c._id === recipe._id);
                           if (cart === undefined) cart = [];
                           if (recipe.dish.name === undefined) return [];

@@ -19,7 +19,7 @@ export function getRecipe(recipeId) {
   return http.get(recipeUrl(recipeId));
 }
 
-export async function saveRecipe(recipe) {
+export async function createRecipe(recipe) {
   console.log("recipe");
   console.log(recipe);
 

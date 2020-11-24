@@ -53,8 +53,8 @@ const Collections = ({ me, setMe, thecart, dish, recipes, ...props }) => {
           let therecipes = recipes
             .filter((r) => r.tags[0] !== undefined)
             .filter((r) => r.dish._id === d._id);
-          console.log("therecipes");
-          console.log(therecipes);
+          // console.log("therecipes");
+          // console.log(therecipes);
           let thetags = therecipes.map((t) => t.tags[0]);
           thetags = thetags
             .filter((t) => t !== undefined)

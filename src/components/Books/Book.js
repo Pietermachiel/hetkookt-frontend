@@ -1,6 +1,5 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import { apiUrl } from "../../config.json";
 import { slugify } from "../common/common";
 
 const Book = ({ thebook, books, recipes, ...props }) => {
@@ -79,7 +78,7 @@ const Book = ({ thebook, books, recipes, ...props }) => {
             </div>
           </div>
 
-          {/* <div className="koo-box-footer pt-12">
+          <div className="koo-box-footer pt-12">
             {recipes.map((r) => {
               if (r.book === null) return console.log(r.title);
 
@@ -99,7 +98,7 @@ const Book = ({ thebook, books, recipes, ...props }) => {
                 );
             })}
             <br />
-          </div> */}
+          </div>
         </div>
       </div>
     </Fragment>

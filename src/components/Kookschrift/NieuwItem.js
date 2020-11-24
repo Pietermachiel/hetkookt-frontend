@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { toast } from "react-toastify";
-import { createRecipe } from "../../services/userService";
+import { createItem } from "../../services/userService";
 import { useForm, useFieldArray } from "react-hook-form";
 
 // https://www.carlrippon.com/custom-validation-rules-in-react-hook-form/
@@ -25,8 +25,10 @@ const NieuwItem = ({ me, setMe, recipes, tags, dish, ...props }) => {
       fresh: [{ quantity: null, unit: "", ingredient: "" }],
       stock: [{ quantity: null, unit: "", ingredient: "" }],
       directions: [{ name: "" }],
+      book: { _id: "", name: "", author: "", source: "", year: "" },
       info: "",
       date: [{ name: "" }],
+      myrecipe: true,
     },
   });
 
@@ -67,7 +69,7 @@ const NieuwItem = ({ me, setMe, recipes, tags, dish, ...props }) => {
     };
     try {
       // alert("create recipe");
-      await createRecipe(me, setMe, newdata);
+      await createItem(me, setMe, newdata);
       window.location.pathname = "/mijnrecepten";
       // const { state } = props.location;
       // window.location = state ? state.from.pathname : "/kookschrift";
@@ -83,9 +85,9 @@ const NieuwItem = ({ me, setMe, recipes, tags, dish, ...props }) => {
 
   return (
     <React.Fragment>
-      <div className="container-y bg-rose-100">
+      <div className="container-y ">
         <div className="md:w-550 m-auto relative">
-          <h1 className="py-18 text-36">Mijn recept</h1>
+          <h1 className="py-18 text-36">Nieuw eigen recept</h1>
           <form onSubmit={handleSubmit(handleCreateRecipe)}>
             {/* titel */}
             <div className="formgroup__collectie">
@@ -473,6 +475,58 @@ const NieuwItem = ({ me, setMe, recipes, tags, dish, ...props }) => {
                 </li>
               ))}
             </div>
+            {/* book */}
+            <div className="formgroup__collectie">
+              <label htmlFor="collectie" className="text-16 text-gray-500">
+                Bron
+              </label>
+              <input
+                name="book.name"
+                className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                ref={register()}
+                placeholder="naam"
+              />
+              <input
+                name="book.author"
+                className="hidden"
+                // className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                ref={register()}
+                placeholder="auteur"
+              />
+              <input
+                name="book.publisher"
+                className="hidden"
+                // className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                ref={register()}
+                placeholder="uitgever"
+              />
+              <input
+                name="book.source"
+                className="hidden"
+                //  className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                ref={register()}
+                placeholder="link"
+              />
+              <input
+                name="book.year"
+                className="hidden"
+                // className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                ref={register()}
+                placeholder="jaar"
+              />
+            </div>
+            {/* myrecipe */}
+            {/* <div className="formgroup__collectie hidden">
+              <label htmlFor="collectie" className="text-16 text-gray-500">
+                myrecipe
+              </label>
+              <input
+                name="myrecipe"
+                className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                ref={register()}
+                defaultValue="true"
+              />
+            </div> */}
             <button className="mb-36 uppercase text-16 bg-indigo-500 mt-36 px-36 py-10 text-white tracking-widest">
               nieuw
             </button>

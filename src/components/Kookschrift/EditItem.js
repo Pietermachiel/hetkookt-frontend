@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { slugify } from "../common/common";
-import { doSave } from "../../services/userService";
+import { editItem } from "../../services/userService";
 import { useForm, useFieldArray } from "react-hook-form";
 
 const theunits = [{ unit: "" }, { unit: "g" }, { unit: "ml" }];
@@ -25,6 +25,7 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, recipes, ...props }) => {
       fresh: therecipe.fresh,
       stock: therecipe.stock,
       directions: therecipe.directions,
+      book: therecipe.book,
       info: therecipe.info,
       date: therecipe.date,
     },
@@ -66,7 +67,7 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, recipes, ...props }) => {
     console.log("thedata");
     console.log(thedata);
     try {
-      await doSave(me, setMe, thedata);
+      await editItem(me, setMe, thedata);
       window.location = `/mijnrecepten/${slugify(thedata.title)}`;
       // props.history.replace({
       //   pathname: `/mijnrecepten/${slugify(therecipe.title)}`,
@@ -83,8 +84,8 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, recipes, ...props }) => {
     <React.Fragment>
       <div className="container-y">
         <div className="md:w-550 m-auto relative">
-          <h1 className="favorieten-title text-36 text-indigo-600">
-            {therecipe.title}{" "}
+          <h1 className="favorieten-title text-36 ">
+            Edit: {therecipe.title}{" "}
             <Link to={`/mijnrecepten/${slugify(therecipe.title)}`}>
               <span className="ml-18 py-18 px-36 bg-indigo-500 uppercase tracking-widest text-16 text-white">
                 terug
@@ -464,6 +465,42 @@ const EditItem = ({ me, tags, dish, setMe, therecipe, recipes, ...props }) => {
               <input
                 name="info"
                 className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                ref={register()}
+              />
+            </div>
+
+            {/* book */}
+            <div className="formgroup__collectie">
+              <label htmlFor="collectie" className="text-16 text-gray-500">
+                Bron
+              </label>
+              <input
+                name="book.name"
+                className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                ref={register()}
+              />
+              <input
+                name="book.author"
+                className="hidden"
+                // className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                ref={register()}
+              />
+              <input
+                name="book.publisher"
+                className="hidden"
+                // className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                ref={register()}
+              />
+              <input
+                name="book.source"
+                className="hidden"
+                // className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
+                ref={register()}
+              />
+              <input
+                name="book.year"
+                className="hidden"
+                // className="h-48 w-full font-300 text-14 border-solid border border-gray-400 pl-18"
                 ref={register()}
               />
             </div>

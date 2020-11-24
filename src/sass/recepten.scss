@@ -2,12 +2,25 @@
   min-height: calc(100vh - 550px);
 }
 
+.recept-by {
+  display: inline;
+  line-height: 1em;
+  position: relative;
+  border-bottom: 1px solid rgba(90, 90, 90, 0.5);
+  padding-bottom: 0px;
+  text-decoration: none;
+  // color: gray; // #3b4de2
+}
+
 // .recepten-title {
 //   margin-top: 0;
 //   padding-top: 24px;
 // }
 
 .recepten-source {
+  @media screen and (min-width: 768px) {
+    margin-left: 40% !important;
+  }
   @media screen and (min-width: $on-tablet) {
     margin-left: 30% !important;
   }
@@ -228,7 +241,9 @@ button.btn-like {
   }
 }
 button.btn-add {
-  padding: 0;
+  display: inline;
+  padding-top: 14px;
+  padding-left: 9px;
   margin-top: 0;
   border: 0;
   background: transparent;

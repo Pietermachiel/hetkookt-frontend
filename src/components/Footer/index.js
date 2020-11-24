@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <Fragment>
       <div className="h-200 bg-footer w-full mb-auto flex-shrink px-20">
-        <p className="pt-18">Footer</p>
+        <p className="pt-18">De kunst van lekker eten</p>
       </div>
     </Fragment>
   );

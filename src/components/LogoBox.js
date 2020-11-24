@@ -1,13 +1,15 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import { Link, NavLink } from "react-router-dom";
 import useCurrentWitdh from "./common/use-current-width2";
 
-const LogoBox = ({ user, me }) => {
-  const [kookschriftOpen, setKookschriftOpen] = useState(false);
+const LogoBox = ({ user, me, thegroceries, thecart }) => {
+  // const [kookschriftOpen, setKookschriftOpen] = useState(false);
 
   // const handleClick = () => {
   //   setKookschriftOpen(!kookschriftOpen);
   // };
+  // console.log("thegroceries.length");
+  // console.log(thegroceries.length);
 
   const width = useCurrentWitdh();
 
@@ -28,14 +30,25 @@ const LogoBox = ({ user, me }) => {
             </NavLink>
           </div>{" "}
           <div className="ml-10">
-            <Link to="/mijnrecepten">
-              {" "}
-              <img
-                className="h-25"
-                src="/img/feather/bookmark-red.svg"
-                alt=""
-              />
-            </Link>
+            {thecart.length === 0 ? (
+              <Link to="/mijnrecepten">
+                {" "}
+                <img
+                  className="h-25"
+                  src="/img/feather/bookmark-red.svg"
+                  alt=""
+                />
+              </Link>
+            ) : (
+              <Link className="flex" to="/mijnrecepten">
+                <img
+                  className="h-25"
+                  src="/img/feather/bookmark-red.svg"
+                  alt=""
+                />
+                <span className="pl-4 text-red-500">{thecart.length}</span>
+              </Link>
+            )}
           </div>
           <div className="ml-10">
             <Link to="/weekmenu" className="font-700 text-24">
@@ -43,13 +56,24 @@ const LogoBox = ({ user, me }) => {
             </Link>
           </div>{" "}
           <div className="ml-10">
-            <Link to="/boodschappen">
-              <img
-                className="h-25"
-                src="/img/feather/shopping-cart.svg"
-                alt=""
-              />
-            </Link>
+            {thegroceries.length === 0 ? (
+              <Link to="/boodschappen">
+                <img
+                  className="h-25"
+                  src="/img/feather/shopping-cart.svg"
+                  alt=""
+                />
+              </Link>
+            ) : (
+              <Link className="flex" to="/boodschappen">
+                <img
+                  className="h-25"
+                  src="/img/feather/shopping-cart_black.svg"
+                  alt=""
+                />
+                <span className="pl-8">{thegroceries.length}</span>
+              </Link>
+            )}
           </div>{" "}
           {width > 768 && (
             <Fragment>
@@ -63,9 +87,9 @@ const LogoBox = ({ user, me }) => {
               </div> */}
               <NavLink
                 className="ml-36 font-500 text-18 text-gray-500"
-                to="/about"
+                to={{ pathname: `/collections`, state: "brood" }}
               >
-                De kunst van lekker eten
+                Recepten
               </NavLink>
             </Fragment>
           )}
@@ -113,9 +137,9 @@ const LogoBox = ({ user, me }) => {
 
               <NavLink
                 className="ml-36 font-500 text-18 text-gray-500"
-                to="/about"
+                to={{ pathname: `/collections`, state: "brood" }}
               >
-                De kunst van lekker eten
+                Recepten
               </NavLink>
             </Fragment>
           )}

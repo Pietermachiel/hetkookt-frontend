@@ -1,14 +1,10 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
 import auth from "../../services/authService";
 import { deleteUser } from "../../services/userService";
 import useCurrentWitdh from "../common/use-current-width";
-import KookschriftNav from "../Nav/KookschriftNav";
 import { uniq } from "../common/common";
 
 const User = ({ me, user, thecart, ...props }) => {
-  const width = useCurrentWitdh();
-
   console.log("thecart");
   console.log(thecart);
 
@@ -64,13 +60,6 @@ const User = ({ me, user, thecart, ...props }) => {
 
   return (
     <div className="container-x">
-      {/* <p className="mt-70 lg:mt-48">
-        {width < 768 ? (
-          <Link className="font-700 text-red-600" to="/kookschrift">
-            Kookschrift >
-          </Link>
-        ) : null}
-      </p>{" "} */}
       <div className="flex justify-center ">
         <h1 className="kookschrift-title mb-18 ">{me.name}</h1>
       </div>

@@ -1,20 +1,32 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment } from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { slugify, slugifyu } from "../common/common.js";
-import { apiUrl } from "../../config.json";
-import { createRecipe } from "../../services/userService";
+import {
+  createItem,
+  deleteFromGroceries,
+  doPutGroceries,
+} from "../../services/userService";
 
-const Recipe = ({ user, me, setMe, therecipe, thecart, tags, ...props }) => {
+const Recipe = ({
+  user,
+  me,
+  setMe,
+  therecipe,
+  thegroceries,
+  thecart,
+  tags,
+  ...props
+}) => {
   // var [therecipe, setTheRecipe] = useState([]);
-  const API = props.location.state;
+  // const API = props.location.state;
 
   // console.log(therecipe.tags[0].category.name);
 
   const theemail = {
     subject: "een recept van mijn hetkooktschrift",
     body:
-      "%0D%0ADit recept komt uit mijn kookschrift op https://hetkookt.netlify.app.%0D%0A%0D%0A–––%0D%0A%0D%0A",
+      "%0D%0AMaak zelf ook een kookschrift op https://hetkookt.netlify.app.%0D%0A%0D%0A–––%0D%0A%0D%0A",
     fresh: "%0D%0A%0D%0Avers:%0D%0A",
     stock: "%0D%0A%0D%0Ahoudbaar:%0D%0A",
     directions: "%0D%0A%0D%0Awerkwijze:%0D%0A",
@@ -27,6 +39,15 @@ const Recipe = ({ user, me, setMe, therecipe, thecart, tags, ...props }) => {
 
   console.log("therecipe");
   console.log(therecipe);
+
+  var myRecipe =
+    "Recept uit '" +
+    therecipe.book.name +
+    "' van " +
+    therecipe.book.author +
+    " bewerkt door HetKookt" +
+    "\r\n";
+  myRecipe = encodeURIComponent(myRecipe);
 
   var myTitle = therecipe.title + "\r\n\r\n---";
   myTitle = encodeURIComponent(myTitle);
@@ -63,12 +84,15 @@ const Recipe = ({ user, me, setMe, therecipe, thecart, tags, ...props }) => {
       fresh: therecipe.fresh,
       stock: therecipe.stock,
       directions: therecipe.directions,
+      book: therecipe.book,
       info: therecipe.info,
       date: therecipe.date,
+      myrecipe: false,
     };
 
     try {
-      await createRecipe(me, setMe, newrecipe);
+      await createItem(me, setMe, newrecipe);
+      window.location = `/mijnrecepten/${slugify(therecipe.title)}`;
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         toast.error("foutje");
@@ -76,6 +100,10 @@ const Recipe = ({ user, me, setMe, therecipe, thecart, tags, ...props }) => {
         // setError(theerr);
       }
     }
+  };
+
+  const handleCreateGroceries = (me, setMe, therecipe) => {
+    doPutGroceries(me, setMe, therecipe);
   };
 
   // useEffect(() => {
@@ -104,7 +132,8 @@ const Recipe = ({ user, me, setMe, therecipe, thecart, tags, ...props }) => {
             <div class="dot"></div>
           </div>
         )}
-        <h1 className="recepten-title mb-18 lg:mb-0 ">
+
+        <h1 className="recepten-title mb-18 lg:mb-0 flex items-center">
           {therecipe.title}
           {/* <span className="text-21 lg:pl-10">bladgroenten</span> */}
           <Link
@@ -114,53 +143,31 @@ const Recipe = ({ user, me, setMe, therecipe, thecart, tags, ...props }) => {
             <span className="text-21 pl-10">{therecipe.dish.name}</span>
           </Link>
         </h1>
-        <div className="lg:flex align-baseline mb-36 unvisable slide work-grid-item">
-          {user ? (
-            <div className="mr-15">
-              {myrecipes.includes(therecipe._id) ? (
-                <Fragment>
-                  <Link to="/mijnrecepten">
-                    <div className="mt-5 mb-5 lg:pr-18 btn-add mr-10 text-18 font-600 text-red-200 hover:text-red-500 flex item-center">
-                      <img
-                        className="w-25"
-                        src="/img/feather/bookmark-red-stroke.svg"
-                        alt="bookmark red"
-                      />
-                      <span className="ml-10">staat in kookschrift ></span>
-                    </div>
-                  </Link>
-                </Fragment>
-              ) : (
-                <Fragment>
-                  <div
-                    className="mt-5 mb-5 lg:pr-18 btn-add mr-10 text-18 font-600 text-indigo-700 flex item-center hover:text-red-500"
-                    onClick={() => handleCreateRecipe(me, setMe, therecipe)}
-                  >
-                    <img
-                      className="w-25"
-                      src="/img/feather/bookmark.svg"
-                      alt="bookmark"
-                    />
-                    <span className="ml-10">zet in kookschrift ></span>
-                  </div>
-                </Fragment>
-              )}
-            </div>
-          ) : (
-            <Fragment>
-              <Link
-                to="/login"
-                className="mb-5 lg:pr-18 btn-add mr-10 text-18 font-600 text-indigo-700 flex item-center hover:text-red-500"
-              >
-                <img
-                  className="w-25"
-                  src="/img/feather/bookmark.svg"
-                  alt="bookmark"
-                />
-                <span className="ml-10">zet in kookschrift ></span>
-              </Link>
-            </Fragment>
-          )}
+
+        <div className="lg:flex align-baseline unvisable slide work-grid-item">
+          <p className="font-700 text-16 mt-9">
+            Recept van&nbsp;
+            <Link
+              to={{
+                pathname: `/books/${slugify(therecipe.book.name)}`,
+                state: therecipe.book._id,
+              }}
+              className="recept-by"
+            >
+              {therecipe.book.author}
+            </Link>{" "}
+            bewerkt door&nbsp;
+            <Link
+              to={{
+                pathname: `/books/hetkookt`,
+                state: therecipe.book._id,
+              }}
+              className="recept-by"
+            >
+              hetkookt
+            </Link>
+          </p>
+
           {user && user.isAdmin && (
             <Link
               // to={`/editrecipe/${slugify(therecipe.title)}`}
@@ -181,8 +188,58 @@ const Recipe = ({ user, me, setMe, therecipe, thecart, tags, ...props }) => {
             </Link>
           )}
         </div>
+        <div className="md:flex my-18">
+          {user ? (
+            <div className="">
+              {myrecipes.includes(therecipe._id) ? (
+                <Fragment>
+                  <Link to="/mijnrecepten">
+                    <button className="flex items-center  bg-white text-14 p-14 px-24 mt-0 md:mt-0 text-red-500 uppercase tracking-widest">
+                      <img
+                        className="w-25"
+                        src="/img/feather/bookmark-red.svg"
+                        alt="bookmark red"
+                      />
+                      <span className="pl-9">staat in kookschrift</span>
+                    </button>
+                  </Link>
+                </Fragment>
+              ) : (
+                <Fragment>
+                  <button
+                    onClick={() => handleCreateRecipe(me, setMe, therecipe)}
+                    className="flex items-center w-265 bg-red-500 text-14 p-12 px-20 mt-0 md:mt-0 align-bottom text-white uppercase tracking-widest"
+                  >
+                    <img
+                      className="w-25"
+                      src="/img/feather/bookmark-white.svg"
+                      alt="bookmark red"
+                    />
+                    <span className="pl-9">zet in kookschrift</span>
+                  </button>
+                </Fragment>
+              )}
+            </div>
+          ) : (
+            <Fragment>
+              <Link
+                to="/login"
+                className="flex items-center w-265 bg-red-500 text-14 p-12 px-20 mt-0 md:mt-0 align-bottom text-white uppercase tracking-widest"
+              >
+                <img
+                  className="w-25"
+                  src="/img/feather/bookmark-white.svg"
+                  alt="bookmark red"
+                />
+                <span className="pl-9">zet in kookschrift</span>
+              </Link>
+            </Fragment>
+          )}
+          <div className="md:ml-15"></div>
+        </div>
+
         <div className="recepten">
-          <div className="recepten-box">
+          <div className="recepten-box mt-18">
             {/* ingredienten */}
             <div className="ingredienten">
               <p>vers</p>
@@ -241,14 +298,53 @@ const Recipe = ({ user, me, setMe, therecipe, thecart, tags, ...props }) => {
                   );
                 })}
               </div>
-              {/* {therecipe.basics.length > 0 ? <p>basisrecepten</p> : null}
-              <div className="ingredienten-box">
-                {therecipe.basics.map((b, xid) => (
-                  <Link key={xid} to={`/recipe/${slugify(b.name)}`}>
-                    <span className="font-600">{b.name}</span>
-                  </Link>
-                ))}
-              </div> */}
+              {user && (
+                <Fragment>
+                  {thegroceries.find((g) => g._id === therecipe._id) ? (
+                    <button
+                      onClick={() =>
+                        handleCreateGroceries(me, setMe, therecipe)
+                      }
+                      className="flex items-center w-265 bg-background border-silver text-14 p-12 px-20 mt-0 md:mt-0 align-bottom uppercase tracking-widest"
+                    >
+                      <img
+                        className="w-25"
+                        src="/img/feather/shopping-cart_black.svg"
+                        alt="list mark"
+                      />
+                      <span className="pl-9">toegevoegd</span>
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() =>
+                        handleCreateGroceries(me, setMe, therecipe)
+                      }
+                      className="flex items-center w-265 bg-background border-silver text-14 p-12 px-20 mt-0 mb-24 align-bottom uppercase tracking-widest"
+                    >
+                      <img
+                        className="w-25"
+                        src="/img/feather/shopping-cart.svg"
+                        alt="list mark"
+                      />
+                      <span className="pl-9">boodschappen</span>
+                    </button>
+                  )}
+                </Fragment>
+              )}
+              {!user && (
+                <Link
+                  to="/login"
+                  className="flex items-center w-265 bg-background border-silver text-14 p-12 px-20 mt-0 mb-24 align-bottom uppercase tracking-widest"
+                >
+                  <img
+                    className="w-25"
+                    src="/img/feather/shopping-cart.svg"
+                    alt="list mark"
+                  />
+                  <span className="pl-9">boodschappen</span>
+                </Link>
+              )}
+
               {therecipe.related.length > 0 ? <p>gerelateerd</p> : null}
               <div className="ingredienten-box">
                 {therecipe.related.map((b, xid) => (
@@ -288,6 +384,7 @@ const Recipe = ({ user, me, setMe, therecipe, thecart, tags, ...props }) => {
         <div className="recepten-source">
           <a
             href={`mailto:?SUBJECT=${theemail.subject}&BODY=${
+              myRecipe +
               theemail.body +
               myTitle +
               theemail.fresh +
@@ -308,7 +405,7 @@ const Recipe = ({ user, me, setMe, therecipe, thecart, tags, ...props }) => {
             rel="noopener noreferrer"
           >
             Stuur het recept naar een vriend:
-            <span className="table md:inline mt-18 md:mt-0 ml-0 md:ml-18 py-18 px-36 bg-indigo-500 text-white uppercase text-16 tracking-widest">
+            <span className="table md:inline mt-18 md:mt-0 ml-0 md:ml-16 py-18 px-20 bg-indigo-500 text-white uppercase text-14 tracking-widest">
               Stuur email
             </span>
           </a>

@@ -5,21 +5,21 @@ import AccordionVoorraad from "./AccordionVoorraad";
 import { kalender } from "../common/common";
 import stock from "../../data/stock.json";
 
-const Voorraad = ({ me, setMe, recipes, ...props }) => {
+const Voorraad = ({ me, setMe, recipes, thegroceries, ...props }) => {
   if (me.stock === undefined) return (me.stock = []);
 
-  if (me.items === undefined) return [];
+  if (thegroceries === undefined) return [];
 
-  const themenu = me.items.filter((r) => {
-    const item = kalender.find((k) => r.date.find((d) => d.name === k.dayall));
-    return item;
-  });
+  // const themenu = thegroceries.filter((r) => {
+  //   const item = kalender.find((k) => r.date.find((d) => d.name === k.dayall));
+  //   return item;
+  // });
 
   // console.log("themenu");
   // console.log(stock);
 
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
-  let allstock = themenu.reduce(function (accumulator, currentValue) {
+  let allstock = thegroceries.reduce(function (accumulator, currentValue) {
     return [...accumulator, ...currentValue.stock];
   }, []);
   // console.log("allstock1");
@@ -81,8 +81,8 @@ const Voorraad = ({ me, setMe, recipes, ...props }) => {
         </div>
 
         <div className="mb-18">
-          Dit zijn de ingrediënten die op voorraad moeten zijn voor het
-          weekmenu:
+          Dit zijn de ingrediënten die op voorraad moeten zijn voor de recepten
+          op de boodschappenlijst:
         </div>
         <div className=" grid-box unvisable slide work-grid-item pb-10">
           <Fragment>

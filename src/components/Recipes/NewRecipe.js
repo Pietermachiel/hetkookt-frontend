@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
 import { toast } from "react-toastify";
-import { saveRecipe } from "../../services/recipeService";
+import { createRecipe } from "../../services/recipeService";
 import { useForm, useFieldArray } from "react-hook-form";
 // import mongoose from "mongoose";
 
@@ -71,7 +71,7 @@ const NewRecipe = ({ recipes, tags, dish, books, ...props }) => {
     console.log(newdata);
     try {
       // alert("create recipe");
-      await saveRecipe(newdata);
+      await createRecipe(newdata);
       window.location.pathname = "/recipes";
     } catch (ex) {
       // alert("catch error");

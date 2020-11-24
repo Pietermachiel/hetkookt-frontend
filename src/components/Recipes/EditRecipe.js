@@ -1,10 +1,9 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import { toast } from "react-toastify";
-import { saveRecipe } from "../../services/recipeService";
+import { createRecipe } from "../../services/recipeService";
 import { useForm, useFieldArray } from "react-hook-form";
 import { slugify } from "../common/common";
 import mongoose from "mongoose";
-import { apiUrl } from "../../config.json";
 
 const recipeId = mongoose.Types.ObjectId().toHexString();
 
@@ -34,7 +33,7 @@ const EditRecipe = ({ tags, dish, books, therecipe, recipes, ...props }) => {
       date: therecipe.date,
     },
   });
-  const API = props.location.state;
+  // const API = props.location.state;
 
   // useEffect(() => {
   //   async function getData() {
@@ -100,7 +99,7 @@ const EditRecipe = ({ tags, dish, books, therecipe, recipes, ...props }) => {
     console.log("EditRecipe: thedata");
     console.log(thedata);
     try {
-      await saveRecipe(thedata);
+      await createRecipe(thedata);
       window.location = `/recipes/${slugify(thedata.title)}`;
       // props.history.replace({
       //   pathname: `/recipes/${slugify(therecipe.title)}`,

@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { slugify } from "../common/common";
-import { deleteRecipe } from "../../services/userService";
+import { deleteItem } from "../../services/userService";
 
 const ItemsItem = ({
   cart,
@@ -16,7 +16,7 @@ const ItemsItem = ({
   const [isOpen, setIsOpen] = useState(false);
 
   const handleDeleteRecipe = (id) => {
-    deleteRecipe(me, setMe, id);
+    deleteItem(me, setMe, id);
   };
 
   return (

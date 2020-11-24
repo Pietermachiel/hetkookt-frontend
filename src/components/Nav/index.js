@@ -1,10 +1,9 @@
 import React, { Fragment } from "react";
 import { NavLink, withRouter } from "react-router-dom";
-import auth from "../../services/authService";
-import { deleteUser } from "../../services/userService";
-import KookschriftNav from "./KookschriftNav";
+// import auth from "../../services/authService";
+// import { deleteUser } from "../../services/userService";
 import Search from "../Search";
-import useCurrentWitdh from "../common/use-current-width";
+// import useCurrentWitdh from "../common/use-current-width";
 
 // import SlidingPanel from "react-sliding-side-panel";
 
@@ -32,11 +31,11 @@ const Nav = ({
   searchTerm,
   ...props
 }) => {
-  function handleDelete(userId) {
-    deleteUser(userId);
-    auth.logout();
-    window.location = "/";
-  }
+  // function handleDelete(userId) {
+  //   deleteUser(userId);
+  //   auth.logout();
+  //   window.location = "/";
+  // }
 
   function handleLogin(e) {
     handleIsOpen(e);
@@ -44,9 +43,9 @@ const Nav = ({
   }
   // console.log("props-nav");
   // console.log(props.location.pathname);
-  const location = props.location.pathname;
+  // const location = props.location.pathname;
 
-  const width = useCurrentWitdh();
+  // const width = useCurrentWitdh();
   // console.log(width);
 
   // console.log("user");
