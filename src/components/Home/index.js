@@ -6,7 +6,7 @@ import gfm from "remark-gfm";
 
 const markdown = `
 
-**hetkookt** is een digitaal kookboek met recepten van bekende en minder bekende koks, bewerkt en geredigeerd onder redactie van **hetkookt**.
+**hetkookt** is een digitaal kookboek met favoriete recepten, bewerkt en geredigeerd onder redactie van hetkookt, met links naar kookboeken van bekende en minder bekende koks.
 
 Het is tevens een kookschrift om die recepten naar eigen inzicht aan te passen en om eigen of zelf gevonden recepten op te slaan.
 
