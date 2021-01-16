@@ -5,7 +5,7 @@ import gfm from "remark-gfm";
 const About = () => {
   const markdown = `
 
-  **hetkookt** is een digitaal kookboek met favoriete recepten, bewerkt en geredigeerd onder redactie van hetkookt, met links naar kookboeken van bekende en minder bekende koks.
+  **hetkookt** is een digitaal kookboek met favoriete recepten, bewerkt en geredigeerd onder redactie van hetkookt, met links naar 's werelds 'beste' kookboeken'.
 
   Het is tevens een kookschrift om die recepten naar eigen inzicht aan te passen en om eigen of zelf gevonden recepten op te slaan.
   
@@ -28,6 +28,16 @@ const About = () => {
           children={markdown}
         />
       </div>
+      <p className="kramdown m-auto mb-72 px-24 lg:px-0">
+        Dit is een project van{" "}
+        <a
+          href="https://pieterroozen.nl"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Pieter Roozen
+        </a>
+      </p>
     </Fragment>
   );
 };
