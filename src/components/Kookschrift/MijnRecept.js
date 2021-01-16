@@ -152,15 +152,15 @@ const MijnRecept = ({
                 {therecipe.book.author}
               </Link>{" "}
               bewerkt door&nbsp;
-              <Link
+              {/* <Link
                 to={{
                   pathname: `/books/hetkookt`,
                   state: therecipe.book._id,
                 }}
                 className="recept-by"
-              >
-                {me.name}
-              </Link>
+              > */}
+              {me.name}
+              {/* </Link> */}
             </p>
           )}
           <div className="md:flex my-18">

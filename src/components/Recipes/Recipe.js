@@ -157,15 +157,15 @@ const Recipe = ({
               {therecipe.book.author}
             </Link>{" "}
             bewerkt door&nbsp;
-            <Link
+            {/* <Link
               to={{
                 pathname: `/books/hetkookt`,
                 state: therecipe.book._id,
               }}
               className="recept-by"
-            >
-              hetkookt
-            </Link>
+            > */}
+            <span className="font-300 text-18">hetkookt</span>
+            {/* </Link> */}
           </p>
 
           {user && user.isAdmin && (
