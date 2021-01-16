@@ -40,7 +40,8 @@ const Register = (props) => {
           {/* <h4 className="font-600">Nieuw bij hetkookt?</h4> */}
           <p className="text-green-600">
             Na verzending van je gegevens sturen we je een email ter
-            verificatie. Je kunt je inschrijving te allen tijde intrekken.
+            verificatie, zodat we zeker zijn dat jij het bent. Je kunt je
+            inschrijving te allen tijde intrekken.
           </p>
           <form className="login-form" onSubmit={handleSubmit(doSubmit)}>
             {/* name */}

@@ -6,18 +6,9 @@ import gfm from "remark-gfm";
 
 const markdown = `
 
-**hetkookt** is een digitaal kookboek met favoriete recepten, bewerkt en geredigeerd onder redactie van hetkookt, met links naar kookboeken van bekende en minder bekende koks.
+**hetkookt** is een digitaal kookboek met favoriete recepten, bewerkt en geredigeerd onder redactie van hetkookt, met links naar 's werelds 'beste' kookboeken'.
 
-Het is tevens een kookschrift om die recepten naar eigen inzicht aan te passen en om eigen of zelf gevonden recepten op te slaan.
-
-Met handige functies, zoals relaties tussen recepten, een weekmenu en boodschappenlijst, voorraadbeheer en vele zoekmogelijkheden.
-
-Kook met verse, lokale ingrediënten. Koop geen gemaksproducten maar maak alle sauzen en smaakmakers zelf. Bak je eigen brood.
-
-Maak je eigen [Kookschrift](/mijnrecepten)!
-
-
-
+Test de applicatie gratis en maak een eigen [Kookschrift](/mijnrecepten)!
 `;
 const Home = ({ user, recipes, ...props }) => {
   // const width = useCurrentWitdh();
@@ -45,8 +36,11 @@ const Home = ({ user, recipes, ...props }) => {
         <Fragment>
           <div className="mb-48">
             <p className="hetkookt-title flex items-center">
-              <Link className="text-red-600 font-700 text-18" to="/about">
-                hetkookt! &nbsp;
+              <Link
+                className="text-red-600 font-700 text-18 lg:text-24"
+                to="/about"
+              >
+                proof of concept! &nbsp;
               </Link>
               {!user && (
                 <button className="bg-indigo-600 text-14 p-14 px-30 mt-18 md:mt-0 md:ml-18 align-bottom text-white uppercase tracking-widest">
