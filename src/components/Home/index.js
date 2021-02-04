@@ -10,6 +10,7 @@ const markdown = `
 
 Test de applicatie gratis en maak een eigen [Kookschrift](/mijnrecepten)!
 
+[About](/about) hetkookt. 
 `;
 const Home = ({ user, recipes, ...props }) => {
   // const width = useCurrentWitdh();
