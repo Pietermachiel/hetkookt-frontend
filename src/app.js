@@ -123,8 +123,8 @@ const App = () => {
   // console.log("me");
   // console.log(me);
   // console.log(stock);
-  // console.log("books");
-  // console.log(books);
+  console.log("books");
+  console.log(books);
   // console.log("tags");
   // console.log(tags);
 
